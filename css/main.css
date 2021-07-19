@@ -10,81 +10,160 @@ html { box-sizing: border-box; }
 
 
 
+* {
+  /* --gray: #bfbfbf; */
+  --electric-indigo: #6201ff;
+  --forest-green-traditional: #1e3f20;
+  --red-pigment: #ff0022;
+  --blue-jeans: #48acf0;
+  --roman-silver: #919098;
+}
+
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  line-height: 150%;
+}
+body > * {
+  padding: 15px;
+}
 
 
-.navTrigger {
-  float: right;
+header {
+  position: sticky;
+  z-index: 1;
+  left: 0; top: 0;
+  max-width: 100vw;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--forest-green-traditional);
+  color: white;
+}
+header.scrolled {
+  box-shadow: 0 0 10px black;
+}
+
+header img {
+  position: relative;
+  width: 75px;
+  transition: 0.75s width ease-in-out;
+}
+header.scrolled img {
+  width: 50px;
+  transition: 0.1s width ease-in-out;
+}
+
+header h1 {
+  position: absolute;
+  top: 50%;
+  left: 1em;
+  transform: translateY(-50%);
+  transition: 0.75s font-size ease-in-out;
+}
+header.scrolled h1 {
+  font-size: 24px;
+  transition: 0.1s font-size ease-in-out;
+}
+
+
+.nav-toggle {
+  position: relative;
   cursor: pointer;
   width: 30px;
   height: 25px;
-
-  position: fixed;
-  top: 15px;
-  right: 15px;
+  transition: 0.5s transform ease-in-out;
 }
-/* debugging */
-.navTrigger:hover { background: lightgrey; }
+.nav-toggle::after {
 
-.navTrigger i {
-  background-color: #000;
+}
+.nav-toggle.active { transform: rotate(-90deg); }
+
+.nav-toggle span {
+  background-color: white;
   border-radius: 2px;
   content: '';
   display: block;
   width: 100%;
-  height: 4px
+  height: 4px;
 }
 
-.navTrigger i:nth-child(1) {
-  animation: outT 0.5s ease-in-out backwards reverse;
+.nav-toggle span:nth-child(1) {
+  animation: out-top 0.5s ease-in-out;
+  transform:
 }
-.navTrigger i:nth-child(2) {
+.nav-toggle span:nth-child(2) {
   margin: 5px 0;
-  animation: outM 0.5s ease-in-out backwards reverse;
+  animation: out-mid 0.5s ease-in-out;
 }
-.navTrigger i:nth-child(3) {
-  animation: outBtm 0.5s ease-in-out backwards reverse;
-}
-
-.navTrigger.active i:nth-child(1) {
-  animation: inT 0.5s ease-in-out forwards;
-}
-.navTrigger.active i:nth-child(2) {
-  animation: inM 0.5s ease-in-out forwards;
-}
-.navTrigger.active i:nth-child(3) {
-  animation: inBtm 0.5s ease-in-out forwards;
+.nav-toggle span:nth-child(3) {
+  animation: out-btm 0.5s ease-in-out;
 }
 
-@keyframes inM {
-  50% { transform: rotate(0deg); }
-  100% { transform: rotate(-45deg); }
+.nav-toggle.active span:nth-child(1) {
+  animation: in-top 0.5s ease-in-out forwards;
+}
+.nav-toggle.active span:nth-child(2) {
+  animation: in-mid 0.5s ease-in-out forwards;
+}
+.nav-toggle.active span:nth-child(3) {
+  animation: in-btm 0.5s ease-in-out forwards;
 }
 
-@keyframes outM {
-  50% { transform: rotate(0deg); }
-  100% { transform: rotate(-45deg); }
+/* to hamburger */
+@keyframes out-top {
+  0% { transform: translateY(9px) rotate(-135deg); }
+  50% { transform: translateY(9px) rotate(0); }
+  100% { transform: translateY(0) rotate(0); }
+}
+@keyframes out-mid {
+  0% { transform: rotate(-45deg); }
+  50% { transform: rotate(0); }
+}
+@keyframes out-btm {
+  0% { transform: translateY(-9px) rotate(-135deg); }
+  50% { transform: translateY(-9px) rotate(0); }
+  100% { transform: translateY(0) rotate(0); }
 }
 
-@keyframes inT {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(9px) rotate(0deg); }
+/* to x btn */
+@keyframes in-top {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(9px) rotate(0); }
   100% { transform: translateY(9px) rotate(-135deg); }
 }
-
-@keyframes outT {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(9px) rotate(0deg); }
-  100% { transform: translateY(9px) rotate(-135deg); }
+@keyframes in-mid {
+  50% { transform: rotate(0); }
+  100% { transform: rotate(-45deg); }
 }
-
-@keyframes inBtm {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-9px) rotate(0deg); }
+@keyframes in-btm {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-9px) rotate(0); }
   100% { transform: translateY(-9px) rotate(-135deg); }
 }
 
-@keyframes outBtm {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-9px) rotate(0deg); }
-  100% { transform: translateY(-9px) rotate(-135deg); }
+
+
+#intro {
+  background: var(--forest-green-traditional);
+  color: white;
+}
+#intro p {
+  position: relative;
+  padding: 10px;
+  margin: 15px 0;
+}
+#intro span {
+  position: absolute;
+  left: 0; top: 0;
+  opacity: 0;
+  transition: 1s opacity ease-in-out;
+  font-size: 20px;
+}
+#intro span.active { opacity: 1; }
+
+
+#filler p {
+  margin: 15px 0;
 }
