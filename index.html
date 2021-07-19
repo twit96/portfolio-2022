@@ -1,82 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
-		<title>New Website Coming Soon!</title>
+		<title>Tyler Wittig | Web Developer</title>
 		<meta charset="utf-8" />
 		<!-- <meta name="description" content="description" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" href="/img/icon_purple.png" />
+		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
+
 	<body>
+
 		<header>
-			<img id="top-logo" src="/img/icon_purple.png" alt="site logo" />
-			<h1>Tyler Wittig</h1>
+			<span>Tyler Wittig</span>
 			<div class="nav-toggle">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
 		</header>
-		<script>
+
+    <script>
 			var nav_toggle = document.querySelector(".nav-toggle");
 			nav_toggle.onclick = function() {
 				nav_toggle.classList.toggle("active");
 			}
 
-			var header = document.querySelector("header");
+      var header = document.querySelector("header");
 			window.onscroll = function() {
         if (
           (document.body.scrollTop > 100) ||
           (document.documentElement.scrollTop > 100)
-        ) { header.classList.add("scrolled"); }
-        else { header.classList.remove("scrolled"); }
+        ) { header.classList.add("filled"); }
+        else { header.classList.remove("filled"); }
       };
 		</script>
 
 		<section id="intro">
-			<h2>Web Developer</h2>
-			<p>
-				<span class="active">Custom Websites</span>
-				<span>Website Redesigns</span>
-				<span>Game Development</span>
-			</p>
-			<script>
-				var taglines = document.getElementById("intro").getElementsByTagName("span");
-				var active_idx = 0;
-				var active_tag = taglines[0];
-				setTimeout(updateTag, 5000)
-
-				function updateTag() {
-					active_tag.classList.remove("active");
-					active_idx = (active_idx + 1) % taglines.length;
-					active_tag = taglines[active_idx];
-					active_tag.classList.add("active");
-					setTimeout(function() {
-						updateTag();
-					}, 5000);
-				}
-			</script>
+      <img id="top-logo" src="/img/icon_purple_lg.png" alt="site logo" />
+      <div class="blurb">
+        <p>
+          Well <i>hello</i> world,
+          <br />
+          My name is Tyler and I am a full-stack web developer.
+          I specialize in...
+  			</p>
+        <p>
+          <span class="active">Custom Websites</span>
+          <span>Website Redesigns</span>
+          <span>Game Development</span>
+        </p>
+      </div>
+      <div class="details">
+        <h1>Tyler Wittig</h1>
+        <h2>Web Developer</h2>
+      </div>
 		</section>
 
-		<section id="filler">
-			<h2>New Website Coming Soon!</h2>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vestibulum massa et nulla ultricies lacinia. Vestibulum pretium leo turpis, vitae dictum leo porttitor vitae. Donec pellentesque tristique ligula a bibendum. Fusce tincidunt nibh eget nulla volutpat laoreet. Nullam tempor hendrerit nisl, id maximus mauris auctor nec. Nunc enim lorem, tincidunt sit amet sagittis efficitur, vestibulum eget quam. Donec in pharetra nibh. Aenean at ullamcorper leo. Vivamus laoreet ornare dictum. Integer in scelerisque lectus. Pellentesque fermentum, eros eu vehicula efficitur, felis nisl tristique eros, id fringilla odio ligula ut felis. Vestibulum ultrices mauris sed tellus accumsan, id ullamcorper mauris malesuada. Nam libero urna, ultricies eu lacinia et, rutrum id diam. Nunc consequat arcu quis euismod faucibus. Nunc congue sapien est. Phasellus dapibus justo ac tellus sagittis scelerisque.
-			</p>
-			<p>
-				Phasellus laoreet justo a odio venenatis, in ultricies lacus tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed viverra, dolor quis ultricies lobortis, massa nibh sagittis mi, eget lobortis purus magna a lorem. Sed vitae malesuada velit, nec gravida lectus. Nunc at dapibus eros. Aenean sodales nibh felis, quis condimentum nisl laoreet nec. In metus nisi, volutpat id turpis at, tempor faucibus libero. Fusce sit amet dui at metus ornare hendrerit ac quis arcu.
-			</p>
-			<p>
-				Aliquam erat volutpat. Donec pharetra, ante sit amet maximus rutrum, est erat maximus nisl, sed dictum mi urna sit amet enim. Nulla facilisi. Integer massa nisi, pulvinar quis hendrerit ut, efficitur ut ex. Nulla lacinia urna et purus semper, ac rhoncus orci aliquet. Ut rhoncus eu arcu non auctor. Nunc feugiat ultrices massa vitae ornare. Curabitur eu fringilla quam. Cras venenatis urna id lectus lobortis, nec lobortis neque vehicula. Morbi a quam ex. Etiam sed ornare risus. Aliquam sit amet finibus lectus. Integer efficitur dui nec tellus condimentum, bibendum efficitur dolor imperdiet. Aliquam erat volutpat.
-			</p>
-			<p>
-				Nullam sodales nibh quam, in ornare orci vehicula ut. Pellentesque non quam vitae lorem congue vulputate. Quisque diam nisi, volutpat porttitor ligula vel, porta semper odio. Proin pretium pulvinar ex vitae auctor. Aenean eleifend turpis eu consequat aliquam. Aliquam vel orci mattis neque rhoncus consectetur non a erat. Pellentesque a ante ligula.
-			</p>
-			<p>
-				Phasellus aliquet ipsum felis, quis tempor leo facilisis ac. Cras pharetra, augue eget vestibulum sollicitudin, mauris ligula tempus ipsum, sed scelerisque erat massa non nunc. Maecenas molestie, diam eget lobortis iaculis, diam quam iaculis orci, nec porttitor ipsum eros at magna. Aliquam imperdiet cursus laoreet. Nulla eleifend porta nisi at pulvinar. Nulla tellus justo, luctus quis rhoncus vitae, pretium eget justo. Mauris pretium a eros sit amet finibus. Proin suscipit, nisi eu placerat cursus, neque turpis iaculis leo, sed ornare erat risus sed lacus. Etiam vitae dolor egestas odio pretium pharetra. Sed vulputate ultricies ultricies. Ut hendrerit enim eget cursus accumsan. Vivamus sit amet blandit dui, pulvinar sollicitudin nisi.
-			</p>
-		</section>
+    <script>
+      var taglines = document.getElementById("intro").getElementsByTagName("span");
+      var active_idx = 0;
+      var active_tag = taglines[0];
+      setTimeout(updateTag, 3000)
 
+      function updateTag() {
+        active_tag.classList.remove("active");
+        active_idx = (active_idx + 1) % taglines.length;
+        active_tag = taglines[active_idx];
+        active_tag.classList.add("active");
+        setTimeout(function() {
+          updateTag();
+        }, 3000);
+      }
+    </script>
+
+    <section id="filler">
+      <h2>New Website Coming Soon!</h2>
+			<p>
+				If you would like to visit my current portfolio website while this one
+				is under construction,
+				follow this link:
+			</p>
+			<p>
+				<a href="https://twit96.github.io/" target="_blank">
+					Current Portfolio Website
+				</a>
+			</p>
+    </section>
+
+		<footer>
+			&copy; 2021 Tyler Wittig
+		</footer>
+
+
+    <div id="loader">
+      Loading...
+    </div>
+    <script>
+      var loader = document.getElementById("loader")
+      setTimeout(function() {
+        loader.style.opacity = '0';
+      }, 500);
+      setTimeout(function() {
+        loader.style.display = 'none';
+      }, 1000);
+
+      /*
+        bugfix - adding animation to the absolutely positioned image in CSS
+        caused jumps on page load - scrollbar position would sometimes jump down
+        and img would sometimes load in incorrect position. delaying until after
+        page load fixes issue.
+      */
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+        var top_img = document.getElementById("intro").querySelector('img');
+        top_img.style.animation = "rotate-icon 120s linear infinite";
+      }, 50);
+    </script>
 	</body>
 </html>
