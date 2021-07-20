@@ -14,6 +14,7 @@ html { box-sizing: border-box; }
   /* --gray: #bfbfbf; */
   --electric-indigo: #6201ff;
   --forest-green-traditional: #1e3f20;
+  --forest-green-traditional-shadow: #0c1a0d;
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
   --roman-silver: #919098;
@@ -28,6 +29,22 @@ body > * {
   padding: 20px;
 }
 
+#loader {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--forest-green-traditional);
+  color: white;
+  letter-spacing: 1px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: 1s opacity ease-in;
+}
+
 header {
   position: sticky;
   left: 0; top: 0; right: 0;
@@ -36,13 +53,16 @@ header {
   justify-content: space-between;
   align-items: center;
   color: white;
-  transition: 1s background ease-in-out;
+  transition: 0.25s background ease-in-out, 0.25s box-shadow ease-in-out;
 }
-header.filled { background: var(--forest-green-traditional); }
+header.filled {
+  background: var(--forest-green-traditional);
+  box-shadow: 0 0 15px var(--forest-green-traditional-shadow);
+}
 
-header > span {
-  font-size: 24px;
-  font-weight: bold;
+header span {
+  font-size: 20px;
+  font-family: 'Pacifico', cursive;
 }
 
 .nav-toggle {
@@ -119,9 +139,9 @@ header > span {
 
 
 #intro {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100vw;
+  position: relative;
+  top: -70px; /* height of header */
+  left: 0;
   height: 105vh;
   background: var(--forest-green-traditional);
   color: white;
@@ -130,15 +150,17 @@ header > span {
   justify-content: space-around;
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
+  transition: 0.25s height ease-in-out;
 }
 #intro img {
   position: absolute;
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
-  height: 75vmax;
+  height: min(75vmax, 750px);
   border-radius: 50%;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 20px var(--forest-green-traditional-shadow);
+  z-index: -1;
   /* animation: rotate-icon 120s linear infinite; */
 }
 @keyframes rotate-icon {
@@ -151,10 +173,9 @@ header > span {
 }
 #intro .blurb p {
   position: relative;
-  padding: 10px 0;
   margin: 10px 0;
-  font-size: 20px;
-  max-width: 75vw;
+  font-size: 16px;
+  max-width: 60vw;
 }
 #intro .blurb i { font-weight: bold; }
 #intro .blurb span {
@@ -164,7 +185,6 @@ header > span {
   transition: 1s opacity ease-in-out;
   font-size: 24px;
   font-style: italic;
-  text-decoration: underline;
 }
 #intro .blurb span.active { opacity: 1; }
 
@@ -172,6 +192,7 @@ header > span {
 #intro .details { line-height: 72px; }
 #intro .details h1 {
   font-size: 72px;
+  font-size: min(10vh, 72px);
   font-weight: normal;
   font-family: 'Pacifico', cursive;
   margin-bottom: 10px;
@@ -182,11 +203,6 @@ header > span {
 
 
 
-#filler {
-  position: relative;
-  top: 100vh;
-  border-bottom: 20px solid var(--forest-green-traditional);
-}
 #filler h2 { margin-bottom: 15px; }
 #filler p {
   width: 100%;
@@ -206,19 +222,10 @@ header > span {
 #filler a:hover { text-decoration: underline; }
 
 
-
-#loader {
-  position: fixed;
-  left: 0; top: 0;
-  width: 100vw;
-  height: 100vh;
+footer {
   background: var(--forest-green-traditional);
   color: white;
-  letter-spacing: 1px;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  transition: 0.5s opacity ease-in;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
 }
