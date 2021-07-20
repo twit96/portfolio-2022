@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<!-- <meta name="description" content="description" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" href="/img/icon_purple.png" />
+		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,7 @@
 		</script>
 
 		<section id="intro">
-      <img src="/img/icon_purple_lg.png" alt="site logo" />
+      <img src="/img/icon_lg.png" alt="site logo" />
       <div class="blurb">
         <p>
           Well <i>hello</i> world,
@@ -88,6 +88,32 @@
         }, 3000);
       }
 
+			// add random leaves to background element
+      var intro = document.getElementById("intro");
+      var rand_span;
+      var rand_x;
+      var rand_y;
+      var rand_size;
+      var rand_rotation;
+      for (i=0; i<30; i++) {
+        rand_leaf = document.createElement("svg");
+				rand_leaf.classList.add("leaf");
+        // generate random attributes
+        rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+        rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+				rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
+        rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
+        // set CSS styles
+        rand_leaf.style.left = rand_x + "vw";
+        rand_leaf.style.top = rand_y + "vh";
+        rand_leaf.style.width = rand_size + "vmin";
+        rand_leaf.style.height = rand_size + "vmin";
+        rand_leaf.style.transform = "rotate(" + rand_rotation + "deg)";
+        // place in bg
+        intro.insertAdjacentElement("beforeend", rand_leaf);
+      }
+
+
 			/*
 				bugfix - animation on the absolutely positioned image in CSS
 				caused jumps on page load - scrollbar position would sometimes jump down
@@ -97,7 +123,7 @@
 			setTimeout(function() {
 				window.scrollTo(0, 0);
 				var top_img = document.getElementById("intro").querySelector('img');
-				top_img.style.animation = "rotate-icon 120s linear infinite";
+				top_img.style.animation = "rotate-icon 180s linear infinite";
 			}, 50);
     </script>
 
