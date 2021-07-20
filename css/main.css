@@ -26,7 +26,7 @@ body {
   line-height: 175%;
 }
 body > * {
-  padding: 20px;
+  padding: 25px;
 }
 
 #loader {
@@ -53,9 +53,12 @@ header {
   justify-content: space-between;
   align-items: center;
   color: white;
-  transition: 0.25s background ease-in-out, 0.25s box-shadow ease-in-out;
+  transition: 0.25s background ease-in-out,
+              0.25s box-shadow ease-in-out,
+              0.25s padding ease-in-out;
 }
 header.filled {
+  padding: 15px 25px;
   background: var(--forest-green-traditional);
   box-shadow: 0 0 15px var(--forest-green-traditional-shadow);
 }
@@ -140,7 +143,7 @@ header span {
 
 #intro {
   position: relative;
-  top: -70px; /* height of header */
+  top: -78px; /* height of header */
   left: 0;
   height: 105vh;
   background: var(--forest-green-traditional);
@@ -247,6 +250,7 @@ footer {
     padding: 50px;
   }
 
+  header.filled { padding: 25px 50px; }
   #intro { top: -128px; /* height of header */ }
   #intro .blurb p {
     margin: 25px 0;
