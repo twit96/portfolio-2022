@@ -144,17 +144,18 @@ header span {
 #intro {
   position: relative;
   height: 105vh;
+  padding-bottom: calc(5vh + 25px);
   background: var(--forest-green-traditional);
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
   transition: 0.25s height ease-in-out;
 }
 
-#intro img {
+#main-logo {
   position: absolute;
   right: 0;
   top: 50vh;
@@ -172,7 +173,7 @@ header span {
 }
 
 #intro div { z-index: 1; /* ensure text appears above img */ }
-#intro .blurb { margin: 30px 0; }
+#intro .blurb { margin-top: 50px; }
 #intro .blurb p {
   position: relative;
   margin: 10px 0;
@@ -195,6 +196,9 @@ header span {
   align-self: flex-end;
   text-align: center;
 }
+@media (min-width: 500px) and (min-height: 500px) {
+  #intro .details { text-align: right; }
+}
 #intro .details h1 {
   font-size: min(10vh, 72px);
   font-weight: normal;
@@ -202,6 +206,14 @@ header span {
   margin-bottom: 10px;
 }
 #intro .details h2 { font-size: min(5vh, 32px); }
+
+#intro .details a {
+  text-decoration: none;
+  margin: 0 10px;
+}
+#intro .details img {
+  width: 35px;
+}
 
 #intro .leaf {
   position: absolute;
@@ -272,6 +284,8 @@ header + * { padding-top: 128px;  /* height of header */ }
     margin-bottom: 20px;
   }
   #intro .details h2 { font-size: 58px; }
+  #intro .details a { margin: 0 15px; }
+
 
   #filler { font-size: 20px; }
   #filler h2 {
