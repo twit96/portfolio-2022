@@ -176,13 +176,14 @@ header span {
   box-shadow: 0 0 20px var(--forest-green-traditional-shadow);
   /* animation set with javascript */
   /* animation: rotate-icon 120s linear infinite; */
+  z-index: 1;
 }
 @keyframes rotate-icon {
   0% { transform: translate(67%, -50%) rotate(0); }
   100% { transform: translate(67%, -50%) rotate(-360deg); }
 }
 
-#intro div { z-index: 1; /* ensure text appears above img */ }
+#intro div { z-index: 2; /* ensure text appears above img */ }
 #intro .blurb { margin: 30px 0; }
 #intro .blurb p {
   position: relative;
@@ -210,6 +211,12 @@ header span {
 }
 #intro .details h2 {
   font-size: 32px;
+}
+#intro .bg-square {
+  position: absolute;
+  opacity: 0.03;
+  border-radius: 2vmin;
+  background: black;
 }
 
 
