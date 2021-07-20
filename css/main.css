@@ -9,9 +9,7 @@ html { box-sizing: border-box; }
 }
 
 
-
 * {
-  /* --gray: #bfbfbf; */
   --electric-indigo: #6201ff;
   --forest-green-traditional: #1e3f20;
   --forest-green-traditional-shadow: #0c1a0d;
@@ -209,20 +207,21 @@ header span {
   position: absolute;
   background: var(--forest-green-traditional-shadow);
   border-radius: 75% 10% 75% 0;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 /* add leaf stem */
-/* #intro .leaf::after {
+#intro .leaf::after {
   content: '';
   position: absolute;
   left: 0; bottom: 0;
   height: 150%;
   width: 5%;
-  background: #162e17;
+  /* background: #040804; */
+  background: #112412;
   transform-origin: bottom left;
   transform: translateX(-100%) rotate(45deg) translateY(-15%);
   border-radius: 30% 30% 50% 50%;
-} */
+}
 
 #filler h2 { margin-bottom: 15px; }
 #filler p {
