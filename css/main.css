@@ -8,6 +8,11 @@ html { box-sizing: border-box; }
   padding: 0;
 }
 
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 { font-size: 48px; }
+h2 { font-size: 24px; }
 
 
 * {
@@ -24,9 +29,10 @@ html { box-sizing: border-box; }
 body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 175%;
+  overflow-x: hidden;
 }
 body > * {
-  padding: 20px;
+  padding: 25px;
 }
 
 #loader {
@@ -46,7 +52,7 @@ body > * {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   left: 0; top: 0; right: 0;
   z-index: 100;
   display: flex;
@@ -55,6 +61,7 @@ header {
   color: white;
   transition: 0.25s background ease-in-out, 0.25s box-shadow ease-in-out;
 }
+header + * { padding-top: 70px; }  /* height of header */
 header.filled {
   background: var(--forest-green-traditional);
   box-shadow: 0 0 15px var(--forest-green-traditional-shadow);
@@ -139,9 +146,6 @@ header span {
 
 
 #intro {
-  position: relative;
-  top: -70px; /* height of header */
-  left: 0;
   height: 105vh;
   background: var(--forest-green-traditional);
   color: white;
@@ -213,13 +217,11 @@ header span {
 }
 
 
-#filler { padding-top: 0; }
-#filler h2 { margin-bottom: 15px; }
-#filler p {
-  width: 100%;
-  margin-bottom: 50px;
-}
+#filler h2 { margin: 15px 0; }
+
+#filler p { width: 100%; }
 #filler p:nth-of-type(2) {
+  margin: 50px 0;
   text-align: center;
 }
 #filler a {
@@ -228,9 +230,7 @@ header span {
   background: var(--blue-jeans);
   color: white;
   font-weight: bold;
-  text-decoration: none;
 }
-#filler a:hover { text-decoration: underline; }
 
 
 footer {
@@ -247,7 +247,7 @@ footer {
     padding: 50px;
   }
 
-  #intro { top: -128px; /* height of header */ }
+  header + * { padding-top: 128px; }  /* height of header */
   #intro .blurb p {
     margin: 25px 0;
     font-size: 28px;
@@ -262,7 +262,7 @@ footer {
   }
   #intro .details h2 { font-size: 58px; }
 
-  #filler { font-size: 20px; }
+
   #filler h2 {
     font-size: 32px;
     margin-bottom: 15px;
@@ -270,6 +270,7 @@ footer {
   #filler p {
     width: 100%;
     margin-bottom: 50px;
+    font-size: 20px;
   }
   #filler p:nth-of-type(2) {
     text-align: left;
