@@ -195,6 +195,7 @@ header span {
   line-height: min(10vh, 72px);
   align-self: flex-end;
   text-align: center;
+  margin-bottom: 30px;
 }
 @media (min-width: 500px) and (min-height: 500px) {
   #intro .details { text-align: right; }
