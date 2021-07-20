@@ -48,7 +48,7 @@ body > * {
 header {
   position: sticky;
   left: 0; top: 0; right: 0;
-  z-index: 1;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,15 +152,29 @@ header span {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
   transition: 0.25s height ease-in-out;
 }
+
+/* use after psuedo element to replace image? */
+/* #intro::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50vh;
+  transform: translate(67%, -50%);
+  height: min(75vmax, 1000px);
+  width: min(75vmax, 1000px);
+  border-radius: 50%;
+  background: var(--electric-indigo);
+  box-shadow: 0 0 20px var(--forest-green-traditional-shadow);
+} */
 #intro img {
   position: absolute;
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
-  height: min(75vmax, 750px);
+  height: min(75vmax, 1000px);
   border-radius: 50%;
   box-shadow: 0 0 20px var(--forest-green-traditional-shadow);
-  z-index: -1;
+  /* animation set with javascript */
   /* animation: rotate-icon 120s linear infinite; */
 }
 @keyframes rotate-icon {
@@ -168,9 +182,8 @@ header span {
   100% { transform: translate(67%, -50%) rotate(-360deg); }
 }
 
-#intro .blurb {
-  margin: 15px 0;
-}
+#intro div { z-index: 1; /* ensure text appears above img */ }
+#intro .blurb { margin: 30px 0; }
 #intro .blurb p {
   position: relative;
   margin: 10px 0;
@@ -188,10 +201,8 @@ header span {
 }
 #intro .blurb span.active { opacity: 1; }
 
-
-#intro .details { line-height: 72px; }
+#intro .details { line-height: min(10vh, 72px); }
 #intro .details h1 {
-  font-size: 72px;
   font-size: min(10vh, 72px);
   font-weight: normal;
   font-family: 'Pacifico', cursive;
@@ -202,7 +213,7 @@ header span {
 }
 
 
-
+#filler { padding-top: 0; }
 #filler h2 { margin-bottom: 15px; }
 #filler p {
   width: 100%;
@@ -227,5 +238,45 @@ footer {
   color: white;
   text-align: center;
   font-size: 12px;
-  padding: 5px;
+  padding: 10px;
+}
+
+
+@media (min-width: 750px) and (min-height: 650px) {
+  body > * {
+    padding: 50px;
+  }
+
+  #intro { top: -128px; /* height of header */ }
+  #intro .blurb p {
+    margin: 25px 0;
+    font-size: 28px;
+    max-width: 70vw;
+  }
+  #intro .blurb span { font-size: 36px; }
+
+  #intro .details { line-height: 110px; }
+  #intro .details h1 {
+    font-size: 110px;
+    margin-bottom: 20px;
+  }
+  #intro .details h2 { font-size: 58px; }
+
+  #filler { font-size: 20px; }
+  #filler h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  #filler p {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  #filler p:nth-of-type(2) {
+    text-align: left;
+  }
+
+  footer {
+    padding: 15px 50px;
+    text-align: right;
+  }
 }
