@@ -15,15 +15,18 @@
 	</head>
 
 	<body>
-		<div id="loader"></div>
+		<div id="loader">Loading...</div>
     <script>
+			// display page only after logo img has loaded
       var loader = document.getElementById("loader");
-      setTimeout(function() {
-        loader.style.opacity = '0';
-      }, 100);
-      setTimeout(function() {
-        loader.style.display = 'none';
-      }, 1100);
+			var logo = document.createElement("img");
+			logo.src = "/img/icon_lg.png";
+			logo.onload = function() {
+				loader.style.opacity = '0';
+				setTimeout(function() {
+	        loader.style.display = 'none';
+	      }, 1000);
+			}
     </script>
 
 		<header>
@@ -121,18 +124,6 @@
         // place in bg
         intro.insertAdjacentElement("beforeend", rand_leaf);
       }
-
-			/*
-				bugfix - animation on the absolutely positioned image in CSS
-				caused jumps on page load - scrollbar position would sometimes jump down
-				and img would sometimes load in incorrect position. delaying until after
-				page load fixes issue.
-			*/
-			setTimeout(function() {
-				window.scrollTo(0, 0);
-				var top_img = document.getElementById("intro").querySelector('img');
-				top_img.style.animation = "rotate-icon 180s linear infinite";
-			}, 50);
     </script>
 
     <section id="filler">
