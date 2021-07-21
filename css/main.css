@@ -40,7 +40,7 @@ body > * {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  transition: 1s opacity ease-out;
+  transition: 1s opacity ease-in;
 }
 
 header {
@@ -213,14 +213,14 @@ header span {
   width: 35px;
 }
 
-#intro .leaf {
+.leaf {
   position: absolute;
   background: var(--forest-green-traditional-shadow);
   border-radius: 75% 10% 75% 0;
   opacity: 0.25;
 }
 /* add leaf stem */
-#intro .leaf::after {
+.leaf::after {
   content: '';
   position: absolute;
   left: 0; bottom: 0;
