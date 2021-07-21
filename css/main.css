@@ -16,6 +16,7 @@ html { box-sizing: border-box; }
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
   --roman-silver: #919098;
+  --jonquil: #f0c808;
 }
 
 
@@ -152,7 +153,6 @@ header span {
   justify-content: space-between;
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
-  transition: 0.25s height ease-in-out;
 }
 
 #main-logo {
@@ -183,7 +183,8 @@ header span {
   opacity: 0;
   transition: 1s opacity ease-in-out;
   font-size: 24px;
-  font-style: italic;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2.5px 2.5px 2.5px var(--forest-green-traditional-shadow);
 }
 #intro .blurb span.active { opacity: 1; }
 
@@ -231,6 +232,17 @@ header span {
   transform-origin: bottom left;
   transform: translateX(-100%) rotate(45deg) translateY(-15%);
   border-radius: 30% 30% 50% 50%;
+}
+
+.bug {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--jonquil);
+  animation: 5s twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
 }
 
 

@@ -133,7 +133,30 @@
         intro.insertAdjacentElement("beforeend", rand_leaf);
 				// var clone = rand_leaf.cloneNode(true);
 				// loader.insertAdjacentElement("beforeend", clone);
+      }
 
+			// add random bugs to background element
+      var rand_bug;
+			var rand_anim_delay;
+      for (i=0; i<30; i++) {
+        rand_bug = document.createElement("span");
+				rand_bug.classList.add("bug");
+        // generate random attributes
+        rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+        rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+				rand_size = Math.floor(Math.random() * 2) + 1;  // 5 to 20 vmin
+				rand_anim_delay = Math.floor(Math.random() * 5);  // 0 to 5s
+        // set CSS styles
+        rand_bug.style.left = rand_x + "vw";
+        rand_bug.style.top = rand_y + "vh";
+        rand_bug.style.width = rand_size + "vmin";
+        rand_bug.style.height = rand_size + "vmin";
+        rand_bug.style.filter = "blur(" + (rand_size / 2) + "vmin)";
+				rand_bug.style.animationDelay = (-1 * rand_anim_delay) + 's';
+        // place in bg
+        intro.insertAdjacentElement("beforeend", rand_bug);
+				// var clone = rand_leaf.cloneNode(true);
+				// loader.insertAdjacentElement("beforeend", clone);
       }
     </script>
 
