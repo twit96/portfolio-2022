@@ -47,7 +47,7 @@ body > * {
 header {
   position: fixed;
   left: 0; top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 100;
   display: flex;
   justify-content: space-between;
@@ -89,7 +89,6 @@ header span {
 
 .nav-toggle span:nth-child(1) {
   animation: out-top 0.5s ease-in-out;
-  transform:
 }
 .nav-toggle span:nth-child(2) {
   margin: 5px 0;
@@ -274,24 +273,24 @@ footer {
 }
 
 
-@media (min-width: 750px) and (min-height: 650px) {
-  body > * {
-    padding: 50px;
-  }
+@media (min-width: 750px) and (min-height: 850px) {
+  body > * { padding: 50px; }
 
-header + * { padding-top: 128px;  /* height of header */ }
+  header + * { padding-top: 128px;  /* height of header */ }
   header.filled { padding: 25px 50px; }
+  header span { font-size: 24px; }
 
   #intro .blurb p {
     margin: 25px 0;
     font-size: 28px;
+    line-height: 36px;
     max-width: 70vw;
   }
   #intro .blurb span { font-size: 36px; }
 
   #intro .details { line-height: 110px; }
   #intro .details h1 {
-    font-size: 110px;
+    font-size: 100px;
     margin-bottom: 20px;
   }
   #intro .details h2 { font-size: 58px; }
@@ -314,5 +313,71 @@ header + * { padding-top: 128px;  /* height of header */ }
   footer {
     padding: 15px 50px;
     text-align: right;
+  }
+}
+
+
+
+@media (min-width: 1600px) and (min-height: 1050px) {
+  body > * { padding: 75px; }
+
+  header + * { padding-top: 187.5px;  /* height of header */ }
+  header.filled { padding: 37.5px 75px; }
+  header span { font-size: 32px; }
+
+  .nav-toggle {
+    width: 45px;
+    height: 37.5px;
+  }
+  .nav-toggle span {
+    border-radius: 3px;
+    height: 6px;
+  }
+  .nav-toggle span:nth-child(2) { margin: 7.5px 0; }
+  /* to hamburger */
+  @keyframes out-top {
+    0% { transform: translateY(13.5px) rotate(-135deg); }
+    50% { transform: translateY(13.5px) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  @keyframes out-btm {
+    0% { transform: translateY(-13.5px) rotate(-135deg); }
+    50% { transform: translateY(-13.5px) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  /* to x btn */
+  @keyframes in-top {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(13.5px) rotate(0); }
+    100% { transform: translateY(13.5px) rotate(-135deg); }
+  }
+  @keyframes in-btm {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-13.5px) rotate(0); }
+    100% { transform: translateY(-13.5px) rotate(-135deg); }
+  }
+
+  #intro .blurb p {
+    margin: 50px 0;
+    font-size: 36px;
+    line-height: 48px;
+    max-width: 70vw;
+  }
+  #intro .blurb span { font-size: 48px; }
+  #intro .details h1 {
+    font-size: 110px;
+  }
+
+
+  #filler { font-size: 24px; }
+  #filler h2 {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  footer {
+    padding: 37.5px 75px;
+    text-align: right;
+    font-size: 16px;
   }
 }
