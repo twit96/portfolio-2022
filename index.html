@@ -8,31 +8,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
-		<div id="loader"></div>
+		<div id="loader">Loading...</div>
     <script>
       var loader = document.getElementById("loader");
-			setTimeout(function() {
-        loader.style.opacity = '0';
-      }, 100);
-      setTimeout(function() {
-        loader.style.display = 'none';
-      }, 1100);
+			// setTimeout(function() {
+      //   loader.style.opacity = '0';
+      // }, 100);
+      // setTimeout(function() {
+      //   loader.style.display = 'none';
+      // }, 1100);
 			// display page only after logo img has loaded
-			// var logo = document.createElement("img");
-			// logo.src = "/img/icon_lg.png";
-			// logo.onload = function() {
-			// 	loader.style.opacity = '0';
-			// 	setTimeout(function() {
-	    //     loader.style.display = 'none';
-	    //   }, 1000);
-			// }
+			var logo = document.createElement("img");
+			logo.src = "/img/icon_lg.png";
+			logo.onload = function() {
+				loader.style.opacity = '0';
+				setTimeout(function() {
+	        loader.style.display = 'none';
+	      }, 1000);
+			}
     </script>
 
 		<header>
@@ -49,7 +48,6 @@
 			nav_toggle.onclick = function() {
 				nav_toggle.classList.toggle("active");
 			}
-
       var header = document.querySelector("header");
 			window.onscroll = function() {
         if (
@@ -90,75 +88,78 @@
       </div>
 		</section>
 
-    <script>
-			var loader = document.getElementById("loader");
+		<script>
 			var intro = document.getElementById("intro");
 
-      var taglines = intro.getElementsByClassName("tagline");
-      var active_idx = 0;
-      var active_tag = taglines[0];
-      setTimeout(updateTag, 3000)
+			var taglines = intro.getElementsByClassName("tagline");
+			var active_idx = 0;
+			var active_tag = taglines[0];
+			setTimeout(updateTag, 3000)
 
-      function updateTag() {
-        active_tag.classList.remove("active");
-        active_idx = (active_idx + 1) % taglines.length;
-        active_tag = taglines[active_idx];
-        active_tag.classList.add("active");
-        setTimeout(function() {
-          updateTag();
-        }, 3000);
-      }
+			function updateTag() {
+			  active_tag.classList.remove("active");
+			  active_idx = (active_idx + 1) % taglines.length;
+			  active_tag = taglines[active_idx];
+			  active_tag.classList.add("active");
+			  setTimeout(function() {
+			    updateTag();
+			  }, 3000);
+			}
 
-			// add random leaves to background element
-      var rand_leaf;
+			// add randomly generated elements to background
+			var rand_span;  // placed in #intro
+			var clone;      // placed in #loader
+
+			// random properties
 			var rand_x;
 			var rand_y;
 			var rand_size;
 			var rand_rotation;
-      for (i=0; i<30; i++) {
-        rand_leaf = document.createElement("span");
-				rand_leaf.classList.add("leaf");
-        // generate random attributes
-        rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
-        rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-				rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
-        rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
-        // set CSS styles
-        rand_leaf.style.left = rand_x + "vw";
-        rand_leaf.style.top = rand_y + "vh";
-        rand_leaf.style.width = rand_size + "vmin";
-        rand_leaf.style.height = rand_size + "vmin";
-        rand_leaf.style.transform = "rotate(" + rand_rotation + "deg)";
-        // place in bg
-        intro.insertAdjacentElement("beforeend", rand_leaf);
-				// var clone = rand_leaf.cloneNode(true);
-				// loader.insertAdjacentElement("beforeend", clone);
-      }
-
-			// add random bugs to background element
-      var rand_bug;
 			var rand_anim_delay;
-      for (i=0; i<30; i++) {
-        rand_bug = document.createElement("span");
-				rand_bug.classList.add("bug");
-        // generate random attributes
-        rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
-        rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-				rand_size = Math.floor(Math.random() * 2) + 1;  // 5 to 20 vmin
-				rand_anim_delay = Math.floor(Math.random() * 5);  // 0 to 5s
-        // set CSS styles
-        rand_bug.style.left = rand_x + "vw";
-        rand_bug.style.top = rand_y + "vh";
-        rand_bug.style.width = rand_size + "vmin";
-        rand_bug.style.height = rand_size + "vmin";
-        rand_bug.style.filter = "blur(" + (rand_size / 2) + "vmin)";
-				rand_bug.style.animationDelay = (-1 * rand_anim_delay) + 's';
-        // place in bg
-        intro.insertAdjacentElement("beforeend", rand_bug);
-				// var clone = rand_leaf.cloneNode(true);
-				// loader.insertAdjacentElement("beforeend", clone);
-      }
-    </script>
+
+			// random leaves
+			for (i=0; i<30; i++) {
+			  rand_span = document.createElement("span");
+				rand_span.classList.add("leaf");
+			  // generate random attributes
+			  rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+			  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+				rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
+			  rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
+			  // set CSS styles
+			  rand_span.style.left = rand_x + "vw";
+			  rand_span.style.top = rand_y + "vh";
+			  rand_span.style.width = rand_size + "vmin";
+			  rand_span.style.height = rand_size + "vmin";
+			  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+			  // place on page
+			  intro.insertAdjacentElement("beforeend", rand_span);
+				var clone = rand_span.cloneNode(true);
+				loader.insertAdjacentElement("beforeend", clone);
+			}
+
+			// random bugs
+			for (i=0; i<30; i++) {
+			  rand_span = document.createElement("span");
+				rand_span.classList.add("bug");
+			  // generate random attributes
+			  rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+			  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+				rand_size = Math.floor(Math.random() * 2) + 1;    // 1 to 2 vmin
+				rand_anim_delay = Math.floor(Math.random() * -5);  // 0 to 5s
+			  // set CSS styles
+			  rand_span.style.left = rand_x + "vw";
+			  rand_span.style.top = rand_y + "vh";
+			  rand_span.style.width = rand_size + "vmin";
+			  rand_span.style.height = rand_size + "vmin";
+			  rand_span.style.filter = "blur(" + (rand_size / 2) + "vmin)";
+				rand_span.style.animationDelay = rand_anim_delay + 's';
+			  // place on page
+			  intro.insertAdjacentElement("beforeend", rand_span);
+				var clone = rand_span.cloneNode(true);
+				loader.insertAdjacentElement("beforeend", clone);
+			}
+		</script>
 
     <section id="filler">
       <h2>New Website Coming Soon!</h2>
