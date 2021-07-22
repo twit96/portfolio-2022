@@ -162,7 +162,7 @@ header span {
   height: 100vmax;
   width: 100vmax;
   border-radius: 50%;
-  border: 10px solid var(--forest-green-traditional-shadow);
+  border: 1vmax solid var(--forest-green-traditional-shadow);
   background: var(--forest-green-traditional-shadow);
   z-index: 1;
 }
