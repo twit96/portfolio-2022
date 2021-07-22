@@ -14,24 +14,15 @@
 	</head>
 
 	<body>
-		<div id="loader">Loading...</div>
+		<div id="loader"></div>
     <script>
       var loader = document.getElementById("loader");
-			// setTimeout(function() {
-      //   loader.style.opacity = '0';
-      // }, 100);
-      // setTimeout(function() {
-      //   loader.style.display = 'none';
-      // }, 1100);
-			// display page only after logo img has loaded
-			var logo = document.createElement("img");
-			logo.src = "/img/icon_lg.png";
-			logo.onload = function() {
-				loader.style.opacity = '0';
-				setTimeout(function() {
-	        loader.style.display = 'none';
-	      }, 1000);
-			}
+			setTimeout(function() {
+        loader.style.opacity = '0';
+      }, 100);
+      setTimeout(function() {
+        loader.style.display = 'none';
+      }, 1100);
     </script>
 
 		<header>
@@ -59,7 +50,7 @@
 		</script>
 
 		<section id="intro">
-      <img id="main-logo" src="/img/icon_lg.png" alt="site logo" />
+      <img id="main-logo" src="/img/icon.png" alt="site logo" />
       <div class="blurb">
         <p>
           Well <i>hello</i> world,
@@ -91,6 +82,15 @@
 		<script>
 			var intro = document.getElementById("intro");
 
+			// swap main logo image with full resolution image once it loads
+			var main_logo = document.getElementById("main-logo");
+			var logo_lg = document.createElement("img");
+			logo_lg.src = "/img/icon_lg.png";
+			logo_lg.onload = function() {
+				main_logo.src = "/img/icon_lg.png";
+			}
+
+			// cycle through taglines
 			var taglines = intro.getElementsByClassName("tagline");
 			var active_idx = 0;
 			var active_tag = taglines[0];
