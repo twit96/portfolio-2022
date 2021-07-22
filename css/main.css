@@ -53,9 +53,9 @@ header {
   justify-content: space-between;
   align-items: center;
   color: white;
-  transition: 0.25s background ease-in-out,
-              0.25s box-shadow ease-in-out,
-              0.25s padding ease-in-out;
+  transition: 0.25s background ease-out,
+              0.25s box-shadow ease-out,
+              0.25s padding ease-out;
 }
 header + * { padding-top: 78px;  /* height of header */ }
 header.filled {
@@ -159,8 +159,8 @@ header span {
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
-  height: 75vmax;
-  width: 75vmax;
+  height: 100vmax;
+  width: 100vmax;
   border-radius: 50%;
   border: 10px solid var(--forest-green-traditional-shadow);
   background: var(--forest-green-traditional-shadow);
@@ -229,7 +229,7 @@ header span {
   /* background: #040804; */
   background: #112412;
   transform-origin: bottom left;
-  transform: translateX(-100%) rotate(45deg) translateY(-15%);
+  transform: translateX(-75%) rotate(45deg) translateY(-15%);
   border-radius: 30% 30% 50% 50%;
 }
 
@@ -376,7 +376,7 @@ footer {
   }
 
   footer {
-    padding: 37.5px 75px;
+    padding: 25px 75px;
     text-align: right;
     font-size: 16px;
   }

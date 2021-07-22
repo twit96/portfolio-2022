@@ -53,8 +53,8 @@
       var header = document.querySelector("header");
 			window.onscroll = function() {
         if (
-          (document.body.scrollTop > 100) ||
-          (document.documentElement.scrollTop > 100)
+          (document.body.scrollTop > 0) ||
+          (document.documentElement.scrollTop > 0)
         ) { header.classList.add("filled"); }
         else { header.classList.remove("filled"); }
       };
