@@ -197,7 +197,9 @@ header span {
   border: 1vmax solid var(--forest-green-traditional-shadow);
   background: var(--forest-green-traditional-shadow);
   z-index: 1;
+  transition: 1s ease-in filter;
 }
+#main-logo.blurred { filter: blur(5px); }
 
 #intro div { z-index: 1; /* ensure text appears above img */ }
 #intro .blurb { margin-top: 50px; }
