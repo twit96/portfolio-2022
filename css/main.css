@@ -16,6 +16,7 @@ html { box-sizing: border-box; }
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
   --roman-silver: #919098;
+  --light-grey: #bababa;
   --jonquil: #f0c808;
 }
 
@@ -352,14 +353,11 @@ header span {
   border-radius: 1vmax;
   padding: 3vmin;
   background: white;
-  border: 1vmin solid var(--roman-silver);
+  border: 1vmin solid var(--light-grey);
   /* box-shadow: 0 0 1vmax var(--roman-silver); */
 }
 #demo figure, #demo figure * { transition: 0.5s ease-in-out all; }
-#demo figure.with-host {
-  border-color: var(--roman-silver);
-  background: var(--roman-silver);
-}
+#demo figure.with-host { background: var(--light-grey); }
 
 #demo figure .text { font-weight: bold; }
 #demo figure > .text {
@@ -382,15 +380,25 @@ header span {
   border-radius: 1vmin;
 }
 #demo .monitor.with-css .website {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--electric-indigo);
   box-shadow: 0 0 0.5vmin var(--electric-indigo);
 }
-#demo .website .title {
+/* keep .website element from changing width on .title font-family change */
+#demo .website .filler {
   font-size: 4vmin;
   margin: 2vmin 0;
+  color: transparent;
+}
+#demo .website .title {
+  font-size: 4vmin;
+  width: calc(100% - 4vmin);
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
 }
 #demo .monitor.with-css .website .title {
   font-family: 'Pacifico', cursive;
@@ -413,8 +421,8 @@ header span {
   top: 2.5vmin;
 }
 
-#demo .monitor.with-css .website span::before,
-#demo .monitor.with-css .website span::after {
+#demo .monitor.with-css .website .filler::before,
+#demo .monitor.with-css .website .filler::after {
   content: '';
   width: 1.5vmin;
   height: 1.5vmin;
@@ -423,10 +431,10 @@ header span {
   border-radius: 50%;
   position: absolute;
 }
-#demo .monitor.with-css .website span::before {
+#demo .monitor.with-css .website .filler::before {
   right: 9vmin; bottom: 3vmin;
 }
-#demo .monitor.with-css .website span::after {
+#demo .monitor.with-css .website .filler::after {
   left: 9vmin; top: 3vmin;
 }
 
@@ -447,12 +455,12 @@ header span {
     to left, var(--red-pigment), var(--jonquil), var(--red-pigment)
   );
   box-shadow: 0 0 0.5vmin var(--red-pigment);
-  animation: 2s data-transfer linear infinite;
+  animation: 2s bg-shift linear infinite;
 }
 #demo .pipeline .pipe:nth-child(1) {
   animation-duration: 3s;
 }
-@keyframes data-transfer {
+@keyframes bg-shift {
   0%, 100% { background-position: left; }
   50% { background-position: right; }
 }
