@@ -320,6 +320,7 @@ header span {
   position: relative;
   /* height: calc(95vh - 58px); */
   /* min-height: 50vh; */
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -334,7 +335,7 @@ header span {
     flex-direction: row-reverse;
     justify-content: space-between;
   }
-  #demo > div {
+  #demo .blurb {
     text-align: right;
     margin-left: 25px;
   }
@@ -344,7 +345,6 @@ header span {
   position: relative;
   height: 40vmin;
   max-width: 90vmin;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
