@@ -161,7 +161,134 @@
 				var clone = rand_span.cloneNode(true);
 				loader.insertAdjacentElement("beforeend", clone);
 			}
+
+			// random flowers
+			// var sub_span;
+			// for (i=0; i<5; i++) {
+			//   rand_span = document.createElement("span");
+			// 	rand_span.classList.add("flower");
+			// 	sub_span = document.createElement("span");
+			// 	rand_span.insertAdjacentElement("beforeend", sub_span);
+			  // generate random attributes
+			  // rand_x = Math.floor(Math.random() * 70);         // 0 to 70 vw
+			  // rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+				// rand_size = Math.floor(Math.random() * 5) + 1;    // 1 to 2 vmin
+			  // set CSS styles
+			  // rand_span.style.left = rand_x + "vw";
+			  // rand_span.style.top = rand_y + "vh";
+			  // place on page
+			//   intro.insertAdjacentElement("beforeend", rand_span);
+			// 	var clone = rand_span.cloneNode(true);
+			// 	loader.insertAdjacentElement("beforeend", clone);
+			// }
 		</script>
+
+		<section id="demo">
+			<div>
+				<h2>Your New Website</h2>
+				<p>
+					I build websites from the ground up to meet your needs.
+				</p>
+			</div>
+
+			<figure>
+				<div>
+					<div class="monitor">
+						<div class="website">
+							<span class="title">Your Website</span>
+						</div>
+						<span class="text">HTML / CSS / JS</span>
+					</div>
+
+				</div>
+
+				<div class="pipeline">
+					<span class="pipe"></span>
+					<span class="pipe"></span>
+					<span class="text">PHP</span>
+				</div>
+
+				<div class="database">
+					<div>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<span class="text">SQL</span>
+				</div>
+				<span class="text">Host</span>
+			</figure>
+		</section>
+
+		<script>
+			var demo = document.getElementById("demo");
+
+			// add randomly generated elements to background
+			var rand_span;  // placed in #intro
+
+			// random properties
+			var rand_x;
+			var rand_y;
+			var rand_size;
+			var rand_rotation;
+			var rand_opacity;
+
+			// random squares
+			for (i=0; i<15; i++) {
+				rand_span = document.createElement("span");
+				rand_span.classList.add("square");
+				// generate random attributes
+				rand_x = Math.floor(Math.random() * 90) + 5;         		// 5 to 95 vw
+				rand_y = Math.floor(Math.random() * 90) + 5;         		// 5 to 95 vh
+				rand_size = Math.floor(Math.random() * 15) + 10;  			// 10 to 25 vmin
+				rand_rotation = Math.floor(Math.random() * 360);  			// 0 to 360 deg
+				rand_opacity = (Math.random() * 0.09) + 0.01;  					// 0.05 to 0.25
+				// set CSS styles
+				rand_span.style.left = rand_x + "%";
+				rand_span.style.top = rand_y + "%";
+				rand_span.style.width = rand_size + "vmin";
+				rand_span.style.height = rand_size + "vmin";
+				rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+				rand_span.style.opacity = rand_opacity;
+				// place on page
+				demo.insertAdjacentElement("beforeend", rand_span);
+			}
+
+			var figure = demo.querySelector("figure");
+			var monitor = demo.querySelector(".monitor");
+			var pipeline = demo.querySelector(".pipeline");
+			var database = demo.querySelector(".database");
+
+
+			function demoForwards() {
+				monitor.classList.add("with-css");
+				setTimeout(function() {
+					pipeline.classList.add("visible");
+					setTimeout(function() {
+						database.classList.add("visible");
+						setTimeout(function() {
+							figure.classList.add("with-host");
+							setTimeout(demoReverse, 5000);
+						}, 1000);
+					}, 1000);
+				}, 1000);
+			}
+			function demoReverse() {
+				figure.classList.remove("with-host");
+				setTimeout(function() {
+					database.classList.remove("visible");
+					setTimeout(function() {
+						pipeline.classList.remove("visible");
+						setTimeout(function() {
+							monitor.classList.remove("with-css");
+							setTimeout(demoForwards, 2000);
+						}, 1000);
+					}, 1000);
+				}, 1000);
+			}
+			demoForwards();
+		</script>
+
 
     <section id="filler">
       <h2>New Website Coming Soon!</h2>
