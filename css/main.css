@@ -56,6 +56,7 @@ html { box-sizing: border-box; }
   border-radius: 2vmin;
   background: var(--electric-indigo);
   z-index: -1;
+  opacity: 0.1;
 }
 
 
@@ -352,19 +353,20 @@ header span {
   font-size: 85%;
   border-radius: 1vmax;
   padding: 3vmin;
-  background: white;
+  background: #f1f1f1;
   border: 1vmin solid var(--light-grey);
-  /* box-shadow: 0 0 1vmax var(--roman-silver); */
 }
 #demo figure, #demo figure * { transition: 0.5s ease-in-out all; }
-#demo figure.with-host { background: var(--light-grey); }
+#demo figure.with-host {
+  border-color: var(--forest-green-traditional);
+}
 
 #demo figure .text { font-weight: bold; }
 #demo figure > .text {
   position: absolute;
   bottom: 0; right: 3vmin;
   opacity: 0;
-  color: white;
+  color: var(--forest-green-traditional);
 }
 #demo figure.with-host > .text { opacity: 1; }
 

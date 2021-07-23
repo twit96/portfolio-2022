@@ -243,14 +243,12 @@
 				rand_y = Math.floor(Math.random() * 90) + 5;         		// 5 to 95 vh
 				rand_size = Math.floor(Math.random() * 15) + 10;  			// 10 to 25 vmin
 				rand_rotation = Math.floor(Math.random() * 360);  			// 0 to 360 deg
-				rand_opacity = (Math.random() * 0.09) + 0.01;  					// 0.05 to 0.25
 				// set CSS styles
 				rand_span.style.left = rand_x + "%";
 				rand_span.style.top = rand_y + "%";
 				rand_span.style.width = rand_size + "vmin";
 				rand_span.style.height = rand_size + "vmin";
 				rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
-				rand_span.style.opacity = rand_opacity;
 				// place on page
 				demo.insertAdjacentElement("beforeend", rand_span);
 			}
@@ -292,7 +290,7 @@
 
 
     <section id="filler">
-      <h2>New Website Coming Soon!</h2>
+      <h2>New Portfolio Coming Soon!</h2>
 			<p>
 				If you would like to visit my current portfolio website while this one
 				is under construction,
