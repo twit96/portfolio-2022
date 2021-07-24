@@ -390,6 +390,7 @@ header span {
 }
 #demo figure .monitor {
   position: relative;
+  background: #ffffffaa;
   box-shadow: 0 0 1vmin var(--roman-silver);
   border-radius: 1vmin;
   width: 60vmin;
@@ -415,13 +416,14 @@ header span {
 #demo figure .monitor .title::after {
   content: '';
   position: absolute;
-  width: 4.5vmin; height: 4.5vmin;
-  filter: blur(2vmin);
+  width: 18vmin; height: 18vmin;
+  filter: blur(12vmin);
   background: var(--electric-indigo);
   opacity: 0;
+  z-index: -1;
 }
-#demo figure .monitor .title::before { left: 18vmin; top: -12vmin; }
-#demo figure .monitor .title::after { right: 18vmin; bottom: -12vmin; }
+#demo figure .monitor .title::before { left: 3vmin; bottom: 6vmin; }
+#demo figure .monitor .title::after { right: 3vmin; top: 6vmin; }
 
 #demo figure .monitor .title {
   position: absolute;
@@ -499,11 +501,11 @@ header span {
 }
 #demo figure.with-php .monitor .title::before,
 #demo figure.with-php .monitor .title::after {
-  width: 3vmin; height: 3vmin;
-  filter: blur(1.5vmin);
+  width: 13.5vmin; height: 13.5vmin;
+  filter: blur(9vmin);
 }
-#demo figure.with-php .monitor .title::before { left: 12vmin; top: -9vmin; }
-#demo figure.with-php .monitor .title::after { right: 12vmin; bottom: -9vmin; }
+#demo figure.with-php .monitor .title::before { bottom: 3vmin; }
+#demo figure.with-php .monitor .title::after { top: 3vmin; }
 #demo figure.with-php .monitor::before,
 #demo figure.with-php .monitor::after {
   width: 4.5vmin;
@@ -559,11 +561,11 @@ header span {
 }
 #demo figure.with-sql .monitor .title::before,
 #demo figure.with-sql .monitor .title::after {
-  width: 1.5vmin; height: 1.5vmin;
-  filter: blur(0.75vmin);
+  width: 9vmin; height: 9vmin;
+  filter: blur(6vmin);
 }
-#demo figure.with-sql .monitor .title::before { left: 9vmin; top: -4.5vmin; }
-#demo figure.with-sql .monitor .title::after { right: 9vmin; bottom: -4.5vmin; }
+#demo figure.with-sql .monitor .title::before { bottom: 1.5vmin; }
+#demo figure.with-sql .monitor .title::after { top: 1.5vmin; }
 #demo figure.with-sql .monitor::before,
 #demo figure.with-sql .monitor::after {
   width: 3.25vmin;
