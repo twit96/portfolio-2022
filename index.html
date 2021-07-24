@@ -238,10 +238,10 @@
 				rand_span = document.createElement("span");
 				rand_span.classList.add("square");
 				// generate random attributes
-				rand_x = Math.floor(Math.random() * 90) + 5;         		// 5 to 95 vw
-				rand_y = Math.floor(Math.random() * 90) + 5;         		// 5 to 95 vh
-				rand_size = Math.floor(Math.random() * 15) + 10;  			// 10 to 25 vmin
-				rand_rotation = Math.floor(Math.random() * 360);  			// 0 to 360 deg
+				rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
+				rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
+				rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
+				rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
 				// set CSS styles
 				rand_span.style.left = rand_x + "%";
 				rand_span.style.top = rand_y + "%";
@@ -286,7 +286,29 @@
 					}, 1000);
 				}, 1000);
 			}
-			demoForwards();
+
+			function figureInViewport(el) {
+			  var top = el.offsetTop;
+			  var height = el.offsetHeight;
+
+			  while(el.offsetParent) {
+			    el = el.offsetParent;
+			    top += el.offsetTop;
+			  }
+
+			  return (
+			    top >= window.pageYOffset &&
+			    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
+			  );
+			}
+
+			var firing_handler = function() {
+				if (figureInViewport(figure)) {
+					demoForwards();
+					window.removeEventListener('scroll', firing_handler, false);
+				}
+			}
+			window.addEventListener('scroll', firing_handler, false);
 		</script>
 
 

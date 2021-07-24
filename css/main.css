@@ -16,7 +16,7 @@ html { box-sizing: border-box; }
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
   --roman-silver: #919098;
-  --light-grey: #bababa;
+  --light-grey: #f1f1f1;
   --jonquil: #f0c808;
 }
 
@@ -56,7 +56,7 @@ html { box-sizing: border-box; }
   border-radius: 2vmin;
   background: var(--electric-indigo);
   z-index: -1;
-  opacity: 0.1;
+  opacity: 0.05;
 }
 
 
@@ -600,7 +600,7 @@ header span {
 
 #filler {
   position: relative;
-  background: #f1f1f1;
+  background: var(--light-grey);
 }
 #filler::before {
   content: '';
@@ -608,7 +608,7 @@ header span {
   left: 0; top: 0;
   width: 100%;
   height: 5vh;
-  background: #f1f1f1;
+  background: var(--light-grey);
   transform: translateY(-99%);
   clip-path: polygon(0 5vh, 100% 0, 100% 100%, 0 100%);
 }
