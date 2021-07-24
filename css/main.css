@@ -325,8 +325,8 @@ header span {
   padding-bottom: calc(10vh + 25px);
 
 }
-#demo > div { margin-bottom: 25px; }
-@media (min-width: 1000px) {
+#demo .blurb { margin-bottom: 50px; }
+@media (min-aspect-ratio: 4/3) and (min-height: 350px) {
   #demo {
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -334,6 +334,8 @@ header span {
   #demo .blurb {
     text-align: right;
     margin-left: 25px;
+    margin-bottom: 0;
+    max-width: 40vw;
   }
   #demo figure { align-self: center; }
 }
@@ -548,11 +550,12 @@ header span {
 
 /* with sql functionality */
 #demo figure.with-sql .database {
-  width: 20vmin;
+  width: 17.5vmin;
 }
 
 #demo figure.with-sql .pipeline {
   overflow: visible;
+  width: 12.5vmin;
 }
 
 #demo figure.with-sql .monitor {
