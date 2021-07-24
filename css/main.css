@@ -255,7 +255,7 @@ header span {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
 }
 
-#intro > img {
+#main-logo {
   position: absolute;
   right: 0;
   top: 50vh;
@@ -540,7 +540,7 @@ header span {
   0% { background: white; }
   50%, 100% { background: var(--electric-indigo); }
 }
-#demo .database div .db-name {
+#demo .database div .title {
   color: white;
   font-size: min(85%, 3vmin);
 }

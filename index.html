@@ -35,11 +35,13 @@
 		</header>
 
     <script>
+		var header = document.querySelector("header");
+
 			var nav_toggle = document.querySelector(".nav-toggle");
 			nav_toggle.onclick = function() {
 				nav_toggle.classList.toggle("active");
 			}
-      var header = document.querySelector("header");
+
 			window.onscroll = function() {
         if (
           (document.body.scrollTop > 0) ||
@@ -212,7 +214,7 @@
 						<span class="light"></span>
 						<span class="light"></span>
 						<span class="light"></span>
-						<span class="db-name">Database</span>
+						<span class="title">Database</span>
 					</div>
 					<span class="text">SQL</span>
 				</div>
