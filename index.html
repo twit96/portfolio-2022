@@ -193,12 +193,13 @@
 
 			<figure>
 				<div>
-					<div class="monitor">
-						<div class="website">
-							<span class="filler">Your Website</span>
+					<div class="website">
+						<div class="monitor">
 							<span class="title">Your Website</span>
 						</div>
-						<span class="text">HTML / CSS / JS</span>
+						<span class="text">HTML</span>
+						<span class="text"> / CSS</span>
+						<span class="text"> / JS</span>
 					</div>
 
 				</div>
@@ -211,9 +212,10 @@
 
 				<div class="database">
 					<div>
-						<span></span>
-						<span></span>
-						<span></span>
+						<span class="light"></span>
+						<span class="light"></span>
+						<span class="light"></span>
+						<span class="db-name">Database</span>
 					</div>
 					<span class="text">SQL</span>
 				</div>
@@ -254,20 +256,19 @@
 			}
 
 			var figure = demo.querySelector("figure");
-			var monitor = demo.querySelector(".monitor");
-			var pipeline = demo.querySelector(".pipeline");
-			var database = demo.querySelector(".database");
-
 
 			function demoForwards() {
-				monitor.classList.add("with-css");
+				figure.classList.add("with-css");
 				setTimeout(function() {
-					pipeline.classList.add("visible");
+					figure.classList.add("with-js");
 					setTimeout(function() {
-						database.classList.add("visible");
+						figure.classList.add("with-php");
 						setTimeout(function() {
-							figure.classList.add("with-host");
-							setTimeout(demoReverse, 5000);
+							figure.classList.add("with-sql");
+							setTimeout(function() {
+								figure.classList.add("with-host");
+								setTimeout(demoReverse, 5000);
+							}, 1000);
 						}, 1000);
 					}, 1000);
 				}, 1000);
@@ -275,12 +276,15 @@
 			function demoReverse() {
 				figure.classList.remove("with-host");
 				setTimeout(function() {
-					database.classList.remove("visible");
+					figure.classList.remove("with-sql");
 					setTimeout(function() {
-						pipeline.classList.remove("visible");
+						figure.classList.remove("with-php");
 						setTimeout(function() {
-							monitor.classList.remove("with-css");
-							setTimeout(demoForwards, 2000);
+							figure.classList.remove("with-js");
+							setTimeout(function() {
+								figure.classList.remove("with-css");
+								setTimeout(demoForwards, 2000);
+							}, 1000);
 						}, 1000);
 					}, 1000);
 				}, 1000);

@@ -316,23 +316,18 @@ header span {
 }
 
 
-
 #demo {
   position: relative;
-  /* height: calc(95vh - 58px); */
-  /* min-height: 50vh; */
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   overflow: hidden;
   padding-bottom: calc(10vh + 25px);
+
 }
 #demo > div { margin-bottom: 25px; }
 @media (min-width: 800px) {
   #demo {
-    display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
   }
@@ -340,117 +335,139 @@ header span {
     text-align: right;
     margin-left: 25px;
   }
+  #demo figure { align-self: center; }
 }
 
+/* figure presets */
 #demo figure {
   position: relative;
-  height: 40vmin;
-  max-width: 90vmin;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 85%;
-  border-radius: 1vmax;
+  border: 1vmin solid transparent;
   padding: 3vmin;
-  background: #f1f1f1;
-  border: 1vmin solid var(--light-grey);
+  border-radius: 1.5vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 9vmin;
+  height: 49vmin;  /* 40vmin .monitor + 6vmin padding-bottom  */
 }
-#demo figure, #demo figure * { transition: 0.5s ease-in-out all; }
+#demo figure,
+#demo figure *,
+#demo figure *::before,
+#demo figure *::after {
+  transition: 0.5s ease-in-out all;
+}
+
+#demo figure > .text {
+  position: absolute;
+  right: -0.5vmin; bottom: -0.5vmin;
+  padding: 0.5vmin 4.5vmin;
+  border-radius: 1.5vmin 0 0 0;
+  background: var(--forest-green-traditional);
+  color: white;
+  opacity: 0;
+}
+#demo figure .text {
+  font-weight: bold;
+  font-size: min(4vmin, 100%);
+}
+
+#demo figure .pipeline,
+#demo figure .database {
+  width: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* with host functionality */
 #demo figure.with-host {
   border-color: var(--forest-green-traditional);
 }
-
-#demo figure .text { font-weight: bold; }
-#demo figure > .text {
-  position: absolute;
-  bottom: 0; right: 3vmin;
-  opacity: 0;
-  color: var(--forest-green-traditional);
-}
 #demo figure.with-host > .text { opacity: 1; }
 
-#demo figure .monitor { z-index: 1; }
-#demo figure .monitor .text { opacity: 0; }
-#demo figure .monitor.with-css .text { opacity: 1; }
-#demo figure .monitor.with-css .other-text { opacity: 1; }
-#demo figure .monitor.with-css .text { color: var(--electric-indigo); }
-#demo figure .monitor .website {
+/* website presets */
+#demo figure .website {
+  text-align: center;
+}
+#demo figure .monitor {
   position: relative;
-  padding: 6vmin 3vmin;
-  box-shadow: 0 0 0.5vmin black;
+  box-shadow: 0 0 1vmin var(--roman-silver);
   border-radius: 1vmin;
+  width: 60vmin;
+  height: 40vmin;
+  padding: 1.5vmin;
+  z-index: 2;
+  overflow: hidden;
 }
-#demo .monitor.with-css .website {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--electric-indigo);
-  box-shadow: 0 0 0.5vmin var(--electric-indigo);
-}
-/* keep .website element from changing width on .title font-family change */
-#demo .website .filler {
-  font-size: 4vmin;
-  margin: 2vmin 0;
-  color: transparent;
-}
-#demo .website .title {
-  font-size: 4vmin;
-  width: calc(100% - 4vmin);
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-}
-#demo .monitor.with-css .website .title {
-  font-family: 'Pacifico', cursive;
-  color: white;
-}
-#demo .monitor.with-css .website::before,
-#demo .monitor.with-css .website::after {
+#demo figure .monitor::before,
+#demo figure .monitor::after {
   content: '';
-  width: 3vmin;
-  height: 0.5vmin;
+  position: absolute;
+  width: 6vmin;
+  height: 1.25vmin;
+  right: 3vmin;
   background: white;
-  border-radius: 3vmin;
-  position: absolute;
-  right: 1.5vmin;
-}
-#demo .monitor.with-css .website::before {
-  top: 1.5vmin;
-}
-#demo .monitor.with-css .website::after {
-  top: 2.5vmin;
-}
-
-#demo .monitor.with-css .website .filler::before,
-#demo .monitor.with-css .website .filler::after {
-  content: '';
-  width: 1.5vmin;
-  height: 1.5vmin;
-  background: var(--blue-jeans);
-  filter: blur(0.5vmin);
-  border-radius: 50%;
-  position: absolute;
-}
-#demo .monitor.with-css .website .filler::before {
-  right: 9vmin; bottom: 3vmin;
-}
-#demo .monitor.with-css .website .filler::after {
-  left: 9vmin; top: 3vmin;
-}
-
-#demo .pipeline {
-  position: relative;
-  padding: 6vmin 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  border-radius: 1.5vmin;
   opacity: 0;
 }
-#demo .pipeline.visible { opacity: 1; }
-#demo .pipeline .pipe {
-  height: 1.25vmin;
+#demo figure .monitor::before { top: 3vmin; }
+#demo figure .monitor::after { top: 6vmin; }
+#demo figure .monitor .title::before,
+#demo figure .monitor .title::after {
+  content: '';
+  position: absolute;
+  width: 4.5vmin; height: 4.5vmin;
+  filter: blur(2vmin);
+  background: var(--electric-indigo);
+  opacity: 0;
+}
+#demo figure .monitor .title::before { left: 18vmin; top: -12vmin; }
+#demo figure .monitor .title::after { right: 18vmin; bottom: -12vmin; }
+
+#demo figure .monitor .title {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  font-size: 6vmin;
+}
+#demo figure .website .text {
+  display: none;
+}
+#demo figure .website .text:nth-of-type(1) { display: inline; }
+
+/* with css functionality */
+#demo figure.with-css .monitor {
+  box-shadow: 0 0 1vmin var(--blue-jeans);
+  background: var(--blue-jeans);
+  color: white;
+}
+#demo figure.with-css .monitor .title { font-family: 'Pacifico', cursive; }
+#demo figure.with-css .monitor .title::before,
+#demo figure.with-css .monitor .title::after {
+  opacity: 1;
+}
+#demo figure.with-css .website .text { color: var(--blue-jeans); }
+#demo figure.with-css .website .text:nth-of-type(2) { display: inline; }
+
+/* with-js functionality */
+#demo figure.with-js .monitor::before,
+#demo figure.with-js .monitor::after {
+  opacity: 1;
+}
+
+#demo figure.with-js .website .text:nth-of-type(3) { display: inline; }
+
+/* php presets */
+#demo figure .pipeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+#demo figure .pipeline .pipe {
+  width: 20vmin;
+  height: 2vmin;
   margin: 0.75vmin 0;
   background-size: 300% 300%;
   background-image: linear-gradient(
@@ -462,44 +479,121 @@ header span {
 #demo .pipeline .pipe:nth-child(1) {
   animation-duration: 3s;
 }
+#demo figure .pipeline .text {
+  color: var(--red-pigment);
+}
 @keyframes bg-shift {
   0%, 100% { background-position: left; }
   50% { background-position: right; }
 }
-#demo .pipeline .text {
-  margin: 0 9vmin;
-}
-#demo .pipeline.visible .text { color: var(--red-pigment); }
 
-#demo .database {
-  opacity: 0;
-  z-index: 1;
+/* with php functionality */
+#demo figure.with-php .pipeline {
+  width: 15vmin;
 }
-#demo .database.visible { opacity: 1; }
+
+#demo figure.with-php .website .title { font-size: 4vmin; }
+#demo figure.with-php .monitor {
+  width: 45vmin;
+  height: 30vmin;
+}
+#demo figure.with-php .monitor .title::before,
+#demo figure.with-php .monitor .title::after {
+  width: 3vmin; height: 3vmin;
+  filter: blur(1.5vmin);
+}
+#demo figure.with-php .monitor .title::before { left: 12vmin; top: -9vmin; }
+#demo figure.with-php .monitor .title::after { right: 12vmin; bottom: -9vmin; }
+#demo figure.with-php .monitor::before,
+#demo figure.with-php .monitor::after {
+  width: 4.5vmin;
+  height: 0.75vmin;
+  border-radius: 1vmin;
+}
+#demo figure.with-php .monitor::after { top: 5vmin; }
+
+/* sql presets */
+#demo .database {
+  text-align: center;
+}
 #demo .database div {
   background: black;
   box-shadow: 0 0 0.5vmin black;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding: 2vmin;
   border-radius: 1vmin;
 }
-#demo .database div span {
-  width: 9vmin;
+#demo .database div .light {
+  width: 100%;
   height: 1vmin;
   margin: 1vmin;
   border-radius: 1vmin;
   animation: 3s flash linear infinite;
 }
-#demo .database div span:nth-child(1) { animation-delay: 0.25s; }
-#demo .database div span:nth-child(2) { animation-delay: 0.125s; }
+#demo .database div .light:nth-child(1) { animation-delay: 0.25s; }
+#demo .database div .light:nth-child(2) { animation-delay: 0.125s; }
 @keyframes flash {
   0% { background: white; }
   50%, 100% { background: var(--electric-indigo); }
 }
-#demo .database.visible .text { color: black; }
+#demo .database div .db-name {
+  color: white;
+  font-size: 85%;
+}
+#demo .database .text { color: var(--electric-indigo); }
 
+/* with sql functionality */
+#demo figure.with-sql .database {
+  width: 20vmin;
+}
+
+#demo figure.with-sql .pipeline {
+  overflow: visible;
+}
+
+#demo figure.with-sql .monitor {
+  width: 30vmin;
+  height: 20vmin;
+}
+#demo figure.with-sql .monitor .title::before,
+#demo figure.with-sql .monitor .title::after {
+  width: 1.5vmin; height: 1.5vmin;
+  filter: blur(0.75vmin);
+}
+#demo figure.with-sql .monitor .title::before { left: 9vmin; top: -4.5vmin; }
+#demo figure.with-sql .monitor .title::after { right: 9vmin; bottom: -4.5vmin; }
+#demo figure.with-sql .monitor::before,
+#demo figure.with-sql .monitor::after {
+  width: 3.25vmin;
+  height: 0.5vmin;
+  right: 1.5vmin;
+  border-radius: 0.5vmin;
+}
+#demo figure.with-sql .monitor::before {
+  top: 2vmin;
+  animation: 4s move-x-top-sm ease-in-out alternate infinite;
+}
+#demo figure.with-sql .monitor::after {
+  top: 3.5vmin;
+  animation: 4s move-x-btm-sm ease-in-out alternate infinite;
+}
+@keyframes move-x-top-sm {
+  0%, 35% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(0.75vmin) rotate(0); }
+  65%, 100% { transform: translateY(0.75vmin) rotate(45deg); }
+}
+@keyframes move-x-btm-sm {
+  0%, 35% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-0.75vmin) rotate(0); }
+  65%, 100% { transform: translateY(-0.75vmin) rotate(-45deg); }
+}
+
+#demo figure.with-sql .pipeline .pipe {
+  height: 1.25vmin;
+  margin: 0.75vmin 0;
+}
 
 
 #filler {
