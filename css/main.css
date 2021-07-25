@@ -686,39 +686,8 @@ footer {
 
   header.filled { padding: 25px 50px; }
   header span { font-size: 24px; }
-  .nav-toggle {
-    width: 45px;
-    height: 37.5px;
-  }
-  .nav-toggle span {
-    border-radius: 3px;
-    height: 6px;
-  }
-  .nav-toggle span:nth-child(2) { margin: 7.5px 0; }
-  /* to hamburger */
-  @keyframes out-top {
-    0% { transform: translateY(13.5px) rotate(-135deg); }
-    50% { transform: translateY(13.5px) rotate(0); }
-    100% { transform: translateY(0) rotate(0); }
-  }
-  @keyframes out-btm {
-    0% { transform: translateY(-13.5px) rotate(-135deg); }
-    50% { transform: translateY(-13.5px) rotate(0); }
-    100% { transform: translateY(0) rotate(0); }
-  }
-  /* to x btn */
-  @keyframes in-top {
-    0% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(13.5px) rotate(0); }
-    100% { transform: translateY(13.5px) rotate(-135deg); }
-  }
-  @keyframes in-btm {
-    0% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-13.5px) rotate(0); }
-    100% { transform: translateY(-13.5px) rotate(-135deg); }
-  }
 
-  #intro { padding-top: 137.5px;  /* height of header */; }
+  #intro { padding-top: 135px;  /* height of header */; }
   #intro .blurb p {
     margin: 25px 0;
     font-size: 28px;
@@ -760,6 +729,37 @@ footer {
 
   header.filled { padding: 37.5px 75px; }
   header span { font-size: 32px; }
+  .nav-toggle {
+    width: 45px;
+    height: 37.5px;
+  }
+  .nav-toggle span {
+    border-radius: 3px;
+    height: 6px;
+  }
+  .nav-toggle span:nth-child(2) { margin: 7.5px 0; }
+  /* to hamburger */
+  @keyframes out-top {
+    0% { transform: translateY(13.5px) rotate(-135deg); }
+    50% { transform: translateY(13.5px) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  @keyframes out-btm {
+    0% { transform: translateY(-13.5px) rotate(-135deg); }
+    50% { transform: translateY(-13.5px) rotate(0); }
+    100% { transform: translateY(0) rotate(0); }
+  }
+  /* to x btn */
+  @keyframes in-top {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(13.5px) rotate(0); }
+    100% { transform: translateY(13.5px) rotate(-135deg); }
+  }
+  @keyframes in-btm {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-13.5px) rotate(0); }
+    100% { transform: translateY(-13.5px) rotate(-135deg); }
+  }
 
   #intro { padding-top: 187.5px;  /* height of header */ }
   #intro .blurb p {
