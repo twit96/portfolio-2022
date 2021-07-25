@@ -315,6 +315,11 @@ header span {
   line-height: min(10vh, 72px);
   align-self: flex-end;
   text-align: center;
+  margin-bottom: 30px;  /* bugfix: mobile browser height shift */
+}
+@media (min-width: 450px) and (min-height: 850px) {
+  /* remove mobile browser height shift bugfix */
+  #intro .details { margin-bottom: 0; }
 }
 
 #intro .details h1 {
