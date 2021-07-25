@@ -158,7 +158,6 @@ header {
               0.25s box-shadow ease-out,
               0.25s padding ease-out;
 }
-header + * { padding-top: 78px;  /* height of header */ }
 header.filled {
   padding: 15px 25px;
   background: var(--forest-green-traditional);
@@ -177,7 +176,9 @@ header span {
   height: 25px;
   transition: 0.25s transform ease-in-out;
 }
-.nav-toggle.active { transform: rotate(-90deg); }
+.nav-toggle.active {
+  transform: rotate(-90deg);
+}
 
 .nav-toggle span {
   background-color: white;
@@ -245,6 +246,7 @@ header span {
 #intro {
   position: relative;
   height: 105vh;
+  padding-top: 78px;  /* height of header */
   padding-bottom: calc(5vh + 25px);
   background: var(--forest-green-traditional);
   color: white;
@@ -255,22 +257,42 @@ header span {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
 }
 
-#main-logo {
+#main-logo-wrap {
   position: absolute;
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
-  height: 100vmax;
-  width: 100vmax;
   border-radius: 50%;
-  border: 1vmax solid var(--forest-green-traditional-shadow);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: max(1.5vmax, 15px) solid var(--forest-green-traditional-shadow);
   background: var(--forest-green-traditional-shadow);
-  z-index: 1;
+}
+#main-logo {
+  width: 100vmax;
+  height: 100vmax;
+  animation: 3s teeter ease-in-out alternate infinite;
 }
 #main-logo.blurred { filter: blur(5px); }
+@keyframes teeter {
+  0% { transform: rotate(-2.5deg); }
+  100% { transform: rotate(2.5deg); }
+}
+.main-logo-overlay {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100vmax;
+  height: 100vmax;
+  border-radius: 50%;
+  background: var(--blue-jeans);
+  box-shadow: 0 0 3vmax 1vmax var(--forest-green-traditional-shadow) inset;
+  opacity: 0.55;
+}
 
 #intro div { z-index: 1; /* ensure text appears above img */ }
-#intro .blurb { margin-top: 50px; }
 #intro .blurb p {
   position: relative;
   margin: 10px 0;
@@ -293,11 +315,8 @@ header span {
   line-height: min(10vh, 72px);
   align-self: flex-end;
   text-align: center;
-  margin-bottom: 30px;
 }
-@media (min-width: 500px) and (min-height: 500px) {
-  #intro .details { text-align: right; }
-}
+
 #intro .details h1 {
   font-size: min(10vh, 72px);
   font-weight: normal;
@@ -309,12 +328,21 @@ header span {
 
 #intro .details a {
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 15px;
 }
 #intro .details img {
   width: 35px;
+  transition: 0.25s transform ease-in-out;
+}
+#intro .details img:hover {
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 5px var(--electric-indigo));
 }
 
+@media (min-width: 500px) and (min-height: 500px) {
+  #intro .details { text-align: right; }
+  #intro .details a { margin: 0 0 0 30px; }
+}
 
 #demo {
   position: relative;
@@ -651,49 +679,8 @@ footer {
     margin-bottom: 15px;
   }
 
-  header + * { padding-top: 128px;  /* height of header */ }
   header.filled { padding: 25px 50px; }
   header span { font-size: 24px; }
-
-  #intro .blurb p {
-    margin: 25px 0;
-    font-size: 28px;
-    line-height: 36px;
-    max-width: 70vw;
-  }
-  #intro .blurb span { font-size: 36px; }
-
-  #intro .details { line-height: 110px; }
-  #intro .details h1 {
-    font-size: 100px;
-    margin-bottom: 20px;
-  }
-  #intro .details h2 { font-size: 58px; }
-  #intro .details a { margin: 0 15px; }
-
-  #filler p {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  #filler p:nth-of-type(2) {
-    text-align: left;
-  }
-
-  footer {
-    padding: 15px 50px;
-    text-align: right;
-  }
-}
-
-
-
-@media (min-width: 1600px) and (min-height: 1050px) {
-  body > * { padding: 75px; }
-
-  header + * { padding-top: 187.5px;  /* height of header */ }
-  header.filled { padding: 37.5px 75px; }
-  header span { font-size: 32px; }
-
   .nav-toggle {
     width: 45px;
     height: 37.5px;
@@ -726,6 +713,50 @@ footer {
     100% { transform: translateY(-13.5px) rotate(-135deg); }
   }
 
+  #intro { padding-top: 137.5px;  /* height of header */; }
+  #intro .blurb p {
+    margin: 25px 0;
+    font-size: 28px;
+    line-height: 36px;
+    max-width: 70vw;
+  }
+  #intro .blurb span { font-size: 36px; }
+
+  #intro .details { line-height: 110px; }
+  #intro .details h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
+  #intro .details h2 { font-size: 58px; }
+  #intro .details a { margin: 0 0 0 40px; }
+  #intro .details img {
+    width: 40px;
+    transition: 0.25s transform ease-in-out;
+  }
+
+  #filler p {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  #filler p:nth-of-type(2) {
+    text-align: left;
+  }
+
+  footer {
+    padding: 15px 50px;
+    text-align: right;
+  }
+}
+
+
+
+@media (min-width: 1600px) and (min-height: 1050px) {
+  body > * { padding: 75px; }
+
+  header.filled { padding: 37.5px 75px; }
+  header span { font-size: 32px; }
+
+  #intro { padding-top: 187.5px;  /* height of header */ }
   #intro .blurb p {
     margin: 50px 0;
     font-size: 36px;
