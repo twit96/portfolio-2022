@@ -27,19 +27,35 @@
 
 		<header>
 			<span>TW</span>
+			<nav>
+				<a href="#">Link</a>
+				<a href="#">Link</a>
+				<a href="#">Link</a>
+				<a href="#">Link</a>
+			</nav>
 			<div class="nav-toggle">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
 		</header>
+		<div id="header-bg"></div>
 
     <script>
-		var header = document.querySelector("header");
+			var header = document.querySelector("header");
+			var header_nav = header.querySelector("nav");
+			var header_bg = document.getElementById("header-bg");
 
 			var nav_toggle = document.querySelector(".nav-toggle");
 			nav_toggle.onclick = function() {
 				nav_toggle.classList.toggle("active");
+				header_nav.classList.toggle("active");
+				header_bg.classList.toggle("active");
+			}
+			header_bg.onclick = function() {
+				nav_toggle.classList.toggle("active");
+				header_nav.classList.toggle("active");
+				header_bg.classList.toggle("active");
 			}
 
 			window.onscroll = function() {
