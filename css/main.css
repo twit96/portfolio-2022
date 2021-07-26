@@ -216,10 +216,10 @@ header nav a:last-child {
   100% { transform: translate(-50%, -50%) rotate(-360deg); }
 } */
 /* make orbs (clones from intro generation) look like stars */
-/* #header-bg .orb {
+#header-bg .orb {
   background: var(--light-grey);
   transform: scale(0.35);
-} */
+}
 
 .nav-toggle {
   position: relative;
