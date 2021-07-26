@@ -15,6 +15,7 @@ html { box-sizing: border-box; }
   --forest-green-traditional-shadow: #0c1a0d;
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
+  --light-blue: #61b6f0;
   --roman-silver: #919098;
   --light-grey: #f1f1f1;
   --jonquil: #f0c808;
@@ -158,7 +159,6 @@ header {
   justify-content: space-between;
   align-items: center;
   color: white;
-  z-index: 100;
   transition: 0.25s background ease-out,
               0.25s box-shadow ease-out,
               0.25s padding ease-out;
@@ -175,6 +175,7 @@ header.filled nav {
 header span {
   font-size: 20px;
   font-family: 'Pacifico', cursive;
+  z-index: 103;
 }
 
 header nav {
@@ -185,9 +186,9 @@ header nav {
   border-radius: 0 0 50px 0;
   display: flex;
   flex-direction: column;
-  padding: 25px;
-  padding-top: 78px;  /* height of header */
-  z-index: -1;
+  padding-top: calc(78px + 25px);  /* height of header + 25px padding */
+  padding-bottom: 50px;  /* height of ::after */
+  z-index: 102;
   transform: translateY(calc(-100% - 50px));  /* 50px height of ::after */
   transition: 0.25s transform ease-out,
               0.25s padding ease-out;
@@ -198,8 +199,7 @@ header nav::before {
   left: 0; top: 0;
   width: 100%;
   height: 78px;  /* height of header */
-  background: var(--light-grey);
-  opacity: 0.15;
+  background: var(--light-blue);
   transition: 0.25s height ease-out;
 }
 header.filled nav::before {
@@ -218,7 +218,12 @@ header nav::after {
 header nav.active { transform: translateY(0); }
 header nav a {
   color: white;
-  margin: 10px 0;
+  padding: 10px 25px;
+  display: block;
+  transition: 0.15s background ease-out;
+}
+header nav a:hover {
+  background: var(--light-blue);
 }
 
 #header-bg {
@@ -227,7 +232,7 @@ header nav a {
   width: 100%;
   height: 100vh;
   background: #0c1a0dcc;
-  z-index: 99;
+  z-index: 101;
   transform: translateY(-100%);
   opacity: 0;
   transition: 0.25s opacity ease-out;
@@ -243,6 +248,7 @@ header nav a {
   width: 30px;
   height: 25px;
   transition: 0.25s transform ease-in-out;
+  z-index: 103;
 }
 .nav-toggle.active {
   transform: rotate(-90deg);
@@ -401,6 +407,7 @@ header nav a {
 
 #intro .details a {
   margin: 0 15px;
+  text-decoration: none;
 }
 #intro .details img {
   width: 35px;
@@ -752,16 +759,26 @@ footer {
   header span { font-size: 24px; }
 
   header nav {
-    flex-direction: row;
-    padding: 0 50px;
+    left: auto; right: 0;
+    width: fit-content; height: 100vh;
+    text-align: right;
+    padding: 0;
     padding-top: 135px;  /* height of header */
+    border-radius: 0 0 0 50px;
+    transform: translateX(calc(100% + 50px));
   }
   header nav::before { height: 135px;  /* height of header */ }
+  header nav::after {
+    top: 0; bottom: auto;
+    transform: translateX(-100%);
+    box-shadow: 50px -50px 0 var(--light-blue);
+  }
 
   header.filled { padding: 25px 50px; }
   header.filled nav { padding-top: 85px;  /* height of header */ }
   header.filled nav::before { height: 85px;  /* height of header */ }
-  header nav a { margin: 25px 25px 25px 0; }
+  header nav a { padding: 25px 50px; }
+
 
   #intro { padding-top: 135px;  /* height of header */ }
   #intro .blurb p {
@@ -806,16 +823,15 @@ footer {
   header span { font-size: 32px; }
 
   header nav {
-    padding: 75px;
-    padding-top: 112.5px;  /* height of header */
+    padding-top: 187.5px;  /* height of header */
   }
-  header nav::before { height: 112.5px;  /* height of header */ }
+  header nav::before { height: 187.5px;  /* height of header */ }
 
 
   header.filled { padding: 37.5px 75px; }
-  header.filled nav { padding-top: 137.5px;  /* height of header */ }
-  header.filled nav::before { height: 137.5px;  /* height of header */ }
-  header nav a { margin-right: 75px; }
+  header.filled nav { padding-top: 112.5px;  /* height of header */ }
+  header.filled nav::before { height: 112.5px;  /* height of header */ }
+  header nav a { padding: 37.5px 75px; }
 
   .nav-toggle {
     width: 45px;

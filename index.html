@@ -29,17 +29,16 @@
 			<span>TW</span>
 			<nav>
 				<a href="#">Link</a>
-				<a href="#">Link</a>
-				<a href="#">Link</a>
-				<a href="#">Link</a>
+				<a href="#">Link Link</a>
+				<a href="#">(Link)^3</a>
 			</nav>
 			<div class="nav-toggle">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
+			<div id="header-bg"></div>
 		</header>
-		<div id="header-bg"></div>
 
     <script>
 			var header = document.querySelector("header");
@@ -183,26 +182,6 @@
 				var clone = rand_span.cloneNode(true);
 				loader.insertAdjacentElement("beforeend", clone);
 			}
-
-			// random flowers
-			// var sub_span;
-			// for (i=0; i<5; i++) {
-			//   rand_span = document.createElement("span");
-			// 	rand_span.classList.add("flower");
-			// 	sub_span = document.createElement("span");
-			// 	rand_span.insertAdjacentElement("beforeend", sub_span);
-			  // generate random attributes
-			  // rand_x = Math.floor(Math.random() * 70);         // 0 to 70 vw
-			  // rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-				// rand_size = Math.floor(Math.random() * 5) + 1;    // 1 to 2 vmin
-			  // set CSS styles
-			  // rand_span.style.left = rand_x + "vw";
-			  // rand_span.style.top = rand_y + "vh";
-			  // place on page
-			//   intro.insertAdjacentElement("beforeend", rand_span);
-			// 	var clone = rand_span.cloneNode(true);
-			// 	loader.insertAdjacentElement("beforeend", clone);
-			// }
 		</script>
 
 		<section id="demo">
