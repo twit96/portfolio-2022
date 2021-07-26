@@ -197,24 +197,24 @@ header nav a:last-child {
   width: 25vmax; height: 25vmax;
   filter: blur(25vmax);
   transform-origin: bottom right;
-  /* animation: 10s spotlight-rotate linear infinite; */
+  animation: 10s spotlight-rotate linear infinite;
 }
-/* @keyframes spotlight-rotate {
+@keyframes spotlight-rotate {
   0% { transform: translate(-50%, -50%) rotate(0); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
-} */
+}
 #header-bg::after {
   right: 10vw; bottom: 10vh;
   transform: translate(50%, 50%);
   width: 15vmax; height: 15vmax;
   filter: blur(15vmax);
   transform-origin: top left;
-  /* animation: 10s spotlight-rotate-reverse linear infinite; */
+  animation: 10s spotlight-rotate-reverse linear infinite;
 }
-/* @keyframes spotlight-rotate-reverse {
+@keyframes spotlight-rotate-reverse {
   0% { transform: translate(-50%, -50%) rotate(0); }
   100% { transform: translate(-50%, -50%) rotate(-360deg); }
-} */
+}
 /* make orbs (clones from intro generation) look like stars */
 /* #header-bg .orb {
   background: var(--light-grey);
