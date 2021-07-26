@@ -218,7 +218,6 @@ header nav a:last-child {
 #header-bg .orb {
   background: var(--light-grey);
   transform: scale(0.35);
-  animation: none;
 }
 
 .nav-toggle {
