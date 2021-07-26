@@ -202,6 +202,9 @@ header nav::before {
   background: var(--light-blue);
   transition: 0.25s height ease-out;
 }
+header.filled nav {
+  padding-top: calc(58px + 25px);  /* height of header + 25px padding */
+}
 header.filled nav::before {
   height: 58px;  /* height of header */
 }
