@@ -193,21 +193,21 @@ header nav a:last-child {
 #header-bg::before {
   left: 10vw; top: 10vh;
   transform: translate(-50%, -50%);
-  width: 25vmax; height: 25vmax;
-  filter: blur(25vmax);
+  width: 45vmax; height: 45vmax;
+  filter: blur(30vmax);
   transform-origin: bottom right;
 }
 #header-bg::after {
   right: 10vw; bottom: 10vh;
   transform: translate(50%, 50%);
-  width: 15vmax; height: 15vmax;
-  filter: blur(15vmax);
+  width: 35vmax; height: 35vmax;
+  filter: blur(25vmax);
   transform-origin: top left;
 }
 /* make orbs (clones from intro generation) look like stars */
 #header-bg .orb {
   background: var(--light-grey);
-  transform: scale(0.35);
+  transform: scale(0.5);
 }
 
 .nav-toggle {
