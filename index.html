@@ -258,16 +258,22 @@
 
 			var figure = demo.querySelector("figure");
 
+			function throttledUpdateClass(element, add_or_remove, class_name) {
+				window.requestAnimationFrame(function() {
+					element.classList[add_or_remove](class_name);
+				});
+			}
+
 			function demoForwards() {
-				figure.classList.add("with-css");
+				throttledUpdateClass(figure, "add", "with-css");
 				setTimeout(function() {
-					figure.classList.add("with-js");
+					throttledUpdateClass(figure, "add", "with-js");
 					setTimeout(function() {
-						figure.classList.add("with-php");
+						throttledUpdateClass(figure, "add", "with-php");
 						setTimeout(function() {
-							figure.classList.add("with-sql");
+							throttledUpdateClass(figure, "add", "with-sql");
 							setTimeout(function() {
-								figure.classList.add("with-host");
+								throttledUpdateClass(figure, "add", "with-host");
 								setTimeout(demoReverse, 5000);
 							}, 1000);
 						}, 1000);
@@ -275,15 +281,15 @@
 				}, 1000);
 			}
 			function demoReverse() {
-				figure.classList.remove("with-host");
+				throttledUpdateClass(figure, "remove", "with-host");
 				setTimeout(function() {
-					figure.classList.remove("with-sql");
+					throttledUpdateClass(figure, "remove", "with-sql");
 					setTimeout(function() {
-						figure.classList.remove("with-php");
+						throttledUpdateClass(figure, "remove", "with-php");
 						setTimeout(function() {
-							figure.classList.remove("with-js");
+							throttledUpdateClass(figure, "remove", "with-js");
 							setTimeout(function() {
-								figure.classList.remove("with-css");
+								throttledUpdateClass(figure, "remove", "with-css");
 								setTimeout(demoForwards, 2000);
 							}, 1000);
 						}, 1000);
