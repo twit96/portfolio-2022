@@ -319,6 +319,7 @@ header nav a:last-child {
 #main-logo {
   width: 100vmax;
   height: 100vmax;
+  transform: translateZ(0);
   animation: 3s teeter ease-in-out alternate infinite;
 }
 #main-logo.blurred { filter: blur(5px); }
