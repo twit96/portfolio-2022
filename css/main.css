@@ -175,13 +175,12 @@ header nav a:last-child {
   height: 100vh;
   background: #000000;
   z-index: 101;
-  transform: translateX(100%);
-  opacity: 0.9;
-  overflow: hidden;
-  transition: 0.25s transform ease-in-out;
+  transform: translateY(-100%);
+  opacity: 0;
 }
 #header-bg.active {
-  transform: translateX(0);
+  opacity: 0.9;
+  transform: translateY(0);
 }
 #header-bg::before,
 #header-bg::after {
