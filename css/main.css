@@ -340,7 +340,8 @@ header nav a:last-child {
   max-width: 70vw;
 }
 #intro .blurb i { font-weight: bold; }
-#intro .blurb span {
+
+#intro .tagline {
   position: absolute;
   left: 0; top: 0;
   opacity: 0;
@@ -348,8 +349,15 @@ header nav a:last-child {
   font-size: 24px;
   font-family: 'Pacifico', cursive;
   text-shadow: 2.5px 2.5px 2.5px var(--green-pigment-shadow);
+  animation: 9s blurb-span-cycle linear infinite;
 }
-#intro .blurb span.active { opacity: 1; }
+#intro .tagline:nth-of-type(2) { animation-delay: -3s; }
+#intro .tagline:nth-of-type(3) { animation-delay: -6s; }
+
+@keyframes blurb-span-cycle {
+  0%, 30%, 70%, 100% { opacity: 0; }
+  35%, 65% { opacity: 1; }
+}
 
 #intro .details {
   line-height: min(10vh, 72px);
