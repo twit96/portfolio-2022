@@ -121,91 +121,91 @@ for (i=0; i<30; i++) {
 
 
 // Demo Functionality ---------------------------------------------------------
-// var demo = document.getElementById("demo");
+var demo = document.getElementById("demo");
 
 // add randomly generated elements to background
-// var rand_span;  // placed in #intro
+var rand_span;  // placed in #intro
 
 // random properties
-// var rand_x;
-// var rand_y;
-// var rand_size;
-// var rand_rotation;
-// var rand_opacity;
+var rand_x;
+var rand_y;
+var rand_size;
+var rand_rotation;
+var rand_opacity;
 
 // random squares
-// for (i=0; i<15; i++) {
-  // rand_span = document.createElement("span");
-  // rand_span.classList.add("square");
+for (i=0; i<15; i++) {
+  rand_span = document.createElement("span");
+  rand_span.classList.add("square");
   // generate random attributes
-  // rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
-  // rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
-  // rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
-  // rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
+  rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
+  rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
+  rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
+  rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
   // set CSS styles
-  // rand_span.style.left = rand_x + "%";
-  // rand_span.style.top = rand_y + "%";
-  // rand_span.style.width = rand_size + "vmin";
-  // rand_span.style.height = rand_size + "vmin";
-  // rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+  rand_span.style.left = rand_x + "%";
+  rand_span.style.top = rand_y + "%";
+  rand_span.style.width = rand_size + "vmin";
+  rand_span.style.height = rand_size + "vmin";
+  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-//   demo.insertAdjacentElement("beforeend", rand_span);
-// }
+  demo.insertAdjacentElement("beforeend", rand_span);
+}
 
-// var figure = demo.querySelector("figure");
-//
-// function demoForwards() {
-//   figure.classList.add("with-css");
-//   setTimeout(function() {
-//     figure.classList.add("with-js");
-//     setTimeout(function() {
-//       figure.classList.add("with-php");
-//       setTimeout(function() {
-//         figure.classList.add("with-sql");
-//         setTimeout(function() {
-//           figure.classList.add("with-host");
-//           setTimeout(demoReverse, 5000);
-//         }, 1000);
-//       }, 1000);
-//     }, 1000);
-//   }, 1000);
-// }
-// function demoReverse() {
-//   figure.classList.remove("with-host");
-//   setTimeout(function() {
-//     figure.classList.remove("with-sql");
-//     setTimeout(function() {
-//       figure.classList.remove("with-php");
-//       setTimeout(function() {
-//         figure.classList.remove("with-js");
-//         setTimeout(function() {
-//           figure.classList.remove("with-css");
-//           setTimeout(demoForwards, 2000);
-//         }, 1000);
-//       }, 1000);
-//     }, 1000);
-//   }, 1000);
-// }
-//
-// function figureInViewport(el) {
-//   var top = el.offsetTop;
-//   var height = el.offsetHeight;
-//
-//   while(el.offsetParent) {
-//     el = el.offsetParent;
-//     top += el.offsetTop;
-//   }
-//
-//   return (
-//     top >= window.pageYOffset &&
-//     (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
-//   );
-// }
-//
-// var firing_handler = function() {
-//   if (figureInViewport(figure)) {
-//     demoForwards();
-//     window.removeEventListener('scroll', firing_handler, false);
-//   }
-// }
-// window.addEventListener('scroll', firing_handler, false);
+var figure = demo.querySelector("figure");
+
+function demoForwards() {
+  figure.classList.add("with-css");
+  setTimeout(function() {
+    figure.classList.add("with-js");
+    setTimeout(function() {
+      figure.classList.add("with-php");
+      setTimeout(function() {
+        figure.classList.add("with-sql");
+        setTimeout(function() {
+          figure.classList.add("with-host");
+          setTimeout(demoReverse, 5000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}
+function demoReverse() {
+  figure.classList.remove("with-host");
+  setTimeout(function() {
+    figure.classList.remove("with-sql");
+    setTimeout(function() {
+      figure.classList.remove("with-php");
+      setTimeout(function() {
+        figure.classList.remove("with-js");
+        setTimeout(function() {
+          figure.classList.remove("with-css");
+          setTimeout(demoForwards, 2000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}
+
+function figureInViewport(el) {
+  var top = el.offsetTop;
+  var height = el.offsetHeight;
+
+  while(el.offsetParent) {
+    el = el.offsetParent;
+    top += el.offsetTop;
+  }
+
+  return (
+    top >= window.pageYOffset &&
+    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
+  );
+}
+
+var firing_handler = function() {
+  if (figureInViewport(figure)) {
+    demoForwards();
+    window.removeEventListener('scroll', firing_handler, false);
+  }
+}
+window.addEventListener('scroll', firing_handler, false);
