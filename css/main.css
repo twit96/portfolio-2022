@@ -313,7 +313,7 @@ header nav a:last-child {
 #main-logo {
   width: 100vmax;
   height: 100vmax;
-  /* animation: 3s teeter ease-in-out alternate infinite; */
+  animation: 3s teeter ease-in-out alternate infinite;
 }
 #main-logo.blurred { filter: blur(5px); }
 @keyframes teeter {
