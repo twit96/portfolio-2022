@@ -231,13 +231,16 @@ header nav a:last-child {
 
 .nav-toggle span:nth-child(1) {
   animation: out-top 0.5s ease-in-out;
+  transform: translateZ(0.1);
 }
 .nav-toggle span:nth-child(2) {
   margin: 5px 0;
   animation: out-mid 0.5s ease-in-out;
+  transform: translateZ(0.1);
 }
 .nav-toggle span:nth-child(3) {
   animation: out-btm 0.5s ease-in-out;
+  transform: translateZ(0.1);
 }
 
 .nav-toggle.active span:nth-child(1) {
@@ -314,6 +317,7 @@ header nav a:last-child {
   width: 100vmax;
   height: 100vmax;
   animation: 3s teeter ease-in-out alternate infinite;
+  transform: translateZ(0.1);
 }
 #main-logo.blurred { filter: blur(5px); }
 @keyframes teeter {
