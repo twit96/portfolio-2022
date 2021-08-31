@@ -839,3 +839,10 @@ footer {
     font-size: 16px;
   }
 }
+
+*,
+*::after,
+*::before {
+  transition: none !important;
+  animation: none !important;
+}
