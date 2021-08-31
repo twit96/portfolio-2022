@@ -13,26 +13,29 @@ setTimeout(function() {
 // Header Functionality -------------------------------------------------------
 var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
-var header_bg = document.getElementById("header-bg");
 
 var nav_toggle = document.querySelector(".nav-toggle");
-nav_toggle.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
-}
-header_bg.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
-}
+var header_bg = document.getElementById("header-bg");
 
-window.onscroll = function() {
+
+function toggleNav() {
+  nav_toggle.classList.toggle("active");
+  header_nav.classList.toggle("active");
+  header_bg.classList.toggle("active");
+}
+nav_toggle.onclick = toggleNav;
+// header_bg.onclick = toggleNav;
+
+
+function toggleNavBg() {
   if (
     (document.body.scrollTop > 0) ||
     (document.documentElement.scrollTop > 0)
   ) { header.classList.add("filled"); }
   else { header.classList.remove("filled"); }
+}
+window.onscroll = function() {
+  window.requestAnimationFrame(toggleNavBg);
 };
 
 
@@ -50,20 +53,22 @@ logo_lg.onload = function() {
 }
 
 // cycle through taglines
-var taglines = intro.getElementsByClassName("tagline");
-var active_idx = 0;
-var active_tag = taglines[0];
-setTimeout(updateTag, 3000)
-
-function updateTag() {
-  active_tag.classList.remove("active");
-  active_idx = (active_idx + 1) % taglines.length;
-  active_tag = taglines[active_idx];
-  active_tag.classList.add("active");
-  setTimeout(function() {
-    updateTag();
-  }, 3000);
-}
+// var taglines = intro.getElementsByClassName("tagline");
+// var active_idx = 0;
+// var active_tag = taglines[0];
+// setTimeout(function() {
+//   window.requestAnimationFrame(updateTag);
+// }, 3000);
+//
+// function updateTag() {
+//   active_tag.classList.remove("active");
+//   active_idx = (active_idx + 1) % taglines.length;
+//   active_tag = taglines[active_idx];
+//   active_tag.classList.add("active");
+//   setTimeout(function() {
+//     window.requestAnimationFrame(updateTag);
+//   }, 3000);
+// }
 
 // add randomly generated elements to background
 var rand_span;  // placed in #intro
@@ -152,60 +157,71 @@ for (i=0; i<15; i++) {
   demo.insertAdjacentElement("beforeend", rand_span);
 }
 
-var figure = demo.querySelector("figure");
 
-function demoForwards() {
-  figure.classList.add("with-css");
-  setTimeout(function() {
-    figure.classList.add("with-js");
-    setTimeout(function() {
-      figure.classList.add("with-php");
-      setTimeout(function() {
-        figure.classList.add("with-sql");
-        setTimeout(function() {
-          figure.classList.add("with-host");
-          setTimeout(demoReverse, 5000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}
-function demoReverse() {
-  figure.classList.remove("with-host");
-  setTimeout(function() {
-    figure.classList.remove("with-sql");
-    setTimeout(function() {
-      figure.classList.remove("with-php");
-      setTimeout(function() {
-        figure.classList.remove("with-js");
-        setTimeout(function() {
-          figure.classList.remove("with-css");
-          setTimeout(demoForwards, 2000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}
+// var figure = demo.querySelector("figure");
+//
+// function toggleDemoCSS() { figure.classList.toggle("with-css"); }
+// function toggleDemoJS() { figure.classList.toggle("with-js"); }
+// function toggleDemoPHP() { figure.classList.toggle("with-php"); }
+// function toggleDemoSQL() { figure.classList.toggle("with-sql"); }
+// function toggleDemoHost() { figure.classList.toggle("with-host"); }
+//
+// function demoForwards() {
+//   window.requestAnimationFrame(toggleDemoCSS);
+//   setTimeout(function() {
+//     window.requestAnimationFrame(toggleDemoJS);
+//     setTimeout(function() {
+//       window.requestAnimationFrame(toggleDemoPHP);
+//       setTimeout(function() {
+//         window.requestAnimationFrame(toggleDemoSQL);
+//         setTimeout(function() {
+//           window.requestAnimationFrame(toggleDemoHost);
+//           setTimeout(function() {
+//             window.requestAnimationFrame(demoReverse);
+//           }, 5000);
+//         }, 1000);
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }
+// function demoReverse() {
+//   window.requestAnimationFrame(toggleDemoHost);
+//   setTimeout(function() {
+//     window.requestAnimationFrame(toggleDemoSQL);
+//     setTimeout(function() {
+//       window.requestAnimationFrame(toggleDemoPHP);
+//       setTimeout(function() {
+//         window.requestAnimationFrame(toggleDemoJS);
+//         setTimeout(function() {
+//           window.requestAnimationFrame(toggleDemoCSS);
+//           setTimeout(function() {
+//             window.requestAnimationFrame(demoForwards);
+//           }, 2000);
+//         }, 1000);
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }
 
-function figureInViewport(el) {
-  var top = el.offsetTop;
-  var height = el.offsetHeight;
-
-  while(el.offsetParent) {
-    el = el.offsetParent;
-    top += el.offsetTop;
-  }
-
-  return (
-    top >= window.pageYOffset &&
-    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
-  );
-}
-
-var firing_handler = function() {
-  if (figureInViewport(figure)) {
-    demoForwards();
-    window.removeEventListener('scroll', firing_handler, false);
-  }
-}
-window.addEventListener('scroll', firing_handler, false);
+// function figureInViewport(el) {
+//   var top = el.offsetTop;
+//   var height = el.offsetHeight;
+//
+//   while (el.offsetParent) {
+//     el = el.offsetParent;
+//     top += el.offsetTop;
+//   }
+//
+//   return (
+//     top >= window.pageYOffset &&
+//     (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
+//   );
+// }
+//
+// var firing_handler = function() {
+//   if (figureInViewport(figure)) {
+//     demoForwards();
+//     window.removeEventListener('scroll', firing_handler, false);
+//   }
+// }
+// window.addEventListener('scroll', firing_handler, false);
