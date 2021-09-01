@@ -54,12 +54,7 @@ a:hover { text-decoration: underline; }
   position: absolute;
   border-radius: 50%;
   background: var(--jonquil);
-  animation: 5s twinkle ease-in-out infinite;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 1; }
-  }
+}
 
 .square {
   position: absolute;

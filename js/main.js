@@ -67,15 +67,14 @@ function updateTag() {
 
 // add randomly generated elements to background
 var rand_span;  // placed in #intro
-var clone;      // placed in #loader and #header-bg
+var clone;      // placed in #header-bg
 
 // random properties
 var rand_x;
 var rand_y;
 var rand_size;
 var rand_rotation;
-// var rand_opacity;
-var rand_anim_delay;
+var rand_opacity;
 
 // random leaves
 for (i=0; i<30; i++) {
@@ -103,23 +102,19 @@ for (i=0; i<30; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("orb");
   // generate random attributes
-  rand_x = Math.floor(Math.random() * 100);          // 0 to 100 vw
-  rand_y = Math.floor(Math.random() * 100);          // 0 to 100 vh
-  rand_size = Math.floor(Math.random() * 2) + 1;     // 1 to 2 vmin
-  // rand_opacity = (Math.random() * 0.75) + 0.25;	     // 0.15 to 1
-  rand_anim_delay = Math.floor(Math.random() * -5);  // 0 to 5s
+  rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+  rand_size = Math.floor(Math.random() * 2) + 1;    // 1 to 2 vmin
+  rand_opacity = (Math.random() * 0.75) + 0.25;	    // 0.15 to 1
   // set CSS styles
   rand_span.style.left = rand_x + "vw";
   rand_span.style.top = rand_y + "vh";
   rand_span.style.width = rand_size + "vmin";
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.filter = "blur(" + (rand_size / 2) + "vmin)";
-  // rand_span.style.opacity = rand_opacity;
-  rand_span.style.animationDelay = rand_anim_delay + 's';
+  rand_span.style.opacity = rand_opacity;
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
-  clone = rand_span.cloneNode(true);
-  loader.insertAdjacentElement("beforeend", clone);
   clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }
