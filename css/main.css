@@ -11,10 +11,12 @@ html { box-sizing: border-box; }
 
 * {
   --electric-indigo: #6201ff;
-  /* --green-pigment: #08A045;
-  --green-pigment-shadow: #055927; */
-  --forest-green-traditional: #004a21;
-  --forest-green-traditional-shadow: #001f0d;
+  /* --green: #08A045;
+  --green-shadow: #055927; */
+  --green: #06632c;
+  --green-shadow: #033d1a;
+  /* --green: #004a21;
+  --green-shadow: #001f0d; */
   --red-pigment: #ff0022;
   --blue-jeans: #48acf0;
   --light-blue: #61b6f0;
@@ -29,7 +31,7 @@ a:hover { text-decoration: underline; }
 
 .leaf {
   position: absolute;
-  background: var(--forest-green-traditional-shadow);
+  background: var(--green-shadow);
   border-radius: 75% 10% 75% 0;
   opacity: 0.25;
 }
@@ -40,8 +42,9 @@ a:hover { text-decoration: underline; }
   left: 0; bottom: 0;
   height: 150%;
   width: 5%;
-  background: #040804;
+  /* background: #040804; */
   /* background: #076e30; */
+  background: #022e14;
   transform-origin: bottom left;
   transform: translateX(-75%) rotate(45deg) translateY(-15%);
   border-radius: 30% 30% 50% 50%;
@@ -74,7 +77,7 @@ body > * {
   left: 0; top: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--forest-green-traditional);
+  background: var(--green);
   color: white;
   letter-spacing: 1px;
   font-size: 24px;
@@ -101,8 +104,8 @@ header {
 }
 header.filled {
   padding: 15px 25px;
-  background: var(--forest-green-traditional);
-  box-shadow: 0 0 15px var(--forest-green-traditional-shadow);
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green-shadow);
 }
 
 header span {
@@ -265,7 +268,7 @@ header nav a:last-child {
   height: 105vh;
   padding-top: 78px;  /* height of header */
   padding-bottom: calc(5vh + 25px);
-  background: var(--forest-green-traditional);
+  background: var(--green);
   color: white;
   display: flex;
   flex-direction: column;
@@ -284,8 +287,8 @@ header nav a:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: max(1.5vmax, 15px) solid var(--forest-green-traditional-shadow);
-  background: var(--forest-green-traditional-shadow);
+  border: max(1.5vmax, 15px) solid var(--green-shadow);
+  background: var(--green-shadow);
 }
 #main-logo {
   width: 100vmax;
@@ -305,7 +308,7 @@ header nav a:last-child {
   height: 100vmax;
   border-radius: 50%;
   background: var(--blue-jeans);
-  box-shadow: 0 0 3vmax 1vmax var(--forest-green-traditional-shadow) inset;
+  box-shadow: 0 0 3vmax 1vmax var(--green-shadow) inset;
   opacity: 0.55;
 }
 
@@ -324,7 +327,7 @@ header nav a:last-child {
   transition: 1s opacity ease-in-out;
   font-size: 24px;
   font-family: 'Pacifico', cursive;
-  text-shadow: 2.5px 2.5px 2.5px var(--forest-green-traditional-shadow);
+  /* text-shadow: 2.5px 2.5px 2.5px var(--green-shadow); */
 }
 #intro .blurb span.active { opacity: 1; }
 
@@ -344,7 +347,7 @@ header nav a:last-child {
   font-weight: normal;
   font-family: 'Pacifico', cursive;
   margin-bottom: 10px;
-  text-shadow: 5px 5px 5px var(--forest-green-traditional-shadow);
+  /* text-shadow: 5px 5px 5px var(--green-shadow); */
 }
 #intro .details h2 { font-size: min(5vh, 32px); }
 
@@ -414,7 +417,7 @@ header nav a:last-child {
   right: -0.5vmin; bottom: -0.5vmin;
   padding: 0.5vmin 4.5vmin;
   border-radius: 1.5vmin 0 0 0;
-  background: var(--forest-green-traditional);
+  background: var(--green);
   color: white;
   opacity: 0;
 }
@@ -432,7 +435,7 @@ header nav a:last-child {
 
 /* with host functionality */
 #demo figure.with-host {
-  border-color: var(--forest-green-traditional);
+  border-color: var(--green);
 }
 #demo figure.with-host > .text { opacity: 1; }
 
@@ -683,7 +686,7 @@ header nav a:last-child {
 
 
 footer {
-  background: var(--forest-green-traditional);
+  background: var(--green);
   color: white;
   text-align: center;
   font-size: 12px;
