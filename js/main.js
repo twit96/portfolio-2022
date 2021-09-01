@@ -67,7 +67,7 @@ function updateTag() {
 
 // add randomly generated elements to background
 var rand_span;  // placed in #intro
-var clone;      // placed in #header-bg
+var clone;      // placed in #loader and #header-bg
 
 // random properties
 var rand_x;
@@ -77,11 +77,11 @@ var rand_rotation;
 var rand_opacity;
 
 // random leaves
-for (i=0; i<30; i++) {
+for (i=0; i<15; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("leaf");
   // generate random attributes
-  rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
+  rand_x = Math.floor(Math.random() * 60);          // 0 to 60 vw
   rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
   rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
   rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
@@ -115,6 +115,8 @@ for (i=0; i<30; i++) {
   rand_span.style.opacity = rand_opacity;
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
+  clone = rand_span.cloneNode(true);
+  loader.insertAdjacentElement("beforeend", clone);
   clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }
