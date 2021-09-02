@@ -472,7 +472,7 @@ header nav a:last-child {
   left: 50%; top: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
-  font-size: 6vmin;
+  font-size: 7vmin;
 }
 #demo figure .website .text {
   display: none;
@@ -532,7 +532,6 @@ header nav a:last-child {
   width: 15vmin;
 }
 
-#demo figure.with-php .website .title { font-size: 4vmin; }
 #demo figure.with-php .monitor {
   width: 45vmin;
   height: 30vmin;
@@ -544,6 +543,7 @@ header nav a:last-child {
   border-radius: 1vmin;
 }
 #demo figure.with-php .monitor::after { top: 5vmin; }
+#demo figure.with-php .monitor .title { font-size: 5vmin; }
 
 /* sql presets */
 #demo .database {
@@ -616,6 +616,7 @@ header nav a:last-child {
   50% { transform: translateY(-0.75vmin) rotate(0); }
   65%, 100% { transform: translateY(-0.75vmin) rotate(-45deg); }
 }
+#demo figure.with-sql .monitor .title { font-size: 4vmin; }
 
 #demo figure.with-sql .pipeline .pipe {
   height: 1.25vmin;
