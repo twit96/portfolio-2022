@@ -10,19 +10,19 @@ html { box-sizing: border-box; }
 }
 
 * {
-  --electric-indigo: #6201ff;
+  --indigo: #6201ff;
+  /* --green: #004a21;
+  --green-shadow: #001f0d; */
   /* --green: #08A045;
   --green-shadow: #055927; */
   --green: #06632c;
   --green-shadow: #033d1a;
-  /* --green: #004a21;
-  --green-shadow: #001f0d; */
-  --red-pigment: #ff0022;
-  --blue-jeans: #48acf0;
-  --light-blue: #61b6f0;
-  --roman-silver: #919098;
-  --light-grey: #f1f1f1;
-  --jonquil: #f0c808;
+  --red: #ff0022;
+  --blue: #48acf0;
+  --blue-light: #61b6f0;
+  --grey: #919098;
+  --grey-light: #f1f1f1;
+  --yellow: #f0c808;
 }
 
 a { text-decoration: none; }
@@ -53,13 +53,13 @@ a:hover { text-decoration: underline; }
 .orb {
   position: absolute;
   border-radius: 50%;
-  background: var(--jonquil);
+  background: var(--yellow);
 }
 
 .square {
   position: absolute;
   border-radius: 2vmin;
-  background: var(--electric-indigo);
+  background: var(--indigo);
   z-index: -1;
   opacity: 0.05;
 }
@@ -117,7 +117,7 @@ header span {
 header nav {
   position: fixed;
   top: 0; right: 0;
-  background: var(--blue-jeans);
+  background: var(--blue);
   border-radius: 0 0 0 50px;
   display: flex;
   flex-direction: column;
@@ -134,7 +134,7 @@ header nav::before {
   left: 0; top: 0;
   width: 100%;
   height: 78px;  /* height of header */
-  background: var(--light-blue);
+  background: var(--blue-light);
   transition: 0.25s height ease-out;
 }
 header.filled nav {
@@ -150,7 +150,7 @@ header nav::after {
   transform: translateX(-100%);
   width: 100px; height: 100px;
   border-radius: 50%;
-  box-shadow: 50px -50px 0 var(--light-blue);
+  box-shadow: 50px -50px 0 var(--blue-light);
   z-index: -1;
 }
 header nav.active { transform: translateX(0); }
@@ -161,7 +161,7 @@ header nav a {
   transition: 0.15s background ease-out;
 }
 header nav a:hover {
-  background: var(--light-blue);
+  background: var(--blue-light);
 }
 header nav a:last-child {
   border-radius: 0 0 0 50px;
@@ -179,12 +179,12 @@ header nav a:last-child {
   transition: 0.25s opacity ease-out;
 }
 #header-bg.active {
-  opacity: 0.95;
+  opacity: 1;
   transform: translateY(0);
 }
 /* make orbs (clones from intro generation) look like stars */
 #header-bg .orb {
-  background: var(--light-grey);
+  background: var(--grey-light);
   transform: scale(0.5);
 }
 
@@ -287,7 +287,7 @@ header nav a:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: max(1.5vmax, 15px) solid var(--green-shadow);
+  border: max(1.75vmax, 20px) solid var(--green-shadow);
   background: var(--green-shadow);
 }
 #main-logo {
@@ -307,7 +307,7 @@ header nav a:last-child {
   width: 100vmax;
   height: 100vmax;
   border-radius: 50%;
-  background: var(--blue-jeans);
+  background: var(--blue);
   box-shadow: 0 0 3vmax 1vmax var(--green-shadow) inset;
   opacity: 0.55;
 }
@@ -360,7 +360,7 @@ header nav a:last-child {
 }
 #intro .details img:hover {
   transform: scale(1.25);
-  filter: drop-shadow(0 0 5px var(--electric-indigo));
+  filter: drop-shadow(0 0 5px var(--indigo));
 }
 
 @media (min-width: 500px) and (min-height: 500px) {
@@ -445,7 +445,7 @@ header nav a:last-child {
 #demo figure .monitor {
   position: relative;
   background: #ffffffaa;
-  box-shadow: 0 0 1vmin var(--roman-silver);
+  box-shadow: 0 0 1vmin var(--grey);
   border-radius: 1vmin;
   width: 60vmin;
   height: 40vmin;
@@ -472,7 +472,7 @@ header nav a:last-child {
   position: absolute;
   width: 18vmin; height: 18vmin;
   filter: blur(12vmin);
-  background: var(--electric-indigo);
+  background: var(--indigo);
   opacity: 0;
   z-index: -1;
 }
@@ -493,8 +493,8 @@ header nav a:last-child {
 
 /* with css functionality */
 #demo figure.with-css .monitor {
-  box-shadow: 0 0 1vmin var(--blue-jeans);
-  background: var(--blue-jeans);
+  box-shadow: 0 0 1vmin var(--blue);
+  background: var(--blue);
   color: white;
 }
 #demo figure.with-css .monitor .title { font-family: 'Pacifico', cursive; }
@@ -502,7 +502,7 @@ header nav a:last-child {
 #demo figure.with-css .monitor .title::after {
   opacity: 1;
 }
-#demo figure.with-css .website .text { color: var(--blue-jeans); }
+#demo figure.with-css .website .text { color: var(--blue); }
 #demo figure.with-css .website .text:nth-of-type(2) { display: inline; }
 
 /* with-js functionality */
@@ -527,16 +527,16 @@ header nav a:last-child {
   margin: 0.75vmin 0;
   background-size: 300% 300%;
   background-image: linear-gradient(
-    to left, var(--red-pigment), var(--jonquil), var(--red-pigment)
+    to left, var(--red), var(--yellow), var(--red)
   );
-  box-shadow: 0 0 0.5vmin var(--red-pigment);
+  box-shadow: 0 0 0.5vmin var(--red);
   animation: 2s bg-shift linear infinite;
 }
 #demo .pipeline .pipe:nth-child(1) {
   animation-duration: 3s;
 }
 #demo figure .pipeline .text {
-  color: var(--red-pigment);
+  color: var(--red);
 }
 @keyframes bg-shift {
   0%, 100% { background-position: left; }
@@ -592,13 +592,13 @@ header nav a:last-child {
 #demo .database div .light:nth-child(2) { animation-delay: 0.125s; }
 @keyframes flash {
   0% { background: white; }
-  50%, 100% { background: var(--electric-indigo); }
+  50%, 100% { background: var(--indigo); }
 }
 #demo .database div .title {
   color: white;
   font-size: min(85%, 3vmin);
 }
-#demo .database .text { color: var(--electric-indigo); }
+#demo .database .text { color: var(--indigo); }
 
 /* with sql functionality */
 #demo figure.with-sql .database {
@@ -655,7 +655,7 @@ header nav a:last-child {
 
 #filler {
   position: relative;
-  background: var(--light-grey);
+  background: var(--grey-light);
 }
 #filler::before {
   content: '';
@@ -663,7 +663,7 @@ header nav a:last-child {
   left: 0; top: 0;
   width: 100%;
   height: 5vh;
-  background: var(--light-grey);
+  background: var(--grey-light);
   transform: translateY(-99%);
   clip-path: polygon(0 5vh, 100% 0, 100% 100%, 0 100%);
 }
@@ -678,7 +678,7 @@ header nav a:last-child {
 #filler a {
   padding: 20px;
   border-radius: 50px;
-  background: var(--blue-jeans);
+  background: var(--blue);
   color: white;
   font-weight: bold;
 }
