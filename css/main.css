@@ -466,7 +466,7 @@ header nav a:last-child {
 }
 #demo figure .monitor::before { top: 3vmin; }
 #demo figure .monitor::after { top: 6vmin; }
-#demo figure .monitor .title::before,
+/* #demo figure .monitor .title::before,
 #demo figure .monitor .title::after {
   content: '';
   position: absolute;
@@ -477,7 +477,7 @@ header nav a:last-child {
   z-index: -1;
 }
 #demo figure .monitor .title::before { left: 3vmin; bottom: 6vmin; }
-#demo figure .monitor .title::after { right: 3vmin; top: 6vmin; }
+#demo figure .monitor .title::after { right: 3vmin; top: 6vmin; } */
 
 #demo figure .monitor .title {
   position: absolute;
@@ -498,10 +498,10 @@ header nav a:last-child {
   color: white;
 }
 #demo figure.with-css .monitor .title { font-family: 'Pacifico', cursive; }
-#demo figure.with-css .monitor .title::before,
+/* #demo figure.with-css .monitor .title::before,
 #demo figure.with-css .monitor .title::after {
   opacity: 1;
-}
+} */
 #demo figure.with-css .website .text { color: var(--blue); }
 #demo figure.with-css .website .text:nth-of-type(2) { display: inline; }
 
@@ -553,13 +553,13 @@ header nav a:last-child {
   width: 45vmin;
   height: 30vmin;
 }
-#demo figure.with-php .monitor .title::before,
+/* #demo figure.with-php .monitor .title::before,
 #demo figure.with-php .monitor .title::after {
   width: 13.5vmin; height: 13.5vmin;
   filter: blur(9vmin);
 }
 #demo figure.with-php .monitor .title::before { bottom: 3vmin; }
-#demo figure.with-php .monitor .title::after { top: 3vmin; }
+#demo figure.with-php .monitor .title::after { top: 3vmin; } */
 #demo figure.with-php .monitor::before,
 #demo figure.with-php .monitor::after {
   width: 4.5vmin;
@@ -614,13 +614,13 @@ header nav a:last-child {
   width: 30vmin;
   height: 20vmin;
 }
-#demo figure.with-sql .monitor .title::before,
+/* #demo figure.with-sql .monitor .title::before,
 #demo figure.with-sql .monitor .title::after {
   width: 9vmin; height: 9vmin;
   filter: blur(6vmin);
 }
 #demo figure.with-sql .monitor .title::before { bottom: 1.5vmin; }
-#demo figure.with-sql .monitor .title::after { top: 1.5vmin; }
+#demo figure.with-sql .monitor .title::after { top: 1.5vmin; } */
 #demo figure.with-sql .monitor::before,
 #demo figure.with-sql .monitor::after {
   width: 3.25vmin;
