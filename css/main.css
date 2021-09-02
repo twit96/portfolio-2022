@@ -316,9 +316,10 @@ header nav a:last-child {
 #intro div { z-index: 1; /* ensure text appears above img */ }
 #intro .blurb p {
   position: relative;
-  margin: 10px 0;
+  margin-bottom: 10px;
   font-size: 16px;
   max-width: 70vw;
+  min-height: 2em;
 }
 #intro .blurb i { font-weight: bold; }
 #intro .blurb span {
@@ -512,7 +513,7 @@ header nav a:last-child {
   margin: 0.75vmin 0;
   background-size: 300% 300%;
   background-image: linear-gradient(
-    to left, var(--red), var(--yellow), var(--red)
+    to right, var(--red), var(--yellow), var(--red)
   );
   box-shadow: 0 0 0.5vmin var(--red);
   animation: 2s bg-shift linear infinite;
@@ -660,7 +661,7 @@ footer {
   background: var(--green);
   color: white;
   text-align: center;
-  font-size: 12px;
+  font-size: clamp(12px, 60%, 20px);
   padding: 10px;
 }
 
@@ -683,10 +684,9 @@ footer {
 
   #intro { padding-top: 135px;  /* height of header */ }
   #intro .blurb p {
-    margin: 25px 0;
+    margin-bottom: 25px;
     font-size: 28px;
     line-height: 36px;
-    max-width: 70vw;
   }
   #intro .blurb span { font-size: 36px; }
 
@@ -719,6 +719,7 @@ footer {
 
 
 @media (min-width: 1600px) and (min-height: 1050px) {
+  body { font-size: 30px; }
   body > * { padding: 75px; }
 
   header span { font-size: 32px; }
@@ -763,18 +764,15 @@ footer {
 
   #intro { padding-top: 187.5px;  /* height of header */ }
   #intro .blurb p {
-    margin: 50px 0;
+    margin-bottom: 50px;
     font-size: 36px;
     line-height: 48px;
-    max-width: 70vw;
   }
   #intro .blurb span { font-size: 48px; }
   #intro .details h1 {
     font-size: 110px;
   }
 
-
-  #filler { font-size: 24px; }
   #filler h2 {
     font-size: 36px;
     margin-bottom: 24px;
@@ -783,6 +781,5 @@ footer {
   footer {
     padding: 25px 75px;
     text-align: right;
-    font-size: 16px;
   }
 }
