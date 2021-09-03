@@ -380,7 +380,7 @@ header nav a:last-child {
 
 }
 #demo .blurb { margin-bottom: 50px; }
-@media (min-aspect-ratio: 4/3) and (min-height: 350px) {
+@media (min-aspect-ratio: 4/3) {
   #demo {
     flex-direction: row-reverse;
     justify-content: space-between;
