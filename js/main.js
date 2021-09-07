@@ -104,8 +104,8 @@ for (i=0; i<30; i++) {
   // generate random attributes
   rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
   rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-  rand_size = Math.floor(Math.random() * 2) + 1;    // 1 to 2 vmin
-  rand_opacity = (Math.random() * 0.75) + 0.25;	    // 0.15 to 1
+  rand_size = (Math.random() * 0.75) + 0.25;        // 0.25 to 1 vmin
+  rand_opacity = (Math.random() * 0.75) + 0.25;	    // 0.25 to 1
   // set CSS styles
   rand_span.style.left = rand_x + "vw";
   rand_span.style.top = rand_y + "vh";

@@ -24,6 +24,8 @@ html { box-sizing: border-box; }
   --grey: #919098;
   --grey-light: #dedede;
   --yellow: #f0c808;
+
+  --main-padding: 25px;
 }
 
 a { text-decoration: none; }
@@ -69,9 +71,7 @@ body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 175%;
 }
-body > * {
-  padding: 25px;
-}
+body > * { padding: var(--main-padding); }
 
 #loader {
   position: fixed;
@@ -81,7 +81,6 @@ body > * {
   background: var(--green);
   color: white;
   letter-spacing: 1px;
-  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -553,7 +552,6 @@ header nav a:last-child {
 }
 #demo .database div {
   background: black;
-  box-shadow: 0 0 0.5vmin black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -662,13 +660,17 @@ footer {
   color: white;
   text-align: center;
   font-size: clamp(12px, 60%, 20px);
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 
 @media (min-width: 750px) and (min-height: 850px) {
+  * {
+    --main-padding: 50px;
+  }
+
   body { font-size: 20px; }
-  body > * { padding: 50px; }
   h2 {
     font-size: 32px;
     margin-bottom: 15px;
@@ -719,8 +721,11 @@ footer {
 
 
 @media (min-width: 1600px) and (min-height: 1050px) {
+  * {
+    --main-padding: 75px;
+  }
+
   body { font-size: 30px; }
-  body > * { padding: 75px; }
 
   header span { font-size: 32px; }
   header nav { padding-top: 187.5px;  /* height of header */ }
