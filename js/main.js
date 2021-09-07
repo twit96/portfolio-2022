@@ -121,6 +121,19 @@ for (i=0; i<30; i++) {
   header_bg.insertAdjacentElement("beforeend", clone);
 }
 
+// scroll down indicator visibility
+var scroll_indicator = document.querySelector('.scroll-down-indicator');
+var scroll_indicator_handler = function() {
+  if (
+    (document.body.scrollTop > 100) ||
+    (document.documentElement.scrollTop > 100)
+  ) {
+    scroll_indicator.classList.add('hidden');
+    window.removeEventListener('scroll', scroll_indicator_handler, false);
+  }
+}
+window.addEventListener('scroll', scroll_indicator_handler, false);
+
 
 // Demo Functionality ---------------------------------------------------------
 var demo = document.getElementById("demo");
@@ -204,10 +217,10 @@ function figureInViewport(el) {
   );
 }
 
-var firing_handler = function() {
+var demo_handler = function() {
   if (figureInViewport(figure)) {
     demoForwards();
-    window.removeEventListener('scroll', firing_handler, false);
+    window.removeEventListener('scroll', demo_handler, false);
   }
 }
-window.addEventListener('scroll', firing_handler, false);
+window.addEventListener('scroll', demo_handler, false);
