@@ -1,3 +1,5 @@
+/* ---------------------------------------------------------- Custom Presets */
+
 /* natural box layout model, allowing overrides */
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
@@ -28,9 +30,26 @@ html { box-sizing: border-box; }
   --main-padding: 25px;
 }
 
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  line-height: 175%;
+}
+body > * { padding: var(--main-padding); }
+
 a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+
+/* ---------------------------------------------------------- Custom Classes */
+.bubble-text {
+  white-space: nowrap;
+  border-radius: 30px;
+  padding: 0.125em 0.5em;
+  font-size: 0.65em;
+  font-weight: bold;
+  background: var(--grey);
+  color: white;
+}
 
 .leaf {
   position: absolute;
@@ -67,12 +86,8 @@ a:hover { text-decoration: underline; }
   opacity: 0.05;
 }
 
-body {
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  line-height: 175%;
-}
-body > * { padding: var(--main-padding); }
 
+/* ------------------------------------------------------------------ Loader */
 #loader {
   position: fixed;
   left: 0; top: 0;
@@ -89,6 +104,7 @@ body > * { padding: var(--main-padding); }
 }
 #loader .leaf, #loader .orb { z-index: -1; }
 
+/* ------------------------------------------------------------------ Header */
 header {
   position: fixed;
   left: 0; top: 0;
@@ -108,12 +124,16 @@ header.filled {
   box-shadow: 0 0 15px var(--green-shadow);
 }
 
+
+/* Header Logo */
 header span {
   font-size: 24px;
   font-family: 'Pacifico', cursive;
   z-index: 103;
 }
 
+
+/* Header Nav */
 header nav {
   position: fixed;
   top: 0; right: 0;
@@ -167,6 +187,8 @@ header nav a:last-child {
   border-radius: 0 0 0 50px;
 }
 
+
+/* Header Background */
 #header-bg {
   position: fixed;
   left: 0; top: 0;
@@ -188,6 +210,8 @@ header nav a:last-child {
   transform: scale(0.5);
 }
 
+
+/* Hamburger Menu */
 .nav-toggle {
   position: relative;
   cursor: pointer;
@@ -263,6 +287,7 @@ header nav a:last-child {
 }
 
 
+/* ----------------------------------------------------------- Intro Section */
 #intro {
   position: relative;
   height: 105vh;
@@ -276,6 +301,7 @@ header nav a:last-child {
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
 }
+
 
 #main-logo-wrap {
   position: absolute;
@@ -311,6 +337,7 @@ header nav a:last-child {
   box-shadow: 0 0 3vmax 1vmax var(--green-shadow) inset;
   opacity: 0.55;
 }
+
 
 #intro div { z-index: 1; /* ensure text appears above img */ }
 #intro .blurb p {
@@ -447,6 +474,8 @@ header nav a:last-child {
   }
 }
 
+
+/* ------------------------------------------------------------ Demo Section */
 #demo {
   position: relative;
   display: flex;
@@ -456,7 +485,15 @@ header nav a:last-child {
   padding-bottom: calc(10vh + 15px);
 
 }
-#demo .blurb { margin-bottom: 50px; }
+#demo .blurb {
+  margin-bottom: 50px;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+#demo .blurb p {
+  margin-bottom: 1em;
+}
+
 @media (min-aspect-ratio: 4/3) {
   #demo {
     flex-direction: row-reverse;
@@ -471,13 +508,16 @@ header nav a:last-child {
   #demo figure { align-self: center; }
 }
 
+
+/* --------------------------------------------------- Demo Figure Animation */
 /* figure presets */
 #demo figure {
   position: relative;
   align-self: center;
   border: 1vmin solid transparent;
   padding: 3vmin 6vmin 9vmin 6vmin;
-  height: 52vmin;  /* 40vmin .monitor + 3vmin padding-top + 9vmin padding-bottom  */
+  /* height = 40vmin .monitor + 3vmin padding-top + 9vmin padding-bottom  */
+  height: 52vmin;
   border-radius: 1.5vmin;
   display: flex;
   justify-content: center;
@@ -702,11 +742,12 @@ header nav a:last-child {
 }
 
 
-#filler {
+/* ---------------------------------------------------------- Skills Section */
+#skills {
   position: relative;
   background: var(--grey-light);
 }
-#filler::before {
+#skills::before {
   content: '';
   position: absolute;
   left: 0; top: 1px;
@@ -716,14 +757,103 @@ header nav a:last-child {
   transform: translateY(-100%);
   clip-path: polygon(0 5vh, 100% 0, 100% 100%, 0 100%);
 }
-#filler h2 { margin-bottom: 15px; }
+#skills::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 1px;
+  width: 100%;
+  height: 5vh;
+  background: var(--grey-light);
+  transform: translateY(100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+}
+
+#skills h2 { margin-bottom: 15px; }
+
+#skills .flex {
+  display: flex;
+  flex-direction: column;
+}
+#skills .flex article { width: 100%; }
+@media (min-aspect-ratio: 4/3) {
+  #skills .flex { flex-direction: row; }
+  #skills .flex article:nth-of-type(2) {
+    padding-left: var(--main-padding);
+    text-align: right;
+  }
+}
+
+#skills article > .bubble-text { font-size: 100%; }
+
+.skill-box {
+  border-bottom: 1px solid var(--grey);
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0;
+}
+.skill-box:first-of-type { border-top: 1px solid var(--grey); }
+
+.skill-box .details {
+  width: 35%;
+  text-align: left;
+  line-height: 100%;
+}
+.skill-box .details b {
+  display: block;
+  font-size: 95%;
+}
+.skill-box .details span {
+  border-radius: 30px;
+  padding: 0.125em 0;
+  font-size: 0.75em;
+}
+
+.skill-box .slide-container {
+  width: 65%;
+}
+.skill-box .slider {
+  position: relative;
+  border: min(1vmin, 5px) solid var(--green);
+  width: 100%;
+  height: 1em;
+  border-radius: 30px;
+}
+.skill-box .slider .fill {
+  /* defaults for custom properties - overriden in HTML */
+  --fill-percent: 0%;
+  --i: 0;
+  /* position in slider */
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: max(-1vmin, -5px);
+  transform: translateY(-50%);
+  /* style */
+  height: 1em;
+  width: var(--fill-percent);
+  border-radius: 15px;
+  /* animated background gradient */
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    to right, var(--yellow), var(--green), var(--green-shadow)
+  );
+  animation: 6s bg-shift linear infinite;
+  animation-delay: calc(-1s * var(--i));
+}
+
+
+/* ---------------------------------------------------------- Filler Section */
+#filler {
+  background: var(--green);
+  color: white;
+  padding-top: calc(5vh + 15px);
+}
+#filler h2 { margin: 15px 0; }
 #filler p {
   width: 100%;
   margin-bottom: 50px;
 }
-#filler p:nth-of-type(2) {
-  text-align: center;
-}
+#filler p:nth-of-type(2) { text-align: center; }
 #filler a {
   padding: 20px;
   border-radius: 50px;
@@ -733,6 +863,7 @@ header nav a:last-child {
 }
 
 
+/* ------------------------------------------------------------------ Footer */
 footer {
   background: var(--green);
   color: white;
@@ -743,10 +874,9 @@ footer {
 }
 
 
+/* ------------------------------------------------ Medium Screen Breakpoint */
 @media (min-width: 750px) and (min-height: 850px) {
-  * {
-    --main-padding: 50px;
-  }
+  * { --main-padding: 50px; }
 
   body { font-size: 20px; }
   h2 {
@@ -782,13 +912,12 @@ footer {
     transition: 0.25s transform ease-in-out;
   }
 
-  #filler p {
+  #skills p {
     width: 100%;
     margin-bottom: 50px;
   }
-  #filler p:nth-of-type(2) {
-    text-align: left;
-  }
+
+  #filler p:nth-of-type(2) { text-align: left; }
 
   footer {
     padding: 15px 50px;
@@ -797,11 +926,9 @@ footer {
 }
 
 
-
+/* ------------------------------------------------- Large Screen Breakpoint */
 @media (min-width: 1600px) and (min-height: 1050px) {
-  * {
-    --main-padding: 75px;
-  }
+  * { --main-padding: 75px; }
 
   body { font-size: 30px; }
 
@@ -856,10 +983,12 @@ footer {
     font-size: 110px;
   }
 
-  #filler h2 {
+  #skills h2 {
     font-size: 36px;
     margin-bottom: 24px;
   }
+
+  #filler p:nth-of-type(2) { text-align: left; }
 
   footer {
     padding: 25px 75px;
