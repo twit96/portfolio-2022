@@ -371,11 +371,13 @@ header nav a:last-child {
 
 
 .scroll-down-indicator {
-  position: absolute;
-  bottom: calc(var(--main-padding) + 5vh);
+  position: fixed;
+  left: var(--main-padding);
+  bottom: var(--main-padding);
   width: 20px;
   height: 30px;
   border: 2.5px solid var(--green-shadow);
+  background: var(--green);
   border-radius: 5px;
   z-index: 1;
   opacity: 0;
