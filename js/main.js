@@ -139,7 +139,6 @@ window.addEventListener('scroll', scroll_indicator_handler, false);
 var demo = document.getElementById("demo");
 
 // add randomly generated elements to background
-var rand_span;  // placed in #intro
 
 // random properties
 var rand_x;
