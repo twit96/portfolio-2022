@@ -433,42 +433,45 @@ header nav a:last-child {
 }
 @keyframes scroll-down-indicator {
   0% {
-    bottom: 2.5px;
+    transform: translateX(-50%);
     opacity: 0;
   }
   25% {
-    bottom: 2.5px;
+    transform: translateX(-50%);
     opacity: 1;
   }
   50%, 75% {
-    bottom: 17.5px;
+    transform: translateX(-50%) translateY(-15px);
     opacity: 1;
   }
   100% {
-    bottom: 17.5px;
+    transform: translateX(-50%) translateY(-15px);
     opacity: 0;
   }
 }
+
+/* indicator - landscape orientation */
 @media (min-aspect-ratio: 1/1) {
   .scroll-down-indicator {
     width: 30px;
     height: 20px;
   }
+  .scroll-down-indicator::after { bottom: 1.5px; }
   @keyframes scroll-down-indicator {
     0% {
-      bottom: 1.5px;
+      transform: translateX(-50%);
       opacity: 0;
     }
     25% {
-      bottom: 1.5px;
+      transform: translateX(-50%);
       opacity: 1;
     }
     50%, 75% {
-      bottom: 9px;
+      transform: translateX(-50%) translateY(-7px);
       opacity: 1;
     }
     100% {
-      bottom: 9px;
+      transform: translateX(-50%) translateY(-7px);
       opacity: 0;
     }
   }
