@@ -800,15 +800,14 @@ header nav a:last-child {
   width: 35%;
   text-align: left;
   line-height: 100%;
-  color: var(--indigo-shadow);
 }
 .skill-box .details b {
-  display: block;
   font-size: 95%;
 }
 .skill-box .details span {
+  display: block;
   border-radius: 30px;
-  padding: 0.125em 0;
+  padding: 0.125em 0.5em;
   font-size: 0.75em;
 }
 
