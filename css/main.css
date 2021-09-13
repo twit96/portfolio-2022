@@ -901,6 +901,7 @@ header nav a:last-child {
   align-items: stretch;
   overflow-x: auto;
   padding: 1em 0 1.5em 1em;
+  margin-bottom: 1em;
   scroll-snap-type: x mandatory;
 }
 .card-container::-webkit-scrollbar {
