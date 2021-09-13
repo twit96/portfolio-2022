@@ -490,14 +490,12 @@ header nav a:last-child {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding-top: calc(5vh + var(--main-padding));
-  padding-bottom: calc(10vh + var(--main-padding));
+  padding-bottom: calc(5vh + var(--main-padding));
 
 }
 #demo .blurb {
-  margin-bottom: 50px;
+  margin-bottom: var(--main-padding);
   width: 100%;
-  /* border: 1px solid red; */
 }
 #demo .blurb p {
   margin-bottom: 1em;
@@ -523,7 +521,7 @@ header nav a:last-child {
 #demo figure {
   position: relative;
   align-self: center;
-  border: 1vmin solid transparent;
+  border: max(1vmin, 5px) solid transparent;
   padding: 3vmin 6vmin 9vmin 6vmin;
   /* height = 40vmin .monitor + 3vmin padding-top + 9vmin padding-bottom  */
   height: 52vmin;
@@ -786,7 +784,7 @@ header nav a:last-child {
 #skills .flex article { width: 100%; }
 #skills .flex article:first-child {
   margin-bottom: 15px;
-  border-width: 1vmin 0;
+  border-width: max(1vmin, 5px) 0;
   border-color: var(--green);
   border-style: solid;
   padding: 1em 0;
@@ -856,7 +854,7 @@ header nav a:last-child {
   #skills .flex { flex-direction: row-reverse; }
   #skills .flex article:first-child {
     text-align: center;
-    border: 1vmin solid var(--green);
+    border: max(1vmin, 5px) solid var(--green);
     border-radius: 1.5vmin;
     padding: 1em;
   }
