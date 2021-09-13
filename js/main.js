@@ -223,3 +223,26 @@ var demo_handler = function() {
   }
 }
 window.addEventListener('scroll', demo_handler, false);
+
+
+// Projects Section -----------------------------------------------------------
+var projects = document.getElementById("projects");
+
+// random circles
+for (i=0; i<20; i++) {
+  rand_span = document.createElement("span");
+  rand_span.classList.add("circle");
+  // generate random attributes
+  rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
+  rand_y = Math.floor(Math.random() * 85) - 15;      // 7.5 to 92.5 vh
+  rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
+  rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
+  // set CSS styles
+  rand_span.style.left = rand_x + "%";
+  rand_span.style.top = rand_y + "%";
+  rand_span.style.width = rand_size + "vmin";
+  rand_span.style.height = rand_size + "vmin";
+  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+  // place on page
+  projects.insertAdjacentElement("beforeend", rand_span);
+}
