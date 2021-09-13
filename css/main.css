@@ -490,7 +490,8 @@ header nav a:last-child {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding-bottom: calc(10vh + 15px);
+  padding-top: calc(5vh + var(--main-padding));
+  padding-bottom: calc(10vh + var(--main-padding));
 
 }
 #demo .blurb {
@@ -855,7 +856,7 @@ header nav a:last-child {
   #skills .flex { flex-direction: row-reverse; }
   #skills .flex article:first-child {
     text-align: center;
-    border: 5px solid var(--green);
+    border: 1vmin solid var(--green);
     border-radius: 1.5vmin;
     padding: 1em;
   }
@@ -871,8 +872,8 @@ header nav a:last-child {
 
 #projects {
   position: relative;
-  padding-top: calc(10vh + 15px);
-  padding-bottom: calc(10vh + 15px);
+  padding-top: calc(5vh + var(--main-padding));
+  padding-bottom: calc(5vh + var(--main-padding));
   padding-right: 0;
   overflow: hidden;
 
@@ -884,7 +885,7 @@ header nav a:last-child {
   background: var(--green);
   color: white;
   border: 5px solid var(--green-shadow);
-  border-radius: 1vmin;
+  border-radius: 5px;
   align-self: stretch;
   display: flex;
   justify-content: center;
@@ -899,7 +900,7 @@ header nav a:last-child {
   display: flex;
   align-items: stretch;
   overflow-x: auto;
-  padding: 0 0 2em 1em;
+  padding: 1em 0 1.5em 0;
   scroll-snap-type: x mandatory;
 }
 .card-container::-webkit-scrollbar {
@@ -916,40 +917,24 @@ header nav a:last-child {
 .card-container::-webkit-scrollbar-track {
   background: var(--grey);
   border-radius: 15px;
-  margin: 0 calc(var(--main-padding) + 2em) 0 2em;
+  margin: 0 var(--main-padding);
 }
 
 #projects .card {
   min-width: min(90%, 400px);
-  border: 5px solid var(--grey);
+  border-color: var(--grey-shadow);
   background: var(--grey-light);
-  border-radius: 1.5vmin;
-  padding: 0;
+  border-style: solid;
+  border-width: 10px 5px;
   display: flex;
   flex-direction: column;
-  margin-right: 1em;
-  transition: 0.25s;
-  transform: translateY(0.5em);
   overflow: hidden;
   scroll-snap-align: center;
 }
-#projects .card:hover { transform: translateY(0); }
-
-@media (min-width: 1200px) {
-  #projects {
-    padding-right: var(--main-padding);
-  }
-  .card-container {
-    overflow: visible;
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 0 0 0 1em;
-  }
-  #projects .card {
-    margin: 0;
-    transform: none;
-  }
+#projects .card:last-child {
+  margin-right: var(--main-padding);
+  border-right-width: 10px;
+  border-radius: 0 5px 5px 0;
 }
 
 #projects .card img {
