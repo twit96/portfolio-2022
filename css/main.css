@@ -490,21 +490,19 @@ header nav a:last-child {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding-bottom: calc(5vh + var(--main-padding));
+  padding-bottom: calc(10vh + var(--main-padding));
 
 }
 #demo .blurb {
   margin-bottom: var(--main-padding);
   width: 100%;
 }
-#demo .blurb p {
-  margin-bottom: 1em;
-}
 
 @media (min-aspect-ratio: 4/3) {
   #demo {
     flex-direction: row-reverse;
     justify-content: space-between;
+    padding-bottom: calc(5vh + var(--main-padding));
   }
   #demo .blurb {
     text-align: right;
