@@ -900,7 +900,7 @@ header nav a:last-child {
   display: flex;
   align-items: stretch;
   overflow-x: auto;
-  padding: 1em 0 1.5em 0;
+  padding: 1em 0 1.5em 1em;
   scroll-snap-type: x mandatory;
 }
 .card-container::-webkit-scrollbar {
@@ -922,19 +922,19 @@ header nav a:last-child {
 
 #projects .card {
   min-width: min(90%, 400px);
-  border-color: var(--grey-shadow);
+  border-color: var(--grey);
   background: var(--grey-light);
   border-style: solid;
-  border-width: 10px 5px;
+  border-width: max(1vmin, 5px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   scroll-snap-align: center;
+  margin-right: 1em;
+  border-radius: 1vmin;
 }
 #projects .card:last-child {
   margin-right: var(--main-padding);
-  border-right-width: 10px;
-  border-radius: 0 5px 5px 0;
 }
 
 #projects .card img {
