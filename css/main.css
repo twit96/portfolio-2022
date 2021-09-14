@@ -99,6 +99,12 @@ a:hover { text-decoration: underline; }
   align-items: center;
   font-weight: bold;
   color: var(--green-shadow);
+  /* prevent random text selection onclick */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .btn-text .icon {
   position: relative;
