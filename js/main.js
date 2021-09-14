@@ -205,12 +205,18 @@ function playPauseDemo() {
   play_btn.classList.toggle("play");
   play_btn.classList.toggle("pause");
 
+  // play
   if (paused) {
     paused = false;
     play_btn_text.innerHTML = "Pause";
     stop_btn.classList.remove("disabled");
     updateDemo();
 
+  // stop if at stopping point
+  } else if (demo_idx == 5) {
+    stopDemo();
+
+  // pause if not at stopping point
   } else {
     paused = true;
     play_btn_text.innerHTML = "Play"
