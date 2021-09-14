@@ -166,41 +166,76 @@ for (i=0; i<15; i++) {
   demo.insertAdjacentElement("beforeend", rand_span);
 }
 
+
+// Demo Figure Playable Animation
 var figure = demo.querySelector("figure");
+var controls = document.getElementById("demo-controls");
+var play_btn = controls.querySelector(".play");
+var play_btn_text = controls.querySelector(".text");
+var stop_btn = controls.querySelector(".stop");
 
-function demoForwards() {
-  figure.classList.add("with-css");
-  setTimeout(function() {
-    figure.classList.add("with-js");
-    setTimeout(function() {
-      figure.classList.add("with-php");
-      setTimeout(function() {
-        figure.classList.add("with-sql");
-        setTimeout(function() {
-          figure.classList.add("with-host");
-          setTimeout(demoReverse, 5000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}
-function demoReverse() {
-  figure.classList.remove("with-host");
-  setTimeout(function() {
-    figure.classList.remove("with-sql");
-    setTimeout(function() {
-      figure.classList.remove("with-php");
-      setTimeout(function() {
-        figure.classList.remove("with-js");
-        setTimeout(function() {
-          figure.classList.remove("with-css");
-          setTimeout(demoForwards, 2000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
-  }, 1000);
+var demo_idx = 0;
+var css_classes = [
+  "with-css", "with-js", "with-php", "with-sql", "with-host",  // forwards
+  "with-host", "with-sql", "with-php", "with-js", "with-css"   // reverse
+];
+var timeouts = [
+  2000, 1000, 1000, 1000, 1000,  // forwards
+  5000, 1000, 1000, 1000, 1000   // reverse
+];
+
+var paused = true;
+var timer;
+
+function  updateDemo() {
+  if (timer) clearInterval(timer);
+  (demo_idx <= 4) ? updateFigure("add") : updateFigure("remove");  // figure
+  demo_idx = (demo_idx + 1) % css_classes.length;  // index
+  // next step
+  timer = setInterval(function() {
+    if (!paused) updateDemo();
+  }, timeouts[demo_idx]);
 }
 
+function updateFigure(method="add") {
+  figure.classList[method](css_classes[demo_idx]);
+}
+
+function playPauseDemo() {
+  play_btn.classList.toggle("play");
+  play_btn.classList.toggle("pause");
+
+  if (paused) {
+    paused = false;
+    play_btn_text.innerHTML = "Pause";
+    stop_btn.classList.remove("disabled");
+    updateDemo();
+
+  } else {
+    paused = true;
+    play_btn_text.innerHTML = "Play"
+  }
+}
+play_btn.onclick = playPauseDemo;
+
+function stopDemo() {
+  if (!(paused && demo_idx == 5)) {
+    stop_btn.classList.add("disabled");
+    for (i=0; i<css_classes.length; i++) {
+      figure.classList.add(css_classes[i]);
+    }
+    paused = true;
+    demo_idx = 5;
+    play_btn_text.innerHTML = "Play"
+    play_btn.classList.add("play");
+    play_btn.classList.remove("pause");
+
+  }
+}
+stop_btn.onclick = stopDemo;
+
+
+// trigger animation when element enters window
 function figureInViewport(el) {
   var top = el.offsetTop;
   var height = el.offsetHeight;
@@ -218,7 +253,7 @@ function figureInViewport(el) {
 
 var demo_handler = function() {
   if (figureInViewport(figure)) {
-    demoForwards();
+    playPauseDemo();
     window.removeEventListener('scroll', demo_handler, false);
   }
 }

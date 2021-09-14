@@ -145,7 +145,8 @@ a:hover { text-decoration: underline; }
 .btn-text.pause:hover .icon::after { background: var(--blue-shadow); }
 
 /* stop button */
-.btn-text.stop { cursor: pointer; }
+.btn-text.stop:not(.disabled) { cursor: pointer; }
+.btn-text.stop.disabled { opacity: 0.5; }
 .btn-text.stop .icon::before {
   content: '';
   position: absolute;
@@ -153,9 +154,9 @@ a:hover { text-decoration: underline; }
   border-radius: 2px;
   background: var(--green-shadow);
 }
-.btn-text.stop:hover { color: var(--blue-shadow); }
-.btn-text.stop:hover .icon { border-color: var(--blue-shadow); }
-.btn-text.stop:hover .icon::before { background: var(--blue-shadow); }
+.btn-text.stop:not(.disabled):hover { color: var(--blue-shadow); }
+.btn-text.stop:not(.disabled):hover .icon { border-color: var(--blue-shadow); }
+.btn-text.stop:not(.disabled):hover .icon::before { background: var(--blue-shadow); }
 
 /* calendar button */
 .btn-text.date {
