@@ -219,7 +219,7 @@ function playPauseDemo() {
 play_btn.onclick = playPauseDemo;
 
 function stopDemo() {
-  if (!(paused && demo_idx == 5)) {
+  if (!stop_btn.classList.contains("disabled")) {
     stop_btn.classList.add("disabled");
     for (i=0; i<css_classes.length; i++) {
       figure.classList.add(css_classes[i]);
