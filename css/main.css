@@ -176,8 +176,8 @@ a:hover { text-decoration: underline; }
 .btn-text.date .icon::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 5px;
+  top: 0; left: -1px; right: -1px;
+  height: 5px;
   border-bottom: 3px solid var(--green-shadow);
 }
 
@@ -609,6 +609,9 @@ header nav a:last-child {
   position: relative;
   overflow: hidden;
   padding-bottom: calc(10vh + var(--main-padding));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #demo .wrapper {
   display: flex;
@@ -623,14 +626,14 @@ header nav a:last-child {
 #demo-controls {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
   justify-content: center;
 }
-#demo-controls > * { margin: 0 0.5em; }
+#demo-controls > * { margin: 5px; }
 
 
 @media (min-aspect-ratio: 4/3) {
   #demo {
+    align-items: stretch;
     padding-bottom: calc(5vh + var(--main-padding));
   }
   #demo .wrapper {
@@ -643,8 +646,11 @@ header nav a:last-child {
     margin-bottom: 0;
     max-width: 40vw;
   }
-  #demo-controls { justify-content: flex-end; }
-  #demo-controls > * { margin: 0 0 0 1em; }
+  #demo-controls {
+    margin-top: 0;
+    align-self: flex-end;
+
+  }
   #demo figure { align-self: center; }
 }
 
@@ -1015,13 +1021,14 @@ header nav a:last-child {
 #projects .heading-card {
   background: var(--green);
   color: white;
-  border: 5px solid var(--green-shadow);
   border-radius: 5px;
   align-self: stretch;
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 3em;
+  box-shadow: 0 0 0.5vmin var(--green-shadow);
+  z-index: 1;
 }
 #projects .heading-card h2 {
   transform: rotate(-90deg);
@@ -1068,6 +1075,28 @@ header nav a:last-child {
 #projects .card:last-child {
   margin-right: var(--main-padding);
 }
+#projects .card.link {
+  cursor: pointer;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+  color: white;
+  /* override .card class */
+  min-width: fit-content;
+  border: 0;
+  border-radius: 15px;
+  /* animated background */
+  background-image: linear-gradient(
+    30deg, var(--indigo), var(--blue), var(--indigo)
+    );
+  background-size: 300% 300%;
+  animation: 6s bg-shift ease-in-out infinite;
+  /* hover animation */
+  transform: scale(0.95);
+  transition: 0.25s transform;
+}
+#projects .card.link:hover { transform: none; }
 
 #projects .card img {
   width: 100%;
@@ -1098,11 +1127,13 @@ header nav a:last-child {
 #filler h2 { margin: 15px 0; }
 #filler p {
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 #filler p:nth-of-type(2) { text-align: center; }
 #filler a {
+  display: inline-block;
   padding: 20px;
+  padding: 15px 20px;
   border-radius: 50px;
   background: var(--blue);
   color: white;
