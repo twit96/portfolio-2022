@@ -186,7 +186,6 @@
 					<span class="bubble-text">Apache</span>
 					<span class="bubble-text">Atom</span>
 					<span class="bubble-text">Jupyter</span>
-					<br /><br />
 					<h3>Asset Development</h3>
 					<span class="bubble-text">Tiled</span>
 					<span class="bubble-text">Aseprite</span>

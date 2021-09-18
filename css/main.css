@@ -922,12 +922,12 @@ header nav a:last-child {
 }
 #skills .flex article { width: 100%; }
 #skills .flex article:first-child {
-  margin-bottom: 15px;
   border-width: max(1vmin, 5px) 0;
   border-color: var(--green);
   border-style: solid;
   padding: 1em 0;
 }
+#skills .flex article:last-child h3 { margin-top: var(--main-padding); }
 
 #skills article > .bubble-text { font-size: 100%; }
 
