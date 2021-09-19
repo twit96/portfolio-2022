@@ -9,7 +9,7 @@ ini_set("display_errors", "on");
 function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <section id="featured">
+  <section id="projects">
     <div class="heading-card">
       <h2>Featured</h2>
     </div>
@@ -55,6 +55,9 @@ function displayFeatured($mysqli) {
 
   // Closing HTML
   echo <<<BOTTOM
+      <a class="card link" href="/projects/">
+        <span>View All <br />Projects</span>
+      </a>
     </div>
   </section>
 
