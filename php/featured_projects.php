@@ -55,7 +55,7 @@ function doEngine() {
   $mysqli->select_db($dbName) or die($mysqli->error);
 
   // Display Featured
-  displayFeatured($mysqli, $username, $curr_article);
+  displayFeatured();
 }
 
 
