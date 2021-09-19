@@ -45,9 +45,9 @@ function displayFeatured($mysqli) {
     echo '      <span class="icon"></span>';
     echo '      <span>'.$row['date'].'</span>';
     echo '    </div>';
-    echo '    <a class="btn-text link" href="'.$row['primary-link'].'">';
+    echo '    <a class="btn-text link" href="'.$row['primary_link'].'">';
     echo '      <span class="icon"></span>';
-    echo '      '.$row['primary-link-text'].'';
+    echo '      '.$row['primary_link_text'];
     echo '    </a>';
     echo '  </div>';
     echo '</div>';
