@@ -9,31 +9,43 @@ ini_set("display_errors", "on");
 function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
-      <section id="featured">
-        <div class="heading-card">
-          <h2>Featured</h2>
-        </div>
-        <div class="card-container">
+  <section id="featured">
+    <div class="heading-card">
+      <h2>Featured</h2>
+    </div>
+    <div class="card-container">
   TOP;
 
 
-    // update iq_journeys database
-    $command = 'SELECT * FROM projects WHERE featured=1;';
-    $result = $mysqli->query($command);
-    if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  // update iq_journeys database
+  $command = 'SELECT * FROM projects WHERE featured=1;';
+  $result = $mysqli->query($command);
+  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
-    while ($row = $result->fetch_assoc()) {
-      var_dump($row);
-      // check values of certain fields, decide to perform more queries, or not
-      //echo 'Name and surname: '.$row['name'].' '.$row['surname'].'<br>';
-      //echo 'Age: '.$row['age'].'<br>'; // Prints info from 'age' column
-      // tack it all into the returning result set
-    }
+  while ($row = $result->fetch_assoc()) {
+    echo '<div class="card">';
+    echo '  <img src="/projects/'.$row['directory'].'title-card.png" alt="'.$row['title'].' Title Card" / />';
+    echo '  <em>'.$row['blurb'].'</em>';
+    echo '  <div class="info">';
+    echo '    <div class="btn-text date">'
+    echo '      <span class="icon"></span>';
+    echo '      <span>'.$row['date'].'</span>';
+    echo '    </div>';
+    echo '    <a class="btn-text link" href="'.$row['primary-link'].'">';
+    echo '      <span class="icon"></span>';
+    echo '      '.$row['primary-link-text'];
+    echo '    </a>';
+    echo '  </div>';
+    echo '</div>';
+
+    // var_dump($row);
+  }
 
   // Closing HTML
   echo <<<BOTTOM
-        </div>
-      </section>
+    </div>
+  </section>
+
   BOTTOM;
 }
 
