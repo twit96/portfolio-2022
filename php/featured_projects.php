@@ -24,22 +24,23 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
     var_dump($row);
-    echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
+    echo 'Directory: '.$row['directory'].'<br>';
+    //echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
 
-    echo '<div class="card">';
-    echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
-    echo '  <em>'.$row['blurb'].'</em>';
-    echo '  <div class="info">';
-    echo '    <div class="btn-text date">'
-    echo '      <span class="icon"></span>';
-    echo '      <span>'.$row['date'].'</span>';
-    echo '    </div>';
-    echo '    <a class="btn-text link" href="'.$row['primary-link'].'">';
-    echo '      <span class="icon"></span>';
-    echo '      '.$row['primary-link-text'];
-    echo '    </a>';
-    echo '  </div>';
-    echo '</div>';
+    // echo '<div class="card">';
+    // echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
+    // echo '  <em>'.$row['blurb'].'</em>';
+    // echo '  <div class="info">';
+    // echo '    <div class="btn-text date">'
+    // echo '      <span class="icon"></span>';
+    // echo '      <span>'.$row['date'].'</span>';
+    // echo '    </div>';
+    // echo '    <a class="btn-text link" href="'.$row['primary-link'].'">';
+    // echo '      <span class="icon"></span>';
+    // echo '      '.$row['primary-link-text'];
+    // echo '    </a>';
+    // echo '  </div>';
+    // echo '</div>';
   }
 
   // Closing HTML
