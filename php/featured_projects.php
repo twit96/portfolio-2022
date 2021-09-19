@@ -38,7 +38,8 @@ function displayFeatured($mysqli) {
     echo '  </div>';
     echo '</div>';
 
-    // var_dump($row);
+    echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
+    var_dump($row);
   }
 
   // Closing HTML
