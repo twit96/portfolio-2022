@@ -12,6 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
   <body>
+    <img src="/projects/minesweeper/title-card.png" alt="Goldschen-Ohm Title Card" />
     <h1>blep</h1>
     <?php
 			include('../php/featured_projects.php');
