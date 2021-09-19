@@ -24,7 +24,19 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
     var_dump($row);
+    echo 'Title: '.$row['title'].'<br>';
     echo 'Directory: '.$row['directory'].'<br>';
+    echo 'Blurb: '.$row['blurb'].'<br>';
+    echo 'Description: '.$row['description'].'<br>';
+    echo 'Date: '.$row['date'].'<br>';
+    echo 'Featured: '.$row['featured'].'<br>';
+    echo 'Primary Link: '.$row['primary_link'].'<br>';
+    echo 'Primary Link Text: '.$row['primary_link_text'].'<br>';
+    echo 'Secondary Link: '.$row['secondary_link'].'<br>';
+    echo 'Secondary Link Text: '.$row['secondary_link_text'].'<br>';
+    echo 'Tertiary Link: '.$row['tertiary_link'].'<br>';
+    echo 'Tertiary Link Text: '.$row['tertiary_link_text'].'<br>';
+
     //echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
 
     // echo '<div class="card">';
