@@ -24,7 +24,7 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
     echo '<div class="card">';
-    echo '  <img src="/projects/'.$row['directory'].'title-card.png" alt="'.$row['title'].' Title Card" />';
+    echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
     echo '  <em>'.$row['blurb'].'</em>';
     echo '  <div class="info">';
     echo '    <div class="btn-text date">'
