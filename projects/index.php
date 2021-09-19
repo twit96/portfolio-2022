@@ -13,5 +13,8 @@
   </head>
   <body>
     <h1>blep</h1>
+    <?php
+			include('../php/featured_projects.php');
+		?>
   </body>
 </html>

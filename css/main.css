@@ -1067,19 +1067,20 @@ header nav a:last-child {
   border-width: max(1vmin, 5px);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   scroll-snap-align: center;
   margin-right: 1em;
   border-radius: 1vmin;
+  transition: 0.25s transform;
 }
 #projects .card:last-child {
   margin-right: var(--main-padding);
 }
-#projects .card.link {
+#projects a.card {
   cursor: pointer;
   padding: 1em;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-size: 150%;
   color: white;
   /* override .card class */
@@ -1092,11 +1093,12 @@ header nav a:last-child {
     );
   background-size: 300% 300%;
   animation: 6s bg-shift ease-in-out infinite;
-  /* hover animation */
   transform: scale(0.95);
-  transition: 0.25s transform;
 }
-#projects .card.link:hover { transform: none; }
+#projects a.card:hover {
+  transform: none;
+  text-decoration: none;
+}
 
 #projects .card img {
   width: 100%;
@@ -1107,6 +1109,9 @@ header nav a:last-child {
   text-align: center;
   line-height: 125%;
   padding: 0.25em 1em;
+  /* bugfix - white bars on sides when card scaled down */
+  width: calc(100% + 2px);
+  transform: translateX(-1px);
 }
 
 #projects .card .info {
@@ -1115,6 +1120,21 @@ header nav a:last-child {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+@media (min-width: 1000px) {
+  #projects .card {
+      margin-right: 0.25em;
+    /* hover animation */
+    transform: scale(0.95);
+  }
+  #projects .card:hover { transform: none; }
+  #projects a.card {
+    transform: scale(0.9);
+  }
+  #projects a.card:hover {
+    transform: scale(0.95);
+  }
 }
 
 
