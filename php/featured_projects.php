@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-function displayFeatured() {
+function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
       <section id="featured">
