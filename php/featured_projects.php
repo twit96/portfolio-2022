@@ -23,9 +23,9 @@ function displayFeatured($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
     var_dump($row);
-    
+    echo $row['directory'].$row['title'].$row['blurb'].$row['date'].$row['primary-link'].$row['primary-link-text'];
+
     echo '<div class="card">';
     echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
     echo '  <em>'.$row['blurb'].'</em>';
