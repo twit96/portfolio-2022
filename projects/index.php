@@ -6,7 +6,7 @@
 		<meta name="description" content="Tyler Wittig's Projects" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210915" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210919.01" />
     <link rel="stylesheet" type="text/css" href="/css/projects.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
