@@ -23,6 +23,20 @@ function displayFeatured($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
+    // var_dump($row);
+    // echo 'Title: '.$row['title'].'<br>';
+    // echo 'Directory: '.$row['directory'].'<br>';
+    // echo 'Blurb: '.$row['blurb'].'<br>';
+    // echo 'Description: '.$row['description'].'<br>';
+    // echo 'Date: '.$row['date'].'<br>';
+    // echo 'Featured: '.$row['featured'].'<br>';
+    // echo 'Primary Link: '.$row['primary_link'].'<br>';
+    // echo 'Primary Link Text: '.$row['primary_link_text'].'<br>';
+    // echo 'Secondary Link: '.$row['secondary_link'].'<br>';
+    // echo 'Secondary Link Text: '.$row['secondary_link_text'].'<br>';
+    // echo 'Tertiary Link: '.$row['tertiary_link'].'<br>';
+    // echo 'Tertiary Link Text: '.$row['tertiary_link_text'].'<br>';
+
     echo '<div class="card">';
     echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
     echo '  <em>'.$row['blurb'].'</em>';
