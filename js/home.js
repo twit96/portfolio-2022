@@ -98,8 +98,8 @@ var scroll_indicator_handler = function() {
 window.addEventListener('scroll', scroll_indicator_handler, false);
 
 
-// Demo Functionality ---------------------------------------------------------
-var demo = document.getElementById("demo");
+// Featured Projects Section --------------------------------------------------
+var featured = document.getElementById("featured");
 
 // add randomly generated elements to background
 
@@ -110,13 +110,36 @@ var rand_size;
 var rand_rotation;
 var rand_opacity;
 
-// random squares
+// random circles
 for (i=0; i<15; i++) {
+  rand_span = document.createElement("span");
+  rand_span.classList.add("circle");
+  // generate random attributes
+  rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
+  rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
+  rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
+  rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
+  // set CSS styles
+  rand_span.style.left = rand_x + "%";
+  rand_span.style.top = rand_y + "%";
+  rand_span.style.width = rand_size + "vmin";
+  rand_span.style.height = rand_size + "vmin";
+  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+  // place on page
+  featured.insertAdjacentElement("beforeend", rand_span);
+}
+
+
+// Demo Functionality ---------------------------------------------------------
+var demo = document.getElementById("demo");
+
+// random sqaures
+for (i=0; i<20; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("square");
   // generate random attributes
   rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
-  rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
+  rand_y = Math.floor(Math.random() * 85) - 15;      // 7.5 to 92.5 vh
   rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
   rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
   // set CSS styles
@@ -227,26 +250,3 @@ var demo_handler = function() {
   }
 }
 window.addEventListener('scroll', demo_handler, false);
-
-
-// Featured Projects Section --------------------------------------------------
-var featured = document.getElementById("featured");
-
-// random circles
-for (i=0; i<20; i++) {
-  rand_span = document.createElement("span");
-  rand_span.classList.add("circle");
-  // generate random attributes
-  rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
-  rand_y = Math.floor(Math.random() * 85) - 15;      // 7.5 to 92.5 vh
-  rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
-  rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
-  // set CSS styles
-  rand_span.style.left = rand_x + "%";
-  rand_span.style.top = rand_y + "%";
-  rand_span.style.width = rand_size + "vmin";
-  rand_span.style.height = rand_size + "vmin";
-  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
-  // place on page
-  featured.insertAdjacentElement("beforeend", rand_span);
-}
