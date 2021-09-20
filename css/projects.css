@@ -50,6 +50,15 @@
   border-top: max(1vmin, 5px) dotted var(--grey);
 }
 
+#projects article img {
+  width: 100%;
+  border-radius: 0.5vmin;
+  box-shadow: 0 0 1vmin var(--grey-shadow);
+}
+
+#projects article p { margin: 1em 0; }
+
+
 @media (min-width: 1000px) {
   #projects article { display: flex; }
   #projects article div:last-child {
@@ -66,11 +75,8 @@
     display: inline-flex;
     margin-right: 1em;
   }
+  #projects article img {
+    width: min(45vw, 650px);
+    display: block;
+  }
 }
-
-#projects article img {
-  width: 100%;
-  border-radius: 0.5vmin;
-}
-
-#projects article p { margin: 1em 0; }

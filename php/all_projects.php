@@ -10,7 +10,7 @@ function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
   <section id="projects">
-    <h1>Projects</h1>
+    <h2>Projects</h2>
   TOP;
 
 
