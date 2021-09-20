@@ -31,6 +31,8 @@ html { box-sizing: border-box; }
 body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 175%;
+  background: var(--green);
+  overflow-x: hidden;  /* bugfix - horizontal scrollbar from overflowing orbs */
 }
 body > * { padding: var(--main-padding); }
 
@@ -54,15 +56,15 @@ a:hover { text-decoration: underline; }
   position: absolute;
   border-radius: 50%;
   background: var(--blue);
-  z-index: -1;
   opacity: 0.15;
 }
 
 .leaf {
-  position: absolute;
+  position: fixed;
   background: var(--green-shadow);
   border-radius: 75% 10% 75% 0;
   opacity: 0.25;
+  z-index: -1;
 }
 /* leaf stem */
 .leaf::after {
@@ -78,16 +80,16 @@ a:hover { text-decoration: underline; }
 }
 
 .orb {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
   background: var(--yellow);
+  z-index: -1;
 }
 
 .square {
   position: absolute;
   border-radius: 2vmin;
   background: var(--indigo);
-  z-index: -1;
   opacity: 0.05;
 }
 
@@ -418,7 +420,6 @@ header nav a:last-child {
 
 /* ------------------------------------------------------------------ Footer */
 footer {
-  background: var(--green);
   color: white;
   text-align: center;
   font-size: clamp(12px, 60%, 20px);
