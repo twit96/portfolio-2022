@@ -34,8 +34,6 @@ for (i=0; i<15; i++) {
   body.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   loader.insertAdjacentElement("beforeend", clone);
-  clone = rand_span.cloneNode(true);
-  header_bg.insertAdjacentElement("beforeend", clone);
 }
 
 // random orbs
