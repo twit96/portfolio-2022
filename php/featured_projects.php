@@ -18,7 +18,7 @@ function displayFeatured($mysqli) {
 
 
   // update iq_journeys database
-  $command = 'SELECT * FROM projects WHERE featured=1 ORDER BY date;';
+  $command = 'SELECT * FROM projects WHERE featured=1 ORDER BY date DESC;';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
