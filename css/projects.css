@@ -71,7 +71,10 @@ body {
   }
 
   /* alternating layout */
-  #projects article:nth-of-type(2n+1) { flex-direction: row-reverse; }
+  #projects article:nth-of-type(2n+1) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
   #projects article:nth-of-type(2n+1) div:last-child { margin-right: 2em; }
   #projects article:nth-of-type(2n) div:first-child { margin-right: 2em; }
 
