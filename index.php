@@ -200,7 +200,7 @@
 
 
 		<!-- Featured Projects Section -->
-		<?php include('../php/featured_projects.php'); ?>
+		<?php include('/php/featured_projects.php'); ?>
 
 
 		<section id="filler">
