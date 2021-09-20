@@ -9,7 +9,7 @@ ini_set("display_errors", "on");
 function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <section id="projects">
+  <section id="featured">
     <div class="heading-card">
       <h2>Featured</h2>
     </div>
