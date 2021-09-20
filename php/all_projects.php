@@ -28,7 +28,10 @@ function displayFeatured($mysqli) {
     echo '</div>';
     echo '<div>';
     echo '  <h3>'.$row['title'].'</h3>';
-    echo '  <em>'.$row['date'].'</em>';
+    echo '  <div class="btn-text date">';
+    echo '    <span class="icon"></span>';
+    echo '    <span>'.$row['date'].'</span>';
+    echo '  </div>';
     echo '  <p>'.$row['description'].'</p>';
 
     if (!is_null($row['primary_link'])) {
