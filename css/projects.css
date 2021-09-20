@@ -63,7 +63,7 @@ body {
 #projects article p { margin: 1em 0; }
 
 
-@media (min-width: 1000px) {
+@media (min-aspect-ratio: 1/1) {
   #projects article { display: flex; }
   #projects article div:last-child {
     border: 0;
