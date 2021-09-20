@@ -45,9 +45,10 @@ body {
   clip-path: polygon(0 var(--main-padding), 100% 0, 100% 100%);
 }
 
-#projects article div:first-child {
+#projects article figure {
   text-align: center;
   padding-bottom: 0.5em;
+  font-style: italic;
 }
 #projects article div:last-child {
   padding-top: 1em;
@@ -62,7 +63,6 @@ body {
 
 #projects article p { margin: 1em 0; }
 
-
 @media (min-aspect-ratio: 1/1) {
   #projects article { display: flex; }
   #projects article div:last-child {
@@ -76,7 +76,7 @@ body {
     justify-content: space-between;
   }
   #projects article:nth-of-type(2n+1) div:last-child { margin-right: 2em; }
-  #projects article:nth-of-type(2n) div:first-child { margin-right: 2em; }
+  #projects article:nth-of-type(2n) figure { margin-right: 2em; }
 
   #projects .btn-text {
     display: inline-flex;

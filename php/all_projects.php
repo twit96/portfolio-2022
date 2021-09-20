@@ -22,10 +22,10 @@ function displayFeatured($mysqli) {
   while ($row = $result->fetch_assoc()) {
 
     echo '<article>';
-    echo '<div>';
+    echo '<figure>';
     echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
-    echo '  <em>'.$row['blurb'].'</em>';
-    echo '</div>';
+    echo '  <figcaption>'.$row['blurb'].'</figcaption>';
+    echo '</figure>';
     echo '<div>';
     echo '  <h3>'.$row['title'].'</h3>';
     echo '  <em>'.$row['date'].'</em>';
