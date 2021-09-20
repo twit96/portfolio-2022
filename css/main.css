@@ -257,6 +257,7 @@ header span {
   font-size: 24px;
   font-family: 'Pacifico', cursive;
   z-index: 103;
+  cursor: pointer;
 }
 
 
