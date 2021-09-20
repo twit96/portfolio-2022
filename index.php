@@ -55,53 +55,10 @@
 			<span class="scroll-down-indicator"></span>
 		</section>
 
-		<section id="demo">
-			<div class="wrapper">
-				<div class="blurb">
-					<h2>Your New Website</h2>
-					<p>
-						Whether a static website or one with an integrated database,
-						I build websites from the ground up to meet your needs.
-					</p>
-				</div>
-				<figure>
-					<div class="website">
-						<div class="monitor">
-							<span class="title">Your Website</span>
-						</div>
-						<span class="text">HTML</span>
-						<span class="text"> / CSS</span>
-						<span class="text"> / JS</span>
-					</div>
-					<div class="pipeline">
-						<span class="pipe"></span>
-						<span class="pipe"></span>
-						<span class="text">PHP</span>
-					</div>
-					<div class="database">
-						<div>
-							<span class="light"></span>
-							<span class="light"></span>
-							<span class="light"></span>
-							<span class="title">Database</span>
-						</div>
-						<span class="text">SQL</span>
-					</div>
-					<span class="text">Host</span>
-				</figure>
-			</div>
 
-			<div id="demo-controls">
-				<div class="btn-text play">
-					<span class="icon"></span>
-					<span class="text">Play</span>
-				</div>
-				<div class="btn-text stop">
-					<span class="icon"></span>
-					<span class="text">Stop</span>
-				</div>
-			</div>
-		</section>
+		<!-- Featured Projects Section -->
+		<?php include('./php/featured_projects.php'); ?>
+
 
     <section id="skills">
 			<h2>My Skills</h2>
@@ -200,8 +157,53 @@
     </section>
 
 
-		<!-- Featured Projects Section -->
-		<?php include('./php/featured_projects.php'); ?>
+		<section id="demo">
+			<div class="wrapper">
+				<div class="blurb">
+					<h2>Your New Website</h2>
+					<p>
+						Whether a static website or one with an integrated database,
+						I build websites from the ground up to meet your needs.
+					</p>
+				</div>
+				<figure>
+					<div class="website">
+						<div class="monitor">
+							<span class="title">Your Website</span>
+						</div>
+						<span class="text">HTML</span>
+						<span class="text"> / CSS</span>
+						<span class="text"> / JS</span>
+					</div>
+					<div class="pipeline">
+						<span class="pipe"></span>
+						<span class="pipe"></span>
+						<span class="text">PHP</span>
+					</div>
+					<div class="database">
+						<div>
+							<span class="light"></span>
+							<span class="light"></span>
+							<span class="light"></span>
+							<span class="title">Database</span>
+						</div>
+						<span class="text">SQL</span>
+					</div>
+					<span class="text">Host</span>
+				</figure>
+			</div>
+
+			<div id="demo-controls">
+				<div class="btn-text play">
+					<span class="icon"></span>
+					<span class="text">Play</span>
+				</div>
+				<div class="btn-text stop">
+					<span class="icon"></span>
+					<span class="text">Stop</span>
+				</div>
+			</div>
+		</section>
 
 
 		<section id="filler">
