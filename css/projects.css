@@ -1,4 +1,3 @@
-
 #projects {
   padding-left: 0;
   padding-right: 0;
@@ -15,6 +14,7 @@
   position: relative;
   padding: 2em var(--main-padding);
   padding-bottom: calc(var(--main-padding) + 2em);
+  z-index: 1;
 }
 #projects article::before {
   content: '';
