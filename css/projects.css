@@ -1,12 +1,13 @@
+body { background: var(--green); }
+.leaf, .orb { z-index: -1; }
+
 #projects {
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
-  background: var(--green);
 }
 #projects h2 {
   padding: 1em var(--main-padding);
-  background: var(--green);
   color: white;
 }
 
