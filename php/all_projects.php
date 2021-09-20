@@ -31,19 +31,19 @@ function displayFeatured($mysqli) {
     echo '  <em>'.$row['date'].'</em>';
     echo '  <p>'.$row['description'].'</p>';
 
-    if (!is_null($result['primary_link'])) {
+    if (!is_null($row['primary_link'])) {
       echo '    <a class="btn-text link" href="'.$row['primary_link'].'">';
       echo '      <span class="icon"></span>';
       echo '      '.$row['primary_link_text'];
       echo '    </a>';
     }
-    if (!is_null($result['secondary_link'])) {
+    if (!is_null($row['secondary_link'])) {
       echo '    <a class="btn-text link" href="'.$row['secondary_link'].'">';
       echo '      <span class="icon"></span>';
       echo '      '.$row['secondary_link_text'];
       echo '    </a>';
     }
-    if (!is_null($result['tertiary_link'])) {
+    if (!is_null($row['tertiary_link'])) {
       echo '    <a class="btn-text link" href="'.$row['tertiary_link'].'">';
       echo '      <span class="icon"></span>';
       echo '      '.$row['tertiary_link_text'];
