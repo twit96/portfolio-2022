@@ -1,4 +1,7 @@
-body { background: var(--green); }
+body {
+  background: var(--green);
+  overflow-x: hidden;  /* bugfix - orbs overflowing on this page */
+}
 .leaf, .orb { z-index: -1; }
 
 #projects {
