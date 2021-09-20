@@ -7,11 +7,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210915" />
+    <link rel="stylesheet" type="text/css" href="/css/projects.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="/js/header.js" defer></script>
   </head>
   <body>
-    <h1>Coming Soon!</h1>
+    <?php
+			include('../templates/header.html');
+		  include('../php/all_projects.php');
+			include('../templates/footer.html');
+		?>
   </body>
 </html>

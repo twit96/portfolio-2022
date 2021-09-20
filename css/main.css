@@ -249,6 +249,7 @@ header.filled {
   background: var(--green);
   box-shadow: 0 0 15px var(--green-shadow);
 }
+header + * { padding-top: 78px;  /* height of header */ }
 
 
 /* Header Logo */
@@ -417,7 +418,6 @@ header nav a:last-child {
 #intro {
   position: relative;
   height: 105vh;
-  padding-top: 78px;  /* height of header */
   padding-bottom: calc(5vh + 25px);
   background: var(--green);
   color: white;
@@ -1199,8 +1199,8 @@ footer {
   header.filled { padding: 25px 50px; }
   header.filled nav { padding-top: 85px;  /* height of header */ }
   header.filled nav::before { height: 85px;  /* height of header */ }
+  header + * { padding-top: 135px;  /* height of header */ }
 
-  #intro { padding-top: 135px;  /* height of header */ }
   #intro .blurb p {
     margin-bottom: 25px;
     font-size: 28px;
@@ -1247,6 +1247,7 @@ footer {
   header.filled { padding: 37.5px 75px; }
   header.filled nav { padding-top: 112.5px;  /* height of header */ }
   header.filled nav::before { height: 112.5px;  /* height of header */ }
+  header + * { padding-top: 187.5px;  /* height of header */ }
 
   .nav-toggle {
     width: 45px;
@@ -1280,7 +1281,6 @@ footer {
     100% { transform: translateY(-13.5px) rotate(-135deg); }
   }
 
-  #intro { padding-top: 187.5px;  /* height of header */ }
   #intro .blurb p {
     margin-bottom: 50px;
     font-size: 36px;

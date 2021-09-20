@@ -1,0 +1,76 @@
+
+#projects {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  background: var(--green);
+}
+#projects h2 {
+  padding: 1em var(--main-padding);
+  background: var(--green);
+  color: white;
+}
+
+#projects article {
+  position: relative;
+  padding: 2em var(--main-padding);
+  padding-bottom: calc(var(--main-padding) + 2em);
+}
+#projects article::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1px;
+  width: 100%; height: var(--main-padding);
+  transform: translateY(-100%);
+}
+
+
+/* alternating layout */
+#projects article:nth-of-type(2n) {
+  background: var(--grey-light);
+}
+#projects article:nth-of-type(2n)::before {
+  background: var(--grey-light);
+  clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
+}
+#projects article:nth-of-type(2n+1) {
+  background: white;
+}
+#projects article:nth-of-type(2n+1)::before {
+  background: white;
+  clip-path: polygon(0 var(--main-padding), 100% 0, 100% 100%);
+}
+
+#projects article div:first-child {
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+#projects article div:last-child {
+  padding-top: 1em;
+  border-top: max(1vmin, 5px) dotted var(--grey);
+}
+
+@media (min-width: 1000px) {
+  #projects article { display: flex; }
+  #projects article div:last-child {
+    border: 0;
+    padding: 0;
+  }
+
+  /* alternating layout */
+  #projects article:nth-of-type(2n+1) { flex-direction: row-reverse; }
+  #projects article:nth-of-type(2n+1) div:last-child { margin-right: 2em; }
+  #projects article:nth-of-type(2n) div:first-child { margin-right: 2em; }
+
+  #projects .btn-text {
+    display: inline-flex;
+    margin-right: 1em;
+  }
+}
+
+#projects article img {
+  width: 100%;
+  border-radius: 0.5vmin;
+}
+
+#projects article p { margin: 1em 0; }
