@@ -7,10 +7,11 @@
 		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210915" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210919" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+		<script src="/js/header.js" defer></script>
 		<script src="/js/main.js" defer></script>
 	</head>
 
@@ -197,188 +198,10 @@
 			</div>
     </section>
 
-		<section id="projects">
 
-			<div class="heading-card">
-				<h2>Projects</h2>
-				<!-- <h2>Featured</h2> -->
-			</div>
+		<!-- Featured Projects Section -->
+		<?php include('../php/featured_projects.php'); ?>
 
-			<div class="card-container">
-				<div class="card">
-					<img src="/projects/goldschen-ohm-lab/title-card.png" alt="Goldschen-Ohm Title Card" />
-					<em>Mobile-Responsive Webpage Update</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/08/05</span>
-						</div>
-						<a class="btn-text link" href="https://marcel-goldschen-ohm.github.io/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/minesweeper/title-card.png" alt="Minesweeper Title Card" />
-					<em>Javascript Minesweeper Game</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/06/09</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/minesweeper/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/wittiggrass/title-card.png" alt="Wittig Grass Title Card" />
-					<em>Website Redesign</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/05/10</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/wittiggrass/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/memory-game/title-card.png" alt="Memory Game Title Card" />
-					<em>JavaScript Memory Game</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/01/31</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/memory-game/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/connect-four/title-card.png" alt="Connect Four Title Card" />
-					<em>JavaScript Connect Four Game</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/01/13</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/connect-four/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/bulko-redesign/title-card.png" alt="Bulko Redesign Title Card" />
-					<em>Mobile-Friendly Website Redesign</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/01/09</span>
-						</div>
-						<a class="btn-text link" href="https://www.cs.utexas.edu/~bulko/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<!-- <a class="card link" href="/projects/">
-					<span>View All <br />Projects</span>
-				</a> -->
-				<div class="card">
-					<img src="/projects/simple-gradient-website/title-card.png" alt="Simple Gradient Website Title Card" />
-					<em>Static Website Mockup</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2021/01/02</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/simple-gradient-website/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-					<em>Dynamic Website Project</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020/12/07</span>
-						</div>
-						<a class="btn-text link" href="https://tylerwittig.com/IndieQuest/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/tic-tac-toe/title-card.png" alt="Tic-Tac-Toe Title Card" />
-					<em>JavaScript Tic-Tac-Toe Game</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020/11/06</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/tic-tac-toe/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/star-wars-survey/title-card.png" alt="Star Wars Survey Title Card" />
-					<em>Machine Learning Classification Analysis</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020/04/20</span>
-						</div>
-						<a class="btn-text link" href="https://github.com/twit96/StarWarsSurvey-ClassificationAnalysis">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/pharaohs-phury/title-card.png" alt="Pharaoh's Phury Title Card" />
-					<em>2D Platformer Web Game</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2019/12/09</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/PharaohsPhury_Phaser3/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/tank-fighter/title-card.png" alt="Tank Fighter Title Card" />
-					<em>Top-Down Shooter Web Minigame</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2019/09/16</span>
-						</div>
-						<a class="btn-text link" href="https://twit96.github.io/TankFighter_Phaser3/">
-							<span class="icon"></span>
-							View Project
-						</a>
-					</div>
-				</div>
-			</div>
-
-		</section>
 
 		<section id="filler">
 			<h2>New Portfolio Coming Soon!</h2>
@@ -394,8 +217,8 @@
 			</p>
 		</section>
 
-		<footer>
-			&copy; 2021 Tyler Wittig
-		</footer>
+		<?php
+			include('./templates/footer.html');
+		?>
 	</body>
 </html>

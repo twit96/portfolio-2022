@@ -1007,7 +1007,7 @@ header nav a:last-child {
 }
 
 
-#projects {
+#featured {
   position: relative;
   padding-top: calc(5vh + var(--main-padding));
   padding-bottom: calc(5vh + var(--main-padding));
@@ -1018,7 +1018,7 @@ header nav a:last-child {
   align-items: center;
 }
 
-#projects .heading-card {
+#featured .heading-card {
   background: var(--green);
   color: white;
   border-radius: 5px;
@@ -1030,7 +1030,7 @@ header nav a:last-child {
   box-shadow: 0 0 0.5vmin var(--green-shadow);
   z-index: 1;
 }
-#projects .heading-card h2 {
+#featured .heading-card h2 {
   transform: rotate(-90deg);
 }
 
@@ -1059,7 +1059,7 @@ header nav a:last-child {
   margin: 0 var(--main-padding);
 }
 
-#projects .card {
+#featured .card {
   min-width: min(90%, 400px);
   border-color: var(--grey);
   background: var(--grey-light);
@@ -1072,10 +1072,10 @@ header nav a:last-child {
   border-radius: 1vmin;
   transition: 0.25s transform;
 }
-#projects .card:last-child {
+#featured .card:last-child {
   margin-right: var(--main-padding);
 }
-#projects a.card {
+#featured a.card {
   cursor: pointer;
   padding: 1em;
   justify-content: center;
@@ -1095,15 +1095,15 @@ header nav a:last-child {
   animation: 6s bg-shift ease-in-out infinite;
   transform: scale(0.95);
 }
-#projects a.card:hover {
+#featured a.card:hover {
   transform: none;
   text-decoration: none;
 }
 
-#projects .card img {
+#featured .card img {
   width: 100%;
 }
-#projects .card em {
+#featured .card em {
   background: var(--grey);
   color: white;
   text-align: center;
@@ -1114,7 +1114,7 @@ header nav a:last-child {
   transform: translateX(-1px);
 }
 
-#projects .card .info {
+#featured .card .info {
   padding: 1em;
   margin-top: auto;
   display: flex;
@@ -1123,16 +1123,16 @@ header nav a:last-child {
 }
 
 @media (min-width: 1000px) {
-  #projects .card {
+  #featured .card {
       margin-right: 0.25em;
     /* hover animation */
     transform: scale(0.95);
   }
-  #projects .card:hover { transform: none; }
-  #projects a.card {
+  #featured .card:hover { transform: none; }
+  #featured a.card {
     transform: scale(0.9);
   }
-  #projects a.card:hover {
+  #featured a.card:hover {
     transform: scale(0.95);
   }
 }

@@ -1,41 +1,4 @@
 
-// Loader Functionality -------------------------------------------------------
-var loader = document.getElementById("loader");
-setTimeout(function() {
-  loader.style.opacity = '0';
-}, 100);
-setTimeout(function() {
-  loader.style.display = 'none';
-}, 1100);
-
-
-
-// Header Functionality -------------------------------------------------------
-var header = document.querySelector("header");
-var header_nav = header.querySelector("nav");
-var header_bg = document.getElementById("header-bg");
-
-var nav_toggle = document.querySelector(".nav-toggle");
-nav_toggle.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
-}
-header_bg.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
-}
-
-window.onscroll = function() {
-  if (
-    (document.body.scrollTop > 0) ||
-    (document.documentElement.scrollTop > 0)
-  ) { header.classList.add("filled"); }
-  else { header.classList.remove("filled"); }
-};
-
-
 // Intro Functionality --------------------------------------------------------
 var intro = document.getElementById("intro");
 
@@ -266,8 +229,8 @@ var demo_handler = function() {
 window.addEventListener('scroll', demo_handler, false);
 
 
-// Projects Section -----------------------------------------------------------
-var projects = document.getElementById("projects");
+// Featured Projects Section --------------------------------------------------
+var featured = document.getElementById("featured");
 
 // random circles
 for (i=0; i<20; i++) {
@@ -285,5 +248,5 @@ for (i=0; i<20; i++) {
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-  projects.insertAdjacentElement("beforeend", rand_span);
+  featured.insertAdjacentElement("beforeend", rand_span);
 }
