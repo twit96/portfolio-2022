@@ -12,9 +12,6 @@
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>blep</h1>
-    <?php
-			include('../php/featured_projects.php');
-		?>
+    <h1>Coming Soon!</h1>
   </body>
 </html>
