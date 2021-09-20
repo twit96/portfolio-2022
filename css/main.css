@@ -257,8 +257,9 @@ header span {
   font-size: 24px;
   font-family: 'Pacifico', cursive;
   z-index: 103;
-  cursor: pointer;
 }
+header span a { color: white; }
+header span a:hover { text-decoration: none; }
 
 
 /* Header Nav */
