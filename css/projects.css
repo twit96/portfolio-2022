@@ -53,7 +53,7 @@
 #projects article img {
   width: 100%;
   border-radius: 0.5vmin;
-  box-shadow: 0 0 1vmin var(--grey-shadow);
+  border: max(1vmin, 5px) solid var(--grey);
 }
 
 #projects article p { margin: 1em 0; }
