@@ -143,6 +143,7 @@
 					<span class="bubble-text">Git</span>
 					<span class="bubble-text">Linux</span>
 					<span class="bubble-text">Apache</span>
+					<span class="bubble-text">NGINX</span>
 					<span class="bubble-text">Atom</span>
 					<span class="bubble-text">Jupyter</span>
 					<h3>Asset Development</h3>
