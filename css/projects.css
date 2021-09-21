@@ -39,6 +39,7 @@
 /* Alternating Layout */
 
 #projects article:nth-of-type(2n) { color: white; }
+#projects article:nth-of-type(2n) img { border-color: var(--green-shadow); }
 /* override btn text default colors */
 #projects article:nth-of-type(2n) .btn-text { color: white; }
 #projects article:nth-of-type(2n) .btn-text .icon { border-color: white; }
