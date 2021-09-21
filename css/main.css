@@ -9,9 +9,8 @@ html { box-sizing: border-box; }
 * {
   margin: 0;
   padding: 0;
-}
-
-* {
+  /* Root Variables */
+  /* colors */
   --indigo: #6201ff;
   --indigo-shadow: #140037;
   --green: #06632c;
@@ -24,11 +23,13 @@ html { box-sizing: border-box; }
   --grey-light: #dedede;
   --grey-shadow: #303030;
   --yellow: #f0c808;
-
+  /* other */
   --main-padding: 25px;
+  --main-font-size: 16px;
 }
 
 body {
+  font-size: var(--main-font-size);
   font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 175%;
   background: var(--green);
@@ -436,9 +437,11 @@ footer {
 
 /* ------------------------------------------------ Medium Screen Breakpoint */
 @media (min-width: 750px) and (min-height: 850px) {
-  * { --main-padding: 50px; }
+  * {
+    --main-padding: 50px;
+    --main-font-size: 20px;
+  }
 
-  body { font-size: 20px; }
   h2 {
     font-size: 32px;
     margin-bottom: 15px;
@@ -462,9 +465,10 @@ footer {
 
 /* ------------------------------------------------- Large Screen Breakpoint */
 @media (min-width: 1600px) and (min-height: 1050px) {
-  * { --main-padding: 75px; }
-
-  body { font-size: 30px; }
+  * {
+    --main-padding: 75px;
+    --main-font-size: 30px;
+  }
 
   header span { font-size: 32px; }
   header nav { padding-top: 187.5px;  /* height of header */ }
