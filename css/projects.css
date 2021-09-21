@@ -94,7 +94,7 @@
   #projects article:nth-of-type(2n) figure { margin-right: 2em; }
   /* img constraints */
   #projects article img {
-    width: min(45vw, 650px);
+    width: min(45vw, 800px);
     display: block;
   }
   /* override btn text defaults */
