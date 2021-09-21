@@ -260,8 +260,14 @@ header span {
   font-family: 'Pacifico', cursive;
   z-index: 103;
 }
-header span a { color: white; }
-header span a:hover { text-decoration: none; }
+header span a {
+  color: white;
+  padding-right: 1em;
+}
+header span a:hover {
+  text-decoration: none;
+  color: var(--yellow);
+}
 
 
 /* Header Nav */
