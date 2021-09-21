@@ -8,7 +8,7 @@ section:not(#intro) {
 #intro {
   position: relative;
   height: calc(105vh + var(--main-padding));        /* diagonal border bugfix */
-  padding-bottom: calc(5vh + var(--main-padding));  /* diagonal border bugfix */
+  padding-bottom: calc(5vh + (2 * var(--main-padding)));  /* diagonal border bugfix */
   color: white;
   display: flex;
   flex-direction: column;
@@ -767,6 +767,8 @@ section:not(#intro) {
 
 /* ------------------------------------------------ Medium Screen Breakpoint */
 @media (min-width: 750px) and (min-height: 850px) {
+  /* decrease intro's padding bottom when not on mobile */
+  #intro { padding-bottom: calc(5vh + var(--main-padding)); }
   #intro .blurb p {
     margin-bottom: 25px;
     font-size: 28px;

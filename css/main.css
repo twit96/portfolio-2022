@@ -307,7 +307,7 @@ header nav::after {
 header nav.active { transform: translateX(0); }
 header nav a {
   color: white;
-  padding: 10px 25px;
+  padding: calc(var(--main-padding) / 2) var(--main-padding);
   display: block;
   transition: 0.15s background ease-out;
 }
