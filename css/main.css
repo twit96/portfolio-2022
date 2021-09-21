@@ -263,7 +263,6 @@ header span {
 }
 header span a {
   color: white;
-  padding-right: 1em;
 }
 header span a:hover {
   text-decoration: none;
