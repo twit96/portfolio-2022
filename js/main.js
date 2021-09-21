@@ -1,4 +1,4 @@
-var body = document.body;
+var intro = document.querySelector("section");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
@@ -31,7 +31,7 @@ for (i=0; i<15; i++) {
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-  body.insertAdjacentElement("beforeend", rand_span);
+  intro.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   loader.insertAdjacentElement("beforeend", clone);
 }
