@@ -223,7 +223,8 @@ a:hover { text-decoration: underline; }
   bottom: var(--main-padding);
   width: 20px;
   height: 30px;
-  border: 2.5px solid var(--green-shadow);
+  border: 3px solid var(--grey-shadow);
+  background: white;
   border-radius: 5px;
   z-index: 1;
   opacity: 0;
@@ -232,7 +233,7 @@ a:hover { text-decoration: underline; }
 }
 @keyframes fade-in {
   0% { opacity: 0; }
-  100% { opacity: 1; }
+  100% { opacity: 0.5; }
 }
 .scroll-down-indicator.hidden {
   cursor: auto;
@@ -248,7 +249,7 @@ a:hover { text-decoration: underline; }
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--green-shadow);
+  background: var(--grey-shadow);
   animation: 2s 2s scroll-down-indicator ease-in-out infinite;
 }
 @keyframes scroll-down-indicator {
@@ -276,7 +277,7 @@ a:hover { text-decoration: underline; }
     width: 30px;
     height: 20px;
   }
-  .scroll-down-indicator::after { bottom: 1.5px; }
+  .scroll-down-indicator::after { bottom: 2px; }
   @keyframes scroll-down-indicator {
     0% {
       transform: translateX(-50%);
@@ -287,11 +288,11 @@ a:hover { text-decoration: underline; }
       opacity: 1;
     }
     50%, 75% {
-      transform: translateX(-50%) translateY(-7px);
+      transform: translateX(-50%) translateY(-5px);
       opacity: 1;
     }
     100% {
-      transform: translateX(-50%) translateY(-7px);
+      transform: translateX(-50%) translateY(-5px);
       opacity: 0;
     }
   }
