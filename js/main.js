@@ -131,3 +131,33 @@ function removeScrollIndicatorListeners() {
     scroll_down_indicator.removeEventListener('click', click_indicator_handler, false);
   }
 }
+
+
+// Scroll Top Btn -------------------------------------------------------------
+// add to page
+var scroll_top_btn = document.createElement("span");
+scroll_top_btn.id = 'scroll-top-btn';
+intro.insertAdjacentElement('beforeend', scroll_top_btn);
+
+// scroll position changes visibility
+var scroll_top_btn_handler = function() {
+  if (
+    (document.body.scrollTop > window.innerHeight * 0.75) ||
+    (document.documentElement.scrollTop > window.innerHeight * 0.75)
+  ) {
+    scroll_top_btn.classList.add('displayed');
+  } else {
+    scroll_top_btn.classList.remove('displayed');
+  }
+}
+window.addEventListener('scroll', scroll_top_btn_handler, false);
+
+// click functionality
+var click_scroll_top_handler = function() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
+scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);

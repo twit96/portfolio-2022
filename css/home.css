@@ -565,10 +565,6 @@ section:not(#intro) {
 #demo figure .pipeline .text {
   color: var(--red);
 }
-@keyframes bg-shift {
-  0%, 100% { background-position: left; }
-  50% { background-position: right; }
-}
 
 /* with php functionality */
 #demo figure.with-php .pipeline {

@@ -42,6 +42,13 @@ a { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 
+/* ------------------------------------------------------- Reused Animations */
+@keyframes bg-shift {
+  0%, 100% { background-position: left; }
+  50% { background-position: right; }
+}
+
+
 /* ---------------------------------------------------------- Custom Classes */
 .bubble-text {
   white-space: nowrap;
@@ -298,6 +305,62 @@ a:hover { text-decoration: underline; }
   }
 }
 
+
+/* Scroll Top Button */
+#scroll-top-btn {
+  position: fixed;
+  bottom: calc(var(--main-padding) / 2);
+  right: 50%;
+  transform: translateX(50%) scale(0.95);
+  width: max(50px, var(--main-padding));
+  height: max(50px, var(--main-padding));
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0;
+  box-shadow: 0.05em 0.05em 0.25em var(--grey-shadow);
+  /* box-shadow: 0.05em 0.05em 0.25em var(--grey-shadow),
+              -0.05em -0.05em 0.25em var(--grey-shadow) inset; */
+  transition: 0.15s transform ease-in-out,
+              0.25s opacity ease-in-out;
+  /* animated background */
+  background-image: linear-gradient(
+    30deg, var(--indigo), var(--blue), var(--indigo)
+    );
+  background-size: 300% 300%;
+}
+#scroll-top-btn:hover { transform: translateX(50%) scale(1); }
+#scroll-top-btn.displayed {
+  cursor: pointer;
+  opacity: 1;
+  animation: 6s bg-shift ease-in-out infinite;
+}
+#scroll-top-btn::before,
+#scroll-top-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10%;
+  height: 50%;
+  border-radius: 15px;
+  background: white;
+  transform-origin: top;
+}
+#scroll-top-btn::before {
+  transform: translate(-30%, -50%) rotate(30deg);
+}
+#scroll-top-btn::after {
+  transform: translate(-70%, -50%) rotate(-30deg);
+}
+
+@media (min-aspect-ratio: 1/1) {
+  #scroll-top-btn {
+    right: var(--main-padding);
+    transform: scale(0.95);
+  }
+  #scroll-top-btn:hover {
+    transform: scale(1);
+  }
+}
 
 /* Badge for Featured Projects */
 .featured-badge {
