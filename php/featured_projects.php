@@ -17,7 +17,7 @@ function displayFeatured($mysqli) {
   TOP;
 
   // Select and Display Featured Projects
-  $command = 'SELECT directory, title, blurb, date, primary_link, primary_link_text FROM projects WHERE featured>0 ORDER BY featured, date DESC;';
+  $command = 'SELECT directory, title, blurb, date, featured, primary_link, primary_link_text FROM projects WHERE featured>0 ORDER BY featured, date DESC;';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
