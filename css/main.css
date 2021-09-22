@@ -234,7 +234,9 @@ a:hover { text-decoration: underline; }
   width: calc(var(--main-padding) / 2);
   height: calc(var(--main-padding) * 1.5);
   background: var(--red);
-  border: 0.25em solid var(--indigo-shadow);
+  border-width: 0 0.25em;
+  border-color: var(--indigo-shadow);
+  border-style: solid;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0% 100%);
 }
 .featured-badge::before {
