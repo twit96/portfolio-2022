@@ -28,19 +28,6 @@ function updateTag() {
   }, 3000);
 }
 
-// scroll down indicator visibility
-var scroll_indicator = document.querySelector('.scroll-down-indicator');
-var scroll_indicator_handler = function() {
-  if (
-    (document.body.scrollTop > 100) ||
-    (document.documentElement.scrollTop > 100)
-  ) {
-    scroll_indicator.classList.add('hidden');
-    window.removeEventListener('scroll', scroll_indicator_handler, false);
-  }
-}
-window.addEventListener('scroll', scroll_indicator_handler, false);
-
 
 // Featured Projects Section --------------------------------------------------
 var featured = document.getElementById("featured");

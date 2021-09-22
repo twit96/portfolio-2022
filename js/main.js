@@ -90,3 +90,44 @@ window.onscroll = function() {
   ) { header.classList.add("filled"); }
   else { header.classList.remove("filled"); }
 };
+
+
+// Scroll Down Indicator ------------------------------------------------------
+
+// add to page
+var scroll_down_indicator = document.createElement("span");
+scroll_down_indicator.classList.add('scroll-down-indicator');
+intro.insertAdjacentElement('beforeend', scroll_down_indicator);
+
+// scroll position changes visibility
+var scroll_indicator_handler = function() {
+  if (
+    (document.body.scrollTop > 100) ||
+    (document.documentElement.scrollTop > 100)
+  ) {
+    scroll_down_indicator.classList.add('hidden');
+    removeScrollIndicatorListeners();
+  }
+}
+window.addEventListener('scroll', scroll_indicator_handler, false);
+
+// click functionality
+var click_indicator_handler = function() {
+  window.scroll({
+    top: window.innerHeight * 0.75,
+    left: 0,
+    behavior: 'smooth'
+  });
+  scroll_down_indicator.classList.add('hidden');
+  removeScrollIndicatorListeners();
+}
+scroll_down_indicator.addEventListener('click', click_indicator_handler, false);
+
+// remove event listeners
+var triggered_remove_scroll_indicator_listeners = false;
+function removeScrollIndicatorListeners() {
+  if (!triggered_remove_scroll_indicator_listeners) {
+    window.removeEventListener('scroll', scroll_indicator_handler, false);
+    scroll_down_indicator.removeEventListener('click', click_indicator_handler, false);
+  }
+}
