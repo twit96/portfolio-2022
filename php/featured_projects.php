@@ -23,6 +23,9 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
     echo '<div class="card">';
+    echo '  <div class="featured-badge">';
+    echo '    <span>#'.$row['featured'].'</span>';
+    echo '  </div>';
     echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
     echo '  <em>'.$row['blurb'].'</em>';
     echo '  <div class="info">';

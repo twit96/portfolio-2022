@@ -31,66 +31,10 @@
   border-radius: 0.5vmin;
   border: max(1vmin, 5px) solid var(--grey);
 }
-/* Badge for Featured Projects */
-.featured-badge {
-  position: absolute;
-  top: 0; right: 0;
-  transform: translate(15%, -15%) rotate(5deg);
-  width: calc(var(--main-padding) * 2);
-  height: calc(var(--main-padding) * 2);
-}
-/* reposition for alternating layout */
+/* reposition featured-badges for alternating layout */
 #projects article:nth-of-type(2n) .featured-badge {
   right: auto; left: 0;
   transform: translate(-15%, -15%) rotate(-5deg);
-}
-/* add ribbons */
-.featured-badge::before,
-.featured-badge::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: calc(var(--main-padding) / 2);
-  height: calc(var(--main-padding) * 1.5);
-  background: var(--red);
-  border: 0.25em solid var(--indigo-shadow);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0% 100%);
-}
-.featured-badge::before {
-  left: 0; transform: translateX(100%) rotate(25deg);
-}
-.featured-badge::after {
-  right: 0; transform: translateX(-100%) rotate(-25deg);
-  z-index: -1;
-}
-/* text */
-.featured-badge span {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(var(--main-padding) * 2);
-  height: calc(var(--main-padding) * 2);
-  font-size: calc(var(--main-padding) * 3 / 4);
-  font-weight: bold;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--yellow);
-  box-shadow: 0.025em 0.025em 0.1em var(--grey-shadow);
-  border-radius: 50%;
-}
-/* text area */
-.featured-badge span::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 85%; height: 85%;
-  background: var(--yellow-shadow);
-  box-shadow: 0.025em 0.025em 0.1em var(--grey-shadow) inset;
-  border-radius: 50%;
-  z-index: -1;
 }
 
 /* Title and Description Area */

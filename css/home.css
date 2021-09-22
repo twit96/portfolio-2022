@@ -248,6 +248,7 @@ section:not(#intro) {
 }
 
 #featured .card {
+  position: relative;
   min-width: min(90%, 400px);
   border-color: var(--grey);
   background: var(--grey-light);
@@ -263,6 +264,17 @@ section:not(#intro) {
 #featured .card:last-child {
   margin-right: var(--main-padding);
 }
+
+/* tweak featured badge position */
+#featured .featured-badge {
+  top: auto;
+  bottom: 0;
+  transform: translate(15%, 15%) rotate(-5deg) scale(0.75);
+}
+#featured .card:nth-child(2n) .featured-badge {
+  transform: translate(15%, 15%) rotate(5deg) scale(0.75);
+}
+
 #featured a.card {
   cursor: pointer;
   padding: 1em;
