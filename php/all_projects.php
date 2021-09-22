@@ -23,6 +23,11 @@ function displayFeatured($mysqli) {
 
     echo '<article>';
     echo '<figure>';
+    if ($row['featured'] > 0) {
+      echo '  <div class="featured-badge">';
+      echo '    <span>#'.$row['featured'].'</span>';
+      echo '  </div>';
+    }
     echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
     echo '  <figcaption>'.$row['blurb'].'</figcaption>';
     echo '</figure>';

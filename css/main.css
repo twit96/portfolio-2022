@@ -23,6 +23,7 @@ html { box-sizing: border-box; }
   --grey-light: #dedede;
   --grey-shadow: #303030;
   --yellow: #f0c808;
+  --yellow-shadow: #c4a408;
   /* other */
   --main-padding: 25px;
   --main-font-size: 16px;
