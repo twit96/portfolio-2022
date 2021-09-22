@@ -233,7 +233,7 @@ a:hover { text-decoration: underline; }
 }
 @keyframes fade-in {
   0% { opacity: 0; }
-  100% { opacity: 0.5; }
+  100% { opacity: 0.75; }
 }
 .scroll-down-indicator.hidden {
   cursor: auto;
