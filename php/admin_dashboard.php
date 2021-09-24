@@ -204,7 +204,7 @@ function doEngine() {
     $server = "localhost";
     $user   = "portfolio_user";
     $pwd    = "portfolio_user_pass";
-    $dbName = "admin";
+    $dbName = "Portfolio";
 
     // Connect to MySQL Server
     $mysqli = new mysqli ($server, $user, $pwd, $dbName);
