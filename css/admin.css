@@ -1,3 +1,4 @@
+#entries { overflow: hidden; }
 #entries h2 {
   color: white;
   margin-bottom: var(--main-padding);
@@ -11,14 +12,16 @@ table {
   line-height: 100%;
   border-radius: 1vmin;
   overflow: hidden;
+  font-size: 80%;
 }
 th, td {
+  width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
+  max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
+  overflow-x: scroll;
   padding: 0.5em;
-  max-width: calc(100vw / 12);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-
 }
 th {
   background: var(--green-shadow);
@@ -55,6 +58,7 @@ td {
 
   th, td {
     max-width: none;
+    width: auto;
     white-space: normal;
     overflow: hidden;
   }
