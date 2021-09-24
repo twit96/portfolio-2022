@@ -1,0 +1,65 @@
+
+table {
+  background: var(--grey-light);
+  border-collapse: collapse;
+  line-height: 100%;
+  overflow: hidden;
+}
+th, td {
+  padding: 0.25em 0.5em;
+
+}
+th {
+  background: var(--green-shadow);
+  color: white;
+}
+td {
+  border-right: 1px solid var(--grey);
+  border-top: 1px solid var(--grey);
+  vertical-align: top;
+}
+
+
+@media (max-width: 900px) {
+
+  /* force remove default table behavior */
+  table, thead, tbody, th, td, tr {
+    display: block;
+    text-align: left;
+    /* unset border styles */
+    border: 0;
+  }
+
+  /* restyle table rows (now blocks) */
+  tr {
+    border-radius: 0.25em;
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 0.25em solid var(--light-grey);
+  }
+
+  /* restyle row column data (now block row data) */
+  td { margin-bottom: 0.5em; }
+
+  /* restyle week text column data (now row data) */
+  td:first-child {
+    color: var(--orange);
+    border-bottom: 1px solid var(--light-grey);
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  /* replace table header elements with title text */
+  tr:first-child { display: none; }
+  td:nth-of-type(1)::before { content: "Week "; }
+  td:nth-of-type(2)::before { content: "Dates: "; }
+  td:nth-of-type(3)::before { content: "Topics: "; }
+  td:nth-of-type(4)::before { content: "Homework: "; }
+
+  /* style new title text */
+  td::before {
+    font-weight: bold;
+    color: var(--orange);
+  }
+}
