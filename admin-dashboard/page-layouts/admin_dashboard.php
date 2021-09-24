@@ -23,20 +23,16 @@
 		<section id="entries">
 			<form method="POST" action="index.php">
 		    <h2>Login</h2>
-		   	<table>
-		      <tr>
-		     		<td>Username:</td>
-		     		<td><input name="username" type="text" size="30" placeholder="username" required /></td>
-		    	</tr>
-		    	<tr>
-		        	<td>Password:</td>
-		        	<td><input name="password" type="password" size="30" required /></td>
-		    	</tr>
-		   	</table>
-			<p>
-		    <input name="login" type="submit" value="Submit" />
-		    <input type="reset" value="Reset" />
-		  </p>
+		    <p>
+		      Username:
+		      <input name="username" type="text" size="30" placeholder="username" required />
+		      Password:
+		      <input name="password" type="password" size="30" required />
+		    </p>
+		  	<p>
+		      <input name="login" type="submit" value="Submit" />
+		      <input type="reset" value="Reset" />
+		    </p>
 			</form>
 	    <h2>Database Entries</h2>
 			<table>

@@ -27,8 +27,8 @@ tr:last-child td {
   height: calc(0.8 * var(--main-font-size) + 1em);
 }
 th, td {
-  width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
-  max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
+  width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
+  max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
   padding: 0.5em;
 }
 th {
