@@ -16,7 +16,7 @@ function displayEntries($mysqli) {
       <tr>
   TOP;
 
-  $command = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'projects' ORDER BY ORDINAL_POSITION;';
+  $command = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "projects" ORDER BY ORDINAL_POSITION;';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
