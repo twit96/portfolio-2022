@@ -22,7 +22,7 @@ function displayEntries($mysqli) {
 
   // display column names
   while ($row = $result->fetch_assoc()) {
-    echo '<th>'.$row.'</th>';
+    echo '<th>'.$row['COLUMN_NAME'].'</th>';
   }
   echo '</tr></thead>';
 
