@@ -138,6 +138,9 @@ function buildDashboard() {
   // Closing HTML
   echo <<<BOTTOM
     </table>
+    <form method="POST" action="index.php">
+      <input name="logout" type="submit" value="Logout" />
+    </form>
   </section>
   BOTTOM;
 }
