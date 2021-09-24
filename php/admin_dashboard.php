@@ -22,7 +22,8 @@ function displayEntries($mysqli) {
 
   // display column names
   while ($row = $result->fetch_assoc()) {
-    echo '<th>'.$row['COLUMN_NAME'].'</th>';
+    $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
+    echo '<th>'.$str.'</th>';
   }
   echo '</tr></thead>';
 
