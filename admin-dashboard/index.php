@@ -21,9 +21,9 @@
 		?>
 
 		<?php
-			// include('../php/admin_dashboard.php');
+			include('../php/admin_dashboard.php');
 		?>
-		<section id="entries">
+		<!-- <section id="entries">
 	    <h2>Database Entries</h2>
 			<table>
 				<thead>
@@ -87,7 +87,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</section>
+		</section> -->
 
     <!-- <h1>Add Project</h1>
     <form method="POST" action="add_project.php">
