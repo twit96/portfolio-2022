@@ -13,7 +13,7 @@ table {
   background: var(--grey-light);
   border-collapse: collapse;
   line-height: 100%;
-  border-radius: 1vmin;
+  border-radius: max(1.5vmin, 5px);
   overflow: hidden;
   font-size: 80%;
 }
@@ -35,12 +35,21 @@ th {
   background: var(--green-shadow);
   color: white;
 }
+thead th:last-of-type {
+  border-left: 1px solid var(--grey);
+  background: var(--grey-shadow);
+}
+
 td {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   border-right: 1px solid var(--grey);
   border-top: 1px solid var(--grey);
+}
+td:last-child {
+  background: var(--grey-shadow);
+  color: white;
 }
 td:hover {
   background: var(--yellow);
@@ -101,6 +110,7 @@ td:hover {
   td:nth-of-type(10)::before { content: "Tertiary Link: "; }
   td:nth-of-type(11)::before { content: "Tertiary Link Text: "; }
   td:nth-of-type(12)::before { content: "Featured: "; }
+  td:nth-of-type(13)::before { content: "Update? "; }
 
   /* style new title text */
   td::before {

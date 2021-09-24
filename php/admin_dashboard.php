@@ -1,4 +1,5 @@
 <?php
+
 /**
 * Display all errors.
 */
@@ -6,28 +7,132 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-function displayEntries($mysqli) {
+function doLogin() {
+  $script = $_SERVER['PHP_SELF'];
+  echo <<<TOP
+	<form method="POST" action="index.php">
+    <h2>Login</h2>
+   	<table>
+      <tr>
+     		<td>Username:</td>
+     		<td><input name="username" type="text" size="30" placeholder="username" required /></td>
+    	</tr>
+    	<tr>
+        	<td>Password:</td>
+        	<td><input name="password" type="password" size="30" required /></td>
+    	</tr>
+   	</table>
+	<p>
+    <input name="login" type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+  </p>
+	</form>
+TOP;
+}
+
+
+/**
+* Function to unset username and password POST variables.
+* No return value.
+*/
+function doUnsetPost() {
+  unset($_POST['username']);
+  unset($_POST['password']);
+}
+
+
+/**
+* Function to check if a username
+* is in the admin database.
+* Returns 1 if username exists and 0 otherwise.
+*/
+function checkUser($mysqli, $username) {
+  $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '";';
+  $result = $mysqli->query($command);
+  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  // $user_in_db will be 1 if in database and 0 if not in database
+  $user_in_db = $result->fetch_row()[0];
+  return $user_in_db;
+}
+
+
+/**
+* Function to check if a username/password entry
+* is in the iq_passwords database.
+* Returns 1 if username/password entry exists and 0 otherwise.
+*/
+function checkPass($mysqli, $username, $password) {
+  $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '" AND password = "' . $password . '";';
+  $result = $mysqli->query($command);
+  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  // $pass_in_db will be 1 if in database and 0 if not in database
+  $pass_in_db = $result->fetch_row()[0];
+  return $pass_in_db;
+}
+
+
+/**
+* Function to handle the login functionality
+* based off of the given username and password.
+* No return value.
+*/
+function checkLogin($mysqli, $username, $password) {
+
+  if (!$username == '' && !$password == '') {
+    // username and password have values
+    if (
+      (checkUser($mysqli, $username) == 1) &&
+      (checkPass($mysqli, $username, $password) == 1)
+    ) {
+      // username and password in database
+      session_start();
+      build_dashboard();
+    } else {
+      // username or pass not in database
+      echo '<script>alert("Login Failed. Please Try Again.");</script>';
+      doLogin();
+    }
+  } else {
+    // username or password is empty
+    echo '<script>alert("Username and password cannot be empty!");</script>';
+    doLogin();
+  }
+}
+
+
+function buildDashboard() {
+  $server = "localhost";
+  $user   = "portfolio_user";
+  $pwd    = "portfolio_user_pass";
+  $dbName = "Portfolio";
+  // Connect to MySQL Server
+  $mysqli = new mysqli ($server, $user, $pwd, $dbName);
+  if ($mysqli->connect_errno) {
+    die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
+  }
+  // Select Database
+  $mysqli->select_db($dbName) or die($mysqli->error);
+
   // Opening HTML
   echo <<<TOP
-  <section id="entries">
-    <h2>Database Entries</h2>
-    <table>
-    <thead>
-      <tr>
+  <h2>Database Entries</h2>
+  <table>
+  <thead>
+    <tr>
   TOP;
 
+  // Table Header Row
   $command = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "projects" ORDER BY ORDINAL_POSITION;';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
-  // display column names
   while ($row = $result->fetch_assoc()) {
     $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
     echo '<th>'.$str.'</th>';
   }
   echo '</tr></thead>';
 
-  // display all data
+  // Table Body Data
   displayData($mysqli);
 
   // Closing HTML
@@ -81,24 +186,48 @@ function displayData($mysqli) {
 }
 
 
+/**
+* Engine function to configure required inputs for the above functions.
+* Checks database connection and pulls and handles username and password inputs.
+*/
 function doEngine() {
-  $server = "localhost";
-  $user   = "portfolio_user";
-  $pwd    = "portfolio_user_pass";
-  $dbName = "Portfolio";
 
-  // Connect to MySQL Server
-  $mysqli = new mysqli ($server, $user, $pwd, $dbName);
+  // if user logged out
+  if (isset($_POST["logout"])) {
+    echo '<script>alert("Logged Out.");</script>';
+    unset($_POST["login"]);
+    unset($_POST["logout"]);
+    doLogin();
 
-  if ($mysqli->connect_errno) {
-    die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
+  // if user logged in
+  } else if (isset($_POST["login"])) {
+    $server = "localhost";
+    $user   = "portfolio_user";
+    $pwd    = "portfolio_user_pass";
+    $dbName = "admin";
+
+    // Connect to MySQL Server
+    $mysqli = new mysqli ($server, $user, $pwd, $dbName);
+    if ($mysqli->connect_errno) {
+      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
+    }
+    // Select Database
+    $mysqli->select_db($dbName) or die($mysqli->error);
+
+    // Retrieve data from POST
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    doUnsetPost();
+    // Escape User Input to help prevent SQL Injection
+    $username = $mysqli->real_escape_string($username);
+    $password = $mysqli->real_escape_string($password);
+    // Check Login
+    checkLogin($mysqli, $username, $password);
+
+  // user has not logged in yet
+  } else {
+    doLogin();
   }
-
-  // Select Database
-  $mysqli->select_db($dbName) or die($mysqli->error);
-
-  // Display Featured
-  displayEntries($mysqli);
 }
 
 
@@ -106,8 +235,6 @@ function doEngine() {
 * Initial function call to execute script.
 */
 doEngine();
-
-
 
 
 ?>

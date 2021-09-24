@@ -20,10 +20,24 @@
 			include('../../templates/header.html');
 		?>
 
-		<?php
-			// include('../php/admin_dashboard.php');
-		?>
 		<section id="entries">
+			<form method="POST" action="index.php">
+		    <h2>Login</h2>
+		   	<table>
+		      <tr>
+		     		<td>Username:</td>
+		     		<td><input name="username" type="text" size="30" placeholder="username" required /></td>
+		    	</tr>
+		    	<tr>
+		        	<td>Password:</td>
+		        	<td><input name="password" type="password" size="30" required /></td>
+		    	</tr>
+		   	</table>
+			<p>
+		    <input name="login" type="submit" value="Submit" />
+		    <input type="reset" value="Reset" />
+		  </p>
+			</form>
 	    <h2>Database Entries</h2>
 			<table>
 				<thead>
@@ -40,6 +54,7 @@
 						<th>Tertiary Link</th>
 						<th>Tertiary Link Text</th>
 						<th>Featured</th>
+						<th>Update?</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,6 +71,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Minesweeper</td>
@@ -70,6 +86,7 @@
 						<td></td>
 						<td></td>
 						<td>3</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Wittig Grass Sales</td>
@@ -84,6 +101,7 @@
 						<td></td>
 						<td></td>
 						<td>4</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Memory Game</td>
@@ -98,6 +116,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Connect Four</td>
@@ -112,6 +131,7 @@
 						<td></td>
 						<td></td>
 						<td>5</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Dr. Bulko's Responsive Redesign</td>
@@ -126,6 +146,7 @@
 						<td></td>
 						<td></td>
 						<td>2</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Simple Gradient Website</td>
@@ -140,6 +161,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>IndieQuest</td>
@@ -154,6 +176,7 @@
 						<td></td>
 						<td></td>
 						<td>1</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Tic-Tac-Toe</td>
@@ -168,6 +191,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>First Portfolio Website</td>
@@ -182,6 +206,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Star Wars Survey Classification Analysis</td>
@@ -196,6 +221,7 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Pharaoh's Phury</td>
@@ -210,6 +236,7 @@
 						<td>https://youtu.be/IQX4wJzflHA</td>
 						<td>Watch Trailer</td>
 						<td>0</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td>Tank Fighter</td>
@@ -224,8 +251,10 @@
 						<td></td>
 						<td></td>
 						<td>0</td>
+						<td></td>
 					</tr>
-					</tr>
+					<tr>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
