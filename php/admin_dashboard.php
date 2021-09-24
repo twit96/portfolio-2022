@@ -85,7 +85,6 @@ function checkLogin($mysqli, $username, $password) {
       (checkPass($mysqli, $username, $password) == 1)
     ) {
       // username and password in database
-      session_start();
       buildDashboard();
     } else {
       // username or pass not in database
