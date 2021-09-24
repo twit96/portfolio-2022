@@ -270,6 +270,9 @@
 					</tr>
 				</tbody>
 			</table>
+			<form method="POST" action="index.php">
+	      <input name="logout" type="submit" value="Logout" />
+	    </form>
 		</section>
 
     <!-- <h1>Add Project</h1>
