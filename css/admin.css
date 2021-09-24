@@ -1,6 +1,6 @@
 #entries h2 {
   color: white;
-  margin-bottom: calc(var(--main-padding) / 2);
+  margin-bottom: var(--main-padding);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
@@ -61,7 +61,7 @@ td {
   td:first-child::before { display: inline; }
 
   /* replace table header elements with title text */
-  tr:first-child { display: none; }
+  thead { display: none; }
   td:nth-of-type(1)::before { content: "Title: "; }
   td:nth-of-type(2)::before { content: "Directory: "; }
   td:nth-of-type(3)::before { content: "Blurb: "; }
