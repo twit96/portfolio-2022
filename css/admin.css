@@ -1,8 +1,15 @@
-
+#entries h2 {
+  color: white;
+  margin-bottom: calc(var(--main-padding) / 2);
+  font-family: 'Pacifico', cursive;
+  font-weight: normal;
+  font-size: calc(2.5 * var(--main-font-size));
+}
 table {
   background: var(--grey-light);
   border-collapse: collapse;
   line-height: 100%;
+  border-radius: 1vmin;
   overflow: hidden;
 }
 th, td {
@@ -30,36 +37,47 @@ td {
     border: 0;
   }
 
+  table {
+    background: 0;
+  }
+
   /* restyle table rows (now blocks) */
   tr {
-    border-radius: 0.25em;
-    margin-bottom: 1em;
-    padding: 1em;
-    border: 0.25em solid var(--light-grey);
+    border-radius: 1vmin;
+    margin-bottom: var(--main-padding);
+    border: 0.25em solid var(--green-shadow);
+    background: var(--grey-light);
   }
 
   /* restyle row column data (now block row data) */
-  td { margin-bottom: 0.5em; }
+  td { padding: 0.5em 1em; }
 
   /* restyle week text column data (now row data) */
   td:first-child {
-    color: var(--orange);
-    border-bottom: 1px solid var(--light-grey);
-    font-size: 1.25em;
-    font-weight: bold;
-    text-align: right;
+    background: var(--green-shadow);
+    color: white;
+    font-size: 125%;
   }
+  td:first-child::before { display: inline; }
 
   /* replace table header elements with title text */
   tr:first-child { display: none; }
-  td:nth-of-type(1)::before { content: "Week "; }
-  td:nth-of-type(2)::before { content: "Dates: "; }
-  td:nth-of-type(3)::before { content: "Topics: "; }
-  td:nth-of-type(4)::before { content: "Homework: "; }
+  td:nth-of-type(1)::before { content: "Title: "; }
+  td:nth-of-type(2)::before { content: "Directory: "; }
+  td:nth-of-type(3)::before { content: "Blurb: "; }
+  td:nth-of-type(4)::before { content: "Description: "; }
+  td:nth-of-type(5)::before { content: "Date: "; }
+  td:nth-of-type(6)::before { content: "Primary Link: "; }
+  td:nth-of-type(7)::before { content: "Primary Link Text: "; }
+  td:nth-of-type(8)::before { content: "Secondary Link: "; }
+  td:nth-of-type(9)::before { content: "Secondary Link Text: "; }
+  td:nth-of-type(10)::before { content: "Tertiary Link: "; }
+  td:nth-of-type(11)::before { content: "Tertiary Link Text: "; }
+  td:nth-of-type(12)::before { content: "Featured: "; }
 
   /* style new title text */
   td::before {
     font-weight: bold;
-    color: var(--orange);
+    display: block;
   }
 }
