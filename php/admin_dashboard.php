@@ -86,7 +86,7 @@ function checkLogin($mysqli, $username, $password) {
     ) {
       // username and password in database
       session_start();
-      build_dashboard();
+      buildDashboard();
     } else {
       // username or pass not in database
       echo '<script>alert("Login Failed. Please Try Again.");</script>';
