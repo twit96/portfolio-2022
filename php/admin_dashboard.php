@@ -9,7 +9,7 @@ ini_set("display_errors", "on");
 function displayEntries($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <section id="Entries">
+  <section id="entries">
     <h2>Database Entries</h2>
     <table>
     <thead>
