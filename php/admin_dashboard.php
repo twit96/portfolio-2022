@@ -60,6 +60,22 @@ function displayData($mysqli) {
     echo '<td>'.$row['featured'].'</td>';
     echo '</tr>';
   }
+  echo <<<EMPTYROW
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  EMPTYROW;
   echo '</tbody>';
 }
 

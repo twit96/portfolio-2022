@@ -1,4 +1,7 @@
-#entries { overflow: hidden; }
+#entries {
+  overflow: hidden;
+  min-height: calc(100vh - var(--main-padding));
+}
 #entries h2 {
   color: white;
   margin-bottom: var(--main-padding);
@@ -14,23 +17,34 @@ table {
   overflow: hidden;
   font-size: 80%;
 }
+tr {
+  overflow: hidden;
+}
+tbody tr:hover {
+  box-shadow: 0 0 2px 1px var(--grey-shadow) inset;
+}
+tr:last-child td {
+  height: calc(0.8 * var(--main-font-size) + 1em);
+}
 th, td {
   width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
   max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 12);
-  overflow-x: scroll;
   padding: 0.5em;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 th {
   background: var(--green-shadow);
   color: white;
 }
 td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   border-right: 1px solid var(--grey);
   border-top: 1px solid var(--grey);
-  vertical-align: top;
+}
+td:hover {
+  background: var(--yellow);
+  box-shadow: 0 0 2px 1px var(--grey-shadow) inset;
 }
 
 
