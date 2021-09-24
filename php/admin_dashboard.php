@@ -184,6 +184,7 @@ function displayData($mysqli) {
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
   EMPTYROW;
   echo '</tbody>';
