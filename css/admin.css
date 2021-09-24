@@ -13,7 +13,11 @@ table {
   overflow: hidden;
 }
 th, td {
-  padding: 0.25em 0.5em;
+  padding: 0.5em;
+  max-width: calc(100vw / 12);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
 }
 th {
@@ -27,7 +31,7 @@ td {
 }
 
 
-@media (max-width: 900px) {
+@media (max-aspect-ratio: 16/9) {
 
   /* force remove default table behavior */
   table, thead, tbody, th, td, tr {
@@ -49,6 +53,11 @@ td {
     background: var(--grey-light);
   }
 
+  th, td {
+    max-width: none;
+    white-space: normal;
+    overflow: hidden;
+  }
   /* restyle row column data (now block row data) */
   td { padding: 0.5em 1em; }
 
