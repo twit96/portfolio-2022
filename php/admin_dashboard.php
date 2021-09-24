@@ -130,6 +130,7 @@ function buildDashboard() {
     $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
     echo '<th>'.$str.'</th>';
   }
+  echo '<th>Update?</th>';
   echo '</tr></thead>';
 
   // Table Body Data
@@ -167,6 +168,7 @@ function displayData($mysqli) {
     echo '<td>'.$row['tertiary_link'].'</td>';
     echo '<td>'.$row['tertiary_link_text'].'</td>';
     echo '<td>'.$row['featured'].'</td>';
+    echo '<td></td>';
     echo '</tr>';
   }
   echo <<<EMPTYROW
