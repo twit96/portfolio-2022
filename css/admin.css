@@ -9,6 +9,44 @@
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
 }
+
+
+/* Login/Logout Forms ------------------------------------------------------ */
+#login {
+  background: var(--grey-light);
+  padding: var(--main-padding);
+  border-radius: max(1.5vmin, 5px);
+  margin-bottom: var(--main-padding);
+}
+#login p { margin-bottom: calc(var(--main-padding) / 4); }
+#login p:last-of-type { margin-bottom: 0; }
+
+#login input[type="text"],
+#login input[type="password"] {
+  padding: 0.5em;
+  border-radius: 3em;
+  border: 3px solid var(--grey-shadow);
+  color: var(--blue-shadow);
+}
+input[type="submit"],
+input[type="reset"] {
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  background: var(--blue-shadow);
+  color: white;
+  border: 0;
+}
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  box-shadow: 0 0 2px 2px var(--grey-shadow) inset;
+}
+
+#logout input {
+  margin-top: calc(var(--main-padding) / 2);
+}
+
+
+/* Dashboard Table --------------------------------------------------------- */
 table {
   background: var(--grey-light);
   border-collapse: collapse;
@@ -17,29 +55,42 @@ table {
   overflow: hidden;
   font-size: 80%;
 }
-tr {
-  overflow: hidden;
+
+/* inputs */
+table input {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  background: 0;
+  outline-color: var(--indigo-shadow);
+  border: 0;
 }
-tbody tr:hover {
-  box-shadow: 0 0 2px 1px var(--grey-shadow) inset;
+table input[type="submit"],
+table input[type="reset"] {
+  border-radius: 0;
 }
-tr:last-child td {
-  height: calc(0.8 * var(--main-font-size) + 1em);
-}
+
+/* Rows */
+tr { overflow: hidden; }
+tbody tr:hover { background: var(--grey); }
+
+/* Header Cells */
 th, td {
   width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
   max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
-  padding: 0.5em;
 }
 th {
   background: var(--green-shadow);
   color: white;
+  padding: 0.5em;
 }
+/* last column */
 thead th:last-of-type {
-  border-left: 1px solid var(--grey);
-  background: var(--grey-shadow);
+  background: var(--blue-shadow);
+  color: white;
 }
 
+/* Cells */
 td {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -47,14 +98,20 @@ td {
   border-right: 1px solid var(--grey);
   border-top: 1px solid var(--grey);
 }
-td:last-child {
-  background: var(--grey-shadow);
-  color: white;
-}
 td:hover {
   background: var(--yellow);
   box-shadow: 0 0 2px 1px var(--grey-shadow) inset;
 }
+/* last column */
+td:last-child {
+  background: var(--blue-shadow);
+  color: white;
+  border-color: var(--blue);
+}
+td:last-child:hover {
+  background: var(--blue);
+}
+
 
 
 @media (max-aspect-ratio: 16/9) {
@@ -63,41 +120,67 @@ td:hover {
   table, thead, tbody, th, td, tr {
     display: block;
     text-align: left;
-    /* unset border styles */
-    border: 0;
   }
 
   table {
+    border-radius: 0;
     background: 0;
+  }
+  table input {
+    padding: 0.5em 1em;
+    font-size: 100%;
+  }
+  table input[type="submit"] {
+    padding: 1em;
   }
 
   /* restyle table rows (now blocks) */
   tr {
-    border-radius: 1vmin;
+    border-radius: max(1.5vmin, 5px);
     margin-bottom: var(--main-padding);
-    border: 0.25em solid var(--green-shadow);
-    background: var(--grey-light);
+    border: max(1vmin, 3px) solid var(--green-shadow);
+    background: var(--green-shadow);
   }
+  tbody tr:hover { background: var(--grey-light); }
 
-  th, td {
+  td {
     max-width: none;
     width: auto;
     white-space: normal;
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background: var(--grey-light);
+    border: 0;
+    border-top: 1px solid var(--grey);
   }
-  /* restyle row column data (now block row data) */
-  td { padding: 0.5em 1em; }
-
-  /* restyle week text column data (now row data) */
   td:first-child {
+    border: 0;
+  }
+  td::before {
+    width: 10em;
+    max-width: 10em;
+    overflow: hidden;
+    padding: 1em;
+    font-weight: bold;
+    text-align: left;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
     background: var(--green-shadow);
     color: white;
-    font-size: 125%;
   }
-  td:first-child::before { display: inline; }
+  td input {
+    width: 100%;
+    padding: 1em;
+    align-self: center;
+  }
+
 
   /* replace table header elements with title text */
   thead { display: none; }
+
   td:nth-of-type(1)::before { content: "Title: "; }
   td:nth-of-type(2)::before { content: "Directory: "; }
   td:nth-of-type(3)::before { content: "Blurb: "; }
@@ -110,11 +193,6 @@ td:hover {
   td:nth-of-type(10)::before { content: "Tertiary Link: "; }
   td:nth-of-type(11)::before { content: "Tertiary Link Text: "; }
   td:nth-of-type(12)::before { content: "Featured: "; }
-  td:nth-of-type(13)::before { content: "Update? "; }
 
   /* style new title text */
-  td::before {
-    font-weight: bold;
-    display: block;
-  }
 }

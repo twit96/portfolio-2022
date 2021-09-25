@@ -10,8 +10,8 @@ ini_set("display_errors", "on");
 function doLogin() {
   $script = $_SERVER['PHP_SELF'];
   echo <<<TOP
-	<form method="POST" action="index.php">
-    <h2>Login</h2>
+  <h2>Login</h2>
+	<form id="login" method="POST" action="index.php">
     <p>
       Username:
       <input name="username" type="text" size="30" placeholder="username" required />
@@ -125,11 +125,11 @@ function buildDashboard() {
     $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
     echo '<th>'.$str.'</th>';
   }
-  echo '<th>Update?</th>';
+  echo '<th>Controls</th>';
   echo '</tr></thead>';
 
   // Table Body Data
-  displayData($mysqli);
+  $project_directories = displayData($mysqli);
 
   // Closing HTML
   echo <<<BOTTOM
@@ -139,6 +139,12 @@ function buildDashboard() {
     </form>
   </section>
   BOTTOM;
+
+  // Forms for each row of inputs to reference
+  foreach ($project_directories as &$curr_dir) {
+    echo '<form id="'.$curr_dir.'" method="POST" action="index.php"></form>';
+  }
+  unset($curr_dir);
 }
 
 
@@ -148,42 +154,50 @@ function displayData($mysqli) {
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
+  $project_directories = array();
+
   echo '<tbody>';
   while ($row = $result->fetch_assoc()) {
+
+    array_push($project_directories, $row['directory']);
+
     echo '<tr>';
-    echo '<td>'.$row['title'].'</td>';
-    echo '<td>'.$row['directory'].'</td>';
-    echo '<td>'.$row['blurb'].'</td>';
-    echo '<td>'.$row['description'].'</td>';
-    echo '<td>'.$row['date'].'</td>';
-    echo '<td>'.$row['primary_link'].'</td>';
-    echo '<td>'.$row['primary_link_text'].'</td>';
-    echo '<td>'.$row['secondary_link'].'</td>';
-    echo '<td>'.$row['secondary_link_text'].'</td>';
-    echo '<td>'.$row['tertiary_link'].'</td>';
-    echo '<td>'.$row['tertiary_link_text'].'</td>';
-    echo '<td>'.$row['featured'].'</td>';
-    echo '<td></td>';
+    echo '<td><input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
     echo '</tr>';
+
   }
   echo <<<EMPTYROW
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td><input form="add-new-project" name="title" type="text" placeholder="New Title" required /></td>
+    <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
+    <td><input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" /></td>
+    <td><input form="add-new-project" name="description" type="text" placeholder="Project Description" /></td>
+    <td><input form="add-new-project" name="date" type="text" placeholder="0000-00-00" required /></td>
+    <td><input form="add-new-project" name="primary_link" type="text" placeholder="project-link1.com" /></td>
+    <td><input form="add-new-project" name="primary_link_text" type="text" placeholder="Link1 Button Text" /></td>
+    <td><input form="add-new-project" name="secondary_link" type="text" placeholder="project-link2.com" /></td>
+    <td><input form="add-new-project" name="secondary_link_text" type="text" placeholder="Link2 Button Text" /></td>
+    <td><input form="add-new-project" name="tertiary_link" type="text" placeholder="project-link3.com" /></td>
+    <td><input form="add-new-project" name="tertiary_link_text" type="text" placeholder="Link3 Button Text" /></td>
+    <td><input form="add-new-project" name="featured" type="number" value="0" required /></td>
+    <td><input form="add-new-project" name="update" type="submit" value="Add" /></td>
   </tr>
   EMPTYROW;
   echo '</tbody>';
+
+  return $project_directories;
 }
 
 
