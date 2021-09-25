@@ -141,7 +141,7 @@ td:last-child:hover {
     border: max(1vmin, 3px) solid var(--green-shadow);
     background: var(--green-shadow);
   }
-  tbody tr:hover { background: var(--grey-light); }
+  tbody tr:hover { background: var(--green-shadow); }
 
   td {
     max-width: none;
