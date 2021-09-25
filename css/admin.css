@@ -48,7 +48,7 @@ input[type="reset"]:hover {
 
 /* Dashboard Table --------------------------------------------------------- */
 table {
-  border: max(1vmin, 3px) solid var(--green-shadow);
+  border: max(1vmin, 5px) solid var(--green-shadow);
   background: var(--green-shadow);
   background: var(--grey-light);
   border-collapse: collapse;
@@ -139,7 +139,7 @@ td:last-child:hover {
   tr {
     border-radius: max(1.5vmin, 5px);
     margin-bottom: var(--main-padding);
-    border: max(1vmin, 3px) solid var(--green-shadow);
+    border: max(1vmin, 5px) solid var(--green-shadow);
     background: var(--green-shadow);
   }
   tbody tr:hover { background: var(--green-shadow); }
