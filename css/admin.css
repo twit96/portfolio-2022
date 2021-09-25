@@ -48,11 +48,12 @@ input[type="reset"]:hover {
 
 /* Dashboard Table --------------------------------------------------------- */
 table {
+  border: max(1vmin, 3px) solid var(--green-shadow);
+  background: var(--green-shadow);
   background: var(--grey-light);
   border-collapse: collapse;
   line-height: 100%;
   border-radius: max(1.5vmin, 5px);
-  overflow: hidden;
   font-size: 80%;
 }
 
@@ -123,7 +124,7 @@ td:last-child:hover {
   }
 
   table {
-    border-radius: 0;
+    border: 0;
     background: 0;
   }
   table input {
@@ -176,7 +177,9 @@ td:last-child:hover {
     padding: 1em;
     align-self: center;
   }
-
+  td:first-child input {
+    font-weight: bold;
+  }
 
   /* replace table header elements with title text */
   thead { display: none; }
@@ -193,6 +196,4 @@ td:last-child:hover {
   td:nth-of-type(10)::before { content: "Tertiary Link: "; }
   td:nth-of-type(11)::before { content: "Tertiary Link Text: "; }
   td:nth-of-type(12)::before { content: "Featured: "; }
-
-  /* style new title text */
 }
