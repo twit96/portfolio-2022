@@ -11,18 +11,20 @@ function doLogin() {
   $script = $_SERVER['PHP_SELF'];
   echo <<<TOP
   <h2>Login</h2>
-	<form id="login" method="POST" action="index.php">
+  <form id="login" method="POST" action="index.php">
     <p>
       Username:
-      <input name="username" type="text" size="30" placeholder="username" required />
-      Password:
-      <input name="password" type="password" size="30" required />
+      <input name="username" type="text" placeholder="Username" required />
     </p>
-  	<p>
+    <p>
+      Password:
+      <input name="password" type="password" placeholder="Password" required />
+    </p>
+    <p>
       <input name="login" type="submit" value="Submit" />
       <input type="reset" value="Reset" />
     </p>
-	</form>
+  </form>
 TOP;
 }
 
