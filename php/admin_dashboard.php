@@ -218,8 +218,8 @@ function updateDB($mysqli) {
   // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   // Refresh Page and Die
-  header('Location: ./');
-  die;
+  // header('Location: ./');
+  // die;
 }
 
 
