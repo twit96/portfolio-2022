@@ -230,7 +230,7 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       // skip id column
-      if (($key == "id") { continue; }
+      if ($key == "id") { continue; }
       // handle image column
       if (($key == "image") && ($_POST[$key] != null)) {
         // check file is image
