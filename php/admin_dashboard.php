@@ -180,6 +180,7 @@ function displayData($mysqli) {
     echo '<tr>';
     echo '<td><input class="hidden" form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
     echo '<td><input class="hidden" form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="image" type="file" /></td>';
     echo '<td><input class="hidden" form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
     echo '<td><input class="hidden" form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
     echo '<td><input class="hidden" form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
@@ -198,6 +199,7 @@ function displayData($mysqli) {
   <tr>
     <td><input form="add-new-project" name="title" type="text" placeholder="New Title" required /></td>
     <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
+    <td><input form="add-new-project" name="image" type="file" /></td>
     <td><input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" /></td>
     <td><input form="add-new-project" name="description" type="text" placeholder="Project Description" /></td>
     <td><input form="add-new-project" name="date" type="text" placeholder="0000-00-00" required /></td>
