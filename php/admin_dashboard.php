@@ -158,7 +158,7 @@ function buildDashboard() {
 
   // Forms for each row of inputs to reference
   foreach ($project_directories as &$curr_dir) {
-    echo '<form id="'.$curr_dir.'" method="POST" action="index.php"></form>';
+    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php"></form>';
   }
   unset($curr_dir);
 }
@@ -178,20 +178,20 @@ function displayData($mysqli) {
     array_push($project_directories, $row['directory']);
 
     echo '<tr>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="image" type="file" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
-    echo '<td><input class="hidden" form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="image" type="file" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
     echo '</tr>';
 
   }
