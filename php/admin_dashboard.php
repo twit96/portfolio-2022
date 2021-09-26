@@ -83,7 +83,7 @@ function checkLogin($mysqli, $username, $password) {
       (checkPass($mysqli, $username, $password) == 1)
     ) {
       // username and password in database
-      buildDashboard();
+      buildDashboard($mysqli);
     } else {
       // username or pass not in database
       echo '<script>alert("Login Failed. Please Try Again.");</script>';
@@ -97,19 +97,7 @@ function checkLogin($mysqli, $username, $password) {
 }
 
 
-function buildDashboard() {
-  $server = "localhost";
-  $user   = "portfolio_user";
-  $pwd    = "portfolio_user_pass";
-  $dbName = "Portfolio";
-  // Connect to MySQL Server
-  $mysqli = new mysqli ($server, $user, $pwd, $dbName);
-  if ($mysqli->connect_errno) {
-    die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-  }
-  // Select Database
-  $mysqli->select_db($dbName) or die($mysqli->error);
-
+function buildDashboard($mysqli) {
   // Opening HTML
   echo <<<TOP
   <h2>Database Entries</h2>
@@ -219,6 +207,12 @@ function displayData($mysqli) {
 }
 
 
+
+function updateDB($mysqli) {
+
+}
+
+
 /**
 * Engine function to configure required inputs for the above functions.
 * Checks database connection and pulls and handles username and password inputs.
@@ -235,7 +229,7 @@ function doEngine() {
   } else if (isset($_POST["update"])) {
     echo '<script>alert("Update.");</script>';
     unset($_POST["update"]);
-
+    buildDashboard($mysqli);
 
   // if user logged in
   } else if (isset($_POST["login"])) {
