@@ -17,6 +17,7 @@
   padding: var(--main-padding);
   border-radius: max(1.5vmin, 5px);
   margin-bottom: var(--main-padding);
+  border: max(1vmin, 5px) solid var(--green-shadow);
 }
 #login p { margin-bottom: calc(var(--main-padding) / 4); }
 #login p:last-of-type { margin-bottom: 0; }
@@ -75,11 +76,6 @@ table input[type="reset"] {
 tr { overflow: hidden; }
 tbody tr:hover { background: var(--grey); }
 
-/* Header Cells */
-th, td {
-  width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
-  max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 13);
-}
 th {
   background: var(--green-shadow);
   color: white;
@@ -173,7 +169,6 @@ td:last-child:hover {
     color: white;
   }
   td input {
-    width: 100%;
     padding: 1em;
     align-self: center;
   }
@@ -186,14 +181,19 @@ td:last-child:hover {
 
   td:nth-of-type(1)::before { content: "Title: "; }
   td:nth-of-type(2)::before { content: "Directory: "; }
-  td:nth-of-type(3)::before { content: "Blurb: "; }
-  td:nth-of-type(4)::before { content: "Description: "; }
-  td:nth-of-type(5)::before { content: "Date: "; }
-  td:nth-of-type(6)::before { content: "Primary Link: "; }
-  td:nth-of-type(7)::before { content: "Primary Link Text: "; }
-  td:nth-of-type(8)::before { content: "Secondary Link: "; }
-  td:nth-of-type(9)::before { content: "Secondary Link Text: "; }
-  td:nth-of-type(10)::before { content: "Tertiary Link: "; }
-  td:nth-of-type(11)::before { content: "Tertiary Link Text: "; }
-  td:nth-of-type(12)::before { content: "Featured: "; }
+  td:nth-of-type(3)::before { content: "New Image: "; }
+  td:nth-of-type(4)::before { content: "Blurb: "; }
+  td:nth-of-type(5)::before { content: "Description: "; }
+  td:nth-of-type(6)::before { content: "Date: "; }
+  td:nth-of-type(7)::before { content: "Primary Link: "; }
+  td:nth-of-type(8)::before { content: "Primary Link Text: "; }
+  td:nth-of-type(9)::before { content: "Secondary Link: "; }
+  td:nth-of-type(10)::before { content: "Secondary Link Text: "; }
+  td:nth-of-type(11)::before { content: "Tertiary Link: "; }
+  td:nth-of-type(12)::before { content: "Tertiary Link Text: "; }
+  td:nth-of-type(13)::before { content: "Featured: "; }
 }
+
+
+/* Hidden Forms ------------------------------------------------------------ */
+form.hidden { padding: 0; }

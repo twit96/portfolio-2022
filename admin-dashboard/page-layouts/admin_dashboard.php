@@ -25,24 +25,42 @@
 			<form id="login" method="POST" action="index.php">
 				<p>
 					Username:
-		      <input name="username" type="text" placeholder="Username" required />
+					<input name="username" type="text" placeholder="Username" required />
 				</p>
-	      <p>
+				<p>
 					Password:
-		      <input name="password" type="password" placeholder="Password" required />
+					<input name="password" type="password" placeholder="Password" required />
 				</p>
-		  	<p>
-		      <input name="login" type="submit" value="Submit" />
-		      <input type="reset" value="Reset" />
-		    </p>
+				<p>
+					<input name="login" type="submit" value="Submit" />
+					<input type="reset" value="Reset" />
+				</p>
 			</form>
+
+
 
 	    <h2>Database Entries</h2>
 			<table>
+				<col style="width:8%">
+        <col style="width:7%">
+        <col style="width:13%">
+        <col style="width:7%">
+				<col style="width:7%">
+        <col style="width:6%">
+        <col style="width:7%">
+				<col style="width:6%">
+        <col style="width:7%">
+        <col style="width:6%">
+        <col style="width:7%">
+				<col style="width:6%">
+        <col style="width:6%">
+				<col style="width:7%">
+
 				<thead>
 					<tr>
 						<th>Title</th>
 						<th>Directory</th>
+						<th>New Image</th>
 						<th>Blurb</th>
 						<th>Description</th>
 						<th>Date</th>
@@ -63,6 +81,9 @@
 						</td>
 						<td>
 							<input form="goldschen-ohm-lab" name="directory" type="text" value="goldschen-ohm-lab" required />
+						</td>
+						<td>
+							<input form="goldschen-ohm-lab" name="image" type="file" />
 						</td>
 						<td>
 							<input form="goldschen-ohm-lab" name="blurb" type="text" value="Mobile-Responsive Webpage Update" />
@@ -106,6 +127,9 @@
 							<input form="minesweeper" name="directory" type="text" value="minesweeper" required />
 						</td>
 						<td>
+							<input form="minesweeper" name="image" type="file" />
+						</td>
+						<td>
 							<input form="minesweeper" name="blurb" type="text" value="JavaScript Minesweeper Game" />
 						</td>
 						<td>
@@ -145,6 +169,9 @@
 						</td>
 						<td>
 							<input form="add-new-project" name="directory" type="text" placeholder="new-directory" required />
+						</td>
+						<td>
+							<input form="add-new-project" name="image" type="file" />
 						</td>
 						<td>
 							<input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" />
@@ -188,9 +215,9 @@
 			</form>
 		</section>
 
-		<form id="goldschen-ohm-lab" method="POST" action="index.php"></form>
-		<form id="minesweeper" method="POST" action="index.php"></form>
-		<form id="add-new-project" method="POST" action="index.php"></form>
+		<form class="hidden" id="goldschen-ohm-lab" method="POST" action="index.php"></form>
+		<form class="hidden" id="minesweeper" method="POST" action="index.php"></form>
+		<form class="hidden" id="add-new-project" method="POST" action="index.php"></form>
 
 		<?php
 			include('../../templates/footer.html');

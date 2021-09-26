@@ -114,8 +114,22 @@ function buildDashboard() {
   echo <<<TOP
   <h2>Database Entries</h2>
   <table>
-  <thead>
-    <tr>
+    <col style="width:8%">
+    <col style="width:7%">
+    <col style="width:13%">
+    <col style="width:7%">
+    <col style="width:7%">
+    <col style="width:6%">
+    <col style="width:7%">
+    <col style="width:6%">
+    <col style="width:7%">
+    <col style="width:6%">
+    <col style="width:7%">
+    <col style="width:6%">
+    <col style="width:6%">
+    <col style="width:7%">
+    <thead>
+      <tr>
   TOP;
 
   // Table Header Row
@@ -164,19 +178,19 @@ function displayData($mysqli) {
     array_push($project_directories, $row['directory']);
 
     echo '<tr>';
-    echo '<td><input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
+    echo '<td><input class="hidden" form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
     echo '</tr>';
 
   }
@@ -211,7 +225,6 @@ function doEngine() {
 
   // if user logged out
   if (isset($_POST["logout"])) {
-    echo '<script>alert("Logged Out.");</script>';
     unset($_POST["login"]);
     unset($_POST["logout"]);
     doLogin();
@@ -240,6 +253,29 @@ function doEngine() {
     $password = $mysqli->real_escape_string($password);
     // Check Login
     checkLogin($mysqli, $username, $password);
+
+
+  // if user updated table
+  } else if (isset($_POST["update"])) {
+    $server = "localhost";
+    $user   = "portfolio_user";
+    $pwd    = "portfolio_user_pass";
+    $dbName = "Portfolio";
+
+    // Connect to MySQL Server
+    $mysqli = new mysqli ($server, $user, $pwd, $dbName);
+    if ($mysqli->connect_errno) {
+      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
+    }
+    // Select Database
+    $mysqli->select_db($dbName) or die($mysqli->error);
+
+    echo '<script>alert("Update.");</script>';
+    unset($_POST["update"]);
+
+    // Refresh Page and Die
+    header('Location: ./');
+    die;
 
   // user has not logged in yet
   } else {
