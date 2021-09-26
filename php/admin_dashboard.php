@@ -221,16 +221,16 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    echo 'ROW\n';
+    echo 'ROW<br />';
     var_dump($row);
-    echo '\n\n';
-    echo 'POST\n';
+    echo '<br /><br />';
+    echo 'POST<br />';
     var_dump($_POST);
-    echo '\n\n';
+    echo '<br /><br />';
 
     foreach ($_POST as $key => $value) {
       if (($key == "id") || ($key == "image")) {
-        echo '\n\n Special Key: '.$key.'\n\n';
+        echo 'Special Key: '.$key.'<br />';
 
       } else if ($row[$key] != $_POST[$key]) {
         // $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
@@ -238,7 +238,7 @@ function updateDB($mysqli) {
         // if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
         //
         // unset($_POST[$key]);
-        echo '\n\n Normal Key: '.$key.'\n\n';
+        echo 'Normal Key: '.$key.'<br />';
 
       }
     }
