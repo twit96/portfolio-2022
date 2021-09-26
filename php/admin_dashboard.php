@@ -250,6 +250,8 @@ function doEngine() {
     // Select Database
     $mysqli->select_db($dbName) or die($mysqli->error);
 
+    // Update Database
+    updateDB($mysqli);
 
 
   // if user logged in
