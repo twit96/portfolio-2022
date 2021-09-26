@@ -233,15 +233,19 @@ function updateDB($mysqli) {
       if ($key == "id") { continue; }
 
       // handle image column
-      else if (($key == "image") && ($_POST[$key] != null)) {
-        // check file is image
-        // delete old image, add new image
+      else if ($key == "image") {
+        if ($_POST[$key] != null) {
+          // check file is image (if statement ensured it was non null)
+          // delete old image, add new image
+        }
 
       // hanle directory column
-      } else if (($key == "directory") && ($_POST[$key] != null)) {
-        // create new directory (if statement ensured it was non null)
-        // copy contents of old directory into it
-        // delete old directory
+      } else if ($key == "directory") {
+        if ($_POST[$key] != null) {
+          // create new directory (if statement ensured it was non null)
+          // copy contents of old directory into it
+          // delete old directory
+        }
 
       // normal keys
       } else if ($row[$key] != $_POST[$key]) {
