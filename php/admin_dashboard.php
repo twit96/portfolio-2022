@@ -246,6 +246,13 @@ function doEngine() {
     // Select Database
     $mysqli->select_db($dbName) or die($mysqli->error);
 
+
+    // if user updated table
+    if (isset($_POST["update"])) {
+      echo '<script>alert("Update.");</script>';
+      unset($_POST["update"]);
+    }
+
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -256,28 +263,6 @@ function doEngine() {
     // Check Login
     checkLogin($mysqli, $username, $password);
 
-
-  // if user updated table
-  } else if (isset($_POST["update"])) {
-    $server = "localhost";
-    $user   = "portfolio_user";
-    $pwd    = "portfolio_user_pass";
-    $dbName = "Portfolio";
-
-    // Connect to MySQL Server
-    $mysqli = new mysqli ($server, $user, $pwd, $dbName);
-    if ($mysqli->connect_errno) {
-      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-    }
-    // Select Database
-    $mysqli->select_db($dbName) or die($mysqli->error);
-
-    echo '<script>alert("Update.");</script>';
-    unset($_POST["update"]);
-
-    // Refresh Page and Die
-    header('Location: ./');
-    die;
 
   // user has not logged in yet
   } else {
