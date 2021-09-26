@@ -221,12 +221,12 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    echo 'ROW<br />';
-    var_dump($row);
-    echo '<br /><br />';
-    echo 'POST<br />';
-    var_dump($_POST);
-    echo '<br /><br />';
+    // echo 'ROW<br />';
+    // var_dump($row);
+    // echo '<br /><br />';
+    // echo 'POST<br />';
+    // var_dump($_POST);
+    // echo '<br /><br />';
 
     foreach ($_POST as $key => $value) {
       // special keys
@@ -243,9 +243,9 @@ function updateDB($mysqli) {
     }
   }
 
-  echo 'POST<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
+  // echo 'POST<br />';
+  // var_dump($_POST);
+  // echo '<br /><br />';
 
   // Display Data
   buildDashboard($mysqli);
