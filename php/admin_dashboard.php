@@ -219,6 +219,7 @@ function updateDB($mysqli) {
 
   // Display Data
   buildDashboard($mysqli);
+  echo '<script>console.log("$_POST");</script>';
 }
 
 
