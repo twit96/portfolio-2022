@@ -230,11 +230,11 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       // special keys
-      if (($key == "id") || ($key == "image")) {
+      if (($key == "id")|| ($key == "directory") || ($key == "image")) {
         // echo 'Special Key: '.$key.'<br />';
       // normal keys
-      } else if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$project.';';
+    } else if ($row[$key] != $_POST[$key]) {
+        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE ID='.$project.';';
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
