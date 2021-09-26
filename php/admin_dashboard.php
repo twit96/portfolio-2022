@@ -216,6 +216,14 @@ function updateDB($mysqli) {
   echo '<script>alert("Update.");</script>';
   unset($_POST["update"]);
 
+  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+  $result = $mysqli->query($command);
+  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+
+  while ($row = $result->fetch_assoc()) {
+    var_dump($row);
+  }
+
   // $command = 'SELECT * FROM projects ORDER BY date DESC;';
   // $result = $mysqli->query($command);
   // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
@@ -224,7 +232,6 @@ function updateDB($mysqli) {
   //   echo $value, "\n";
   // }
 
-  var_dump($_POST);
   foreach ($_POST as $key => $value) {
         echo "<table><tr>";
         echo "<td>";
@@ -235,6 +242,8 @@ function updateDB($mysqli) {
         echo "</td>";
         echo "</tr></table>";
   }
+  var_dump($_POST);
+  
 
   // Display Data
   buildDashboard($mysqli);
