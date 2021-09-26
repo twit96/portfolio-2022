@@ -231,6 +231,12 @@ function doEngine() {
     unset($_POST["logout"]);
     doLogin();
 
+  // if user updated table
+  } else if (isset($_POST["update"])) {
+    echo '<script>alert("Update.");</script>';
+    unset($_POST["update"]);
+
+
   // if user logged in
   } else if (isset($_POST["login"])) {
     $server = "localhost";
@@ -245,13 +251,6 @@ function doEngine() {
     }
     // Select Database
     $mysqli->select_db($dbName) or die($mysqli->error);
-
-
-    // if user updated table
-    if (isset($_POST["update"])) {
-      echo '<script>alert("Update.");</script>';
-      unset($_POST["update"]);
-    }
 
     // Retrieve data from POST
     $username = $_POST['username'];
