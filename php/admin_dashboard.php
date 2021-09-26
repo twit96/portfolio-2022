@@ -229,7 +229,7 @@ function updateDB($mysqli) {
     echo '\n\n';
 
     foreach ($_POST as $key => $value) {
-      if (($key == "ID") || ($key == "image")) {
+      if (($key == "id") || ($key == "image")) {
         echo '\n\n Special Key: '.$key.'\n\n';
 
       } else if ($row[$key] != $POST[$key]) {
