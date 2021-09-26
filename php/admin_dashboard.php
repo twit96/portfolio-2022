@@ -166,7 +166,10 @@ function displayData($mysqli) {
     array_push($project_directories, $row['directory']);
 
     echo '<tr>';
-    echo '<td><input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required /></td>';
+    echo '<td>';
+    echo '<input form="'.$row['directory'].'" name="id" type="hidden" value="'.$row['ID'].'" />';
+    echo '<input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required />';
+    echo '</td>';
     echo '<td><input form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
     echo '<td><input form="'.$row['directory'].'" name="image" type="file" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
