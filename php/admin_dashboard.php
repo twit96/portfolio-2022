@@ -127,7 +127,7 @@ function buildDashboard($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
     $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
-    echo '<th>'.$str.'</th>';
+    if ($str != "ID") { echo '<th>'.$str.'</th>'; }
   }
   echo '<th>Controls</th>';
   echo '</tr></thead>';
