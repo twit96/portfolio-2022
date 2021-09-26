@@ -217,8 +217,16 @@ function updateDB($mysqli) {
   // $result = $mysqli->query($command);
   // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
-  foreach ($_POST as $value) {
-    echo $value, "\n";
+  foreach ($_POST $key => $value) {
+    echo "<tr>";
+    echo "<td>";
+    echo $key;
+    echo "</td>";
+    echo "<td>";
+    echo $value;
+    echo "</td>";
+    echo "</tr>";
+  }
 }
 
   // Display Data
