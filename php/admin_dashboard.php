@@ -213,8 +213,6 @@ function displayData($mysqli) {
 
 function updateDB($mysqli) {
   // update db
-  echo '<script>alert("Update.");</script>';
-  unset($_POST["update"]);
 
   $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
   $result = $mysqli->query($command);
@@ -229,31 +227,23 @@ function updateDB($mysqli) {
     echo '<br /><br />';
 
     foreach ($_POST as $key => $value) {
+      // special keys
       if (($key == "id") || ($key == "image")) {
-        echo 'Special Key: '.$key.'<br />';
-
+        // echo 'Special Key: '.$key.'<br />';
+      // normal keys
       } else if ($row[$key] != $_POST[$key]) {
-        // $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
-        // $result1 = $mysqli->query($command1);
-        // if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
-        //
-        // unset($_POST[$key]);
-        echo 'Normal Key: '.$key.'<br />';
-
+        $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
+        $result1 = $mysqli->query($command1);
+        if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
+      // unset keys
+      unset($_POST[$key]);
     }
   }
-
-  // $command = 'SELECT * FROM projects ORDER BY date DESC;';
-  // $result = $mysqli->query($command);
-  // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
-
-  // foreach ($_POST as $value) {
-  //   echo $value, "\n";
-  // }
-
-
-
+  unset($_POST["update"]);
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
 
   // Display Data
   buildDashboard($mysqli);
