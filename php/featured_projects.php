@@ -26,7 +26,7 @@ function displayFeatured($mysqli) {
     echo '  <div class="featured-badge">';
     echo '    <span>#'.$row['featured'].'</span>';
     echo '  </div>';
-    echo '  <img src="/projects/'.$row['directory'].'/title-card.png" alt="'.$row['title'].' Title Card" />';
+    echo '  <img src="/projects/'.$row['directory'].'/'.$row['image'].'" alt="'.$row['title'].' Title Card" />';
     echo '  <em>'.$row['blurb'].'</em>';
     echo '  <div class="info">';
     echo '    <div class="btn-text date">';
