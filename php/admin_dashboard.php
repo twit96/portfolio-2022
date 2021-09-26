@@ -221,7 +221,27 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
+    echo 'ROW\n';
     var_dump($row);
+    echo '\n\n';
+    echo 'POST\n';
+    var_dump($_POST);
+    echo '\n\n';
+
+    foreach ($_POST as $key => $value) {
+      if (($key == "ID") || ($key == "image")) {
+        echo '\n\n Special Key: '.$key.'\n\n';
+
+      } else if ($row[$key] != $POST[$key]) {
+        // $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
+        // $result1 = $mysqli->query($command1);
+        // if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
+        //
+        // unset($_POST[$key]);
+        echo '\n\n Normal Key: '.$key.'\n\n';
+
+      }
+    }
   }
 
   // $command = 'SELECT * FROM projects ORDER BY date DESC;';
@@ -232,18 +252,8 @@ function updateDB($mysqli) {
   //   echo $value, "\n";
   // }
 
-  foreach ($_POST as $key => $value) {
-        echo "<table><tr>";
-        echo "<td>";
-        echo $key;
-        echo "</td>";
-        echo "<td>";
-        echo $value;
-        echo "</td>";
-        echo "</tr></table>";
-  }
-  var_dump($_POST);
-  
+
+
 
   // Display Data
   buildDashboard($mysqli);
