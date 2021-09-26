@@ -209,7 +209,17 @@ function displayData($mysqli) {
 
 
 function updateDB($mysqli) {
+  // update db
+  echo '<script>alert("Update.");</script>';
+  unset($_POST["update"]);
 
+  // $command = 'SELECT * FROM projects ORDER BY date DESC;';
+  // $result = $mysqli->query($command);
+  // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+
+  // Refresh Page and Die
+  header('Location: ./');
+  die;
 }
 
 
@@ -240,10 +250,7 @@ function doEngine() {
     // Select Database
     $mysqli->select_db($dbName) or die($mysqli->error);
 
-    // update db
-    echo '<script>alert("Update.");</script>';
-    unset($_POST["update"]);
-    buildDashboard($mysqli);
+
 
   // if user logged in
   } else if (isset($_POST["login"])) {
