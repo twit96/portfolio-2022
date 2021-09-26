@@ -232,7 +232,7 @@ function updateDB($mysqli) {
       if (($key == "id") || ($key == "image")) {
         echo '\n\n Special Key: '.$key.'\n\n';
 
-      } else if ($row[$key] != $POST[$key]) {
+      } else if ($row[$key] != $_POST[$key]) {
         // $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
         // $result1 = $mysqli->query($command1);
         // if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
