@@ -213,9 +213,10 @@ function displayData($mysqli) {
 
 function updateDB($mysqli) {
   unset($_POST["update"]);
+  $project = $_POST["id"];
 
   // update db
-  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+  $command = 'SELECT * FROM projects WHERE ID='.$project.';';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
@@ -233,7 +234,7 @@ function updateDB($mysqli) {
         // echo 'Special Key: '.$key.'<br />';
       // normal keys
       } else if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$_POST["id"].';';
+        $command1 = 'UPDATE projects SET '.$key.'WHERE ID='.$project.';';
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
