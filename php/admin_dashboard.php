@@ -231,13 +231,14 @@ function updateDB($mysqli) {
     foreach ($_POST as $key => $value) {
       // skip id column
       if ($key == "id") { continue; }
+
       // handle image column
-      if (($key == "image") && ($_POST[$key] != null)) {
+      else if (($key == "image") && ($_POST[$key] != null)) {
         // check file is image
         // delete old image, add new image
-      }
-      // special keys
-      if (($key == "directory") && ($_POST[$key] != null)) {
+
+      // hanle directory column
+      } else if (($key == "directory") && ($_POST[$key] != null)) {
         // create new directory (if statement ensured it was non null)
         // copy contents of old directory into it
         // delete old directory
@@ -248,7 +249,8 @@ function updateDB($mysqli) {
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
-      // unset keys
+
+      // unset post for each key
       unset($_POST[$key]);
     }
   }
