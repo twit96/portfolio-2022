@@ -217,7 +217,9 @@ function updateDB($mysqli) {
   // $result = $mysqli->query($command);
   // if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
-  print_r $_POST;
+  foreach ($_POST as $value) {
+    echo $value, "\n";
+}
 
   // Display Data
   buildDashboard($mysqli);
