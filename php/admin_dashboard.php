@@ -212,8 +212,9 @@ function displayData($mysqli) {
 
 
 function updateDB($mysqli) {
-  // update db
+  unset($_POST["update"]);
 
+  // update db
   $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
@@ -240,7 +241,7 @@ function updateDB($mysqli) {
       unset($_POST[$key]);
     }
   }
-  unset($_POST["update"]);
+
   echo 'POST<br />';
   var_dump($_POST);
   echo '<br /><br />';
