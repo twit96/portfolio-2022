@@ -221,6 +221,7 @@ function updateDB($mysqli) {
 
   // handle image
   $img_name = updateImage($directory);
+  echo 'Image Name: '.$img_name;
   if ($img_name != 0) {
     $command = 'UPDATE projects SET image="'.$img_name.'" WHERE ID='.$project.';';
     $result = $mysqli->query($command);
@@ -267,7 +268,8 @@ function updateImage($directory) {
     // try to upload image
     // echo exec('whoami').'<br />';
     $target_dir = '../projects/'.$directory.'/';
-    $target_file = $target_dir.basename($_FILES["image"]["name"]);
+    $file_name = basename($_FILES["image"]["name"])
+    $target_file = $target_dir.$file_name;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />';
@@ -302,7 +304,7 @@ function updateImage($directory) {
     } else {
       if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         echo 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded.';
-        return (basename($_FILES["image"]["name"]));
+        return $file_name;
       } else {
         echo 'Sorry, there was an error uploading your file.';
         return 0;
