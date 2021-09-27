@@ -270,7 +270,7 @@ function updateDB($mysqli) {
 
 
 function uploadImage($directory) {
-  if (isset($_FILES["image"]) && ($_FILES['cover_image']['size'] == 0)) {
+  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
     // try to upload image
     // echo exec('whoami').'<br />';
     $target_dir = '../projects/'.$directory.'/';
