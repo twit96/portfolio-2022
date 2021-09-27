@@ -193,7 +193,7 @@ function displayData($mysqli) {
     <td><input form="add-new-project" name="image" type="file" /></td>
     <td><input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" /></td>
     <td><input form="add-new-project" name="description" type="text" placeholder="Project Description" /></td>
-    <td><input form="add-new-project" name="date" type="text" placeholder="0000-00-00" required /></td>
+    <td><input form="add-new-project" name="date" type="date" required /></td>
     <td><input form="add-new-project" name="primary_link" type="text" placeholder="project-link1.com" /></td>
     <td><input form="add-new-project" name="primary_link_text" type="text" placeholder="Link1 Button Text" /></td>
     <td><input form="add-new-project" name="secondary_link" type="text" placeholder="project-link2.com" /></td>
