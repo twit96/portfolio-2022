@@ -315,7 +315,7 @@ function uploadImage($directory) {
         echo 'Sorry, there was an error uploading your file.';
       }
     }
-    $alert_txt .= ');</script>'
+    $alert_txt .= ');</script>';
     echo $alert_txt;
     return $file_name;
   }
