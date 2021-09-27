@@ -248,13 +248,12 @@ function updateDB($mysqli) {
         $uploadOk = 0;
       }
       // Check file size
-      if ($_FILES["fileToUpload"]["size"] > 500000) {
+      if ($_FILES["image"]["size"] > 500000) {
         echo '<script>console.log("Sorry, your file is too large.");</script>';
         $uploadOk = 0;
       }
       // Allow certain file formats
-      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-      && $imageFileType != "gif" ) {
+      if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
       }
@@ -278,7 +277,7 @@ function updateDB($mysqli) {
       if ($key == "id") { continue; }
 
       // hanle directory column
-      } else if ($key == "directory") {
+      else if ($key == "directory") {
         if ($_POST[$key] != null) {
           // create new directory (if statement ensured it was non null)
           // copy contents of old directory into it
