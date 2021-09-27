@@ -221,14 +221,16 @@ function updateDB($mysqli) {
 
   // handle image
   $img_name = updateImage($directory);
-  echo 'Image Name: '.$img_name;
   if ($img_name) {
-    echo 'Image Name: '.$img_name.' ID: '.$project.' Title: '.$_POST["title"];
-    $command = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
-    $result = $mysqli->query($command);
-    if (!$result) { die("Query failed: ($mysqli->error <br>"); }
-  }
+    $command1 = 'SELECT image FROM projects WHERE id='.$project.';';
+    $result1 = $mysqli->query($command1);
+    if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
+    echo $result1;
 
+    $command1 = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
+    $result1 = $mysqli->query($command1);
+    if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
+  }
 
 
   // update other columns
