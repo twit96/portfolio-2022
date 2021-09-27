@@ -278,6 +278,7 @@ function updateImage($image, $directory) {
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
+    $echo ($target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />'.$check.'<br />');
     if($check !== false) {
       echo '<script>console.log("File is an image - '.$check["mime"].'.");</script>';
       $uploadOk = 1;
