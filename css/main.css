@@ -520,7 +520,9 @@ header nav::after {
 header nav.active { transform: translateX(0); }
 header nav a {
   color: white;
-  padding: calc(var(--main-padding) / 2) var(--main-padding);
+  font-size: calc(var(--main-font-size) * 1.25);
+  padding: var(--main-padding);
+  padding-left: calc(var(--main-padding) * 1.75);
   display: block;
   transition: 0.15s background ease-out;
 }
