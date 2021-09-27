@@ -226,7 +226,7 @@ function updateDB($mysqli) {
     $result1 = $mysqli->query($command1);
     if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
     $row1 = $result1->fetch_assoc();
-    echo $row1;
+    echo $row1['image'];
 
     $command1 = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
     $result1 = $mysqli->query($command1);
