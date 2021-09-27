@@ -236,10 +236,12 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       // skip id column
-      if ($key == "id") { continue; }
+      if ($key == "id") {
+        // skip
+
 
       // handle image
-      else if ($key == "image") {
+      } else if ($key == "image") {
         if ($_POST[$key != null]) {
           // do things
         }
