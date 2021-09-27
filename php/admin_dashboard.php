@@ -268,7 +268,7 @@ function updateImage($directory) {
     // try to upload image
     // echo exec('whoami').'<br />';
     $target_dir = '../projects/'.$directory.'/';
-    $file_name = basename($_FILES["image"]["name"])
+    $file_name = basename($_FILES["image"]["name"]);
     $target_file = $target_dir.$file_name;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
