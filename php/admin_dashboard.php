@@ -220,6 +220,11 @@ function updateDB($mysqli) {
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
+
+  // handle image
+  updateImage($_FILES["image"], $directory);
+
+  // handle post vars
   while ($row = $result->fetch_assoc()) {
     // echo 'ROW<br />';
     // var_dump($row);
@@ -242,11 +247,6 @@ function updateDB($mysqli) {
           // copy contents of old directory into it
           // delete old directory
         }
-
-
-      // handle image
-      } else if ($key == "image") {
-        updateImage($_POST[$key], $directory);
 
 
       // normal keys
@@ -274,11 +274,11 @@ function updateImage($image, $directory) {
   echo ($image.'<br />'.$directory.'<br />');
   if ($image != null) {
     $target_dir = '/projects/'.$directory.'/';
-    $target_file = $target_dir.basename($_FILES["image"]["name"]);
+    $target_file = $target_dir.basename($image["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    $check = getimagesize($image["tmp_name"]);
     $echo ($target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />'.$check.'<br />');
     if($check !== false) {
       echo '<script>console.log("File is an image - '.$check["mime"].'.");</script>';
@@ -293,7 +293,7 @@ function updateImage($image, $directory) {
       $uploadOk = 0;
     }
     // Check file size
-    if ($_FILES["image"]["size"] > 500000) {
+    if ($image["size"] > 500000) {
       echo '<script>console.log("Sorry, your file is too large.");</script>';
       $uploadOk = 0;
     }
@@ -307,8 +307,8 @@ function updateImage($image, $directory) {
       echo '<script>console.log("Sorry, your file was not uploaded.");</script>';
     // if everything is ok, try to upload file
     } else {
-      if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+      if (move_uploaded_file($image["tmp_name"], $target_file)) {
+        echo "The file ". htmlspecialchars( basename( $image["name"])). " has been uploaded.";
       } else {
         echo "Sorry, there was an error uploading your file.";
       }
