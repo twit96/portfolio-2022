@@ -1,3 +1,5 @@
+.scroll-down-indicator { display: none; }
+
 #entries {
   overflow: hidden;
   min-height: calc(100vh - var(--main-padding));
