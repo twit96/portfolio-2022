@@ -71,6 +71,8 @@ table input[type="submit"],
 table input[type="reset"] {
   border-radius: 0;
 }
+/* remove calendar icon from date input */
+table input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
 
 /* Rows */
 tr { overflow: hidden; }
