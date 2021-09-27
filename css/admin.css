@@ -76,6 +76,12 @@ table input[type="reset"] {
 tr { overflow: hidden; }
 tbody tr:hover { background: var(--grey); }
 
+
+th, td {
+  max-width: calc((100vw - var(--main-padding) - var(--main-padding)) / 14);
+  overflow: hidden;
+}
+
 th {
   background: var(--green-shadow);
   color: white;
