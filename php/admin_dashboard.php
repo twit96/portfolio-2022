@@ -210,7 +210,6 @@ function displayData($mysqli) {
 }
 
 
-
 function updateDB($mysqli) {
   unset($_POST["update"]);
   $project = $_POST["id"];
@@ -221,12 +220,12 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    // echo 'ROW<br />';
-    // var_dump($row);
-    // echo '<br /><br />';
-    // echo 'POST<br />';
-    // var_dump($_POST);
-    // echo '<br /><br />';
+    echo 'ROW<br />';
+    var_dump($row);
+    echo '<br /><br />';
+    echo 'POST<br />';
+    var_dump($_POST);
+    echo '<br /><br />';
 
     foreach ($_POST as $key => $value) {
       // skip id column
@@ -236,6 +235,7 @@ function updateDB($mysqli) {
       else if ($key == "image") {
         if ($_POST[$key] != null) {
           // check file is image (if statement ensured it was non null)
+
           // delete old image, add new image
         }
 
@@ -259,9 +259,9 @@ function updateDB($mysqli) {
     }
   }
 
-  // echo 'POST<br />';
-  // var_dump($_POST);
-  // echo '<br /><br />';
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
 
   // Display Data
   buildDashboard($mysqli);
