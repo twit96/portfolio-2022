@@ -236,7 +236,7 @@ function updateDB($mysqli) {
 
       // handle image
       } else if ($key == "image") {
-        if ($_POST[$key != null]) {
+        if ($_POST[$key] != null) {
           // do things
         }
 
