@@ -219,15 +219,18 @@ function updateDB($mysqli) {
 
   // handle directory
 
-  // handle image
+  // upload image
   $img_name = updateImage($directory);
   if ($img_name) {
+    // delete old image
     $command1 = 'SELECT image FROM projects WHERE id='.$project.';';
     $result1 = $mysqli->query($command1);
     if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
     $row1 = $result1->fetch_assoc();
-    echo $row1['image'];
-
+    // echo $row1['image'];
+    $img_to_delete = '../projects/'.$directory.'/'.$row1['image'];
+    unlink($img_to_delete);
+    // point database to new image
     $command1 = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
     $result1 = $mysqli->query($command1);
     if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
@@ -315,6 +318,7 @@ function updateImage($directory) {
     }
   }
 }
+
 
 /**
 * Engine function to configure required inputs for the above functions.
