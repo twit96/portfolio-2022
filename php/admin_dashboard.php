@@ -10,21 +10,26 @@ ini_set("display_errors", "on");
 function doLogin() {
   $script = $_SERVER['PHP_SELF'];
   echo <<<TOP
-  <h2>Login</h2>
-  <form id="login" method="POST" action="index.php">
+  <h2>Admin Login</h2>
+  <div id="login">
+    <form method="POST" action="index.php">
+      <p>
+        Username:
+        <input name="username" type="text" placeholder="Username" required />
+      </p>
+      <p>
+        Password:
+        <input name="password" type="password" placeholder="Password" required />
+      </p>
+      <p>
+        <input name="login" type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+      </p>
+    </form>
     <p>
-      Username:
-      <input name="username" type="text" placeholder="Username" required />
+      The place where super duper top secret things may or may not occur...
     </p>
-    <p>
-      Password:
-      <input name="password" type="password" placeholder="Password" required />
-    </p>
-    <p>
-      <input name="login" type="submit" value="Submit" />
-      <input type="reset" value="Reset" />
-    </p>
-  </form>
+  </div>
 TOP;
 }
 
