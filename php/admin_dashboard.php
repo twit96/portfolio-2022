@@ -213,18 +213,27 @@ function displayData($mysqli) {
 function updateDB($mysqli) {
   unset($_POST["update"]);
   $project = $_POST["id"];
+  unset($_POST["id"]);
   $directory = $_POST["directory"];
+  unset($_POST["directory"]);
 
-  // update db
+  // handle directory
+
+  // handle image
+  $img_name = updateImage($directory);
+  if ($img_name != 0) {
+    $command = 'UPDATE projects SET image='.$img_name.' WHERE ID='.$project.';';
+    $result = $mysqli->query($command);
+    if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  }
+
+
+
+  // update other columns
   $command = 'SELECT * FROM projects WHERE ID='.$project.';';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
-
-  // handle image
-  updateImage($directory);
-
-  // handle post vars
   while ($row = $result->fetch_assoc()) {
     // echo 'ROW<br />';
     // var_dump($row);
@@ -233,29 +242,12 @@ function updateDB($mysqli) {
     // var_dump($_POST);
     // echo '<br /><br />';
 
-
     foreach ($_POST as $key => $value) {
-      // skip id column
-      if ($key == "id") {
-        // skip
-
-
-      // hanle directory column
-      } else if ($key == "directory") {
-        if ($_POST[$key] != null) {
-          // create new directory (if statement ensured it was non null)
-          // copy contents of old directory into it
-          // delete old directory
-        }
-
-
-      // normal keys
-      } else if ($row[$key] != $_POST[$key]) {
+      if ($row[$key] != $_POST[$key]) {
         $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE ID='.$project.';';
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
-
       // unset post for each key
       unset($_POST[$key]);
     }
@@ -272,7 +264,8 @@ function updateDB($mysqli) {
 
 function updateImage($directory) {
   if (isset($_FILES["image"])) {
-    echo exec('whoami').'<br />';
+    // try to upload image
+    // echo exec('whoami').'<br />';
     $target_dir = '../projects/'.$directory.'/';
     $target_file = $target_dir.basename($_FILES["image"]["name"]);
     $uploadOk = 1;
@@ -308,9 +301,11 @@ function updateImage($directory) {
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+        echo "<script>console.log(The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.);</script>";
+        return basename($_FILES["image"]["name"]);
       } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "<script>console.log(Sorry, there was an error uploading your file.);</script>";
+        return 0;
       }
     }
   }
