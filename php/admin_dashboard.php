@@ -271,7 +271,7 @@ function updateDB($mysqli) {
 
 
 function updateImage($directory) {
-  if ($_FILES["image"] != null) {
+  if (isset($_FILES["image"])) {
     $target_dir = '/projects/'.$directory.'/';
     $target_file = $target_dir.basename($_FILES["image"]["name"]);
     $uploadOk = 1;
