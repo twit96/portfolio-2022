@@ -220,18 +220,12 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    echo 'ROW<br />';
-    var_dump($row);
-    echo '<br /><br />';
-    echo 'POST<br />';
-    var_dump($_POST);
-    echo '<br /><br />';
-
-    // Handle Image Upload
-    if ($_POST["image"] != null) {
-      // upload image
-    }
-    unset($_POST["image"]);
+    // echo 'ROW<br />';
+    // var_dump($row);
+    // echo '<br /><br />';
+    // echo 'POST<br />';
+    // var_dump($_POST);
+    // echo '<br /><br />';
 
 
     foreach ($_POST as $key => $value) {
@@ -245,10 +239,10 @@ function updateDB($mysqli) {
         if ($_POST[$key != null]) {
           // do things
         }
-      }
+
 
       // hanle directory column
-      else if ($key == "directory") {
+      } else if ($key == "directory") {
         if ($_POST[$key] != null) {
           // create new directory (if statement ensured it was non null)
           // copy contents of old directory into it
@@ -267,9 +261,9 @@ function updateDB($mysqli) {
     }
   }
 
-  echo 'POST<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
+  // echo 'POST<br />';
+  // var_dump($_POST);
+  // echo '<br /><br />';
 
   // Display Data
   buildDashboard($mysqli);
