@@ -146,7 +146,7 @@ function buildDashboard($mysqli) {
 
   // Forms for each row of inputs to reference
   foreach ($project_directories as &$curr_dir) {
-    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php"></form>';
+    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php" enctype="multipart/form-data"></form>';
   }
   unset($curr_dir);
 }
@@ -213,6 +213,7 @@ function displayData($mysqli) {
 function updateDB($mysqli) {
   unset($_POST["update"]);
   $project = $_POST["id"];
+  $directory = $_POST["directory"];
 
   // update db
   $command = 'SELECT * FROM projects WHERE ID='.$project.';';
@@ -234,13 +235,6 @@ function updateDB($mysqli) {
         // skip
 
 
-      // handle image
-      } else if ($key == "image") {
-        if ($_POST[$key] != null) {
-          // do things
-        }
-
-
       // hanle directory column
       } else if ($key == "directory") {
         if ($_POST[$key] != null) {
@@ -248,6 +242,12 @@ function updateDB($mysqli) {
           // copy contents of old directory into it
           // delete old directory
         }
+
+
+      // handle image
+      } else if ($key == "image") {
+        updateImage($_POST[$key], $directory);
+
 
       // normal keys
       } else if ($row[$key] != $_POST[$key]) {
@@ -269,6 +269,50 @@ function updateDB($mysqli) {
   buildDashboard($mysqli);
 }
 
+
+function updateImage($image, $directory) {
+  if ($image != null) {
+    $target_dir = '/projects/'.$directory.'/';
+    $target_file = $target_dir.basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if($check !== false) {
+      echo '<script>console.log("File is an image - '.$check["mime"].'.");</script>';
+      $uploadOk = 1;
+    } else {
+      echo '<script>console.log("File is not an image.");</script>';
+      $uploadOk = 0;
+    }
+    // Check if file already exists
+    if (file_exists($target_file)) {
+      echo '<script>console.log("Sorry, file already exists.");</script>';
+      $uploadOk = 0;
+    }
+    // Check file size
+    if ($_FILES["image"]["size"] > 500000) {
+      echo '<script>console.log("Sorry, your file is too large.");</script>';
+      $uploadOk = 0;
+    }
+    // Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+    }
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+      echo '<script>console.log("Sorry, your file was not uploaded.");</script>';
+    // if everything is ok, try to upload file
+    } else {
+      if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+      } else {
+        echo "Sorry, there was an error uploading your file.";
+      }
+    }
+  }
+}
 
 /**
 * Engine function to configure required inputs for the above functions.
