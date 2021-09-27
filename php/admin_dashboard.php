@@ -146,7 +146,7 @@ function buildDashboard($mysqli) {
 
   // Forms for each row of inputs to reference
   foreach ($project_directories as &$curr_dir) {
-    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php"></form>';
+    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php" enctype="multipart/form-data"></form>';
   }
   unset($curr_dir);
 }
@@ -274,7 +274,10 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       // skip id column
-      if ($key == "id") { continue; }
+      if ($key == "id") {
+        unset($_POST["id"]);
+        continue;
+      }
 
       // hanle directory column
       else if ($key == "directory") {
