@@ -7,7 +7,7 @@
 #entries h2 {
   padding: 1em var(--main-padding);
   color: white;
-  padding-bottom: calc(var(--main-padding) / 2);
+  padding-bottom: var(--main-padding);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
