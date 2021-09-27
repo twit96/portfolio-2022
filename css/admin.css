@@ -1,10 +1,13 @@
 #entries {
   overflow: hidden;
   min-height: calc(100vh - var(--main-padding));
+  padding-left: 0;
+  padding-right: 0;
 }
 #entries h2 {
+  padding: 1em var(--main-padding);
   color: white;
-  margin-bottom: var(--main-padding);
+  padding-bottom: calc(var(--main-padding) / 2);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
@@ -13,11 +16,28 @@
 
 /* Login/Logout Forms ------------------------------------------------------ */
 #login {
+  position: relative;
   background: var(--grey-light);
   padding: var(--main-padding);
-  border-radius: max(1.5vmin, 5px);
-  margin-bottom: var(--main-padding);
-  border: max(1vmin, 5px) solid var(--green-shadow);
+  margin: calc(2 * var(--main-padding)) 0;
+}
+#login::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1px;
+  width: 100%; height: var(--main-padding);
+  transform: translateY(-100%);
+  background: var(--grey-light);
+  clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
+}
+#login::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 1px;
+  width: 100%; height: var(--main-padding);
+  transform: translateY(100%);
+  background: var(--grey-light);
+  clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
 #login p { margin-bottom: calc(var(--main-padding) / 4); }
 #login p:last-of-type { margin-bottom: 0; }
@@ -43,12 +63,16 @@ input[type="reset"]:hover {
 }
 
 #logout input {
+  margin-left: var(--main-padding);
+  margin-right: var(--main-padding);
   margin-top: calc(var(--main-padding) / 2);
 }
 
 
 /* Dashboard Table --------------------------------------------------------- */
 table {
+  margin-left: var(--main-padding);
+  margin-right: var(--main-padding);
   border: max(1vmin, 5px) solid var(--green-shadow);
   background: var(--green-shadow);
   background: var(--grey-light);
