@@ -272,13 +272,13 @@ function updateDB($mysqli) {
 
 function updateImage($directory) {
   if (isset($_FILES["image"])) {
-    $target_dir = '/projects/'.$directory.'/';
+    $target_dir = '../projects/'.$directory.'/';
     $target_file = $target_dir.basename($_FILES["image"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />';
     // Check if image file is a actual image or fake image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />'.$check.'<br />';
     if($check !== false) {
       echo '<script>console.log("File is an image - '.$check["mime"].'.");</script>';
       $uploadOk = 1;
