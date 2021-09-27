@@ -132,7 +132,6 @@
 							<div class="slider">
 								<span class="fill" style="--fill-percent: 60%; --i: 6;"></span>
 							</div>
-							<span class="bubble-text">+ MySQL</span>
 						</div>
 					</div>
 				</article>
