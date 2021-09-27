@@ -222,7 +222,7 @@ function updateDB($mysqli) {
   // handle image
   $img_name = updateImage($directory);
   echo 'Image Name: '.$img_name;
-  if ($img_name != 0) {
+  if ($img_name) {
     echo 'Image Name: '.$img_name.' ID: '.$project.' Title: '.$_POST["title"];
     $command = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
     $result = $mysqli->query($command);
@@ -308,7 +308,6 @@ function updateImage($directory) {
         return $file_name;
       } else {
         echo 'Sorry, there was an error uploading your file.';
-        return 0;
       }
     }
   }
