@@ -62,7 +62,7 @@ input[type="reset"]:hover {
   box-shadow: 0 0 2px 2px var(--grey-shadow) inset;
 }
 
-#logout input {
+#logout {
   margin-left: var(--main-padding);
   margin-right: var(--main-padding);
   margin-top: calc(var(--main-padding) / 2);
