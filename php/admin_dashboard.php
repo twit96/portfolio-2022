@@ -223,7 +223,8 @@ function updateDB($mysqli) {
   $img_name = updateImage($directory);
   echo 'Image Name: '.$img_name;
   if ($img_name != 0) {
-    $command = 'UPDATE projects SET image="'.$img_name.'" WHERE ID='.$project.';';
+    echo 'Image Name: '.$img_name.' ID: '.$project.' Title: '.$_POST["title"];
+    $command = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
     $result = $mysqli->query($command);
     if (!$result) { die("Query failed: ($mysqli->error <br>"); }
   }
@@ -245,7 +246,7 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE ID='.$project.';';
+        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project.';';
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
