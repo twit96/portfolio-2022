@@ -27,7 +27,7 @@ function doLogin() {
       </p>
     </form>
     <p>
-      The place where super duper top secret things may or may not occur...
+      The place where super duper top secret things definitely do not occur...
     </p>
   </div>
 TOP;
