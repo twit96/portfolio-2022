@@ -138,7 +138,7 @@ function buildDashboard($mysqli) {
   // Closing HTML
   echo <<<BOTTOM
     </table>
-    <form method="POST" action="index.php">
+    <form id="logout" method="POST" action="index.php">
       <input name="logout" type="submit" value="Logout" />
     </form>
   </section>
