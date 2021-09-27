@@ -271,6 +271,7 @@ function updateDB($mysqli) {
 
 
 function updateImage($image, $directory) {
+  echo ($image.'<br />'.$directory.'<br />');
   if ($image != null) {
     $target_dir = '/projects/'.$directory.'/';
     $target_file = $target_dir.basename($_FILES["image"]["name"]);
