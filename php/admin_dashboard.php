@@ -146,7 +146,7 @@ function buildDashboard($mysqli) {
 
   // Forms for each row of inputs to reference
   foreach ($project_directories as &$curr_dir) {
-    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php" enctype="multipart/form-data"></form>';
+    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php"></form>';
   }
   unset($curr_dir);
 }
