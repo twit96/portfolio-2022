@@ -92,7 +92,7 @@
 							<input form="goldschen-ohm-lab" name="description" type="text" value="Updating the HTML to use semantic HTML5 tags, as well as implementing a mobile-first responsive design with vanilla CSS, add mobile-responsiveness and increase the readability of the code base of a researcher's lab webpage." />
 						</td>
 						<td>
-							<input form="goldschen-ohm-lab" name="date" type="text" value="2021-08-05" required />
+							<input form="goldschen-ohm-lab" name="date" type="date" value="2021-08-05" required />
 						</td>
 						<td>
 							<input form="goldschen-ohm-lab" name="primary_link" type="text" value="https://marcel-goldschen-ohm.github.io/" />
@@ -136,7 +136,7 @@
 							<input form="minesweeper" name="description" type="text" value="A mobile-responsive, no-frameworks version of the classic game of minesweeper." />
 						</td>
 						<td>
-							<input form="minesweeper" name="date" type="text" value="2021-06-09" required />
+							<input form="minesweeper" name="date" type="date" value="2021-06-09" required />
 						</td>
 						<td>
 							<input form="minesweeper" name="primary_link" type="text" value="https://twit96.github.io/minesweeper/" />
@@ -180,7 +180,7 @@
 							<input form="add-new-project" name="description" type="text" placeholder="Project Description" />
 						</td>
 						<td>
-							<input form="add-new-project" name="date" type="text" placeholder="0000-00-00" required />
+							<input form="add-new-project" name="date" type="date" required />
 						</td>
 						<td>
 							<input form="add-new-project" name="primary_link" type="text" placeholder="project-link1.com" />

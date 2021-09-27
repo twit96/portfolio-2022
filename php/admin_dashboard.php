@@ -174,7 +174,7 @@ function displayData($mysqli) {
     echo '<td><input form="'.$row['directory'].'" name="image" type="file" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="date" type="text" value="'.$row['date'].'" required /></td>';
+    echo '<td><input form="'.$row['directory'].'" name="date" type="date" value="'.$row['date'].'" required /></td>';
     echo '<td><input form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
@@ -220,12 +220,12 @@ function updateDB($mysqli) {
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
   while ($row = $result->fetch_assoc()) {
-    // echo 'ROW<br />';
-    // var_dump($row);
-    // echo '<br /><br />';
-    // echo 'POST<br />';
-    // var_dump($_POST);
-    // echo '<br /><br />';
+    echo 'ROW<br />';
+    var_dump($row);
+    echo '<br /><br />';
+    echo 'POST<br />';
+    var_dump($_POST);
+    echo '<br /><br />';
 
 
     foreach ($_POST as $key => $value) {
@@ -251,9 +251,9 @@ function updateDB($mysqli) {
 
       // normal keys
       } else if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE ID='.$project.';';
-        $result1 = $mysqli->query($command1);
-        if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
+        // $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE ID='.$project.';';
+        // $result1 = $mysqli->query($command1);
+        // if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
 
       // unset post for each key
@@ -261,9 +261,9 @@ function updateDB($mysqli) {
     }
   }
 
-  // echo 'POST<br />';
-  // var_dump($_POST);
-  // echo '<br /><br />';
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
 
   // Display Data
   buildDashboard($mysqli);
