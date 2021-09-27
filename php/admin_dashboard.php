@@ -222,7 +222,7 @@ function updateDB($mysqli) {
   // handle image
   $img_name = updateImage($directory);
   if ($img_name != 0) {
-    $command = 'UPDATE projects SET image='.$img_name.' WHERE ID='.$project.';';
+    $command = 'UPDATE projects SET image="'.$img_name.'" WHERE ID='.$project.';';
     $result = $mysqli->query($command);
     if (!$result) { die("Query failed: ($mysqli->error <br>"); }
   }
