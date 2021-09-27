@@ -270,7 +270,7 @@ function updateDB($mysqli) {
 }
 
 
-function updateImage($image, $directory) {
+function updateImage($directory) {
   echo ($image.'<br />'.$directory.'<br />');
   if ($image != null) {
     $target_dir = '/projects/'.$directory.'/';
