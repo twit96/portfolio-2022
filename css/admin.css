@@ -35,7 +35,7 @@
   border-top: 1px solid var(--grey);
   text-align: center;
 }
-@media (min-aspect-ratio: 1/1) {
+@media (min-aspect-ratio: 1/1) and (min-width: 700px) {
   #login { flex-direction: row; }
   #login > * { width: 100%; }
   #login form,
