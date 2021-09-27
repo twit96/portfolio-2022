@@ -154,10 +154,12 @@ window.addEventListener('scroll', scroll_top_btn_handler, false);
 
 // click functionality
 var click_scroll_top_handler = function() {
-  window.scroll({
-    top: 0,
-    left: 0,
-    behavior: 'smooth'
-  });
+  if (scroll_top_btn.classList.contains('displayed')) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 }
 scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
