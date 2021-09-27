@@ -220,14 +220,13 @@ function updateDB($mysqli) {
   // handle directory
 
   // upload image
-  $img_name = updateImage($directory);
+  $img_name = uploadImage($directory);
   if ($img_name) {
     // delete old image
     $command1 = 'SELECT image FROM projects WHERE id='.$project.';';
     $result1 = $mysqli->query($command1);
     if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
     $row1 = $result1->fetch_assoc();
-    // echo $row1['image'];
     $img_to_delete = '../projects/'.$directory.'/'.$row1['image'];
     unlink($img_to_delete);
     // point database to new image
@@ -270,7 +269,7 @@ function updateDB($mysqli) {
 }
 
 
-function updateImage($directory) {
+function uploadImage($directory) {
   if (isset($_FILES["image"])) {
     // try to upload image
     // echo exec('whoami').'<br />';
@@ -279,43 +278,46 @@ function updateImage($directory) {
     $target_file = $target_dir.$file_name;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />';
+    // echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />';
+    $alert_txt = '<script>alert("';
     // Check if image file is a actual image or fake image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if ($check !== false) {
-      echo 'File is an image - '.$check["mime"];
+      // echo 'File is an image - '.$check["mime"];
       $uploadOk = 1;
     } else {
-      echo 'File is not an image.';
+      $alert_txt .= 'Image upload is not an image.';
       $uploadOk = 0;
     }
     // Check if file already exists
     if (file_exists($target_file)) {
-      echo 'Sorry, file already exists.';
+      $alert_txt .= 'Image upload already exists in directory.';
       $uploadOk = 0;
     }
     // Check file size
     if ($_FILES["image"]["size"] > 500000) {
-      echo 'Sorry, your file is too large.';
+      $alert_txt .=  'Image upload file is too large (>500KB).';
       $uploadOk = 0;
     }
     // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-      echo 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
+      $alert_txt .=  'Image upload file type is not JPG, JPEG, PNG or GIF.';
       $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-      echo 'Sorry, your file was not uploaded.';
+      $alert_txt .= 'File was not uploaded.';
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded.';
-        return $file_name;
+        $alert_txt .= 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded.';
       } else {
         echo 'Sorry, there was an error uploading your file.';
       }
     }
+    $alert_txt .= ');</script>'
+    echo $alert_txt;
+    return $file_name;
   }
 }
 
