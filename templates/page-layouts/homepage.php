@@ -290,21 +290,7 @@
 				</div>
 			</div>
 		</section>
-
-
-		<section id="filler">
-			<h2>New Portfolio Coming Soon!</h2>
-			<p>
-				If you would like to visit my current portfolio website while this one
-				is under construction,
-				follow this link:
-			</p>
-			<p>
-				<a href="https://twit96.github.io/" target="_blank" rel="noreferrer">
-					Current Portfolio Website
-				</a>
-			</p>
-		</section>
+		
 
 		<?php
 			include('../../templates/footer.html');

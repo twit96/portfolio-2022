@@ -637,7 +637,7 @@ header nav a:last-child {
 footer {
   color: white;
   padding-top: 0;
-  margin-bottom: var(--main-padding);
+  padding-bottom: max(var(--main-padding), 75px);
 
   display: flex;
   flex-direction: column;
@@ -741,10 +741,6 @@ footer > span {
   header.filled nav { padding-top: 85px;  /* height of header */ }
   header.filled nav::before { height: 85px;  /* height of header */ }
   header + * { padding-top: 135px;  /* height of header */ }
-
-  footer {
-    padding: 15px 50px;
-  }
 }
 
 
@@ -794,9 +790,5 @@ footer > span {
     0% { transform: translateY(0) rotate(0); }
     50% { transform: translateY(-13.5px) rotate(0); }
     100% { transform: translateY(-13.5px) rotate(-135deg); }
-  }
-
-  footer {
-    padding: 25px 75px;
   }
 }
