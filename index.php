@@ -7,7 +7,7 @@
 		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210928" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210922.04" />
 		<link rel="stylesheet" type="text/css" href="/css/home.css?v=20210922.02" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
