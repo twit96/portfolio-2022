@@ -11,7 +11,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <script src="/js/throttled_main.js?v=20210928" defer></script>
+    <script src="/js/main.js" defer></script>
   </head>
   <body>
     <?php
