@@ -33,7 +33,7 @@ for (i=0; i<15; i++) {
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
-  // loader.insertAdjacentElement("beforeend", clone);
+  loader.insertAdjacentElement("beforeend", clone);
 }
 
 // random orbs
@@ -54,20 +54,20 @@ for (i=0; i<30; i++) {
   rand_span.style.opacity = rand_opacity;
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
-  // clone = rand_span.cloneNode(true);
-  // loader.insertAdjacentElement("beforeend", clone);
-  // clone = rand_span.cloneNode(true);
-  // header_bg.insertAdjacentElement("beforeend", clone);
+  clone = rand_span.cloneNode(true);
+  loader.insertAdjacentElement("beforeend", clone);
+  clone = rand_span.cloneNode(true);
+  header_bg.insertAdjacentElement("beforeend", clone);
 }
 
 
 // Loader Functionality -------------------------------------------------------
-// setTimeout(function() {
-//   loader.style.opacity = '0';
-// }, 100);
-// setTimeout(function() {
-//   loader.style.display = 'none';
-// }, 1100);
+setTimeout(function() {
+  loader.style.opacity = '0';
+}, 100);
+setTimeout(function() {
+  loader.style.display = 'none';
+}, 1100);
 
 
 // Header Functionality -------------------------------------------------------
