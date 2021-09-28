@@ -83,12 +83,8 @@ header_bg.onclick = function() {
   header_bg.classList.toggle("active");
 }
 
-function headerStateHandler() {
-  if (
-    (document.body.scrollTop > 0) ||
-    (document.documentElement.scrollTop > 0)
-  ) { header.classList.add("filled"); }
-  else { header.classList.remove("filled"); }
+function toggleHeaderState() {
+  header.classList.toggle("filled");
 }
 
 
@@ -105,19 +101,6 @@ function triggerScrollDownIndicatorListeners() {
   triggered_scroll_down_indicator_listeners = true;
   scroll_down_indicator.classList.add('hidden');
   scroll_down_indicator.removeEventListener('click', click_scroll_down_indicator_handler, false);
-}
-
-// scroll listener
-function scrollDownIndicatorHandler() {
-  if (
-    (!triggered_scroll_down_indicator_listeners) &&
-    (
-      (document.body.scrollTop > 100) ||
-      (document.documentElement.scrollTop > 100)
-    )
-  ) {
-    triggerScrollDownIndicatorListeners();
-  }
 }
 
 // click listener
@@ -141,15 +124,9 @@ scroll_top_btn.id = 'scroll-top-btn';
 intro.insertAdjacentElement('beforeend', scroll_top_btn);
 
 // scroll position changes visibility
-function scrollTopBtnHandler() {
-  if (
-    (document.body.scrollTop > window.innerHeight * 0.75) ||
-    (document.documentElement.scrollTop > window.innerHeight * 0.75)
-  ) {
-    scroll_top_btn.classList.add('displayed');
-  } else {
-    scroll_top_btn.classList.remove('displayed');
-  }
+var scroll_top_trigger_height = window.innerHeight * 0.75;
+function toggleScrollTopBtn() {
+  scroll_top_btn.classList.toggle('displayed');
 }
 
 // click functionality
@@ -166,16 +143,35 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 
 // Throttle Scroll Event Listeners --------------------------------------------
-let scrolling = false;
-window.onscroll = function() { scrolling = true; }
+window.addEventListener('scroll', ()=> {
+  // Get Relevant Values
+  var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
+  var header_has_class = header.classList.contains("filled");
+  var scroll_top_has_class = scroll_top_btn.classList.contains("displayed");
 
-setInterval(() => {
-  // console.log('check');
-  if (scrolling) {
-    // console.log('scrolling');
-    scrolling = false;
-    headerStateHandler();
-    scrollTopBtnHandler();
+  // Manage Header State
+  if ((scroll_pos > 0) && (!header_has_class)) {
+    // add filled class
+    requestAnimationFrame(toggleHeaderState);
+  }
+  else if ((scroll_pos == 0) && (header_has_class)) {
+    // remove filled class
+    requestAnimationFrame(toggleHeaderState);
+  }
+
+  // Manage Scroll Top Btn State
+  if ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_has_class)) {
+    // add displayed class
+    requestAnimationFrame(toggleScrollTopBtn);
+  }
+  else if ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_has_class)) {
+    // remove displayed class
+    requestAnimationFrame(toggleScrollTopBtn);
+  }
+
+  // Manage Scroll Down Indicator State
+  if ((!triggered_scroll_down_indicator_listeners) && (scroll_pos > 100)) {
+    // hide scroll down indicator
     triggerScrollDownIndicatorListeners();
   }
-}, 300);
+});
