@@ -43,14 +43,13 @@ for (i=0; i<30; i++) {
   // generate random attributes
   rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
   rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-  rand_size = Math.floor(Math.random() * 2) + 1;    // 1 to 2 vmin
-  rand_opacity = (Math.random() * 0.75) + 0.25;	    // 0.25 to 1
+  rand_size = (Math.random() * 1.5) + 0.5;          // 0.5 to 2 vmin
+  rand_opacity = (Math.random() * 0.5);	            // 0 to 0.5
   // set CSS styles
   rand_span.style.left = rand_x + "vw";
   rand_span.style.top = rand_y + "vh";
   rand_span.style.width = rand_size + "vmin";
   rand_span.style.height = rand_size + "vmin";
-  // rand_span.style.filter = "blur(" + (rand_size / 2) + "vmin)";
   rand_span.style.opacity = rand_opacity;
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
