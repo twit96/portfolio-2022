@@ -5,36 +5,36 @@ var header_nav = header.querySelector("nav");
 var header_bg = document.getElementById("header-bg");
 
 // Add Randomly Generated Elements to Background ------------------------------
-// var rand_span;  // placed in body
-// var clone;      // placed in #loader and #header-bg
+var rand_span;  // placed in body
+var clone;      // placed in #loader and #header-bg
 
 // random properties
-// var rand_x;
-// var rand_y;
-// var rand_size;
-// var rand_rotation;
-// var rand_opacity;
+var rand_x;
+var rand_y;
+var rand_size;
+var rand_rotation;
+var rand_opacity;
 
 // random leaves
-// for (i=0; i<15; i++) {
-//   rand_span = document.createElement("span");
-//   rand_span.classList.add("leaf");
-//   // generate random attributes
-//   rand_x = Math.floor(Math.random() * 60);          // 0 to 60 vw
-//   rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-//   rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
-//   rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
-//   // set CSS styles
-//   rand_span.style.left = rand_x + "vw";
-//   rand_span.style.top = rand_y + "vh";
-//   rand_span.style.width = rand_size + "vmin";
-//   rand_span.style.height = rand_size + "vmin";
-//   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
-//   // place on page
-//   intro.insertAdjacentElement("beforeend", rand_span);
-//   clone = rand_span.cloneNode(true);
-//   loader.insertAdjacentElement("beforeend", clone);
-// }
+for (i=0; i<15; i++) {
+  rand_span = document.createElement("span");
+  rand_span.classList.add("leaf");
+  // generate random attributes
+  rand_x = Math.floor(Math.random() * 60);          // 0 to 60 vw
+  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
+  rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
+  rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
+  // set CSS styles
+  rand_span.style.left = rand_x + "vw";
+  rand_span.style.top = rand_y + "vh";
+  rand_span.style.width = rand_size + "vmin";
+  rand_span.style.height = rand_size + "vmin";
+  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
+  // place on page
+  intro.insertAdjacentElement("beforeend", rand_span);
+  clone = rand_span.cloneNode(true);
+  loader.insertAdjacentElement("beforeend", clone);
+}
 
 // random orbs
 // for (i=0; i<30; i++) {
