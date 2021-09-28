@@ -662,36 +662,6 @@ section:not(#intro) {
 }
 
 
-/* ---------------------------------------------------------- Filler Section */
-#filler {
-  position: relative;
-  color: white;
-  padding-bottom: 0;
-}
-#filler h2 { margin: 15px 0; }
-#filler p { width: 100%; }
-#filler p:first-of-type { margin-bottom: 35px; }
-#filler p:nth-of-type(2) { text-align: center; }
-#filler a {
-  display: inline-block;
-  padding: 20px;
-  padding: 15px 20px;
-  border-radius: 50px;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
-}
-#filler::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 1px;
-  width: 100%;
-  height: 5vh;
-  transform: translateY(-100%);
-  clip-path: polygon(0 5vh, 100% 0, 100% 100%, 0 100%);
-}
-
-
 /* ------------------------------------------------ Medium Screen Breakpoint */
 @media (min-width: 750px) and (min-height: 850px) {
   /* decrease intro's padding bottom when not on mobile */
@@ -719,8 +689,6 @@ section:not(#intro) {
     width: 100%;
     margin-bottom: 50px;
   }
-
-  #filler p:nth-of-type(2) { text-align: left; }
 }
 
 
@@ -740,6 +708,4 @@ section:not(#intro) {
     font-size: 36px;
     margin-bottom: 24px;
   }
-
-  #filler p:nth-of-type(2) { text-align: left; }
 }
