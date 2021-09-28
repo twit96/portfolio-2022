@@ -442,6 +442,9 @@ a:hover { text-decoration: underline; }
 
 /* ------------------------------------------------------------------ Header */
 header {
+  /* border: 1px solid red; */
+  padding-bottom: calc(var(--main-padding) * 3 / 5);
+  transform: translateY(0);
   position: fixed;
   left: 0; top: 0;
   width: 100%;
@@ -452,13 +455,24 @@ header {
   color: white;
   transition: 0.25s background ease-out,
               0.25s box-shadow ease-out,
-              0.25s padding ease-out;
+              0.25s transform ease-out;
 }
 header.filled {
-  padding: 15px 25px;
+  transform: translateY(calc(var(--main-padding) * -2 / 5));
   background: var(--green);
   box-shadow: 0 0 15px var(--green-shadow);
 }
+/* adjust for header.filled translateY animation*/
+header.filled nav.active {
+  transform: translateX(0) translateY(calc(var(--main-padding) * -2 / 5));
+}
+header.filled nav.active::after {
+  transform: translateX(-100%) translateY(calc(var(--main-padding) * 4 / 5));
+}
+header.filled #header-bg.active {
+  transform: translateY(calc(var(--main-padding) * 2 / 5));
+}
+
 header + * { padding-top: 78px;  /* height of header */ }
 
 
@@ -499,14 +513,8 @@ header nav::before {
   width: 100%;
   height: 78px;  /* height of header */
   background: var(--blue-light);
-  transition: 0.25s height ease-out;
 }
-header.filled nav {
-  padding-top: 58px;  /* height of header */
-}
-header.filled nav::before {
-  height: 58px;  /* height of header */
-}
+
 header nav::after {
   content: '';
   position: absolute;
@@ -516,6 +524,7 @@ header nav::after {
   border-radius: 50%;
   box-shadow: 50px -50px 0 var(--blue-light);
   z-index: -1;
+  transition: 0.25s transform ease-out;
 }
 header nav.active { transform: translateX(0); }
 header nav a {
@@ -544,7 +553,8 @@ header nav a:last-child {
   z-index: 101;
   transform: translateY(-100%);
   opacity: 0;
-  transition: 0.25s opacity ease-out;
+  transition: 0.25s opacity ease-out,
+              0.25s transform ease-out;
 }
 #header-bg.active {
   opacity: 1;
@@ -737,9 +747,7 @@ footer > span {
   header nav { padding-top: 135px;  /* height of header */ }
   header nav::before { height: 135px;  /* height of header */ }
   header nav a { padding: 25px 50px; }
-  header.filled { padding: 25px 50px; }
-  header.filled nav { padding-top: 85px;  /* height of header */ }
-  header.filled nav::before { height: 85px;  /* height of header */ }
+
   header + * { padding-top: 135px;  /* height of header */ }
 }
 
@@ -755,9 +763,15 @@ footer > span {
   header nav { padding-top: 187.5px;  /* height of header */ }
   header nav::before { height: 187.5px;  /* height of header */ }
   header nav a { padding: 37.5px 75px; }
-  header.filled { padding: 37.5px 75px; }
-  header.filled nav { padding-top: 112.5px;  /* height of header */ }
-  header.filled nav::before { height: 112.5px;  /* height of header */ }
+
+  /* readjust for header.filled translateY animation*/
+  header.filled nav.active {
+    transform: translateX(0) translateY(calc(var(--main-padding) * -1 / 5));
+  }
+  header.filled nav.active::after {
+    transform: translateX(-100%) translateY(calc(var(--main-padding) * 3 / 5));
+  }
+
   header + * { padding-top: 187.5px;  /* height of header */ }
 
   .nav-toggle {
