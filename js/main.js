@@ -144,7 +144,6 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 // Throttle Scroll Event Listeners --------------------------------------------
 window.addEventListener('scroll', ()=> {
-  requestAnimationFrame(scrollEvents);
 
   // Get Relevant Values
   var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
