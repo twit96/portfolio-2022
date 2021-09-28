@@ -83,13 +83,13 @@ header_bg.onclick = function() {
   header_bg.classList.toggle("active");
 }
 
-function headerStateHandler() {
+window.onscroll = function() {
   if (
     (document.body.scrollTop > 0) ||
     (document.documentElement.scrollTop > 0)
   ) { header.classList.add("filled"); }
   else { header.classList.remove("filled"); }
-}
+};
 
 
 // Scroll Down Indicator ------------------------------------------------------
@@ -99,39 +99,38 @@ var scroll_down_indicator = document.createElement("span");
 scroll_down_indicator.classList.add('scroll-down-indicator');
 intro.insertAdjacentElement('beforeend', scroll_down_indicator);
 
-// toggle event listeners
-var triggered_scroll_down_indicator_listeners = false;
-function triggerScrollDownIndicatorListeners() {
-  triggered_scroll_down_indicator_listeners = true;
-  scroll_down_indicator.classList.add('hidden');
-  scroll_down_indicator.removeEventListener('click', click_scroll_down_indicator_handler, false);
-}
-
-// scroll listener
-function scrollDownIndicatorHandler() {
+// scroll position changes visibility
+var scroll_indicator_handler = function() {
   if (
-    (!triggered_scroll_down_indicator_listeners) &&
-    (
-      (document.body.scrollTop > 100) ||
-      (document.documentElement.scrollTop > 100)
-    )
+    (document.body.scrollTop > 100) ||
+    (document.documentElement.scrollTop > 100)
   ) {
-    triggerScrollDownIndicatorListeners();
+    scroll_down_indicator.classList.add('hidden');
+    removeScrollIndicatorListeners();
   }
 }
+window.addEventListener('scroll', scroll_indicator_handler, false);
 
-// click listener
-var click_scroll_down_indicator_handler = function() {
+// click functionality
+var click_indicator_handler = function() {
   window.scroll({
     top: window.innerHeight * 0.75,
     left: 0,
     behavior: 'smooth'
   });
-  triggerScrollDownIndicatorListeners();
+  scroll_down_indicator.classList.add('hidden');
+  removeScrollIndicatorListeners();
 }
-scroll_down_indicator.addEventListener(
-  'click', click_scroll_down_indicator_handler, false
-);
+scroll_down_indicator.addEventListener('click', click_indicator_handler, false);
+
+// remove event listeners
+var triggered_remove_scroll_indicator_listeners = false;
+function removeScrollIndicatorListeners() {
+  if (!triggered_remove_scroll_indicator_listeners) {
+    window.removeEventListener('scroll', scroll_indicator_handler, false);
+    scroll_down_indicator.removeEventListener('click', click_indicator_handler, false);
+  }
+}
 
 
 // Scroll Top Btn -------------------------------------------------------------
@@ -141,7 +140,7 @@ scroll_top_btn.id = 'scroll-top-btn';
 intro.insertAdjacentElement('beforeend', scroll_top_btn);
 
 // scroll position changes visibility
-function scrollTopBtnHandler() {
+var scroll_top_btn_handler = function() {
   if (
     (document.body.scrollTop > window.innerHeight * 0.75) ||
     (document.documentElement.scrollTop > window.innerHeight * 0.75)
@@ -151,6 +150,7 @@ function scrollTopBtnHandler() {
     scroll_top_btn.classList.remove('displayed');
   }
 }
+window.addEventListener('scroll', scroll_top_btn_handler, false);
 
 // click functionality
 var click_scroll_top_handler = function() {
@@ -163,19 +163,3 @@ var click_scroll_top_handler = function() {
   }
 }
 scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
-
-
-// Throttle Scroll Event Listeners --------------------------------------------
-let scrolling = false;
-window.onscroll = function() { scrolling = true; }
-
-setInterval(() => {
-  // console.log('check');
-  if (scrolling) {
-    // console.log('scrolling');
-    scrolling = false;
-    headerStateHandler();
-    scrollTopBtnHandler();
-    triggerScrollDownIndicatorListeners();
-  }
-}, 300);
