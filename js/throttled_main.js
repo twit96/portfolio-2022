@@ -144,6 +144,10 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 // Throttle Scroll Event Listeners --------------------------------------------
 window.addEventListener('scroll', ()=> {
+  requestAnimationFrame(scrollEvents);
+});
+
+function scrollEvents() {
   // Get Relevant Values
   var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
   var header_has_class = header.classList.contains("filled");
@@ -174,4 +178,4 @@ window.addEventListener('scroll', ()=> {
     // hide scroll down indicator
     triggerScrollDownIndicatorListeners();
   }
-});
+}
