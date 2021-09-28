@@ -11,11 +11,11 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- <script src="/js/main.js" defer></script> -->
+    <script src="/js/main.js" defer></script>
   </head>
   <body>
     <?php
-			// include('../templates/header.html');
+			include('../templates/header.html');
 		  include('../php/all_projects.php');
 			include('../templates/footer.html');
 		?>
