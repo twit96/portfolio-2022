@@ -143,37 +143,37 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 
 // Throttle Scroll Event Listeners --------------------------------------------
-window.addEventListener('scroll', ()=> {
+// window.addEventListener('scroll', ()=> {
 
   // Get Relevant Values
-  var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
-  var header_has_class = header.classList.contains("filled");
-  var scroll_top_has_class = scroll_top_btn.classList.contains("displayed");
+  // var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
+  // var header_has_class = header.classList.contains("filled");
+  // var scroll_top_has_class = scroll_top_btn.classList.contains("displayed");
 
   // Manage Header State
-  if ((scroll_pos > 0) && (!header_has_class)) {
+  // if ((scroll_pos > 0) && (!header_has_class)) {
     // add filled class
-    requestAnimationFrame(toggleHeaderState);
-  }
-  else if ((scroll_pos == 0) && (header_has_class)) {
+  //   requestAnimationFrame(toggleHeaderState);
+  // }
+  // else if ((scroll_pos == 0) && (header_has_class)) {
     // remove filled class
-    requestAnimationFrame(toggleHeaderState);
-  }
+  //   requestAnimationFrame(toggleHeaderState);
+  // }
 
   // Manage Scroll Top Btn State
-  if ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_has_class)) {
+  // if ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_has_class)) {
     // add displayed class
-    requestAnimationFrame(toggleScrollTopBtn);
-  }
-  else if ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_has_class)) {
+  //   requestAnimationFrame(toggleScrollTopBtn);
+  // }
+  // else if ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_has_class)) {
     // remove displayed class
-    requestAnimationFrame(toggleScrollTopBtn);
-  }
+  //   requestAnimationFrame(toggleScrollTopBtn);
+  // }
 
   // Manage Scroll Down Indicator State
-  if ((!triggered_scroll_down_indicator_listeners) && (scroll_pos > 100)) {
+  // if ((!triggered_scroll_down_indicator_listeners) && (scroll_pos > 100)) {
     // hide scroll down indicator
-    triggerScrollDownIndicatorListeners();
-  }
-
-});
+//     triggerScrollDownIndicatorListeners();
+//   }
+//
+// });
