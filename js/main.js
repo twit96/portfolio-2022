@@ -33,7 +33,7 @@ for (i=0; i<15; i++) {
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
-  loader.insertAdjacentElement("beforeend", clone);
+  // loader.insertAdjacentElement("beforeend", clone);
 }
 
 // random orbs
