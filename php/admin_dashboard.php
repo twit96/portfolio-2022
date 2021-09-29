@@ -215,9 +215,123 @@ function displayData($mysqli) {
 }
 
 
+/**
+* Function to check if a file has the same name as an existing filename.
+* Appends a number to the beginning of the filename if it does, and increments
+* the number up by 1 if it already has a number.
+* Returns formatted file name and leaves existing file name alone.
+*/
+function formatDuplicateFilenames($file_name, $existing_file_name) {
+  if ($file_name == $existing_file_name) {
+    // split string by hyphens
+    $splitted_string = explode("-", $file_name);
+    // update num
+    $num = $splitted_string[0];
+    (is_numeric($num)) ? $num++ : $num = 0;
+    // combine string part of filename
+    if ($num != 0) { $str = implode("-", array_slice($splitted_string, 1)); }
+    else { $str = implode("-", $splitted_string); }
+    // combine num and string parts with hyphen
+    $file_name = $num.'-'.$str;
+  }
+  return $file_name;
+}
+
+
+function uploadImage($mysqli, $directory, $project_id) {
+  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
+
+    // get old image name
+    $command = 'SELECT image FROM projects WHERE id='.$project_id.';';
+    $result = $mysqli->query($command);
+    if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+    $row = $result->fetch_assoc();
+    $existing_img_name = $row['image'];
+
+    // update new image name if same as old name
+    $new_file_name = basename($_FILES["image"]["name"]);
+    $new_file_name = formatDuplicateFilenames($new_file_name, $existing_img_name);
+
+
+    // Try to Upload Image
+    $target_dir = '../projects/'.$directory.'/';
+    $target_file = $target_dir.$new_file_name;
+    $upload_ok = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $alert_txt = '<script>alert("';
+
+    // check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+      // echo 'File is an image - '.$check["mime"];
+      $upload_ok = 1;
+    } else {
+      $alert_txt .= 'Image upload is not an image. ';
+      $upload_ok = 0;
+    }
+
+    // check if file already exists
+    // (should never trigger since we format the image name above)
+    // if (file_exists($target_file)) {
+    //   $alert_txt .= 'Image upload already exists in directory.';
+    //   $upload_ok = 0;
+    // }
+
+    // check file size
+    if ($_FILES["image"]["size"] > 500000) {
+      $alert_txt .=  'Image upload file is too large (>500KB). ';
+      $upload_ok = 0;
+    }
+
+    // allow certain file formats
+    if (
+      ($imageFileType != "jpg") &&
+      ($imageFileType != "png") &&
+      ($imageFileType != "jpeg") &&
+      ($imageFileType != "gif") &&
+      ($imageFileType != "webp")
+    ) {
+      $alert_txt .=  'Image upload file type is not JPG, JPEG, PNG GIF, or WebP. ';
+      $upload_ok = 0;
+    }
+
+    // if $upload_ok is still set to 1, try to upload file
+    if ($upload_ok != 0) {
+      if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        $alert_txt .= 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded. ';
+      } else {
+        $alert_txt .= 'Sorry, there was an error uploading your file. ';
+        $new_file_name = 0;
+      }
+    // handle if $upload_ok was set to 0 by an error
+    } else {
+      $alert_txt .= 'File was not uploaded. ';
+      $new_file_name = 0;
+    }
+
+    // finish alert text
+    $alert_txt .= '");</script>';
+    echo $alert_txt;
+
+
+    // Delete Old Image and Update Database
+    if ($new_file_name != 0) {
+      // delete old image
+      $img_to_delete = '../projects/'.$directory.'/'.$existing_img_name;
+      unlink($img_to_delete);
+      // point database to new image
+      $command = 'UPDATE projects SET image="'.$new_file_name.'" WHERE id='.$project_id.';';
+      $result = $mysqli->query($command);
+      if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+    }
+  }
+
+}
+
+
 function updateDB($mysqli) {
   unset($_POST["update"]);
-  $project = $_POST["id"];
+  $project_id = $_POST["id"];
   unset($_POST["id"]);
   $directory = $_POST["directory"];
   unset($_POST["directory"]);
@@ -225,24 +339,10 @@ function updateDB($mysqli) {
   // handle directory
 
   // upload image
-  $img_name = uploadImage($directory);
-  if ($img_name) {
-    // delete old image
-    $command1 = 'SELECT image FROM projects WHERE id='.$project.';';
-    $result1 = $mysqli->query($command1);
-    if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
-    $row1 = $result1->fetch_assoc();
-    $img_to_delete = '../projects/'.$directory.'/'.$row1['image'];
-    unlink($img_to_delete);
-    // point database to new image
-    $command1 = 'UPDATE projects SET image="'.$img_name.'" WHERE id='.$project.';';
-    $result1 = $mysqli->query($command1);
-    if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
-  }
-
+  uploadImage($mysqli, $directory, $project_id);
 
   // update other columns
-  $command = 'SELECT * FROM projects WHERE ID='.$project.';';
+  $command = 'SELECT * FROM projects WHERE ID='.$project_id.';';
   $result = $mysqli->query($command);
   if (!$result) { die("Query failed: ($mysqli->error <br>"); }
 
@@ -256,7 +356,7 @@ function updateDB($mysqli) {
 
     foreach ($_POST as $key => $value) {
       if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project.';';
+        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
         $result1 = $mysqli->query($command1);
         if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
       }
@@ -271,59 +371,6 @@ function updateDB($mysqli) {
 
   // Display Data
   buildDashboard($mysqli);
-}
-
-
-function uploadImage($directory) {
-  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
-    // try to upload image
-    // echo exec('whoami').'<br />';
-    $target_dir = '../projects/'.$directory.'/';
-    $file_name = basename($_FILES["image"]["name"]);
-    $target_file = $target_dir.$file_name;
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    // echo ''.$target_dir.'<br />'.$target_file.'<br />'.$imageFileType.'<br />';
-    $alert_txt = '<script>alert("';
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-      // echo 'File is an image - '.$check["mime"];
-      $uploadOk = 1;
-    } else {
-      $alert_txt .= 'Image upload is not an image.';
-      $uploadOk = 0;
-    }
-    // Check if file already exists
-    if (file_exists($target_file)) {
-      $alert_txt .= 'Image upload already exists in directory.';
-      $uploadOk = 0;
-    }
-    // Check file size
-    if ($_FILES["image"]["size"] > 500000) {
-      $alert_txt .=  'Image upload file is too large (>500KB).';
-      $uploadOk = 0;
-    }
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-      $alert_txt .=  'Image upload file type is not JPG, JPEG, PNG or GIF.';
-      $uploadOk = 0;
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-      $alert_txt .= 'File was not uploaded.';
-    // if everything is ok, try to upload file
-    } else {
-      if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        $alert_txt .= 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded.';
-      } else {
-        echo 'Sorry, there was an error uploading your file.';
-      }
-    }
-    $alert_txt .= '");</script>';
-    echo $alert_txt;
-    return $file_name;
-  }
 }
 
 
