@@ -301,21 +301,16 @@ function uploadImage($mysqli, $directory, $project_id) {
         $alert_txt .= 'The file '.htmlspecialchars( basename( $_FILES["image"]["name"])).' has been uploaded. ';
       } else {
         $alert_txt .= 'Sorry, there was an error uploading your file. ';
-        $new_file_name = 0;
+        $upload_ok = 0;
       }
     // handle if $upload_ok was set to 0 by an error
     } else {
       $alert_txt .= 'File was not uploaded. ';
-      $new_file_name = 0;
     }
-
-    // finish alert text
-    $alert_txt .= '");</script>';
-    echo $alert_txt;
 
 
     // Delete Old Image and Update Database
-    if ($new_file_name != 0) {
+    if ($upload_ok != 0) {
       // delete old image
       $img_to_delete = '../projects/'.$directory.'/'.$existing_img_name;
       unlink($img_to_delete);
@@ -324,6 +319,11 @@ function uploadImage($mysqli, $directory, $project_id) {
       $result = $mysqli->query($command);
       if (!$result) { die("Query failed: ($mysqli->error <br>"); }
     }
+
+
+    // Finish and Display Alert Text
+    $alert_txt .= '");</script>';
+    echo $alert_txt;
   }
 
 }
