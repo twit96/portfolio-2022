@@ -44,7 +44,7 @@ for (i=0; i<30; i++) {
   // generate random attributes
   rand_x = Math.floor(Math.random() * 100);                   // 0 to 100 vw
   rand_y = Math.floor(Math.random() * 100);                   // 0 to 100 vh
-  rand_size = (Math.random() * 1) + 0.5;                      // 0.5 to 2 vmin
+  rand_size = (Math.random() * 1.5) + 0.5;                    // 0.5 to 2 vmin
   rand_anim_duration = (Math.random() * 3) + 3;               // 3 to 6 s
   rand_anim_delay = Math.random() * rand_anim_duration * -1;  // 0 to -rand_anim_duration s
   // set CSS styles
