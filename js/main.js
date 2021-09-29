@@ -13,7 +13,8 @@ var rand_x;
 var rand_y;
 var rand_size;
 var rand_rotation;
-var rand_opacity;
+var rand_anim_duration;
+var rand_anim_delay;
 
 // random leaves
 for (i=0; i<15; i++) {
@@ -41,15 +42,17 @@ for (i=0; i<30; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("orb");
   // generate random attributes
-  rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
-  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
-  rand_size = (Math.random() * 1.5) + 0.5;          // 0.5 to 2 vmin
-  rand_anim_delay = Math.random() * -3;             // 0 to 3 s
+  rand_x = Math.floor(Math.random() * 100);                   // 0 to 100 vw
+  rand_y = Math.floor(Math.random() * 100);                   // 0 to 100 vh
+  rand_size = (Math.random() * 1) + 0.5;                      // 0.5 to 2 vmin
+  rand_anim_duration = (Math.random() * 3) + 3;               // 3 to 6 s
+  rand_anim_delay = Math.random() * rand_anim_duration * -1;  // 0 to -rand_anim_duration s
   // set CSS styles
   rand_span.style.left = rand_x + "vw";
   rand_span.style.top = rand_y + "vh";
   rand_span.style.width = rand_size + "vmin";
   rand_span.style.height = rand_size + "vmin";
+  rand_span.style.animationDuration = rand_anim_duration + "s";
   rand_span.style.animationDelay = rand_anim_delay + "s";
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);

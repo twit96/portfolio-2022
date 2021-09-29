@@ -96,8 +96,8 @@ a:hover { text-decoration: underline; }
   animation: 3s twinkle ease-in-out infinite;
 }
 @keyframes twinkle {
-  0%, 100% { opacity: 0.05; }
-  50% { opacity: 0.5; }
+  0%, 50%, 100% { opacity: 0.05; }
+  25% { opacity: 0.5; }
 }
 
 .square {
