@@ -14,7 +14,6 @@ var rand_y;
 var rand_size;
 var rand_rotation;
 var rand_opacity;
-var rand_anim_delay;
 
 // random leaves
 for (i=0; i<15; i++) {
@@ -45,15 +44,14 @@ for (i=0; i<30; i++) {
   rand_x = Math.floor(Math.random() * 100);         // 0 to 100 vw
   rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
   rand_size = (Math.random() * 1.5) + 0.5;          // 0.5 to 2 vmin
-  // rand_opacity = Math.random() * 0.5;	              // 0 to 0.5
-  rand_anim_delay = Math.random() * -3;             // 0 to 3 s
+  rand_opacity = (Math.random() * 0.75) + 0.25;	    // 0.25 to 1
   // set CSS styles
   rand_span.style.left = rand_x + "vw";
   rand_span.style.top = rand_y + "vh";
   rand_span.style.width = rand_size + "vmin";
   rand_span.style.height = rand_size + "vmin";
-  // rand_span.style.opacity = rand_opacity;
-  rand_span.style.animationDelay = rand_anim_delay + "s";
+  rand_span.style.opacity = rand_opacity;
+  rand_span.style.filter = "blur(" + (rand_size / 2) + "vmin)";
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
