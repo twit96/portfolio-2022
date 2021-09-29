@@ -96,7 +96,6 @@ a:hover { text-decoration: underline; }
   animation-name: twinkle;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-play-state: paused;
 }
 @keyframes twinkle {
   0%, 50%, 100% { opacity: 0.05; }
