@@ -367,7 +367,7 @@ function addProject($row) {
   }
 
    // check directory doesn't already exist
-  if (directoryExists($dir)) {
+  if (directoryExists($row["directory"])) {
     echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
     return false;
   }
