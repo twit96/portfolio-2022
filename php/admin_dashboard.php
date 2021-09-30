@@ -195,6 +195,9 @@ function displayData($mysqli) {
     echo '</tr>';
 
   }
+
+  $max_id++;  // add 1 to max_id so it is greater than all other ID's
+
   echo <<<EMPTYROW
   <tr>
     <td>
