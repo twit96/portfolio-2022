@@ -361,7 +361,7 @@ function addProject($row) {
   // check for valid image (null parameter since no existing img to compare to)
   $new_img_name = checkImage(null);
   echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
-  if (!$new_img_name) {
+  if (is_null($new_img_name)) {
     echo '<script>alert("Image did not pass checks - project not added.");</script>';
     return false;
   }
