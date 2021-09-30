@@ -198,10 +198,11 @@ function displayData($mysqli) {
 
   $max_id++;  // add 1 to max_id so it is greater than all other ID's
 
+  echo '<tr>';
+  echo '  <td>';
+  echo '    <input form="add-new-project" name="id" type="hidden" value="'.$max_id.'" />';
+
   echo <<<EMPTYROW
-  <tr>
-    <td>
-      <input form="add-new-project" name="id" type="hidden" value="'.$max_id.'" />
       <input form="add-new-project" name="title" type="text" placeholder="New Title" required />
     </td>
     <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
