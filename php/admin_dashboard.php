@@ -226,22 +226,6 @@ function displayData($mysqli) {
 }
 
 
-function checkDirectory($mysqli, $directory, $project_id) {
-  $command = 'SELECT directory FROM projects WHERE id='.$project_id.';';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  $row = $result->fetch_assoc();
-  // $existing_dir = $row['directory'];
-
-  if (mysqli_num_rows($result) == 0) {
-    echo '<script>alert("Project: '.$project_id.' not in database. Directory: '.$directory.'")</script>';
-  }
-  else {
-    echo '<script>alert("Project: '.$project_id.' in database. Directory: '.$directory.'")</script>';
-  }
-}
-
-
 /**
 * Function to check if a file has the same name as an existing filename.
 * Appends a number to the beginning of the filename if it does, and increments
@@ -249,6 +233,7 @@ function checkDirectory($mysqli, $directory, $project_id) {
 * Returns formatted file name and leaves existing file name alone.
 */
 function formatDuplicateFilenames($file_name, $existing_file_name) {
+  echo '<script>console.log("formatDuplicateFilenames()");</script>';
   if ($file_name == $existing_file_name) {
     // split string by hyphens
     $splitted_string = explode("-", $file_name);
@@ -266,18 +251,160 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 
 
 /**
-* Function to add new project.
+* Function to check if uploaded image is valid. Returns false if image is not
+* valid and returns formatted image name if image is valid.
 */
-function addProject() {
-  echo '<script>alert("addProject()");</script>';
+function checkImage($img) {
+  echo '<script>console.log("checkImage()");</script>';
+
+  $new_img_name = false;
+
+  // Ensure image is set in $_POST
+  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
+
+    // update new image file name if same as old name
+    $new_img_name = basename($_FILES["image"]["name"]);
+    $new_img_name = formatDuplicateFilenames($new_img_name, $img);
+
+    // begin check
+    $target_file = '../projects/'.$row["directory"].'/'.$new_img_name;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check === false)  $new_img_name = false;
+
+    // check if file already exists
+    // (should never trigger since we format the image name above)
+    // if (file_exists($target_file)) $new_file_name = 0;
+
+    // check file size (<500kB)
+    if ($_FILES["image"]["size"] > 500000) $new_img_name = false;
+
+    // only allow certain file formats
+    if (
+      ($imageFileType != "jpg") &&
+      ($imageFileType != "png") &&
+      ($imageFileType != "jpeg") &&
+      ($imageFileType != "gif") &&
+      ($imageFileType != "webp")
+    ) {
+      $new_img_name = false;
+    }
+
+  }
+  return $new_img_name;
+}
+
+
+/**
+* Function to upload an image (which was previously checked to be valid).
+* Returns true if successful upload and false otherwise.
+*/
+function uploadImage($row, $directory, $new_img_name) {
+  echo '<script>console.log("uploadImage()");</script>';
+  $upload_success = false;
+
+  // Upload New Image
+  $target_file = '../projects/'.$directory.'/'.$new_img_name;
+  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+    $upload_success = true;
+  }
+  // Delete Old Image
+  if ($upload_success == true) {
+    unlink('../projects/'.$directory.'/'.$row["image"]);
+  }
+
+  return $upload_success;
+}
+
+
+/**
+* Function to check if posted directory name already exists in projects
+* directory. Returns true if so and false if not.
+*/
+function directoryExists($dir) {
+  (is_dir('../projects/'.$dir)) ? return true : return false;
+}
+
+
+/**
+* Function to update a project directory name. Copies the contents of the
+* existing directory into the new directory, deletes the contents of the old
+* directory, and then deletes the old directory.
+* (NON-RECURSIVE - SINGLE LAYER DIRECTORIES ONLY)
+* Returns true if success and false if failure.
+*/
+function updateDirectory($row, $dir) {
+  $old_path = '../projects/'.$row["directory"].'/';
+  $new_path = '../projects/'.$dir.'/';
+
+  // Transfer Files to New Directory
+  copy($old_path.'*.*', $new_path);
+
+  // Delete Old Directory
+  unlink($pathname.$row["image"]);
+  unlink($pathname.$row["directory"]);
+
+  // Return if Success
+  (is_dir($new_path) && !is_dir($old_path)) return true : return false;
+}
+
+
+/**
+* Function to add new project. Failure gives alert to user.
+* Returns false if failed and true if succeeded.
+*/
+function addProject($row) {
+  echo '<script>console.log("addProject()");</script>';
+
+  // check for valid image (null parameter since no existing img to compare to)
+  $new_img_name = checkImage(null);
+  echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
+  if (!$new_img_name) {
+    echo '<script>alert("Image did not pass checks - project not added.");</script>';
+    return false;
+  }
+
+   // check directory doesn't already exist
+  if (directoryExists($dir)) {
+    echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
+    return false;
+  }
+
+  // create new directory
+  $new_path = '../projects/'.$_POST["directory"];
+  mkdir($new_path, 0777, true);
+
+  // try to upload image
+  $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+  if (!$uploaded_img) {
+    // upload failed
+    unlink($new_path);  // delete new directory
+    echo '<script>alert("Image upload failed - project not added.");</script>';
+    return false;
+  }
+
+  // update database if all went well
+  updateDB($row);
+  return true;
 }
 
 
 /**
 * Function to update existing project.
 */
-function updateProject() {
-  echo '<script>alert("updateProject()");</script>';
+function updateProject($row) {
+  echo '<script>console.log("updateProject()");</script>';
+}
+
+
+function updateDB() {
+  echo '<script>console.log("updateDB()");</script>';
+}
+// Function to update a single column value for a given project id.
+function updateProjectsTable($mysqli, $col, $val, $id) {
+
 }
 
 
@@ -288,20 +415,20 @@ function updateProject() {
 */
 function directPost($mysqli) {
   unset($_POST["update"]);
-
   // check if submitted project is in database
   $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
   $result = $mysqli->query($command);
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
   $row = $result->fetch_assoc();
-
-
-  (mysqli_num_rows($result) == 0) ? addProject() : updateProject();
+  // either add or update project
+  (mysqli_num_rows($result) == 0) ? addProject($row) : updateProject($row);
+  // display updated table data after changes are made
+  buildDashboard($mysqli);
 }
 
 
 
-function updateDB($mysqli) {
+function updateDB_OLD($mysqli) {
   unset($_POST["update"]);
 
   // update other columns
