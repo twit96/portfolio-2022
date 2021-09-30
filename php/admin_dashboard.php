@@ -166,8 +166,11 @@ function displayData($mysqli) {
 
   $project_directories = array();
 
+  $max_id = 0;  // to set add-new-column form's input ID
+
   echo '<tbody>';
   while ($row = $result->fetch_assoc()) {
+    if ($row['ID'] > $max_id) { $max_id = $row['ID']; }   // update max_id
 
     array_push($project_directories, $row['directory']);
 
@@ -195,7 +198,7 @@ function displayData($mysqli) {
   echo <<<EMPTYROW
   <tr>
     <td>
-      <input form="add-new-project" name="id" type="hidden" value="-1" />
+      <input form="add-new-project" name="id" type="hidden" value="'.$max_id.'" />
       <input form="add-new-project" name="title" type="text" placeholder="New Title" required />
     </td>
     <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
