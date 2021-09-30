@@ -153,6 +153,7 @@ function buildDashboard($mysqli) {
   foreach ($project_directories as &$curr_dir) {
     echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php" enctype="multipart/form-data"></form>';
   }
+  echo '<form class="hidden" id="add-new-project" method="POST" action="index.php" enctype="multipart/form-data"></form>';
   unset($curr_dir);
 }
 
