@@ -265,30 +265,43 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 }
 
 
-/**
-* Function to replace an existing image in a directory with a new image.
-* Changes name if equal to existing image name, then checks if image is fake,
-* not too large, and the correct file format. Attempts upload if it passes all
-* checks. If upload works, function deletes old image, updates database to
-* point to new image, and displays an alert to the user.
-*/
-function uploadImage($mysqli, $directory, $project_id) {
+function updateDB($mysqli) {
+  unset($_POST["update"]);
+
+  // update other columns
+  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+  $result = $mysqli->query($command);
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+  $row = $result->fetch_assoc();
+  unset($_POST["id"]);
+
+  // check for new/changed directory
+  $pathname = '../projects/';
+  $directory = $_POST["directory"];
+  unset($_POST["directory"]);
+
+  if (mysqli_num_rows($result) == 0) {
+    // create new directory
+    mkdir($pathname.$directory, 0777, true);
+
+  } else if ($directory != $row["directory"]) {
+    // rename existing directory
+    copy($pathname.$row["directory"].'/*.*', $pathname.$directory.'/');
+    unlink($pathname.$row["image"]);
+    unlink($pathname.$row["directory"]);
+  }
+
+  // upload image
   if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
 
-    // get old image name
-    $command = 'SELECT image FROM projects WHERE id='.$project_id.';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-    $row = $result->fetch_assoc();
-    $existing_img_name = $row['image'];
+    $existing_img_name = $row["image"];
 
     // update new image name if same as old name
     $new_file_name = basename($_FILES["image"]["name"]);
     $new_file_name = formatDuplicateFilenames($new_file_name, $existing_img_name);
 
-
     // Try to Upload Image
-    $target_dir = '../projects/'.$directory.'/';
+    $target_dir = $pathname.$directory.'/';
     $target_file = $target_dir.$new_file_name;
     $upload_ok = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -359,27 +372,8 @@ function uploadImage($mysqli, $directory, $project_id) {
     $alert_txt .= '");</script>';
     echo $alert_txt;
   }
+  unset($_POST["image"]);
 
-}
-
-
-function updateDB($mysqli) {
-  unset($_POST["update"]);
-  $project_id = $_POST["id"];
-  unset($_POST["id"]);
-  $directory = $_POST["directory"];
-  unset($_POST["directory"]);
-
-  // handle directory
-  checkDirectory($mysqli, $directory, $project_id);
-
-  // upload image
-  uploadImage($mysqli, $directory, $project_id);
-
-  // update other columns
-  $command = 'SELECT * FROM projects WHERE ID='.$project_id.';';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
     // echo 'ROW<br />';
