@@ -195,7 +195,7 @@ function displayData($mysqli) {
   echo <<<EMPTYROW
   <tr>
     <td>
-      <input form="add-new-project" name="id" type="hidden" value="-1" />';
+      <input form="add-new-project" name="id" type="hidden" value="-1" />
       <input form="add-new-project" name="title" type="text" placeholder="New Title" required />
     </td>
     <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
