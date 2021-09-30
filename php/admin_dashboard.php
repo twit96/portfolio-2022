@@ -215,6 +215,22 @@ function displayData($mysqli) {
 }
 
 
+function checkDirectory($mysqli, $directory, $project_id) {
+  $command = 'SELECT directory FROM projects WHERE id='.$project_id.';';
+  $result = $mysqli->query($command);
+  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  $row = $result->fetch_assoc();
+  // $existing_dir = $row['directory'];
+
+  if ($result === false) {
+    echo '<script>alert("RESULT===FALSE. Project: '.$project_id.' not in database. Directory: '.$directory.'")</script>';
+  }
+  else {
+    echo '<script>alert("RESULT!==FALSE")</script>';
+  }
+}
+
+
 /**
 * Function to check if a file has the same name as an existing filename.
 * Appends a number to the beginning of the filename if it does, and increments
@@ -344,6 +360,7 @@ function updateDB($mysqli) {
   unset($_POST["directory"]);
 
   // handle directory
+  checkDirectory($mysqli, $directory, $project_id);
 
   // upload image
   uploadImage($mysqli, $directory, $project_id);
