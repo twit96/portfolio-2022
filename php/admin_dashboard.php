@@ -265,6 +265,42 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 }
 
 
+/**
+* Function to add new project.
+*/
+function addProject() {
+  echo '<script>alert("addProject()");</script>';
+}
+
+
+/**
+* Function to update existing project.
+*/
+function updateProject() {
+  echo '<script>alert("updateProject()");</script>';
+}
+
+
+/**
+* Function called when user clicks update or add button in controls column of
+* table. If posted project data is not in database, calls addProject(). Else,
+* calls updateProject();
+*/
+function directPost($mysqli) {
+  unset($_POST["update"]);
+
+  // check if submitted project is in database
+  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+  $result = $mysqli->query($command);
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+  $row = $result->fetch_assoc();
+
+
+  (mysqli_num_rows($result) == 0) ? addProject() : updateProject();
+}
+
+
+
 function updateDB($mysqli) {
   unset($_POST["update"]);
 
@@ -430,8 +466,8 @@ function doEngine() {
     // Select Database
     $mysqli->select_db($dbName) or die($mysqli->error);
 
-    // Update Database
-    updateDB($mysqli);
+    // Handle Posted Data
+    directPost($mysqli);
 
 
   // if user logged in
