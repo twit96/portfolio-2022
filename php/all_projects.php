@@ -16,7 +16,7 @@ function displayFeatured($mysqli) {
 
   $command = 'SELECT * FROM projects ORDER BY date DESC;';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
 

@@ -52,7 +52,7 @@ function doUnsetPost() {
 function checkUser($mysqli, $username) {
   $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '";';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
   // $user_in_db will be 1 if in database and 0 if not in database
   $user_in_db = $result->fetch_row()[0];
   return $user_in_db;
@@ -67,7 +67,7 @@ function checkUser($mysqli, $username) {
 function checkPass($mysqli, $username, $password) {
   $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '" AND password = "' . $password . '";';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
   // $pass_in_db will be 1 if in database and 0 if not in database
   $pass_in_db = $result->fetch_row()[0];
   return $pass_in_db;
@@ -128,7 +128,7 @@ function buildDashboard($mysqli) {
   // Table Header Row
   $command = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "projects" ORDER BY ORDINAL_POSITION;';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
     $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
@@ -162,7 +162,7 @@ function displayData($mysqli) {
 
   $command = 'SELECT * FROM projects ORDER BY date DESC;';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   $project_directories = array();
 
@@ -229,7 +229,7 @@ function displayData($mysqli) {
 function checkDirectory($mysqli, $directory, $project_id) {
   $command = 'SELECT directory FROM projects WHERE id='.$project_id.';';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
   $row = $result->fetch_assoc();
   // $existing_dir = $row['directory'];
 
@@ -278,7 +278,7 @@ function uploadImage($mysqli, $directory, $project_id) {
     // get old image name
     $command = 'SELECT image FROM projects WHERE id='.$project_id.';';
     $result = $mysqli->query($command);
-    if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
     $row = $result->fetch_assoc();
     $existing_img_name = $row['image'];
 
@@ -351,7 +351,7 @@ function uploadImage($mysqli, $directory, $project_id) {
       // point database to new image
       $command = 'UPDATE projects SET image="'.$new_file_name.'" WHERE id='.$project_id.';';
       $result = $mysqli->query($command);
-      if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
     }
 
 
@@ -379,7 +379,7 @@ function updateDB($mysqli) {
   // update other columns
   $command = 'SELECT * FROM projects WHERE ID='.$project_id.';';
   $result = $mysqli->query($command);
-  if (!$result) { die("Query failed: ($mysqli->error <br>"); }
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
     // echo 'ROW<br />';
@@ -393,7 +393,7 @@ function updateDB($mysqli) {
       if ($row[$key] != $_POST[$key]) {
         $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
         $result1 = $mysqli->query($command1);
-        if (!$result1) { die("Query failed: ($mysqli->error <br>"); }
+        if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
       }
       // unset post for each key
       unset($_POST[$key]);
