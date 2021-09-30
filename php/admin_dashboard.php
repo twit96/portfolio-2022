@@ -272,14 +272,14 @@ function checkImage($img) {
 
     // check if image file is a actual image or fake image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check === false)  $new_img_name = false;
+    if ($check === false) { $new_img_name = false; }
 
     // check if file already exists
     // (should never trigger since we format the image name above)
     // if (file_exists($target_file)) $new_file_name = 0;
 
     // check file size (<500kB)
-    if ($_FILES["image"]["size"] > 500000) $new_img_name = false;
+    if ($_FILES["image"]["size"] > 500000) { $new_img_name = false; }
 
     // only allow certain file formats
     if (
@@ -324,7 +324,7 @@ function uploadImage($row, $directory, $new_img_name) {
 * directory. Returns true if so and false if not.
 */
 function directoryExists($dir) {
-  (is_dir('../projects/'.$dir)) ? return true : return false;
+  return is_dir('../projects/'.$dir);
 }
 
 
@@ -343,11 +343,11 @@ function updateDirectory($row, $dir) {
   copy($old_path.'*.*', $new_path);
 
   // Delete Old Directory
-  unlink($pathname.$row["image"]);
-  unlink($pathname.$row["directory"]);
+  unlink($old_path.$row["image"]);
+  unlink($old_path);
 
   // Return if Success
-  (is_dir($new_path) && !is_dir($old_path)) return true : return false;
+  return (is_dir($new_path) && (!is_dir($old_path)));
 }
 
 
@@ -399,9 +399,10 @@ function updateProject($row) {
 }
 
 
-function updateDB() {
+function updateDB($row) {
   echo '<script>console.log("updateDB()");</script>';
 }
+
 // Function to update a single column value for a given project id.
 function updateProjectsTable($mysqli, $col, $val, $id) {
 
@@ -428,7 +429,7 @@ function directPost($mysqli) {
 
 
 
-function updateDB_OLD($mysqli) {
+function OLDupdateDB($mysqli) {
   unset($_POST["update"]);
 
   // update other columns
