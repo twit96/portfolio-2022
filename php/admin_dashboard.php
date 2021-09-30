@@ -238,6 +238,13 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 }
 
 
+/**
+* Function to replace an existing image in a directory with a new image.
+* Changes name if equal to existing image name, then checks if image is fake,
+* not too large, and the correct file format. Attempts upload if it passes all
+* checks. If upload works, function deletes old image, updates database to
+* point to new image, and displays an alert to the user.
+*/
 function uploadImage($mysqli, $directory, $project_id) {
   if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
 
