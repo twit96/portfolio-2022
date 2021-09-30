@@ -233,11 +233,11 @@ function checkDirectory($mysqli, $directory, $project_id) {
   $row = $result->fetch_assoc();
   // $existing_dir = $row['directory'];
 
-  if ($result === false) {
-    echo '<script>alert("RESULT===FALSE. Project: '.$project_id.' not in database. Directory: '.$directory.'")</script>';
+  if (mysql_num_rows($result) == 0) {
+    echo '<script>alert("Project: '.$project_id.' not in database. Directory: '.$directory.'")</script>';
   }
   else {
-    echo '<script>alert("RESULT!==FALSE")</script>';
+    echo '<script>alert("Project: '.$project_id.' in database. Directory: '.$directory.'")</script>';
   }
 }
 
