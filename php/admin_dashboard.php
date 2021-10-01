@@ -414,12 +414,12 @@ function insertDB($mysqli, $row, $new_img_name) {
   $col_vals_length = count($col_vals);
 
   // build sql command
-  $command = 'INSERT INTO projects VALUES ';
-  $command .= '("'.$col_vals[0].'", ';
+  $command = "INSERT INTO projects VALUES ";
+  $command .= "(".$col_vals[0].", ";
   for ($i=1; $i<$col_vals_length-2; $i++) {
-    $command .= '"'.$col_vals[$i].'",';
+    $command .= "'".$col_vals[$i]."', ";
   }
-  $command .= '"'.$col_vals[$col_vals_length-1].'");';
+  $command .= $col_vals[$col_vals_length-1].");";
 
   echo $command;
   // $result = $mysqli->query($command);
