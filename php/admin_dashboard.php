@@ -404,13 +404,15 @@ function updateDB($mysqli, $row) {
   $project_id = $_POST["id"];
   unset($_POST["id"]);
 
-  echo '<script>console.log("ROW");</script>';
-  echo '<script>console.log("'.var_dump($row).'");</script>';
-  echo '<script>console.log("POST");</script>';
-  echo '<script>console.log("'.var_dump($_POST).'");</script>';
+  echo 'ROW<br />';
+  var_dump($row);
+  echo '<br /><br />';
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
 
   foreach ($_POST as $key => $value) {
-    if ($row[$key] != $_POST[$key]) {
+    if ($_POST[$key] != $row[$key]) {
       $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
       $result1 = $mysqli->query($command1);
       if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
@@ -419,17 +421,9 @@ function updateDB($mysqli, $row) {
     unset($_POST[$key]);
   }
 
-  echo '<script>console.log("");</script>';
-  echo '<script>console.log("POST");</script>';
-  echo '<script>console.log("'.var_dump($_POST).'");</script>';
-
-  // Display Data
-  buildDashboard($mysqli);
-}
-
-// Function to update a single column value for a given project id.
-function updateProjectsTable($mysqli, $col, $val, $id) {
-
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
 }
 
 
