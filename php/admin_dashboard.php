@@ -396,7 +396,7 @@ function updateDB($mysqli, $row, $new_img_name) {
   unset($_POST["id"]);
 
   // update image value
-  if ($new_img_name != $row["image"]) {
+  if (($new_img_name != $row["image"]) && (!is_null($new_img_name)) {
     $command = 'UPDATE projects SET image="'.$new_img_name.'" WHERE id='.$project_id.';';
     $result = $mysqli->query($command);
     if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
