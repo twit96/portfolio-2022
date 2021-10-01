@@ -378,7 +378,7 @@ function addProject($mysqli, $row) {
 
   // try to upload image
   $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
-  if (!$uploaded_img) {
+  if ($uploaded_img == false) {
     // upload failed
     rmdir($new_path);  // delete new directory
     echo '<script>alert("Image upload failed - project not added.");</script>';
@@ -447,7 +447,7 @@ function updateProject($mysqli, $row) {
   // uploaded image passed check - try to upload image
   } else {
     $uploaded_img = uploadImage($row, $directory, $new_img_name);
-    if (!$uploaded_img) {
+    if ($uploaded_img == false) {
       // if upload failed
       unset($_POST["image"]);
       echo '<script>alert("Image upload failed - image not updated.");</script>';
