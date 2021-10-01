@@ -821,6 +821,7 @@ footer > span {
 }
 
 
+/* -------------------------------------------------- Prefers Reduced Motion */
 @media (prefers-reduced-motion) {
   *,
   *::before,
