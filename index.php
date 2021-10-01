@@ -96,7 +96,7 @@
 								<span class="fill" style="--fill-percent: 90%; --i: 3;"></span>
 							</div>
 							<span class="bubble-text">+ jQuery</span>
-							<span class="bubble-text">+ Phaser3</span>
+							<span class="bubble-text">+ Phaser</span>
 						</div>
 					</div>
 					<div class="skill-box">
