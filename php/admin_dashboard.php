@@ -404,21 +404,19 @@ function updateDB($row) {
   $project_id = $_POST["id"];
   unset($_POST["id"]);
 
-  while ($row = $result->fetch_assoc()) {
-    echo '<script>console.log("ROW");</script>';
-    echo '<script>console.log("'.var_dump($row).'");</script>';
-    echo '<script>console.log("POST");</script>';
-    echo '<script>console.log("'.var_dump($_POST).'");</script>';
+  echo '<script>console.log("ROW");</script>';
+  echo '<script>console.log("'.var_dump($row).'");</script>';
+  echo '<script>console.log("POST");</script>';
+  echo '<script>console.log("'.var_dump($_POST).'");</script>';
 
-    foreach ($_POST as $key => $value) {
-      if ($row[$key] != $_POST[$key]) {
-        $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
-        $result1 = $mysqli->query($command1);
-        if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
-      }
-      // unset post for each key
-      unset($_POST[$key]);
+  foreach ($_POST as $key => $value) {
+    if ($row[$key] != $_POST[$key]) {
+      $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
+      $result1 = $mysqli->query($command1);
+      if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
     }
+    // unset post for each key
+    unset($_POST[$key]);
   }
 
   echo '<script>console.log("");</script>';
