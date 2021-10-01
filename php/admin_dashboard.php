@@ -408,14 +408,24 @@ function insertDB($mysqli, $row, $new_img_name) {
   foreach ($_POST as $key => $value) {
     array_push($col_vals, $value);
     if ($key == 'directory') array_push($col_vals, $new_img_name);
-
     // unset post for each key
     unset($_POST[$key]);
   }
-  echo var_dump($col_vals);
+  $col_vals_length = count($col_vals);
+
+  // build sql command
+  $command = 'INSERT INTO projects VALUES ';
+  $command .= '("'.$col_vals[0].'", '
+  for ($i=1; $i<$col_vals_length-2; $i++) {
+    $command .= '"'.$col_vals[$i].'",';
+  }
+  $command .= '"'.$col_vals[$col_vals_length-1].'");'
+
+  echo $command;
+  // $result = $mysqli->query($command);
+  // if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
 }
-
 
 // function updateDB($mysqli, $row) {
 //   echo '<script>console.log("updateDB()");</script>';
