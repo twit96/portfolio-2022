@@ -446,6 +446,9 @@ function updateProject($mysqli, $row) {
 
   // uploaded image passed check - try to upload image
   } else {
+    echo 'POST (before calling uploadImage)<br />';
+    var_dump($_POST);
+    echo '<br /><br />';
     $uploaded_img = uploadImage($row, $directory, $new_img_name);
     if (!$uploaded_img) {
       // if upload failed
