@@ -401,6 +401,8 @@ function updateProject($row) {
 
 function updateDB($row) {
   echo '<script>console.log("updateDB()");</script>';
+  $project_id = $_POST["id"];
+  unset($_POST["id"]);
 
   while ($row = $result->fetch_assoc()) {
     echo '<script>console.log("ROW");</script>';
