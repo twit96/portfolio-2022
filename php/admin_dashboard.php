@@ -254,7 +254,7 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 * Function to check if uploaded image is valid. Returns false if image is not
 * valid and returns formatted image name if image is valid.
 */
-function checkImage($img) {
+function checkImage($img, $directory) {
   echo '<script>console.log("checkImage()");</script>';
 
   $new_img_name = false;
@@ -267,7 +267,7 @@ function checkImage($img) {
     $new_img_name = formatDuplicateFilenames($new_img_name, $img);
 
     // begin check
-    $target_file = '../projects/'.$_POST["directory"].'/'.$new_img_name;
+    $target_file = '../projects/'.$directory.'/'.$new_img_name;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // check if image file is a actual image or fake image
@@ -359,7 +359,7 @@ function addProject($mysqli, $row) {
   echo '<script>console.log("addProject()");</script>';
 
   // check for valid image (null parameter since no existing img to compare to)
-  $new_img_name = checkImage(null);
+  $new_img_name = checkImage(null, $_POST["directory"]);
   echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
   if (is_null($new_img_name)) {
     echo '<script>alert("Image did not pass checks - project not added.");</script>';
@@ -437,7 +437,7 @@ function updateProject($mysqli, $row) {
   }
 
   // handle image name change
-  $new_img_name = checkImage($row["image"]);
+  $new_img_name = checkImage($row["image"], $directory);
 
   // if uploaded image didn't pass checks
   if (is_null($new_img_name)) {
