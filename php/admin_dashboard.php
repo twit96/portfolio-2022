@@ -267,7 +267,7 @@ function checkImage($img) {
     $new_img_name = formatDuplicateFilenames($new_img_name, $img);
 
     // begin check
-    $target_file = '../projects/'.$row["directory"].'/'.$new_img_name;
+    $target_file = '../projects/'.$_POST["directory"].'/'.$new_img_name;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // check if image file is a actual image or fake image
