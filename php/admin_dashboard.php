@@ -446,7 +446,11 @@ function directPost($mysqli) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
   $row = $result->fetch_assoc();
   // either add or update project
-  (mysqli_num_rows($result) == 0) ? addProject($row) : updateProject($row);
+  if (mysqli_num_rows($result) == 0) {
+    addProject($mysqli, $row);
+  } else {
+    updateProject($mysqli, $row);
+  }
   // display updated table data after changes are made
   buildDashboard($mysqli);
 }
