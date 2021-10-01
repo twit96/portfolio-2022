@@ -393,18 +393,43 @@ function addProject($mysqli, $row) {
 
 
 /**
+* Function to recursively copy files and non-empty directories. No return value.
+*/
+function rcopy($src, $dst) {
+  if (!file_exists($dst)) {
+    if (is_dir($src)) {
+      mkdir($dst);
+      $files = scandir($src);
+      foreach ($files as $file)
+      if ($file != "." && $file != "..") rcopy("$src/$file", "$dst/$file");
+    }
+    else if (file_exists($src)) copy($src, $dst);
+  } else { return false; }  // error
+}
+
+
+/**
 * Function to update existing project.
 */
 function updateProject($mysqli, $row) {
   echo '<script>console.log("updateProject()");</script>';
 
   // check for directory name change
-  $pathname = '../projects/';
-  if ($_POST["directory"] != $row["directory"]) {
+  $old_path = '../projects/'.$row["directory"].'/';
+  $new_path = '../projects/'.$_POST["directory"].'/';
+
+  if (
+    ($old_path != $new_path) &&              // name changed
+    (!directoryExists($_POST["directory"]))  // directory does not exist already
+  ) {
     // rename existing directory
-    copy($pathname.$row["directory"].'/*.*', $pathname.$_POST["directory"].'/');
-    unlink($pathname.$row["image"]);
-    rmdir($pathname.$row["directory"]);
+    rcopy($old_path, $new_path);
+    unlink($old_path.$row["image"]);
+    rmdir($old_path);
+
+  } else {
+    // directory name stayed the same
+    unset($_POST["directory"]);
   }
 
 
@@ -439,6 +464,7 @@ function insertDB($mysqli, $row, $new_img_name) {
   $result = $mysqli->query($command);
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 }
+
 
 function updateDB($mysqli, $row) {
   echo '<script>console.log("updateDB()");</script>';
