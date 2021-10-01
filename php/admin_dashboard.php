@@ -386,7 +386,6 @@ function addProject($mysqli, $row) {
   }
 
   // update database if all went well
-
   insertDB($mysqli, $row, $new_img_name);
   return true;
 }
@@ -404,7 +403,7 @@ function rcopy($src, $dst) {
       if ($file != "." && $file != "..") rcopy("$src/$file", "$dst/$file");
     }
     else if (file_exists($src)) copy($src, $dst);
-  } else { return false; }  // error
+  }
 }
 
 
@@ -414,25 +413,56 @@ function rcopy($src, $dst) {
 function updateProject($mysqli, $row) {
   echo '<script>console.log("updateProject()");</script>';
 
-  // check for directory name change
+  // handle directory name change
   $old_path = '../projects/'.$row["directory"].'/';
   $new_path = '../projects/'.$_POST["directory"].'/';
+  if ($old_path != $new_path) {
 
-  if (
-    ($old_path != $new_path) &&              // name changed
-    (!directoryExists($_POST["directory"]))  // directory does not exist already
-  ) {
+    // if new directory name already exists
+    if (directoryExists($_POST["directory"])) {
+      unset($_POST["directory"]);
+      echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
+
     // rename existing directory
-    rcopy($old_path, $new_path);
-    unlink($old_path.$row["image"]);
-    rmdir($old_path);
+    } else {
+      rcopy($old_path, $new_path)
+      unlink($old_path.$row["image"]);
+      rmdir($old_path);
+    }
 
+  // directory name stayed the same
   } else {
-    // directory name stayed the same
     unset($_POST["directory"]);
   }
 
+  // handle image name change
+  if ($row["image"] != $_POST["image"]) {
 
+    $new_img_name = checkImage($row["image"]);
+
+    // if uploaded image didn't pass checks
+    if (is_null($new_img_name)) {
+      unset($_POST["image"]);
+      echo '<script>alert("Image did not pass checks - image not updated.");</script>';
+
+    // uploaded image passed check - try to upload image
+    } else {
+      $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+      if (!$uploaded_img) {
+        // if upload failed
+        unset($_POST["image"]);
+        echo '<script>alert("Image upload failed - image not updated.");</script>';
+      }
+    }
+
+  // image stayed the same
+  } else {
+    unset($_POST["image"]);
+  }
+
+  // update database if all went well
+  updateDB($mysqli, $row);
+  return true;
 }
 
 
@@ -480,15 +510,15 @@ function updateDB($mysqli, $row) {
 
   foreach ($_POST as $key => $value) {
     if (($_POST[$key] != $row[$key])) {
-      $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
-      $result1 = $mysqli->query($command1);
-      if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
+      $command = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
+      $result = $mysqli->query($command);
+      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
     }
     // unset post for each key
     unset($_POST[$key]);
   }
 
-  echo 'POST<br />';
+  echo 'POST (after)<br />';
   var_dump($_POST);
   echo '<br /><br />';
 }
