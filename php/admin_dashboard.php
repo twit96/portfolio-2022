@@ -102,6 +102,9 @@ function checkLogin($mysqli, $username, $password) {
 }
 
 
+/**
+* Function to set up the admin page table layout. No return value.
+*/
 function buildDashboard($mysqli) {
   // Opening HTML
   echo <<<TOP
@@ -158,6 +161,10 @@ function buildDashboard($mysqli) {
 }
 
 
+/**
+* Function to display the rows of the admin page table layout.
+* Called by buildDashboard(). No return value.
+*/
 function displayData($mysqli) {
 
   $command = 'SELECT * FROM projects ORDER BY date DESC;';
@@ -352,113 +359,6 @@ function updateDirectory($row, $dir) {
 
 
 /**
-* Function to add new project. Failure gives alert to user.
-* Returns false if failed and true if succeeded.
-*/
-function addProject($mysqli, $row) {
-  echo '<script>console.log("addProject()");</script>';
-
-  // check for valid image (null parameter since no existing img to compare to)
-  $new_img_name = checkImage(null, $_POST["directory"]);
-  echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
-  if (is_null($new_img_name)) {
-    echo '<script>alert("Image did not pass checks - project not added.");</script>';
-    return false;
-  }
-
-   // check directory doesn't already exist
-  if (directoryExists($_POST["directory"])) {
-    echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
-    return false;
-  }
-
-  // create new directory
-  $new_path = '../projects/'.$_POST["directory"];
-  mkdir($new_path, 0777, true);
-
-  // try to upload image
-  $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
-  if ($uploaded_img == false) {
-    // upload failed
-    rmdir($new_path);  // delete new directory
-    echo '<script>alert("Image upload failed - project not added.");</script>';
-    return false;
-  }
-
-  // update database if all went well
-  insertDB($mysqli, $row, $new_img_name);
-  return true;
-}
-
-
-/**
-* Function to recursively copy files and non-empty directories. No return value.
-*/
-function rcopy($src, $dst) {
-  if (!file_exists($dst)) {
-    if (is_dir($src)) {
-      mkdir($dst);
-      $files = scandir($src);
-      foreach ($files as $file)
-      if ($file != "." && $file != "..") rcopy("$src/$file", "$dst/$file");
-    }
-    else if (file_exists($src)) copy($src, $dst);
-  }
-}
-
-
-/**
-* Function to update existing project.
-*/
-function updateProject($mysqli, $row) {
-  echo '<script>console.log("updateProject()");</script>';
-
-  // handle directory name change
-  $directory = $_POST["directory"];  // used for img later on
-  $old_path = '../projects/'.$row["directory"].'/';
-  $new_path = '../projects/'.$directory.'/';
-  if ($old_path != $new_path) {
-
-    // if new directory name already exists
-    if (directoryExists($directory)) {
-      unset($_POST["directory"]);
-      echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
-
-    // rename existing directory
-    } else {
-      rcopy($old_path, $new_path);
-      unlink($old_path.$row["image"]);
-      rmdir($old_path);
-    }
-
-  // directory name stayed the same
-  } else {
-    unset($_POST["directory"]);
-  }
-
-  // handle image name change
-  $new_img_name = checkImage($row["image"], $directory);
-
-  // if uploaded image didn't pass checks
-  if (is_null($new_img_name)) {
-    echo '<script>alert("Image did not pass checks - image not updated.");</script>';
-
-  // uploaded image passed check - try to upload image
-  } else {
-    $uploaded_img = uploadImage($row, $directory, $new_img_name);
-    if ($uploaded_img == false) {
-      // if upload failed
-      echo '<script>alert("Image upload failed - image not updated.");</script>';
-    }
-  }
-
-  // update database if all went well
-  updateDB($mysqli, $row, $new_img_name);
-  return true;
-}
-
-
-/**
 * Function to insert a new project into the Portfolio database's projects table
 * after addProject() function has checked the POST values. No return value.
 */
@@ -515,6 +415,114 @@ function updateDB($mysqli, $row, $new_img_name) {
     // unset post for each key
     unset($_POST[$key]);
   }
+}
+
+
+/**
+* Function to add new project. Failure gives alert to user.
+* Returns false if failed and true if succeeded.
+*/
+function addProject($mysqli, $row) {
+  echo '<script>console.log("addProject()");</script>';
+
+  // check for valid image (null parameter since no existing img to compare to)
+  $new_img_name = checkImage(null, $_POST["directory"]);
+  echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
+  if (is_null($new_img_name)) {
+    echo '<script>alert("Image did not pass checks - project not added.");</script>';
+    return false;
+  }
+
+   // check directory doesn't already exist
+  if (directoryExists($_POST["directory"])) {
+    echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
+    return false;
+  }
+
+  // create new directory
+  $new_path = '../projects/'.$_POST["directory"];
+  mkdir($new_path, 0777, true);
+
+  // try to upload image
+  $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+  if ($uploaded_img == false) {
+    // upload failed
+    rmdir($new_path);  // delete new directory
+    echo '<script>alert("Image upload failed - project not added.");</script>';
+    return false;
+  }
+
+  // update database if all went well
+  insertDB($mysqli, $row, $new_img_name);
+  return true;
+}
+
+
+/**
+* Function to recursively copy files and non-empty directories.
+* Used by updateProject() function if user changes directory name.
+* No return value.
+*/
+function rcopy($src, $dst) {
+  if (!file_exists($dst)) {
+    if (is_dir($src)) {
+      mkdir($dst);
+      $files = scandir($src);
+      foreach ($files as $file)
+      if ($file != "." && $file != "..") rcopy("$src/$file", "$dst/$file");
+    }
+    else if (file_exists($src)) copy($src, $dst);
+  }
+}
+
+
+/**
+* Function to update existing project. No return value.
+*/
+function updateProject($mysqli, $row) {
+  echo '<script>console.log("updateProject()");</script>';
+
+  // handle directory name change
+  $directory = $_POST["directory"];  // used for img later on
+  $old_path = '../projects/'.$row["directory"].'/';
+  $new_path = '../projects/'.$directory.'/';
+  if ($old_path != $new_path) {
+
+    // if new directory name already exists
+    if (directoryExists($directory)) {
+      unset($_POST["directory"]);
+      echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
+
+    // rename existing directory
+    } else {
+      rcopy($old_path, $new_path);
+      unlink($old_path.$row["image"]);
+      rmdir($old_path);
+    }
+
+  // directory name stayed the same
+  } else {
+    unset($_POST["directory"]);
+  }
+
+  // handle image name change
+  $new_img_name = checkImage($row["image"], $directory);
+
+  // if uploaded image didn't pass checks
+  if (is_null($new_img_name)) {
+    echo '<script>alert("Image did not pass checks - image not updated.");</script>';
+
+  // uploaded image passed check - try to upload image
+  } else {
+    $uploaded_img = uploadImage($row, $directory, $new_img_name);
+    if ($uploaded_img == false) {
+      // if upload failed
+      echo '<script>alert("Image upload failed - image not updated.");</script>';
+    }
+  }
+
+  // update database if all went well
+  updateDB($mysqli, $row, $new_img_name);
 }
 
 
