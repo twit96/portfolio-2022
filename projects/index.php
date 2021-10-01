@@ -5,6 +5,13 @@
     <meta charset="utf-8" />
 		<meta name="description" content="Tyler Wittig's Projects" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Social Media Card -->
+		<meta name="title" property="og:title" content="Tyler Wittig | Web Developer" />
+		<meta property="og:type" content="Website" />
+		<meta name="image" property="og:image" content="/img/site-card.png" />
+		<meta name="description" property="og:description" content="Tyler Wittig's Portfolio Website" />
+		<meta name="author" content="Tyler Wittig" />
+		<!--  -->
 		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20210922.04" />
     <link rel="stylesheet" type="text/css" href="/css/projects.css?v=20210922" />
