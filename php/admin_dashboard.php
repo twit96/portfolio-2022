@@ -397,14 +397,28 @@ function addProject($mysqli, $row) {
 */
 function updateProject($mysqli, $row) {
   echo '<script>console.log("updateProject()");</script>';
+
+  // check for directory name change
+  $pathname = '../projects/';
+  if ($_POST["directory"] != $row["directory"]) {
+    // rename existing directory
+    copy($pathname.$row["directory"].'/*.*', $pathname.$_POST["directory"].'/');
+    unlink($pathname.$row["image"]);
+    rmdir($pathname.$row["directory"]);
+  }
+
+
 }
 
 
+/**
+* Function to insert a new project into the Portfolio database's projects table
+* after addProject() function has checked the POST values. No return value.
+*/
 function insertDB($mysqli, $row, $new_img_name) {
 
   // format values to be updated in database
   $col_vals = array();
-
   foreach ($_POST as $key => $value) {
     array_push($col_vals, $value);
     if ($key == 'directory') array_push($col_vals, $new_img_name);
@@ -426,32 +440,32 @@ function insertDB($mysqli, $row, $new_img_name) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 }
 
-// function updateDB($mysqli, $row) {
-//   echo '<script>console.log("updateDB()");</script>';
-//   $project_id = $_POST["id"];
-//   unset($_POST["id"]);
-//
-//   echo 'ROW<br />';
-//   var_dump($row);
-//   echo '<br /><br />';
-//   echo 'POST<br />';
-//   var_dump($_POST);
-//   echo '<br /><br />';
-//
-//   foreach ($_POST as $key => $value) {
-//     if (($_POST[$key] != $row[$key])) {
-//       $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
-//       $result1 = $mysqli->query($command1);
-//       if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
-//     }
-//     // unset post for each key
-//     unset($_POST[$key]);
-//   }
-//
-//   echo 'POST<br />';
-//   var_dump($_POST);
-//   echo '<br /><br />';
-// }
+function updateDB($mysqli, $row) {
+  echo '<script>console.log("updateDB()");</script>';
+  $project_id = $_POST["id"];
+  unset($_POST["id"]);
+
+  echo 'ROW<br />';
+  var_dump($row);
+  echo '<br /><br />';
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
+
+  foreach ($_POST as $key => $value) {
+    if (($_POST[$key] != $row[$key])) {
+      $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
+      $result1 = $mysqli->query($command1);
+      if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
+    }
+    // unset post for each key
+    unset($_POST[$key]);
+  }
+
+  echo 'POST<br />';
+  var_dump($_POST);
+  echo '<br /><br />';
+}
 
 
 /**
