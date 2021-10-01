@@ -240,7 +240,6 @@ function displayData($mysqli) {
 * Returns formatted file name and leaves existing file name alone.
 */
 function formatDuplicateFilenames($file_name, $existing_file_name) {
-  echo '<script>console.log("formatDuplicateFilenames()");</script>';
   if ($file_name == $existing_file_name) {
     // split string by hyphens
     $splitted_string = explode("-", $file_name);
@@ -262,7 +261,6 @@ function formatDuplicateFilenames($file_name, $existing_file_name) {
 * valid and returns formatted image name if image is valid.
 */
 function checkImage($img, $directory) {
-  echo '<script>console.log("checkImage()");</script>';
 
   $new_img_name = false;
 
@@ -309,7 +307,6 @@ function checkImage($img, $directory) {
 * Returns true if successful upload and false otherwise.
 */
 function uploadImage($row, $directory, $new_img_name) {
-  echo '<script>console.log("uploadImage()");</script>';
   $upload_success = false;
 
   // Upload New Image
@@ -394,7 +391,6 @@ function insertDB($mysqli, $row, $new_img_name) {
 * No return value.
 */
 function updateDB($mysqli, $row, $new_img_name) {
-  echo '<script>console.log("updateDB()");</script>';
   $project_id = $_POST["id"];
   unset($_POST["id"]);
 
@@ -423,11 +419,9 @@ function updateDB($mysqli, $row, $new_img_name) {
 * Returns false if failed and true if succeeded.
 */
 function addProject($mysqli, $row) {
-  echo '<script>console.log("addProject()");</script>';
 
   // check for valid image (null parameter since no existing img to compare to)
   $new_img_name = checkImage(null, $_POST["directory"]);
-  echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
   if (is_null($new_img_name)) {
     echo '<script>alert("Image did not pass checks - project not added.");</script>';
     return false;
@@ -480,7 +474,6 @@ function rcopy($src, $dst) {
 * Function to update existing project. No return value.
 */
 function updateProject($mysqli, $row) {
-  echo '<script>console.log("updateProject()");</script>';
 
   // handle directory name change
   $directory = $_POST["directory"];  // used for img later on
