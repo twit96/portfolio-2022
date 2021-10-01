@@ -819,3 +819,16 @@ footer > span {
     100% { transform: translateY(-13.5px) rotate(-135deg); }
   }
 }
+
+
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+  .nav-toggle span {
+    animation-direction: reverse !important;
+  }
+}
