@@ -1,0 +1,52 @@
+To Generate title-card.png (lazy way):
+[Navigate to templates/page-layouts/homepage.php in a local environment.]
+
+[Change Windows Settings to]
+'Show animations in Windows - Off'
+
+[Change this in main.css]
+@keyframes twinkle {
+  0%, 50%, 100% {
+    opacity: 0.05;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+[Add this to home.css]
+#intro .details,
+#intro .blurb,
+header {
+  display: none;
+}
+#intro { justify-content: center; }
+#main-logo { animation-delay: -1.5s; }
+#intro .title {
+  margin-bottom: calc(var(--main-padding) + 10vh);
+  padding-top: 80px;
+  /* border: 1px solid red; */
+  width: 63%;
+  text-align: center;
+}
+h1 {
+  font-size: 175px;
+  font-weight: normal;
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 2px var(--green-shadow);
+}
+h2 {
+  margin-top: 175px;
+  font-size: 85px;
+}
+
+[Add this to the #intro section in homepage.php]
+<span class="title">
+  <h1>Tyler Wittig</h1>
+  <h2>Web Developer</h2>
+</span>
+
+[Refresh the Page Until You're Satisfied]
