@@ -446,9 +446,6 @@ function updateProject($mysqli, $row) {
 
   // uploaded image passed check - try to upload image
   } else {
-    echo 'POST (before calling uploadImage)<br />';
-    var_dump($_POST);
-    echo '<br /><br />';
     $uploaded_img = uploadImage($row, $directory, $new_img_name);
     if (!$uploaded_img) {
       // if upload failed
@@ -493,17 +490,15 @@ function insertDB($mysqli, $row, $new_img_name) {
 }
 
 
+/**
+* Function to update an existing project in the Portfolio database's projects
+* table after the updateProject() function has checked the POST values.
+* No return value.
+*/
 function updateDB($mysqli, $row) {
   echo '<script>console.log("updateDB()");</script>';
   $project_id = $_POST["id"];
   unset($_POST["id"]);
-
-  echo 'ROW<br />';
-  var_dump($row);
-  echo '<br /><br />';
-  echo 'POST<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
 
   foreach ($_POST as $key => $value) {
     if (($_POST[$key] != $row[$key])) {
@@ -514,10 +509,6 @@ function updateDB($mysqli, $row) {
     // unset post for each key
     unset($_POST[$key]);
   }
-
-  echo 'POST (after)<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
 }
 
 
