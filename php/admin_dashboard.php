@@ -414,12 +414,13 @@ function updateProject($mysqli, $row) {
   echo '<script>console.log("updateProject()");</script>';
 
   // handle directory name change
+  $directory = $_POST["directory"];  // used for img later on
   $old_path = '../projects/'.$row["directory"].'/';
-  $new_path = '../projects/'.$_POST["directory"].'/';
+  $new_path = '../projects/'.$directory.'/';
   if ($old_path != $new_path) {
 
     // if new directory name already exists
-    if (directoryExists($_POST["directory"])) {
+    if (directoryExists($directory)) {
       unset($_POST["directory"]);
       echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
 
@@ -445,7 +446,7 @@ function updateProject($mysqli, $row) {
 
   // uploaded image passed check - try to upload image
   } else {
-    $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+    $uploaded_img = uploadImage($row, $directory, $new_img_name);
     if (!$uploaded_img) {
       // if upload failed
       unset($_POST["image"]);
