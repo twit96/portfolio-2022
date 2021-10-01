@@ -403,14 +403,16 @@ function updateProject($mysqli, $row) {
 function insertDB($mysqli, $row, $new_img_name) {
 
   // format values to be updated in database
-  $table_cols = array();
+  $col_vals = array();
+
   foreach ($_POST as $key => $value) {
-    array_push($table_cols, $key);
-    if ($key == 'directory') array_push($table_cols, $new_img_name);
+    array_push($col_vals, $value);
+    if ($key == 'directory') array_push($col_vals, $new_img_name);
+
     // unset post for each key
     unset($_POST[$key]);
   }
-  echo var_dump($table_cols);
+  echo var_dump($col_vals);
 
 }
 
