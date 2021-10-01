@@ -355,7 +355,7 @@ function updateDirectory($row, $dir) {
 * Function to add new project. Failure gives alert to user.
 * Returns false if failed and true if succeeded.
 */
-function addProject($row) {
+function addProject($mysqli, $row) {
   echo '<script>console.log("addProject()");</script>';
 
   // check for valid image (null parameter since no existing img to compare to)
@@ -386,7 +386,7 @@ function addProject($row) {
   }
 
   // update database if all went well
-  updateDB($row);
+  updateDB($mysqli, $row);
   return true;
 }
 
@@ -394,12 +394,12 @@ function addProject($row) {
 /**
 * Function to update existing project.
 */
-function updateProject($row) {
+function updateProject($mysqli, $row) {
   echo '<script>console.log("updateProject()");</script>';
 }
 
 
-function updateDB($row) {
+function updateDB($mysqli, $row) {
   echo '<script>console.log("updateDB()");</script>';
   $project_id = $_POST["id"];
   unset($_POST["id"]);
