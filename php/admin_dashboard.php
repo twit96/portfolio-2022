@@ -428,23 +428,23 @@ function addProject($mysqli, $row) {
   }
 
    // check directory doesn't already exist
-  if (directoryExists($_POST["directory"])) {
-    echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
-    return false;
-  }
+  // if (directoryExists($_POST["directory"])) {
+  //   echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
+  //   return false;
+  // }
 
   // create new directory
-  $new_path = '../projects/'.$_POST["directory"];
-  mkdir($new_path, 0777, true);
+  // $new_path = '../projects/'.$_POST["directory"];
+  // mkdir($new_path, 0777, true);
 
   // try to upload image
-  $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
-  if ($uploaded_img == false) {
-    // upload failed
-    rmdir($new_path);  // delete new directory
-    echo '<script>alert("Image upload failed - project not added.");</script>';
-    return false;
-  }
+  // $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+  // if ($uploaded_img == false) {
+  //   // upload failed
+  //   rmdir($new_path);  // delete new directory
+  //   echo '<script>alert("Image upload failed - project not added.");</script>';
+  //   return false;
+  // }
 
   // update database if all went well
   insertDB($mysqli, $row, $new_img_name);
