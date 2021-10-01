@@ -364,7 +364,8 @@ function insertDB($mysqli, $row, $new_img_name) {
   // format values to be updated in database
   $col_vals = array();
   foreach ($_POST as $key => $value) {
-    array_push($col_vals, $value);
+    $val = $mysqli->real_escape_string($value);
+    array_push($col_vals, $val);
     if ($key == 'directory') array_push($col_vals, $new_img_name);
     // unset post for each key
     unset($_POST[$key]);
@@ -403,8 +404,9 @@ function updateDB($mysqli, $row, $new_img_name) {
 
   // update POST values
   foreach ($_POST as $key => $value) {
-    if (($_POST[$key] != $row[$key])) {
-      $command = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
+    $val = $mysqli->real_escape_string($value);
+    if (($val != $row[$key])) {
+      $command = 'UPDATE projects SET '.$key.'="'.$val.'" WHERE id='.$project_id.';';
       $result = $mysqli->query($command);
       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
     }
