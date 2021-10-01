@@ -386,7 +386,8 @@ function addProject($mysqli, $row) {
   }
 
   // update database if all went well
-  updateDB($mysqli, $row);
+
+  insertDB($mysqli, $row, $new_img_name);
   return true;
 }
 
@@ -399,32 +400,47 @@ function updateProject($mysqli, $row) {
 }
 
 
-function updateDB($mysqli, $row) {
-  echo '<script>console.log("updateDB()");</script>';
-  $project_id = $_POST["id"];
-  unset($_POST["id"]);
+function insertDB($mysqli, $row, $new_img_name) {
 
-  echo 'ROW<br />';
-  var_dump($row);
-  echo '<br /><br />';
-  echo 'POST<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
-
+  // format values to be updated in database
+  $table_cols = array();
   foreach ($_POST as $key => $value) {
-    if ($_POST[$key] != $row[$key]) {
-      $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
-      $result1 = $mysqli->query($command1);
-      if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
-    }
+    array_push($table_cols, $key);
+    if ($key == 'directory') array_push($table_cols, $new_img_name);
     // unset post for each key
     unset($_POST[$key]);
   }
+  echo var_dump($table_cols);
 
-  echo 'POST<br />';
-  var_dump($_POST);
-  echo '<br /><br />';
 }
+
+
+// function updateDB($mysqli, $row) {
+//   echo '<script>console.log("updateDB()");</script>';
+//   $project_id = $_POST["id"];
+//   unset($_POST["id"]);
+//
+//   echo 'ROW<br />';
+//   var_dump($row);
+//   echo '<br /><br />';
+//   echo 'POST<br />';
+//   var_dump($_POST);
+//   echo '<br /><br />';
+//
+//   foreach ($_POST as $key => $value) {
+//     if (($_POST[$key] != $row[$key])) {
+//       $command1 = 'UPDATE projects SET '.$key.'="'.$_POST[$key].'" WHERE id='.$project_id.';';
+//       $result1 = $mysqli->query($command1);
+//       if (!$result1) { die('Query failed: '.$mysqli->error.'<br>'); }
+//     }
+//     // unset post for each key
+//     unset($_POST[$key]);
+//   }
+//
+//   echo 'POST<br />';
+//   var_dump($_POST);
+//   echo '<br /><br />';
+// }
 
 
 /**
