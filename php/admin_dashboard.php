@@ -344,7 +344,7 @@ function updateDirectory($row, $dir) {
 
   // Delete Old Directory
   unlink($old_path.$row["image"]);
-  unlink($old_path);
+  rmdir($old_path);
 
   // Return if Success
   return (is_dir($new_path) && (!is_dir($old_path)));
@@ -380,7 +380,7 @@ function addProject($row) {
   $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
   if (!$uploaded_img) {
     // upload failed
-    unlink($new_path);  // delete new directory
+    rmdir($new_path);  // delete new directory
     echo '<script>alert("Image upload failed - project not added.");</script>';
     return false;
   }
