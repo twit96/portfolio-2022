@@ -425,7 +425,7 @@ function updateProject($mysqli, $row) {
 
     // rename existing directory
     } else {
-      rcopy($old_path, $new_path)
+      rcopy($old_path, $new_path);
       unlink($old_path.$row["image"]);
       rmdir($old_path);
     }
