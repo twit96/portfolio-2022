@@ -404,9 +404,9 @@ function updateDB($row) {
 
   while ($row = $result->fetch_assoc()) {
     echo '<script>console.log("ROW");</script>';
-    echo '<script>console.log("'.var_dump($row);.'");</script>';
+    echo '<script>console.log("'.var_dump($row).'");</script>';
     echo '<script>console.log("POST");</script>';
-    echo '<script>console.log("'.var_dump($_POST);.'");</script>';
+    echo '<script>console.log("'.var_dump($_POST).'");</script>';
 
     foreach ($_POST as $key => $value) {
       if ($row[$key] != $_POST[$key]) {
@@ -418,10 +418,10 @@ function updateDB($row) {
       unset($_POST[$key]);
     }
   }
-  
+
   echo '<script>console.log("");</script>';
   echo '<script>console.log("POST");</script>';
-  echo '<script>console.log("'.var_dump($_POST);.'");</script>';
+  echo '<script>console.log("'.var_dump($_POST).'");</script>';
 
   // Display Data
   buildDashboard($mysqli);
