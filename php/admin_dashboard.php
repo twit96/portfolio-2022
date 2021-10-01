@@ -436,28 +436,21 @@ function updateProject($mysqli, $row) {
   }
 
   // handle image name change
-  if ($row["image"] != $_POST["image"]) {
+  $new_img_name = checkImage($row["image"]);
 
-    $new_img_name = checkImage($row["image"]);
-
-    // if uploaded image didn't pass checks
-    if (is_null($new_img_name)) {
-      unset($_POST["image"]);
-      echo '<script>alert("Image did not pass checks - image not updated.");</script>';
-
-    // uploaded image passed check - try to upload image
-    } else {
-      $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
-      if (!$uploaded_img) {
-        // if upload failed
-        unset($_POST["image"]);
-        echo '<script>alert("Image upload failed - image not updated.");</script>';
-      }
-    }
-
-  // image stayed the same
-  } else {
+  // if uploaded image didn't pass checks
+  if (is_null($new_img_name)) {
     unset($_POST["image"]);
+    echo '<script>alert("Image did not pass checks - image not updated.");</script>';
+
+  // uploaded image passed check - try to upload image
+  } else {
+    $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
+    if (!$uploaded_img) {
+      // if upload failed
+      unset($_POST["image"]);
+      echo '<script>alert("Image upload failed - image not updated.");</script>';
+    }
   }
 
   // update database if all went well
