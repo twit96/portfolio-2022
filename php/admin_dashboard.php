@@ -421,10 +421,9 @@ function insertDB($mysqli, $row, $new_img_name) {
   }
   $command .= $col_vals[$col_vals_length-1].");";
 
-  echo $command;
-  // $result = $mysqli->query($command);
-  // if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-
+  // execute command
+  $result = $mysqli->query($command);
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 }
 
 // function updateDB($mysqli, $row) {
