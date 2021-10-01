@@ -310,8 +310,8 @@ function uploadImage($row, $directory, $new_img_name) {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $upload_success = true;
   }
-  // Delete Old Image
-  if ($upload_success == true) {
+  // Delete Old Image (if it exists - not adding a project)
+  if (($upload_success == true) && (!is_null($row["image"]))) {
     unlink('../projects/'.$directory.'/'.$row["image"]);
   }
 
