@@ -360,7 +360,7 @@ function updateDirectory($row, $dir) {
 * after addProject() function has checked the POST values. No return value.
 */
 function insertDB($mysqli, $row, $new_img_name) {
-  echo '<script>console.log("insertDB();");</script>';
+  echo '<script>console.log("insertDB;");</script>';
 
   // format values to be updated in database
   $col_vals = array();
@@ -393,7 +393,7 @@ function insertDB($mysqli, $row, $new_img_name) {
 * No return value.
 */
 function updateDB($mysqli, $row, $new_img_name) {
-  echo '<script>console.log("updateDB();");</script>';
+  echo '<script>console.log("updateDB;");</script>';
 
   $project_id = $_POST["id"];
   unset($_POST["id"]);
@@ -424,7 +424,7 @@ function updateDB($mysqli, $row, $new_img_name) {
 * Returns false if failed and true if succeeded.
 */
 function addProject($mysqli, $row) {
-  echo '<script>console.log("addProject();");</script>';
+  echo '<script>console.log("addProject");</script>';
   $pd = $_POST["directory"];  // TEMPORARY used for debug
   echo '<script>console.log("POST "directory": '.$pd.'");</script>';
 
@@ -485,7 +485,7 @@ function rcopy($src, $dst) {
 * Function to update existing project. No return value.
 */
 function updateProject($mysqli, $row) {
-  echo '<script>console.log("updateProject();");</script>';
+  echo '<script>console.log("updateProject;");</script>';
 
   // handle directory name change
   $directory = $_POST["directory"];  // used for img later on
