@@ -515,6 +515,7 @@ function updateProject($mysqli, $row) {
       echo '<script>alert("Image upload failed - image not updated.");</script>';
     }
   }
+  unset($_POST["image"]);  // $new_img_name used in updateDB()
 
   // update database if all went well
   updateDB($mysqli, $row, $new_img_name);
