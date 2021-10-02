@@ -360,6 +360,7 @@ function updateDirectory($row, $dir) {
 * after addProject() function has checked the POST values. No return value.
 */
 function insertDB($mysqli, $row, $new_img_name) {
+  echo '<script>console.log("insertDB();");</script>';
 
   // format values to be updated in database
   $col_vals = array();
@@ -392,6 +393,8 @@ function insertDB($mysqli, $row, $new_img_name) {
 * No return value.
 */
 function updateDB($mysqli, $row, $new_img_name) {
+  echo '<script>console.log("updateDB();");</script>';
+
   $project_id = $_POST["id"];
   unset($_POST["id"]);
 
@@ -421,6 +424,8 @@ function updateDB($mysqli, $row, $new_img_name) {
 * Returns false if failed and true if succeeded.
 */
 function addProject($mysqli, $row) {
+  echo '<script>console.log("addProject();");</script>';
+  echo '<script>console.log("$_POST["directory"]: '.$_POST["directory"].'");</script>';
 
   // check for valid image (null parameter since no existing img to compare to)
   $new_img_name = checkImage(null, $_POST["directory"]);
@@ -428,6 +433,7 @@ function addProject($mysqli, $row) {
     echo '<script>alert("Image did not pass checks - project not added.");</script>';
     return false;
   }
+  echo '<script>console.log("$new_img_name: '.$new_img_name.'");</script>';
 
   // check directory doesn't already exist
   if (directoryExists($_POST["directory"])) {
@@ -439,9 +445,11 @@ function addProject($mysqli, $row) {
   $new_path = '../projects/'.$_POST["directory"];
   mkdir($new_path, 0777, true);
 
+  echo '<script>console.log("$new_path: '.$new_path.'");</script>';
   // try to upload image
   $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
   if ($uploaded_img == false) {
+    echo '<script>console.log("$new_img_name: '.$uploaded_img.'");</script>';
     // upload failed
     rmdir($new_path);  // delete new directory
     echo '<script>alert("Image upload failed - project not added.");</script>';
@@ -476,6 +484,7 @@ function rcopy($src, $dst) {
 * Function to update existing project. No return value.
 */
 function updateProject($mysqli, $row) {
+  echo '<script>console.log("updateProject();");</script>';
 
   // handle directory name change
   $directory = $_POST["directory"];  // used for img later on
