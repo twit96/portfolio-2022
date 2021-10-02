@@ -517,7 +517,13 @@ function updateProject($mysqli, $row) {
   }
 
   // handle image change
-  if ($_POST["image"] != $row["image"]) {
+  $img_change = $_POST["image"];
+  unset($_POST["image"]);
+
+  if (
+    (!is_null($img_change)) &&
+    ($img_change != $row["image"])
+  ) {
     $new_img_name = checkImage($row["image"], $directory);
 
     // if uploaded image didn't pass checks
@@ -533,8 +539,6 @@ function updateProject($mysqli, $row) {
       }
     }
   }
-
-  unset($_POST["image"]);  // $new_img_name used in updateDB()
 
   // update database if all went well
   updateDB($mysqli, $row, $new_img_name);
