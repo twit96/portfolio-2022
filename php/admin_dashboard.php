@@ -513,7 +513,7 @@ function updateProject($mysqli, $row) {
   }
 
   // handle image change
-  $new_img_name;
+  $new_img_name = null;
   if (isset($_POST["image"])) {
     $new_img_name = checkImage($row["image"], $directory);
 
