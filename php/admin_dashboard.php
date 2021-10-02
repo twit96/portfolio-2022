@@ -399,11 +399,7 @@ function updateDB($mysqli, $row, $new_img_name) {
   unset($_POST["id"]);
 
   // update image value
-  if (
-    ($new_img_name != $row["image"]) &&
-    (!is_null($new_img_name)) &&
-    ($new_img_name != "")
-  ) {
+  if (!is_null($new_img_name)) {
     $command = 'UPDATE projects SET image="'.$new_img_name.'" WHERE id='.$project_id.';';
     $result = $mysqli->query($command);
     if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
@@ -517,17 +513,13 @@ function updateProject($mysqli, $row) {
   }
 
   // handle image change
-  $img_change = $_POST["image"];
-  unset($_POST["image"]);
-
-  if (
-    (!is_null($img_change)) &&
-    ($img_change != $row["image"])
-  ) {
+  $new_img_name;
+  if (isset($_POST["image"])) {
     $new_img_name = checkImage($row["image"], $directory);
 
     // if uploaded image didn't pass checks
     if (is_null($new_img_name)) {
+      unset($_POST["image"]);
       echo '<script>alert("Image did not pass checks - image not updated.");</script>';
 
     // uploaded image passed check - try to upload image
@@ -535,9 +527,14 @@ function updateProject($mysqli, $row) {
       $uploaded_img = uploadImage($row, $directory, $new_img_name);
       if ($uploaded_img == false) {
         // if upload failed
+        unset($_POST["image"]);
         echo '<script>alert("Image upload failed - image not updated.");</script>';
       }
     }
+
+  // image stayed the same
+  } else {
+    unset($_POST["image"]);
   }
 
   // update database if all went well
