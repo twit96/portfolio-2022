@@ -426,6 +426,7 @@ function updateDB($mysqli, $row, $new_img_name) {
 function addProject($mysqli, $row) {
   echo '<script>console.log("addProject");</script>';
   $pd = $_POST["directory"];  // TEMPORARY used for debug
+  echo $pd;
   echo '<script>console.log("POST "directory": '.$pd.'");</script>';
 
   // check for valid image (null parameter since no existing img to compare to)
