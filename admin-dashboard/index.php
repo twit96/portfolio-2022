@@ -6,7 +6,6 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Tyler Wittig's Portfolio Admin Dashboard" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="theme-color" content="#000000" />
 		<!-- Social Media Card -->
 		<meta name="author" content="Tyler Wittig" />
 		<meta property="og:title" content="Tyler Wittig | Admin Dashboard" />
