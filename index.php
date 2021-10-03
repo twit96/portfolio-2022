@@ -6,6 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#140037" />
 		<!-- Social Media Card -->
 		<meta name="author" content="Tyler Wittig" />
 		<meta property="og:title" content="Tyler Wittig | Web Developer" />
