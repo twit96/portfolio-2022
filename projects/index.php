@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
 		<meta name="description" content="Tyler Wittig's Projects" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#033d1a" />
     <!-- Social Media Card -->
 		<meta name="author" content="Tyler Wittig" />
 		<meta property="og:title" content="Tyler Wittig | Projects" />
