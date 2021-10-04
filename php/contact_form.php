@@ -13,7 +13,7 @@ ini_set("display_errors", "on");
 * No return value.
 */
 function sendEmail($name, $email, $subject, $message) {
-  $to = "tylerwittig20@gmail.com";
+  $to = "tylerwittig@utexas.edu";
   $subject = "Portfolio: ".$subject;
   $txt = "Name: " . $name . "\n\n";
   $txt .= $message;
