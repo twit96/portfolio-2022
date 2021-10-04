@@ -13,16 +13,24 @@ ini_set("display_errors", "on");
 * No return value.
 */
 function sendEmail($name, $email, $subject, $message) {
-  $to = "tylerwittig@utexas.edu";
-  $subject = "Portfolio: ".$subject;
-  $txt = "Name: " . $name . "\n\n";
-  $txt .= $message;
-  $txt = wordwrap($txt, 100);
-  $headers = 'From: '.$name.' <'.$email.'>\r\n';
-  $headers .= 'Reply-To: '.$name.' <'.$email.'>\r\n';
-  $headers .= 'Return-Path: '.$name.' <'.$email.'>\r\n';
+  $to = 'tylerwittig@utexas.edu';
+  $boundary = str_replace(" ", "", date('l jS \of F Y h i s A'));
+
+  $subject = 'Portfolio: '.$subject;
+  $txt = '<div style="max-width:30em;">Name: '.$name.'<br />Message: '.$message.'</div>';
+
+  $headers = '';
+  $headers .= 'From: ' . $email . "\r\n" . 'Reply-To: ' . $email . "\r\n";
+  $headers .= 'Return-Path: ' . $email . "\r\n";
+  $headers .= 'MIME-Version: 1.0' . "\r\n";
+  $headers .= "Content-Type: multipart/alternative; boundary = \"" . $boundary . "\"\r\n\r\n";
+  $headers .= '--' . $boundary . "\r\n";
+  $headers .= 'Content-Type: text/html; charset=ISO-8859-1' . "\r\n";
+  $headers .= 'Content-Transfer-Encoding: base64' . "\r\n\r\n";
+  $headers .= rtrim(chunk_split(base64_encode($txt)));
+
   // send email
-  mail($to,$subject,$txt,$headers);
+  mail($to, $subject, $txt, $headers);
 }
 
 
