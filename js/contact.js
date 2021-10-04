@@ -87,10 +87,12 @@ function ajaxFunction() {
 mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXJ3aXR0aWciLCJhIjoiY2t1Y3dkZG5vMTRqMDJxbWFvdHdkNjN6dSJ9.xX7asGY6YOfLrfGiXTHKIw';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/tylerwittig/ckucwalyz3kmn17pvg0es4fk5',
   center: [-95.9, 29.2552],
   zoom: 8
 });
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
 // Set marker options.
 const marker = new mapboxgl.Marker({
   color: "#ff0022",
