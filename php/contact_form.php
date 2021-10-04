@@ -23,7 +23,7 @@ function sendEmail($name, $email, $subject, $message) {
   $headers .= 'From: ' . $email . "\r\n" . 'Reply-To: ' . $email . "\r\n";
   $headers .= 'Return-Path: ' . $email . "\r\n";
   $headers .= 'MIME-Version: 1.0' . "\r\n";
-  $headers .= "Content-Type: multipart/alternative; boundary = \"" . $boundary . "\"\r\n\r\n";
+  $headers .= 'Content-Type: multipart/alternative; boundary = \"' . $boundary . '\"\r\n\r\n';
   $headers .= '--' . $boundary . "\r\n";
   $headers .= 'Content-Type: text/html; charset=ISO-8859-1' . "\r\n";
   $headers .= 'Content-Transfer-Encoding: base64' . "\r\n\r\n";
