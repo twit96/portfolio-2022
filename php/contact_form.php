@@ -18,7 +18,9 @@ function sendEmail($name, $email, $subject, $message) {
   $txt = "Name: " . $name . "\n\n";
   $txt .= $message;
   $txt = wordwrap($txt, 100);
-  $headers = "From: $email";
+  $headers = 'From: '.$name.' <'.$email.'>\r\n';
+  $headers .= 'Reply-To: '.$name.' <'.$email.'>\r\n';
+  $headers .= 'Return-Path: '.$name.' <'.$email.'>\r\n';
   // send email
   mail($to,$subject,$txt,$headers);
 }
