@@ -4,11 +4,12 @@
   overflow: hidden;
   padding-left: 0;
   padding-right: 0;
+  padding-bottom: 0;
 }
 #entries h2 {
   padding: 1em var(--main-padding);
   color: white;
-  padding-bottom: var(--main-padding);
+  padding-bottom: calc(var(--main-padding) / 2);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
