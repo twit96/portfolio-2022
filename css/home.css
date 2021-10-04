@@ -1,5 +1,3 @@
-@import '/css/main.css';
-
 /* bugfix for diagonal borders */
 section:not(#intro) {
   z-index: 1;
