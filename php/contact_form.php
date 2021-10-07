@@ -22,10 +22,10 @@ function sendEmail($name, $email, $subject, $message) {
 
   $headers = "MIME-Version: 1.0" . "\r\n";
   $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
-  $headers .= "From: " . $email . "\r\n" .
+  $headers .= "From: " . $name . "<" . $email . ">\r\n" .
   "Reply-To: " . $email . "\r\n" .
   "X-Mailer: PHP/" . phpversion();
-  
+
   // send email
   mail($to,$subject,$txt,$headers);
 }
