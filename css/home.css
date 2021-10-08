@@ -345,28 +345,19 @@ section:not(#intro) {
   display: block;
   position: absolute;
   top: 50%;
-  left: -1px;
+  left: max(-1vmin, -5px);
   transform: translateY(-50%);
   /* style */
   height: 1em;
   width: var(--fill-percent);
   border-radius: 15px;
-  overflow: hidden;
-}
-
-.slider .fill span {
-  display: inline-block;
-  width: calc(var(--fill-percent) * 3);
-  height: 3em;
+  /* animated background gradient */
+  background-size: 300% 300%;
   background-image: linear-gradient(
     to right, var(--indigo), var(--blue), var(--indigo)
   );
-  animation: 6s shift-elem linear infinite;
+  animation: 6s bg-shift linear infinite;
   animation-delay: calc(-1s * var(--i));
-}
-@keyframes shift-elem {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(calc(var(--fill-percent) * -2 / 3)); }
 }
 
 @media (min-aspect-ratio: 4/3) {
