@@ -178,7 +178,7 @@ td:last-child:hover {
 
 
 
-@media (max-aspect-ratio: 16/9) {
+@media (max-aspect-ratio: 16/9) and (max-width: 1200px) {
 
   /* force remove default table behavior */
   table, thead, tbody, th, td, tr {
