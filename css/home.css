@@ -357,7 +357,6 @@ section:not(#intro) {
 .slider .fill span {
   display: inline-block;
   width: calc(var(--fill-percent) * 3);
-  min-width: 1em;
   height: 3em;
   background-image: linear-gradient(
     to right, var(--indigo), var(--blue), var(--indigo)
