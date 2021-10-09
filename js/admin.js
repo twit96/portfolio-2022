@@ -23,3 +23,5 @@ function addCheckboxListeners() {
     checkboxes[i].addEventListener("click", handleCheck);
   }
 }
+
+addCheckboxListeners();

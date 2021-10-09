@@ -150,9 +150,7 @@ function buildDashboard($mysqli) {
       <input name="logout" type="submit" value="Logout" />
     </form>
   </section>
-  <script>
-    window.onload = addCheckboxListeners();
-  </script>
+  <script type="text/javascript" src="/js/admin.js"></script>
   BOTTOM;
 
   // Forms for each row of inputs to reference
