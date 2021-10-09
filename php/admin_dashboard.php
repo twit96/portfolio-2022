@@ -542,11 +542,11 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
-  echo '<script>alert("'.var_dump($_POST).'")</script>';
 
   // User wants to add project
   if ($_POST["update"] == "Add") {
     echo '<script>alert("Add!")</script>';
+    unset($_POST["update"]);
     // check if submitted project is not in database
     $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
     $result = $mysqli->query($command);
@@ -562,6 +562,7 @@ function directPost($mysqli) {
   // User wants to update project
   } else if ($_POST["update"] == "Update") {
     echo '<script>alert("Update!")</script>';
+    unset($_POST["update"]);
     // check if submitted project is in database
     $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
     $result = $mysqli->query($command);
@@ -581,9 +582,9 @@ function directPost($mysqli) {
   // pray
   } else {
     echo '<script>alert("Neither Add, Update, Nor Delete!")</script>';
+    unset($_POST["update"]);
   }
 
-  unset($_POST["update"]);
 
   // display updated table data after changes are made
   buildDashboard($mysqli);
