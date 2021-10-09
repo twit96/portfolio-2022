@@ -541,7 +541,7 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
-  echo '<script>alert(post update: '.$_POST["update"].', post delete: '.$_POST["delete"].')</script>';
+  echo '<script>alert('.$_POST["update"].')</script>';
 
   // User wants to add or update project
   if ($_POST["update"] == "Update") {
