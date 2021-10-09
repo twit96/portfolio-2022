@@ -559,7 +559,7 @@ function directPost($mysqli) {
 
   // User wants to delete project
   } else if ($_POST["update"] == "Delete") {
-    echo '<script>alert('.$_POST["delete"].')</script>'
+    echo '<script>alert('.$_POST["delete"].')</script>';
     echo '<script>alert("Delete!")</script>';
 
   // pray
