@@ -130,6 +130,8 @@ table input[type="submit"],
 table input[type="reset"] {
   border-radius: 0;
 }
+table input[type="checkbox"] { cursor: pointer; }
+table input[type="date"] { cursor: text; }
 /* remove calendar icon from date input */
 table input[type="date"]::-webkit-calendar-picker-indicator { display: none; }
 
@@ -174,6 +176,44 @@ td:last-child {
 }
 td:last-child:hover {
   background: var(--blue);
+}
+
+td:last-child div {
+  display: flex;
+  padding: 0 0.25em;
+  width: 100%;
+}
+
+td:last-child input {
+  cursor: pointer;
+  border-radius: 5px;
+}
+td:last-child input:hover {
+  box-shadow: 0 0 2px 2px var(--grey-shadow) inset;
+}
+td:last-child input[type="submit"] { background: 0; }
+
+td:last-child input[type="checkbox"] {
+  -webkit-appearance: initial;
+  position: relative;
+  min-height: 2em; min-width: 2em;
+  max-height: 2em; max-width: 2em;
+  background: var(--blue-light);
+  outline: none;
+}
+td:last-child input[type="checkbox"]:checked { background: var(--yellow); }
+td:last-child input[type="checkbox"]:after {
+  content: '';
+  position: absolute;
+  top: 10%; left: 10%;
+  width: 30%; height: 80%;
+  background: var(--grey-light);
+  border-radius: 5px;
+  transition: left 0.25s ease-in-out;
+}
+td:last-child input[type="checkbox"]:checked:after {
+  left: 55%;
+  background: #ffffff;
 }
 
 
@@ -242,6 +282,13 @@ td:last-child:hover {
   td:first-child input {
     font-weight: bold;
   }
+
+  td:last-child input[type="checkbox"] {
+    max-height: 3em;
+    max-width: 3em;
+    margin: 1em;
+  }
+
 
   /* replace table header elements with title text */
   thead { display: none; }

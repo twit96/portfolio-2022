@@ -198,7 +198,10 @@ function displayData($mysqli) {
     echo '<td><input form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
     echo '<td><input form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="update" type="submit" value="Update" /></td>';
+    echo '<td><div>';
+    echo '<input form="'.$row['directory'].'" name="delete" type="checkbox" />';
+    echo '<input form="'.$row['directory'].'" name="update" type="submit" value="Update" />';
+    echo '</div></td>';
     echo '</tr>';
 
   }
@@ -538,18 +541,34 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
-  unset($_POST["update"]);
-  // check if submitted project is in database
-  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  $row = $result->fetch_assoc();
-  // either add or update project
-  if (mysqli_num_rows($result) == 0) {
-    addProject($mysqli, $row);
+
+  // User wants to add or update project
+  if ($_POST["update"] == "Update") {
+    echo '<script>alert("Update!")</script>';
+    // check if submitted project is in database
+    $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+    $result = $mysqli->query($command);
+    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    $row = $result->fetch_assoc();
+    // either add or update project
+    if (mysqli_num_rows($result) == 0) {
+      addProject($mysqli, $row);
+    } else {
+      updateProject($mysqli, $row);
+    }
+
+  // User wants to delete project
+  } else if ($_POST["update"] == "Delete") {
+    echo '<script>alert('.$_POST["delete"].')</script>'
+    echo '<script>alert("Delete!")</script>';
+
+  // pray
   } else {
-    updateProject($mysqli, $row);
+    echo '<script>alert("Neither Update Nor Delete!")</script>';
   }
+
+  unset($_POST["update"]);
+
   // display updated table data after changes are made
   buildDashboard($mysqli);
 }

@@ -13,6 +13,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<script src="/js/main.js" defer></script>
+		<script src="/js/admin.js" defer></script>
 	</head>
 
   <body>
@@ -45,7 +46,7 @@
 
 
 	    <h2>Database Entries</h2>
-			<table>
+			<table id="projects-table">
 				<col style="width:8%">
         <col style="width:7%">
         <col style="width:13%">
@@ -121,7 +122,10 @@
 							<input form="goldschen-ohm-lab" name="featured" type="text" value="0" required />
 						</td>
 						<td>
-							<input form="goldschen-ohm-lab" name="update" type="submit" value="Update" />
+							<div>
+								<input form="goldschen-ohm-lab" name="delete" type="checkbox" value="delete" />
+								<input form="goldschen-ohm-lab" name="update" type="submit" value="Update" />
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -165,7 +169,57 @@
 							<input form="minesweeper" name="featured" type="text" value="3" required />
 						</td>
 						<td>
-							<input form="minesweeper" name="update" type="submit" value="Update" />
+							<div>
+								<input form="minesweeper" name="delete" type="checkbox" />
+								<input form="minesweeper" name="update" type="submit" value="Update" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input form="wittiggrass" name="title" type="text" value="Wittig Grass Sales" required />
+						</td>
+						<td>
+							<input form="wittiggrass" name="directory" type="text" value="wittiggrass" required />
+						</td>
+						<td>
+							<input form="wittiggrass" name="image" type="file" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="blurb" type="text" value="Business Website Redesign" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="description" type="text" value="This website redesign gives a new face to an outdated business website. Background image slideshows, custom informational card layouts, an optimized and filterable image gallery page, and numerous other tricks yield a clean and mobile-responsive design with pure CSS (no frameworks)." />
+						</td>
+						<td>
+							<input form="wittiggrass" name="date" type="date" value="2021-05-10" required />
+						</td>
+						<td>
+							<input form="wittiggrass" name="primary_link" type="text" value="https://twit96.github.io/wittiggrass/" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="primary_link_text" type="text" value="View Website" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="secondary_link" type="text" value="" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="secondary_link_text" type="text" value="" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="tertiary_link" type="text" value="" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="tertiary_link_text" type="text" value="" />
+						</td>
+						<td>
+							<input form="wittiggrass" name="featured" type="text" value="4" required />
+						</td>
+						<td>
+							<div>
+								<input form="wittiggrass" name="delete" type="checkbox" />
+								<input form="wittiggrass" name="update" type="submit" value="Update" />
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -222,6 +276,7 @@
 
 		<form class="hidden" id="goldschen-ohm-lab" method="POST" action="index.php"></form>
 		<form class="hidden" id="minesweeper" method="POST" action="index.php"></form>
+		<form class="hidden" id="wittiggrass" method="POST" action="index.php"></form>
 		<form class="hidden" id="add-new-project" method="POST" action="index.php"></form>
 
 		<?php
