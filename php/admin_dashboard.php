@@ -578,10 +578,15 @@ function directPost($mysqli) {
   // User wants to delete project
   } else if ($_POST["update"] == "Delete") {
     echo '<script>alert("Delete!")</script>';
+    unset($_POST["update"]);
+    // check if submitted project is in database
+    $command = 'DELETE FROM projects WHERE ID='.$_POST["id"].';';
+    $result = $mysqli->query($command);
+    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
-  // pray
+  // Error
   } else {
-    echo '<script>alert("Neither Add, Update, Nor Delete!")</script>';
+    echo '<script>alert("Error: Neither Add, Update, Nor Delete Triggered!")</script>';
     unset($_POST["update"]);
   }
 
