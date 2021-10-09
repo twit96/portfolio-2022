@@ -150,6 +150,7 @@ function buildDashboard($mysqli) {
       <input name="logout" type="submit" value="Logout" />
     </form>
   </section>
+  <script>addCheckboxListeners();</script>
   BOTTOM;
 
   // Forms for each row of inputs to reference
@@ -541,7 +542,7 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
-  
+
   // User wants to add or update project
   echo '<script>alert('.$_POST["update"].')</script>';
   if ($_POST["update"] == "Update") {
