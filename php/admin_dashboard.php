@@ -542,7 +542,7 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
-  echo '<script>alert("'.var_dump($_POST)'")</script>'
+  echo '<script>alert("'.var_dump($_POST).'")</script>';
 
   // User wants to add project
   if ($_POST["update"] == "Add") {
