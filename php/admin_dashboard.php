@@ -542,17 +542,18 @@ function updateProject($mysqli, $row) {
 * calls updateProject();
 */
 function directPost($mysqli) {
+  $usr_action = $_POST["update"];
+  unset($_POST["update"]);
+
+  // check if submitted project is in database
+  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+  $result = $mysqli->query($command);
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+  $row = $result->fetch_assoc();
+
 
   // User wants to add project
-  if ($_POST["update"] == "Add") {
-    echo '<script>alert("Add!")</script>';
-    unset($_POST["update"]);
-    // check if submitted project is not in database
-    $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-    $row = $result->fetch_assoc();
-
+  if ($usr_action == "Add") {
     if (mysqli_num_rows($result) == 0) {
       addProject($mysqli, $row);
     } else {
@@ -560,15 +561,7 @@ function directPost($mysqli) {
     }
 
   // User wants to update project
-  } else if ($_POST["update"] == "Update") {
-    echo '<script>alert("Update!")</script>';
-    unset($_POST["update"]);
-    // check if submitted project is in database
-    $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-    $row = $result->fetch_assoc();
-
+  } else if ($usr_action == "Update") {
     if (mysqli_num_rows($result) != 0) {
       updateProject($mysqli, $row);
     } else {
@@ -576,13 +569,17 @@ function directPost($mysqli) {
     }
 
   // User wants to delete project
-  } else if ($_POST["update"] == "Delete") {
-    echo '<script>alert("Delete!")</script>';
-    unset($_POST["update"]);
-    // check if submitted project is in database
+  } else if ($usr_action == "Delete") {
+    // configure needed data
+    $old_path = '../projects/'.$row["directory"].'/';
+    $old_img = $old_path.$row["image"];
+    // delete from database
     $command = 'DELETE FROM projects WHERE ID='.$_POST["id"].';';
     $result = $mysqli->query($command);
     if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    // delete from projects folder
+    unlink($old_img);
+    rmdir($old_path);
 
   // Error
   } else {
