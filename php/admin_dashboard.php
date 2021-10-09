@@ -109,7 +109,7 @@ function buildDashboard($mysqli) {
   // Opening HTML
   echo <<<TOP
   <h2>Database Entries</h2>
-  <table>
+  <table id="projects-table">
     <col style="width:8%">
     <col style="width:7%">
     <col style="width:13%">
