@@ -82,7 +82,10 @@
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
-#projects .btn-text { margin-bottom: 0.5em; }
+#projects .btn-text {
+  width: fit-content;
+  margin-bottom: 0.5em;
+}
 
 @media (min-aspect-ratio: 1/1) {
   /* two column layout */
