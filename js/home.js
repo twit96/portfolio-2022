@@ -61,33 +61,6 @@ for (i=0; i<15; i++) {
 }
 
 
-// Skills Functionality -------------------------------------------------------
-var skills = document.getElementById("skills");
-
-// trigger animation when element enters window
-function figureInViewport(el) {
-  var top = el.offsetTop;
-  var height = el.offsetHeight;
-
-  while(el.offsetParent) {
-    el = el.offsetParent;
-    top += el.offsetTop;
-  }
-
-  return (
-    top >= window.pageYOffset &&
-    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
-  );
-}
-
-var skills_handler = function() {
-  if (figureInViewport(skills)) {
-    window.removeEventListener('scroll', skills_handler, false);
-    skills.classList.add("active");
-  }
-}
-window.addEventListener('scroll', skills_handler, false);
-
 // Demo Functionality ---------------------------------------------------------
 var demo = document.getElementById("demo");
 
@@ -184,6 +157,22 @@ function stopDemo() {
 }
 stop_btn.onclick = stopDemo;
 
+
+// trigger animation when element enters window
+function figureInViewport(el) {
+  var top = el.offsetTop;
+  var height = el.offsetHeight;
+
+  while(el.offsetParent) {
+    el = el.offsetParent;
+    top += el.offsetTop;
+  }
+
+  return (
+    top >= window.pageYOffset &&
+    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
+  );
+}
 
 var demo_handler = function() {
   if (figureInViewport(figure)) {

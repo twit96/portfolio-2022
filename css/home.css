@@ -383,14 +383,10 @@ section:not(#intro) {
   background-image: linear-gradient(
     to right, var(--indigo), var(--blue), var(--indigo)
   );
-  animation: 6s bg-shift linear 2;
+  animation: 6s bg-shift linear infinite;
   animation-delay: calc(-1s * var(--i));
   animation-play-state: paused;
 }
-#skills.active .skill-box .slider .fill {
-  animation-play-state: running;
-}
-
 
 @media (min-aspect-ratio: 4/3) {
   #skills .flex { flex-direction: row-reverse; }
