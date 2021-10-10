@@ -174,7 +174,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 80%; --i: 1;"></span>
+								<span class="fill" style="--fill-percent: 80%;"></span>
 							</div>
 						</div>
 					</div>
@@ -185,7 +185,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 97%; --i: 2;"></span>
+								<span class="fill" style="--fill-percent: 97%;"></span>
 							</div>
 						</div>
 					</div>
@@ -196,7 +196,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 90%; --i: 3;"></span>
+								<span class="fill" style="--fill-percent: 90%;"></span>
 							</div>
 							<span class="bubble-text">+ jQuery</span>
 							<span class="bubble-text">+ Phaser3</span>
@@ -209,7 +209,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 95%; --i: 4;"></span>
+								<span class="fill" style="--fill-percent: 95%;"></span>
 							</div>
 							<span class="bubble-text">+ Pandas</span>
 						</div>
@@ -221,7 +221,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 80%; --i: 5;"></span>
+								<span class="fill" style="--fill-percent: 80%;"></span>
 							</div>
 							<span class="bubble-text">+ MySQLi</span>
 						</div>
@@ -233,7 +233,7 @@
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 60%; --i: 6;"></span>
+								<span class="fill" style="--fill-percent: 60%;"></span>
 							</div>
 							<span class="bubble-text">+ MySQL</span>
 						</div>

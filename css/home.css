@@ -367,7 +367,6 @@ section:not(#intro) {
 .skill-box .slider .fill {
   /* defaults for custom properties - overriden in HTML */
   --fill-percent: 0%;
-  --i: 0;
   /* position in slider */
   display: block;
   position: absolute;
@@ -378,14 +377,9 @@ section:not(#intro) {
   height: 1em;
   width: var(--fill-percent);
   border-radius: 15px;
-  /* animated background gradient */
-  background-size: 300% 300%;
   background-image: linear-gradient(
-    to right, var(--indigo), var(--blue), var(--indigo)
+    to right, var(--indigo), var(--blue)
   );
-  animation: 6s bg-shift linear infinite;
-  animation-delay: calc(-1s * var(--i));
-  animation-play-state: paused;
 }
 
 @media (min-aspect-ratio: 4/3) {
