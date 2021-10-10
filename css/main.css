@@ -38,7 +38,10 @@ body {
 }
 body > * { padding: var(--main-padding); }
 
-a { text-decoration: none; }
+a {
+  color: var(--blue-shadow);
+  text-decoration: none;
+}
 a:hover { text-decoration: underline; }
 
 

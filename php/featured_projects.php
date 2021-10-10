@@ -10,10 +10,11 @@ function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
   <section id="featured">
-    <div class="heading-card">
-      <h2>Featured</h2>
-    </div>
-    <div class="card-container">
+    <div class="flex">
+      <div class="heading-card">
+        <h2>Featured</h2>
+      </div>
+      <div class="card-container">
   TOP;
 
   // Select and Display Featured Projects
@@ -43,10 +44,15 @@ function displayFeatured($mysqli) {
 
   // Closing HTML
   echo <<<BOTTOM
-      <a class="card link" href="/projects/">
-        <span>View All <br />Projects</span>
-      </a>
+        <a class="card link" href="/projects/">
+          <span>View All <br />Projects</span>
+        </a>
+      </div>
     </div>
+    <p>
+      To view all of my work, please visit my
+      <a href="/projects/">projects page</a>.
+    </p>
   </section>
 
   BOTTOM;

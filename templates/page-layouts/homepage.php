@@ -56,92 +56,107 @@
 
 
 		<section id="featured">
-			<div class="heading-card">
-	      <h2>Featured</h2>
-	    </div>
-	    <div class="card-container">
+			<div class="flex">
+				<div class="heading-card">
+		      <h2>Featured</h2>
+		    </div>
+		    <div class="card-container">
 
-				<div class="card">
-					<div class="featured-badge">
-            <span>#1</span>
-          </div>
-					<img src="/projects/indie-quest/title-card.png" />
-					<em>this is a blurb about it</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020-12-07</span>
+					<div class="card">
+						<div class="featured-badge">
+	            <span>#1</span>
+	          </div>
+						<img src="/projects/indie-quest/title-card.png" />
+						<em>this is a blurb about it</em>
+						<div class="info">
+							<div class="btn-text date">
+								<span class="icon"></span>
+								<span>2020-12-07</span>
+							</div>
+							<a class="btn-text link" href="#">
+								<span class="icon"></span>
+								View Website
+							</a>
 						</div>
-						<a class="btn-text link" href="#">
-							<span class="icon"></span>
-							View Website
-						</a>
 					</div>
-				</div>
-				<div class="card">
-					<div class="featured-badge">
-            <span>#2</span>
-          </div>
-					<img src="/projects/indie-quest/title-card.png" />
-					<em>this is a blurb about it</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020-12-07</span>
+					<div class="card">
+						<div class="featured-badge">
+	            <span>#2</span>
+	          </div>
+						<img src="/projects/indie-quest/title-card.png" />
+						<em>this is a blurb about it</em>
+						<div class="info">
+							<div class="btn-text date">
+								<span class="icon"></span>
+								<span>2020-12-07</span>
+							</div>
+							<a class="btn-text link" href="#">
+								<span class="icon"></span>
+								View Website
+							</a>
 						</div>
-						<a class="btn-text link" href="#">
-							<span class="icon"></span>
-							View Website
-						</a>
 					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/indie-quest/title-card.png" />
-					<em>this is a blurb about it</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020-12-07</span>
+					<div class="card">
+						<div class="featured-badge">
+	            <span>#3</span>
+	          </div>
+						<img src="/projects/indie-quest/title-card.png" />
+						<em>this is a blurb about it</em>
+						<div class="info">
+							<div class="btn-text date">
+								<span class="icon"></span>
+								<span>2020-12-07</span>
+							</div>
+							<a class="btn-text link" href="#">
+								<span class="icon"></span>
+								View Website
+							</a>
 						</div>
-						<a class="btn-text link" href="#">
-							<span class="icon"></span>
-							View Website
-						</a>
 					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/indie-quest/title-card.png" />
-					<em>this is a blurb about it</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020-12-07</span>
+					<div class="card">
+						<div class="featured-badge">
+	            <span>#4</span>
+	          </div>
+						<img src="/projects/indie-quest/title-card.png" />
+						<em>this is a blurb about it</em>
+						<div class="info">
+							<div class="btn-text date">
+								<span class="icon"></span>
+								<span>2020-12-07</span>
+							</div>
+							<a class="btn-text link" href="#">
+								<span class="icon"></span>
+								View Website
+							</a>
 						</div>
-						<a class="btn-text link" href="#">
-							<span class="icon"></span>
-							View Website
-						</a>
 					</div>
-				</div>
-				<div class="card">
-					<img src="/projects/indie-quest/title-card.png" />
-					<em>this is a blurb about it</em>
-					<div class="info">
-						<div class="btn-text date">
-							<span class="icon"></span>
-							<span>2020-12-07</span>
+					<div class="card">
+						<div class="featured-badge">
+	            <span>#5</span>
+	          </div>
+						<img src="/projects/indie-quest/title-card.png" />
+						<em>this is a blurb about it</em>
+						<div class="info">
+							<div class="btn-text date">
+								<span class="icon"></span>
+								<span>2020-12-07</span>
+							</div>
+							<a class="btn-text link" href="#">
+								<span class="icon"></span>
+								View Website
+							</a>
 						</div>
-						<a class="btn-text link" href="#">
-							<span class="icon"></span>
-							View Website
-						</a>
 					</div>
-				</div>
 
-				<a class="card link" href="/projects/">
-	        <span>View All <br />Projects</span>
-	      </a>
-			</div>
+					<a class="card link" href="/projects/">
+		        <span>View All <br />Projects</span>
+		      </a>
+				</div>  <!-- ./card-container -->
+			</div>  <!-- ./flex -->
+			<p>
+				To view all of my work, please visit my
+				<a href="/projects/">projects page</a>.
+			</p>
 		</section>
 
 
