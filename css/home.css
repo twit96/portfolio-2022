@@ -380,6 +380,7 @@ section:not(#intro) {
   );
   animation: 6s bg-shift linear infinite;
   animation-delay: calc(-1s * var(--i));
+  animation-play-state: paused;
 }
 
 @media (min-aspect-ratio: 4/3) {
