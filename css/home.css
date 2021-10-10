@@ -95,6 +95,11 @@ section:not(#intro) {
 }
 #intro .details h2 { font-size: min(5vh, 32px); }
 
+#intro .details .links {
+  line-height: 35px;
+  display: inline-flex;
+  align-items: center;
+}
 #intro .details a {
   margin: 0 15px;
   text-decoration: none;
