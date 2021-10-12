@@ -30,7 +30,7 @@ html { box-sizing: border-box; }
 }
 
 /* dark mode */
-html.dark-mode { filter: brightness(0.25); }
+html.dark-mode { filter: brightness(0.35); }
 
 body {
   font-size: var(--main-font-size);
@@ -507,7 +507,7 @@ html.dark-mode #dark-toggle .slider::after {
   justify-content: flex-end;
   align-items: center;
   font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 0.4em;
+  font-size: 8px;
   font-weight: bold;
 }
 html.dark-mode #dark-toggle .slider::before {
