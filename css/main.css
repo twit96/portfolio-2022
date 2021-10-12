@@ -19,8 +19,8 @@ html { box-sizing: border-box; }
   --blue: #48acf0;
   --blue-light: #61b6f0;
   --blue-shadow: #148bdb;
-  --grey: #919098;
   --grey-light: #dedede;
+  --grey: #919098;
   --grey-shadow: #303030;
   --yellow: #f0c808;
   --yellow-shadow: #c4a408;
@@ -28,6 +28,9 @@ html { box-sizing: border-box; }
   --main-padding: 25px;
   --main-font-size: 16px;
 }
+
+/* dark mode */
+html.dark-mode { filter: brightness(0.25); }
 
 body {
   font-size: var(--main-font-size);
@@ -580,6 +583,58 @@ header nav a:last-child {
 #header-bg .orb {
   background: var(--grey-light);
   transform: scale(0.5);
+}
+
+/* Fixed Toggle Element */
+#invert-toggle {
+  position: absolute;
+  bottom: 1.5rem; left: 1.5rem;
+  width: 4rem; height: 2rem;
+  z-index: 102;
+}
+/* hide input element*/
+#invert-toggle input {
+  opacity: 0;
+  width: 0; height: 0;
+}
+/* custom slider */
+#invert-toggle .slider {
+  cursor: pointer;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: 4rem;
+  background: var(--blue);
+}
+#invert-toggle .slider::after {
+  content: '';
+  position: absolute;
+  width: 1.5rem; height: 1.5rem;
+  top: 0.25rem; left: 0.25rem;
+  background: var(--grey-light);
+  border-radius: 50%;
+  transition: 0.25s transform ease-in-out;
+}
+html.dark-mode #invert-toggle .slider::after {
+  transform: translateX(2rem);
+  background: var(--grey-shadow);
+}
+
+#invert-toggle .slider::before {
+  content: "Light";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.4em;
+  font-weight: bold;
+}
+html.dark-mode #invert-toggle .slider::before {
+  content: "Dark";
+  justify-content: flex-start;
+  color: var(--grey-shadow);
 }
 
 

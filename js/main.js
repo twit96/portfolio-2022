@@ -2,6 +2,7 @@ var intro = document.querySelector("section");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
+var nav_toggle = document.querySelector(".nav-toggle");
 var header_bg = document.getElementById("header-bg");
 
 // Add Randomly Generated Elements to Background ------------------------------
@@ -73,18 +74,79 @@ setTimeout(function() {
 
 
 // Header Functionality -------------------------------------------------------
-var nav_toggle = document.querySelector(".nav-toggle");
-nav_toggle.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
-}
-header_bg.onclick = function() {
-  nav_toggle.classList.toggle("active");
-  header_nav.classList.toggle("active");
-  header_bg.classList.toggle("active");
+
+// toggle light/dark mode functionality
+var html = document.documentElement;
+var slider = document.querySelector("#invert-toggle .slider");
+slider.onclick = function(e) {
+  html.classList.toggle("dark-mode");
+  updateCookie();
 }
 
+function setCookie(cvalue) {
+  var d = new Date();
+  d.setTime(d.getTime() + (365*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = "dark_mode" + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie() {
+  var name = "dark_mode=";
+  var c = decodeURIComponent(document.cookie).split(';')[0];
+  while (c.charAt(0) == ' ') { c = c.substring(1); }
+  if (c.indexOf("dark_mode=") == 0) {
+    return c.substring(name.length, c.length);
+  }
+}
+function updateCookie() {
+  // toggled to dark
+  if (html.classList.contains('dark-mode')) { setCookie("on"); }
+  // toggled to light
+  else { setCookie("off"); }
+}
+
+function configColorScheme() {
+  var dark_mode = getCookie();
+  if (
+    (dark_mode == "on") &&
+    (!html.classList.contains('dark-mode'))
+  ) { html.classList.toggle("dark-mode"); }
+  if (
+    (dark_mode == "off") &&
+    (html.classList.contains('dark-mode'))
+  ) { html.classList.toggle("dark-mode"); }
+}
+configColorScheme();
+
+
+
+/**
+* Function to toggle the navigation menu and its components.
+* Called by nav-toggle and header-bg click events.
+* Blocked functionality for #invert-toggle click events.
+*/
+function toggleNav(e) {
+  // prevent #invert-toggle click from toggling nav
+  e = (window.event || e);
+  if (
+    (e.target.classList[0] != "slider") &&  // check if #invert-toggle .slider
+    (e.target.type != "checkbox")           // check if #invert-toggle checkbox
+  ) {
+    // toggle nav
+    nav_toggle.classList.toggle("active");
+    header_nav.classList.toggle("active");
+    header_bg.classList.toggle("active");
+  }
+}
+
+nav_toggle.onclick = toggleNav;
+header_bg.onclick = toggleNav;
+
+
+/**
+* Function to toggle the header between its initial state (on page load) and its
+* filled state (after scrolling down). Called by window scroll event listener
+* (scroll event handlers combined at bottom of main.js).
+*/
 function toggleHeaderState() {
   header.classList.toggle("filled");
 }
