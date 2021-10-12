@@ -16,12 +16,12 @@
 		<meta name="twitter:card" content="summary_large_image">
 		<!--  -->
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20211012" />
     <link rel="stylesheet" type="text/css" href="/css/projects.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <script src="/js/main.js" defer></script>
+    <script src="/js/main.js?v=20211012" defer></script>
   </head>
   <body>
     <?php
