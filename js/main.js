@@ -4,6 +4,7 @@ var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
 var nav_toggle = document.querySelector(".nav-toggle");
 var header_bg = document.getElementById("header-bg");
+var dark_toggle = document.getElementById("dark-toggle");
 
 // Add Randomly Generated Elements to Background ------------------------------
 var rand_span;  // placed in body
@@ -73,11 +74,11 @@ setTimeout(function() {
 }, 1100);
 
 
-// Header Functionality -------------------------------------------------------
+// Dark Mode Toggle Functionality ---------------------------------------------
 
 // toggle light/dark mode functionality
 var html = document.documentElement;
-var slider = document.querySelector("#invert-toggle .slider");
+var slider = document.querySelector("#dark-toggle .slider");
 slider.onclick = function(e) {
   html.classList.toggle("dark-mode");
   updateCookie();
@@ -118,24 +119,17 @@ function configColorScheme() {
 configColorScheme();
 
 
+// Header Functionality -------------------------------------------------------
 
 /**
 * Function to toggle the navigation menu and its components.
 * Called by nav-toggle and header-bg click events.
-* Blocked functionality for #invert-toggle click events.
 */
 function toggleNav(e) {
-  // prevent #invert-toggle click from toggling nav
-  e = (window.event || e);
-  if (
-    (e.target.classList[0] != "slider") &&  // check if #invert-toggle .slider
-    (e.target.type != "checkbox")           // check if #invert-toggle checkbox
-  ) {
-    // toggle nav
-    nav_toggle.classList.toggle("active");
-    header_nav.classList.toggle("active");
-    header_bg.classList.toggle("active");
-  }
+  nav_toggle.classList.toggle("active");
+  header_nav.classList.toggle("active");
+  header_bg.classList.toggle("active");
+  dark_toggle.classList.toggle("active");
 }
 
 nav_toggle.onclick = toggleNav;

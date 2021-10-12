@@ -459,9 +459,65 @@ a:hover { text-decoration: underline; }
 }
 #loader .leaf, #loader .orb { z-index: -1; }
 
+
+/* -------------------------------------------------------- Dark Mode Toggle */
+#dark-toggle {
+  position: fixed;
+  padding: 0;
+  bottom: var(--main-padding); left: var(--main-padding);
+  width: 4rem; height: 2rem;
+  z-index: 102;
+  transform: translateX(calc(-100% - var(--main-padding)));
+  transition: 0.25s transform ease-out;
+}
+#dark-toggle.active { transform: none; }
+/* hide input element*/
+#dark-toggle input {
+  opacity: 0;
+  width: 0; height: 0;
+}
+/* custom slider */
+#dark-toggle .slider {
+  cursor: pointer;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: 4rem;
+  background: var(--blue);
+}
+#dark-toggle .slider::after {
+  content: '';
+  position: absolute;
+  width: 1.5rem; height: 1.5rem;
+  top: 0.25rem; left: 0.25rem;
+  background: var(--grey-light);
+  border-radius: 50%;
+  transition: 0.25s transform ease-in-out;
+}
+html.dark-mode #dark-toggle .slider::after {
+  transform: translateX(2rem);
+  background: var(--grey-shadow);
+}
+
+#dark-toggle .slider::before {
+  content: "Light";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.4em;
+  font-weight: bold;
+}
+html.dark-mode #dark-toggle .slider::before {
+  content: "Dark";
+  justify-content: flex-start;
+}
+
+
 /* ------------------------------------------------------------------ Header */
 header {
-  /* border: 1px solid red; */
   padding-bottom: calc(var(--main-padding) * 3 / 5);
   transform: translateY(0);
   position: fixed;
@@ -522,8 +578,7 @@ header nav {
   padding-top: 78px;  /* height of header */
   z-index: 102;
   transform: translateX(calc(100% + 50px));  /* 50px height of ::after */
-  transition: 0.25s transform ease-out,
-              0.25s padding ease-out;
+  transition: 0.25s transform ease-out;
 }
 header nav::before {
   content: '';
@@ -559,82 +614,6 @@ header nav a:hover {
 }
 header nav a:last-child {
   border-radius: 0 0 0 50px;
-}
-
-
-/* Header Background */
-#header-bg {
-  position: fixed;
-  left: 0; top: 0;
-  width: 100%;
-  height: 100vh;
-  background: var(--indigo-shadow);
-  z-index: 101;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: 0.25s opacity ease-out,
-              0.25s transform ease-out;
-}
-#header-bg.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* make orbs (clones from intro generation) look like stars */
-#header-bg .orb {
-  background: var(--grey-light);
-  transform: scale(0.5);
-}
-
-/* Fixed Toggle Element */
-#invert-toggle {
-  position: absolute;
-  bottom: 1.5rem; left: 1.5rem;
-  width: 4rem; height: 2rem;
-  z-index: 102;
-}
-/* hide input element*/
-#invert-toggle input {
-  opacity: 0;
-  width: 0; height: 0;
-}
-/* custom slider */
-#invert-toggle .slider {
-  cursor: pointer;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  border-radius: 4rem;
-  background: var(--blue);
-}
-#invert-toggle .slider::after {
-  content: '';
-  position: absolute;
-  width: 1.5rem; height: 1.5rem;
-  top: 0.25rem; left: 0.25rem;
-  background: var(--grey-light);
-  border-radius: 50%;
-  transition: 0.25s transform ease-in-out;
-}
-html.dark-mode #invert-toggle .slider::after {
-  transform: translateX(2rem);
-  background: var(--grey-shadow);
-}
-
-#invert-toggle .slider::before {
-  content: "Light";
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 0.4em;
-  font-weight: bold;
-}
-html.dark-mode #invert-toggle .slider::before {
-  content: "Dark";
-  justify-content: flex-start;
-  color: var(--grey-shadow);
 }
 
 
@@ -711,6 +690,30 @@ html.dark-mode #invert-toggle .slider::before {
   0% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-9px) rotate(0); }
   100% { transform: translateY(-9px) rotate(-135deg); }
+}
+
+
+/* Header Background */
+#header-bg {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--indigo-shadow);
+  z-index: 101;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: 0.25s opacity ease-out,
+              0.25s transform ease-out;
+}
+#header-bg.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* make orbs (clones from intro generation) look like stars */
+#header-bg .orb {
+  background: var(--grey-light);
+  transform: scale(0.5);
 }
 
 
