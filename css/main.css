@@ -491,10 +491,10 @@ a:hover { text-decoration: underline; }
   z-index: 102;
   transform: translateX(calc(-100% - var(--main-padding)));
   transition: 0.25s transform ease-out;
-  line-height: normal;
   display: flex;
   align-items: center;
   margin-right: var(--main-padding);
+  line-height: normal;
 }
 #dark-toggle.active { transform: none; }
 
@@ -546,10 +546,10 @@ html.dark-mode #dark-toggle .slider::before {
 
 /* cookie disclaimer */
 #dark-toggle p {
-  color: var(--grey);
   margin-left: 1rem;
-  font-size: 12px;
   max-width: calc(100% - 5rem);
+  color: var(--grey);
+  font-size: 12px;
 }
 
 
