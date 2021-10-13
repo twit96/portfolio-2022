@@ -488,28 +488,22 @@ a:hover { text-decoration: underline; }
   position: fixed;
   padding: 0;
   bottom: var(--main-padding); left: var(--main-padding);
+  width: 4rem; height: 2rem;
   z-index: 102;
   transform: translateX(calc(-100% - var(--main-padding)));
   transition: 0.25s transform ease-out;
-  line-height: normal;
-  display: flex;
-  align-items: center;
-  margin-right: var(--main-padding);
 }
 #dark-toggle.active { transform: none; }
-
 /* hide input element*/
 #dark-toggle input {
-  position: absolute;
   opacity: 0;
   width: 0; height: 0;
 }
 /* custom slider */
 #dark-toggle .slider {
-  display: inline-block;
-  position: relative;
   cursor: pointer;
-  width: 4rem; height: 2rem;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   border-radius: 4rem;
   background: var(--blue);
 }
@@ -542,14 +536,6 @@ html.dark-mode #dark-toggle .slider::after {
 html.dark-mode #dark-toggle .slider::before {
   content: "Dark";
   justify-content: flex-start;
-}
-
-/* cookie disclaimer */
-#dark-toggle p {
-  color: var(--grey);
-  margin-left: 1rem;
-  font-size: 12px;
-  max-width: calc(100% - 5rem);
 }
 
 
