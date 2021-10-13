@@ -124,7 +124,8 @@ section:not(#intro) {
   position: relative;
   padding-right: 0;
   overflow: hidden;
-  background: white;
+  background: var(--white);
+  color: var(--black);
 
   padding-top: calc(5vh + var(--main-padding));
   padding-bottom: calc(5vh + var(--main-padding));
@@ -412,7 +413,8 @@ section:not(#intro) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
+  background: var(--white);
+  color: var(--black);
 }
 #demo .wrapper {
   display: flex;
@@ -431,7 +433,16 @@ section:not(#intro) {
   justify-content: center;
 }
 #demo-controls > * { margin: 5px; }
-
+/* dark mode overrides btn text default colors */
+html.dark-mode #demo-controls .btn-text { color: white; }
+html.dark-mode #demo-controls .btn-text .icon { border-color: white; }
+html.dark-mode #demo-controls .btn-text .icon::before { background: white; }
+html.dark-mode #demo-controls .btn-text .icon::after { background: white; }
+/* keep btn text hover colors */
+html.dark-mode #demo-controls .btn-text:hover { color: var(--blue); }
+html.dark-mode #demo-controls .btn-text:hover .icon { border-color: var(--blue); }
+html.dark-mode #demo-controls .btn-text:hover .icon::before { background: var(--blue); }
+html.dark-mode #demo-controls .btn-text:hover .icon::after { background: var(--blue); }
 
 @media (min-aspect-ratio: 4/3) {
   #demo {
@@ -513,6 +524,8 @@ section:not(#intro) {
 #demo figure .monitor {
   position: relative;
   background: #ffffffaa;
+  color: black;
+
   box-shadow: 0 0 1vmin var(--grey);
   border-radius: 1vmin;
   width: 60vmin;
@@ -614,7 +627,7 @@ section:not(#intro) {
   text-align: center;
 }
 #demo .database div {
-  background: black;
+  background: var(--black);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -634,11 +647,11 @@ section:not(#intro) {
   #demo .database div .light { animation-direction: reverse; }
 }
 @keyframes flash {
-  0% { background: white; }
+  0% { background: var(--white); }
   50%, 100% { background: var(--indigo); }
 }
 #demo .database div .title {
-  color: white;
+  color: var(--white);
   font-size: min(85%, 3vmin);
 }
 #demo .database .text { color: var(--indigo); }

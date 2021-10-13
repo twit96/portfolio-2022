@@ -9,7 +9,13 @@ html { box-sizing: border-box; }
 * {
   margin: 0;
   padding: 0;
+}
+
+html {
   /* Root Variables */
+  /* other */
+  --main-padding: 25px;
+  --main-font-size: 16px;
   /* colors */
   --indigo: #6201ff;
   --indigo-shadow: #140037;
@@ -24,13 +30,30 @@ html { box-sizing: border-box; }
   --grey-shadow: #303030;
   --yellow: #f0c808;
   --yellow-shadow: #c4a408;
-  /* other */
-  --main-padding: 25px;
-  --main-font-size: 16px;
+  /* invert black and white on elements declared with these variables
+  (non-swappable elements will not use these variables) */
+  --white: #ffffff;
+  --black: #000000;
 }
-
 /* dark mode */
-html.dark-mode { filter: brightness(0.35); }
+html.dark-mode {
+  filter: brightness(0.75); 
+  --indigo: #4b07b8;
+  --indigo-shadow: #000000;  /* black */
+  --green: #054d22;
+  --green-shadow: #022b12;
+  --red: #990014;
+  --blue: #148bdb;
+  --blue-light: #259ae8;
+  --blue-shadow: #1067a1;
+  --grey-light: #a1a0a8;
+  --grey: #505050;
+  --grey-shadow: #000000;  /* black */
+  --yellow: #c4a408;
+  --yellow-shadow: #9e8508;
+  --white: #202020;
+  --black: #c4c4c4;
+}
 
 body {
   font-size: var(--main-font-size);
