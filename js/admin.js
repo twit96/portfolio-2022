@@ -8,9 +8,11 @@ function handleCheck(e) {
   if (e.target.checked) {
     this_submit.value = "Delete";
     this_cell.style.background = "var(--red)";
+    this_cell.style.borderColor = "var(--red)";
   } else {
     this_submit.value = "Update";
     this_cell.style.background = "var(--blue-shadow)";
+    this_cell.style.borderColor = "var(--blue)";
   }
 }
 
