@@ -625,6 +625,7 @@ header nav::after {
 }
 header nav.active { transform: translateX(0); }
 header nav a {
+  -webkit-tap-highlight-color: transparent;
   color: white;
   font-size: calc(var(--main-font-size) * 1.25);
   padding: var(--main-padding);
@@ -632,12 +633,8 @@ header nav a {
   display: block;
   transition: 0.15s background ease-out;
 }
-header nav a:hover {
-  background: var(--blue-light);
-}
-header nav a:last-child {
-  border-radius: 0 0 0 50px;
-}
+header nav a:hover { background: var(--blue-light); }
+header nav a:last-child { border-radius: 0 0 0 50px; }
 
 
 /* Hamburger Menu */
