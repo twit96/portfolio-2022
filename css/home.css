@@ -416,6 +416,9 @@ section:not(#intro) {
   background: var(--white);
   color: var(--black);
 }
+
+html.dark-mode #demo .square { opacity: 0.2; }
+
 #demo .wrapper {
   display: flex;
   flex-direction: column;
