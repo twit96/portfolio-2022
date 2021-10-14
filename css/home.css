@@ -172,10 +172,10 @@ section:not(#intro) {
 }
 .card-container::-webkit-scrollbar-thumb {
   border-radius: 15px;
-  background: var(--green-shadow);
+  background: var(--green);
 }
 .card-container::-webkit-scrollbar-thumb:hover {
-  background: var(--green);
+  background: var(--blue-shadow);
 }
 .card-container::-webkit-scrollbar-track {
   background: var(--grey);
