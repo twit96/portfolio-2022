@@ -40,8 +40,8 @@ html.dark-mode {
   filter: brightness(0.75);
   --indigo: #4b07b8;
   --indigo-shadow: #000000;  /* black */
-  --green: #054d22;
-  --green-shadow: #022b12;
+  --green: #033d1a;
+  --green-shadow: #011c0c;
   --red: #990014;
   --blue: #148bdb;
   --blue-light: #259ae8;
@@ -51,8 +51,8 @@ html.dark-mode {
   --grey-shadow: #000000;  /* black */
   --yellow: #c4a408;
   --yellow-shadow: #9e8508;
-  --white: #202020;
-  --black: #c4c4c4;
+  --white: #000000;  /* black */
+  --black: #ffffff;  /* white */
 }
 
 body {
@@ -111,7 +111,8 @@ a:hover { text-decoration: underline; }
   left: 0; bottom: 0;
   height: 150%;
   width: 5%;
-  background: #022e14;
+  background: var(--green-shadow);
+  filter: brightness(0.7);
   transform-origin: bottom left;
   transform: translateX(-75%) rotate(45deg) translateY(-15%);
   border-radius: 30% 30% 50% 50%;
