@@ -435,7 +435,10 @@ html.dark-mode #demo .square { opacity: 0.2; }
   flex-wrap: wrap;
   justify-content: center;
 }
-#demo-controls > * { margin: 5px; }
+#demo-controls > * {
+  margin: 5px;
+  z-index: 1;
+}
 /* dark mode overrides btn text default colors */
 html.dark-mode #demo-controls .btn-text { color: white; }
 html.dark-mode #demo-controls .btn-text .icon { border-color: white; }
