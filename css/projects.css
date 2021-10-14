@@ -72,6 +72,7 @@
   transform: translateY(-100%);
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
 }
 #projects article:nth-of-type(2n+1)::after {
   content: '';
@@ -81,6 +82,7 @@
   transform: translateY(100%);
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
+  -webkit-clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
 #projects .btn-text {
   width: fit-content;
