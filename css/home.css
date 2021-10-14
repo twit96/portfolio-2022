@@ -130,7 +130,6 @@ section:not(#intro) {
   padding-top: calc(5vh + var(--main-padding));
   padding-bottom: calc(5vh + var(--main-padding));
   clip-path: polygon(0 0, 100% var(--main-padding), 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% var(--main-padding), 100% 100%, 0 100%);
 }
 
 #featured h2 { margin-bottom: 0.25em; }
@@ -303,7 +302,6 @@ section:not(#intro) {
   background: var(--grey-light);
   transform: translateY(-100%);
   clip-path: polygon(0 var(--main-padding), 100% 0, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 var(--main-padding), 100% 0, 100% 100%, 0 100%);
 }
 #skills::after {
   content: '';
@@ -411,7 +409,6 @@ section:not(#intro) {
   padding-top: calc(5vh + var(--main-padding));
   padding-bottom: calc(10vh + var(--main-padding));
   clip-path: polygon(0 0, 100% var(--main-padding), 100% calc(100% - var(--main-padding)), 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% var(--main-padding), 100% calc(100% - var(--main-padding)), 0 100%);
 
   display: flex;
   flex-direction: column;

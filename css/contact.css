@@ -33,7 +33,6 @@
   transform: translateY(-100%);
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
 }
 #contact .flex::after {
   content: '';
@@ -43,7 +42,6 @@
   transform: translateY(100%);
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
-  -webkit-clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
 
 .flex > div {
