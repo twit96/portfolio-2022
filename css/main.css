@@ -7,6 +7,7 @@ html { box-sizing: border-box; }
 
 /* override and set custom defaults */
 * {
+  -webkit-tap-highlight-color: transparent;
   margin: 0;
   padding: 0;
 }
@@ -626,7 +627,6 @@ header nav::after {
 }
 header nav.active { transform: translateX(0); }
 header nav a {
-  -webkit-tap-highlight-color: transparent;
   color: white;
   font-size: calc(var(--main-font-size) * 1.25);
   padding: var(--main-padding);
