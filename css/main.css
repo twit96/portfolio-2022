@@ -177,7 +177,6 @@ a:hover { text-decoration: underline; }
   top: 5px; left: 5px; right: 5px; bottom: 5px;
   background: var(--green-shadow);
   clip-path: polygon(0 0, 100% 50%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 .btn-text.play:hover { color: var(--blue-shadow); }
 .btn-text.play:hover .icon { border-color: var(--blue-shadow); }
@@ -428,7 +427,6 @@ a:hover { text-decoration: underline; }
   border-color: var(--indigo-shadow);
   border-style: solid;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0% 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0% 100%);
 }
 .featured-badge::before {
   left: 0; transform: translateX(100%) rotate(25deg);
