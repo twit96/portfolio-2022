@@ -18,12 +18,12 @@
 		<!--  -->
 		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20211013.01" />
-		<link rel="stylesheet" type="text/css" href="/css/home.css?v=20211015.01" />
+		<link rel="stylesheet" type="text/css" href="/css/home.css?v=20211015" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-		<script src="/js/main.js" defer></script>
-		<script src="/js/home.js" defer></script>
+		<script src="/js/main.js?v=20211012.02" defer></script>
+		<script src="/js/home.js?v=20211015" defer></script>
 	</head>
 
 	<body>

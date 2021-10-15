@@ -29,12 +29,10 @@ section:not(#intro) {
   align-items: center;
   border: max(1.75vmax, 20px) solid var(--green-shadow);
   background: var(--green-shadow);
-  will-change: transform;
 }
 #main-logo {
   width: 100vmax;
   height: 100vmax;
-  will-change: transform;
 }
 #main-logo.blurred { filter: blur(5px); }
 
