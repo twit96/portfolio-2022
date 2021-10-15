@@ -16,15 +16,15 @@ var main_logo_wrap = document.getElementById("main-logo-wrap");
 var scroll_y = 0;
 var window_height = window.innerHeight;
 
-var main_logo_handler = function() { window.requestAnimationFrame(mainLogoAnimation); }
-function mainLogoAnimation() {
+// var main_logo_handler = function() { window.requestAnimationFrame(mainLogoAnimation); }
+function main_logo_handler() {
   window_height = window.innerHeight;
   scroll_y = (document.body.scrollTop || document.documentElement.scrollTop);
   if (
     (scroll_y <= window_height) &&
     (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
   ) {
-    // main_logo_wrap.style.transform = "translate(calc(67% + " + scroll_y/4 + "px), -50%)";
+    main_logo_wrap.style.transform = "translate(calc(67% + " + scroll_y/8 + "px), -50%)";
     main_logo.style.transform = "rotate(" + (30 * scroll_y / window_height) + "deg)"
   }
 }
