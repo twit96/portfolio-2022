@@ -12,6 +12,19 @@ logo_lg.onload = function() {
   main_logo.classList.remove("blurred");
 }
 
+var main_logo_handler = function() {
+  // play/pause main logo animation on scrolldown/up
+  var main_logo_handler = function() {
+    if ((document.body.scrollTop || document.documentElement.scrollTop) > 0) {
+      main_logo.style.animationPlayState = "paused";
+    }
+    else {
+      main_logo.style.animationPlayState = "running";
+    }
+  }
+}
+window.addEventListener('scroll', main_logo_handler, false);
+
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
 var active_idx = 0;
