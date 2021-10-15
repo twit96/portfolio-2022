@@ -14,13 +14,11 @@ logo_lg.onload = function() {
 
 var main_logo_handler = function() {
   // play/pause main logo animation on scrolldown/up
-  var main_logo_handler = function() {
-    if ((document.body.scrollTop || document.documentElement.scrollTop) > 0) {
-      main_logo.style.animationPlayState = "paused";
-    }
-    else {
-      main_logo.style.animationPlayState = "running";
-    }
+  if ((document.body.scrollTop || document.documentElement.scrollTop) > 0) {
+    main_logo.style.animationPlayState = "paused";
+  }
+  else {
+    main_logo.style.animationPlayState = "running";
   }
 }
 window.addEventListener('scroll', main_logo_handler, false);

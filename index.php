@@ -23,7 +23,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<script src="/js/main.js?v=20211012.02" defer></script>
-		<script src="/js/home.js" defer></script>
+		<script src="/js/home.js?v=20211015" defer></script>
 	</head>
 
 	<body>
