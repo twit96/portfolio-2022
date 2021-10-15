@@ -33,9 +33,16 @@ section:not(#intro) {
 #main-logo {
   width: 100vmax;
   height: 100vmax;
+  animation: 3s teeter ease-in-out alternate infinite;
+}
+@media (prefers-reduced-motion) {
+  #main-logo { animation-delay: -1.5s; }
 }
 #main-logo.blurred { filter: blur(5px); }
-
+@keyframes teeter {
+  0% { transform: rotate(-2.5deg); }
+  100% { transform: rotate(2.5deg); }
+}
 .main-logo-overlay {
   content: '';
   position: absolute;

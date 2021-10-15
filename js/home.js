@@ -12,28 +12,6 @@ logo_lg.onload = function() {
   main_logo.classList.remove("blurred");
 }
 
-var main_logo_wrap = document.getElementById("main-logo-wrap");
-var scroll_y = 0;
-var window_height = window.innerHeight;
-var logo_wrap_transform;
-var logo_rotate = 0;
-
-var main_logo_handler = function() { window.requestAnimationFrame(mainLogoAnimation); }
-function mainLogoAnimation() {
-  window_height = window.innerHeight;
-  scroll_y = (document.body.scrollTop || document.documentElement.scrollTop);
-  if (
-    (scroll_y <= window_height) &&
-    (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-  ) {
-    logo_wrap_transform = "translate(calc(67% + " + scroll_y/4 + "px), -50%)";
-    main_logo_wrap.style.transform = logo_wrap_transform;
-    logo_rotate = (30 * scroll_y / window_height)
-    main_logo.style.transform = "rotate(" + logo_rotate + "deg)"
-  }
-}
-window.addEventListener('scroll', main_logo_handler, false);
-
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
 var active_idx = 0;
