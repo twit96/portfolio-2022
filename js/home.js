@@ -24,8 +24,8 @@ function mainLogoAnimation() {
     (scroll_y <= window_height) &&
     (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
   ) {
-    main_logo_wrap.style.transform = "translate(calc(67% + " + scroll_y/4 + "px), -50%)";
-    // main_logo.style.transform = "rotate(" + (30 * scroll_y / window_height) + "deg)"
+    // main_logo_wrap.style.transform = "translate(calc(67% + " + scroll_y/4 + "px), -50%)";
+    main_logo.style.transform = "rotate(" + (30 * scroll_y / window_height) + "deg)"
   }
 }
 window.addEventListener('scroll', main_logo_handler, false);
