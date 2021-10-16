@@ -552,15 +552,22 @@ header {
   justify-content: space-between;
   align-items: center;
   color: white;
-  transition: 0.25s background ease-out,
-              0.25s box-shadow ease-out,
-              0.25s transform ease-out;
+  transition: 0.25s transform ease-out;
 }
 header.filled {
   transform: translateY(calc(var(--main-padding) * -2 / 5));
+}
+header::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
   background: var(--green);
   box-shadow: 0 0 15px var(--green-shadow);
+  opacity: 0;
+  transition: 0.25s opacity ease-out;
 }
+header.filled::before { opacity: 1; }
+
 /* adjust for header.filled translateY animation*/
 header.filled nav.active {
   transform: translateX(0) translateY(calc(var(--main-padding) * -2 / 5));
@@ -725,11 +732,13 @@ header nav a:last-child { border-radius: 0 0 0 50px; }
   transform: translateY(-100%);
   opacity: 0;
   transition: 0.25s opacity ease-out,
-              0.25s transform ease-out;
+              0s transform ease-out 0.25s;
 }
 #header-bg.active {
   opacity: 1;
   transform: translateY(0);
+  transition: 0.25s opacity ease-out,
+              0s transform ease-out;
 }
 /* make orbs (clones from intro generation) look like stars */
 #header-bg .orb {
