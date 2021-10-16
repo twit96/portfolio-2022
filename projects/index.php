@@ -16,7 +16,7 @@
 		<meta name="twitter:card" content="summary_large_image">
 		<!--  -->
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20211016.01" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20211016" />
     <link rel="stylesheet" type="text/css" href="/css/projects.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
