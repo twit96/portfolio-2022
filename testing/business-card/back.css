@@ -1,0 +1,191 @@
+/* Debugging --------------------------------------------------------------- */
+/* Border All Elements */
+/* * { box-shadow: 0 0 1px 1px #ff0022 inset; } */
+body {
+  /* Whole Page Border */
+  box-shadow: 0 0 1px 1px black;
+  /* Background Grid */
+  /* background-image:
+    linear-gradient(
+      var(--green-shadow) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      var(--green-shadow) 1px,
+      transparent 1px
+    );
+    background-size: 0.25in 0.25in; */
+}
+
+*, *::before, *::after { animation-play-state: paused; transition: none; }
+/* override main.css */
+html, body, section {
+  overflow: hidden;
+  aspect-ratio: 3.5/2;
+  max-width: 3.5in;
+  padding: 0;
+}
+@keyframes twinkle {
+  0%, 50%, 100% {
+    opacity: 0.05;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+/* custom presets */
+html {
+  font-family: Calibri, sans-serif;
+  font-size: 16px;
+}
+
+.links {
+  width: 2.25in;
+  margin: 0.125in;
+}
+
+
+/* Icons ------------------------------------------------------------------- */
+
+/* text with custom icons */
+.icon-text {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.icon-text .icon {
+  position: relative;
+  width: 0.2in;
+  height: 0.2in;
+  margin: 0.025in;
+  margin-right: 0.075in;
+  border: 2px solid white;
+}
+.icon-text:not(:last-of-type) {
+  margin-bottom: 0.075in;
+}
+
+/* Phone Icon */
+.icon.phone {
+  width: 0.15in;
+  margin-left: 0.05in;
+  margin-right: 0.1in;
+  border-radius: 3px;
+}
+.icon.phone::before {
+  content: '';
+  position: absolute;
+  bottom: 0.015in; left: 50%;
+  transform: translateX(-50%);
+  width: 0.025in; height: 0.025in;
+  border-radius: 50%;
+  background: white;
+}
+
+/* Email Icon */
+.icon.email {
+  height: 0.165in;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.icon.email::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 0.155in; height: 0.155in;
+  border: 2px solid white;
+}
+.icon.email::after {
+  content: '';
+  position: absolute;
+  bottom: 50%; left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 0.155in; height: 0.155in;
+  border: 2px solid white;
+  border-radius: 3px;
+  background: var(--green);
+}
+
+/* Portfolio Icon */
+.icon.portfolio {
+  border-radius: 50%;
+}
+.icon.portfolio::before {
+  content: '';
+  position: absolute;
+  top: -1px; right: 25%; bottom: -1px; left: 25%;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+.icon.portfolio::after {
+  content: '';
+  position: absolute;
+  top: 27%; right: -1px; bottom: 27%; left: -1px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+
+/* Git Icon */
+.icon.git {
+  border-radius: 3px;
+}
+.icon.git::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 0.025in;
+  background: white;
+  border-radius: 3px;
+}
+.icon.git::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.075in; height: 0.075in;
+  background: var(--green);
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.icon.linked-in {
+  border-radius: 3px;
+}
+.icon.linked-in::before {
+  content: "in";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.2in; height: 0.2in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.175in;
+  color: white;
+}
+
+/* Location Icon */
+.icon.location {
+  border-radius: 50% 50% 50% 0;
+  transform: translateY(-0.02in) rotate(-45deg) scale(0.85);
+  border-width: 2.35px;  /* adjust for 0.85 scale down */
+}
+.icon.location::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.075in; height: 0.075in;
+  background: white;
+  border-radius: 50%;
+  z-index: 1;
+}
