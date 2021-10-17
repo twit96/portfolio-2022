@@ -157,30 +157,30 @@ include('./templates/header.html');
 						I build websites from the ground up to meet your needs.
 					</p>
 				</div>
-				<figure>
+				<figure aria-hidden="true">
 					<div class="website">
 						<div class="monitor">
-							<span class="title" aria-hidden="true">Your Website</span>
+							<span class="title">Your Website</span>
 						</div>
-						<span class="text" aria-hidden="true">HTML</span>
-						<span class="text" aria-hidden="true"> / CSS</span>
-						<span class="text" aria-hidden="true"> / JS</span>
+						<span class="text">HTML</span>
+						<span class="text"> / CSS</span>
+						<span class="text"> / JS</span>
 					</div>
 					<div class="pipeline">
 						<span class="pipe"></span>
 						<span class="pipe"></span>
-						<span class="text" aria-hidden="true">PHP</span>
+						<span class="text">PHP</span>
 					</div>
 					<div class="database">
 						<div>
 							<span class="light"></span>
 							<span class="light"></span>
 							<span class="light"></span>
-							<span class="title" aria-hidden="true">Database</span>
+							<span class="title">Database</span>
 						</div>
-						<span class="text" aria-hidden="true">SQL</span>
+						<span class="text">SQL</span>
 					</div>
-					<span class="text" aria-hidden="true">Host</span>
+					<span class="text">Host</span>
 				</figure>
 			</div>
 
