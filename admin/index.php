@@ -1,6 +1,11 @@
 <?php
 
 include('../templates/head.php');
+echo <<<HEAD_END
+\n
+  </head>
+	<body>
+HEAD_END;
 
 include('../templates/header.html');
 echo '<section id="entries">';

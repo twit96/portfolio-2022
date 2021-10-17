@@ -18,7 +18,6 @@
   }
 
 
-
   // Cache Busting Function - append last modified date to filenames
   $timestamp = function($file_path) {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
@@ -59,11 +58,5 @@
   if (in_array($curr_dir, array('html', 'contact'))) {
     echo '<script src="/js/'.$curr_dir.'js?v='. $timestamp('/js/main.js') .'" defer></script>';
   }
-
-  echo <<<HEAD_END
-  \n
-    </head>
-  	<body>
-  HEAD_END;
 
 ?>
