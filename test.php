@@ -15,7 +15,7 @@
   //   return date('Ymd-His',filectime(basename($file_path)));
   // }
   $timestamp = function() {
-    return filemtime('/css/main.css');
+    return filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css');
   }
 
   echo <<<TOP
