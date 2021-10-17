@@ -11,9 +11,9 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  // $timestamp = function($file_path) {
-  //   return date('Ymd-His',filectime(basename($file_path)));
-  // }
+  $timestamp = function($file_path) {
+    return date('Ymd-His',filectime(basename($file_path)));
+  }
 
   echo <<<TOP
   <!DOCTYPE html>
@@ -26,15 +26,15 @@
   		<meta name="author" content="Tyler Wittig" />
       <meta property="og:title" content="Tyler Wittig | {$page_name}"/>
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://tylerwittig.com/{$og_url_extension}/" />
+      <meta property="og:url" content="https://tylerwittig.com/{$og_url_extension}" />
   		<meta property="og:image" content="/img/site-card.png" />
   		<meta property="og:description" content="Tyler Wittig's Portfolio Website{$og_description_extension}" />
       <!-- make the og:image larger -->
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
+      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
   TOP;
-  // <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
 
   echo '</head>';
 
