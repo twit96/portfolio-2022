@@ -36,13 +36,14 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
   TOP;
+  // <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
 
   echo '</head>';
 
   echo <<<FILLER
     <body>
+    {$_SERVER["DOCUMENT_ROOT"].'/css/main.css}
       <h1>Test</h1>
     </body>
   </html>
