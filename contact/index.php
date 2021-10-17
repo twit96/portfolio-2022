@@ -12,6 +12,7 @@ echo <<<HEAD_END
 HEAD_END;
 
 include('../templates/header.html');
+
 ?>
 
     <section id="contact">
@@ -38,9 +39,14 @@ include('../templates/header.html');
       </div> <!-- /.wrapper -->
     </section>
 
-    <?php
-			include('../templates/footer.html');
-		?>
-  </body>
+<?php
 
-</html>
+	include('../templates/footer.html');
+
+  echo <<<PAGE_END
+  \n
+    </body>
+  </html>
+  PAGE_END;
+
+?>
