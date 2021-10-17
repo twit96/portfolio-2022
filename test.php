@@ -11,8 +11,8 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  $timestamp = function($file_path) {
-    // return date('Ymd-His',filectime(basename($file_path)));
+  // $timestamp = function($file_path) {
+  $timestamp = function() {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css'));
   }
 
