@@ -40,7 +40,7 @@
   echo '<body>';
   echo '<h1>Test</h1>';
   echo '/css/main.css' . '<br />';
-  echo filemtime('/var/www/html/css/main.css') . '<br />';
+  echo filemtime(getcwd().'/css/main.css') . '<br />';
   echo getcwd() . '<br />';
 
   echo <<<BTM
