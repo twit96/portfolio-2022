@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-	<head>
-		<title>Tyler Wittig | Web Developer</title>
-		<meta charset="utf-8" />
-		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Social Media Card -->
-		<meta name="author" content="Tyler Wittig" />
-		<meta property="og:title" content="Tyler Wittig | Web Developer" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://tylerwittig.com/" />
-		<meta property="og:image" content="/img/site-card.png" />
-		<meta property="og:description" content="Tyler Wittig's Portfolio Website" />
-		<!-- make the og:image larger -->
-		<meta name="twitter:card" content="summary_large_image">
-		<!--  -->
-		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css?v=20211016" />
-		<link rel="stylesheet" type="text/css" href="/css/home.css?v=20211016" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-		<script src="/js/main.js?v=20211012.02" defer></script>
-		<script src="/js/home.js" defer></script>
-	</head>
-
+include('../templates/head.php');
+echo <<<HEAD_END
+\n
+  </head>
 	<body>
-		<?php
-			include('./templates/header.html');
-		?>
+HEAD_END;
+
+include('./templates/header.html');
+
+?>
 
 		<section id="intro">
 			<div id="main-logo-wrap">
