@@ -54,9 +54,7 @@
   // Page-Specific Tags
   ($curr_dir == 'html') ? $curr_page = 'home' : $curr_page = $curr_dir;
   // CSS
-  if ($curr_page != 'home') {
-    echo '<link rel="stylesheet" type="text/css" href="/css/'.$curr_page.'.css?v='. $timestamp('/css/'.$curr_page.'.css') .'" />';
-  }
+  echo '<link rel="stylesheet" type="text/css" href="/css/'.$curr_page.'.css?v='. $timestamp('/css/'.$curr_page.'.css') .'" />';
   // JS
   if (in_array($curr_page, array('home', 'contact'))) {
     echo '<script src="/js/'.$curr_page.'.js?v='. $timestamp('/js/main.js') .'" defer></script>';
