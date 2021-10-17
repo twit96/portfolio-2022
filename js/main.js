@@ -4,7 +4,7 @@ var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
 var nav_toggle = document.querySelector(".nav-toggle");
 var header_bg = document.getElementById("header-bg");
-var dark_toggle = document.getElementById("dark-toggle");
+var dark_toggle = document.getElementById("dark-toggle-wrap");
 
 // Add Randomly Generated Elements to Background ------------------------------
 var rand_span;  // placed in body
@@ -78,7 +78,7 @@ setTimeout(function() {
 
 // toggle light/dark mode functionality
 var html = document.documentElement;
-var slider = document.querySelector("#dark-toggle .slider");
+var slider = document.querySelector("#dark-toggle-wrap .slider");
 slider.onclick = function(e) {
   html.classList.toggle("dark-mode");
   updateCookie();
