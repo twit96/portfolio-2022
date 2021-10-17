@@ -11,9 +11,10 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  // $timestamp = function($file_path) {
-  //   return date('Ymd-His',filectime(basename($file_path)));
-  // }
+  $timestamp = function($file_path) {
+    // return date('Ymd-His',filectime(basename($file_path)));
+    return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css'));
+  }
 
   echo <<<TOP
   <!DOCTYPE html>
@@ -33,14 +34,14 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
+      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
   TOP;
-  // <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
 
   echo '</head>';
   echo '<body>';
   echo '<h1>Test</h1>';
   echo filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css') . '<br />';
-  echo date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css')) . '<br />';
+  echo  . '<br />';
 
 
   echo <<<BTM
