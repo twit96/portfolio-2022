@@ -11,9 +11,11 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  $timestamp = function($file_path) {
-    // return date('Ymd-His',filectime(basename($file_path)));
-    return date('Ymd',filectime(basename($file_path)));
+  // $timestamp = function($file_path) {
+  //   return date('Ymd-His',filectime(basename($file_path)));
+  // }
+  $timestamp = function() {
+    return date('Ymd-His',filectime(basename('/css/main.css')));
   }
 
   echo <<<TOP
@@ -34,7 +36,7 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
+      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp}" />
   TOP;
 
   echo '</head>';
