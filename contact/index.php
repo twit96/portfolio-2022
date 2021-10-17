@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-  <head>
-    <title>Tyler Wittig | Contact</title>
-    <meta charset="utf-8" />
-    <meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/img/icon.png" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/contact.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <script src="/js/main.js" defer></script>
-    <script src="/js/contact.js" defer></script>
+include('../templates/head.php');
+echo <<<HEAD_END
+\n
     <!-- map -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <!--  -->
   </head>
+	<body>
+HEAD_END;
 
-  <body>
-    <?php
-			include('../templates/header.html');
-		?>
+include('../templates/header.html');
+?>
 
     <section id="contact">
       <h2>Contact Me</h2>
