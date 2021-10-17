@@ -2,10 +2,8 @@
 
 include('../templates/head.php');
 
-echo
 echo <<<HEAD_END
-
-		<!-- Additional Head Tags -->
+    <!-- Additional Head Tags -->
     <meta name="description" content="Tyler Wittig's Portfolio Admin Dashboard" />
     <link rel="stylesheet" type="text/css" href="/css/admin.css" />
   </head>
@@ -19,7 +17,6 @@ echo '</section>';
 include('../templates/footer.html');
 
 echo <<<PAGE_END
-
   </body>
 </html>
 PAGE_END;
