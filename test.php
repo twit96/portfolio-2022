@@ -16,7 +16,7 @@
   // }
   $timestamp = function() {
     return '20211016';
-  }
+  };
 
   echo <<<TOP
   <!DOCTYPE html>
@@ -36,7 +36,7 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp}" />
+      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
   TOP;
 
   echo '</head>';
