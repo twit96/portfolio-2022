@@ -494,7 +494,10 @@ a:hover { text-decoration: underline; }
   transform: translateX(calc(-100% - var(--main-padding)));
   transition: 0.25s transform ease-out;
 }
-#dark-toggle.active { transform: none; }
+#dark-toggle.active {
+  transform: none;
+  transition: 0.25s transform ease-out 0.25s;
+}
 /* hide input element*/
 #dark-toggle input {
   opacity: 0;
@@ -732,11 +735,13 @@ header nav a:last-child { border-radius: 0 0 0 50px; }
   transform: translateY(-100%);
   opacity: 0;
   transition: 0.25s opacity ease-out,
-              0.25s transform ease-out;
+              0.25s transform ease-out 0.25s;
 }
 #header-bg.active {
   opacity: 1;
   transform: translateY(0);
+  transition: 0.25s opacity ease-out 0.25s,
+              0.25s transform ease-out;
 }
 /* make orbs (clones from intro generation) look like stars */
 #header-bg .orb {
