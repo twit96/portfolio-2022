@@ -4,19 +4,19 @@
     $page_name = 'Web Developer';
     $og_url_extension = '';
     $og_description_extension = '';
+    $add_css_file = '';
+    $add_js_file = '';
   }
   else {
     $page_name = ucfirst($curr_dir);
     $og_url_extension = $curr_dir.'/';
     $og_description_extension = ' - '.$page_name;
+    $add_css_file = '';
+    $add_js_file = '';
   }
 
   $timestamp = function($file_path) {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
-  };
-
-  $if = function($condition, $true, $false) {
-    return $condition ? $true : $false;
   };
 
   echo <<<TOP
@@ -43,15 +43,4 @@
       <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
   		<script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
   TOP;
-
-  echo '</head>';
-  echo '<body>';
-  echo '<h1>Test</h1>';
-  echo filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css') . '<br />';
-
-
-  echo <<<BTM
-    </body>
-  </html>
-  BTM;
 ?>
