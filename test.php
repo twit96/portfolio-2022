@@ -40,7 +40,7 @@
   echo '<body>';
   echo '<h1>Test</h1>';
   echo '/css/main.css' . '<br />';
-  echo basename('/css/main.css') . '<br />';
+  echo filectime('/css/main.css') . '<br />';
 
   echo <<<BTM
     </body>
