@@ -15,7 +15,7 @@
   //   return date('Ymd-His',filectime(basename($file_path)));
   // }
   $timestamp = function() {
-    return date('Ymd',filectime(basename('/css/main.css')));
+    return '20211016';
   }
 
   echo <<<TOP
