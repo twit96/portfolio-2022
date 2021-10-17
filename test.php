@@ -7,10 +7,10 @@
   <body>
     <?php
 
-    echo 'dirname(__FILE__)' . dirname(__FILE__) . '\n';
-    echo 'getcwd();' . getcwd() . '\n';
-    echo 'basename(getcwd())' . basename(getcwd()) . '\n';
-    echo 'basename(__DIR__)' . basename(__DIR__) . '\n';
+    echo 'dirname(__FILE__)' . dirname(__FILE__) . '<br />';
+    echo 'getcwd();' . getcwd() . '<br />';
+    echo 'basename(getcwd())' . basename(getcwd()) . '<br />';
+    echo 'basename(__DIR__)' . basename(__DIR__) . '<br />';
 
      ?>
   </body>
