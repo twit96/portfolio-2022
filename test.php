@@ -14,7 +14,7 @@
   // $timestamp = function($file_path) {
   $timestamp = function() {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css'));
-  }
+  };
 
   echo <<<TOP
   <!DOCTYPE html>
