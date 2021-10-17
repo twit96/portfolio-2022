@@ -797,6 +797,7 @@ footer nav a {
   font-weight: bold;
   font-size: min(4vw, calc(var(--main-font-size) * 1.5));
   display: block;
+  width: fit-content;
   margin-bottom: 0.5em;
 }
 footer nav a:last-of-type { margin: 0; }
