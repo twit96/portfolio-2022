@@ -12,7 +12,7 @@
   }
 
   $timestamp = function($file_path) {
-    return date('Ymd-His',filectime($file_path);
+    return date('Ymd-His',filectime($file_path));
   }
 
   echo <<<TOP
