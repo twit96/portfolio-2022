@@ -157,7 +157,7 @@ include('./templates/header.html');
 						I build websites from the ground up to meet your needs.
 					</p>
 				</div>
-				<figure>
+				<figure class="with-css with-js with-php with-sql with-host">
 					<div class="website">
 						<div class="monitor">
 							<span class="title">Your Website</span>
@@ -189,7 +189,7 @@ include('./templates/header.html');
 					<span class="icon"></span>
 					<span class="text">Play</span>
 				</div>
-				<div class="btn-text stop">
+				<div class="btn-text stop disabled">
 					<span class="icon"></span>
 					<span class="text">Stop</span>
 				</div>

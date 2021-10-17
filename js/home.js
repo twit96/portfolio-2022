@@ -91,7 +91,7 @@ var play_btn = controls.querySelector(".play");
 var play_btn_text = controls.querySelector(".text");
 var stop_btn = controls.querySelector(".stop");
 
-var demo_idx = 0;
+var demo_idx = 5;
 var css_classes = [
   "with-css", "with-js", "with-php", "with-sql", "with-host",  // forwards
   "with-host", "with-sql", "with-php", "with-js", "with-css"   // reverse
@@ -156,28 +156,3 @@ function stopDemo() {
   }
 }
 stop_btn.onclick = stopDemo;
-
-
-// trigger animation when element enters window
-function figureInViewport(el) {
-  var top = el.offsetTop;
-  var height = el.offsetHeight;
-
-  while(el.offsetParent) {
-    el = el.offsetParent;
-    top += el.offsetTop;
-  }
-
-  return (
-    top >= window.pageYOffset &&
-    (top + (height/2)) <= (window.pageYOffset + window.innerHeight)
-  );
-}
-
-var demo_handler = function() {
-  if (figureInViewport(figure)) {
-    playPauseDemo();
-    window.removeEventListener('scroll', demo_handler, false);
-  }
-}
-window.addEventListener('scroll', demo_handler, false);
