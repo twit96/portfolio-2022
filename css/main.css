@@ -485,7 +485,7 @@ a:hover { text-decoration: underline; }
 
 
 /* -------------------------------------------------------- Dark Mode Toggle */
-#dark-toggle {
+.dark-toggle {
   position: fixed;
   padding: 0;
   bottom: var(--main-padding); left: var(--main-padding);
@@ -494,24 +494,24 @@ a:hover { text-decoration: underline; }
   transform: translateX(calc(-100% - var(--main-padding)));
   transition: 0.25s transform ease-out;
 }
-#dark-toggle.active {
+.dark-toggle.active {
   transform: none;
   transition: 0.25s transform ease-out 0.25s;
 }
 /* hide input element*/
-#dark-toggle input {
+.dark-toggle input {
   opacity: 0;
   width: 0; height: 0;
 }
 /* custom slider */
-#dark-toggle .slider {
+.dark-toggle .slider {
   cursor: pointer;
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   border-radius: 4rem;
   background: var(--blue);
 }
-#dark-toggle .slider::after {
+.dark-toggle .slider::after {
   content: '';
   position: absolute;
   width: 1.5rem; height: 1.5rem;
@@ -520,12 +520,12 @@ a:hover { text-decoration: underline; }
   border-radius: 50%;
   transition: 0.25s transform ease-in-out;
 }
-html.dark-mode #dark-toggle .slider::after {
+html.dark-mode .dark-toggle .slider::after {
   transform: translateX(2rem);
   background: var(--grey-shadow);
 }
 
-#dark-toggle .slider::before {
+.dark-toggle .slider::before {
   content: "Light";
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -537,7 +537,7 @@ html.dark-mode #dark-toggle .slider::after {
   font-size: 8px;
   font-weight: bold;
 }
-html.dark-mode #dark-toggle .slider::before {
+html.dark-mode .dark-toggle .slider::before {
   content: "Dark";
   justify-content: flex-start;
 }
