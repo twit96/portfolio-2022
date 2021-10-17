@@ -8,7 +8,7 @@
     <?php
 
     echo 'dirname(__FILE__)' . dirname(__FILE__) . '\n';
-    echo 'getcwd();' . getcwd(); . '\n';
+    echo 'getcwd();' . getcwd() . '\n';
     echo 'basename(getcwd())' . basename(getcwd()) . '\n';
     echo 'basename(__DIR__)' . basename(__DIR__) . '\n';
 
