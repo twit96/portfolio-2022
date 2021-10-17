@@ -7,13 +7,13 @@
   }
   else {
     $page_name = ucfirst($curr_dir);
+    $og_url_extension = $curr_dir.'/';
     $og_description_extension = ' - '.$page_name;
-    $og_description_extension = $page_name;
   }
 
   $timestamp = function($file_path) {
     return date('Ymd-His',filectime($file_path);
-  };
+  }
 
   echo <<<TOP
   <!DOCTYPE html>
