@@ -11,10 +11,9 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  $doc_root = $_SERVER["DOCUMENT_ROOT"];
-  $timestamp = function($file_path) {
-    return date('Ymd-His',filectime(basename($_SERVER["DOCUMENT_ROOT"].$file_path)));
-  }
+  // $timestamp = function($file_path) {
+  //   return date('Ymd-His',filectime(basename($file_path)));
+  // }
 
   echo <<<TOP
   <!DOCTYPE html>
@@ -34,15 +33,16 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
   TOP;
+  // <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
 
   echo '</head>';
   echo '<body>';
   echo '<h1>Test</h1>';
-  // echo '/css/main.css' . '<br />';
-  // echo filemtime(getcwd().'/css/main.css') . '<br />';
-  // echo getcwd() . '<br />';
+  echo '/css/main.css' . '<br />';
+  echo filemtime(getcwd().'/css/main.css') . '<br />';
+  echo filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css') . '<br />';
+  echo getcwd() . '<br />';
 
   echo <<<BTM
     </body>
