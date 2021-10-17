@@ -11,9 +11,8 @@
     $og_description_extension = ' - '.$page_name;
   }
 
-  // $timestamp = function($file_path) {
-  $timestamp = function() {
-    return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css'));
+  $timestamp = function($file_path) {
+    return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
   };
 
   echo <<<TOP
@@ -34,7 +33,11 @@
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
+  		<link rel="preconnect" href="https://fonts.googleapis.com">
+  		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
+  		<script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
   TOP;
 
   echo '</head>';
