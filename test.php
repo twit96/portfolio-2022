@@ -14,7 +14,6 @@
   // $timestamp = function($file_path) {
   //   return date('Ymd-His',filectime(basename($file_path)));
   // }
-  $doc_root = $_SERVER["DOCUMENT_ROOT"];
 
   echo <<<TOP
   <!DOCTYPE html>
@@ -38,12 +37,13 @@
   // <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp()}" />
 
   echo '</head>';
+  echo '<body>';
+  echo '<h1>Test</h1>';
+  echo '/css/main.css' . '<br />';
+  echo basename('/css/main.css') . '<br />';
 
-  echo <<<FILLER
-    <body>
-    {$doc_root}/css/main.css
-      <h1>Test</h1>
+  echo <<<BTM
     </body>
   </html>
-  FILLER;
+  BTM;
 ?>
