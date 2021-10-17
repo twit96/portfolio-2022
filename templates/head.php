@@ -1,20 +1,25 @@
 <?php
+
+  // Configure Head Tag Info
   $curr_dir = basename(getcwd());
+  // homepage
   if ($curr_dir == 'html') {
     $page_name = 'Web Developer';
+    $description = "Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development.";
     $og_url_extension = '';
     $og_description_extension = '';
-    $add_css_file = '';
-    $add_js_file = '';
   }
+  // other pages
   else {
     $page_name = ucfirst($curr_dir);
+    $description = "Tyler Wittig's " . $page_name . " Page";
     $og_url_extension = $curr_dir.'/';
     $og_description_extension = ' - '.$page_name;
-    $add_css_file = '';
-    $add_js_file = '';
   }
 
+
+
+  // Cache Busting Function - append last modified date to filenames
   $timestamp = function($file_path) {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
   };
@@ -24,6 +29,7 @@
   <html lang="en" dir="ltr">
     <head>
       <title>Tyler Wittig | {$page_name}</title>
+      <meta name="description" content="{$description}" />
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Social Media Card -->
@@ -43,4 +49,21 @@
       <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
   		<script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
   TOP;
+
+  // page-specific CSS
+  if ($curr_dir != 'html') {
+    echo '<link rel="stylesheet" type="text/css" href="/css/'.$curr_dir.'?v='. $timestamp('/css/'.$curr_dir.'.css') .'" />';
+  }
+
+  // page-specific JS
+  if (in_array($curr_dir, array('html', 'contact'))) {
+    echo '<script src="/js/'.$curr_dir.'js?v='. $timestamp('/js/main.js') .'" defer></script>';
+  }
+
+  echo <<<HEAD_END
+  \n
+    </head>
+  	<body>
+  HEAD_END;
+
 ?>
