@@ -15,7 +15,7 @@
   //   return date('Ymd-His',filectime(basename($file_path)));
   // }
   $timestamp = function() {
-    return filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css');
+    return filemtime('/css/main.css');
   }
 
   echo <<<TOP
@@ -43,7 +43,7 @@
 
   echo <<<FILLER
     <body>
-    {$_SERVER["DOCUMENT_ROOT"].'/css/main.css'}
+    {$_SERVER["DOCUMENT_ROOT"]}/css/main.css
       <h1>Test</h1>
     </body>
   </html>
