@@ -18,8 +18,8 @@ echo <<<HEADER
     <a href="/">TW</a>
   </span>
   <nav>
-    <a href="/" {$if($curr_dir=='html','class="active"','')}>Home</a>
-    <a href="/projects/" {$if($curr_dir=='projects','class="active"','')}>Projects</a>
+    <a href="/"{$if($curr_dir=='html',' class="active"','')}>Home</a>
+    <a href="/projects/"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
     <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
       Résumé
     </a>

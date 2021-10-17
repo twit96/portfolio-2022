@@ -1,3 +1,6 @@
+<?php
+
+echo <<<FOOTER
 <footer>
 
   <div class="info">
@@ -8,9 +11,9 @@
   <div class="links">
 
     <nav>
-      <a href="/">Home</a>
-      <a href="/projects/">Projects</a>
-      <a href="/admin/">Admin</a>
+      <a href="/"{$if($curr_dir=='html',' class="active"','')}>Home</a>
+      <a href="/projects/"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
+      <a href="/admin/"{$if($curr_dir=='admin',' class="active"','')}>Admin</a>
     </nav>
 
     <div class="socials">
@@ -37,3 +40,6 @@
 
   <span>&copy; 2021 Tyler Wittig</span>
 </footer>
+FOOTER;
+
+?>

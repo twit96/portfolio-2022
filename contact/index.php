@@ -41,7 +41,7 @@ include('../templates/header.php');
 
 <?php
 
-	include('../templates/footer.html');
+	include('../templates/footer.php');
 
   echo <<<PAGE_END
   \n

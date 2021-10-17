@@ -11,7 +11,7 @@ include('../templates/header.php');
 echo '<section id="entries">';
 include('../php/admin_dashboard.php');
 echo '</section>';
-include('../templates/footer.html');
+include('../templates/footer.php');
 
 echo <<<PAGE_END
 \n
