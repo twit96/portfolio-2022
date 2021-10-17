@@ -40,7 +40,7 @@
   echo '<body>';
   echo '<h1>Test</h1>';
   echo filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css') . '<br />';
-  echo date('Ymd-His',filemtime(basename($_SERVER["DOCUMENT_ROOT"].'/css/main.css'))) . '<br />';
+  echo date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].'/css/main.css')) . '<br />';
 
 
   echo <<<BTM
