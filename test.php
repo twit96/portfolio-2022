@@ -13,7 +13,11 @@
 
   $timestamp = function($file_path) {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
-  };
+  }
+
+  $if = function($condition, $true, $false) {
+    return $condition ? $true : $false;
+  }
 
   echo <<<TOP
   <!DOCTYPE html>
