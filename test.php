@@ -43,7 +43,7 @@
 
   echo <<<FILLER
     <body>
-    {$_SERVER["DOCUMENT_ROOT"].'/css/main.css}
+    {$_SERVER["DOCUMENT_ROOT"].'/css/main.css'}
       <h1>Test</h1>
     </body>
   </html>
