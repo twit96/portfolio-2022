@@ -52,7 +52,7 @@
 
   // page-specific CSS
   if ($curr_dir != 'html') {
-    echo '<link rel="stylesheet" type="text/css" href="/css/'.$curr_dir.'?v='. $timestamp('/css/'.$curr_dir.'.css') .'" />';
+    echo '<link rel="stylesheet" type="text/css" href="/css/'.$curr_dir.'.css?v='. $timestamp('/css/'.$curr_dir.'.css') .'" />';
   }
 
   // page-specific JS
