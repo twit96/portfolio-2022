@@ -63,7 +63,7 @@ include('./templates/header.html');
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 90%;"></span>
+								<span class="fill" style="--fill-percent: 85%;"></span>
 							</div>
 						</div>
 					</div>
