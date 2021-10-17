@@ -157,7 +157,7 @@ include('./templates/header.html');
 						I build websites from the ground up to meet your needs.
 					</p>
 				</div>
-				<figure aria-hidden="true">
+				<figure>
 					<div class="website">
 						<div class="monitor">
 							<span class="title">Your Website</span>
