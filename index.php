@@ -63,7 +63,7 @@ include('./templates/header.html');
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 80%;"></span>
+								<span class="fill" style="--fill-percent: 90%;"></span>
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@ include('./templates/header.html');
 						</div>
 						<div class="slide-container">
 							<div class="slider">
-								<span class="fill" style="--fill-percent: 90%;"></span>
+								<span class="fill" style="--fill-percent: 95%;"></span>
 							</div>
 							<span class="bubble-text">+ jQuery</span>
 							<span class="bubble-text">+ Phaser</span>
