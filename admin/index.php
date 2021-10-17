@@ -4,7 +4,7 @@ include('../templates/head.php');
 
 echo <<<HEAD_END
 \n
-    <!-- Additional Head Tags -->
+    <!-- Page-Specific (Non-Templated) Head Tags -->
     <meta name="description" content="Tyler Wittig's Portfolio Admin Dashboard" />
     <link rel="stylesheet" type="text/css" href="/css/admin.css" />
   </head>
