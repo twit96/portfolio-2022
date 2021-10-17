@@ -37,9 +37,11 @@
   TOP;
 
   echo '</head>';
-?>
 
-  <body>
-    <h1>Test</h1>
-  </body>
-</html>
+  echo <<<FILLER
+    <body>
+      <h1>Test</h1>
+    </body>
+  </html>
+  FILLER;
+?>
