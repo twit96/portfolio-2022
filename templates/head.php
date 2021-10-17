@@ -56,7 +56,7 @@
 
   // page-specific JS
   if (in_array($curr_dir, array('html', 'contact'))) {
-    echo '<script src="/js/'.$curr_dir.'js?v='. $timestamp('/js/main.js') .'" defer></script>';
+    echo '<script src="/js/'.$curr_dir.'.js?v='. $timestamp('/js/main.js') .'" defer></script>';
   }
 
 ?>
