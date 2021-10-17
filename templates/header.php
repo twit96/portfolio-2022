@@ -1,3 +1,10 @@
+<?php
+
+$curr_dir = basename(getcwd());
+$if = function($condition, $true, $false) { return $condition ? $true : $false; };
+
+
+echo <<<HEADER
 <div id="loader"></div>
 
 <label id="dark-toggle-wrap" for="dark-toggle">
@@ -11,8 +18,8 @@
     <a href="/">TW</a>
   </span>
   <nav>
-    <a href="/">Home</a>
-    <a href="/projects/">Projects</a>
+    <a href="/" {$if($curr_dir=='html','class="active"','')}>Home</a>
+    <a href="/projects/" {$if($curr_dir=='projects','class="active"','')}>Projects</a>
     <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
       Résumé
     </a>
@@ -24,3 +31,7 @@
   </div>
   <div id="header-bg"></div>
 </header>
+HEADER;
+
+
+?>

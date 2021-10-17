@@ -7,7 +7,7 @@ echo <<<HEAD_END
 	<body>
 HEAD_END;
 
-include('../templates/header.html');
+include('../templates/header.php');
 include('../php/all_projects.php');
 include('../templates/footer.html');
 

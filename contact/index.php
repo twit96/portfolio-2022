@@ -11,7 +11,7 @@ echo <<<HEAD_END
 	<body>
 HEAD_END;
 
-include('../templates/header.html');
+include('../templates/header.php');
 
 ?>
 

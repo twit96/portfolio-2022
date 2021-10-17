@@ -7,7 +7,7 @@ echo <<<HEAD_END
 	<body>
 HEAD_END;
 
-include('../templates/header.html');
+include('../templates/header.php');
 echo '<section id="entries">';
 include('../php/admin_dashboard.php');
 echo '</section>';

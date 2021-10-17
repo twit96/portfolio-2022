@@ -79,6 +79,10 @@ a:hover { text-decoration: underline; }
 
 
 /* ---------------------------------------------------------- Custom Classes */
+
+/* active links */
+a.active { text-decoration: underline; }
+
 .bubble-text {
   white-space: nowrap;
   border-radius: 30px;
