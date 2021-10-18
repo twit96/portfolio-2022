@@ -4,7 +4,7 @@ $curr_dir = basename(getcwd());
 $if = function($condition, $true, $false) { return $condition ? $true : $false; };
 
 
-// Firefox Only Bug Patch - Hide Dark-Mode Toggle (style="display:none;" below)
+// Firefox-Only Bug Patch - Hide Dark-Mode Toggle if user on firefox (style="display:none;")
 if (isset($_SERVER['HTTP_USER_AGENT'])) {
   $agent = $_SERVER['HTTP_USER_AGENT'];
 }
