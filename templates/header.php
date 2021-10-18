@@ -4,10 +4,17 @@ $curr_dir = basename(getcwd());
 $if = function($condition, $true, $false) { return $condition ? $true : $false; };
 
 
+// Firefox Only Bug Patch - Hide Dark-Mode Toggle (style="display:none;" below)
+if (isset($_SERVER['HTTP_USER_AGENT'])) {
+  $agent = $_SERVER['HTTP_USER_AGENT'];
+}
+if (strlen(strstr($agent, 'Firefox')) > 0) { $browser = 'firefox'; }
+else { $browser = ''; }
+
 echo <<<HEADER
 <div id="loader"></div>
 
-<label id="dark-toggle-wrap" for="dark-toggle">
+<label id="dark-toggle-wrap" for="dark-toggle"{$if($browser=='firefox',' style="display:none;"','')}>
   <span class="hidden-text">Dark Mode Toggle</span>
   <input id="dark-toggle" type="checkbox">
   <span class="slider"></span>
