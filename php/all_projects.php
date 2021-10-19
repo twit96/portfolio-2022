@@ -20,46 +20,46 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
 
-    echo '<article>';
-    echo '<figure>';
+    echo "\n".'     <article>';
+    echo "\n".'       <figure>';
     if ($row['featured'] > 0) {
-      echo '  <div class="featured-badge">';
-      echo '    <span>#'.$row['featured'].'</span>';
-      echo '  </div>';
+      echo "\n".'         <div class="featured-badge">';
+      echo "\n".'           <span>#'.$row['featured'].'</span>';
+      echo "\n".'         </div>';
     }
-    echo '  <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
-    echo '  <figcaption>'.$row['blurb'].'</figcaption>';
-    echo '</figure>';
-    echo '<div>';
-    echo '  <h3>'.$row['title'].'</h3>';
-    echo '  <em>'.$row['date'].'</em>';
-    echo '  <p>'.$row['description'].'</p>';
+    echo "\n".'         <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
+    echo "\n".'         <figcaption>'.$row['blurb'].'</figcaption>';
+    echo "\n".'       </figure>';
+    echo "\n".'       <div>';
+    echo "\n".'         <h3>'.$row['title'].'</h3>';
+    echo "\n".'         <em>'.$row['date'].'</em>';
+    echo "\n".'         <p>'.$row['description'].'</p>';
 
     if (!is_null($row['primary_link']) && ($row['primary_link'] != "")) {
-      echo '    <a class="btn-text link" href="'.$row['primary_link'].'">';
-      echo '      <span class="icon"></span>';
-      echo '      '.$row['primary_link_text'];
-      echo '    </a>';
+      echo "\n".'         <a class="btn-text link" href="'.$row['primary_link'].'">';
+      echo "\n".'           <span class="icon"></span>';
+      echo "\n".'           '.$row['primary_link_text'];
+      echo "\n".'         </a>';
     }
     if (!is_null($row['secondary_link']) && ($row['secondary_link'] != "")) {
-      echo '    <a class="btn-text link" href="'.$row['secondary_link'].'">';
-      echo '      <span class="icon"></span>';
-      echo '      '.$row['secondary_link_text'];
-      echo '    </a>';
+      echo "\n".'         <a class="btn-text link" href="'.$row['secondary_link'].'">';
+      echo "\n".'           <span class="icon"></span>';
+      echo "\n".'           '.$row['secondary_link_text'];
+      echo "\n".'         </a>';
     }
     if (!is_null($row['tertiary_link']) && ($row['tertiary_link'] != "")) {
-      echo '    <a class="btn-text link" href="'.$row['tertiary_link'].'">';
-      echo '      <span class="icon"></span>';
-      echo '      '.$row['tertiary_link_text'];
-      echo '    </a>';
+      echo "\n".'         <a class="btn-text link" href="'.$row['tertiary_link'].'">';
+      echo "\n".'           <span class="icon"></span>';
+      echo "\n".'           '.$row['tertiary_link_text'];
+      echo "\n".'         </a>';
     }
 
-    echo '  </div>';
-    echo '</article>';
+    echo "\n".'        </div>';
+    echo "\n".'      </article>';
   }
 
   // Closing HTML
-  echo '</section>';
+  echo "\n".'     </section>';
 }
 
 
