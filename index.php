@@ -190,5 +190,5 @@ include('./templates/header.php');
     </section>
 
     <?php include('./templates/footer.php'); ?>
-	</body>
+  </body>
 </html>
