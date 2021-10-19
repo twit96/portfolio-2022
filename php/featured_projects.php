@@ -23,7 +23,7 @@ function displayFeatured($mysqli) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
-    echo '          <div class="card">';
+    echo "\n".'          <div class="card">';
     echo "\n".'            <div class="featured-badge">';
     echo "\n".'              <span>#'.$row['featured'].'</span>';
     echo "\n".'            </div>';
