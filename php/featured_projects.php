@@ -15,7 +15,6 @@ function displayFeatured($mysqli) {
             <h2>Featured</h2>
           </div>
           <div class="card-container">
-            \n
   TOP;
 
   // Select and Display Featured Projects
@@ -24,7 +23,7 @@ function displayFeatured($mysqli) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
-    echo "\n".'          <div class="card">';
+    echo '          <div class="card">';
     echo "\n".'            <div class="featured-badge">';
     echo "\n".'              <span>#'.$row['featured'].'</span>';
     echo "\n".'            </div>';
