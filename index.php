@@ -142,57 +142,53 @@ include('./templates/header.php');
       </div>
     </section>
 
-		<section id="demo">
-			<div class="wrapper">
-				<div class="blurb">
-					<h2>Your New Website</h2>
-					<p>
-						Whether a static website or one with an integrated database,
-						I build websites from the ground up to meet your needs.
-					</p>
-				</div>
-				<figure class="with-css with-js with-php with-sql with-host">
-					<div class="website">
-						<div class="monitor">
-							<span class="title">Your Website</span>
-						</div>
-						<span class="text">HTML</span>
-						<span class="text"> / CSS</span>
-						<span class="text"> / JS</span>
-					</div>
-					<div class="pipeline">
-						<span class="pipe"></span>
-						<span class="pipe"></span>
-						<span class="text">PHP</span>
-					</div>
-					<div class="database">
-						<div>
-							<span class="light"></span>
-							<span class="light"></span>
-							<span class="light"></span>
-							<span class="title">Database</span>
-						</div>
-						<span class="text">SQL</span>
-					</div>
-					<span class="text">Host</span>
-				</figure>
-			</div>
+    <section id="demo">
+      <div class="wrapper">
+        <div class="blurb">
+          <h2>Your New Website</h2>
+          <p>
+            Whether a static website or one with an integrated database,
+            I build websites from the ground up to meet your needs.
+          </p>
+        </div>
+        <figure class="with-css with-js with-php with-sql with-host">
+          <div class="website">
+            <div class="monitor">
+              <span class="title">Your Website</span>
+            </div>
+            <span class="text">HTML</span>
+            <span class="text"> / CSS</span>
+            <span class="text"> / JS</span>
+          </div>
+          <div class="pipeline">
+            <span class="pipe"></span>
+            <span class="pipe"></span>
+            <span class="text">PHP</span>
+          </div>
+          <div class="database">
+            <div>
+              <span class="light"></span>
+              <span class="light"></span>
+              <span class="light"></span>
+              <span class="title">Database</span>
+            </div>
+            <span class="text">SQL</span>
+          </div>
+          <span class="text">Host</span>
+        </figure>
+      </div>
+      <div id="demo-controls">
+        <div class="btn-text play">
+          <span class="icon"></span>
+          <span class="text">Play</span>
+        </div>
+        <div class="btn-text stop disabled">
+          <span class="icon"></span>
+          <span class="text">Stop</span>
+        </div>
+      </div>
+    </section>
 
-			<div id="demo-controls">
-				<div class="btn-text play">
-					<span class="icon"></span>
-					<span class="text">Play</span>
-				</div>
-				<div class="btn-text stop disabled">
-					<span class="icon"></span>
-					<span class="text">Stop</span>
-				</div>
-			</div>
-		</section>
-
-
-		<?php
-			include('./templates/footer.php');
-		?>
+		<?php include('./templates/footer.php'); ?>
 	</body>
 </html>
