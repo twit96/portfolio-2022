@@ -9,12 +9,13 @@ ini_set("display_errors", "on");
 function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <section id="featured">
-    <div class="flex">
-      <div class="heading-card">
-        <h2>Featured</h2>
-      </div>
-      <div class="card-container">
+    <section id="featured">
+      <div class="flex">
+        <div class="heading-card">
+          <h2>Featured</h2>
+        </div>
+        <div class="card-container">
+          \n
   TOP;
 
   // Select and Display Featured Projects
@@ -23,37 +24,37 @@ function displayFeatured($mysqli) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
-    echo '<div class="card">';
-    echo '  <div class="featured-badge">';
-    echo '    <span>#'.$row['featured'].'</span>';
-    echo '  </div>';
-    echo '  <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
-    echo '  <em>'.$row['blurb'].'</em>';
-    echo '  <div class="info">';
-    echo '    <div class="btn-text date">';
-    echo '      <span class="icon"></span>';
-    echo '      <span>'.$row['date'].'</span>';
-    echo '    </div>';
-    echo '    <a class="btn-text link" href="'.$row['primary_link'].'">';
-    echo '      <span class="icon"></span>';
-    echo '      '.$row['primary_link_text'];
-    echo '    </a>';
-    echo '  </div>';
-    echo '</div>';
+    echo '\n          <div class="card">';
+    echo '\n            <div class="featured-badge">';
+    echo '\n              <span>#'.$row['featured'].'</span>';
+    echo '\n            </div>';
+    echo '\n            <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
+    echo '\n            <em>'.$row['blurb'].'</em>';
+    echo '\n            <div class="info">';
+    echo '\n              <div class="btn-text date">';
+    echo '\n                <span class="icon"></span>';
+    echo '\n                <span>'.$row['date'].'</span>';
+    echo '\n              </div>';
+    echo '\n              <a class="btn-text link" href="'.$row['primary_link'].'">';
+    echo '\n                <span class="icon"></span>';
+    echo '\n                '.$row['primary_link_text'];
+    echo '\n              </a>';
+    echo '\n            </div>';
+    echo '\n          </div>';
   }
 
   // Closing HTML
   echo <<<BOTTOM
-        <a class="card link" href="/projects/">
-          <span>View All <br />Projects</span>
-        </a>
+          <a class="card link" href="/projects/">
+            <span>View All <br />Projects</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <p>
-      To view all of my work, please visit my
-      <a href="/projects/">projects page</a>.
-    </p>
-  </section>
+      <p>
+        To view all of my work, please visit my
+        <a href="/projects/">projects page</a>.
+      </p>
+    </section>
 
   BOTTOM;
 }
