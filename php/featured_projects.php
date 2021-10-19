@@ -39,12 +39,12 @@ function displayFeatured($mysqli) {
     echo "\n".'                '.$row['primary_link_text'];
     echo "\n".'              </a>';
     echo "\n".'            </div>';
-    echo "\n".'          </div>'."\n";
+    echo "\n".'          </div>';
   }
 
   // Closing HTML
   echo <<<BOTTOM
-            <a class="card link" href="/projects/">
+  \n          <a class="card link" href="/projects/">
               <span>View All <br />Projects</span>
             </a>
           </div>
