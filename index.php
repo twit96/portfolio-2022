@@ -48,101 +48,99 @@ include('./templates/header.php');
     <?php include('./php/featured_projects.php'); ?>
 
     <section id="skills">
-			<h2>My Skills</h2>
-			<div class="flex">
-				<article>
-					<h3>Languages and Frameworks</h3>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">HTML</b>
-							<span>3 years</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 85%;"></span>
-							</div>
-						</div>
-					</div>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">CSS</b>
-							<span>3 years</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 97%;"></span>
-							</div>
-						</div>
-					</div>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">JavaScript</b>
-							<span>3 years</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 95%;"></span>
-							</div>
-							<span class="bubble-text">+ jQuery</span>
-							<span class="bubble-text">+ Phaser</span>
-						</div>
-					</div>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">Python</b>
-							<span>4 years</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 95%;"></span>
-							</div>
-							<span class="bubble-text">+ Pandas</span>
-						</div>
-					</div>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">PHP</b>
-							<span>1 year</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 80%;"></span>
-							</div>
-							<span class="bubble-text">+ MySQLi</span>
-						</div>
-					</div>
-					<div class="skill-box">
-						<div class="details">
-							<b class="bubble-text">SQL</b>
-							<span>1 year</span>
-						</div>
-						<div class="slide-container">
-							<div class="slider">
-								<span class="fill" style="--fill-percent: 60%;"></span>
-							</div>
-						</div>
-					</div>
-				</article>
-
-				<article>
-					<h3>Version Control and Runtimes</h3>
-					<span class="bubble-text">Git</span>
-					<span class="bubble-text">Linux</span>
-					<span class="bubble-text">Apache</span>
-					<span class="bubble-text">NGINX</span>
-					<span class="bubble-text">Atom</span>
-					<span class="bubble-text">Jupyter</span>
-					<h3>Asset Development</h3>
-					<span class="bubble-text">Tiled</span>
-					<span class="bubble-text">Aseprite</span>
-					<span class="bubble-text">FL Studio</span>
-					<span class="bubble-text">Finale</span>
-					<span class="bubble-text">Windows Video Editor</span>
-					<span class="bubble-text">Paint 3D</span>
-				</article>
-			</div>
+      <h2>My Skills</h2>
+      <div class="flex">
+        <article>
+          <h3>Languages and Frameworks</h3>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">HTML</b>
+              <span>3 years</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 85%;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">CSS</b>
+              <span>3 years</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 97%;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">JavaScript</b>
+              <span>3 years</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 95%;"></span>
+              </div>
+              <span class="bubble-text">+ jQuery</span>
+              <span class="bubble-text">+ Phaser</span>
+            </div>
+          </div>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">Python</b>
+              <span>4 years</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 95%;"></span>
+              </div>
+              <span class="bubble-text">+ Pandas</span>
+            </div>
+          </div>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">PHP</b>
+              <span>1 year</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 80%;"></span>
+              </div>
+              <span class="bubble-text">+ MySQLi</span>
+            </div>
+          </div>
+          <div class="skill-box">
+            <div class="details">
+              <b class="bubble-text">SQL</b>
+              <span>1 year</span>
+            </div>
+            <div class="slide-container">
+              <div class="slider">
+                <span class="fill" style="--fill-percent: 60%;"></span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article>
+          <h3>Version Control and Runtimes</h3>
+          <span class="bubble-text">Git</span>
+          <span class="bubble-text">Linux</span>
+          <span class="bubble-text">Apache</span>
+          <span class="bubble-text">NGINX</span>
+          <span class="bubble-text">Atom</span>
+          <span class="bubble-text">Jupyter</span>
+          <h3>Asset Development</h3>
+          <span class="bubble-text">Tiled</span>
+          <span class="bubble-text">Aseprite</span>
+          <span class="bubble-text">FL Studio</span>
+          <span class="bubble-text">Finale</span>
+          <span class="bubble-text">Windows Video Editor</span>
+          <span class="bubble-text">Paint 3D</span>
+        </article>
+      </div>
     </section>
-
 
 		<section id="demo">
 			<div class="wrapper">
