@@ -1,7 +1,7 @@
 <?php
 
 echo <<<FOOTER
-<footer>
+    <footer>
       <div class="info">
         <img class="logo" src="/img/profile.jpg" alt="Profile Image"/>
         <span><em>Tyler Wittig</em> | Web Developer</span>
