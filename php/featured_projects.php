@@ -53,7 +53,7 @@ function displayFeatured($mysqli) {
           To view all of my work, please visit my
           <a href="/projects/">projects page</a>.
         </p>
-      </section>
+      </section>\n
   BOTTOM;
 }
 

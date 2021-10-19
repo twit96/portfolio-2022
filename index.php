@@ -45,7 +45,6 @@ include('./templates/header.php');
       </div>  <!-- ./details -->
     </section>
 
-    <!-- Featured Projects Section -->
     <?php include('./php/featured_projects.php'); ?>
 
     <section id="skills">
