@@ -9,8 +9,8 @@ ini_set("display_errors", "on");
 function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <section id="projects">
-    <h2>Projects</h2>
+  \n    <section id="projects">
+        <h2>Projects</h2>\n
   TOP;
 
 
