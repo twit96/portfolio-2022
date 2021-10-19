@@ -40,12 +40,12 @@
       <meta property="og:image" content="/img/site-card.png" />
       <meta property="og:description" content="Tyler Wittig's Portfolio Website{$og_description_extension}" />
       <!-- make the og:image larger -->
-  		<meta name="twitter:card" content="summary_large_image">
-  		<!-- end of social media card -->
+      <meta name="twitter:card" content="summary_large_image">
+      <!-- end of social media card -->
       <link rel="icon" href="/img/icon.png" />
-  		<link rel="preconnect" href="https://fonts.googleapis.com">
-  		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
   		<script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
   TOP;
@@ -54,10 +54,10 @@
   // Page-Specific Tags
   ($curr_dir == 'html') ? $curr_page = 'home' : $curr_page = $curr_dir;
   // CSS
-  echo "\n\t\t".'<link rel="stylesheet" type="text/css" href="/css/'.$curr_page.'.css?v='. $timestamp('/css/'.$curr_page.'.css') .'" />';
+  echo "\n\t".'<link rel="stylesheet" type="text/css" href="/css/'.$curr_page.'.css?v='. $timestamp('/css/'.$curr_page.'.css') .'" />';
   // JS
   if (in_array($curr_page, array('home', 'contact'))) {
-    echo "\n\t\t".'<script src="/js/'.$curr_page.'.js?v='. $timestamp('/js/main.js') .'" defer></script>';
+    echo "\n\t".'<script src="/js/'.$curr_page.'.js?v='. $timestamp('/js/main.js') .'" defer></script>';
   }
 
 ?>
