@@ -39,22 +39,21 @@ function displayFeatured($mysqli) {
     echo "\n".'                '.$row['primary_link_text'];
     echo "\n".'              </a>';
     echo "\n".'            </div>';
-    echo "\n".'          </div>';
+    echo "\n".'          </div>'."\n";
   }
 
   // Closing HTML
   echo <<<BOTTOM
-          <a class="card link" href="/projects/">
-            <span>View All <br />Projects</span>
-          </a>
+            <a class="card link" href="/projects/">
+              <span>View All <br />Projects</span>
+            </a>
+          </div>
         </div>
-      </div>
-      <p>
-        To view all of my work, please visit my
-        <a href="/projects/">projects page</a>.
-      </p>
-    </section>
-
+        <p>
+          To view all of my work, please visit my
+          <a href="/projects/">projects page</a>.
+        </p>
+      </section>
   BOTTOM;
 }
 
