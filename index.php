@@ -10,18 +10,18 @@ include('./templates/header.php');
 
 ?>
 
-		<section id="intro">
-			<div id="main-logo-wrap">
-				<img id="main-logo" src="/img/icon.png" alt="site logo" />
-				<span class="main-logo-overlay"></span>
-			</div>
+    <section id="intro">
+      <div id="main-logo-wrap">
+        <img id="main-logo" src="/img/icon.png" alt="site logo" />
+        <span class="main-logo-overlay"></span>
+      </div>
       <div class="blurb">
         <p>
           Well <i>hello</i> world,
           <br />
           My name is Tyler and I am a full-stack web developer.<br />
           I specialize in...
-  			</p>
+        </p>
         <p>
           <span class="active tagline">Custom Websites</span>
           <span class="tagline">Website Redesigns</span>
@@ -31,19 +31,19 @@ include('./templates/header.php');
       <div class="details">
         <h1>Tyler Wittig</h1>
         <h2>Web Developer</h2>
-				<div class="links">
-					<a href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
-						<img src="/img/logo_email.png" alt="twitter logo" />
-					</a>
-					<a href="https://github.com/twit96" target="_blank" rel="noreferrer">
-						<img src="/img/logo_github.png" alt="github logo" />
-					</a>
-					<a href="https://www.linkedin.com/in/tylerwittig/" target="_blank" rel="noreferrer">
-						<img src="/img/logo_linkedin.png" alt="linkedin logo" />
-					</a>
-				</div>  <!-- ./links -->
+        <div class="links">
+          <a href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
+            <img src="/img/logo_email.png" alt="twitter logo" />
+          </a>
+          <a href="https://github.com/twit96" target="_blank" rel="noreferrer">
+            <img src="/img/logo_github.png" alt="github logo" />
+          </a>
+          <a href="https://www.linkedin.com/in/tylerwittig/" target="_blank" rel="noreferrer">
+            <img src="/img/logo_linkedin.png" alt="linkedin logo" />
+          </a>
+        </div>  <!-- ./links -->
       </div>  <!-- ./details -->
-		</section>
+    </section>
 
 
 		<!-- Featured Projects Section -->
