@@ -11,7 +11,6 @@ include('../php/all_projects.php');
 include('../templates/footer.php');
 
 echo <<<PAGE_END
-\n
   </body>
 </html>
 PAGE_END;
