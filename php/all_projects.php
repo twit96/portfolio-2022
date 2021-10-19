@@ -10,7 +10,7 @@ function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
   \n\n    <section id="projects">
-        <h2>Projects</h2>\n
+        <h2>Projects</h2>
   TOP;
 
 
@@ -20,7 +20,7 @@ function displayFeatured($mysqli) {
 
   while ($row = $result->fetch_assoc()) {
 
-    echo '      <article>';
+    echo "\n".'      <article>';
     echo "\n".'        <figure>';
     if ($row['featured'] > 0) {
       echo "\n".'          <div class="featured-badge">';
