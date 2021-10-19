@@ -12,21 +12,6 @@ logo_lg.onload = function() {
   main_logo.classList.remove("blurred");
 }
 
-var window_height = window.innerHeight;
-var main_logo_wrap = document.getElementById("main-logo-wrap");
-var scroll_pos;
-var rotate_z;
-window.addEventListener('scroll', ()=> {
-  scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
-  if (scroll_pos <= window_height) {
-    rotate_z = (scroll_pos * 90 / window_height) + "deg";
-    main_logo_wrap.style.transform =
-    "translate(calc(67% + " + scroll_pos + "px), calc(-50% - " + scroll_pos + "px))" +
-    "rotateZ(" + rotate_z + ")";
-  }
-
-});
-
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
 var active_idx = 0;
