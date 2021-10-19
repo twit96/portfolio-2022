@@ -33,12 +33,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Social Media Card -->
-  		<meta name="author" content="Tyler Wittig" />
+      <meta name="author" content="Tyler Wittig" />
       <meta property="og:title" content="Tyler Wittig | {$page_name}"/>
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://tylerwittig.com/{$og_url_extension}" />
-  		<meta property="og:image" content="/img/site-card.png" />
-  		<meta property="og:description" content="Tyler Wittig's Portfolio Website{$og_description_extension}" />
+      <meta property="og:image" content="/img/site-card.png" />
+      <meta property="og:description" content="Tyler Wittig's Portfolio Website{$og_description_extension}" />
       <!-- make the og:image larger -->
   		<meta name="twitter:card" content="summary_large_image">
   		<!-- end of social media card -->
