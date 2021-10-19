@@ -29,6 +29,13 @@ section:not(#intro) {
   align-items: center;
   border: max(1.75vmax, 20px) solid var(--green-shadow);
   background: var(--green-shadow);
+  animation-name: shift-out;
+  animation-duration: 1s;
+  animation-play-state: paused;
+}
+@keyframes shift-out {
+  0% {   transform: translate(67%, -50%)   rotateZ(0); }
+  100% { transform: translate(125%, -100%) rotateZ(90deg); }
 }
 #main-logo {
   width: 100vmax;

@@ -14,15 +14,10 @@ logo_lg.onload = function() {
 
 var window_height = window.innerHeight;
 var main_logo_wrap = document.getElementById("main-logo-wrap");
-var scroll_pos;
-var rotate_z;
 window.addEventListener('scroll', ()=> {
   scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
   if (scroll_pos <= window_height) {
-    rotate_z = (scroll_pos * 90 / window_height) + "deg";
-    main_logo_wrap.style.transform =
-    "translate(calc(67% + " + scroll_pos + "px), calc(-50% - " + scroll_pos + "px))" +
-    "rotateZ(" + rotate_z + ")";
+    main_logo_wrap.style.animationDelay = -1 * scroll_pos / window_height + "s";
   }
 
 });
