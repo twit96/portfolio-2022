@@ -2,9 +2,8 @@
 
 include('../templates/head.php');
 echo <<<HEAD_END
-\n
-  </head>
-	<body>
+\n  </head>
+  <body>
 HEAD_END;
 
 include('../templates/header.php');
