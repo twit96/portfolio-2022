@@ -10,12 +10,12 @@ function displayFeatured($mysqli) {
   // Opening HTML
   echo <<<TOP
   <section id="featured">
-    <div class="flex">
-      <div class="heading-card">
-        <h2>Featured</h2>
-      </div>
-      <div class="card-container">
-        \n
+        <div class="flex">
+          <div class="heading-card">
+            <h2>Featured</h2>
+          </div>
+          <div class="card-container">
+            \n
   TOP;
 
   // Select and Display Featured Projects
