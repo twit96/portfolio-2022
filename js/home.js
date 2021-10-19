@@ -14,6 +14,7 @@ logo_lg.onload = function() {
 
 var window_height = window.innerHeight;
 var main_logo_wrap = document.getElementById("main-logo-wrap");
+var scroll_pos;
 window.addEventListener('scroll', ()=> {
   scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
   if (scroll_pos <= window_height) {
