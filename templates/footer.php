@@ -2,20 +2,16 @@
 
 echo <<<FOOTER
 <footer>
-
   <div class="info">
     <img class="logo" src="/img/profile.jpg" alt="Profile Image"/>
     <span><em>Tyler Wittig</em> | Web Developer</span>
   </div>
-
   <div class="links">
-
     <nav>
       <a href="/"{$if($curr_dir=='html',' class="active"','')}>Home</a>
       <a href="/projects/"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
       <a href="/admin/"{$if($curr_dir=='admin',' class="active"','')}>Admin</a>
     </nav>
-
     <div class="socials">
       <div>
         <a class="social-icon" href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
@@ -34,10 +30,8 @@ echo <<<FOOTER
       <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
         Download my Résumé
       </a>
-    </div>
-
+    </div>  <!-- ./socials -->
   </div>  <!-- ./links -->
-
   <span>&copy; 2021 Tyler Wittig</span>
 </footer>
 FOOTER;
