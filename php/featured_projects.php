@@ -24,23 +24,23 @@ function displayFeatured($mysqli) {
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   while ($row = $result->fetch_assoc()) {
-    echo '\n          <div class="card">';
-    echo '\n            <div class="featured-badge">';
-    echo '\n              <span>#'.$row['featured'].'</span>';
-    echo '\n            </div>';
-    echo '\n            <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
-    echo '\n            <em>'.$row['blurb'].'</em>';
-    echo '\n            <div class="info">';
-    echo '\n              <div class="btn-text date">';
-    echo '\n                <span class="icon"></span>';
-    echo '\n                <span>'.$row['date'].'</span>';
-    echo '\n              </div>';
-    echo '\n              <a class="btn-text link" href="'.$row['primary_link'].'">';
-    echo '\n                <span class="icon"></span>';
-    echo '\n                '.$row['primary_link_text'];
-    echo '\n              </a>';
-    echo '\n            </div>';
-    echo '\n          </div>';
+    echo "\n".'          <div class="card">';
+    echo "\n".'            <div class="featured-badge">';
+    echo "\n".'              <span>#'.$row['featured'].'</span>';
+    echo "\n".'            </div>';
+    echo "\n".'            <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
+    echo "\n".'            <em>'.$row['blurb'].'</em>';
+    echo "\n".'            <div class="info">';
+    echo "\n".'              <div class="btn-text date">';
+    echo "\n".'                <span class="icon"></span>';
+    echo "\n".'                <span>'.$row['date'].'</span>';
+    echo "\n".'              </div>';
+    echo "\n".'              <a class="btn-text link" href="'.$row['primary_link'].'">';
+    echo "\n".'                <span class="icon"></span>';
+    echo "\n".'                '.$row['primary_link_text'];
+    echo "\n".'              </a>';
+    echo "\n".'            </div>';
+    echo "\n".'          </div>';
   }
 
   // Closing HTML
