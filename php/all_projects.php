@@ -54,12 +54,12 @@ function displayFeatured($mysqli) {
       echo "\n".'          </a>';
     }
 
-    echo "\n".'         </div>';
-    echo "\n".'       </article>';
+    echo "\n".'        </div>';
+    echo "\n".'      </article>';
   }
 
   // Closing HTML
-  echo "\n".'     </section>'."\n\n";
+  echo "\n".'    </section>'."\n\n";
 }
 
 
