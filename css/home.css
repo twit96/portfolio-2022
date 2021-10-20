@@ -18,7 +18,7 @@ section:not(#intro) {
 
 
 #main-logo-wrap {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
@@ -30,6 +30,7 @@ section:not(#intro) {
   border: max(1.75vmax, 20px) solid var(--green-shadow);
   background: var(--green-shadow);
 }
+#main-logo-wrap.hidden { transform: translate(100%, -50%); }
 #main-logo {
   width: 100vmax;
   height: 100vmax;

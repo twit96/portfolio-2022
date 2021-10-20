@@ -201,30 +201,30 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 
 // Throttle Scroll Event Listeners --------------------------------------------
-window.addEventListener('scroll', _.throttle(scrollEvents, 200));
+// window.addEventListener('scroll', (_.throttle(scrollEvents, 200)));
+window.addEventListener('scroll', scrollEvents);
+var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
 
 function scrollEvents() {
   // Get Relevant Values
-  var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
-  var header_has_class = header.classList.contains("filled");
-  var scroll_top_has_class = scroll_top_btn.classList.contains("displayed");
+  scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
 
   // Manage Header State
   if (
-    ((scroll_pos > 0) && (!header_has_class)) ||
-    ((scroll_pos == 0) && (header_has_class))
+    ((scroll_pos > 0) && (!header.classList.contains("filled"))) ||
+    ((scroll_pos == 0) && (header.classList.contains("filled")))
   ) { requestAnimationFrame(toggleHeaderState); }
-
-  // Manage Scroll Top Btn State
-  if (
-    ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_has_class)) ||
-    ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_has_class))
-  ) {
-    requestAnimationFrame(toggleScrollTopBtn);
-  }
 
   // Manage Scroll Down Indicator State
   if ((!triggered_scroll_down_indicator_listeners) && (scroll_pos > 100)) {
     requestAnimationFrame(triggerScrollDownIndicatorListeners);
+  }
+
+  // Manage Scroll Top Btn State
+  if (
+    ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_btn.classList.contains("displayed"))) ||
+    ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_btn.classList.contains("displayed")))
+  ) {
+    requestAnimationFrame(toggleScrollTopBtn);
   }
 }
