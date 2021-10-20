@@ -37,7 +37,7 @@ echo <<<HEADER
         <span></span>
       </div>
       <div id="header-bg"></div>
-    </header>
+    </header>\n
 HEADER;
 
 
