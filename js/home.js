@@ -18,18 +18,25 @@ var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop)
 window.addEventListener('scroll', ()=> {
   scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
   if (scroll_pos < window.innerHeight) {
-    if (main_logo_wrap.classList.contains('hidden')) {
-      main_logo_wrap.classList.remove('hidden');
-    }
-    main_logo_wrap.style.transform =
-    "translate(calc(67% + "+scroll_pos+"px),calc(-50% - "+scroll_pos+"px))" +
-    "rotate(" + (scroll_pos * 90 / window.innerHeight) + "deg)";
+    requestAnimationFrame(updateLogoPosition);
   } else {
-    if (!main_logo_wrap.classList.contains('hidden')) {
-      main_logo_wrap.classList.add('hidden');
-    }
+    requestAnimationFrame(hideLogo);
   }
 });
+
+function updateLogoPosition() {
+  if (main_logo_wrap.classList.contains('hidden')) {
+    main_logo_wrap.classList.remove('hidden');
+  }
+  main_logo_wrap.style.transform =
+  "translate(calc(67% + "+scroll_pos+"px),calc(-50% - "+scroll_pos+"px))" +
+  "rotate(" + (scroll_pos * 90 / window.innerHeight) + "deg)";
+}
+function hideLogo() {
+  if (!main_logo_wrap.classList.contains('hidden')) {
+    main_logo_wrap.classList.add('hidden');
+  }
+}
 
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
