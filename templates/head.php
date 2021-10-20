@@ -47,6 +47,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
+      <script src="/js/lodash.min.js?v={$timestamp('/js/main.js')}" defer></script>
       <script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
   TOP;
 
