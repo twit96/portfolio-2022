@@ -33,7 +33,7 @@ echo <<<FOOTER
         </div>  <!-- ./socials -->
       </div>  <!-- ./links -->
       <span>&copy; 2021 Tyler Wittig</span>
-    </footer>\n
+    </footer>\n\n
 FOOTER;
 
 ?>
