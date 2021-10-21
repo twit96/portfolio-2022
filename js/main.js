@@ -201,7 +201,6 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 
 // Throttle Scroll Event Listeners --------------------------------------------
-// window.addEventListener('scroll', (_.throttle(scrollEvents, 200)));
 window.addEventListener('scroll', scrollEvents);
 var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
 
