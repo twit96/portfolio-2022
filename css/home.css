@@ -18,7 +18,8 @@ section:not(#intro) {
 
 
 #main-logo-wrap {
-  position: fixed;
+  position: absolute;
+  /* position: fixed; */
   right: 0;
   top: 50vh;
   transform: translate(67%, -50%);
@@ -30,20 +31,20 @@ section:not(#intro) {
   border: max(1.75vmax, 20px) solid var(--green-shadow);
   background: var(--green-shadow);
 }
-#main-logo-wrap.hidden { transform: translate(100%, -50%); }
+/* #main-logo-wrap.hidden { transform: translate(100%, -50%); } */
 #main-logo {
   width: 100vmax;
   height: 100vmax;
-  /* animation: 3s teeter ease-in-out alternate infinite; */
+  animation: 3s teeter ease-in-out alternate infinite;
 }
-/* @media (prefers-reduced-motion) {
-  #main-logo { animation-delay: -1.5s; }
-} */
-#main-logo.blurred { filter: blur(5px); }
-/* @keyframes teeter {
+@keyframes teeter {
   0% { transform: rotate(-2.5deg); }
   100% { transform: rotate(2.5deg); }
-} */
+}
+@media (prefers-reduced-motion) {
+  #main-logo { animation-delay: -1.5s; }
+}
+#main-logo.blurred { filter: blur(5px); }
 .main-logo-overlay {
   content: '';
   position: absolute;
