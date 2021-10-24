@@ -201,12 +201,15 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 
 // Throttle Scroll Event Listeners --------------------------------------------
-window.addEventListener('scroll', scrollEvents);
-var scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
+function getScrollPos() {
+  return (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
+}
+var scroll_pos = getScrollPos();
+
 
 function scrollEvents() {
   // Get Relevant Values
-  scroll_pos = (document.body.scrollTop || document.documentElement.scrollTop);
+  scroll_pos = getScrollPos();
 
   // Manage Header State
   if (
@@ -227,3 +230,4 @@ function scrollEvents() {
     requestAnimationFrame(toggleScrollTopBtn);
   }
 }
+window.addEventListener('scroll', scrollEvents);
