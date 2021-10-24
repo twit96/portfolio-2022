@@ -225,12 +225,11 @@ section:not(#intro) {
   min-width: inherit;
   border: 0;
   border-radius: 15px;
-  /* animated background */
   background-image: linear-gradient(
     30deg, var(--indigo), var(--blue), var(--indigo)
     );
   background-size: 300% 300%;
-  animation: 6s bg-shift ease-in-out infinite;
+  background-position: center;
   transform: scale(0.95);
 }
 #featured a.card:hover {

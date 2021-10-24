@@ -237,8 +237,8 @@ function scrollEvents() {
 
 
 /**
- * Calls rAF if it hasn't been done already.
- */
+* Calls rAF if it hasn't been done already.
+*/
 function requestTick() {
   if (!ticking) {
     requestAnimationFrame(scrollEvents);
@@ -248,8 +248,8 @@ function requestTick() {
 
 
 /**
- * Scroll event callback - tracks scroll position and requests animation tick.
- */
+* Scroll event callback - tracks scroll position and requests animation tick.
+*/
 function onScroll() {
   scroll_pos = getScrollPos();
   requestTick();
