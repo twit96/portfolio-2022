@@ -205,21 +205,22 @@ function getScrollPos() {
   return (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
 }
 var scroll_pos = getScrollPos();
+var ticking = false;
 
 
+/**
+* Animation Callback.
+*/
 function scrollEvents() {
-  // Get Relevant Values
-  scroll_pos = getScrollPos();
-
   // Manage Header State
   if (
     ((scroll_pos > 0) && (!header.classList.contains("filled"))) ||
     ((scroll_pos == 0) && (header.classList.contains("filled")))
-  ) { requestAnimationFrame(toggleHeaderState); }
+  ) { toggleHeaderState(); }
 
   // Manage Scroll Down Indicator State
   if ((!triggered_scroll_down_indicator_listeners) && (scroll_pos > 100)) {
-    requestAnimationFrame(triggerScrollDownIndicatorListeners);
+    triggerScrollDownIndicatorListeners();
   }
 
   // Manage Scroll Top Btn State
@@ -227,7 +228,31 @@ function scrollEvents() {
     ((scroll_pos > scroll_top_trigger_height) && (!scroll_top_btn.classList.contains("displayed"))) ||
     ((scroll_pos <= scroll_top_trigger_height) && (scroll_top_btn.classList.contains("displayed")))
   ) {
-    requestAnimationFrame(toggleScrollTopBtn);
+    toggleScrollTopBtn();
+  }
+
+  // reset ticking
+  ticking = false;
+}
+
+
+/**
+ * Calls rAF if it hasn't been done already.
+ */
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(scrollEvents);
+    ticking = true;
   }
 }
-window.addEventListener('scroll', scrollEvents);
+
+
+/**
+ * Scroll event callback - tracks scroll position and requests animation tick.
+ */
+function onScroll() {
+  scroll_pos = getScrollPos();
+  requestTick();
+}
+
+window.addEventListener('scroll', onScroll);
