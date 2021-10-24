@@ -19,7 +19,7 @@ var rand_anim_duration;
 var rand_anim_delay;
 
 // random leaves
-for (i=0; i<15; i++) {
+for (i=0; i<10; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("leaf");
   // generate random attributes
