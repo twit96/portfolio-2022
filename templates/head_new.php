@@ -1,10 +1,10 @@
 <?php
 
   // Configure Head Tag Info
-  $file = basename($path, ".php");
 
+  // $file declared above include for this file on each page
   // homepage
-  if ($file == 'index') {
+  if (FILENAME == 'index') {
     $page_name = 'Web Developer';
     $description = "Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development.";
     $og_url_extension = '';
@@ -12,9 +12,9 @@
   }
   // other pages
   else {
-    $page_name = ucfirst($file);
+    $page_name = ucfirst(FILENAME);
     $description = "Tyler Wittig's " . $page_name . " Page";
-    $og_url_extension = $file;
+    $og_url_extension = $path;
     $og_description_extension = ' - '.$page_name;
   }
 
@@ -52,7 +52,7 @@
 
 
   // Page-Specific Tags
-  ($file == 'index') ? $curr_page = 'home' : $curr_page = $file;
+  (FILENAME == 'index') ? $curr_page = 'home' : $curr_page = FILENAME;
   // CSS
   echo "\n\t".'<link rel="stylesheet" type="text/css" href="/css/'.$curr_page.'.css?v='. $timestamp('/css/'.$curr_page.'.css') .'" />';
   // JS
