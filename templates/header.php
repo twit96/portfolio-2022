@@ -1,8 +1,6 @@
 <?php
 
-$curr_dir = basename(getcwd());
 $if = function($condition, $true, $false) { return $condition ? $true : $false; };
-
 
 // Firefox-Only Bug Patch - Hide Dark-Mode Toggle if user on firefox (style="display:none;")
 if (isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -25,8 +23,8 @@ echo <<<HEADER
         <a href="/">TW</a>
       </span>
       <nav>
-        <a href="/"{$if($curr_dir=='html',' class="active"','')}>Home</a>
-        <a href="/projects"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
+        <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>
+        <a href="/projects"{$if(FILENAME=='projects',' class="active"','')}>Projects</a>
         <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
           Résumé
         </a>
