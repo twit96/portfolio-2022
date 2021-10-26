@@ -1,7 +1,7 @@
 <?php
 
 DEFINE("FILENAME", 'projects');
-include('./templates/head_new.php');
+include('./templates/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
