@@ -14,7 +14,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<!-- <script src="card.js" defer></script> -->
 	</head>
-  <body style="background: var(--grey-light);">
+  <body class="back">
 	<!-- <body>		 -->
 		<div class="bg-wrap">
 			<section id="back">
