@@ -1,6 +1,6 @@
 <?php
 
-include('./templates/head.php');
+include('./templates/head_new.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
