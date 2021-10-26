@@ -27,7 +27,7 @@ function displayFeatured($mysqli) {
     echo "\n".'            <div class="featured-badge">';
     echo "\n".'              <span>#'.$row['featured'].'</span>';
     echo "\n".'            </div>';
-    echo "\n".'            <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
+    echo "\n".'            <img src="/img/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
     echo "\n".'            <em>'.$row['blurb'].'</em>';
     echo "\n".'            <div class="info">';
     echo "\n".'              <div class="btn-text date">';
@@ -44,14 +44,14 @@ function displayFeatured($mysqli) {
 
   // Closing HTML
   echo <<<BOTTOM
-  \n          <a class="card link" href="/projects/">
+  \n          <a class="card link" href="/projects">
               <span>View All <br />Projects</span>
             </a>
           </div>
         </div>
         <p>
           To view all of my work, please visit my
-          <a href="/projects/">projects page</a>.
+          <a href="/projects">projects page</a>.
         </p>
       </section>\n
   BOTTOM;

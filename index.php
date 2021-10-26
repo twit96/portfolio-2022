@@ -1,5 +1,6 @@
 <?php
 
+DEFINE("FILENAME", 'home');
 include('./templates/head.php');
 echo <<<HEAD_END
 \n  </head>

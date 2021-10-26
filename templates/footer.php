@@ -9,8 +9,8 @@ echo <<<FOOTER
       <div class="links">
         <nav>
           <a href="/"{$if($curr_dir=='html',' class="active"','')}>Home</a>
-          <a href="/projects/"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
-          <a href="/admin/"{$if($curr_dir=='admin',' class="active"','')}>Admin</a>
+          <a href="/projects"{$if($curr_dir=='projects',' class="active"','')}>Projects</a>
+          <a href="/admin"{$if($curr_dir=='admin',' class="active"','')}>Admin</a>
         </nav>
         <div class="socials">
           <div>

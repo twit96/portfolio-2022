@@ -27,7 +27,7 @@ function displayFeatured($mysqli) {
       echo "\n".'            <span>#'.$row['featured'].'</span>';
       echo "\n".'          </div>';
     }
-    echo "\n".'          <img src="/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
+    echo "\n".'          <img src="/img/projects/'.$row['directory'].'/'.$row['image'].'" loading="lazy" alt="'.$row['title'].' Title Card" />';
     echo "\n".'          <figcaption>'.$row['blurb'].'</figcaption>';
     echo "\n".'        </figure>';
     echo "\n".'        <div>';

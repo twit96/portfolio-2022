@@ -12,7 +12,7 @@ function doLogin() {
   echo <<<TOP
   <h2>Admin Login</h2>
   <div id="login">
-    <form method="POST" action="index.php">
+    <form method="POST" action="admin.php">
       <p>
         Username:
         <input name="username" type="text" placeholder="Username" required />
@@ -146,7 +146,7 @@ function buildDashboard($mysqli) {
   // Closing HTML
   echo <<<BOTTOM
     </table>
-    <form id="logout" method="POST" action="index.php">
+    <form id="logout" method="POST" action="admin.php">
       <input name="logout" type="submit" value="Logout" />
     </form>
   </section>
@@ -155,9 +155,9 @@ function buildDashboard($mysqli) {
 
   // Forms for each row of inputs to reference
   foreach ($project_directories as &$curr_dir) {
-    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="index.php" enctype="multipart/form-data"></form>';
+    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="admin.php" enctype="multipart/form-data"></form>';
   }
-  echo '<form class="hidden" id="add-new-project" method="POST" action="index.php" enctype="multipart/form-data"></form>';
+  echo '<form class="hidden" id="add-new-project" method="POST" action="admin.php" enctype="multipart/form-data"></form>';
   unset($curr_dir);
 }
 
@@ -276,7 +276,7 @@ function checkImage($img, $directory) {
     $new_img_name = formatDuplicateFilenames($new_img_name, $img);
 
     // begin check
-    $target_file = '../projects/'.$directory.'/'.$new_img_name;
+    $target_file = './img/projects/'.$directory.'/'.$new_img_name;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // check if image file is a actual image or fake image
@@ -314,13 +314,13 @@ function uploadImage($row, $directory, $new_img_name) {
   $upload_success = false;
 
   // Upload New Image
-  $target_file = '../projects/'.$directory.'/'.$new_img_name;
+  $target_file = './img/projects/'.$directory.'/'.$new_img_name;
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $upload_success = true;
   }
   // Delete Old Image (if it exists - not adding a project)
   if (($upload_success == true) && (!is_null($row["image"]))) {
-    unlink('../projects/'.$directory.'/'.$row["image"]);
+    unlink('./img/projects/'.$directory.'/'.$row["image"]);
   }
 
   return $upload_success;
@@ -332,7 +332,7 @@ function uploadImage($row, $directory, $new_img_name) {
 * directory. Returns true if so and false if not.
 */
 function directoryExists($dir) {
-  return is_dir('../projects/'.$dir);
+  return is_dir('./img/projects/'.$dir);
 }
 
 
@@ -344,8 +344,8 @@ function directoryExists($dir) {
 * Returns true if success and false if failure.
 */
 function updateDirectory($row, $dir) {
-  $old_path = '../projects/'.$row["directory"].'/';
-  $new_path = '../projects/'.$dir.'/';
+  $old_path = './img/projects/'.$row["directory"].'/';
+  $new_path = './img/projects/'.$dir.'/';
 
   // Transfer Files to New Directory
   copy($old_path.'*.*', $new_path);
@@ -441,7 +441,7 @@ function addProject($mysqli, $row) {
   }
 
   // create new directory
-  $new_path = '../projects/'.$_POST["directory"];
+  $new_path = './img/projects/'.$_POST["directory"];
   mkdir($new_path, 0777, true);
 
   // try to upload image
@@ -485,8 +485,8 @@ function updateProject($mysqli, $row) {
 
   // handle directory name change
   $directory = $_POST["directory"];  // used for img later on
-  $old_path = '../projects/'.$row["directory"].'/';
-  $new_path = '../projects/'.$directory.'/';
+  $old_path = './img/projects/'.$row["directory"].'/';
+  $new_path = './img/projects/'.$directory.'/';
   if ($old_path != $new_path) {
 
     // if new directory name already exists
@@ -571,7 +571,7 @@ function directPost($mysqli) {
   // User wants to delete project
   } else if ($usr_action == "Delete") {
     // configure needed data
-    $old_path = '../projects/'.$row["directory"].'/';
+    $old_path = './img/projects/'.$row["directory"].'/';
     $old_img = $old_path.$row["image"];
     // delete from database
     $command = 'DELETE FROM projects WHERE ID='.$_POST["id"].';';
