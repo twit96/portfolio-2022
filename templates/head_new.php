@@ -14,7 +14,7 @@
   else {
     $page_name = ucfirst(FILENAME);
     $description = "Tyler Wittig's " . $page_name . " Page";
-    $og_url_extension = $path;
+    $og_url_extension = FILENAME;
     $og_description_extension = ' - '.$page_name;
   }
 
