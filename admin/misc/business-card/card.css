@@ -2,8 +2,6 @@
 /* Border All Elements */
 /* * { box-shadow: 0 0 1px 1px #ff0022 inset; } */
 body {
-  /* Whole Page Border */
-  box-shadow: 0 0 1px 1px black;
   /* Background Grid */
   /* background-image:
     linear-gradient(
@@ -20,11 +18,21 @@ body {
 
 *, *::before, *::after { animation-play-state: paused; transition: none; }
 /* override main.css */
-html, body, section {
+html, body {
+  max-width: 4in;
+}
+.bg-wrap {
   overflow: hidden;
+  padding: 0.25in;
+  max-width: 4in;
+  box-shadow: 0 0 1px 1px black;
+}
+section {
+  position: relative;
   aspect-ratio: 3.5/2;
-  max-width: 3.5in;
-  padding: 0;
+  width: 3.5in;
+  max-height: 2in;
+  color: white;
 }
 @keyframes twinkle {
   0%, 50%, 100% {
@@ -42,19 +50,80 @@ html {
   font-size: 16px;
 }
 
-.links {
-  width: 2.25in;
-  margin: 0.125in;
+/* Front Stuff ------------------------------------------------------------- */
+#front {
+  /* overflow: hidden;
+  border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headings {
+  /* border: 1px solid blue; */
+  max-width: 2.25in;
+  text-align: center;
+  line-height: 0.45in;
+}
+h1 {
+  font-size: 0.4in;
+  font-weight: normal;
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 2px var(--green-shadow);
+}
+h2 {
+  font-size: 0.2125in;
+}
+
+#main-logo-wrap {
+  position: absolute;
+  right: 0;
+  top: 1in;
+  transform: translate(67%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.125in solid var(--green-shadow);
+  background: var(--green-shadow);
+}
+#main-logo {
+  width: 3.25in;
+  height: 3.25in;
+}
+.main-logo-overlay {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 3.25in;
+  height: 3.25in;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0.15in 0.05in var(--green-shadow) inset;
+  opacity: 0.55;
 }
 
 
-/* Icons ------------------------------------------------------------------- */
+/* Back Stuff -------------------------------------------------------------- */
+#back { overflow: hidden; }
+
+.links {
+  min-width: 2.25in;
+  margin: 0.125in;
+}
 
 /* text with custom icons */
 .icon-text {
-  color: white;
+  color: var(--green-shadow);
   display: flex;
   align-items: center;
+  line-height: 0.25in;
+}
+.icon-text:first-of-type { margin-top: 0.125in; }
+.icon-text:not(:last-of-type) {
+  margin-bottom: 0.125in;
 }
 
 .icon-text .icon {
@@ -63,10 +132,7 @@ html {
   height: 0.2in;
   margin: 0.025in;
   margin-right: 0.075in;
-  border: 2px solid white;
-}
-.icon-text:not(:last-of-type) {
-  margin-bottom: 0.075in;
+  border: 2px solid var(--green-shadow);
 }
 
 /* Phone Icon */
@@ -83,7 +149,7 @@ html {
   transform: translateX(-50%);
   width: 0.025in; height: 0.025in;
   border-radius: 50%;
-  background: white;
+  background: var(--green-shadow);
 }
 
 /* Email Icon */
@@ -98,7 +164,7 @@ html {
   top: 50%; left: 50%;
   transform: translateX(-50%) rotate(-45deg);
   width: 0.155in; height: 0.155in;
-  border: 2px solid white;
+  border: 2px solid var(--green-shadow);
 }
 .icon.email::after {
   content: '';
@@ -106,9 +172,9 @@ html {
   bottom: 50%; left: 50%;
   transform: translateX(-50%) rotate(-45deg);
   width: 0.155in; height: 0.155in;
-  border: 2px solid white;
+  border: 2px solid var(--green-shadow);
   border-radius: 3px;
-  background: var(--green);
+  background: var(--grey-light);
 }
 
 /* Portfolio Icon */
@@ -119,15 +185,15 @@ html {
   content: '';
   position: absolute;
   top: -1px; right: 25%; bottom: -1px; left: 25%;
-  border: 2px solid white;
+  border: 2px solid var(--green-shadow);
   border-radius: 50%;
 }
 .icon.portfolio::after {
   content: '';
   position: absolute;
   top: 27%; right: -1px; bottom: 27%; left: -1px;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  border-top: 2px solid var(--green-shadow);
+  border-bottom: 2px solid var(--green-shadow);
 }
 
 
@@ -142,7 +208,7 @@ html {
   transform: translate(-50%, -50%) rotate(-45deg);
   width: 100%;
   height: 0.025in;
-  background: white;
+  background: var(--green-shadow);
   border-radius: 3px;
 }
 .icon.git::after {
@@ -151,8 +217,8 @@ html {
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 0.075in; height: 0.075in;
-  background: var(--green);
-  border: 2px solid white;
+  background: var(--grey-light);
+  border: 2px solid var(--green-shadow);
   border-radius: 50%;
 }
 
@@ -170,7 +236,7 @@ html {
   align-items: center;
   font-weight: bold;
   font-size: 0.175in;
-  color: white;
+  color: var(--green-shadow);
 }
 
 /* Location Icon */
@@ -185,7 +251,7 @@ html {
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 0.075in; height: 0.075in;
-  background: white;
+  background: var(--green-shadow);
   border-radius: 50%;
   z-index: 1;
 }

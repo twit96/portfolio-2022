@@ -2,21 +2,22 @@
 <html lang="en">
 
 	<head>
-		<title>Tyler Wittig | Business Card</title>
+		<title>Tyler Wittig | Business Card Back</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
+		<meta name="description" content="Business Card Back" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
 		<link rel="stylesheet" type="text/css" href="/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="back.css" />
+		<link rel="stylesheet" type="text/css" href="card.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-		<script src="back.js" defer></script>
+		<!-- <script src="card.js" defer></script> -->
 	</head>
-  <body>
-		<section>
-			<div class="links">
+  <body style="background: var(--grey-light);">
+	<!-- <body>		 -->
+		<div class="bg-wrap">
+			<section id="back">
 				<a class="icon-text" href="tel:979-943-6281">
 					<span class="icon phone"></span>
 					(979) 943-6281
@@ -41,7 +42,8 @@
 					<span class="icon location"></span>
 					Boling-Iago, Texas
 				</a> -->
-			</div>
-		</section>
+			</section>
+		</div>
+
   </body>
 </html>
