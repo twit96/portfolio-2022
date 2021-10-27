@@ -18,14 +18,11 @@
 
 	<body>
 		<?php
-			include('../../../templates/header.php');
+			DEFINE("FILENAME", 'home');
+			include('../../includes/header.php');
 		?>
 
 		<section id="intro">
-			<div id="main-logo-wrap">
-				<img id="main-logo" src="/img/icon.png" alt="site logo" />
-				<span class="main-logo-overlay"></span>
-			</div>
       <div class="blurb">
         <p>
           Well <i>hello</i> world,
@@ -56,6 +53,12 @@
       </div>  <!-- ./details -->
 		</section>
 
+		<div id="logo-container">
+			<div id="main-logo-wrap">
+				<img id="main-logo" src="/img/icon.png" alt="site logo" />
+				<span class="main-logo-overlay"></span>
+			</div>
+		</div>
 
 		<section id="featured">
 			<div class="flex">
@@ -68,7 +71,7 @@
 						<div class="featured-badge">
 	            <span>#1</span>
 	          </div>
-						<img src="/projects/indie-quest/title-card.png" />
+						<img src="/img/projects/indie-quest/title-card.png" />
 						<em>this is a blurb about it</em>
 						<div class="info">
 							<div class="btn-text date">
@@ -85,7 +88,7 @@
 						<div class="featured-badge">
 	            <span>#2</span>
 	          </div>
-						<img src="/projects/indie-quest/title-card.png" />
+						<img src="/img/projects/indie-quest/title-card.png" />
 						<em>this is a blurb about it</em>
 						<div class="info">
 							<div class="btn-text date">
@@ -102,7 +105,7 @@
 						<div class="featured-badge">
 	            <span>#3</span>
 	          </div>
-						<img src="/projects/indie-quest/title-card.png" />
+						<img src="/img/projects/indie-quest/title-card.png" />
 						<em>this is a blurb about it</em>
 						<div class="info">
 							<div class="btn-text date">
@@ -119,7 +122,7 @@
 						<div class="featured-badge">
 	            <span>#4</span>
 	          </div>
-						<img src="/projects/indie-quest/title-card.png" />
+						<img src="/img/projects/indie-quest/title-card.png" />
 						<em>this is a blurb about it</em>
 						<div class="info">
 							<div class="btn-text date">
@@ -136,7 +139,7 @@
 						<div class="featured-badge">
 	            <span>#5</span>
 	          </div>
-						<img src="/projects/indie-quest/title-card.png" />
+						<img src="/img/projects/indie-quest/title-card.png" />
 						<em>this is a blurb about it</em>
 						<div class="info">
 							<div class="btn-text date">
@@ -150,14 +153,14 @@
 						</div>
 					</div>
 
-					<a class="card link" href="/projects/">
+					<a class="card link" href="/img/projects/">
 		        <span>View All <br />Projects</span>
 		      </a>
 				</div>  <!-- ./card-container -->
 			</div>  <!-- ./flex -->
 			<p>
 				To view all of my work, please visit my
-				<a href="/projects/">projects page</a>.
+				<a href="/img/projects/">projects page</a>.
 			</p>
 		</section>
 
@@ -309,7 +312,7 @@
 
 
 		<?php
-			include('../../../templates/footer.php');
+			include('../../includes/footer.php');
 		?>
 	</body>
 </html>

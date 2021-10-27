@@ -12,10 +12,6 @@ include('./includes/header.php');
 ?>
 
     <section id="intro">
-      <div id="main-logo-wrap">
-        <img id="main-logo" src="/img/icon.png" alt="site logo" />
-        <span class="main-logo-overlay"></span>
-      </div>
       <div class="blurb">
         <p>
           Well <i>hello</i> world,
@@ -45,6 +41,13 @@ include('./includes/header.php');
         </div>  <!-- ./links -->
       </div>  <!-- ./details -->
     </section>
+
+    <div id="logo-container">
+			<div id="main-logo-wrap">
+				<img id="main-logo" src="/img/icon.png" alt="site logo" />
+				<span class="main-logo-overlay"></span>
+			</div>
+		</div>
 
     <?php include('./php/featured_projects.php'); ?>
 
