@@ -1,9 +1,9 @@
-#projects {
+section {
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
 }
-#projects h2 {
+h2 {
   padding: 1em var(--main-padding);
   color: white;
   padding-bottom: calc(var(--main-padding) / 2);
@@ -12,7 +12,7 @@
   font-size: calc(2.5 * var(--main-font-size));
 }
 
-#projects article {
+article {
   position: relative;
   padding: 2em var(--main-padding);
   padding-bottom: calc(var(--main-padding) + 2em);
@@ -20,51 +20,52 @@
 }
 
 /* Img and Blurb Area */
-#projects article figure {
+article figure {
   position: relative;
   text-align: center;
   padding-bottom: 0.5em;
   font-style: italic;
+  background: var(--grey);
 }
-#projects article img {
+article img {
   width: 100%;
   border-radius: 0.5vmin;
   border: max(1vmin, 5px) solid var(--grey);
 }
 /* reposition featured-badges for alternating layout */
-#projects article:nth-of-type(2n) .featured-badge {
+article:nth-of-type(2n) .featured-badge {
   right: auto; left: 0;
   transform: translate(-15%, -15%) rotate(-5deg);
 }
 
 /* Title and Description Area */
-#projects article div:last-child {
+article > div:last-child {
   padding-top: 1em;
   border-top: max(1vmin, 5px) dotted var(--grey);
 }
-#projects article p { margin: 1em 0; }
+article p { margin: 1em 0; }
 
 
 /* Alternating Layout */
 
-#projects article:nth-of-type(2n) { color: white; }
+article:nth-of-type(2n) { color: white; }
 /* override btn text default colors */
-#projects article:nth-of-type(2n) .btn-text { color: white; }
-#projects article:nth-of-type(2n) .btn-text .icon { border-color: white; }
-#projects article:nth-of-type(2n) .btn-text .icon::before { background: white; }
-#projects article:nth-of-type(2n) .btn-text .icon::after { border-top-color: white; }
-#projects article:nth-of-type(2n) div:last-child { border-top-color: var(--grey-light); }
+article:nth-of-type(2n) .btn-text { color: white; }
+article:nth-of-type(2n) .btn-text .icon { border-color: white; }
+article:nth-of-type(2n) .btn-text .icon::before { background: white; }
+article:nth-of-type(2n) .btn-text .icon::after { border-top-color: white; }
+article:nth-of-type(2n) div:last-child { border-top-color: var(--grey-light); }
 /* keep btn text hover colors */
-#projects article:nth-of-type(2n) .btn-text:hover { color: var(--blue); }
-#projects article:nth-of-type(2n) .btn-text:hover .icon { border-color: var(--blue); }
-#projects article:nth-of-type(2n) .btn-text:hover .icon::before { background: var(--blue); }
-#projects article:nth-of-type(2n) .btn-text:hover .icon::after { border-top-color: var(--blue); }
+article:nth-of-type(2n) .btn-text:hover { color: var(--blue); }
+article:nth-of-type(2n) .btn-text:hover .icon { border-color: var(--blue); }
+article:nth-of-type(2n) .btn-text:hover .icon::before { background: var(--blue); }
+article:nth-of-type(2n) .btn-text:hover .icon::after { border-top-color: var(--blue); }
 
-#projects article:nth-of-type(2n+1) {
+article:nth-of-type(2n+1) {
   margin: calc(var(--main-padding) + 2em) 0;
   background: var(--grey-light);
 }
-#projects article:nth-of-type(2n+1)::before {
+article:nth-of-type(2n+1)::before {
   content: '';
   position: absolute;
   left: 0; top: 1px;
@@ -73,7 +74,7 @@
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
 }
-#projects article:nth-of-type(2n+1)::after {
+article:nth-of-type(2n+1)::after {
   content: '';
   position: absolute;
   left: 0; bottom: 1px;
@@ -82,32 +83,32 @@
   background: var(--grey-light);
   clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
-#projects .btn-text {
+.btn-text {
   width: fit-content;
   margin-bottom: 0.5em;
 }
 
 @media (min-aspect-ratio: 1/1) {
   /* two column layout */
-  #projects article { display: flex; }
-  #projects article div:last-child {
+  article { display: flex; }
+  article > div:last-child {
     border: 0;
     padding: 0;
   }
   /* alternating layout */
-  #projects article:nth-of-type(2n+1) {
+  article:nth-of-type(2n+1) {
     flex-direction: row-reverse;
     justify-content: space-between;
   }
-  #projects article:nth-of-type(2n+1) div:last-child { margin-right: 2em; }
-  #projects article:nth-of-type(2n) figure { margin-right: 2em; }
+  article:nth-of-type(2n+1) > div:last-child { margin-right: 2em; }
+  article:nth-of-type(2n) figure { margin-right: 2em; }
   /* img constraints */
-  #projects article img {
+  article img {
     width: min(45vw, 800px);
     display: block;
   }
   /* override btn text defaults */
-  #projects .btn-text {
+  .btn-text {
     display: inline-flex;
     margin-right: 1em;
     margin-bottom: 0;

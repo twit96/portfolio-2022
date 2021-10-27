@@ -1,0 +1,39 @@
+@import '/css/projects.css';
+
+article:nth-of-type(2n) h3 a:not(:hover) { color: white; }
+article:nth-of-type(2n+1) h3 a:not(:hover) { color: var(--green-shadow); }
+
+
+.author {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 95%;
+  line-height: 150%;
+}
+.author img {
+  float: left;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  border-width: 0.25em;
+  border-color: var(--green-shadow);
+  background: var(--green-shadow);
+  margin-right: 1em;
+}
+.author p {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 90%;
+  color: var(--green-shadow);
+}
+
+/* alternating layout */
+article:nth-of-type(2n) .author p { color: white; }
+article:nth-of-type(2n) .btn-text.date { color: white; }
+article:nth-of-type(2n) .btn-text.date .icon { border-color: white; }
+article:nth-of-type(2n) .btn-text.date .icon::before {
+  background: 0;
+  border-bottom-color: white;
+}
