@@ -74,6 +74,7 @@
 
 
 /* ---------------------------------------------------------- Logo Container */
+body { position: relative; }
 #logo-container {
   position: absolute;
   top: 0; left: 0;
