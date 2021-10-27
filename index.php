@@ -1,13 +1,13 @@
 <?php
 
 DEFINE("FILENAME", 'home');
-include('./templates/head.php');
+include('./includes/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./templates/header.php');
+include('./includes/header.php');
 
 ?>
 
@@ -190,6 +190,6 @@ include('./templates/header.php');
       </div>
     </section>
 
-<?php include('./templates/footer.php'); ?>
+<?php include('./includes/footer.php'); ?>
   </body>
 </html>

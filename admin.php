@@ -1,17 +1,17 @@
 <?php
 
 DEFINE("FILENAME", 'admin');
-include('./templates/head.php');
+include('./includes/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./templates/header.php');
+include('./includes/header.php');
 echo '<section id="entries">';
 include('./php/admin_dashboard.php');
 echo '</section>';
-include('./templates/footer.php');
+include('./includes/footer.php');
 
 echo <<<PAGE_END
 \n
