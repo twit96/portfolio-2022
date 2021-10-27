@@ -31,9 +31,5 @@ article:nth-of-type(2n+1) h3 a:not(:hover) { color: var(--green-shadow); }
 
 /* alternating layout */
 article:nth-of-type(2n) .author p { color: white; }
-article:nth-of-type(2n) .btn-text.date { color: white; }
-article:nth-of-type(2n) .btn-text.date .icon { border-color: white; }
-article:nth-of-type(2n) .btn-text.date .icon::before {
-  background: 0;
-  border-bottom-color: white;
-}
+article:nth-of-type(2n) .btn-text.date { --main-color: white; }
+article:nth-of-type(2n) .btn-text.date .icon::before { background: 0; }

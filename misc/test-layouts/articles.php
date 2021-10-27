@@ -1,13 +1,13 @@
 <?php
 
 DEFINE("FILENAME", 'articles');
-include('./includes/head.php');
+include('../../includes/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./includes/header.php');
+include('../../includes/header.php');
 
 ?>
 
@@ -165,7 +165,7 @@ include('./includes/header.php');
     </section>
 
     <?php
-			include('./includes/footer.php');
+			include('../../includes/footer.php');
 		?>
   </body>
 </html>

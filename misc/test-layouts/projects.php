@@ -15,7 +15,8 @@
   </head>
   <body>
     <?php
-			include('../../../templates/header.php');
+    DEFINE("FILENAME", 'projects');
+			include('../../includes/header.php');
     ?>
 
     <section id="projects">
@@ -26,7 +27,7 @@
           <div class="featured-badge">
             <span>#1</span>
           </div>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -53,7 +54,7 @@
           <div class="featured-badge">
             <span>#1</span>
           </div>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -73,7 +74,7 @@
 
       <article>
         <figure>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -93,7 +94,7 @@
 
       <article>
         <figure>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -113,7 +114,7 @@
 
       <article>
         <figure>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -133,7 +134,7 @@
 
       <article>
         <figure>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -153,7 +154,7 @@
 
       <article>
         <figure>
-          <img src="/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
+          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
           <figcaption>this is a blurb about it</figcaption>
         </figure>
         <div>
@@ -173,7 +174,7 @@
     </section>
 
     <?php
-		  include('../../../templates/footer.php');
+		  include('../../includes/footer.php');
 		?>
   </body>
 </html>

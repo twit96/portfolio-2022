@@ -47,19 +47,9 @@ article p { margin: 1em 0; }
 
 
 /* Alternating Layout */
-
 article:nth-of-type(2n) { color: white; }
-/* override btn text default colors */
-article:nth-of-type(2n) .btn-text { color: white; }
-article:nth-of-type(2n) .btn-text .icon { border-color: white; }
-article:nth-of-type(2n) .btn-text .icon::before { background: white; }
-article:nth-of-type(2n) .btn-text .icon::after { border-top-color: white; }
+article:nth-of-type(2n) .btn-text { --main-color: white; }
 article:nth-of-type(2n) div:last-child { border-top-color: var(--grey-light); }
-/* keep btn text hover colors */
-article:nth-of-type(2n) .btn-text:hover { color: var(--blue); }
-article:nth-of-type(2n) .btn-text:hover .icon { border-color: var(--blue); }
-article:nth-of-type(2n) .btn-text:hover .icon::before { background: var(--blue); }
-article:nth-of-type(2n) .btn-text:hover .icon::after { border-top-color: var(--blue); }
 
 article:nth-of-type(2n+1) {
   margin: calc(var(--main-padding) + 2em) 0;

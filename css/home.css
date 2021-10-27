@@ -129,8 +129,8 @@ body { position: relative; }
   background: var(--white);
   color: var(--black);
 
-  padding-top: calc(5vh + var(--main-padding));
-  padding-bottom: calc(5vh + var(--main-padding));
+  padding-top: calc(2 * var(--main-padding));
+  padding-bottom: calc(2 * var(--main-padding));
   clip-path: polygon(0 0, 100% var(--main-padding), 100% 100%, 0 100%);
 }
 
@@ -407,8 +407,8 @@ body { position: relative; }
   position: relative;
   overflow: hidden;
 
-  padding-top: calc(5vh + var(--main-padding));
-  padding-bottom: calc(10vh + var(--main-padding));
+  padding-top: calc(2 * var(--main-padding));
+  padding-bottom: calc(2 * var(--main-padding));
   clip-path: polygon(0 0, 100% var(--main-padding), 100% calc(100% - var(--main-padding)), 0 100%);
 
   display: flex;
@@ -441,15 +441,10 @@ html.dark-mode #demo .square { opacity: 0.2; }
   z-index: 1;
 }
 /* dark mode overrides btn text default colors */
-html.dark-mode #demo-controls .btn-text { color: white; }
-html.dark-mode #demo-controls .btn-text .icon { border-color: white; }
-html.dark-mode #demo-controls .btn-text .icon::before { background: white; }
-html.dark-mode #demo-controls .btn-text .icon::after { background: white; }
-/* keep btn text hover colors */
-html.dark-mode #demo-controls .btn-text:hover { color: var(--blue); }
-html.dark-mode #demo-controls .btn-text:hover .icon { border-color: var(--blue); }
-html.dark-mode #demo-controls .btn-text:hover .icon::before { background: var(--blue); }
-html.dark-mode #demo-controls .btn-text:hover .icon::after { background: var(--blue); }
+html.dark-mode #demo-controls .btn-text {
+  --main-color: white;
+  --hover-color: var(--blue);
+}
 
 @media (min-aspect-ratio: 4/3) {
   #demo {
