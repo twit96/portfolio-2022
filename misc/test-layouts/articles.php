@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <title>Articles</title>
-    <meta name="description" content="Tyler Wittig's Articles Page" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Social Media Card -->
-    <meta name="author" content="Tyler Wittig" />
-    <meta property="og:title" content="Tyler Wittig | Articles"/>
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tylerwittig.com/articles/" />
-    <meta property="og:image" content="/img/site-card.png" />
-    <meta property="og:description" content="Tyler Wittig's Portfolio Website - Articles" />
-    <!-- make the og:image larger -->
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- end of social media card -->
-    <link rel="icon" href="/img/icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/articles.css" />
-    <script src="/js/main.js" defer></script>
-  </head>
+<?php
 
+DEFINE("FILENAME", 'articles');
+include('./includes/head.php');
+echo <<<HEAD_END
+\n  </head>
   <body>
-    <?php
-			include('../../../templates/header.php');
-		?>
+HEAD_END;
+
+include('./includes/header.php');
+
+?>
 
 
     <section id="articles">
@@ -35,7 +17,7 @@
       <article>
         <figure>
           <a href="#">
-            <img src="/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            <img src="/img/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
           </a>
           <figcaption>Static Portfolio Website</figcaption>
         </figure>
@@ -72,7 +54,7 @@
       <article>
         <figure>
           <a href="#">
-            <img src="/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            <img src="/img/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
           </a>
           <figcaption>Static Portfolio Website</figcaption>
         </figure>
@@ -109,7 +91,7 @@
       <article>
         <figure>
           <a href="#">
-            <img src="/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            <img src="/img/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
           </a>
           <figcaption>Static Portfolio Website</figcaption>
         </figure>
@@ -146,7 +128,7 @@
       <article>
         <figure>
           <a href="#">
-            <img src="/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            <img src="/img/projects/first-portfolio/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
           </a>
           <figcaption>Static Portfolio Website</figcaption>
         </figure>
@@ -183,7 +165,7 @@
     </section>
 
     <?php
-			include('../../../templates/footer.php');
+			include('./includes/footer.php');
 		?>
   </body>
 </html>
