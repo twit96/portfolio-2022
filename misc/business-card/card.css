@@ -19,6 +19,7 @@ body {
 *, *::before, *::after { animation-play-state: paused; transition: none; }
 /* override main.css */
 html, body {
+  width: 4in;
   max-width: 4in;
 }
 .bg-wrap {
@@ -48,6 +49,42 @@ section {
 html {
   font-family: Calibri, sans-serif;
   font-size: 16px;
+}
+
+
+/* Toggle Buttons */
+#flip-card {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.25em;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  /* invert colors from page background */
+  mix-blend-mode: difference;
+}
+
+.buttons {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* invert colors from page background */
+  color: rgb(0, 255, 255);
+  mix-blend-mode: difference;
+}
+.buttons button {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  background: white;
+  border-radius: 3em;
+}
+
+.buttons button.bg-toggle {
+  font-weight: bold;
+  border: 0.25em solid rgb(0, 255, 255);
 }
 
 /* Front Stuff ------------------------------------------------------------- */
@@ -107,7 +144,12 @@ h2 {
 
 
 /* Back Stuff -------------------------------------------------------------- */
-body.back { background: var(--grey-light); }
+body.no-bg { background: var(--grey-light); }
+body.no-bg .icon-text {
+  --main-color: var(--green-shadow);
+  --bg-color: var(--grey-light);
+}
+
 #back { overflow: hidden; }
 
 .links {
@@ -117,7 +159,9 @@ body.back { background: var(--grey-light); }
 
 /* text with custom icons */
 .icon-text {
-  color: var(--green-shadow);
+  --main-color: white;
+  --bg-color: var(--green);
+  color: var(--main-color);
   display: flex;
   align-items: center;
   line-height: 0.25in;
@@ -133,7 +177,7 @@ body.back { background: var(--grey-light); }
   height: 0.2in;
   margin: 0.025in;
   margin-right: 0.075in;
-  border: 2px solid var(--green-shadow);
+  border: 2px solid var(--main-color);
 }
 
 /* Phone Icon */
@@ -150,7 +194,7 @@ body.back { background: var(--grey-light); }
   transform: translateX(-50%);
   width: 0.025in; height: 0.025in;
   border-radius: 50%;
-  background: var(--green-shadow);
+  background: var(--main-color);
 }
 
 /* Email Icon */
@@ -165,7 +209,7 @@ body.back { background: var(--grey-light); }
   top: 50%; left: 50%;
   transform: translateX(-50%) rotate(-45deg);
   width: 0.155in; height: 0.155in;
-  border: 2px solid var(--green-shadow);
+  border: 2px solid var(--main-color);
 }
 .icon.email::after {
   content: '';
@@ -173,9 +217,9 @@ body.back { background: var(--grey-light); }
   bottom: 50%; left: 50%;
   transform: translateX(-50%) rotate(-45deg);
   width: 0.155in; height: 0.155in;
-  border: 2px solid var(--green-shadow);
+  border: 2px solid var(--main-color);
   border-radius: 3px;
-  background: var(--grey-light);
+  background: var(--bg-color);
 }
 
 /* Portfolio Icon */
@@ -186,15 +230,15 @@ body.back { background: var(--grey-light); }
   content: '';
   position: absolute;
   top: -1px; right: 25%; bottom: -1px; left: 25%;
-  border: 2px solid var(--green-shadow);
+  border: 2px solid var(--main-color);
   border-radius: 50%;
 }
 .icon.portfolio::after {
   content: '';
   position: absolute;
   top: 27%; right: -1px; bottom: 27%; left: -1px;
-  border-top: 2px solid var(--green-shadow);
-  border-bottom: 2px solid var(--green-shadow);
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
 }
 
 
@@ -209,7 +253,7 @@ body.back { background: var(--grey-light); }
   transform: translate(-50%, -50%) rotate(-45deg);
   width: 100%;
   height: 0.025in;
-  background: var(--green-shadow);
+  background: var(--main-color);
   border-radius: 3px;
 }
 .icon.git::after {
@@ -218,8 +262,8 @@ body.back { background: var(--grey-light); }
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 0.075in; height: 0.075in;
-  background: var(--grey-light);
-  border: 2px solid var(--green-shadow);
+  background: var(--bg-color);
+  border: 2px solid var(--main-color);
   border-radius: 50%;
 }
 
@@ -237,7 +281,7 @@ body.back { background: var(--grey-light); }
   align-items: center;
   font-weight: bold;
   font-size: 0.175in;
-  color: var(--green-shadow);
+  color: var(--main-color);
 }
 
 /* Location Icon */
@@ -252,7 +296,7 @@ body.back { background: var(--grey-light); }
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 0.075in; height: 0.075in;
-  background: var(--green-shadow);
+  background: var(--main-color);
   border-radius: 50%;
   z-index: 1;
 }
@@ -272,18 +316,15 @@ html.autumn #main-logo-wrap {
 }
 html.autumn .main-logo-overlay { box-shadow: 0 0 0.15in 0.05in #8c580b inset; }
 /* back */
-html.autumn body.back { background: var(--grey-light); }
-html.autumn .icon-text { color: #8c580b; }
-html.autumn .icon-text .icon { border-color: #8c580b; }
-html.autumn .icon.phone::before { background: #8c580b; }
-html.autumn .icon.email::before { border-color: #8c580b; }
-html.autumn .icon.email::after { border-color: #8c580b; }
-html.autumn .icon.portfolio::before { border-color: #8c580b; }
-html.autumn .icon.portfolio::after { border-color: #8c580b; }
-html.autumn .icon.git::before { background: #8c580b; }
-html.autumn .icon.git::after { border-color: #8c580b; }
-html.autumn .icon.linked-in::before { color: #8c580b; }
-html.autumn .icon.location::before { background: #8c580b; }
+html.autumn .icon-text {
+  --main-color: #8c580b;
+  --bg-color: #e69722;
+}
+html.autumn body.no-bg { background: var(--grey-light); }
+html.autumn body.no-bg .icon-text {
+  --main-color: #8c580b;
+  --bg-color: var(--grey-light);
+}
 
 /* ------------------------------------------------------------------ Winter */
 /* front */
@@ -302,15 +343,12 @@ html.winter #main-logo-wrap {
 }
 html.winter .main-logo-overlay { box-shadow: 0 0 0.15in 0.05in var(--grey-shadow) inset; }
 /* back */
-html.winter body.back { background: var(--grey-light); }
-html.winter .icon-text { color: var(--grey-shadow); }
-html.winter .icon-text .icon { border-color: var(--grey-shadow); }
-html.winter .icon.phone::before { background: var(--grey-shadow); }
-html.winter .icon.email::before { border-color: var(--grey-shadow); }
-html.winter .icon.email::after { border-color: var(--grey-shadow); }
-html.winter .icon.portfolio::before { border-color: var(--grey-shadow); }
-html.winter .icon.portfolio::after { border-color: var(--grey-shadow); }
-html.winter .icon.git::before { background: var(--grey-shadow); }
-html.winter .icon.git::after { border-color: var(--grey-shadow); }
-html.winter .icon.linked-in::before { color: var(--grey-shadow); }
-html.winter .icon.location::before { background: var(--grey-shadow); }
+html.winter .icon-text {
+  --main-color: var(--grey-shadow);
+  --bg-color: white;
+}
+html.winter body.no-bg { background: var(--grey-light); }
+html.winter body.no-bg .icon-text {
+  --main-color: var(--grey-shadow);
+  --bg-color: var(--grey-light);
+}
