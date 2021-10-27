@@ -25,12 +25,12 @@ article figure {
   text-align: center;
   padding-bottom: 0.5em;
   font-style: italic;
-  background: var(--grey);
 }
 article img {
   width: 100%;
   border-radius: 0.5vmin;
   border: max(1vmin, 5px) solid var(--grey);
+  background: var(--grey);
 }
 /* reposition featured-badges for alternating layout */
 article:nth-of-type(2n) .featured-badge {
