@@ -164,7 +164,7 @@ function triggerScrollDownIndicatorListeners() {
 // click listener
 var click_scroll_down_indicator_handler = function() {
   window.scroll({
-    top: window.innerHeight * 0.75,
+    top: document.documentElement.clientHeight * 0.75,
     left: 0,
     behavior: 'smooth'
   });
@@ -182,7 +182,7 @@ scroll_top_btn.id = 'scroll-top-btn';
 intro.insertAdjacentElement('beforeend', scroll_top_btn);
 
 // scroll position changes visibility
-var scroll_top_trigger_height = window.innerHeight * 0.75;
+var scroll_top_trigger_height = document.documentElement.clientHeight * 0.75;
 function toggleScrollTopBtn() {
   scroll_top_btn.classList.toggle('displayed');
 }

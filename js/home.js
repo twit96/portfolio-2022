@@ -16,7 +16,7 @@ logo_lg.onload = function() {
 // var main_logo_wrap = document.getElementById("main-logo-wrap");
 // window.addEventListener('scroll', handleScrollLogoAnim);
 // function handleScrollLogoAnim() {
-//   if (scroll_pos < window.innerHeight) {
+//   if (scroll_pos < document.documentElement.clientHeight) {
 //     requestAnimationFrame(updateScrollLogoAnim);
 //   } else if (!main_logo_wrap.classList.contains("hidden")) {
 //     main_logo_wrap.classList.add("hidden");
@@ -28,7 +28,7 @@ logo_lg.onload = function() {
 //   }
 //   main_logo_wrap.style.transform =
 //     "translate(calc(67% + " + scroll_pos + "px), calc(-50% - " + scroll_pos + "px))" +
-//     "rotate(" + (scroll_pos * 90 / window.innerHeight) + "deg)";
+//     "rotate(" + (scroll_pos * 90 / document.documentElement.clientHeight) + "deg)";
 // }
 
 // cycle through taglines
