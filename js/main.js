@@ -117,8 +117,6 @@ function configColorScheme() {
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) { html.classList.toggle("dark-mode"); }
-  console.log(dark_mode);
-  console.log(document.cookie);
 }
 configColorScheme();
 
