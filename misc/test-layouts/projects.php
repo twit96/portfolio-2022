@@ -20,157 +20,134 @@
     ?>
 
     <section id="projects">
-      <h2>Projects</h2>
+      <div class="wrapper">
+        <h2>Projects</h2>
 
-      <article>
-        <figure>
-          <div class="featured-badge">
-            <span>#1</span>
-          </div>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
+        <article>
+          <figure>
+            <div class="featured-badge">
+              <span>#1</span>
+            </div>
+            <a href="#">
+              <img src="/img/projects/connect-four/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            </a>
+            <figcaption>Dynamic Website Project</figcaption>
+          </figure>
+          <div class="details">
+            <h3>
+              <a href="#">IndieQuest</a>
+            </h3>
+            <em>2020-09-01</em>
+            <p>
+              There once was a man from peru who dreamed he was eating his shoe.
+              He woke up in fright and oh what a sight, he found out that his
+              dream had come true.
+            </p>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View Website</span>
+            </a>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View GitHub</span>
+            </a>
+          </div>  <!-- ./details -->
+        </article>
 
-      <article>
-        <figure>
-          <div class="featured-badge">
-            <span>#1</span>
-          </div>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
+        <article>
+          <figure>
+            <div class="featured-badge">
+              <span>#1</span>
+            </div>
+            <a href="#">
+              <img src="/img/projects/connect-four/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            </a>
+            <figcaption>Dynamic Website Project</figcaption>
+          </figure>
+          <div class="details">
+            <h3>
+              <a href="#">Dr. Bulko's Responsive Redesign</a>
+            </h3>
+            <em>2020-09-01</em>
+            <p>
+              There once was a man from peru who dreamed he was eating his shoe.
+              He woke up in fright and oh what a sight, he found out that his
+              dream had come true.
+            </p>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View Website</span>
+            </a>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View GitHub</span>
+            </a>
+          </div>  <!-- ./details -->
+        </article>
 
-      <article>
-        <figure>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
+        <article>
+          <figure>
+            <div class="featured-badge">
+              <span>#1</span>
+            </div>
+            <a href="#">
+              <img src="/img/projects/connect-four/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            </a>
+            <figcaption>Dynamic Website Project</figcaption>
+          </figure>
+          <div class="details">
+            <h3>
+              <a href="#">IndieQuest</a>
+            </h3>
+            <em>2020-09-01</em>
+            <p>
+              There once was a man from peru who dreamed he was eating his shoe.
+              He woke up in fright and oh what a sight, he found out that his
+              dream had come true.
+            </p>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View Website</span>
+            </a>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View GitHub</span>
+            </a>
+          </div>  <!-- ./details -->
+        </article>
 
-      <article>
-        <figure>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
+        <article>
+          <figure>
+            <div class="featured-badge">
+              <span>#1</span>
+            </div>
+            <a href="#">
+              <img src="/img/projects/connect-four/title-card.png" loading="lazy" alt="First Portfolio Title Card" />
+            </a>
+            <figcaption>Dynamic Website Project</figcaption>
+          </figure>
+          <div class="details">
+            <h3>
+              <a href="#">Dr. Bulko's Responsive Redesign</a>
+            </h3>
+            <em>2020-09-01</em>
+            <p>
+              There once was a man from peru who dreamed he was eating his shoe.
+              He woke up in fright and oh what a sight, he found out that his
+              dream had come true.
+            </p>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View Website</span>
+            </a>
+            <a class="btn-text link" href="#">
+              <span class="icon"></span>
+              <span>View GitHub</span>
+            </a>
+          </div>  <!-- ./details -->
+        </article>
 
-      <article>
-        <figure>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
-
-      <article>
-        <figure>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
-
-      <article>
-        <figure>
-          <img src="/img/projects/indie-quest/title-card.png" alt="IndieQuest Title Card" />
-          <figcaption>this is a blurb about it</figcaption>
-        </figure>
-        <div>
-          <h3>IndieQuest</h3>
-          <em>2021-12-07</em>
-          <p>
-            There once was a man from peru who dreamed he was eating his shoe.
-            He woke up in fright and oh what a sight, he found out that his
-            dream had come true.
-          </p>
-          <a class="btn-text link" href="#">
-            <span class="icon"></span>
-            <span>View Website</span>
-          </a>
-        </div>
-      </article>
+      </div>  <!-- ./wrapper -->
     </section>
 
     <?php

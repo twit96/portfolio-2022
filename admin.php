@@ -8,9 +8,18 @@ echo <<<HEAD_END
 HEAD_END;
 
 include('./includes/header.php');
-echo '<section id="entries">';
+echo <<<SECTION_TOP
+<section id="entries">
+  <div class="wrapper">
+SECTION_TOP;
+
 include('./php/admin_dashboard.php');
-echo '</section>';
+
+echo <<<SECTION_BTM
+  </div>  <!-- ./wrapper -->
+</section>
+SECTION_BTM;
+
 include('./includes/footer.php');
 
 echo <<<PAGE_END

@@ -150,7 +150,7 @@ function buildDashboard($mysqli) {
       <input name="logout" type="submit" value="Logout" />
     </form>
   </section>
-  <script type="text/javascript" src="/js/admin.js"></script>
+  <script type="text/javascript" src="/js/admin.js" defer></script>
   BOTTOM;
 
   // Forms for each row of inputs to reference

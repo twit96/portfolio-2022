@@ -59,8 +59,6 @@ for (i=0; i<30; i++) {
   // place on page
   intro.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
-  loader.insertAdjacentElement("beforeend", clone);
-  clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }
 
@@ -146,12 +144,21 @@ function toggleHeaderState() {
 }
 
 
-// Scroll Down Indicator ------------------------------------------------------
+/**
+* Ensure that nav maintains proper state if user resizes while nav is active.
+* Note: 1000px is large screen header breakpoint.
+*/
+window.addEventListener('resize', function() {
+  if (
+    (window.innerWidth > 1000) &&
+    (header_bg.classList.contains("active"))
+  ) { toggleNav(); }
+}, false);
 
-// add to page
-var scroll_down_indicator = document.createElement("span");
-scroll_down_indicator.classList.add('scroll-down-indicator');
-intro.insertAdjacentElement('beforeend', scroll_down_indicator);
+
+
+// Scroll Down Indicator ------------------------------------------------------
+var scroll_down_indicator = document.getElementById("scroll-down-indicator");
 
 // toggle event listeners
 var triggered_scroll_down_indicator_listeners = false;
@@ -176,10 +183,7 @@ scroll_down_indicator.addEventListener(
 
 
 // Scroll Top Btn -------------------------------------------------------------
-// add to page
-var scroll_top_btn = document.createElement("span");
-scroll_top_btn.id = 'scroll-top-btn';
-intro.insertAdjacentElement('beforeend', scroll_top_btn);
+var scroll_top_btn = document.getElementById("scroll-top-btn");
 
 // scroll position changes visibility
 var scroll_top_trigger_height = document.documentElement.clientHeight * 0.75;

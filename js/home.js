@@ -1,4 +1,3 @@
-
 // Intro Functionality --------------------------------------------------------
 var intro = document.getElementById("intro");
 
@@ -49,7 +48,7 @@ function updateTag() {
 
 
 // Featured Projects Section --------------------------------------------------
-var featured = document.getElementById("featured");
+var skills = document.getElementById("skills");
 
 // add randomly generated elements to background
 
@@ -76,7 +75,7 @@ for (i=0; i<15; i++) {
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-  featured.insertAdjacentElement("afterbegin", rand_span);
+  skills.insertAdjacentElement("afterbegin", rand_span);
 }
 
 

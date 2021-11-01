@@ -1,27 +1,25 @@
-.scroll-down-indicator { display: none; }
-
-#entries {
-  overflow: hidden;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-}
-#entries h2 {
-  padding: 1em var(--main-padding);
+h2 {
+  max-width: 1500px;
+  margin: 0 auto;
   color: white;
+  padding-top: 1em;
   padding-bottom: calc(var(--main-padding) / 2);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
+  margin-bottom: 1em;
 }
 
 
 /* Login/Logout Forms ------------------------------------------------------ */
 #login {
-  position: relative;
-  background: var(--grey-light);
   padding: var(--main-padding);
-  margin: calc(2 * var(--main-padding)) 0;
+  margin-bottom: var(--main-padding);
+  background: var(--grey-light);
+  box-shadow: 0 0 10px var(--green-shadow);
+  border-radius: 10px;
+  z-index: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,7 +31,6 @@
 #login > p {
   padding: calc(var(--main-padding) / 2) 0;
   border-top: 1px solid var(--grey);
-  text-align: center;
 }
 @media (min-aspect-ratio: 1/1) and (min-width: 700px) {
   #login { flex-direction: row; }
@@ -51,24 +48,6 @@
     align-self: center;
     padding-left: var(--main-padding);
     text-align: left; }
-}
-#login::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 1px;
-  width: 100%; height: var(--main-padding);
-  transform: translateY(-100%);
-  background: var(--grey-light);
-  clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
-}
-#login::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: 1px;
-  width: 100%; height: var(--main-padding);
-  transform: translateY(100%);
-  background: var(--grey-light);
-  clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
 }
 #login form p { margin-bottom: calc(var(--main-padding) / 4); }
 #login form p:last-of-type { margin-bottom: 0; }
@@ -99,16 +78,12 @@ input[type="reset"]:hover {
 }
 
 #logout {
-  margin-left: var(--main-padding);
-  margin-right: var(--main-padding);
   margin-top: calc(var(--main-padding) / 2);
 }
 
 
 /* Dashboard Table --------------------------------------------------------- */
 table {
-  margin-left: var(--main-padding);
-  margin-right: var(--main-padding);
   border: max(1vmin, 5px) solid var(--green-shadow);
   background: var(--green-shadow);
   background: var(--grey-light);
@@ -116,6 +91,8 @@ table {
   line-height: 100%;
   border-radius: max(1.5vmin, 5px);
   font-size: 80%;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 /* inputs */
