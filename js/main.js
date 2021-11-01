@@ -86,7 +86,7 @@ function setCookie(cvalue) {
   var d = new Date();
   d.setTime(d.getTime() + (365*24*60*60*1000));
   var expires = "expires="+ d.toUTCString();
-  document.cookie = "dark_mode" + "=" + cvalue + ";" + expires + ";path=/;SameSite=None;Secure";
+  document.cookie = "dark_mode" + "=" + cvalue + ";" + expires + ";path=/;";
 }
 function getCookie() {
   var name = "dark_mode=";
