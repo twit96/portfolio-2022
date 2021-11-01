@@ -82,19 +82,23 @@ slider.onclick = function(e) {
   updateCookie();
 }
 
-function setCookie(cvalue) {
-  var d = new Date();
+function setCookie(c_value) {
+  const d = new Date();
   d.setTime(d.getTime() + (365*24*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
-  document.cookie = "dark_mode" + "=" + cvalue + ";" + expires + ";path=/;SameSite=None;Secure";
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = "dark_mode" + "=" + c_value + ";" + expires + ";path=/;SameSite=None;Secure";
 }
 function getCookie() {
-  var name = "dark_mode=";
-  var c = decodeURIComponent(document.cookie).split(';')[0];
-  while (c.charAt(0) == ' ') { c = c.substring(1); }
-  if (c.indexOf("dark_mode=") == 0) {
-    return c.substring(name.length, c.length);
+  decoded_cookie = decodeURIComponent(document.cookie);
+  let ca = decoded_cookie.split(';');
+  for (let i=0; i<ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') { c = c.substring(1); }
+    if (c.indexOf("dark_mode=") == 0) {
+      return c.substring(name.length, c.length);
+    }
   }
+  return "";
 }
 function updateCookie() {
   // toggled to dark
