@@ -66,7 +66,7 @@ article:not(:last-of-type) {
   line-height: calc(var(--main-font-size) * 4.5);
   font-weight: normal;
   font-family: 'Pacifico', cursive;
-  text-shadow: 2px 2px 2px var(--green-shadow);
+  text-shadow: 2px 2px 2px var(--grey-shadow);
 }
 #intro .details h2 {
   font-size: calc(var(--main-font-size) * 2);
