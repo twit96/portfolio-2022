@@ -110,11 +110,11 @@ function updateCookie() {
 function configColorScheme() {
   var dark_mode = getCookie();
   if (
-    (dark_mode == "on") &&
+    (dark_mode == "dark_mode=on") &&
     (!html.classList.contains('dark-mode'))
   ) { html.classList.toggle("dark-mode"); }
   if (
-    (dark_mode == "off") &&
+    (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) { html.classList.toggle("dark-mode"); }
   console.log(dark_mode);
