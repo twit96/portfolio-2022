@@ -28,7 +28,7 @@ html {
   --blue-light: #61b6f0;
   --blue-shadow: #148bdb;
   --grey-light: #dedede;
-  --grey: #808080;
+  --grey: #707070;
   --grey-shadow: #303030;
   --yellow: #f0c808;
   --yellow-shadow: #c4a408;
@@ -161,7 +161,7 @@ a.active { text-decoration: underline; }
 
 /* presets */
 .btn-text {
-  --main-color: var(--green-shadow);
+  --main-color: var(--green);
   --hover-color: inherit;
   display: flex;
   align-items: center;

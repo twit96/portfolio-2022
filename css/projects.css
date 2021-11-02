@@ -59,10 +59,7 @@ article .details p {
   line-height: 175%
 }
 
-.btn-text {
-  --main-color: var(--green);
-  width: fit-content;
-}
+.btn-text { width: fit-content; }
 .btn-text:not(:last-of-type) { margin-bottom: 0.5em; }
 
 

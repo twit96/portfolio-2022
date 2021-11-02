@@ -283,7 +283,7 @@ article:not(:last-of-type) {
 
 #featured .info .btn-text {
   line-height: normal;
-  margin-top: 0.5em
+  margin-top: 0.5em;
 }
 
 #featured p {
