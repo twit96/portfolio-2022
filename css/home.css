@@ -221,10 +221,18 @@ article:not(:last-of-type) {
 #featured .featured-badge {
   top: auto;
   bottom: 0;
-  transform: translate(15%, 15%) rotate(-5deg) scale(0.75);
+  transform: translate(5%, 5%) rotate(-5deg);
 }
 #featured .card:nth-child(2n) .featured-badge {
-  transform: translate(15%, 15%) rotate(5deg) scale(0.75);
+  transform: translate(5%, 5%) rotate(5deg);
+}
+@media (min-width: 750px) and (min-height: 850px) {
+  #featured .featured-badge {
+    transform: translate(15%, 15%) rotate(-5deg) scale(0.75);
+  }
+  #featured .card:nth-child(2n) .featured-badge {
+    transform: translate(15%, 15%) rotate(5deg) scale(0.75);
+  }
 }
 
 #featured a.card {
