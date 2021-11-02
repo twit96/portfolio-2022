@@ -599,20 +599,14 @@ header nav a {
   font-size: calc(var(--main-font-size) * 1.25);
   margin-left: var(--main-padding);
 }
+header nav a:last-of-type { margin-bottom: 50px; }
 header nav a:hover { color: var(--yellow); }
 
 /* Dark Mode Toggle */
 #dark-toggle-wrap {
-  margin-top: 50px;
   margin-left: auto;
   position: relative;
-  max-width: 4rem; height: 2rem;
-}
-/* hide hidden text and input elements */
-#dark-toggle-wrap .hidden-text,
-#dark-toggle-wrap input {
-  opacity: 0;
-  width: 0; height: 0;
+  width: 4rem; height: 2rem;
 }
 /* custom slider */
 #dark-toggle-wrap .slider {
@@ -794,6 +788,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
     padding: 0;
     background: 0;
   }
+  header nav a:last-of-type { margin-bottom: 0; }
   .nav-toggle { display: none; }
   #dark-toggle-wrap {
     margin-top: 0;

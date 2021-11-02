@@ -131,7 +131,6 @@ function toggleNav(e) {
   nav_toggle.classList.toggle("active");
   header_nav.classList.toggle("active");
   header_bg.classList.toggle("active");
-  dark_toggle.classList.toggle("active");
 }
 
 nav_toggle.onclick = toggleNav;
