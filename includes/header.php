@@ -2,13 +2,6 @@
 
 $if = function($condition, $true, $false) { return $condition ? $true : $false; };
 
-// Firefox-Only Bug Patch - Hide Dark-Mode Toggle if user on firefox (style="display:none;")
-if (isset($_SERVER['HTTP_USER_AGENT'])) {
-  $agent = $_SERVER['HTTP_USER_AGENT'];
-}
-if (strlen(strstr($agent, 'Firefox')) > 0) { $browser = 'firefox'; }
-else { $browser = ''; }
-
 echo <<<HEADER
 \n    <div id="loader"></div>
 
@@ -26,7 +19,7 @@ echo <<<HEADER
           <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
             Résumé
           </a>
-          <label id="dark-toggle-wrap" for="dark-toggle"{$if($browser=='firefox',' style="display:none;"','')}>
+          <label id="dark-toggle-wrap" for="dark-toggle">
             <span class="hidden-text">Dark Mode Toggle</span>
             <input id="dark-toggle" type="checkbox">
             <span class="slider"></span>
