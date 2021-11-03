@@ -508,12 +508,11 @@ function updateProject($mysqli, $row) {
 
   // handle image change
   $new_img_name = null;
-  if (isset($_POST["image"])) {
+  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
     $new_img_name = checkImage($row["image"], $directory);
 
     // if uploaded image didn't pass checks
     if (is_null($new_img_name)) {
-      unset($_POST["image"]);
       echo '<script>alert("Image did not pass checks - image not updated.");</script>';
 
     // uploaded image passed check - try to upload image
@@ -521,15 +520,9 @@ function updateProject($mysqli, $row) {
       $uploaded_img = uploadImage($row, $directory, $new_img_name);
       if ($uploaded_img == false) {
         // if upload failed
-        unset($_POST["image"]);
         echo '<script>alert("Image upload failed - image not updated.");</script>';
       }
     }
-
-  // image stayed the same
-  } else {
-    unset($_POST["image"]);
-    echo '<script>alert("Image stayed the same.");</script>';
   }
 
   // update database if all went well
