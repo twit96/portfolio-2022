@@ -351,19 +351,19 @@ article:not(:last-of-type) {
   display: flex;
   flex-direction: column;
 }
-#skills .flex > div {
+#skills .flex section {
   width: 100%;
   z-index: 1;
 }
-#skills .flex > div:first-child {
+#skills .flex section:first-child {
   border-width: max(1vmin, 5px) 0;
   border-color: var(--green);
   border-style: solid;
   padding: 1em 0;
 }
-#skills .flex > div:last-child h3 { margin-top: var(--main-padding); }
+#skills .flex section:last-child h3 { margin-top: var(--main-padding); }
 
-#skills .flex > div > .bubble-text { font-size: 100%; }
+#skills .flex section > .bubble-text { font-size: 100%; }
 
 .skill-box {
   border-top: 1px solid var(--grey);
@@ -420,7 +420,7 @@ article:not(:last-of-type) {
 
 /* xsmall screen tweaks */
 @media (max-width: 400px) {
-  #skills .flex > div:first-child { border: 0; }
+  #skills .flex section:first-child { border: 0; }
   .skill-box {
     flex-direction: column;
     align-items: flex-start;
@@ -442,14 +442,14 @@ article:not(:last-of-type) {
 
 @media (min-aspect-ratio: 4/3) {
   #skills .flex { flex-direction: row-reverse; }
-  #skills .flex > div:first-child {
+  #skills .flex section:first-child {
     text-align: center;
     border: max(1vmin, 5px) solid var(--green);
     border-radius: 1.5vmin;
     padding: 1em;
   }
-  #skills .flex > div:last-child { text-align: left; }
-  #skills .flex > div:nth-of-type(2) { padding-right: var(--main-padding); }
+  #skills .flex section:last-child { text-align: left; }
+  #skills .flex section:nth-of-type(2) { padding-right: var(--main-padding); }
 
   #skills .skill-box {
     margin-top: 0.75em;

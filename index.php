@@ -54,7 +54,7 @@ include('./includes/header.php');
         <article id="skills">
           <h2>My Skills</h2>
           <div class="flex">
-            <div>
+            <section>
               <h3>Languages and Frameworks</h3>
               <div class="skill-box">
                 <div class="details">
@@ -126,8 +126,8 @@ include('./includes/header.php');
                   </div>
                 </div>
               </div>
-            </div>
-            <div>
+            </section>
+            <section>
               <h3>Version Control and Runtimes</h3>
               <span class="bubble-text">Git</span>
               <span class="bubble-text">Linux</span>
@@ -142,7 +142,7 @@ include('./includes/header.php');
               <span class="bubble-text">Finale</span>
               <span class="bubble-text">Windows Video Editor</span>
               <span class="bubble-text">Paint 3D</span>
-            </div>
+            </section>
           </div>  <!-- ./flex -->
         </article>  <!-- #/skills -->
 

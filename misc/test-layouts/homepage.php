@@ -65,7 +65,7 @@
 				<article id="skills">
 					<h2>My Skills</h2>
 					<div class="flex">
-						<div>
+						<section>
 							<h3>Languages and Frameworks</h3>
 							<div class="skill-box">
 								<div class="details">
@@ -136,10 +136,10 @@
 										<span class="fill" style="--fill-percent: 60%;"></span>
 									</div>
 								</div>
-							</div>  <!-- ./wrapper -->
-						</div>
+							</div>
+						</section>
 
-						<div>
+						<section>
 							<h3>Version Control and Runtimes</h3>
 							<span class="bubble-text">Git</span>
 							<span class="bubble-text">Linux</span>
@@ -154,7 +154,7 @@
 							<span class="bubble-text">Finale</span>
 							<span class="bubble-text">Windows Video Editor</span>
 							<span class="bubble-text">Paint 3D</span>
-						</div>
+						</section>
 					</div>  <!-- ./flex -->
 		    </article>
 
