@@ -452,7 +452,6 @@ function addProject($mysqli, $row) {
     echo '<script>alert("Image upload failed - project not added.");</script>';
     return false;
   }
-  unset($_POST["image"]);  // $new_img_name used in insertDB()
 
   // update database if all went well
   insertDB($mysqli, $row, $new_img_name);
