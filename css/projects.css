@@ -3,7 +3,7 @@ h2 {
   margin: 0 auto;
   color: white;
   padding-top: 1em;
-  padding-bottom: calc(var(--main-padding) / 2);
+  padding-bottom: calc(var(--main-spacing) / 2);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
@@ -11,14 +11,14 @@ h2 {
 }
 
 article {
-  margin-bottom: var(--main-padding);
+  margin-bottom: var(--main-spacing);
   background: var(--grey-light);
   box-shadow: 0 0 10px var(--green-shadow);
   border-radius: 10px;
   z-index: 1;
 }
 article > div {
-  padding: var(--main-padding);
+  padding: var(--main-spacing);
 }
 
 article figure {
@@ -67,14 +67,14 @@ article .details p {
   article {
     display: flex;
     flex-direction: row-reverse;
-    padding: var(--main-padding);
+    padding: var(--main-spacing);
   }
   article:nth-of-type(2n) { flex-direction: row; }
 
   article > * { width: 100%; }
 
-  article > div { padding: 0 var(--main-padding) 0 0; }
-  article:nth-of-type(2n) > div { padding: 0 0 0 var(--main-padding); }
+  article > div { padding: 0 var(--main-spacing) 0 0; }
+  article:nth-of-type(2n) > div { padding: 0 0 0 var(--main-spacing); }
 
   article figure img {
     border: max(5px, 1vmin) solid var(--grey);

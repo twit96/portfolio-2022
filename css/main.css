@@ -16,8 +16,8 @@ html {
   /* other */
   --header-height: 78px;
   --main-font-size: 16px;
-  --main-padding: 25px;
-  --fixed-to-side: max(var(--main-padding), calc((100vw - 1500px) / 2));
+  --main-spacing: 25px;
+  --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
   /* colors */
   --indigo: #6201ff;
   --indigo-shadow: #140037;
@@ -64,13 +64,13 @@ body {
   background: var(--green);
   overflow-x: hidden;  /* bugfix - horizontal scrollbar from overflowing orbs */
 }
-body > * { padding: var(--main-padding); }
+body > * { padding: var(--main-spacing); }
 
 .wrapper {
   max-width: 1500px;
   margin: 0 auto;
 }
-.nested-wrapper { padding: 0 var(--main-padding); }
+.nested-wrapper { padding: 0 var(--main-spacing); }
 
 a {
   color: var(--blue-shadow);
@@ -297,8 +297,8 @@ a.active { text-decoration: underline; }
   position: absolute;
   top: 0; right: 0;
   transform: translate(15%, -15%) rotate(5deg);
-  width: calc(var(--main-padding) * 2);
-  height: calc(var(--main-padding) * 2);
+  width: calc(var(--main-spacing) * 2);
+  height: calc(var(--main-spacing) * 2);
 }
 
 /* add ribbons */
@@ -307,8 +307,8 @@ a.active { text-decoration: underline; }
   content: '';
   position: absolute;
   top: 50%;
-  width: calc(var(--main-padding) / 2);
-  height: calc(var(--main-padding) * 1.5);
+  width: calc(var(--main-spacing) / 2);
+  height: calc(var(--main-spacing) * 1.5);
   background: var(--red);
   border-width: 0 0.25em;
   border-color: var(--indigo-shadow);
@@ -327,9 +327,9 @@ a.active { text-decoration: underline; }
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(var(--main-padding) * 2);
-  height: calc(var(--main-padding) * 2);
-  font-size: calc(var(--main-padding) * 3 / 4);
+  width: calc(var(--main-spacing) * 2);
+  height: calc(var(--main-spacing) * 2);
+  font-size: calc(var(--main-spacing) * 3 / 4);
   font-weight: bold;
   color: black;
   display: flex;
@@ -376,8 +376,8 @@ a.active { text-decoration: underline; }
   padding: inherit;  /* override body > * selector */
   cursor: pointer;
   position: fixed;
-  left: calc(var(--main-padding) / 2);
-  bottom: calc(var(--main-padding) / 2);
+  left: calc(var(--main-spacing) / 2);
+  bottom: calc(var(--main-spacing) / 2);
   width: 20px;
   height: 30px;
   border: 3px solid var(--grey-shadow);
@@ -460,8 +460,8 @@ a.active { text-decoration: underline; }
 #scroll-top-btn {
   padding: inherit;  /* override body > * selector */
   position: fixed;
-  bottom: calc(var(--main-padding) / 2);
-  right: calc(var(--main-padding) / 2);
+  bottom: calc(var(--main-spacing) / 2);
+  right: calc(var(--main-spacing) / 2);
   transform: scale(0.95);
   width: 50px;
   height: 50px;
@@ -505,7 +505,7 @@ a.active { text-decoration: underline; }
 
 /* ------------------------------------------------------------------ Header */
 header {
-  padding-bottom: calc(var(--main-padding) * 3 / 5);
+  padding-bottom: calc(var(--main-spacing) * 3 / 5);
   transform: translateY(0);
   position: fixed;
   left: 0; top: 0;
@@ -520,7 +520,7 @@ header .wrapper {
   align-items: center;
 }
 header.filled {
-  transform: translateY(calc(var(--main-padding) * -2 / 5));
+  transform: translateY(calc(var(--main-spacing) * -2 / 5));
 }
 header::before {
   content: '';
@@ -535,13 +535,13 @@ header.filled::before { opacity: 1; }
 
 /* adjust for header.filled translateY animation*/
 header.filled nav {
-  transform: translateX(calc(100% + 50px)) translateY(calc(var(--main-padding) * 2 / 5));
+  transform: translateX(calc(100% + 50px)) translateY(calc(var(--main-spacing) * 2 / 5));
 }
 header.filled nav.active {
-  transform: translateX(0) translateY(calc(var(--main-padding) * 2 / 5));
+  transform: translateX(0) translateY(calc(var(--main-spacing) * 2 / 5));
 }
 header.filled #header-bg.active {
-  transform: translateY(calc(var(--main-padding) * 2 / 5));
+  transform: translateY(calc(var(--main-spacing) * 2 / 5));
 }
 
 header + * { padding-top: var(--header-height); }
@@ -575,7 +575,7 @@ header nav {
   transform: translateX(calc(100% + 50px));
   transition: 0.25s transform ease-out;
   background: var(--blue);
-  padding-bottom: calc(var(--main-padding) / 2);
+  padding-bottom: calc(var(--main-spacing) / 2);
 }
 header nav::after {
   content: '';
@@ -589,7 +589,7 @@ header nav::after {
 }
 header nav.active { transform: translateX(0); }
 header nav > * {
-  margin-top: var(--main-padding);
+  margin-top: var(--main-spacing);
   margin-right: var(--fixed-to-side);
 }
 header nav a {
@@ -597,7 +597,7 @@ header nav a {
   color: white;
   border-radius: 0 3em 3em 0 ;
   font-size: calc(var(--main-font-size) * 1.25);
-  margin-left: var(--main-padding);
+  margin-left: var(--main-spacing);
 }
 header nav a:last-of-type { margin-bottom: 50px; }
 header nav a:hover { color: var(--yellow); }
@@ -767,7 +767,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   }
   header.filled span:hover ~ #header-bg,
   header.filled nav:hover ~ #header-bg {
-    transform: translateY(calc(var(--main-padding) * 2 / 5));
+    transform: translateY(calc(var(--main-spacing) * 2 / 5));
   } */
 
   header nav {
@@ -777,14 +777,14 @@ html.dark-mode #dark-toggle-wrap .slider::before {
     margin-right: auto;
     flex-direction: row;
     padding: 0 !important;
-    padding-left: var(--main-padding) !important;
+    padding-left: var(--main-spacing) !important;
     transform: none;
     background: 0;
   }
   header.filled nav { transform: none; }
   header nav::after { content: none; }
   header nav a {
-    margin: 0 calc(var(--main-padding) / 2);
+    margin: 0 calc(var(--main-spacing) / 2);
     padding: 0;
     background: 0;
   }
@@ -801,7 +801,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
 footer {
   color: white;
   padding-top: 0;
-  padding-bottom: max(var(--main-padding), 75px);
+  padding-bottom: max(var(--main-spacing), 75px);
 }
 footer .wrapper {
   display: flex;
@@ -892,8 +892,8 @@ footer .wrapper > span {
   * {
     --header-height: 135px;
     --main-font-size: 20px;
-    --main-padding: 50px;
-    --fixed-to-side: max(var(--main-padding), calc((100vw - 1500px) / 2));
+    --main-spacing: 50px;
+    --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
   }
 
   h2 {
@@ -910,8 +910,8 @@ footer .wrapper > span {
   * {
     --header-height: 187.5px;
     --main-font-size: 30px;
-    --main-padding: 75px;
-    --fixed-to-side: max(var(--main-padding), calc((100vw - 1500px) / 2));
+    --main-spacing: 75px;
+    --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
   }
 
   header span { font-size: 32px; }

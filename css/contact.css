@@ -4,12 +4,12 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
-  margin-bottom: calc(2 * var(--main-padding));
+  margin-bottom: calc(2 * var(--main-spacing));
 }
 #contact h2 {
-  padding: 1em var(--main-padding);
+  padding: 1em var(--main-spacing);
   color: white;
-  padding-bottom: calc(var(--main-padding) / 2);
+  padding-bottom: calc(var(--main-spacing) / 2);
   font-family: 'Pacifico', cursive;
   font-weight: normal;
   font-size: calc(2.5 * var(--main-font-size));
@@ -22,31 +22,31 @@
   flex-direction: column;
   align-items: stretch;
   padding: 0;
-  margin-top: calc(2 * var(--main-padding));
+  margin-top: calc(2 * var(--main-spacing));
   background: var(--grey-light);
 }
 #contact .flex::before {
   content: '';
   position: absolute;
   left: 0; top: 1px;
-  width: 100%; height: var(--main-padding);
+  width: 100%; height: var(--main-spacing);
   transform: translateY(-100%);
   background: var(--grey-light);
-  clip-path: polygon(0 0, 100% var(--main-padding), 0 100%);
+  clip-path: polygon(0 0, 100% var(--main-spacing), 0 100%);
 }
 #contact .flex::after {
   content: '';
   position: absolute;
   left: 0; bottom: 1px;
-  width: 100%; height: var(--main-padding);
+  width: 100%; height: var(--main-spacing);
   transform: translateY(100%);
   background: var(--grey-light);
-  clip-path: polygon(0 0, 100% 0, 0 var(--main-padding));
+  clip-path: polygon(0 0, 100% 0, 0 var(--main-spacing));
 }
 
 .flex > div {
   width: 100%;
-  padding: var(--main-padding);
+  padding: var(--main-spacing);
 }
 
 #contact-form {
@@ -86,7 +86,7 @@ textarea {
 input[type="button"] {
   padding: 1em;
   border: 0;
-  border-radius: var(--main-padding);
+  border-radius: var(--main-spacing);
   color: white;
   align-self: flex-end;
   /* animated background */

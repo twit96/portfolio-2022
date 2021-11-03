@@ -1,6 +1,6 @@
 article:not(#featured) {
   border-radius: 10px;
-  padding: var(--main-padding);
+  padding: var(--main-spacing);
   box-shadow: 0 0 10px var(--green-shadow);
   overflow: hidden;
 }
@@ -9,7 +9,7 @@ article:not(#intro, #featured) {
 
 }
 article:not(:last-of-type) {
-  margin-bottom: var(--main-padding);
+  margin-bottom: var(--main-spacing);
 }
 /* ----------------------------------------------------------- Intro Section */
 #intro {
@@ -56,7 +56,7 @@ article:not(:last-of-type) {
 #intro .blurb span.active { opacity: 1; }
 
 #intro .details {
-  margin-top: calc(var(--main-padding) * 2);
+  margin-top: calc(var(--main-spacing) * 2);
   align-self: flex-end;
   text-align: center;
 }
@@ -155,7 +155,7 @@ article:not(:last-of-type) {
 /* Featured Section -------------------------------------------------------- */
 #featured .flex {
   position: relative;
-  margin-bottom: calc(var(--main-padding) / 2);
+  margin-bottom: calc(var(--main-spacing) / 2);
 }
 #featured .flex::after {
   position: absolute;
@@ -333,10 +333,10 @@ article:not(:last-of-type) {
   }
   .card-container::-webkit-scrollbar-track {
     border-radius: 15px;
-    margin: 0 var(--main-padding);
+    margin: 0 var(--main-spacing);
   }
   #featured .card:last-child {
-    margin-right: var(--main-padding);
+    margin-right: var(--main-spacing);
   }
   #featured p { text-align: right; }
 }
@@ -361,7 +361,7 @@ article:not(:last-of-type) {
   border-style: solid;
   padding: 1em 0;
 }
-#skills .flex section:last-child h3 { margin-top: var(--main-padding); }
+#skills .flex section:last-child h3 { margin-top: var(--main-spacing); }
 
 #skills .flex section > .bubble-text { font-size: 100%; }
 
@@ -449,7 +449,7 @@ article:not(:last-of-type) {
     padding: 1em;
   }
   #skills .flex section:last-child { text-align: left; }
-  #skills .flex section:nth-of-type(2) { padding-right: var(--main-padding); }
+  #skills .flex section:nth-of-type(2) { padding-right: var(--main-spacing); }
 
   #skills .skill-box {
     margin-top: 0.75em;
@@ -473,7 +473,7 @@ article:not(:last-of-type) {
   z-index: 1;
 }
 #demo .blurb {
-  margin-bottom: var(--main-padding);
+  margin-bottom: var(--main-spacing);
   width: 100%;
 }
 
@@ -489,7 +489,7 @@ article:not(:last-of-type) {
 
 @media (min-aspect-ratio: 4/3) {
   #demo {
-    padding-bottom: calc(5vh + var(--main-padding));
+    padding-bottom: calc(5vh + var(--main-spacing));
     align-items: stretch;
   }
   #demo .flex {
