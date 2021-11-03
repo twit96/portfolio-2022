@@ -529,6 +529,7 @@ function updateProject($mysqli, $row) {
   // image stayed the same
   } else {
     unset($_POST["image"]);
+    echo '<script>alert("Image stayed the same.");</script>';
   }
 
   // update database if all went well
