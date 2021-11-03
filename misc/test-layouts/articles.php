@@ -12,7 +12,7 @@ include('../../includes/header.php');
 ?>
 
 
-    <section id="articles">
+    <main id="articles">
       <div class="wrapper">
         <h2>Articles</h2>
       </div>
@@ -404,7 +404,7 @@ include('../../includes/header.php');
         </nav>
       </div>
 
-    </section>
+    </main>
 
     <?php
 			include('../../includes/footer.php');

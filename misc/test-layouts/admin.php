@@ -21,7 +21,7 @@
 			include('../../includes/header.php');
 		?>
 
-		<section id="entries">
+		<main id="entries">
 			<div class="wrapper">
 				<h2>Admin Login</h2>
 
@@ -281,7 +281,7 @@
 				<form class="hidden" id="add-new-project" method="POST" action="index.php"></form>
 
 			</div>  <!-- ./wrapper -->
-		</section>
+		</main>
 
 		<?php
 			include('../../includes/footer.php');

@@ -1,4 +1,4 @@
-var intro = document.querySelector("section");
+var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
@@ -34,7 +34,7 @@ for (i=0; i<10; i++) {
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-  intro.insertAdjacentElement("beforeend", rand_span);
+  main.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   loader.insertAdjacentElement("beforeend", clone);
 }
@@ -57,7 +57,7 @@ for (i=0; i<30; i++) {
   rand_span.style.animationDuration = rand_anim_duration + "s";
   rand_span.style.animationDelay = rand_anim_delay + "s";
   // place on page
-  intro.insertAdjacentElement("beforeend", rand_span);
+  main.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }

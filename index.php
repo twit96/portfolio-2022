@@ -11,7 +11,7 @@ include('./includes/header.php');
 
 ?>
 
-    <section id="home">
+    <main id="home">
       <div class="wrapper">
 
         <article id="intro">
@@ -196,7 +196,7 @@ include('./includes/header.php');
         </article>  <!-- #/demo -->
 
       </div>  <!-- ./wrapper -->
-    </section>  <!-- #home -->
+    </main>  <!-- #home -->
 
 <?php include('./includes/footer.php'); ?>
   </body>

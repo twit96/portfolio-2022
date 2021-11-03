@@ -14,7 +14,7 @@ include('../templates/header.php');
 
 ?>
 
-    <section id="contact">
+    <main id="contact">
       <h2>Contact Me</h2>
       <div class="flex">
         <div class="left">
@@ -36,7 +36,7 @@ include('../templates/header.php');
           <div id="map"></div>
         </div> <!-- /.right -->
       </div> <!-- /.wrapper -->
-    </section>
+    </main>
 
 <?php
 

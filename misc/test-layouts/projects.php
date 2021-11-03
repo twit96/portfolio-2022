@@ -19,7 +19,7 @@
 			include('../../includes/header.php');
     ?>
 
-    <section id="projects">
+    <main id="projects">
       <div class="wrapper">
         <h2>Projects</h2>
 
@@ -148,7 +148,7 @@
         </article>
 
       </div>  <!-- ./wrapper -->
-    </section>
+    </main>
 
     <?php
 		  include('../../includes/footer.php');

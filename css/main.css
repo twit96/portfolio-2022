@@ -747,7 +747,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   transition: 0.25s opacity ease-out 0.25s,
               0.25s transform ease-out;
 }
-/* make orbs (clones from intro generation) look like stars */
+/* make orbs (clones from <main> generation) look like stars */
 #header-bg .orb {
   background: var(--grey-light);
   transform: scale(0.5);
