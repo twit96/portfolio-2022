@@ -1,6 +1,6 @@
 <?php
-
-include('../templates/head.php');
+DEFINE("FILENAME", 'contact');
+include('../../includes/head.php');
 echo '<meta name="robots" content="noindex">';
 echo <<<HEAD_END
 \n    <!-- map -->
@@ -11,7 +11,7 @@ echo <<<HEAD_END
   <body>
 HEAD_END;
 
-include('../templates/header.php');
+include('../../includes/header.php');
 
 ?>
 
@@ -41,7 +41,7 @@ include('../templates/header.php');
 
 <?php
 
-	include('../templates/footer.php');
+	include('../../includes/footer.php');
 
   echo <<<PAGE_END
   \n
