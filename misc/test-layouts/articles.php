@@ -2,6 +2,7 @@
 
 DEFINE("FILENAME", 'articles');
 include('../../includes/head.php');
+echo '<meta name="robots" content="noindex">';
 echo <<<HEAD_END
 \n  </head>
   <body>

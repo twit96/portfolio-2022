@@ -1,6 +1,7 @@
 <?php
 
 include('../templates/head.php');
+echo '<meta name="robots" content="noindex">';
 echo <<<HEAD_END
 \n    <!-- map -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
