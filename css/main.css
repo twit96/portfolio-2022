@@ -554,7 +554,6 @@ header span {
   z-index: 103;
 }
 header span a {
-  -webkit-tap-highlight-color: transparent;
   color: white;
 }
 header span a:hover {
@@ -594,7 +593,6 @@ header nav > * {
   margin-right: var(--fixed-to-side);
 }
 header nav a {
-  -webkit-tap-highlight-color: transparent;
   color: white;
   border-radius: 0 3em 3em 0 ;
   font-size: calc(var(--main-font-size) * 1.25);
@@ -605,7 +603,6 @@ header nav a:hover { color: var(--yellow); }
 
 /* Dark Mode Toggle */
 #dark-toggle-wrap {
-  -webkit-tap-highlight-color: transparent;
   margin-left: auto;
   position: relative;
   width: 4rem; height: 2rem;
@@ -657,7 +654,6 @@ html.dark-mode #dark-toggle-wrap .slider::before {
 
 /* Hamburger Menu */
 .nav-toggle {
-  -webkit-tap-highlight-color: transparent;
   position: relative;
   cursor: pointer;
   width: 30px;
