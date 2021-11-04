@@ -14,12 +14,10 @@ include('../../includes/header.php');
 
     <main id="post">
       <div class="wrapper">
-        <div id="title-img">
-          <img src="/img/projects/first-portfolio/title-card.png" alt="Title Card" />
-        </div>
+
         <article>
 
-          <div class="details">
+          <div class="card details" style="background-image: url('/img/projects/first-portfolio/title-card.png')">
             <h2>First Portfolio Website is First is First</h2>
             <ul class="tags">
               <li><a href="#">Web Game</a></li>
@@ -36,8 +34,7 @@ include('../../includes/header.php');
             <div class="blurb">
               Grow sales with a smart marketing platform. Try Mailchimp today.
             </div>
-          </div>  <!-- ./details -->
-
+          </div>  <!-- ./card details -->
 
           <div class="card">
             <p>
