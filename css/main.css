@@ -593,7 +593,6 @@ header nav > * {
   margin-right: var(--fixed-to-side);
 }
 header nav a {
-  -webkit-tap-highlight-color: transparent;
   color: white;
   border-radius: 0 3em 3em 0 ;
   font-size: calc(var(--main-font-size) * 1.25);
