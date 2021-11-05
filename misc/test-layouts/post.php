@@ -31,9 +31,7 @@ include('../../includes/header.php');
                 Posted by <b>Tyler Wittig</b> on 2020-09-01
               </p>
             </div>
-            <div class="blurb">
-              Grow sales with a smart marketing platform. Try Mailchimp today.
-            </div>
+            <div class="btm-border"></div>
           </div>  <!-- ./card details -->
 
           <div class="card">
