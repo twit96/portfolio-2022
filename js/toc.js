@@ -3,7 +3,6 @@ var toc_toggle = document.getElementById("toc-toggle");
 var toc_bg = document.getElementById("toc-bg");
 function toggleTOC() {
   toc.classList.toggle("active");
-  toc.classList.remove("peak");
   toc_bg.classList.toggle("active");
 }
 toc_toggle.onclick = toggleTOC;
@@ -37,6 +36,7 @@ for (i=0; i<headings.length; i++) {
   // build anchor link
   h_link = document.createElement('a');
   h_link.href = '#' + h.id;
+  h_link.setAttribute('onclick','toggleTOC()');
   h_link.innerHTML = h.innerHTML;
   h_link.classList.add(h.tagName.replace("H", "h") + '-link');
   // add link to table of contents
