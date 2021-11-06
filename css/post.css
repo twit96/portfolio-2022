@@ -176,7 +176,8 @@ ul.tags a::before { content: '# '; }
 
 #toc {
   position: fixed;
-  right: 0; top: var(--header-height);
+  right: -5px; /* not 0 because counteracting box-shadow */
+  top: var(--header-height);
   transform: translateX(100%);
   max-width: min(calc(100% - 75px), 500px);
   overflow: visible;
