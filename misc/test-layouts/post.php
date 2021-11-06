@@ -16,9 +16,8 @@ include('../../includes/header.php');
       <div class="wrapper">
 
         <article>
-
           <div class="card details" style="background-image: url('/img/projects/first-portfolio/title-card.png')">
-            <h2>First Portfolio Website is First is First</h2>
+            <h1>First Portfolio Website is First is First</h1>
             <ul class="tags">
               <li><a href="#">Web Game</a></li>
               <li><a href="#">JavaScript</a></li>
@@ -33,8 +32,8 @@ include('../../includes/header.php');
             </div>
             <div class="btm-border"></div>
           </div>  <!-- ./card details -->
-
           <div class="card">
+            <h2>Did you know this?</h2>
             <p>
               We’re all familiar with the concept of autocompletion, right?
               You type something into a search box and it tries to guess what
@@ -44,6 +43,7 @@ include('../../includes/header.php');
               usage is when used as a secondary search pattern to augment the
               typing experience.
             </p>
+            <h3>Here is some code about it</h3>
 
 <pre><code>#title-img {
   position: absolute;
@@ -64,6 +64,7 @@ include('../../includes/header.php');
   height: 100%;
   background-image: radial-gradient(ellipse, transparent, var(--green) 75%);
 }</code></pre>
+            <h4>Here is the code explanation</h4>
             <p>
               In modern web applications, there’s no reason a composition box
               has to be a dull, plain text area, or limit itself to rich text
@@ -79,6 +80,7 @@ include('../../includes/header.php');
               <img src="/img/projects/first-portfolio/title-card.png" alt="Post Title Card" />
               <figcaption>This is an image within a figure</figcaption>
             </figure>
+            <h3>So what is next?</h3>
             <p>
               We’re all familiar with the concept of autocompletion, right?
               You type something into a search box and it tries to guess what
@@ -88,6 +90,163 @@ include('../../includes/header.php');
               usage is when used as a secondary search pattern to augment the
               typing experience.
             </p>
+            <h4>Should we do that?</h4>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h5>Pros</h5>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Pro 1</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Pro 2</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Pro 3</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h5>Cons</h5>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Con 1</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Con 2</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h6>Con 3</h6>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h3>What others know about it</h3>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h2>A similar problem</h2>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h3>What others know about it</h3>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h3>It has an easier solution</h3>
+            <p>
+              In modern web applications, there’s no reason a composition box
+              has to be a dull, plain text area, or limit itself to rich text
+              formatting. Social and productivity apps like Twitter, Slack,
+              Notion, Google Docs, and Asana have popularized the “@mention”
+              pattern, allowing you to reference other users as you type. You
+              can mention another person, a channel, a file, or some other
+              queryable object using triggers, such as the @ or # characters.
+              This opens a panel with suggestions, letting you complete your
+              message with the right reference.
+            </p>
+            <h2>In Conclusion</h2>
             <p>
               In modern web applications, there’s no reason a composition box
               has to be a dull, plain text area, or limit itself to rich text
@@ -100,15 +259,16 @@ include('../../includes/header.php');
               message with the right reference.
             </p>
           </div>  <!-- ./card -->
-
         </article>
+
         <div id="sidebar">
-          <nav class="card">
+          <div id="toc" class="card">
+            <div id="toc-toggle"><span></span></div>
             <h3>Table of Contents</h3>
-            <a href="#">This is the first</a>
-            <a href="#">And the Second</a>
-            <a href="#">Plus #3</a>
-          </nav>
+            <nav></nav>
+          </div>
+          <div id="toc-bg"></div>
+          <script src="/js/toc.js" defer></script>
           <div class="card">
             <p>
               We’re all familiar with the concept of autocompletion, right?
