@@ -574,7 +574,11 @@ header nav {
   z-index: 102;
   transform: translateX(calc(100% + 50px));
   transition: 0.25s transform ease-out;
-  background: var(--blue);
+  background-image: linear-gradient(
+    30deg, var(--indigo), var(--blue), var(--blue)
+  );
+  background-size: 300% 300%;
+  background-position: center;
   padding-bottom: calc(var(--main-spacing) / 2);
 }
 header nav::after {
