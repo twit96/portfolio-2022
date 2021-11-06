@@ -15,7 +15,7 @@ include('../../includes/header.php');
 
     <main id="articles">
       <div class="wrapper">
-        <h2>Articles</h2>
+        <h1>Articles</h1>
       </div>
       <div class="wrapper grid">
 

@@ -10,7 +10,7 @@ ini_set("display_errors", "on");
 function doLogin() {
   $script = $_SERVER['PHP_SELF'];
   echo <<<TOP
-  <h2>Admin Login</h2>
+  <h1>Admin Login</h1>
   <div id="login">
     <form method="POST" action="admin.php">
       <p>
@@ -108,7 +108,7 @@ function checkLogin($mysqli, $username, $password) {
 function buildDashboard($mysqli) {
   // Opening HTML
   echo <<<TOP
-  <h2>Database Entries</h2>
+  <h1>Database Entries</h1>
   <table id="projects-table">
     <col style="width:8%">
     <col style="width:7%">

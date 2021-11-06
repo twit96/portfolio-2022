@@ -11,7 +11,7 @@ function displayFeatured($mysqli) {
   echo <<<TOP
   \n    <main id="projects">
         <div class="wrapper">
-          <h2>Projects</h2>
+          <h1>Projects</h1>
   TOP;
 
 

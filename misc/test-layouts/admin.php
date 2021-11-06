@@ -24,7 +24,7 @@
 
 		<main id="entries">
 			<div class="wrapper">
-				<h2>Admin Login</h2>
+				<h1>Admin Login</h1>
 
 				<div id="login">
 					<form method="POST" action="index.php">
@@ -46,7 +46,7 @@
 					</p>
 				</div>
 
-				<h2>Database Entries</h2>
+				<h1>Database Entries</h1>
 				<table id="projects-table">
 					<col style="width:8%">
 					<col style="width:7%">
