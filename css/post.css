@@ -206,8 +206,8 @@ ul.tags a::before { content: '# '; }
   background-size: 300% 300%;
   background-position: center;
   box-shadow: 0 0 5px var(--grey-shadow);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
 }
+#toc.active #toc-toggle { background: var(--red); }
 
 #toc-toggle span {
   /* undo parent transform */
