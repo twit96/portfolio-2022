@@ -252,7 +252,7 @@ ul.tags a::before { content: '# '; }
   max-height: 50vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 1rem;
+  padding: 0 1rem 0 0.5rem;
 }
 #toc nav::-webkit-scrollbar {
   width: 10px;
