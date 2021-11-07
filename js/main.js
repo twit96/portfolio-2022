@@ -115,19 +115,32 @@ function configColorScheme() {
   if (
     (dark_mode == "dark_mode=on") &&
     (!html.classList.contains('dark-mode'))
-  ) {
-    html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#011c0c');
-  }
+  ) { html.classList.toggle("dark-mode"); }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
-  ) {
-    html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#06632c');
-  }
+  ) { html.classList.toggle("dark-mode"); }
+  configMetaThemeColor();
 }
 configColorScheme();
+
+
+function configMetaThemeColor() {
+  var theme_color = '#06632c';  // default
+  var header_active = header_nav.classList.contains("active");
+
+  // dark mode
+  if (html.classList.contains('dark-mode')) {
+    (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
+  // light mode
+  } else {
+    (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
+  }
+
+  if (meta_theme_color.content != theme_color) {
+    meta_theme_color.setAttribute('content', theme_color);
+  }
+}
 
 
 // Header Functionality -------------------------------------------------------
@@ -140,24 +153,7 @@ function toggleNav(e) {
   nav_toggle.classList.toggle("active");
   header_nav.classList.toggle("active");
   header_bg.classList.toggle("active");
-
-  // update meta tag
-  if (html.classList.contains('dark-mode')) {
-    // dark mode
-    if (header_nav.classList.contains("active")) {
-      meta_theme_color.setAttribute('content', '#1067a1');
-    } else {
-      meta_theme_color.setAttribute('content', '#011c0c');
-    }
-  } else {
-    // light mode
-    if (header_nav.classList.contains("active")) {
-      meta_theme_color.setAttribute('content', '#48acf0');
-    } else {
-      meta_theme_color.setAttribute('content', '#06632c');
-    }
-  }
-
+  configMetaThemeColor();
 }
 
 nav_toggle.onclick = toggleNav;
