@@ -26,6 +26,7 @@ function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
     $command = 'SELECT * FROM blog_posts ORDER BY id DESC;';
   }
   $result = $mysqli->query($command);
+  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
   $post_array = array();
   while ($row = $result->fetch_assoc()) {
