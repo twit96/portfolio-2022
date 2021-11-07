@@ -76,11 +76,11 @@ setTimeout(function() {
 
 // toggle light/dark mode functionality
 var html = document.documentElement;
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var slider = document.querySelector("#dark-toggle-wrap .slider");
 
 slider.onclick = function(e) {
   updateCookie();
-  configColorScheme();
 }
 
 function setCookie(c_value) {
@@ -102,10 +102,12 @@ function getCookie() {
   return "";
 }
 function updateCookie() {
+  var dark_mode = getCookie();
   // toggled to dark
-  if (html.classList.contains('dark-mode')) { setCookie("on"); }
+  if (dark_mode == "dark_mode=off") { setCookie("on"); }
   // toggled to light
   else { setCookie("off"); }
+  configColorScheme();
 }
 
 function configColorScheme() {
@@ -115,14 +117,14 @@ function configColorScheme() {
     (!html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#011c0c');
+    meta_theme_color.setAttribute('content',  '#011c0c');
   }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#06632c');
+    meta_theme_color.setAttribute('content',  '#06632c');
   }
 }
 configColorScheme();
