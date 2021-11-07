@@ -18,6 +18,8 @@
     $og_description_extension = ' - '.$page_name;
   }
 
+  // if statement function for inside heredocs
+  $if = function($condition, $true, $false) { return $condition ? $true : $false; };
 
   // Cache Busting Function - append last modified date to filenames
   $timestamp = function($file_path) {
@@ -32,6 +34,7 @@
       <meta name="description" content="{$description}" />
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="theme-color" content="{$if((isset($_COOKIE['dark_mode'])&&$_COOKIE['dark_mode']=='on'),'#033d1a','#06632c')}" />
       <!-- Social Media Card -->
       <meta name="author" content="Tyler Wittig" />
       <meta property="og:title" content="Tyler Wittig | {$page_name}"/>
