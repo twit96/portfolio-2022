@@ -30,7 +30,7 @@ article.disabled {
   opacity: 0.5;
 }
 article > div {
-  padding: var(--main-spacing);
+  padding: 25px;
 }
 
 article .img-link { line-height: normal; }
@@ -118,7 +118,6 @@ article .author p span { display: inline-block; }
     grid-template-columns: repeat(2, 1fr);
     grid-gap: calc(var(--main-spacing) / 2);
   }
-  article > div { padding: calc(var(--main-spacing) / 2); }
 }
 @media (min-width: 1250px) {
   .grid { grid-template-columns: repeat(3, 1fr); }
