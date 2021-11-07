@@ -76,10 +76,12 @@ setTimeout(function() {
 
 // toggle light/dark mode functionality
 var html = document.documentElement;
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var slider = document.querySelector("#dark-toggle-wrap .slider");
+
 slider.onclick = function(e) {
-  html.classList.toggle("dark-mode");
   updateCookie();
+  configColorScheme();
 }
 
 function setCookie(c_value) {
@@ -112,11 +114,17 @@ function configColorScheme() {
   if (
     (dark_mode == "dark_mode=on") &&
     (!html.classList.contains('dark-mode'))
-  ) { html.classList.toggle("dark-mode"); }
+  ) {
+    html.classList.toggle("dark-mode");
+    meta_theme_color.setAttribute('content', '#011c0c');
+  }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
-  ) { html.classList.toggle("dark-mode"); }
+  ) {
+    html.classList.toggle("dark-mode");
+    meta_theme_color.setAttribute('content', '#06632c');
+  }
 }
 configColorScheme();
 
