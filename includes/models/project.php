@@ -13,8 +13,8 @@ class Project {
   public $blurb;
   public $description;
   public $date;
-  public $primary_link;
-  public $other_links;
+  public $primary_link = array();
+  public $other_links = array();
   public $featured;
 
   function __construct(
