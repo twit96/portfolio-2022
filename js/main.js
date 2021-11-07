@@ -76,7 +76,6 @@ setTimeout(function() {
 
 // toggle light/dark mode functionality
 var html = document.documentElement;
-var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var slider = document.querySelector("#dark-toggle-wrap .slider");
 
 slider.onclick = function(e) {
@@ -116,14 +115,14 @@ function configColorScheme() {
     (!html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#011c0c');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#011c0c');
   }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#06632c');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#06632c');
   }
 }
 configColorScheme();
