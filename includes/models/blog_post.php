@@ -11,7 +11,7 @@ class BlogPost {
   public $date_posted;
   public $date_updated;
 
-  function __construct($in_id=null, $in_directory=null, $in_title=null, $in_post=null, $in_author_id=null, $in_date_posted=null, $in_date_updated=null) {
+  function __construct($in_id=null, $in_directory=null, $in_image, $in_title=null, $in_post=null, $in_author_id=null, $in_date_posted=null, $in_date_updated=null) {
     if (!empty($in_id)) { $this->id = $in_id; }
     if (!empty($in_directory)) { $this->directory = $in_directory; }
     if (!empty($in_image)) { $this->image = $in_image; }
