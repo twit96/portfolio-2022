@@ -14,6 +14,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<script src="/js/main.js" defer></script>
 		<script src="/js/home.js" defer></script>
+		<meta name="robots" content="noindex">
 	</head>
 
 	<body>
