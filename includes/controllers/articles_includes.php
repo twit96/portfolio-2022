@@ -19,15 +19,15 @@ if ($mysqli->connect_errno) {
 
 function getBlogPosts($in_id=null, $in_tag_id=null) {
   if (!empty($in_id)) {
-    $query = mysql_query("SELECT * FROM blog_posts WHERE id=".$in_id." ORDER BY id DESC");
+    $result = $mysqli->query("SELECT * FROM blog_posts WHERE id=".$in_id." ORDER BY id DESC");
   } else if (!empty($in_tag_id)) {
-    $query = mysql_query("SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id=".$tag_id." ORDER BY blog_posts.id DESC");
+    $result = $mysqli->query("SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id=".$tag_id." ORDER BY blog_posts.id DESC");
   } else {
-    $query = mysql_query("SELECT * FROM blog_posts ORDER BY id DESC");
+    $result = $mysqli->query("SELECT * FROM blog_posts ORDER BY id DESC");
   }
 
   $post_array = array();
-  while ($row = mysql_fetch_assoc($query)) {
+  while ($row = $result->fetch_assoc()) {
     $this_post = new BlogPost($row["id"], $row["directory"], $row["image"], $row["title"], $row["post"], $row["author_id"], $row["date_posted"], $row["date_updated"]);
     array_push($post_array, $this_post);
   }

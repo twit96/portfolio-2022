@@ -26,16 +26,16 @@ class BlogPost {
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
     if (!empty($in_author_id)) {
-      $query = mysql_query("SELECT first_name, last_name, FROM people WHERE id=".$in_author_id);
-      $row = mysql_fetch_assoc($query);
+      $result = $mysqli->query("SELECT first_name, last_name, FROM people WHERE id=".$in_author_id);
+      $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
     }
 
     $tag_array = array();
     $tag_id_array = array();
     if (!empty($in_id)) {
-      $query = mysql_query("SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=".$in_id);
-      while ($row = mysql_fetch_assoc($query)) {
+      $result = $mysqli->query("SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=".$in_id);
+      while ($row = $result->fetch_assoc()) {
         array_push($tag_array, $row["name"]);
         array_push($tag_id_array, $row["id"]);
       }
