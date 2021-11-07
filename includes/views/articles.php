@@ -5,7 +5,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
-include (__DIR__ .'../controllers/articles_includes.php');
+include '/includes/controllers/articles_includes.php';
 
 $blog_posts = $getBlogPosts();
 foreach ($blog_posts as $post) {
