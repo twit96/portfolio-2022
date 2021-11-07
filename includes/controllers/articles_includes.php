@@ -19,12 +19,13 @@ if ($mysqli->connect_errno) {
 
 function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
   if (!empty($in_id)) {
-    $result = $mysqli->query("SELECT * FROM blog_posts WHERE id=".$in_id." ORDER BY id DESC");
+    $command = 'SELECT * FROM blog_posts WHERE id='.$in_id.' ORDER BY id DESC;';
   } else if (!empty($in_tag_id)) {
-    $result = $mysqli->query("SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id=".$tag_id." ORDER BY blog_posts.id DESC");
+    $command = 'SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id='.$tag_id.' ORDER BY blog_posts.id DESC;';
   } else {
-    $result = $mysqli->query("SELECT * FROM blog_posts ORDER BY id DESC");
+    $command = 'SELECT * FROM blog_posts ORDER BY id DESC;';
   }
+  $result = $mysqli->query($command);
 
   $post_array = array();
   while ($row = $result->fetch_assoc()) {
