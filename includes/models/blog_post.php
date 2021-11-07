@@ -16,13 +16,24 @@ class BlogPost {
   public $date_posted;
   public $date_updated;
 
-  function __construct($mysqli, $in_id=null, $in_directory=null, $in_image, $in_title=null, $in_post=null, $in_author_id=null, $in_date_posted=null, $in_date_updated=null) {
-    if (!empty($in_id)) { $this->id = $in_id; }
-    if (!empty($in_directory)) { $this->directory = $in_directory; }
-    if (!empty($in_image)) { $this->image = $in_image; }
-    if (!empty($in_title)) { $this->title = $in_title; }
-    if (!empty($in_post)) { $this->post = $in_post; }
-    if (!empty($in_date_posted)) { $this->date_posted = $in_date_posted; }
+  function __construct(
+    $mysqli,
+    $in_id=null,
+    $in_directory=null,
+    $in_image=null,
+    $in_title=null,
+    $in_post=null,
+    $in_author_id=null,
+    $in_date_posted=null,
+    $in_date_updated=null
+  ) {
+
+    if (!empty($in_id)) {           $this->id = $in_id; }
+    if (!empty($in_directory)) {    $this->directory = $in_directory; }
+    if (!empty($in_image)) {        $this->image = $in_image; }
+    if (!empty($in_title)) {        $this->title = $in_title; }
+    if (!empty($in_post)) {         $this->post = $in_post; }
+    if (!empty($in_date_posted)) {  $this->date_posted = $in_date_posted; }
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
     if (!empty($in_author_id)) {
