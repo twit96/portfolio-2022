@@ -43,7 +43,7 @@ foreach ($blog_posts as $post) {
   echo '</div>';
   // Author
   echo '<div class="author">';
-    echo '<img src="/img/profile.jpg" alt="'.$post->author.' Image" />'
+    echo '<img src="/img/profile.jpg" alt="'.$post->author.' Image" />';
   echo '</div>';
   echo '</article>';
 }
