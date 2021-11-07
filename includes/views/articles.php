@@ -49,6 +49,11 @@ foreach ($blog_posts as $post) {
   // Author
   echo '<div class="author">';
     echo '<img src="/img/profile.jpg" alt="'.$post->author.' Image" />';
+    echo '<p>Posted by <b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span>';
+    if ($post->date_posted != $post->date_updated) {
+      echo ' (Updated on <span>'.$post->date_updated.')</span>';
+    }
+    echo'</p>';
   echo '</div>';
   echo '</article>';
 }
