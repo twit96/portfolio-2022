@@ -11,7 +11,7 @@ $blog_posts = $getBlogPosts();
 foreach ($blog_posts as $post) {
   echo '<article>';
 
-  if ((!empty($post->directory) && (!empty($post->image)) {
+  if ((!empty($post->directory) && (!empty($post->image))) {
     echo <<<IMG_LINK
     <a class="img-link" href="#">
       <img src="/img/articles/{$post->directory}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
