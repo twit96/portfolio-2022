@@ -41,7 +41,7 @@ class Project {
     $primary_link_array = array();
     $other_links_array = array();
     if (!empty($in_id)) {
-      $command 'SELECT * FROM project_links WHERE id='.$in_id.';';
+      $command = 'SELECT * FROM project_links WHERE id='.$in_id.';';
       $result = $mysqli->query($command);
       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
