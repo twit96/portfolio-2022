@@ -145,7 +145,7 @@ function toggleNav(e) {
   if (html.classList.contains('dark-mode')) {
     // dark mode
     if (header_nav.classList.contains("active")) {
-      meta_theme_color.setAttribute('content', '#148bdb');
+      meta_theme_color.setAttribute('content', '#1067a1');
     } else {
       meta_theme_color.setAttribute('content', '#011c0c');
     }
