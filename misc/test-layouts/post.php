@@ -27,7 +27,7 @@ include('../../includes/header.php');
             <div class="author">
               <img src="/img/profile.jpg"/>
               <p>
-                Posted by <b>Tyler Wittig</b> on 2020-09-01
+                <b>Tyler Wittig</b> on <span>2020-09-01</span> (Updated on <span>2021-11-06)</span>
               </p>
             </div>
             <div class="btm-border"></div>
