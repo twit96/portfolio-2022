@@ -38,8 +38,8 @@ class Project {
     if (!empty($in_date)) {                 $this->date = $in_date; }
     if (!empty($in_featured)) {             $this->featured = $in_featured; }
 
-    var $primary_link_array = array();
-    var $other_links_array = array();
+    $primary_link_array = array();
+    $other_links_array = array();
     if (!empty($in_id)) {
       $command 'SELECT * FROM project_links WHERE id='.$in_id.';';
       $result = $mysqli->query($command);
