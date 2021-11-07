@@ -23,7 +23,7 @@ foreach ($blog_posts as $post) {
   // Details
   echo '<div class="details">';
   // tags
-  if ($sizeof($post->tags) > 0) {
+  if (sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($tags as $tag) {
       echo '<li><a href="#">'.$tag.'</a></li>';
