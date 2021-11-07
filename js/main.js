@@ -1,4 +1,5 @@
 var html = document.documentElement;
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
@@ -114,11 +115,17 @@ function configColorScheme() {
   if (
     (dark_mode == "dark_mode=on") &&
     (!html.classList.contains('dark-mode'))
-  ) { html.classList.toggle("dark-mode"); }
+  ) {
+    html.classList.toggle("dark-mode");
+    meta_theme_color.setAttribute('content', '#000000');
+  }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
-  ) { html.classList.toggle("dark-mode"); }
+  ) {
+    html.classList.toggle("dark-mode");
+    meta_theme_color.setAttribute('content', '#ffffff');
+  }
 }
 configColorScheme();
 
