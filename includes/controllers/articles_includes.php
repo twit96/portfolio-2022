@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {
   die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
 }
 
-function getBlogPosts($in_id=null, $in_tag_id=null) {
+function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
   if (!empty($in_id)) {
     $result = $mysqli->query("SELECT * FROM blog_posts WHERE id=".$in_id." ORDER BY id DESC");
   } else if (!empty($in_tag_id)) {

@@ -8,7 +8,7 @@ ini_set("display_errors", "on");
 echo '<script>console.log("'.__DIR__.'/../controllers/articles_includes.php'.'");</script>';
 include (__DIR__.'/../controllers/articles_includes.php');
 
-$blog_posts = getBlogPosts();
+$blog_posts = getBlogPosts($mysqli);
 foreach ($blog_posts as $post) {
   echo '<article>';
 
