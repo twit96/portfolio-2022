@@ -145,16 +145,16 @@ function toggleNav(e) {
   if (html.classList.contains('dark-mode')) {
     // dark mode
     if (meta_theme_color_content == '#011c0c') {
-      meta_theme_color_content = '#000000';
+      meta_theme_color.setAttribute('content', '#000000');
     } else {
-      meta_theme_color_content = '#011c0c'
+      meta_theme_color.setAttribute('content', '#011c0c');
     }
   } else {
     // light mode
     if (meta_theme_color_content == '#06632c') {
-      meta_theme_color_content = '#140037';
+      meta_theme_color.setAttribute('content', '#140037');
     } else {
-      meta_theme_color_content = '#06632c'
+      meta_theme_color.setAttribute('content', '#06632c');
     }
   }
 
