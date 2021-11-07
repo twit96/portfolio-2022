@@ -31,6 +31,7 @@
       <meta name="description" content="{$description}" />
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <meta name="theme-color" content="#06632c" /> -->
       <!-- Social Media Card -->
       <meta name="author" content="Tyler Wittig" />
       <meta property="og:title" content="Tyler Wittig | {$page_name}"/>
