@@ -20,8 +20,12 @@ if ($mysqli->connect_errno) {
 $mysqli->select_db($dbName) or die($mysqli->error);
 
 
-function getProjects($mysqli) {
-  $command = 'SELECT * FROM projects ORDER BY date DESC;';
+function getProjects($mysqli, $featured_only=FALSE) {
+  if ($featured_only == TRUE) {
+    $command = 'SELECT * FROM projects WHERE featured>0 ORDER BY featured, date DESC;';
+  } else {
+    $command = 'SELECT * FROM projects ORDER BY date DESC;';
+  }
   $result = $mysqli->query($command);
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 

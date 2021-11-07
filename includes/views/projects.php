@@ -15,7 +15,7 @@ TOP;
 include (__DIR__ .'/../controllers/projects_includes.php');
 
 
-$projects = getProjects($mysqli);
+$projects = getProjects($mysqli, FALSE);
 foreach ($projects as $project) {
 
   // config primary link
