@@ -33,7 +33,17 @@ function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
 
   $post_array = array();
   while ($row = $result->fetch_assoc()) {
-    $this_post = new BlogPost($mysqli, $row["id"], $row["directory"], $row["image"], $row["title"], $row["post"], $row["author_id"], $row["date_posted"], $row["date_updated"]);
+    $this_post = new BlogPost(
+      $mysqli,
+      $row["id"],
+      $row["directory"],
+      $row["image"],
+      $row["title"],
+      $row["post"],
+      $row["author_id"],
+      $row["date_posted"],
+      $row["date_updated"]
+    );
     array_push($post_array, $this_post);
   }
   return $post_array;
