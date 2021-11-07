@@ -140,24 +140,6 @@ function toggleNav(e) {
   nav_toggle.classList.toggle("active");
   header_nav.classList.toggle("active");
   header_bg.classList.toggle("active");
-
-  // update meta tag
-  if (html.classList.contains('dark-mode')) {
-    // dark mode
-    if (header_nav.classList.contains("active")) {
-      meta_theme_color.setAttribute('content', '#1067a1');
-    } else {
-      meta_theme_color.setAttribute('content', '#011c0c');
-    }
-  } else {
-    // light mode
-    if (header_nav.classList.contains("active")) {
-      meta_theme_color.setAttribute('content', '#48acf0');
-    } else {
-      meta_theme_color.setAttribute('content', '#06632c');
-    }
-  }
-
 }
 
 nav_toggle.onclick = toggleNav;
