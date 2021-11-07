@@ -26,7 +26,9 @@ class BlogPost {
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
     if (!empty($in_author_id)) {
-      $result = $mysqli->query("SELECT first_name, last_name, FROM people WHERE id=".$in_author_id);
+      $command = 'SELECT first_name, last_name, FROM people WHERE id='.$in_author_id.';';
+      $result = $mysqli->query($command);
+      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
     }
