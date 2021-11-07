@@ -1,15 +1,15 @@
 <?php
 
 DEFINE("FILENAME", 'projects');
-include('./includes/head.php');
+include('./includes/templates/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./includes/header.php');
+include('./includes/templates/header.php');
 include('./php/all_projects.php');
-include('./includes/footer.php');
+include('./includes/templates/footer.php');
 
 echo <<<PAGE_END
   </body>

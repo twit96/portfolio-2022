@@ -1,13 +1,13 @@
 <?php
 
 DEFINE("FILENAME", 'admin');
-include('./includes/head.php');
+include('./includes/templates/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./includes/header.php');
+include('./includes/templates/header.php');
 echo <<<SECTION_TOP
 <main id="entries">
   <div class="wrapper">
@@ -20,7 +20,7 @@ echo <<<SECTION_BTM
 </main>
 SECTION_BTM;
 
-include('./includes/footer.php');
+include('./includes/templates/footer.php');
 
 echo <<<PAGE_END
 \n

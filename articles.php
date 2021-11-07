@@ -6,15 +6,15 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 DEFINE("FILENAME", 'articles');
-include('./includes/head.php');
+include('./includes/templates/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./includes/header.php');
+include('./includes/templates/header.php');
 include('./includes/views/articles.php');
-include('./includes/footer.php');
+include('./includes/templates/footer.php');
 
 echo <<<PAGE_END
   </body>
