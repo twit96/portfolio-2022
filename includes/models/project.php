@@ -13,8 +13,8 @@ class Project {
   public $blurb;
   public $description;
   public $date;
-  public $primary_link;
-  public $other_links;
+  public $primary_link = array();
+  public $other_links = array();
   public $featured;
 
   function __construct(
@@ -41,7 +41,7 @@ class Project {
     $primary_link_array = array();
     $other_links_array = array();
     if (!empty($in_id)) {
-      $command = 'SELECT * FROM project_links WHERE id='.$in_id.';';
+      $command = 'SELECT * FROM project_links WHERE project_id='.$in_id.';';
       $result = $mysqli->query($command);
       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
@@ -53,7 +53,10 @@ class Project {
         }
       }
 
-      if (sizeof($primary_link_array) == 0) {
+      if (
+        (sizeof($primary_link_array) == 0) &&
+        (sizeof($other_links_array) > 0)
+      ) {
         $primary_link_array = array_shift($other_links_array);
       }
     }
