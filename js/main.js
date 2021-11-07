@@ -1,3 +1,6 @@
+var html = document.documentElement;
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
+var meta_theme_color_content = meta_theme_color.content;
 var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
@@ -75,8 +78,6 @@ setTimeout(function() {
 // Dark Mode Toggle Functionality ---------------------------------------------
 
 // toggle light/dark mode functionality
-var html = document.documentElement;
-var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var slider = document.querySelector("#dark-toggle-wrap .slider");
 
 slider.onclick = function(e) {
@@ -117,14 +118,14 @@ function configColorScheme() {
     (!html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content',  '#011c0c');
+    meta_theme_color.setAttribute('content', '#011c0c');
   }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content',  '#06632c');
+    meta_theme_color.setAttribute('content', '#06632c');
   }
 }
 configColorScheme();
@@ -140,6 +141,23 @@ function toggleNav(e) {
   nav_toggle.classList.toggle("active");
   header_nav.classList.toggle("active");
   header_bg.classList.toggle("active");
+  // update meta tag
+  if (html.classList.contains('dark-mode')) {
+    // dark mode
+    if (meta_theme_color_content == '#011c0c') {
+      meta_theme_color_content = '#000000';
+    } else {
+      meta_theme_color_content = '#011c0c'
+    }
+  } else {
+    // light mode
+    if (meta_theme_color_content == '#06632c') {
+      meta_theme_color_content = '#140037';
+    } else {
+      meta_theme_color_content = '#06632c'
+    }
+  }
+
 }
 
 nav_toggle.onclick = toggleNav;
