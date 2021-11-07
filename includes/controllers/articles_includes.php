@@ -1,5 +1,11 @@
 <?php
-include '../models/blog_post.php';
+/**
+* Display all errors.
+*/
+error_reporting(E_ALL);
+ini_set("display_errors", "on");
+
+include '/includes/models/blog_post.php';
 
 // Connect to MySQL Server
 $server = "localhost";

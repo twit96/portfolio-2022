@@ -1,5 +1,11 @@
 <?php
-include '../controllers/articles_includes.php';
+/**
+* Display all errors.
+*/
+error_reporting(E_ALL);
+ini_set("display_errors", "on");
+
+include '/includes/controllers/articles_includes.php';
 
 $blog_posts = $getBlogPosts();
 foreach ($blog_posts as $post) {
