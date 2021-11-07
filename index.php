@@ -146,7 +146,7 @@ include('./includes/templates/header.php');
           </div>  <!-- ./flex -->
         </article>  <!-- #/skills -->
 
-        <?php include('./php/featured_projects.php'); ?>
+        <?php include('./includes/views/featured_projects.php'); ?>
 
         <article id="demo">
           <div class="flex">

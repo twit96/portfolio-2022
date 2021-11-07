@@ -8,7 +8,7 @@ echo <<<HEAD_END
 HEAD_END;
 
 include('./includes/templates/header.php');
-include('./php/all_projects.php');
+include('./includes/views/all_projects.php');
 include('./includes/templates/footer.php');
 
 echo <<<PAGE_END

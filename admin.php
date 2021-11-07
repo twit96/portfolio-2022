@@ -13,7 +13,7 @@ echo <<<SECTION_TOP
   <div class="wrapper">
 SECTION_TOP;
 
-include('./php/admin_dashboard.php');
+include('./includes/views/admin_dashboard.php');
 
 echo <<<SECTION_BTM
   </div>  <!-- ./wrapper -->
