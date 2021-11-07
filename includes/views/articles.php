@@ -30,7 +30,7 @@ foreach ($blog_posts as $post) {
   // tags
   if (sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
-    foreach ($tags as $tag) {
+    foreach ($post->tags as $tag) {
       echo '<li><a href="#">'.$tag.'</a></li>';
     }
     echo '</ul>';
