@@ -1,5 +1,5 @@
 <?php
-include '/includes/models/blog_post.php';
+include '../models/blog_post.php';
 
 // Connect to MySQL Server
 $server = "localhost";

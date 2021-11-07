@@ -1,5 +1,5 @@
 <?php
-include '/includes/controllers/articles_includes.php';
+include '../controllers/articles_includes.php';
 
 $blog_posts = $getBlogPosts();
 foreach ($blog_posts as $post) {
