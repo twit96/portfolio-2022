@@ -1,5 +1,5 @@
 var html = document.documentElement;
-// var meta_theme_color = document.querySelector('meta[name="theme-color"]');
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
@@ -125,22 +125,22 @@ function configColorScheme() {
 configColorScheme();
 
 
-// function configMetaThemeColor() {
-//   var theme_color = '#06632c';  // default
-//   var header_active = header_nav.classList.contains("active");
-//
-//   // dark mode
-//   if (html.classList.contains('dark-mode')) {
-//     (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
-//   // light mode
-//   } else {
-//     (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
-//   }
-//
-//   if (meta_theme_color.content != theme_color) {
-//     meta_theme_color.setAttribute('content', theme_color);
-//   }
-// }
+function configMetaThemeColor() {
+  var theme_color = '#06632c';  // default
+  var header_active = header_nav.classList.contains("active");
+
+  // dark mode
+  if (html.classList.contains('dark-mode')) {
+    (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
+  // light mode
+  } else {
+    (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
+  }
+
+  if (meta_theme_color.content != theme_color) {
+    meta_theme_color.setAttribute('content', theme_color);
+  }
+}
 
 
 // Header Functionality -------------------------------------------------------
