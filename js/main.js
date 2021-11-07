@@ -1,6 +1,5 @@
 var html = document.documentElement;
 var meta_theme_color = document.querySelector('meta[name="theme-color"]');
-var meta_theme_color_content = meta_theme_color.content;
 var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
@@ -144,14 +143,14 @@ function toggleNav(e) {
   // update meta tag
   if (html.classList.contains('dark-mode')) {
     // dark mode
-    if (meta_theme_color_content == '#011c0c') {
+    if (meta_theme_color.getAttribute('content') != '#000000') {
       meta_theme_color.setAttribute('content', '#000000');
     } else {
       meta_theme_color.setAttribute('content', '#011c0c');
     }
   } else {
     // light mode
-    if (meta_theme_color_content == '#06632c') {
+    if (meta_theme_color.getAttribute('content') != '#140037') {
       meta_theme_color.setAttribute('content', '#140037');
     } else {
       meta_theme_color.setAttribute('content', '#06632c');
