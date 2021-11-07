@@ -117,14 +117,14 @@ function configColorScheme() {
     (!html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#011c0c');
+    meta_theme_color.setAttribute('content', '#000000');
   }
   if (
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) {
     html.classList.toggle("dark-mode");
-    meta_theme_color.setAttribute('content', '#06632c');
+    meta_theme_color.setAttribute('content', '#ffffff');
   }
 }
 configColorScheme();
