@@ -29,7 +29,7 @@ function getProjects($mysqli) {
   while ($row = $result->fetch_assoc()) {
     $this_project = new Project(
       $mysqli,
-      $row["id"],
+      $row["ID"],
       $row["title"],
       $row["directory"],
       $row["image"],
