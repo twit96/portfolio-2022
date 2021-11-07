@@ -21,41 +21,41 @@ foreach ($projects as $project) {
   // config primary link
   $primary_link_url = null;
   $primary_link_text = null;
-  if (!sizeof($post->primary_link) != 0) {
-    $primary_link_url = reset($post->primary_link);
-    $primary_link_text = key($post->primary_link);
+  if (!sizeof($project->primary_link) != 0) {
+    $primary_link_url = reset($project->primary_link);
+    $primary_link_text = key($project->primary_link);
   }
 
   echo '<article>';
   echo '<figure>';
-  if ($post->featured > 0) {
+  if ($project->featured > 0) {
     echo '<div class="featured-badge">';
-    echo '<span>#'.$post->featured.'</span>';
+    echo '<span>#'.$project->featured.'</span>';
     echo '</div>';
   }
 
   // figure
   if ($primary_link_url != null) {
     echo '<a href="'.$primary_link_url.'">';
-    echo '<img src="/img/projects/'.$post->directory.'/'.$post->image.'" loading="lazy" alt="'.$post->title.' Title Card" />';
+    echo '<img src="/img/projects/'.$project->directory.'/'.$project->image.'" loading="lazy" alt="'.$project->title.' Title Card" />';
     echo '</a>';
   } else {
-    echo '<img src="/img/projects/'.$post->directory.'/'.$post->image.'" loading="lazy" alt="'.$post->title.' Title Card" />';
+    echo '<img src="/img/projects/'.$project->directory.'/'.$project->image.'" loading="lazy" alt="'.$project->title.' Title Card" />';
   }
-  echo '<figcaption>'.$post->blurb.'</figcaption>';
+  echo '<figcaption>'.$project->blurb.'</figcaption>';
   echo '</figure>';
 
   // details
   echo '<div class="details">';
   // heading
   if ($primary_link_url != null) {
-    echo '<h3><a href="'.$primary_link_url.'">'.$post->title.'</a></h3>';
+    echo '<h3><a href="'.$primary_link_url.'">'.$project->title.'</a></h3>';
   } else {
-    echo '<h3>'.$post->title.'</h3>';
+    echo '<h3>'.$project->title.'</h3>';
   }
   // date/description
-  echo '<em>'.$post->date.'</em>';
-  echo '<p>'.$post->description.'</p>';
+  echo '<em>'.$project->date.'</em>';
+  echo '<p>'.$project->description.'</p>';
   // links
   if ($primary_link_url != null) {
     // primary link
@@ -63,8 +63,8 @@ foreach ($projects as $project) {
     echo '<span class="icon"></span>'.$primary_link_text;
     echo '</a>';
     // other links
-    if (sizeof($post->other_links) > 0) {
-      foreach ($post->other_links as $link_text => $link_url) {
+    if (sizeof($project->other_links) > 0) {
+      foreach ($project->other_links as $link_text => $link_url) {
         echo '<a class="btn-text link" href="'.$link_url.'">';
         echo '<span class="icon"></span>'.$link_text;
         echo '</a>';
