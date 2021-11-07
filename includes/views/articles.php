@@ -1,9 +1,14 @@
 <?php
-/**
-* Display all errors.
-*/
-error_reporting(E_ALL);
-ini_set("display_errors", "on");
+
+// Opening HTML
+echo <<<TOP
+\n    <main id="articles">
+      <div class="wrapper">
+        <h1>Articles</h1>
+      </div>
+      <div class="wrapper grid">
+TOP;
+
 
 include (__DIR__.'/../controllers/articles_includes.php');
 
@@ -47,5 +52,11 @@ foreach ($blog_posts as $post) {
   echo '</div>';
   echo '</article>';
 }
+
+// Closing HTML
+echo <<<BTM
+\n    </div>  <!-- ./wrapper grid -->
+    </main>
+BTM;
 
 ?>
