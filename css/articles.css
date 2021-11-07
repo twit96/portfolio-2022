@@ -44,7 +44,7 @@ article ul.tags {
 }
 ul.tags li {
   display: inline-block;
-  margin-right: 0.5em;
+  margin-right: 0.5rem;
 }
 ul.tags a { color: var(--grey); }
 ul.tags a::before { content: '# '; }
