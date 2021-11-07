@@ -16,6 +16,9 @@ $mysqli = new mysqli ($server, $user, $pwd, $dbName);
 if ($mysqli->connect_errno) {
   die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
 }
+// Select Database
+$mysqli->select_db($dbName) or die($mysqli->error);
+
 
 function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
   if (!empty($in_id)) {
