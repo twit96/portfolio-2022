@@ -120,7 +120,7 @@ function configColorScheme() {
     (dark_mode == "dark_mode=off") &&
     (html.classList.contains('dark-mode'))
   ) { html.classList.toggle("dark-mode"); }
-  // configMetaThemeColor();
+  configMetaThemeColor();
 }
 configColorScheme();
 
