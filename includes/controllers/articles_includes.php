@@ -15,9 +15,9 @@ if ($mysqli->connect_errno) {
 $mysqli->select_db($dbName) or die($mysqli->error);
 
 
-function getBlogPosts($mysqli, $in_id=null, $in_tag_id=null) {
-  if (!empty($in_id)) {
-    $command = 'SELECT * FROM blog_posts WHERE id='.$in_id.' ORDER BY id DESC;';
+function getBlogPosts($mysqli, $in_title=null, $in_tag_id=null) {
+  if (!empty($in_title)) {
+    $command = "SELECT * FROM blog_posts WHERE title='".$in_title."' ORDER BY id DESC;";
   } else if (!empty($in_tag_id)) {
     $command = 'SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id='.$tag_id.' ORDER BY blog_posts.id DESC;';
   } else {
