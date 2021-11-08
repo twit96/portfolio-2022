@@ -28,7 +28,7 @@ if (isset($_GET['title'])) {
 }
 
 
-function displayOneArticle($mysqli) {
+function displayOneArticle($mysqli, $title) {
   $blog_post = getBlogPosts($mysqli, $title, null);
   var_dump($blog_post);
 }
