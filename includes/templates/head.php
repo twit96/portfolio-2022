@@ -22,7 +22,7 @@
   $title = $page_name;
   if (defined('ARTICLENAME')) {
     $title = ARTICLENAME;
-    $description = "Tyler Wittig's Article -" . $title;
+    $description = "Tyler Wittig's Article - " . $title;
     $og_url_extension = FILENAME."?post=".join("-", explode(" ", strtolower($title)));
     $og_description_extension = ' - '.ARTICLENAME;
   }
