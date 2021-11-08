@@ -34,7 +34,8 @@ class BlogPost {
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
     if (!empty($in_directory) && !empty($in_date_posted)) {
-      $formatted_path = '/img/articles/'.join("/", explode("-", $in_date_posted)).'/'.$in_directory.'/';
+
+      $formatted_path = '/img/articles/'.str_replace("-", "/", $in_date_posted).'/'.$in_directory.'/';
       $this->path = $formatted_path;
     }
 

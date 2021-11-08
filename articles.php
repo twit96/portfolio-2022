@@ -19,7 +19,7 @@ if (isset($_GET['post'])) {
 
 function displayOneArticle($mysqli) {
   // configure title
-  $title = ucfirst(join(" ", explode("-", $_GET["post"])));
+  $title = ucfirst(str_replace("-", " ", $_GET["post"]));
   $post = getBlogPosts($mysqli, $title, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
@@ -113,11 +113,13 @@ function displayAllArticles($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli);
   foreach ($blog_posts as $post) {
+    $this_link = str_replace(" ", "-", strtolower($post->title));
+
     echo '<article>';
 
     if (!empty($post->directory) && (!empty($post->image))) {
       echo <<<IMG_LINK
-      <a class="img-link" href="#">
+      <a class="img-link" href="?title={}">
         <img src="{$post->path}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
