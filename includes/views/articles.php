@@ -27,7 +27,7 @@ function displayOneArticle($mysqli, $title) {
     var_dump($blog_post);
   } else {
     // no blog post - redirect to articles page
-    header('Location: '.__DIR__ .'/');
+    header('Location: ./');
     die();
   }
 
