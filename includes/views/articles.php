@@ -24,7 +24,6 @@ function displayOneArticle($mysqli, $title) {
   $post = getBlogPosts($mysqli, $title, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
-    echo $post->image;
   } else {
     // no blog post - redirect to articles page
     header('Location: ./articles');
@@ -38,7 +37,7 @@ function displayOneArticle($mysqli, $title) {
   TOP;
 
   echo '<article>';
-  if (!empty($post->$image)) {
+  if (!empty($post->image)) {
     echo '<div class="card details" style="background-image: url(/img/projects/'.$post->directory.'/'.$post->image.')">';
   } else {
     echo '<div class="card details">';
