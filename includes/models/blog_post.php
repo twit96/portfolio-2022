@@ -45,7 +45,7 @@ class BlogPost {
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
 
-      if (!empty($row["profile_image_name"])) {
+      if (!empty($row["profile_img_name"])) {
         $this->author_img_path = '/img/people/'.strtolower($row["last_name"]).'-'.strtolower($row["first_name"]).'/'.$row["profile_img_name"];
       } else {
         $this->author_img_path = '/img/icon.png';
