@@ -81,6 +81,13 @@ function displayOneArticle($mysqli) {
   \n    </div>  <!-- ./wrapper -->
       </main>
   BTM;
+
+  include('./includes/templates/footer.php');
+
+  echo <<<PAGE_END
+    </body>
+  </html>
+  PAGE_END;
 }
 
 
@@ -159,6 +166,13 @@ function displayAllArticles($mysqli) {
   \n    </div>  <!-- ./wrapper grid -->
       </main>
   BTM;
+
+  include('./includes/templates/footer.php');
+
+  echo <<<PAGE_END
+    </body>
+  </html>
+  PAGE_END;
 }
 
 
