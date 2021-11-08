@@ -21,7 +21,7 @@ function getBlogPosts($mysqli, $in_title=null, $in_tag_id=null) {
   } else if (!empty($in_tag_id)) {
     $command = 'SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id='.$tag_id.' ORDER BY blog_posts.id DESC;';
   } else {
-    $command = 'SELECT * FROM blog_posts ORDER BY id DESC;';
+    $command = "SELECT * FROM blog_posts ORDER BY id DESC;";
   }
   $result = $mysqli->query($command);
   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
