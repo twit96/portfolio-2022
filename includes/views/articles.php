@@ -7,16 +7,6 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-// Opening HTML
-echo <<<TOP
-\n    <main id="articles">
-      <div class="wrapper">
-        <h1>Articles</h1>
-      </div>
-      <div class="wrapper grid">
-TOP;
-
-
 include (__DIR__.'/../controllers/articles_includes.php');
 
 
@@ -29,12 +19,34 @@ if (isset($_GET['title'])) {
 
 
 function displayOneArticle($mysqli, $title) {
-  $blog_post = getBlogPosts($mysqli, $title, null);
+  // Opening HTML
+  echo <<<TOP
+  \n    <main id="post">
+        <div class="wrapper">
+  TOP;
+
+  $blog_post = getBlogPosts($mysqli, $title, null)[0];
+  echo(empty($blog_post));
   var_dump($blog_post);
+
+  // Closing HTML
+  echo <<<BTM
+  \n    </div>  <!-- ./wrapper -->
+      </main>
+  BTM;
 }
 
 
 function displayAllArticles($mysqli) {
+  // Opening HTML
+  echo <<<TOP
+  \n    <main id="articles">
+        <div class="wrapper">
+          <h1>Articles</h1>
+        </div>
+        <div class="wrapper grid">
+  TOP;
+
   $blog_posts = getBlogPosts($mysqli);
   foreach ($blog_posts as $post) {
     echo '<article>';
@@ -79,13 +91,15 @@ function displayAllArticles($mysqli) {
     echo '</div>';
     echo '</article>';
   }
+
+  // Closing HTML
+  echo <<<BTM
+  \n    </div>  <!-- ./wrapper grid -->
+      </main>
+  BTM;
 }
 
 
-// Closing HTML
-echo <<<BTM
-\n    </div>  <!-- ./wrapper grid -->
-    </main>
-BTM;
+
 
 ?>
