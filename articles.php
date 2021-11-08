@@ -73,7 +73,7 @@ function displayOneArticle($mysqli) {
   echo '</article>';
 
   echo '<div id="sidebar">';
-  include (__DIR__.'/../templates/toc.html');
+  include ('./includes/templates/toc.html');
   echo '</div>';
 
   // Closing HTML
