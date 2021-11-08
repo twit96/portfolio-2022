@@ -113,7 +113,7 @@ function displayAllArticles($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli);
   foreach ($blog_posts as $post) {
-    $this_link = '?title='.str_replace(" ", "-", strtolower($post->title));
+    $this_link = '?post='.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
