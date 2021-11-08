@@ -19,15 +19,24 @@ if (isset($_GET['title'])) {
 
 
 function displayOneArticle($mysqli, $title) {
+
+
+  $blog_post = getBlogPosts($mysqli, $title, null)[0];
+  if (sizeof($blog_post) > 0) {
+    $blog_post = $blog_post[0];
+    var_dump($blog_post);
+  } else {
+    // no blog post - redirect to articles page
+    header('Location: '.__DIR__ .'/');
+    die();
+  }
+
   // Opening HTML
   echo <<<TOP
   \n    <main id="post">
         <div class="wrapper">
   TOP;
 
-  $blog_post = getBlogPosts($mysqli, $title, null)[0];
-  echo(empty($blog_post));
-  var_dump($blog_post);
 
   // Closing HTML
   echo <<<BTM
