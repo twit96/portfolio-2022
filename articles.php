@@ -118,7 +118,7 @@ function displayAllArticles($mysqli) {
     if (!empty($post->directory) && (!empty($post->image))) {
       echo <<<IMG_LINK
       <a class="img-link" href="#">
-        <img src="/img/articles/{$post->directory}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
+        <img src="{$post->path.$post->image}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
     }
@@ -151,12 +151,12 @@ function displayAllArticles($mysqli) {
     echo '</div>';
     // Author
     echo '<div class="author">';
-      echo '<img src="/img/profile.jpg" alt="'.$post->author.' Image" />';
-      echo '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span> ';
-      if ($post->date_posted != $post->date_updated) {
-        echo '(Updated on <span>'.$post->date_updated.')</span>';
-      }
-      echo'</p>';
+    echo '<img src="'.$post->author_img_path.'" alt="'.$post->author.' Image" />';
+    echo '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span> ';
+    if ($post->date_posted != $post->date_updated) {
+      echo '(Updated on <span>'.$post->date_updated.')</span>';
+    }
+    echo'</p>';
     echo '</div>';
     echo '</article>';
   }
