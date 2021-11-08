@@ -24,7 +24,7 @@ function displayOneArticle($mysqli, $title) {
   $post = getBlogPosts($mysqli, $title, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
-    var_dump($post);
+    echo $post->image;
   } else {
     // no blog post - redirect to articles page
     header('Location: ./articles');
