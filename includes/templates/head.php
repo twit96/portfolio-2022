@@ -20,7 +20,7 @@
 
   // Handle Article Posts
   $title = $page_name;
-  if (defined(ARTICLENAME)) {
+  if (defined('ARTICLENAME')) {
     $title = ARTICLENAME;
     $description = "Tyler Wittig's Article -" . $title;
     $og_url_extension = FILENAME."?post=".join("-", explode(" ", strtolower($title)));
