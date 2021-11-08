@@ -3,10 +3,12 @@
 class BlogPost {
   public $id;
   public $directory;
+  public $path;
   public $image;
   public $title;
   public $post;
   public $author;
+  public $author_img_path;
   public $tags;
   public $date_posted;
   public $date_updated;
@@ -31,12 +33,23 @@ class BlogPost {
     if (!empty($in_date_posted)) {  $this->date_posted = $in_date_posted; }
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
+    if (!empty($in_directory) && !empty($in_date_posted)) {
+      $formatted_path = '/img/articles/'.join("/", explode("-", $in_date_posted)).'/'.$in_directory.'/';
+      $this->path = $formatted_path;
+    }
+
     if (!empty($in_author_id)) {
-      $command = 'SELECT first_name, last_name FROM people WHERE id='.$in_author_id.';';
+      $command = 'SELECT first_name, last_name, profile_img_name FROM people WHERE id='.$in_author_id.';';
       $result = $mysqli->query($command);
       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
+
+      if (!empty($row["profile_image_name"])) {
+        $this->author_img_path = '/img/people/'.strtolower($row["last_name"]).'-'.strtolower($row["first_name"]).'/'.$row["profile_img_name"];
+      } else {
+        $this->author_img_path = '/img/icon.png';
+      }
     }
 
     $tag_array = array();
