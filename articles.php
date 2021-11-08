@@ -131,7 +131,12 @@ function displayAllArticles($mysqli) {
     // blurb
     echo '<p>';
     if (strlen($post->post) > 150) {
-      echo substr($post->post,0,150).'...';
+      $blurb = substr($post->post,0,150);
+      // replace any headings in blurb
+      for ($i=1; $i<7; $i++) {
+        $blurb = str_replace('h'.$i, 'b style="display:block;"', $blurb);
+      }
+      echo $blurb.'...';
     } else {
       echo $post->post;
     }
