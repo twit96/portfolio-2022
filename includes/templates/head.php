@@ -5,17 +5,17 @@
   // $file declared above include for this file on each page
   // homepage
   if (FILENAME == 'home') {
-    $page_name = 'Web Developer';
+    $page_name = 'Tyler Wittig | Web Developer';
     $description = "Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development.";
     $og_url_extension = '';
     $og_description_extension = '';
   }
   // other pages
   else {
-    $page_name = ucfirst(FILENAME);
-    $description = "Tyler Wittig's " . $page_name . " Page";
+    $page_name = 'Tyler Wittig | '.ucfirst(FILENAME);
+    $description = "Tyler Wittig's " . ucfirst(FILENAME) . " Page";
     $og_url_extension = FILENAME;
-    $og_description_extension = ' - '.$page_name;
+    $og_description_extension = ' - '.ucfirst(FILENAME);
   }
 
   // Handle Article Posts
@@ -36,14 +36,14 @@
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
     <head>
-      <title>Tyler Wittig | {$title}</title>
+      <title>{$title}</title>
       <meta name="description" content="{$description}" />
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="theme-color" content="#ffffff" />
       <!-- Social Media Card -->
       <meta name="author" content="Tyler Wittig" />
-      <meta property="og:title" content="Tyler Wittig | {$title}"/>
+      <meta property="og:title" content="{$title}"/>
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://tylerwittig.com/{$og_url_extension}" />
       <meta property="og:image" content="/img/site-card.png" />
