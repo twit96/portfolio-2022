@@ -131,7 +131,7 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=?tag="'.str_replace(" ", "-", strtolower($tag)).'">'.$tag.'</a></li>';
+        echo '<li><a href=?tag='.str_replace(" ", "-", strtolower($tag)).'>'.$tag.'</a></li>';
       }
       echo '</ul>';
     }
