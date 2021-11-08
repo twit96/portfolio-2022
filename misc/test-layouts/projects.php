@@ -17,7 +17,7 @@
   <body>
     <?php
     DEFINE("FILENAME", 'projects');
-			include('../../includes/header.php');
+			include('../../includes/templates/header.php');
     ?>
 
     <main id="projects">
@@ -152,7 +152,7 @@
     </main>
 
     <?php
-		  include('../../includes/footer.php');
+		  include('../../includes/templates/footer.php');
 		?>
   </body>
 </html>

@@ -20,7 +20,7 @@
 	<body>
 		<?php
 			DEFINE("FILENAME", 'home');
-			include('../../includes/header.php');
+			include('../../includes/templates/header.php');
 		?>
 
 		<main id="home">
@@ -314,7 +314,7 @@
 		</main>  <!-- #/home -->
 
 		<?php
-			include('../../includes/footer.php');
+			include('../../includes/templates/footer.php');
 		?>
 	</body>
 </html>
