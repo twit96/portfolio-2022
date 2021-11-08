@@ -38,7 +38,7 @@ function displayOneArticle($mysqli, $title) {
 
   echo '<article>';
   if (!empty($post->image)) {
-    echo '<div class="card details" style="background-image: url(/img/projects/'.$post->directory.'/'.$post->image.')">';
+    echo '<div class="card details" style="background-image: url(/img/articles/'.$post->directory.'/'.$post->image.')">';
   } else {
     echo '<div class="card details">';
   }
