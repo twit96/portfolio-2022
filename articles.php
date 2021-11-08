@@ -113,13 +113,13 @@ function displayAllArticles($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli);
   foreach ($blog_posts as $post) {
-    $this_link = str_replace(" ", "-", strtolower($post->title));
+    $this_link = '?title='.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
     if (!empty($post->directory) && (!empty($post->image))) {
       echo <<<IMG_LINK
-      <a class="img-link" href="?title={}">
+      <a class="img-link" href="{$this_link}">
         <img src="{$post->path}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
@@ -131,12 +131,12 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href="#">'.$tag.'</a></li>';
+        echo '<li><a href=?tag="'.str_replace(" ", "-", strtolower($tag)).'">'.$tag.'</a></li>';
       }
       echo '</ul>';
     }
     // title
-    echo '<h3><a href="#">'.$post->title.'</a></h3>';
+    echo '<h3><a href="'.$this_link.'">'.$post->title.'</a></h3>';
     // blurb
     echo '<p>';
     if (strlen($post->post) > 150) {
