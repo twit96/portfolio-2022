@@ -16,7 +16,7 @@ include('../../includes/templates/header.php');
       <div class="wrapper">
 
         <article>
-          <div class="card details" style="background-image: url('/img/projects/first-portfolio/title-card.png')">
+          <div class="card details" style="background-image: url(/img/projects/first-portfolio/title-card.png)">
             <h1>First Portfolio Website is First is First</h1>
             <ul class="tags">
               <li><a href="#">Web Game</a></li>
