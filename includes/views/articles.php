@@ -21,7 +21,7 @@ if (isset($_GET['title'])) {
 function displayOneArticle($mysqli, $title) {
 
 
-  $blog_post = getBlogPosts($mysqli, $title, null)[0];
+  $blog_post = getBlogPosts($mysqli, $title, null);
   if (sizeof($blog_post) > 0) {
     $blog_post = $blog_post[0];
     var_dump($blog_post);
