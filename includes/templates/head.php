@@ -18,6 +18,15 @@
     $og_description_extension = ' - '.$page_name;
   }
 
+  // Handle Article Posts
+  $title = $page_name;
+  if (defined(ARTICLENAME)) {
+    $title = ARTICLENAME;
+    $description = "Tyler Wittig's Article -" . $title;
+    $og_url_extension = FILENAME."?post=".join("-", explode(" ", strtolower($title)));
+    $og_description_extension = ' - '.ARTICLENAME;
+  }
+
   // Cache Busting Function - append last modified date to filenames
   $timestamp = function($file_path) {
     return date('Ymd-His',filemtime($_SERVER["DOCUMENT_ROOT"].$file_path));
@@ -27,14 +36,14 @@
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
     <head>
-      <title>Tyler Wittig | {$page_name}</title>
+      <title>Tyler Wittig | {$title}</title>
       <meta name="description" content="{$description}" />
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="theme-color" content="#ffffff" />
       <!-- Social Media Card -->
       <meta name="author" content="Tyler Wittig" />
-      <meta property="og:title" content="Tyler Wittig | {$page_name}"/>
+      <meta property="og:title" content="Tyler Wittig | {$title}"/>
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://tylerwittig.com/{$og_url_extension}" />
       <meta property="og:image" content="/img/site-card.png" />
