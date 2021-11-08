@@ -118,7 +118,7 @@ function displayAllArticles($mysqli) {
     if (!empty($post->directory) && (!empty($post->image))) {
       echo <<<IMG_LINK
       <a class="img-link" href="#">
-        <img src="{$post->path.$post->image}" loading="lazy" alt="{$post->title} Title Card" />
+        <img src="{$post->path}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
     }
