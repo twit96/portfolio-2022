@@ -1,17 +1,11 @@
 <?php
 
-/**
-* Display all errors.
-*/
-error_reporting(E_ALL);
-ini_set("display_errors", "on");
-
 
 include (__DIR__.'/../controllers/articles_includes.php');
 
 
 if (isset($_GET['title'])) {
-  displayOneArticle($mysqli)
+  displayOneArticle($mysqli);
 } else {
   displayAllArticles($mysqli);
 }
