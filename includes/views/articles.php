@@ -10,7 +10,7 @@ ini_set("display_errors", "on");
 include (__DIR__.'/../controllers/articles_includes.php');
 
 
-if (isset($_GET['title'])) {
+if (isset($_GET['post'])) {
   displayOneArticle($mysqli);
 } else {
   displayAllArticles($mysqli);
@@ -19,7 +19,7 @@ if (isset($_GET['title'])) {
 
 function displayOneArticle($mysqli) {
   // configure title
-  $title = ucfirst(join(" ", explode("-", $_GET["title"])));
+  $title = ucfirst(join(" ", explode("-", $_GET["post"])));
   $post = getBlogPosts($mysqli, $title, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
