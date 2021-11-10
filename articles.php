@@ -53,7 +53,7 @@ function displayOneArticle($mysqli) {
   } else {
     echo '<div class="card details">';
   }
-  echo '<h1>'.$post->title.'</h1>';
+  echo '<h1><a href="./articles">'.$post->title.'</a></h1>';
   if (is_array($post->tags) && sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($post->tags as $tag) {
