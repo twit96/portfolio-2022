@@ -9,6 +9,7 @@
   font-size: calc(2.5 * var(--main-font-size));
   margin-bottom: 1em;
 }
+#articles h1 a { color: white; }
 
 
 #articles .grid {
