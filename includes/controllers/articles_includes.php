@@ -23,7 +23,7 @@ function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
     // temp override until fix
     // $command = "SELECT * FROM blog_posts ORDER BY date_posted DESC;";
     $command = "SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id IN (SELECT id FROM tags WHERE name='".$in_tag_name."')";
-    $echo '<script>console.log("'.$command.'");</script>'
+    $echo '<script>console.log("'.$command.'");</script>';
   } else {
     $command = "SELECT * FROM blog_posts ORDER BY date_posted DESC;";
   }
