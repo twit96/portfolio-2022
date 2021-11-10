@@ -104,15 +104,16 @@ function displayTaggedArticles($mysqli) {
   include('./includes/templates/header.php');
 
   // Opening HTML
+  $tag = str_replace("-", " ", $_GET['tag']);
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
-          <h1><a href="./articles">Articles</a> / {$_GET['tag']}</h1>
+          <h1><a href="./articles">Articles</a> / {$tag}</h1>
         </div>
         <div class="wrapper grid">
   TOP;
 
-  $tag = str_replace(" ", "-", $_GET['tag']);
+  $tag = str_replace(" ", "-", $tag);
   $blog_posts = getBlogPosts($mysqli, null, $tag);
   foreach ($blog_posts as $post) {
     $this_link = '?post='.str_replace(" ", "-", strtolower($post->title));
