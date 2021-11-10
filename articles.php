@@ -107,7 +107,7 @@ function displayTaggedArticles($mysqli) {
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
-          <h1><a href="./articles">Articles</a> / {$tag}</h1>
+          <h1><a href="./articles">Articles</a> / {$_GET['tag']}</h1>
         </div>
         <div class="wrapper grid">
   TOP;
