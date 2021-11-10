@@ -117,12 +117,12 @@ function buildDashboard($mysqli) {
     <col style="width:7%">
     <col style="width:6%">
     <col style="width:7%">
-    <!-- <col style="width:6%">
-    <col style="width:7%">
     <col style="width:6%">
     <col style="width:7%">
     <col style="width:6%">
-    <col style="width:6%"> -->
+    <col style="width:7%">
+    <col style="width:6%">
+    <col style="width:6%">
     <col style="width:7%">
     <thead>
       <tr>
