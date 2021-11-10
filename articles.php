@@ -53,7 +53,7 @@ function displayOneArticle($mysqli) {
   } else {
     echo '<div class="card details">';
   }
-  echo '<h1><a href="./articles">'.$post->title.'</a></h1>';
+  echo '<h1>'.$post->title.'</h1>';
   if (is_array($post->tags) && sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($post->tags as $tag) {
@@ -107,7 +107,7 @@ function displayTaggedArticles($mysqli) {
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
-          <h1>Articles</h1>
+          <h1><a href="./articles">Articles</a></h1>
         </div>
         <div class="wrapper grid">
   TOP;
