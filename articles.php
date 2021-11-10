@@ -112,7 +112,7 @@ function displayTaggedArticles($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $tag = str_replace(" ", "-", strtolower($_GET['tag']));
+  $tag = str_replace(" ", "-", $_GET['tag']);
   $blog_posts = getBlogPosts($mysqli, null, $tag);
   foreach ($blog_posts as $post) {
     $this_link = '?post='.str_replace(" ", "-", strtolower($post->title));
@@ -221,7 +221,7 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=?tag='.str_replace(" ", "-", strtolower($tag)).'>'.$tag.'</a></li>';
+        echo '<li><a href=?tag='.str_replace(" ", "-", $tag).'>'.$tag.'</a></li>';
       }
       echo '</ul>';
     }
