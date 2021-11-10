@@ -20,7 +20,7 @@ if ($mysqli->connect_errno) {
 $mysqli->select_db($dbName) or die($mysqli->error);
 
 
-function getBlogPosts($mysqli, $in_title=null, $in_tag_id=null) {
+function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
   if (!empty($in_title)) {
     $command = "SELECT * FROM blog_posts WHERE title='".$in_title."' ORDER BY date_posted DESC;";
   } else if (!empty($in_tag_id)) {
