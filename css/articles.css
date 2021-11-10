@@ -11,6 +11,10 @@
   line-height: 125%;
 }
 #articles h1 a { color: white; }
+#articles h1 span {
+  display: inline-block;
+  font-size: 0.85em;
+}
 
 
 #articles .grid {
