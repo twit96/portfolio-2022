@@ -20,14 +20,14 @@ if ($mysqli->connect_errno) {
 $mysqli->select_db($dbName) or die($mysqli->error);
 
 
-function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
+function getBlogPosts($mysqli, $in_title=null, $in_tag_id=null) {
   if (!empty($in_title)) {
     $command = "SELECT * FROM blog_posts WHERE title='".$in_title."' ORDER BY date_posted DESC;";
   } else if (!empty($in_tag_id)) {
-    // $command = 'SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.post_id = blog_posts.id) WHERE blog_post_tags.tag_id='.$in_tag_id.' ORDER BY blog_posts.date_posted DESC;';
+    // $command = 'SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.blog_post_id = blog_posts.id) WHERE blog_post_tags.tag_id='.$in_tag_id.' ORDER BY blog_posts.date_posted DESC;';
     // temp override until fix
     // $command = "SELECT * FROM blog_posts ORDER BY date_posted DESC;";
-    $command = "SELECT blog_posts.*, blog_post_tags.tag_name FROM blog_post_tags LEFT JOIN blog_posts ON blog_post_tags.blog_post_id = blog_posts.id WHERE blog_post_tags.tag_name='".$in_tag_name."';";
+    $command = "SELECT blog_posts.* FROM blog_post_tags LEFT JOIN (blog_posts) ON (blog_post_tags.blog_post_id = blog_posts.id) WHERE blog_post_tags.tag_name='".$in_tag_name."' ORDER BY blog_posts.date_posted DESC;";
   } else {
     $command = "SELECT * FROM blog_posts ORDER BY date_posted DESC;";
   }
