@@ -17,7 +17,7 @@ echo <<<TOP
         <div class="card-container">
 TOP;
 
-include (__DIR__ .'/../models/projects_includes.php');
+include (__DIR__ .'/../models/projects.php');
 
 
 $featured_projects = getProjects($mysqli, TRUE);
