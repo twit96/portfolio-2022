@@ -36,7 +36,7 @@ function displayTaggedArticles($mysqli) {
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
-          <h1><a href="./articles">Articles</a> / <span>{$tag}</span></h1>
+          <h1><a href="../../articles">Articles</a> / <span>{$tag}</span></h1>
         </div>
         <div class="wrapper grid">
   TOP;
@@ -44,7 +44,7 @@ function displayTaggedArticles($mysqli) {
   $tag = str_replace(" ", "-", $tag);
   $blog_posts = getBlogPosts($mysqli, null, $tag);
   foreach ($blog_posts as $post) {
-    $this_link = '?post='.str_replace(" ", "-", strtolower($post->title));
+    $this_link = '../../post/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
@@ -62,7 +62,7 @@ function displayTaggedArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=?tag='.str_replace(" ", "-", $tag).'>'.$tag.'</a></li>';
+        echo '<li><a href=./='.str_replace(" ", "-", $tag).'>'.$tag.'</a></li>';
       }
       echo '</ul>';
     }
@@ -132,7 +132,7 @@ function displayAllArticles($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli, null, null);
   foreach ($blog_posts as $post) {
-    $this_link = '?post='.str_replace(" ", "-", strtolower($post->title));
+    $this_link = './posts/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
@@ -150,7 +150,7 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=?tag='.str_replace(" ", "-", $tag).'>'.$tag.'</a></li>';
+        echo '<li><a href="./tag/'.str_replace(" ", "-", $tag).'">'.$tag.'</a></li>';
       }
       echo '</ul>';
     }
