@@ -44,7 +44,7 @@ function displayTaggedArticles($mysqli) {
   $tag = str_replace(" ", "-", $tag);
   $blog_posts = getBlogPosts($mysqli, null, $tag);
   foreach ($blog_posts as $post) {
-    $this_link = '../../post/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = '../post/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
