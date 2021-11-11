@@ -1,11 +1,5 @@
 <?php
 
-/**
-* Display all errors.
-*/
-error_reporting(E_ALL);
-ini_set("display_errors", "on");
-
 
 // Opening HTML
 echo <<<TOP
@@ -28,6 +22,7 @@ foreach ($projects as $project) {
     $primary_link_text = key($project->primary_link);
   }
 
+  // display project info
   echo '<article>';
   echo '<figure>';
   if ($project->featured > 0) {
@@ -35,8 +30,7 @@ foreach ($projects as $project) {
     echo '<span>#'.$project->featured.'</span>';
     echo '</div>';
   }
-
-  // figure
+  // Figure
   if ($primary_link_url != null) {
     echo '<a href="'.$primary_link_url.'">';
     echo '<img src="/img/projects/'.$project->directory.'/'.$project->image.'" loading="lazy" alt="'.$project->title.' Title Card" />';
@@ -46,8 +40,7 @@ foreach ($projects as $project) {
   }
   echo '<figcaption>'.$project->blurb.'</figcaption>';
   echo '</figure>';
-
-  // details
+  // Details
   echo '<div class="details">';
   // heading
   if ($primary_link_url != null) {
@@ -73,12 +66,9 @@ foreach ($projects as $project) {
       }
     }
   }
-
   echo '</div>';
   echo '</article>';
-
 }
-
 
 // Closing HTML
 echo "\n".'      </div>';
