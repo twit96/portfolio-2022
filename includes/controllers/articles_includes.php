@@ -5,19 +5,8 @@
 error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
+include (__DIR__ .'/../helpers/db_connect.php');
 include (__DIR__ .'/../models/blog_post.php');
-
-// Connect to MySQL Server
-$server = "localhost";
-$user   = "portfolio_user";
-$pwd    = "portfolio_user_pass";
-$dbName = "Portfolio";
-$mysqli = new mysqli ($server, $user, $pwd, $dbName);
-if ($mysqli->connect_errno) {
-  die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-}
-// Select Database
-$mysqli->select_db($dbName) or die($mysqli->error);
 
 
 function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
