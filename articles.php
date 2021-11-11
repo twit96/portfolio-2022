@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-include ('./includes/controllers/articles_includes.php');
+include ('./includes/models/articles_includes.php');
 
 
 if (isset($_GET['post'])) {

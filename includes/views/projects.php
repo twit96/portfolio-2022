@@ -14,7 +14,7 @@ echo <<<TOP
         <h1>Projects</h1>
 TOP;
 
-include (__DIR__ .'/../controllers/projects_includes.php');
+include (__DIR__ .'/../models/projects_includes.php');
 
 
 $projects = getProjects($mysqli, FALSE);
