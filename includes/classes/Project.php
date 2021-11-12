@@ -11,6 +11,7 @@ class Project {
   public $primary_link = array();
   public $other_links = array();
   public $featured;
+  public $author_id;
 
   function __construct(
     $mysqli,
@@ -21,17 +22,19 @@ class Project {
     $in_blurb=null,
     $in_description=null,
     $in_date=null,
-    $in_featured=null
+    $in_featured=null,
+    $in_author_id=null
   ) {
 
-    if (!empty($in_id)) {                   $this->id = $in_id; }
-    if (!empty($in_title)) {                $this->title = $in_title; }
-    if (!empty($in_directory)) {            $this->directory = $in_directory; }
-    if (!empty($in_image)) {                $this->image = $in_image; }
-    if (!empty($in_blurb)) {                $this->blurb = $in_blurb; }
-    if (!empty($in_description)) {          $this->description = $in_description; }
-    if (!empty($in_date)) {                 $this->date = $in_date; }
-    if (!empty($in_featured)) {             $this->featured = $in_featured; }
+    if (!empty($in_id)) {          $this->id = $in_id; }
+    if (!empty($in_title)) {       $this->title = $in_title; }
+    if (!empty($in_directory)) {   $this->directory = $in_directory; }
+    if (!empty($in_image)) {       $this->image = $in_image; }
+    if (!empty($in_blurb)) {       $this->blurb = $in_blurb; }
+    if (!empty($in_description)) { $this->description = $in_description; }
+    if (!empty($in_date)) {        $this->date = $in_date; }
+    if (!empty($in_featured)) {    $this->featured = $in_featured; }
+    if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
     $primary_link_array = array();
     $other_links_array = array();

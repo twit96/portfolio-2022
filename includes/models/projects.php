@@ -24,7 +24,8 @@ function getProjects($mysqli, $featured_only=FALSE) {
       $row["blurb"],
       $row["description"],
       $row["date"],
-      $row["featured"]
+      $row["featured"],
+      $row["author_id"]
     );
     array_push($project_array, $this_project);
   }
