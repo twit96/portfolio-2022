@@ -23,7 +23,8 @@ html {
   --indigo-shadow: #140037;
   --green: #06632c;
   --green-shadow: #033d1a;
-  --red: #ff0022;
+  --red: #ff0000;
+  --red-shadow: #b50000;
   --blue: #48acf0;
   --blue-light: #61b6f0;
   --blue-shadow: #148bdb;
@@ -45,6 +46,7 @@ html.dark-mode {
   --green: #033d1a;
   --green-shadow: #011c0c;
   --red: #990014;
+  --red-shadow: #7c0000;
   --blue: #148bdb;
   --blue-light: #259ae8;
   --blue-shadow: #1067a1;
@@ -162,7 +164,7 @@ a.active { text-decoration: underline; }
 /* presets */
 .btn-text {
   --main-color: var(--green);
-  --hover-color: inherit;
+  --hover-color: var(--blue-shadow);
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -183,65 +185,7 @@ a.active { text-decoration: underline; }
   height: 25px;
 }
 
-/* play button */
-.btn-text.play {
-  --hover-color: var(--blue-shadow);
-  cursor: pointer;
-}
-.btn-text.play .icon::before {
-  content: '';
-  position: absolute;
-  top: 5px; left: 5px; right: 5px; bottom: 5px;
-  background: var(--main-color);
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-}
-.btn-text.play:hover { color: var(--hover-color); }
-.btn-text.play:hover .icon { border-color: var(--hover-color); }
-.btn-text.play:hover .icon::before { background: var(--hover-color); }
-
-
-/* pause button */
-.btn-text.pause {
-  --hover-color: var(--blue-shadow);
-  cursor: pointer;
-}
-.btn-text.pause .icon::before {
-  content: '';
-  position: absolute;
-  top: 5px; left: 5px; bottom: 5px;
-  width: 3px;
-  background: var(--main-color);
-}
-.btn-text.pause .icon::after {
-  content: '';
-  position: absolute;
-  top: 5px; right: 5px; bottom: 5px;
-  width: 3px;
-  background: var(--main-color);
-}
-.btn-text.pause:hover { color: var(--hover-color); }
-.btn-text.pause:hover .icon { border-color: var(--hover-color); }
-.btn-text.pause:hover .icon::before { background: var(--hover-color); }
-.btn-text.pause:hover .icon::after { background: var(--hover-color); }
-
-/* stop button */
-.btn-text.stop:not(.disabled) {
-  --hover-color: var(--blue-shadow);
-  cursor: pointer;
-}
-.btn-text.stop.disabled { opacity: 0.5; }
-.btn-text.stop .icon::before {
-  content: '';
-  position: absolute;
-  top: 5px; left: 5px; right: 5px; bottom: 5px;
-  border-radius: 2px;
-  background: var(--main-color);
-}
-.btn-text.stop:not(.disabled):hover { color: var(--hover-color); }
-.btn-text.stop:not(.disabled):hover .icon { border-color: var(--hover-color); }
-.btn-text.stop:not(.disabled):hover .icon::before { background: var(--hover-color); }
-
-/* calendar button */
+/* calendar */
 .btn-text.date {
   font-weight: normal;
   font-size: 85%;
@@ -258,10 +202,101 @@ a.active { text-decoration: underline; }
   border-bottom: 3px solid var(--main-color);
 }
 
-
-.btn-text.link {
-  --hover-color: var(--blue-shadow);
+/* controls - play */
+.btn-text.play { cursor: pointer; }
+.btn-text.play:hover { --main-color: var(--hover-color); }
+.btn-text.play .icon::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  background: var(--main-color);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
+
+/* controls - pause */
+.btn-text.pause { cursor: pointer; }
+.btn-text.pause:hover { --main-color: var(--hover-color); }
+.btn-text.pause .icon::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; bottom: 5px;
+  width: 3px;
+  background: var(--main-color);
+}
+.btn-text.pause .icon::after {
+  content: '';
+  position: absolute;
+  top: 5px; right: 5px; bottom: 5px;
+  width: 3px;
+  background: var(--main-color);
+}
+
+/* controls - stop */
+.btn-text.stop:not(.disabled) { cursor: pointer; }
+.btn-text.stop:not(.disabled):hover { --main-color: var(--hover-color); }
+.btn-text.stop.disabled { opacity: 0.5; }
+.btn-text.stop .icon::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border-radius: 2px;
+  background: var(--main-color);
+}
+
+/* edit */
+.btn-text.edit:hover { --main-color: var(--hover-color); }
+.btn-text.edit .icon {
+  border-radius: 0;
+  border-width: 0;
+  width: 1em;
+  height: 1em;
+}
+.btn-text.edit .icon::before,
+.btn-text.edit .icon::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: var(--main-color);
+}
+.btn-text.edit .icon::before {
+  clip-path: polygon(
+    0 100%,
+    0 80%,
+    56% 24%,
+    76% 44%,
+    20% 100%
+  );
+}
+.btn-text.edit .icon::after {
+  clip-path: polygon(
+    80% 0,
+    100% 20%,
+    84% 36%,
+    64% 16%
+  );
+}
+
+/* internet */
+.btn-text.internet .icon { border-radius: 50%; }
+.btn-text.internet:hover { --main-color: var(--hover-color); }
+.btn-text.internet .icon::before {
+  content: '';
+  position: absolute;
+  top: -1px; right: 25%; bottom: -1px; left: 25%;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+}
+.btn-text.internet .icon::after {
+  content: '';
+  position: absolute;
+  top: 28%; right: -1px; bottom: 28%; left: -1px;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
+/* link */
+.btn-text.link:hover { --main-color: var(--hover-color); }
 .btn-text.link .icon {
   width: 20px;
   height: 20px;
@@ -279,17 +314,45 @@ a.active { text-decoration: underline; }
   content: '';
   position: absolute;
   top: 2px; right: 2px;
-
-  width: 0;
-  height: 0;
+  width: 0; height: 0;
   border-bottom: 7.5px solid transparent;
   border-left: 7.5px solid transparent;
   border-top: 7.5px solid var(--main-color);
 }
-.btn-text.link:hover { color: var(--hover-color); }
-.btn-text.link:hover .icon { border-color: var(--hover-color); }
-.btn-text.link:hover .icon::before { background: var(--hover-color); }
-.btn-text.link:hover .icon::after { border-top-color: var(--hover-color); }
+
+
+/* mail */
+.btn-text.mail:hover { --main-color: var(--hover-color); }
+.btn-text.mail .icon {
+  overflow: hidden;
+  width: 25px;
+  height: 20px;
+}
+.btn-text.mail .icon::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 20px; height: 20px;
+  border: 2px solid var(--main-color);
+  clip-path: polygon(
+    0 0, 
+    15px 0,
+    15px 5px,
+    20px 5px,
+    20px 20px,
+    0 20px
+  );
+}
+.btn-text.mail .icon::after {
+  content: '';
+  position: absolute;
+  bottom: 50%; left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 20px; height: 20px;
+  border: 2px solid var(--main-color);
+  border-radius: 3px;
+}
 
 
 /* Badge for Featured Projects */
