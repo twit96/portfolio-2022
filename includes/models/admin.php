@@ -39,6 +39,16 @@ LOGIN;
 
 
 /**
+* Function to unset username and password POST variables.
+* No return value.
+*/
+function doUnsetPost() {
+  unset($_POST['username']);
+  unset($_POST['password']);
+}
+
+
+/**
 * Function to check if a username
 * is in the admin database.
 * Returns 1 if username exists and 0 otherwise.
