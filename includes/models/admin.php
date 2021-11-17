@@ -364,7 +364,6 @@ function insertDB($mysqli, $row, $new_img_name) {
   unset($_POST["author_id"]);
 
   $col_vals_length = count($col_vals);
-  echo '<script>alert("'.print_r($col_vals).' '.$col_vals_length.'");</script>';
 
   // build sql command
   $command = "INSERT INTO projects VALUES ";
@@ -373,7 +372,6 @@ function insertDB($mysqli, $row, $new_img_name) {
     $command .= "'".$col_vals[$i]."', ";
   }
   $command .= $col_vals[$col_vals_length-1].");";
-  echo '<script>alert("'.$command.'");</script>';
 
   // execute command
   $result = $mysqli->query($command);
