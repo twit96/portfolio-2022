@@ -335,6 +335,9 @@ article:not(:last-of-type) {
     border-radius: 15px;
     margin: 0 var(--main-spacing);
   }
+  #featured .card:last-child {
+    margin-right: calc(var(--main-spacing) / 2);
+  }
   #featured p { text-align: right; }
 }
 
