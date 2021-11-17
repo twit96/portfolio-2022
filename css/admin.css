@@ -226,6 +226,7 @@ input[type="reset"]:hover {
 #user-profile  .right .btn-text {
   font-weight: normal;
   font-size: 0.85em;
+  margin-top: 0.25rem;
 }
 
 .label-group {
