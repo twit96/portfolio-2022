@@ -123,7 +123,7 @@ input[type="reset"]:hover {
 /* cards */
 .card {
   border-radius: 10px;
-  padding: calc(var(--main-spacing) / 2);
+  padding: var(--main-spacing);
   box-shadow: 0 0 10px var(--green-shadow);
   background: var(--grey-light);
   overflow: hidden;
@@ -140,8 +140,8 @@ input[type="reset"]:hover {
 
 #user-profile .btn-container {
   position: absolute;
-  top: calc(var(--main-spacing) / 2);
-  right: calc(var(--main-spacing) / 2);
+  top: var(--main-spacing);
+  right: var(--main-spacing);
 }
 
 #user-profile button {
@@ -340,6 +340,18 @@ input[type="reset"]:hover {
   #user-profile .right > div:first-of-type { margin-top: 2.5rem; }
   .submit-toggle {
     flex-direction: row-reverse;
+  }
+}
+
+@media (min-width: 750px) and (min-height: 850px) {
+  .card {
+    padding: calc(var(--main-spacing) / 2);
+  }
+
+  #user-profile .btn-container {
+    position: absolute;
+    top: calc(var(--main-spacing) / 2);
+    right: calc(var(--main-spacing) / 2);
   }
 }
 
