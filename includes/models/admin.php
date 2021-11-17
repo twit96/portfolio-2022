@@ -129,7 +129,7 @@ function buildDashboard($mysqli) {
     array_push($project_directories, $row['directory']);
 
     echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
-    echo '<form method="POST" action="admin.php" class="panel">';
+    echo '<form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">';
     echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
     echo '<div class="label-group">';
     echo '<label><input type="text" name="title" value="'.$row['title'].'" /><span>Title</span></label>';
@@ -152,7 +152,7 @@ function buildDashboard($mysqli) {
 
   echo <<<EMPTYROW
     <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
-    <form method="POST" action="admin.php" class="panel">
+    <form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">
       <input name="id" type="hidden" value="{$max_id}" />
       <div class="label-group">
         <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
