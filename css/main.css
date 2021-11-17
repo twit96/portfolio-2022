@@ -108,7 +108,7 @@ a.active { text-decoration: underline; }
   position: absolute;
   border-radius: 50%;
   background: var(--blue);
-  opacity: 0.15;
+  opacity: 0.1;
 }
 
 .leaf {
@@ -156,7 +156,7 @@ a.active { text-decoration: underline; }
   position: absolute;
   border-radius: 2vmin;
   background: var(--indigo);
-  opacity: 0.05;
+  opacity: 0.025;
 }
 
 /* Custom Buttons with Icons */
@@ -336,7 +336,7 @@ a.active { text-decoration: underline; }
   width: 20px; height: 20px;
   border: 2px solid var(--main-color);
   clip-path: polygon(
-    0 0, 
+    0 0,
     15px 0,
     15px 5px,
     20px 5px,
