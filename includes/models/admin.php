@@ -131,6 +131,7 @@ function buildDashboard($mysqli) {
     echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
     echo '<form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">';
     echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
+    echo '<input name="author_id" type="hidden" value="1" />';
     echo '<div class="label-group">';
     echo '<label><input type="text" name="title" value="'.$row['title'].'" /><span>Title</span></label>';
     echo '<label><input type="date" name="date" value="'.$row['date'].'" /><span>Date</span></label>';
@@ -154,6 +155,7 @@ function buildDashboard($mysqli) {
     <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
     <form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">
       <input name="id" type="hidden" value="{$max_id}" />
+      <input name="author_id" type="hidden" value="1" />
       <div class="label-group">
         <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
         <label><input type="date" name="date" required /><span>Date</span></label>
@@ -341,16 +343,28 @@ function updateDirectory($row, $dir) {
 function insertDB($mysqli, $row, $new_img_name) {
 
   // format values to be updated in database
-  $col_vals = array();
-  foreach ($_POST as $key => $value) {
-    $val = $mysqli->real_escape_string($value);
-    array_push($col_vals, $val);
-    if ($key == 'directory') array_push($col_vals, $new_img_name);
-    // unset post for each key
-    unset($_POST[$key]);
-  }
+  $col_vals = [
+    real_escape_string($_POST["id"]),
+    real_escape_string($_POST["title"]),
+    real_escape_string($_POST["directory"]),
+    $new_img_name,
+    real_escape_string($_POST["blurb"]),
+    real_escape_string($_POST["description"]),
+    real_escape_string($_POST["date"]),
+    real_escape_string($_POST["featured"]),
+    real_escape_string($_POST["author_id"])
+  ];
+  unset($_POST["id"]);
+  unset($_POST["title"]);
+  unset($_POST["directory"]);
+  unset($_POST["blurb"]);
+  unset($_POST["description"]);
+  unset($_POST["date"]);
+  unset($_POST["featured"]);
+  unset($_POST["author_id"]);
+
   $col_vals_length = count($col_vals);
-  echo '<script>alert("'.var_dump($col_vals).' '.$col_vals_length.'");</script>';
+  echo '<script>alert("'.print_r($col_vals).' '.$col_vals_length.'");</script>';
 
   // build sql command
   $command = "INSERT INTO projects VALUES ";
