@@ -157,7 +157,25 @@
                   </div>  <!-- ./submit-toggle -->
                 </div>  <!-- ./label-group -->
               </form>
-              <script src="/js/admin_new.js"></script>
+              <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
+              <form class="panel">
+                <input name="id" type="hidden" value="15" />
+                <div class="label-group">
+                  <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
+                  <label><input type="date" name="date" required /><span>Date</span></label>
+                </div>
+                <div class="label-group">
+                  <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
+                  <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
+                </div>
+                <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
+                <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
+                <div class="label-group">
+                  <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
+                  <div class="submit-toggle"><input type="submit" value="Add" /></div>
+                </div>
+              </form>
+              <script src="/js/admin.js"></script>
             </section>
           </div>  <!-- ./left -->
           <div class="right">

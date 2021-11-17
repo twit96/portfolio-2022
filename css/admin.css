@@ -213,8 +213,8 @@ input[type="reset"]:hover {
 .profile-box input:hover { transform: translate(-50%, -50%) scale(1); }
 
 
-#user-profile .role { 
-  line-height: 1em; 
+#user-profile .role {
+  line-height: 1em;
   margin-top: 0.5rem;
   font-size: 0.85rem;
 }
@@ -223,8 +223,8 @@ input[type="reset"]:hover {
   list-style: none;
 }
 
-#user-profile  .right .btn-text { 
-  font-weight: normal; 
+#user-profile  .right .btn-text {
+  font-weight: normal;
   font-size: 0.85em;
 }
 
@@ -248,7 +248,7 @@ input[type="reset"]:hover {
   background-color: var(--grey);
   color: white;
 }
-.accordion.active::after, 
+.accordion.active::after,
 .accordion:hover::after { color: white; }
 
 .accordion::after {
@@ -265,7 +265,7 @@ input[type="reset"]:hover {
   padding: 1em 0.5em;
   display: none;
   margin-bottom: 1em;
-  border-bottom: 1px solid var(--grey); 
+  border-bottom: 1px solid var(--grey);
 }
 .accordion.active + .panel { display: block; }
 
@@ -281,10 +281,12 @@ input[type="reset"]:hover {
   height: 100%;
 }
 
+.submit-toggle input {
+  min-height: min(2.5rem, 7.5vw); min-width: min(2.5rem, 7.5vw);
+}
 .submit-toggle input[type="checkbox"] {
   -webkit-appearance: initial;
   position: relative;
-  min-height: min(2.5rem, 7.5vw); min-width: min(2.5rem, 7.5vw);
   max-height: min(2.5rem, 7.5vw); max-width: min(2.5rem, 7.5vw);
   background: var(--blue);
   outline: none;
@@ -336,7 +338,7 @@ input[type="reset"]:hover {
     align-items: stretch;
   }
   #user-profile .right > div:first-of-type { margin-top: 2.5rem; }
-  .submit-toggle { 
+  .submit-toggle {
     flex-direction: row-reverse;
   }
 }

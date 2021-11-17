@@ -130,6 +130,7 @@ function buildDashboard($mysqli) {
 
     echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
     echo '<form class="panel">';
+    echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
     echo '<div class="label-group">';
     echo '<label><input type="text" name="title" value="'.$row['title'].'" /><span>Title</span></label>';
     echo '<label><input type="date" name="date" value="'.$row['date'].'" /><span>Date</span></label>';
@@ -145,8 +146,28 @@ function buildDashboard($mysqli) {
     echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" value="Update" /></div>';
     echo '</div>';
     echo '</form>';
-    echo '<script src="/js/admin.js"></script>';
   }
+  echo <<<EMPTYROW
+    <h3 class="accordion" onclick="this.classList.toggle(\'active\');">Add New Project</h3>
+    <form class="panel">
+      <input name="id" type="hidden" value="{$max_id}" />
+      <div class="label-group">
+        <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
+        <label><input type="date" name="date" required /><span>Date</span></label>
+      </div>
+      <div class="label-group">
+        <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
+        <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
+      </div>
+      <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
+      <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
+      <div class="label-group">
+        <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
+        <div class="submit-toggle"><input type="submit" value="Add" /></div>
+      </div>
+    </form>
+    <script src="/js/admin.js"></script>
+  EMPTYROW;
   echo '</div>';  // ./left
 
   echo <<<RIGHTTOP
