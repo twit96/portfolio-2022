@@ -178,12 +178,12 @@ function buildDashboard($mysqli) {
   echo <<<RIGHTTOP
     <div class="right">
       <div id="user-profile" class="card">
-        <!-- <div class="btn-container">
+        <div class="btn-container">
           <button class="btn-text edit">
             <span class="icon"></span>
             <span>Edit</span>
           </button>
-        </div> -->
+        </div>
         <div class="flex">
           <div class="left">
             <div class="profile-box">
