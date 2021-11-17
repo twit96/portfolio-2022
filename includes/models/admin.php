@@ -344,15 +344,15 @@ function insertDB($mysqli, $row, $new_img_name) {
 
   // format values to be updated in database
   $col_vals = [
-    real_escape_string($_POST["id"]),
-    real_escape_string($_POST["title"]),
-    real_escape_string($_POST["directory"]),
+    $mysqli->real_escape_string($_POST["id"]),
+    $mysqli->real_escape_string($_POST["title"]),
+    $mysqli->real_escape_string($_POST["directory"]),
     $new_img_name,
-    real_escape_string($_POST["blurb"]),
-    real_escape_string($_POST["description"]),
-    real_escape_string($_POST["date"]),
-    real_escape_string($_POST["featured"]),
-    real_escape_string($_POST["author_id"])
+    $mysqli->real_escape_string($_POST["blurb"]),
+    $mysqli->real_escape_string($_POST["description"]),
+    $mysqli->real_escape_string($_POST["date"]),
+    $mysqli->real_escape_string($_POST["featured"]),
+    $mysqli->real_escape_string($_POST["author_id"])
   ];
   unset($_POST["id"]);
   unset($_POST["title"]);
