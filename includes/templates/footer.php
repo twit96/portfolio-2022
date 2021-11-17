@@ -11,7 +11,7 @@ echo <<<FOOTER
           <nav>
             <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>
             <a href="/projects"{$if(FILENAME=='projects',' class="active"','')}>Projects</a>
-            <!-- <a href="/admin"{$if(FILENAME=='admin',' class="active"','')}>Admin</a> -->
+            <a href="/admin"{$if(FILENAME=='admin',' class="active"','')}>Admin</a>
           </nav>
           <div class="socials">
             <div>
