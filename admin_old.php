@@ -9,20 +9,18 @@ HEAD_END;
 
 include('./includes/templates/header.php');
 echo <<<SECTION_TOP
-<main id="admin">
+<main id="entries">
   <div class="wrapper">
-    <h1>Admin</h1>
 SECTION_TOP;
 
-include('./includes/models/admin.php');
+include('./includes/views/admin_dashboard.php');
 
 echo <<<SECTION_BTM
-  </div>
+  </div>  <!-- ./wrapper -->
 </main>
 SECTION_BTM;
 
 include('./includes/templates/footer.php');
-
 
 echo <<<PAGE_END
 \n

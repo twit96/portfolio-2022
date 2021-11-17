@@ -7,40 +7,34 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-function doLogin() {
-  $script = $_SERVER['PHP_SELF'];
-  echo <<<TOP
-  <h1>Admin Login</h1>
-  <div id="login">
-    <form method="POST" action="admin_old.php">
-      <p>
-        Username:
-        <input name="username" type="text" placeholder="Username" required />
-      </p>
-      <p>
-        Password:
-        <input name="password" type="password" placeholder="Password" required />
-      </p>
-      <p>
-        <input name="login" type="submit" value="Submit" />
-        <input type="reset" value="Reset" />
-      </p>
-    </form>
-    <p>
-      The place where super duper top secret things definitely do not occur...
-    </p>
-  </div>
-TOP;
-}
-
-
 /**
-* Function to unset username and password POST variables.
-* No return value.
+* Admin Page Login Area
 */
-function doUnsetPost() {
-  unset($_POST['username']);
-  unset($_POST['password']);
+function doLogin() {
+  echo <<<LOGIN
+  <section id="login">
+    <h2>Login</h2>
+    <div class="flex">
+      <form method="POST" action="admin.php">
+        <label>
+          <input name="username" type="text" required />
+          <span>Username</span>
+        </label>
+        <label>
+          <input name="password" type="password" required />
+          <span>Password</span>
+        </label>
+        <p>
+          <input name="login" type="submit" value="Submit" />
+          <input type="reset" value="Reset" />
+        </p>
+      </form>
+      <p>
+        The place where super duper top secret things definitely do not occur...
+      </p>
+    </div>
+  </section>
+LOGIN;
 }
 
 
@@ -102,71 +96,14 @@ function checkLogin($mysqli, $username, $password) {
 }
 
 
-/**
-* Function to set up the admin page table layout. No return value.
-*/
 function buildDashboard($mysqli) {
-  // Opening HTML
-  echo <<<TOP
-  <h1>Database Entries</h1>
-  <table id="projects-table">
-    <col style="width:8%">
-    <col style="width:7%">
-    <col style="width:13%">
-    <col style="width:7%">
-    <col style="width:7%">
-    <col style="width:6%">
-    <col style="width:7%">
-    <col style="width:6%">
-    <col style="width:7%">
-    <col style="width:6%">
-    <col style="width:7%">
-    <col style="width:6%">
-    <col style="width:6%">
-    <col style="width:7%">
-    <thead>
-      <tr>
-  TOP;
 
-  // Table Header Row
-  $command = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "projects" ORDER BY ORDINAL_POSITION;';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-
-  while ($row = $result->fetch_assoc()) {
-    $str = ucwords(str_replace("_", " ", $row['COLUMN_NAME']));
-    if ($str != "ID") { echo '<th>'.$str.'</th>'; }
-  }
-  echo '<th>Controls</th>';
-  echo '</tr></thead>';
-
-  // Table Body Data
-  $project_directories = displayData($mysqli);
-
-  // Closing HTML
-  echo <<<BOTTOM
-    </table>
-    <form id="logout" method="POST" action="admin_old.php">
-      <input name="logout" type="submit" value="Logout" />
-    </form>
-  </section>
-  <script type="text/javascript" src="/js/admin_old.js" defer></script>
-  BOTTOM;
-
-  // Forms for each row of inputs to reference
-  foreach ($project_directories as &$curr_dir) {
-    echo '<form class="hidden" id="'.$curr_dir.'" method="POST" action="admin_old.php" enctype="multipart/form-data"></form>';
-  }
-  echo '<form class="hidden" id="add-new-project" method="POST" action="admin_old.php" enctype="multipart/form-data"></form>';
-  unset($curr_dir);
-}
-
-
-/**
-* Function to display the rows of the admin page table layout.
-* Called by buildDashboard(). No return value.
-*/
-function displayData($mysqli) {
+  echo <<<LEFTTOP
+  <div class="flex">
+    <div class="left">
+      <section id="edit-projects" class="card">
+        <h2>Edit Projects</h2>
+  LEFTTOP;
 
   $command = 'SELECT * FROM projects ORDER BY date DESC;';
   $result = $mysqli->query($command);
@@ -176,64 +113,68 @@ function displayData($mysqli) {
 
   $max_id = 0;  // to set add-new-column form's input ID
 
-  echo '<tbody>';
   while ($row = $result->fetch_assoc()) {
     if ($row['ID'] > $max_id) { $max_id = $row['ID']; }   // update max_id
 
     array_push($project_directories, $row['directory']);
 
-    echo '<tr>';
-    echo '<td>';
-    echo '<input form="'.$row['directory'].'" name="id" type="hidden" value="'.$row['ID'].'" />';
-    echo '<input form="'.$row['directory'].'" name="title" type="text" value="'.$row['title'].'" required />';
-    echo '</td>';
-    echo '<td><input form="'.$row['directory'].'" name="directory" type="text" value="'.$row['directory'].'" required /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="image" type="file" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="blurb" type="text" value="'.$row['blurb'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="description" type="text" value="'.$row['description'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="date" type="date" value="'.$row['date'].'" required /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="primary_link" type="text" value="'.$row['primary_link'].'" /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="primary_link_text" type="text" value="'.$row['primary_link_text'].'" /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="secondary_link" type="text" value="'.$row['secondary_link'].'" /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="secondary_link_text" type="text" value="'.$row['secondary_link_text'].'" /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="tertiary_link" type="text" value="'.$row['tertiary_link'].'" /></td>';
-    // echo '<td><input form="'.$row['directory'].'" name="tertiary_link_text" type="text" value="'.$row['tertiary_link_text'].'" /></td>';
-    echo '<td><input form="'.$row['directory'].'" name="featured" type="text" value="'.$row['featured'].'" required /></td>';
-    echo '<td><div>';
-    echo '<input form="'.$row['directory'].'" name="delete" type="checkbox" />';
-    echo '<input form="'.$row['directory'].'" name="update" type="submit" value="Update" />';
-    echo '</div></td>';
-    echo '</tr>';
-
+    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
+    echo '<form class="panel">';
+    echo '<div class="label-group">';
+    echo '<label><input type="text" name="title" value="'.$row['title'].'" /><span>Title</span></label>';
+    echo '<label><input type="date" name="date" value="'.$row['date'].'" /><span>Date</span></label>';
+    echo '</div>';
+    echo '<div class="label-group">';
+    echo '<label><input type="text" name="directory" value="'.$row['directory'].'" /><span>Directory</span></label>';
+    echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>Image</span></label>';
+    echo '</div>';
+    echo '<label><input type="text" name="blurb" value="'.$row['blurb'].'" /><span>Blurb</span></label>';
+    echo '<label><input type="text" name="description" value="'.$row['description'].'" /><span>Description</span></label>';
+    echo '<div class="label-group">';
+    echo '<label><input type="number" name="featured" min="0" value="'.$row['featured'].'" /><span>Featured</span></label>';
+    echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" value="Update" /></div>';
+    echo '</div>';
+    echo '</form>';
+    echo '<script src="/js/admin.js"></script>';
   }
+  echo '</div>';  // ./left
 
-  $max_id++;  // add 1 to max_id so it is greater than all other ID's
-
-  echo '<tr>';
-  echo '  <td>';
-  echo '    <input form="add-new-project" name="id" type="hidden" value="'.$max_id.'" />';
-
-  echo <<<EMPTYROW
-      <input form="add-new-project" name="title" type="text" placeholder="New Title" required />
-    </td>
-    <td><input form="add-new-project" name="directory" type="text" placeholder="new-directory" required /></td>
-    <td><input form="add-new-project" name="image" type="file" required /></td>
-    <td><input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" /></td>
-    <td><input form="add-new-project" name="description" type="text" placeholder="Project Description" /></td>
-    <td><input form="add-new-project" name="date" type="date" required /></td>
-    <td><input form="add-new-project" name="primary_link" type="text" placeholder="project-link1.com" /></td>
-    <td><input form="add-new-project" name="primary_link_text" type="text" placeholder="Link1 Button Text" /></td>
-    <td><input form="add-new-project" name="secondary_link" type="text" placeholder="project-link2.com" /></td>
-    <td><input form="add-new-project" name="secondary_link_text" type="text" placeholder="Link2 Button Text" /></td>
-    <td><input form="add-new-project" name="tertiary_link" type="text" placeholder="project-link3.com" /></td>
-    <td><input form="add-new-project" name="tertiary_link_text" type="text" placeholder="Link3 Button Text" /></td>
-    <td><input form="add-new-project" name="featured" type="number" value="0" required /></td>
-    <td><input form="add-new-project" name="update" type="submit" value="Add" /></td>
-  </tr>
-  EMPTYROW;
-  echo '</tbody>';
-
-  return $project_directories;
+  echo <<<RIGHTTOP
+    <div class="right">
+      <div id="user-profile">
+        <!-- <div class="btn-container">
+          <button class="btn-text edit">
+            <span class="icon"></span>
+            <span>Edit</span>
+          </button>
+        </div> -->
+        <div class="flex">
+          <div class="left">
+            <div class="profile-box">
+              <img class="profile" src="/img/profile.jpg" alt="Profile Image" />
+            </div>
+            <span class="role">Admin</span>
+          </div>  <!-- ./left -->
+          <ul class="right">
+            <li><b>Tyler Wittig</b></li>
+            <li>
+              <a class="btn-text internet" href="#">
+                <span class="icon"></span>
+                <span>tylerwittig.com</span>
+              </a>
+            </li>
+            <li>
+              <a class="btn-text mail" href="#">
+                <span class="icon"></span>
+                <span>tylerwittig@utexas.edu</span>
+              </a>
+            </li>
+          </ul>  <!-- ./right -->
+        </div>  <!-- ./flex -->
+      </div>  <!-- #/user-profile -->
+  RIGHTTOP;
+  echo '</div>';  // ./right
+  echo '</div>';  // ./flex
 }
 
 

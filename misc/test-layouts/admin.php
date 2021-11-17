@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
-	<head>
-		<title>Tyler Wittig | Admin Dashboard</title>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Tyler Wittig | Admin New</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="Tyler Wittig's Portfolio Admin Dashboard" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,278 +13,273 @@
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 		<script src="/js/main.js" defer></script>
 		<meta name="robots" content="noindex">
-	</head>
-
+  </head>
   <body>
-		<?php
-			DEFINE("FILENAME", 'admin');
-			include('../../includes/templates/header.php');
-		?>
+    <div id="loader"></div>
 
-		<main id="entries">
-			<div class="wrapper">
-				<h1>Admin Login</h1>
+    <span id="scroll-down-indicator"></span>
+    <span id="scroll-top-btn"></span>
 
-				<div id="login">
-					<form method="POST" action="index.php">
-						<p>
-							Username:
-							<input name="username" type="text" placeholder="Username" required />
-						</p>
-						<p>
-							Password:
-							<input name="password" type="password" placeholder="Password" required />
-						</p>
-						<p>
-							<input name="login" type="submit" value="Submit" />
-							<input type="reset" value="Reset" />
-						</p>
-					</form>
-					<p>
-						The place where super duper top secret things definitely do not occur...
-					</p>
-				</div>
+    <header>
+      <div class="wrapper">
+        <span>
+          <a href="/">TW</a>
+        </span>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/projects">Projects</a>
+          <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
+            Résumé
+          </a>
+          <div id="dark-toggle-wrap">
+            <span class="slider"></span>
+          </div>
+        </nav>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="header-bg"></div>
+      </div>
+    </header>
 
-				<h1>Database Entries</h1>
-				<table id="projects-table">
-					<col style="width:8%">
-					<col style="width:7%">
-					<col style="width:13%">
-					<col style="width:7%">
-					<col style="width:7%">
-					<col style="width:6%">
-					<col style="width:7%">
-					<col style="width:6%">
-					<col style="width:7%">
-					<col style="width:6%">
-					<col style="width:7%">
-					<col style="width:6%">
-					<col style="width:6%">
-					<col style="width:7%">
+    <main id="admin">
+      <div class="wrapper">
 
-					<thead>
-						<tr>
-							<th>Title</th>
-							<th>Directory</th>
-							<th>New Image</th>
-							<th>Blurb</th>
-							<th>Description</th>
-							<th>Date</th>
-							<th>Primary Link</th>
-							<th>Primary Link Text</th>
-							<th>Secondary Link</th>
-							<th>Secondary Link Text</th>
-							<th>Tertiary Link</th>
-							<th>Tertiary Link Text</th>
-							<th>Featured</th>
-							<th>Controls</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<input form="goldschen-ohm-lab" name="title" type="text" value="Goldschen-Ohm-Lab" required />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="directory" type="text" value="goldschen-ohm-lab" required />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="image" type="file" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="blurb" type="text" value="Mobile-Responsive Webpage Update" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="description" type="text" value="Updating the HTML to use semantic HTML5 tags, as well as implementing a mobile-first responsive design with vanilla CSS, add mobile-responsiveness and increase the readability of the code base of a researcher's lab webpage." />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="date" type="date" value="2021-08-05" required />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="primary_link" type="text" value="https://marcel-goldschen-ohm.github.io/" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="primary_link_text" type="text" value="View Website" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="secondary_link" type="text" value="" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="secondary_link_text" type="text" value="" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="tertiary_link" type="text" value="" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="tertiary_link_text" type="text" value="" />
-							</td>
-							<td>
-								<input form="goldschen-ohm-lab" name="featured" type="text" value="0" required />
-							</td>
-							<td>
-								<div>
-									<input form="goldschen-ohm-lab" name="delete" type="checkbox" value="delete" />
-									<input form="goldschen-ohm-lab" name="update" type="submit" value="Update" />
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input form="minesweeper" name="title" type="text" value="Minesweeper" required />
-							</td>
-							<td>
-								<input form="minesweeper" name="directory" type="text" value="minesweeper" required />
-							</td>
-							<td>
-								<input form="minesweeper" name="image" type="file" />
-							</td>
-							<td>
-								<input form="minesweeper" name="blurb" type="text" value="JavaScript Minesweeper Game" />
-							</td>
-							<td>
-								<input form="minesweeper" name="description" type="text" value="A mobile-responsive, no-frameworks version of the classic game of minesweeper." />
-							</td>
-							<td>
-								<input form="minesweeper" name="date" type="date" value="2021-06-09" required />
-							</td>
-							<td>
-								<input form="minesweeper" name="primary_link" type="text" value="https://twit96.github.io/minesweeper/" />
-							</td>
-							<td>
-								<input form="minesweeper" name="primary_link_text" type="text" value="Play Now" />
-							</td>
-							<td>
-								<input form="minesweeper" name="secondary_link" type="text" value="https://github.com/twit96/minesweeper/" />
-							</td>
-							<td>
-								<input form="minesweeper" name="secondary_link_text" type="text" value="View GitHub" />
-							</td>
-							<td>
-								<input form="minesweeper" name="tertiary_link" type="text" value="" />
-							</td>
-							<td>
-								<input form="minesweeper" name="tertiary_link_text" type="text" value="" />
-							</td>
-							<td>
-								<input form="minesweeper" name="featured" type="text" value="3" required />
-							</td>
-							<td>
-								<div>
-									<input form="minesweeper" name="delete" type="checkbox" />
-									<input form="minesweeper" name="update" type="submit" value="Update" />
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input form="wittiggrass" name="title" type="text" value="Wittig Grass Sales" required />
-							</td>
-							<td>
-								<input form="wittiggrass" name="directory" type="text" value="wittiggrass" required />
-							</td>
-							<td>
-								<input form="wittiggrass" name="image" type="file" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="blurb" type="text" value="Business Website Redesign" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="description" type="text" value="This website redesign gives a new face to an outdated business website. Background image slideshows, custom informational card layouts, an optimized and filterable image gallery page, and numerous other tricks yield a clean and mobile-responsive design with pure CSS (no frameworks)." />
-							</td>
-							<td>
-								<input form="wittiggrass" name="date" type="date" value="2021-05-10" required />
-							</td>
-							<td>
-								<input form="wittiggrass" name="primary_link" type="text" value="https://twit96.github.io/wittiggrass/" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="primary_link_text" type="text" value="View Website" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="secondary_link" type="text" value="" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="secondary_link_text" type="text" value="" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="tertiary_link" type="text" value="" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="tertiary_link_text" type="text" value="" />
-							</td>
-							<td>
-								<input form="wittiggrass" name="featured" type="text" value="4" required />
-							</td>
-							<td>
-								<div>
-									<input form="wittiggrass" name="delete" type="checkbox" />
-									<input form="wittiggrass" name="update" type="submit" value="Update" />
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input form="add-new-project" name="title" type="text" placeholder="New Title" required />
-							</td>
-							<td>
-								<input form="add-new-project" name="directory" type="text" placeholder="new-directory" required />
-							</td>
-							<td>
-								<input form="add-new-project" name="image" type="file" />
-							</td>
-							<td>
-								<input form="add-new-project" name="blurb" type="text" placeholder="A Short Blurb" />
-							</td>
-							<td>
-								<input form="add-new-project" name="description" type="text" placeholder="Project Description" />
-							</td>
-							<td>
-								<input form="add-new-project" name="date" type="date" required />
-							</td>
-							<td>
-								<input form="add-new-project" name="primary_link" type="text" placeholder="project-link1.com" />
-							</td>
-							<td>
-								<input form="add-new-project" name="primary_link_text" type="text" placeholder="Link1 Button Text" />
-							</td>
-							<td>
-								<input form="add-new-project" name="secondary_link" type="text" placeholder="project-link2.com" />
-							</td>
-							<td>
-								<input form="add-new-project" name="secondary_link_text" type="text" placeholder="Link2 Button Text" />
-							</td>
-							<td>
-								<input form="add-new-project" name="tertiary_link" type="text" placeholder="project-link3.com" />
-							</td>
-							<td>
-								<input form="add-new-project" name="tertiary_link_text" type="text" placeholder="Link3 Button Text" />
-							</td>
-							<td>
-								<input form="add-new-project" name="featured" type="number" value="0" required />
-							</td>
-							<td>
-								<input form="add-new-project" name="update" type="submit" value="Add" />
-							</td>
-						</tr>
+        <h1>Admin</h1>
+        <section id="login">
+          <h2>Login</h2>
+          <div class="flex">
+            <form method="POST" action="admin.php">
+              <label>
+                <input name="username" type="text" required />
+                <span>Username</span>
+              </label>
+              <label>
+                <input name="password" type="password" required />
+                <span>Password</span>
+              </label>
+              <p>
+                <input name="login" type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+              </p>
+            </form>
+            <p>
+              The place where super duper top secret things definitely do not occur...
+            </p>
+          </div>
+        </section>
 
-					</tbody>
-				</table>
+        <div class="flex">
+          <div class="left">
+            <section id="edit-projects" class="card">
+              <h2>Edit Projects</h2>
+              <h3 class="accordion" onclick="this.classList.toggle('active');">(2021-10-01) Project Title 1</h3>
+              <form class="panel">
+                <div class="label-group">
+                  <label>
+                    <input type="text" name="title" value="Project Title 1" />
+                    <span>Title</span>
+                  </label>
+                  <label>
+                    <input type="date" name="date" value="2021-10-01" />
+                    <span>Date</span>
+                  </label>
+                </div>
+                <div class="label-group">
+                  <label>
+                    <input type="text" name="directory" value="project-title-1" />
+                    <span>Directory</span>
+                  </label>
+                  <label>
+                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
+                    <span>Image</span>
+                  </label>
+                </div>
+                <label>
+                  <input type="text" name="blurb" value="Project 1 Blurb about the Project" />
+                  <span>Blurb</span>
+                </label>
+                <label>
+                  <input type="text" name="description" value="Project 1 Description about the Project describes it very well for the most part we think." />
+                  <span>Description</span>
+                </label>
+                <div class="label-group">
+                  <label>
+                    <input type="number" name="featured" min="0" value="1" />
+                    <span>Featured</span>
+                  </label>
+                  <div class="submit-toggle">
+                    <input type="checkbox" name="toggle" />
+                    <input type="submit" value="Update" />
+                  </div>  <!-- ./submit-toggle -->
+                </div>  <!-- ./label-group -->
+              </form>
+              <h3 class="accordion" onclick="this.classList.toggle('active');">(2021-09-01) Project Title 2</h3>
+              <form class="panel">
+                <div class="label-group">
+                  <label>
+                    <input type="text" name="title" value="Project Title 1" />
+                    <span>Title</span>
+                  </label>
+                  <label>
+                    <input type="date" name="date" value="2021-10-01" />
+                    <span>Date</span>
+                  </label>
+                </div>
+                <div class="label-group">
+                  <label>
+                    <input type="text" name="directory" value="project-title-1" />
+                    <span>Directory</span>
+                  </label>
+                  <label>
+                    <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
+                    <span>Image</span>
+                  </label>
+                </div>
+                <label>
+                  <input type="text" name="blurb" value="Project 1 Blurb about the Project" />
+                  <span>Blurb</span>
+                </label>
+                <label>
+                  <input type="text" name="description" value="Project 1 Description about the Project describes it very well for the most part we think." />
+                  <span>Description</span>
+                </label>
+                <div class="label-group">
+                  <label>
+                    <input type="number" name="featured" min="0" value="2" />
+                    <span>Featured</span>
+                  </label>
+                  <div class="submit-toggle">
+                    <input type="checkbox" name="delete" value="delete" />
+                    <input type="submit" value="Update" />
+                  </div>  <!-- ./submit-toggle -->
+                </div>  <!-- ./label-group -->
+              </form>
+              <script src="/js/admin_new.js"></script>
+            </section>
+          </div>  <!-- ./left -->
+          <div class="right">
 
-				<form id="logout" method="POST" action="index.php">
-					<input name="logout" type="submit" value="Logout" />
-				</form>
-				<script type="text/javascript" src="/js/admin.js" defer></script>
+            <div id="user-profile" class="card">
+              <div class="btn-container">
+                <button class="btn-text edit">
+                  <span class="icon"></span>
+                  <span>Edit</span>
+                </button>
+              </div>
+              <div class="flex">
+                <div class="left">
+                  <div class="profile-box">
+                    <img class="profile" src="/img/profile.jpg" alt="Profile Image" />
+                  </div>
+                  <span class="role">Admin</span>
+                </div>  <!-- ./left -->
+                <ul class="right">
+                  <li><b>Tyler Wittig</b></li>
+                  <li>
+                    <a class="btn-text internet" href="#">
+                      <span class="icon"></span>
+                      <span>tylerwittig.com</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="btn-text mail" href="#">
+                      <span class="icon"></span>
+                      <span>tylerwittig@utexas.edu</span>
+                    </a>
+                  </li>
+                </ul>  <!-- ./right -->
+              </div>  <!-- ./flex -->
+            </div>  <!-- #/user-profile -->
 
-				<form class="hidden" id="goldschen-ohm-lab" method="POST" action="index.php"></form>
-				<form class="hidden" id="minesweeper" method="POST" action="index.php"></form>
-				<form class="hidden" id="wittiggrass" method="POST" action="index.php"></form>
-				<form class="hidden" id="add-new-project" method="POST" action="index.php"></form>
+            <div id="user-profile" class="card">
+              <div class="btn-container">
+                <button>Save</button>
+                <button class="x-btn">X</button>
+              </div>
+              <div class="flex">
+                <div class="left">
+                  <div class="profile-box">
+                    <input id="profile-file" type="file" accept="image/png, image/jpg, image/jpeg" style="display: none;" />
+                    <input type="button" value="+" onclick="document.getElementById('profile-file').click();" />
+                    <img class="profile" src="/img/profile.jpg" alt="Profile Image" />
+                  </div>
+                  <span class="role">Admin</span>
+                </div>  <!-- ./left -->
+                <div class="right">
+                  <div class="label-group">
+                    <label>
+                      <input type="text" name="fname" value="Tyler" />
+                      <span>First Name</span>
+                    </label>
+                    <label>
+                      <input type="text" name="lname" value="Wittig" />
+                      <span>Last Name</span>
+                    </label>
+                  </div>
+                  <label>
+                    <input type="text" name="website" value="tylerwittig.com" />
+                    <span>Website</span>
+                  </label>
+                  <label>
+                    <input type="text" name="email" value="tylerwittig@utexas.edu" />
+                    <span>Email</span>
+                  </label>
+                  <div class="label-group">
+                    <label>
+                      <input type="text" name="uname" value="wittig_" />
+                      <span>Username</span>
+                    </label>
+                    <label>
+                      <input type="password" name="pword" value="Myname1596!" />
+                      <span>Password</span>
+                    </label>
+                  </div>  <!-- ./label-group -->
+                </div>  <!-- ./right -->
+              </div>  <!-- ./flex -->
+            </div>  <!-- #/user-profile -->
 
-			</div>  <!-- ./wrapper -->
-		</main>
+          </div>  <!-- ./right -->
+        </div>  <!-- ./flex -->
+      </div>  <!-- ./wrapper -->
+    </main>
 
-		<?php
-			include('../../includes/templates/footer.php');
-		?>
+    <footer>
+      <div class="wrapper">
+        <div class="info">
+          <img class="logo" src="/img/profile.jpg" alt="Profile Image"/>
+          <span><em>Tyler Wittig</em> | Web Developer</span>
+        </div>
+        <div class="links">
+          <nav>
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+            <a href="/admin">Admin</a>
+          </nav>
+          <div class="socials">
+            <div>
+              <a class="social-icon" href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
+                <img src="/img/logo_email.png" alt="twitter logo" />
+              </a>
+              <a class="social-icon" href="https://github.com/twit96" target="_blank" rel="noreferrer">
+                <img src="/img/logo_github.png" alt="github logo" />
+              </a>
+              <a class="social-icon" href="https://www.linkedin.com/in/tylerwittig/" target="_blank" rel="noreferrer">
+                <img src="/img/logo_linkedin.png" alt="linkedin logo" />
+              </a>
+              <!-- <a class="social-icon" href="https://twitter.com/tyler_wittig" target="_blank" rel="noreferrer">
+                <img src="/img/logo_twitter.png" alt="twitter logo" />
+              </a> -->
+            </div>
+            <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
+              Download my Résumé
+            </a>
+          </div>  <!-- ./socials -->
+        </div>  <!-- ./links -->
+        <span>&copy; 2021 Tyler Wittig</span>
+      </div>
+    </footer>
   </body>
 </html>
