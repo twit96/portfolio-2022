@@ -147,6 +147,9 @@ function buildDashboard($mysqli) {
     echo '</div>';
     echo '</form>';
   }
+
+  $max_id++;  // add 1 to max_id so it is greater than all other ID's
+
   echo <<<EMPTYROW
     <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
     <form method="POST" action="admin.php" class="panel">
