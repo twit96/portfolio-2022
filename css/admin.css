@@ -247,12 +247,11 @@ input[type="reset"]:hover {
   margin: 0.5em 0;
 }
 .accordion span { display: inline-block; }
-.accordion.active, .accordion:hover {
+.accordion.active {
   background-color: var(--grey);
   color: white;
 }
-.accordion.active::after,
-.accordion:hover::after { color: white; }
+.accordion.active::after { color: white; }
 
 .accordion::after {
   content: '+';
@@ -355,6 +354,13 @@ input[type="reset"]:hover {
     top: calc(var(--main-spacing) / 2);
     right: calc(var(--main-spacing) / 2);
   }
+
+  /* add hover effects to accordion */
+  .accordion:hover {
+    background-color: var(--grey);
+    color: white;
+  }
+  .accordion:hover::after { color: white; }
 }
 
 @media (min-width: 1250px) {
