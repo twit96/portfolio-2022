@@ -274,6 +274,7 @@ input[type="reset"]:hover {
 .submit-toggle {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   padding: 0.25rem;
   background: 0;
   color: var(--black);
@@ -291,7 +292,6 @@ input[type="reset"]:hover {
   max-height: min(2.5rem, 7.5vw); max-width: min(2.5rem, 7.5vw);
   background: var(--blue);
   outline: none;
-  margin-right: 0.5rem;
   border-radius: 0.5rem;
 }
 .submit-toggle input[type="checkbox"]:hover { background: var(--blue-shadow); }
@@ -316,7 +316,6 @@ input[type="reset"]:hover {
   background: var(--blue);
   color: white;
   border: 0;
-  margin-right: 0.5rem;
 }
 .submit-toggle input[type="submit"]:hover { background: var(--blue-shadow); }
 .submit-toggle input[type="submit"].active { background: var(--red); }
@@ -338,9 +337,13 @@ input[type="reset"]:hover {
     flex-direction: row;
     align-items: stretch;
   }
+  .submit-toggle input[type="submit"] {
+    margin-right: 0.5rem;
+  }
   #user-profile .right > div:first-of-type { margin-top: 2.5rem; }
   .submit-toggle {
     flex-direction: row-reverse;
+    justify-content: flex-start;
   }
 }
 
