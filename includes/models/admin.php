@@ -15,7 +15,7 @@ function doLogin() {
   <section id="login">
     <h2>Login</h2>
     <div class="flex">
-      <form method="POST" action="admin.php">
+      <form method="POST" action="admin">
         <label>
           <input name="username" type="text" required />
           <span>Username</span>
@@ -129,7 +129,7 @@ function buildDashboard($mysqli) {
     array_push($project_directories, $row['directory']);
 
     echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
-    echo '<form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">';
+    echo '<form method="POST" action="admin" enctype="multipart/form-data" class="panel">';
     echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
     echo '<input name="author_id" type="hidden" value="1" />';
     echo '<div class="label-group">';
@@ -153,7 +153,7 @@ function buildDashboard($mysqli) {
 
   echo <<<EMPTYROW
     <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
-    <form method="POST" action="admin.php" enctype="multipart/form-data" class="panel">
+    <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
       <input name="id" type="hidden" value="{$max_id}" />
       <input name="author_id" type="hidden" value="1" />
       <div class="label-group">
@@ -171,8 +171,12 @@ function buildDashboard($mysqli) {
         <div class="submit-toggle"><input type="submit" name="update" value="Add" /></div>
       </div>
     </form>
+    <form id="logout" method="POST" action="admin">
+      <input name="logout" type="submit" value="Logout" />
+    </form>
     <script src="/js/admin.js"></script>
   EMPTYROW;
+
   echo '</div>';  // ./left
 
   echo <<<RIGHTTOP
