@@ -137,7 +137,7 @@ function buildDashboard($mysqli) {
     echo '</div>';
     echo '<div class="label-group">';
     echo '<label><input type="text" name="directory" value="'.$row['directory'].'" /><span>Directory</span></label>';
-    echo '<label><input type="file" name="image" /><span>Image</span></label>';
+    echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>Image</span></label>';
     echo '</div>';
     echo '<label><input type="text" name="blurb" value="'.$row['blurb'].'" /><span>Blurb</span></label>';
     echo '<label><input type="text" name="description" value="'.$row['description'].'" /><span>Description</span></label>';
@@ -160,7 +160,7 @@ function buildDashboard($mysqli) {
       </div>
       <div class="label-group">
         <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
-        <label><input type="file" name="image" required /><span>Image</span></label>
+        <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
       </div>
       <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
       <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
