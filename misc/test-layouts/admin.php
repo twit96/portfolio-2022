@@ -172,7 +172,7 @@
                 <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
                 <div class="label-group">
                   <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-                  <div class="submit-toggle"><input type="submit" value="Add" /></div>
+                  <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
                 </div>
               </form>
               <script src="/js/admin.js"></script>
