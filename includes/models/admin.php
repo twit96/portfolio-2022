@@ -271,7 +271,7 @@ function checkImage($img, $directory) {
 
     // check if file already exists
     // (should never trigger since we format the image name above)
-    // if (file_exists($target_file)) $new_file_name = 0;
+    // if (file_exists($target_file)) $new_img_name = false;
 
     // check file size (<500kB)
     if ($_FILES["image"]["size"] > 500000) { $new_img_name = false; }
