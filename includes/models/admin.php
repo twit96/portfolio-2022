@@ -143,7 +143,7 @@ function buildDashboard($mysqli) {
     echo '<label><input type="text" name="description" value="'.$row['description'].'" /><span>Description</span></label>';
     echo '<div class="label-group">';
     echo '<label><input type="number" name="featured" min="0" value="'.$row['featured'].'" /><span>Featured</span></label>';
-    echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" value="Update" /></div>';
+    echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" name="update" value="Update" /></div>';
     echo '</div>';
     echo '</form>';
   }
@@ -163,7 +163,7 @@ function buildDashboard($mysqli) {
       <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
       <div class="label-group">
         <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-        <div class="submit-toggle"><input type="submit" value="Add" /></div>
+        <div class="submit-toggle"><input type="submit" name="update" value="Add" /></div>
       </div>
     </form>
     <script src="/js/admin.js"></script>
