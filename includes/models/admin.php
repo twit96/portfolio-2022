@@ -256,14 +256,20 @@ function checkImage($img, $directory) {
 
     // check if image file is a actual image or fake image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check === false) { $new_img_name = false; }
+    if ($check === false) {
+      echo '<script>alert("Image not an image.");</script>';
+      $new_img_name = false;
+    }
 
     // check if file already exists
     // (should never trigger since we format the image name above)
     // if (file_exists($target_file)) $new_file_name = 0;
 
     // check file size (<500kB)
-    if ($_FILES["image"]["size"] > 500000) { $new_img_name = false; }
+    if ($_FILES["image"]["size"] > 500000) {
+      $new_img_name = false;
+      echo '<script>alert("Image too large.");</script>';
+    }
 
     // only allow certain file formats
     if (
@@ -273,9 +279,12 @@ function checkImage($img, $directory) {
       ($imageFileType != "gif") &&
       ($imageFileType != "webp")
     ) {
+      echo '<script>alert("Image incorrect format.");</script>';
       $new_img_name = false;
     }
 
+  } else {
+    echo '<script>alert("Image not set.");</script>';
   }
   return $new_img_name;
 }
