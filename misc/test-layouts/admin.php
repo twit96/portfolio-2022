@@ -75,7 +75,7 @@
           <div class="left">
             <section id="edit-projects" class="card">
               <h2>Edit Projects</h2>
-              <h3 class="accordion" onclick="this.classList.toggle('active');">(2021-10-01) Project Title 1</h3>
+              <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-10-01)</span> <span>Project Title 1</span></h3>
               <form class="panel">
                 <div class="label-group">
                   <label>
@@ -116,7 +116,7 @@
                   </div>  <!-- ./submit-toggle -->
                 </div>  <!-- ./label-group -->
               </form>
-              <h3 class="accordion" onclick="this.classList.toggle('active');">(2021-09-01) Project Title 2</h3>
+              <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-09-01)</span> <span>Project Title 2</span></h3>
               <form class="panel">
                 <div class="label-group">
                   <label>

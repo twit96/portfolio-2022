@@ -239,11 +239,14 @@ input[type="reset"]:hover {
   max-width: 750px;
 } */
 .accordion {
+  position: relative;
   cursor: pointer;
   color: var(--grey-shadow);
   border-radius: 0.25em;
-  padding: 0.25em 0.5em;
+  padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+  margin: 0.5em 0;
 }
+.accordion span { display: inline-block; }
 .accordion.active, .accordion:hover {
   background-color: var(--grey);
   color: white;
@@ -253,7 +256,8 @@ input[type="reset"]:hover {
 
 .accordion::after {
   content: '+';
-  float: right;
+  position: absolute;
+  right: 0.5em; top: 50%; transform: translateY(-50%);
   font-size: 1rem;
   color: var(--grey-shadow);
   font-weight: bold;
@@ -262,10 +266,8 @@ input[type="reset"]:hover {
 .accordion.active::after { content: '-'; }
 
 .panel {
-  padding: 1em 0.5em;
+  padding: 0.5em;
   display: none;
-  margin-bottom: 1em;
-  border-bottom: 1px solid var(--grey);
 }
 .accordion.active + .panel { display: block; }
 

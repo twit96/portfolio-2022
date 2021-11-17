@@ -128,7 +128,7 @@ function buildDashboard($mysqli) {
 
     array_push($project_directories, $row['directory']);
 
-    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')">('.$row['date'].') '.$row['title'].'</h3>';
+    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')"><span>('.$row['date'].')</span> <span>'.$row['title'].'</span></h3>';
     echo '<form method="POST" action="admin" enctype="multipart/form-data" class="panel">';
     echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
     echo '<input name="author_id" type="hidden" value="1" />';
@@ -181,7 +181,7 @@ function buildDashboard($mysqli) {
     <input name="logout" type="submit" value="Logout" />
   </form>
   LOGOUT;
-  
+
   echo '</div>';  // ./left
 
   echo <<<RIGHTTOP
