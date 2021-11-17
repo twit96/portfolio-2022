@@ -148,7 +148,7 @@ function buildDashboard($mysqli) {
     echo '</form>';
   }
   echo <<<EMPTYROW
-    <h3 class="accordion" onclick="this.classList.toggle(\'active\');">Add New Project</h3>
+    <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
     <form class="panel">
       <input name="id" type="hidden" value="{$max_id}" />
       <div class="label-group">
