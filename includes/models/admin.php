@@ -171,12 +171,17 @@ function buildDashboard($mysqli) {
         <div class="submit-toggle"><input type="submit" name="update" value="Add" /></div>
       </div>
     </form>
-    <form id="logout" method="POST" action="admin">
-      <input name="logout" type="submit" value="Logout" />
-    </form>
     <script src="/js/admin.js"></script>
   EMPTYROW;
 
+  echo '</section>';  // #/edit-projects
+
+  echo <<<LOGOUT
+  <form id="logout" method="POST" action="admin">
+    <input name="logout" type="submit" value="Logout" />
+  </form>
+  LOGOUT;
+  
   echo '</div>';  // ./left
 
   echo <<<RIGHTTOP
