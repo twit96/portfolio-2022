@@ -14,7 +14,7 @@ TOP;
 include (__DIR__ .'/../models/projects.php');
 
 
-$featured_projects = getProjects($mysqli, TRUE);
+$featured_projects = getProjects($mysqli, TRUE, null);
 foreach ($featured_projects as $project) {
 
   // config primary link

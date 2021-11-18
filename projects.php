@@ -20,7 +20,7 @@ TOP;
 include('./includes/models/projects.php');
 
 
-$projects = getProjects($mysqli, FALSE);
+$projects = getProjects($mysqli, FALSE, null);
 foreach ($projects as $project) {
 
   // config primary link
