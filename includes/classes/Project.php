@@ -86,7 +86,7 @@ class Project {
       while ($row = $result->fetch_assoc()) {
         $this_link = new Link(
           $row["id"],
-          $row["text"],
+          $row["link_text"],
           $row["url"],
           $row["project_id"],
           $row["is_primary_link"]
