@@ -115,35 +115,27 @@ function buildDashboard($mysqli) {
         <h2>Edit Projects</h2>
   LEFTTOP;
 
-  $command = 'SELECT * FROM projects ORDER BY date DESC;';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-
-  $project_directories = array();
-
   $max_id = 0;  // to set add-new-column form's input ID
 
-  while ($row = $result->fetch_assoc()) {
-    if ($row['ID'] > $max_id) { $max_id = $row['ID']; }   // update max_id
-
-    array_push($project_directories, $row['directory']);
-
-    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')"><span>('.$row['date'].')</span> <span>'.$row['title'].'</span></h3>';
+  $projects = getProjects($mysqli, FALSE);
+  foreach ($projects as $project) {
+    if ($project->id > $max_id) { $max_id = $project->id; }   // update max_id
+    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')"><span>('.$project->date.')</span> <span>'.$project->title.'</span></h3>';
     echo '<form method="POST" action="admin" enctype="multipart/form-data" class="panel">';
-    echo '<input name="id" type="hidden" value="'.$row['ID'].'" />';
-    echo '<input name="author_id" type="hidden" value="1" />';
+    echo '<input name="id" type="hidden" value="'.$project->id.'" />';
+    echo '<input name="author_id" type="hidden" value="'.$project->author_id.'" />';
     echo '<div class="label-group">';
-    echo '<label><input type="text" name="title" value="'.$row['title'].'" /><span>Title</span></label>';
-    echo '<label><input type="date" name="date" value="'.$row['date'].'" /><span>Date</span></label>';
+    echo '<label><input type="text" name="title" value="'.$project->title.'" /><span>Title</span></label>';
+    echo '<label><input type="date" name="date" value="'.$project->date.'" /><span>Date</span></label>';
     echo '</div>';
     echo '<div class="label-group">';
-    echo '<label><input type="text" name="directory" value="'.$row['directory'].'" /><span>Directory</span></label>';
+    echo '<label><input type="text" name="directory" value="'.$project->directory.'" /><span>Directory</span></label>';
     echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>Image</span></label>';
     echo '</div>';
-    echo '<label><input type="text" name="blurb" value="'.$row['blurb'].'" /><span>Blurb</span></label>';
-    echo '<label><textarea name="description">'.$row["description"].'</textarea><span>Description</span></label>';
+    echo '<label><input type="text" name="blurb" value="'.$project->blurb.'" /><span>Blurb</span></label>';
+    echo '<label><textarea name="description">'.$project->description.'</textarea><span>Description</span></label>';
     echo '<div class="label-group">';
-    echo '<label><input type="number" name="featured" min="0" value="'.$row['featured'].'" /><span>Featured</span></label>';
+    echo '<label><input type="number" name="featured" min="0" value="'.$project->featured.'" /><span>Featured</span></label>';
     echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" name="update" value="Update" /></div>';
     echo '</div>';
     echo '</form>';
@@ -598,38 +590,12 @@ function doEngine() {
 
   // if user updated table
   } else if (isset($_POST["update"])) {
-    $server = "localhost";
-    $user   = "portfolio_user";
-    $pwd    = "portfolio_user_pass";
-    $dbName = "Portfolio";
-
-    // Connect to MySQL Server
-    $mysqli = new mysqli ($server, $user, $pwd, $dbName);
-    if ($mysqli->connect_errno) {
-      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-    }
-    // Select Database
-    $mysqli->select_db($dbName) or die($mysqli->error);
-
-    // Handle Posted Data
+    include (__DIR__ .'/projects.php');
     directPost($mysqli);
-
 
   // if user logged in
   } else if (isset($_POST["login"])) {
-    $server = "localhost";
-    $user   = "portfolio_user";
-    $pwd    = "portfolio_user_pass";
-    $dbName = "Portfolio";
-
-    // Connect to MySQL Server
-    $mysqli = new mysqli ($server, $user, $pwd, $dbName);
-    if ($mysqli->connect_errno) {
-      die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-    }
-    // Select Database
-    $mysqli->select_db($dbName) or die($mysqli->error);
-
+    include (__DIR__ .'/projects.php');
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -639,7 +605,6 @@ function doEngine() {
     $password = $mysqli->real_escape_string($password);
     // Check Login
     checkLogin($mysqli, $username, $password);
-
 
   // user has not logged in yet
   } else {
