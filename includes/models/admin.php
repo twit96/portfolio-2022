@@ -130,12 +130,12 @@ function buildDashboard($mysqli) {
     echo '</div>';
     echo '<div class="label-group">';
     echo '<label><input type="text" name="directory" value="'.$project->directory.'" /><span>Directory</span></label>';
-    echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>Image</span></label>';
+    echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>New Image</span></label>';
     echo '</div>';
     echo '<label><input type="text" name="blurb" value="'.$project->blurb.'" /><span>Blurb</span></label>';
     echo '<label><textarea name="description">'.$project->description.'</textarea><span>Description</span></label>';
     echo '<div class="label-group">';
-    echo '<label><input type="number" name="featured" min="0" value="'.$project->featured.'" /><span>Featured</span></label>';
+    echo '<label><input type="number" name="featured" min="0" value="'.$project->featured.'" /><span>Featured Rank</span></label>';
     echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" name="update" value="Update" /></div>';
     echo '</div>';
     echo '</form>';
