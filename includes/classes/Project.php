@@ -33,7 +33,7 @@ class Project {
     if (!empty($in_blurb)) {       $this->blurb = $in_blurb; }
     if (!empty($in_description)) { $this->description = $in_description; }
     if (!empty($in_date)) {        $this->date = $in_date; }
-    if (!empty($in_featured)) {    $this->featured = $in_featured; }
+    if (isset($in_featured)) {     $this->featured = $in_featured; }
     if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
     $primary_link_array = array();
