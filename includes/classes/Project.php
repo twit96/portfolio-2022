@@ -2,11 +2,11 @@
 
 
 class Link {
-  public $id,
-  public $text,
-  public $url,
-  public $project_id,
-  public $is_primary,
+  public $id;
+  public $text;
+  public $url;
+  public $project_id;
+  public $is_primary;
 
   function __construct(
     $in_id=null,
