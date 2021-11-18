@@ -30,7 +30,7 @@ foreach ($projects as $project) {
     $primary_link = $project->primary_link;
     $primary_link_url = $primary_link->url;
     $primary_link_text = $primary_link->text;
-    echo '<script>console.log("'.$primary_link_text.': '.$primary_link_url.'");</script>';
+    echo '<script>console.log("'.$print_r($primary_link).'");</script>';
   } else {
     echo '<script>alert("Primary Link Empty");</script>';
   }
