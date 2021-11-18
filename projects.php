@@ -26,9 +26,10 @@ foreach ($projects as $project) {
   // config primary link
   $primary_link_url = null;
   $primary_link_text = null;
-  if (is_array($project->primary_link) && sizeof($project->primary_link) != 0) {
-    $primary_link_url = reset($project->primary_link);
-    $primary_link_text = key($project->primary_link);
+  if (!empty($project->primary_link)) {
+    $primary_link = $project->primary_link;
+    $primary_link_url = $primary_link->url;
+    $primary_link_text = $primary_link->text;
   }
 
   // display project info
@@ -68,9 +69,9 @@ foreach ($projects as $project) {
     echo '</a>';
     // other links
     if (is_array($project->other_links) && sizeof($project->other_links) > 0) {
-      foreach ($project->other_links as $link_text => $link_url) {
-        echo '<a class="btn-text link" href="'.$link_url.'">';
-        echo '<span class="icon"></span>'.$link_text;
+      foreach ($project->other_links as $link) {
+        echo '<a class="btn-text link" href="'.$link->url.'">';
+        echo '<span class="icon"></span>'.$link->text;
         echo '</a>';
       }
     }

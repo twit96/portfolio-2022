@@ -1,5 +1,45 @@
 <?php
 
+
+class Link {
+  public $id;
+  public $text;
+  public $url,
+  public $project_id;
+  public $is_primary;
+
+  function __construct(
+    $in_id=null,
+    $in_text=null,
+    $in_url=null,
+    $in_project_id=null,
+    $in_is_primary=null
+  ) {
+    if (!empty($in_id)) {         $this->id = $in_id; }
+    if (!empty($in_text)) {       $this->text = $in_text; }
+    if (!empty($in_url)) {        $this->directory = $in_directory; }
+    if (!empty($in_project_id)) { $this->project_id = $in_project_id; }
+    if (isset($in_is_primary)) {  $this->is_primary = $in_is_primary; }
+  }
+
+  function textIsEqual($other_text) {
+    return ($this->text === $other_text);
+  }
+
+  function urlIsEqual($other_url) {
+    return ($this->url === $other_url);
+  }
+
+  function pidIsEqual($other_pid) {
+    return ($this->project_id === $other_pid);
+  }
+
+  function statusIsEqual($other_status) {
+    return ($this->is_primary === $other_status);
+  }
+}
+
+
 class Project {
   public $id;
   public $title;
@@ -8,8 +48,8 @@ class Project {
   public $blurb;
   public $description;
   public $date;
-  public $primary_link = array();
-  public $other_links = array();
+  public $primary_link;
+  public $other_links;
   public $featured;
   public $author_id;
 
@@ -36,7 +76,7 @@ class Project {
     if (isset($in_featured)) {     $this->featured = $in_featured; }
     if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
-    $primary_link_array = array();
+    $primary_link_object = null;
     $other_links_array = array();
     if (!empty($in_id)) {
       $command = 'SELECT * FROM project_links WHERE project_id='.$in_id.';';
@@ -44,21 +84,29 @@ class Project {
       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
 
       while ($row = $result->fetch_assoc()) {
-        if ($row["is_primary_link"] == 1) {
-          $primary_link_array[$row["link_text"]] = $row["url"];
+        $this_link = new Link(
+          $row["id"],
+          $row["text"],
+          $row["url"],
+          $row["project_id"],
+          $row["is_primary_link"]
+        );
+
+        if ($this_link->is_primary == 1) {
+          $primary_link_object = $this_link;
         } else {
-          $other_links_array[$row["link_text"]] = $row["url"];
+          array_push($other_links_array, $this_link);
         }
       }
 
       if (
-        (sizeof($primary_link_array) == 0) &&
+        ($primary_link_object == null) &&
         (sizeof($other_links_array) > 0)
       ) {
-        $primary_link_array = array_shift($other_links_array);
+        $primary_link_object = array_shift($other_links_array);
       }
     }
-    $this->primary_link = $primary_link_array;
+    $this->primary_link = $primary_link_object;
     $this->other_links = $other_links_array;
   }
 }

@@ -20,9 +20,10 @@ foreach ($featured_projects as $project) {
   // config primary link
   $primary_link_url = null;
   $primary_link_text = null;
-  if (is_array($project->primary_link) && sizeof($project->primary_link) != 0) {
-    $primary_link_url = reset($project->primary_link);
-    $primary_link_text = key($project->primary_link);
+  if (!empty($project->primary_link)) {
+    $primary_link = $project->primary_link;
+    $primary_link_url = $primary_link->url;
+    $primary_link_text = $primary_link->text;
   }
 
   echo '<div class="card">';
