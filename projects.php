@@ -30,10 +30,7 @@ foreach ($projects as $project) {
     $primary_link = $project->primary_link;
     $primary_link_url = $primary_link->url;
     $primary_link_text = $primary_link->text;
-    echo print_r($primary_link);
-  } else {
-    echo '<script>alert("Primary Link Empty");</script>';
-  }
+  } 
 
   // display project info
   echo '<article>';

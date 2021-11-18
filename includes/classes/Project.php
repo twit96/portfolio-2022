@@ -17,7 +17,7 @@ class Link {
   ) {
     if (!empty($in_id)) {         $this->id = $in_id; }
     if (!empty($in_text)) {       $this->text = $in_text; }
-    if (!empty($in_url)) {        $this->directory = $in_directory; }
+    if (!empty($in_url)) {        $this->url = $in_directory; }
     if (!empty($in_project_id)) { $this->project_id = $in_project_id; }
     if (isset($in_is_primary)) {  $this->is_primary = $in_is_primary; }
   }
@@ -91,7 +91,6 @@ class Project {
           $row["project_id"],
           $row["is_primary_link"]
         );
-        echo "\n".'$row["url"]: '.$row["url"].', $this_link->url: '.$this_link->url."\n";
 
         if ($this_link->is_primary == 1) {
           $primary_link_object = $this_link;
