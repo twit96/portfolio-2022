@@ -252,12 +252,6 @@ input[type="reset"]:hover {
   padding: 0.25rem 1.5rem 0.25rem 0.5rem;
   margin: 0.5em 0;
 }
-.accordion span { display: inline-block; }
-.accordion.active {
-  background-color: var(--grey);
-  color: white;
-}
-.accordion.active::after { color: white; }
 
 .accordion::after {
   content: '+';
@@ -268,14 +262,29 @@ input[type="reset"]:hover {
   font-weight: bold;
   margin-left: 0.5em;
 }
-.accordion.active::after { content: '-'; }
+
+.accordion.active {
+  background-color: var(--grey);
+  color: white;
+}
+.accordion.active::after {
+  content: '-';
+  color: white;
+}
+
+.accordion span { display: inline-block; }
 
 .panel {
   padding: 0.5em;
   display: none;
+  border-bottom: 0.25rem solid var(--grey);
 }
 .accordion.active + .panel { display: block; }
+.panel:last-of-type { border: 0; }
 
+/* nested accordions/panels */
+.panel .accordion { font-weight: normal; }
+.panel .panel { border-width: 1px; }
 
 .submit-toggle {
   width: 100%;
