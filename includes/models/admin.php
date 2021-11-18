@@ -141,7 +141,7 @@ function buildDashboard($mysqli) {
     echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>Image</span></label>';
     echo '</div>';
     echo '<label><input type="text" name="blurb" value="'.$row['blurb'].'" /><span>Blurb</span></label>';
-    echo '<label><input type="text" name="description" value="'.$row['description'].'" /><span>Description</span></label>';
+    echo '<label><textarea name="description">'.$row["description"].'</textarea><span>Description</span></label>';
     echo '<div class="label-group">';
     echo '<label><input type="number" name="featured" min="0" value="'.$row['featured'].'" /><span>Featured</span></label>';
     echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" name="update" value="Update" /></div>';
@@ -165,7 +165,7 @@ function buildDashboard($mysqli) {
         <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
       </div>
       <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
-      <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
+      <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
       <div class="label-group">
         <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
         <div class="submit-toggle"><span></span><input type="submit" name="update" value="Add" /></div>

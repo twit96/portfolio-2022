@@ -34,8 +34,8 @@ label {
 label:last-child {
   margin-right: 0;
 }
-label input {
-  position: relative;
+label input,
+label textarea {
   padding: 0.5rem;
   padding-top: 1.5rem;
   z-index: 1;
@@ -46,7 +46,12 @@ label input {
   width: 100%;
   height: 100%;
 }
-label input:focus {
+label textarea {
+  resize: vertical;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+label input:focus,
+label textarea:focus {
   outline: none;
   box-shadow: 0 0 0 0.25rem var(--blue-shadow);
 }

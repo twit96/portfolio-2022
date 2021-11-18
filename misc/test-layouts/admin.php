@@ -102,7 +102,7 @@
                   <span>Blurb</span>
                 </label>
                 <label>
-                  <input type="text" name="description" value="Project 1 Description about the Project describes it very well for the most part we think." />
+                  <textarea name="description">Project 1 Description about the Project describes it very well for the most part we think.</textarea>
                   <span>Description</span>
                 </label>
                 <div class="label-group">
@@ -143,7 +143,7 @@
                   <span>Blurb</span>
                 </label>
                 <label>
-                  <input type="text" name="description" value="Project 1 Description about the Project describes it very well for the most part we think." />
+                  <textarea name="description">Project 2 Description about the Project describes it very well for the most part we think.</textarea>
                   <span>Description</span>
                 </label>
                 <div class="label-group">
@@ -169,7 +169,7 @@
                   <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
                 </div>
                 <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
-                <label><input type="text" name="description" placeholder="New Description" required /><span>Description</span></label>
+                <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
                 <div class="label-group">
                   <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
                   <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
