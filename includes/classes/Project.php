@@ -21,22 +21,6 @@ class Link {
     if (!empty($in_project_id)) { $this->project_id = $in_project_id; }
     if (isset($in_is_primary)) {  $this->is_primary = $in_is_primary; }
   }
-
-  function textIsEqual($other_text) {
-    return ($this->text === $other_text);
-  }
-
-  function urlIsEqual($other_url) {
-    return ($this->url === $other_url);
-  }
-
-  function pidIsEqual($other_pid) {
-    return ($this->project_id === $other_pid);
-  }
-
-  function statusIsEqual($other_status) {
-    return ($this->is_primary === $other_status);
-  }
 }
 
 
