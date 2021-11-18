@@ -91,6 +91,7 @@ class Project {
           $row["project_id"],
           $row["is_primary_link"]
         );
+        echo "\n".'$row["url"]: '.$row["url"].', $this_link->url: '.$this_link->url."\n";
 
         if ($this_link->is_primary == 1) {
           $primary_link_object = $this_link;
