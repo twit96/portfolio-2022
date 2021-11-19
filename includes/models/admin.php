@@ -568,6 +568,7 @@ function addProject($mysqli, $row) {
 
   $post_link = new Link(
     $mysqli,
+    null,
     $_POST["link_text"],
     $_POST["link_url"],
     $_POST["id"],
