@@ -113,33 +113,36 @@ class Project {
   }
 
   function insertDB($mysqli) {
-    $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
-    $stmt->bind_param(
-      "ssssssii",
-      $new_title,
-      $new_directory,
-      $new_image,
-      $new_blurb,
-      $new_description,
-      $new_date,
-      $new_featured,
-      $new_author_id
-    );
-    $new_title = $this->title;
-    $new_directory = $this->directory;
-    $new_image = $this->image;
-    $new_blurb = $this->blurb;
-    $new_description = $this->description;
-    $new_date = $this->date;
-    $new_featured = $this->featured;
-    $new_author_id = $this->author_id;
-    $stmt->execute();
+    $command = 'INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES ('.$this->title.','.$this->directory.','.$this->image.','.$this->blurb.','.$this->description.','.$this->date.','.$this->featured.','.$this->author_id.');';
+    $result = $mysqli->query($command);
+    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    // $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+    // $stmt->bind_param(
+    //   "ssssssii",
+    //   $new_title,
+    //   $new_directory,
+    //   $new_image,
+    //   $new_blurb,
+    //   $new_description,
+    //   $new_date,
+    //   $new_featured,
+    //   $new_author_id
+    // );
+    // $new_title = $this->title;
+    // $new_directory = $this->directory;
+    // $new_image = $this->image;
+    // $new_blurb = $this->blurb;
+    // $new_description = $this->description;
+    // $new_date = $this->date;
+    // $new_featured = $this->featured;
+    // $new_author_id = $this->author_id;
+    // $stmt->execute();
 
     // Insert Links into Database
-    $this->primary_link->insertDB($mysqli);
-    foreach ($this->other_links as $link) {
-      $link->insertDB($mysqli);
-    }
+    // $this->primary_link->insertDB($mysqli);
+    // foreach ($this->other_links as $link) {
+    //   $link->insertDB($mysqli);
+    // }
   }
 }
 
