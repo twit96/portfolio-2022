@@ -20,7 +20,7 @@ TOP;
 include('./includes/models/projects.php');
 
 
-$projects = getProjects($mysqli, FALSE, null);
+$projects = getProjects($mysqli, FALSE);
 foreach ($projects as $project) {
 
   // config primary link
@@ -30,7 +30,7 @@ foreach ($projects as $project) {
     $primary_link = $project->primary_link;
     $primary_link_url = $primary_link->url;
     $primary_link_text = $primary_link->text;
-  } 
+  }
 
   // display project info
   echo '<article>';
