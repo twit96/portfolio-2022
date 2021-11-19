@@ -107,9 +107,10 @@ class Project {
   }
 
   function insertDB($mysqli) {
-    $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $mysqli->prepare("INSERT INTO projects VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param(
-      "ssssssii",
+      "issssssii",
+      $new_id,
       $new_title,
       $new_directory,
       $new_image,
@@ -119,6 +120,7 @@ class Project {
       $new_featured,
       $new_author_id
     );
+    $new_title = $this->id;
     $new_title = $this->title;
     $new_directory = $this->directory;
     $new_image = $this->image;
