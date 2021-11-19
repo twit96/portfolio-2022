@@ -30,7 +30,7 @@ class Link {
   }
 
   function insertDB($mysqli) {
-    $stmt = $mysqli->prepare("INSERT INTO project_links (link_text, url, project_id, is_primary_link) VALUES (?, ?, ?, ?);");
+    $stmt = $mysqli->prepare("INSERT INTO project_links (link_text, url, project_id, is_primary_link) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssii", $new_text, $new_url, $new_project_id, $new_is_primary);
     $new_text = $this->text;
     $new_url = $this->url;
@@ -113,7 +113,7 @@ class Project {
   }
 
   function insertDB($mysqli) {
-    $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+    $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param(
       "ssssssii",
       $new_title,
