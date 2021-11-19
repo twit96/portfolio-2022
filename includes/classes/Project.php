@@ -120,7 +120,7 @@ class Project {
       $new_featured,
       $new_author_id
     );
-    $new_title = $this->id;
+    $new_id = $this->id;
     $new_title = $this->title;
     $new_directory = $this->directory;
     $new_image = $this->image;
