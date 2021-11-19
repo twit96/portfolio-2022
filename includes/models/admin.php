@@ -552,7 +552,7 @@ function addProject($mysqli, $row) {
     return false;
   }
 
-  echo var_dump($_POST);
+  echo '<script>alert("'.var_dump($_POST).'");</script>';
   // update database if all went well
   $post_project = new Project(
     $mysqli,
