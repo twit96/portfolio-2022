@@ -9,6 +9,7 @@ class Link {
   public $is_primary;
 
   function __construct(
+    $mysqli,
     $in_id=null,
     $in_text=null,
     $in_url=null,
@@ -20,6 +21,16 @@ class Link {
     if (!empty($in_url)) {        $this->url = $in_url; }
     if (!empty($in_project_id)) { $this->project_id = $in_project_id; }
     if (isset($in_is_primary)) {  $this->is_primary = $in_is_primary; }
+  }
+
+  function insertDB($mysqli) {
+    $stmt = $mysqli->prepare("INSERT INTO project_links (link_text, url, project_id, is_primary_link) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssii", $new_text, $new_url, $new_project_id, $new_is_primary);
+    $new_text = $this->text;
+    $new_url = $this->url;
+    $new_project_id = $this->project_id;
+    $new_is_primary = $this->is_primary;
+    $stmt->execute();
   }
 }
 
@@ -69,6 +80,7 @@ class Project {
 
       while ($row = $result->fetch_assoc()) {
         $this_link = new Link(
+          $mysqli,
           $row["id"],
           $row["link_text"],
           $row["url"],
@@ -92,6 +104,32 @@ class Project {
     }
     $this->primary_link = $primary_link_object;
     $this->other_links = $other_links_array;
+  }
+
+  function insertDB($mysqli) {
+    $stmt = $mysqli->prepare("INSERT INTO projects (title, directory, image, blurb, description, date, featured, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param(
+      "ssssssii",
+      $new_title,
+      $new_directory,
+      $new_image,
+      $new_blurb,
+      $new_description,
+      $new_date,
+      $new_featured,
+      $new_author_id
+    );
+    $new_text = $this->text;
+    $new_url = $this->url;
+    $new_project_id = $this->project_id;
+    $new_is_primary = $this->is_primary;
+    $stmt->execute();
+
+    // Insert Links into Database
+    $this->primary_link->insertDB($mysqli);
+    foreach ($this->other_links as $link) {
+      $link->insertDB($mysqli);
+    }
   }
 }
 

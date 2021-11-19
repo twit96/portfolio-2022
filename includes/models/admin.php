@@ -115,34 +115,132 @@ function buildDashboard($mysqli) {
         <h2>Edit Projects</h2>
   LEFTTOP;
 
-  $max_id = 0;  // to set add-new-column form's input ID
+  $max_id = 0;  // to set new project's input ID
 
-  $projects = getProjects($mysqli, FALSE);
+  $projects = getProjects($mysqli, FALSE, null);
   foreach ($projects as $project) {
     if ($project->id > $max_id) { $max_id = $project->id; }   // update max_id
-    echo '<h3 class="accordion" onclick="this.classList.toggle(\'active\')"><span>('.$project->date.')</span> <span>'.$project->title.'</span></h3>';
-    echo '<form method="POST" action="admin" enctype="multipart/form-data" class="panel">';
-    echo '<input name="id" type="hidden" value="'.$project->id.'" />';
-    echo '<input name="author_id" type="hidden" value="'.$project->author_id.'" />';
-    echo '<div class="label-group">';
-    echo '<label><input type="text" name="title" value="'.$project->title.'" /><span>Title</span></label>';
-    echo '<label><input type="date" name="date" value="'.$project->date.'" /><span>Date</span></label>';
-    echo '</div>';
-    echo '<div class="label-group">';
-    echo '<label><input type="text" name="directory" value="'.$project->directory.'" /><span>Directory</span></label>';
-    echo '<label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" /><span>New Image</span></label>';
-    echo '</div>';
-    echo '<label><input type="text" name="blurb" value="'.$project->blurb.'" /><span>Blurb</span></label>';
-    echo '<label><textarea name="description">'.$project->description.'</textarea><span>Description</span></label>';
-    echo '<div class="label-group">';
-    echo '<label><input type="number" name="featured" min="0" value="'.$project->featured.'" /><span>Featured Rank</span></label>';
-    echo '<div class="submit-toggle"><input type="checkbox" name="toggle" /><input type="submit" name="update" value="Update" /></div>';
-    echo '</div>';
-    echo '</form>';
+    echo <<<PROJECT_TOP
+    <h3 class="accordion" onclick="this.classList.toggle('active');"><span>({$project->date})</span> <span>{$project->title}</span></h3>
+    <div class="panel">
+      <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
+      <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+        <input name="id" type="hidden" value="{$project->id}" />
+        <input name="author_id" type="hidden" value="{$project->author_id}" />
+        <div class="label-group">
+          <label>
+            <input type="text" name="title" value="{$project->title}" />
+            <span>Title</span>
+          </label>
+          <label>
+            <input type="date" name="date" value="{$project->date}" />
+            <span>Date</span>
+          </label>
+        </div>
+        <div class="label-group">
+          <label>
+            <input type="text" name="directory" value="{$project->directory}" />
+            <span>Directory</span>
+          </label>
+          <label>
+            <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
+            <span>Image</span>
+          </label>
+        </div>
+        <label>
+          <input type="text" name="blurb" value="{$project->blurb}" />
+          <span>Blurb</span>
+        </label>
+        <label>
+          <textarea name="description">{$project->description}</textarea>
+          <span>Description</span>
+        </label>
+        <div class="label-group">
+          <label>
+            <input type="number" name="featured" min="0" value="{$project->featured}" />
+            <span>Featured Rank</span>
+          </label>
+          <div class="submit-toggle">
+            <input type="checkbox" name="toggle" />
+            <input type="submit" value="Update" />
+          </div>
+        </div>
+      </form>
+    PROJECT_TOP;
+
+    $primary_link = $project->primary_link;
+    echo <<<PROJECT_MID
+      <h4 class="accordion" onclick="this.classList.toggle('active');">Links</h4>
+      <div class="panel">
+        <h5 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h5>
+        <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+          <input name="id" type="hidden" value="{$primary_link->id}" />
+          <div class="label-group">
+            <label>
+              <input type="text" name="link-text" value="{$primary_link->text}" />
+              <span>Text</span>
+            </label>
+            <label>
+              <input type="text" name="link-url" value="{$primary_link->url}" />
+              <span>URL</span>
+            </label>
+            <div class="submit-toggle">
+              <input type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
+            </div>  <!-- ./submit-toggle -->
+          </div>
+        </form>
+        <h5 class="accordion" onclick="this.classList.toggle('active');">Other Links</h5>
+        <div class="panel">
+    PROJECT_MID;
+
+    $other_links = $project->other_links;
+    foreach ($other_links as $link) {
+      echo <<<PROJECT_MID
+          <form method="POST" action="admin" enctype="multipart/form-data">
+            <input name="id" type="hidden" value="{$link->id}" />
+            <div class="label-group">
+              <label>
+                <input type="text" name="link-text" value="{$link->text}" />
+                <span>Text</span>
+              </label>
+              <label>
+                <input type="text" name="link-url" value="{$link->url}" />
+                <span>URL</span>
+              </label>
+              <div class="submit-toggle">
+                <input type="checkbox" name="toggle" />
+                <input type="submit" value="Update" />
+              </div>
+            </div>
+          </form>
+      PROJECT_MID;
+    }
+
+    echo <<<PROJECT_BTM
+          <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Link</h5>
+          <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+            <input name="project_id" type="hidden" value="{$project->id}" />
+            <div class="label-group">
+              <label>
+                <input type="text" name="link-text" placeholder="Link Text" required />
+                <span>Text</span>
+              </label>
+              <label>
+                <input type="text" name="link-url" placeholder="https://link-url.com/" required />
+                <span>URL</span>
+              </label>
+              <div class="submit-toggle">
+                <input type="submit" value="Add" style="margin-right: 0; margin-left: auto;" />
+              </div>
+            </div>
+          </form>
+        </div>  <!-- other links area panel -->
+      </div>  <!-- links panel -->
+    </div>  <!-- main project panel -->
+    PROJECT_BTM;
   }
 
   $max_id++;  // add 1 to max_id so it is greater than all other ID's
-
   echo <<<EMPTYROW
     <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
     <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
@@ -159,8 +257,19 @@ function buildDashboard($mysqli) {
       <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
       <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
       <div class="label-group">
+        <input name="link_id" type="hidden" value="1" />
+        <label>
+          <input type="text" name="link-text" placeholder="Link Text" required />
+          <span>Primary Link Text</span>
+        </label>
+        <label>
+          <input type="text" name="link-url" placeholder="https://primary-link.com/" required />
+          <span>Primary Link URL</span>
+        </label>
+      </div>
+      <div class="label-group">
         <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-        <div class="submit-toggle"><span></span><input type="submit" name="update" value="Add" /></div>
+        <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
       </div>
     </form>
     <script src="/js/admin.js"></script>
@@ -444,7 +553,40 @@ function addProject($mysqli, $row) {
   }
 
   // update database if all went well
-  insertDB($mysqli, $row, $new_img_name);
+  $post_project = new Project(
+    $mysqli,
+    $_POST["id"],
+    $_POST["title"],
+    $_POST["directory"],
+    $new_img_name,
+    $_POST["blurb"],
+    $_POST["description"],
+    $_POST["date"],
+    $_POST["featured"],
+    $_POST["author_id"]
+  );
+
+  $post_link = new Link(
+    $mysqli,
+    $_POST["link_text"],
+    $_POST["link_url"],
+    $_POST["id"],
+    1
+  );
+  $post_project->primary_link = $post_link;
+  $post_project->insertDB($mysqli);
+
+  unset($_POST["id"]);
+  unset($_POST["title"]);
+  unset($_POST["directory"]);
+  unset($_POST["blurb"]);
+  unset($_POST["description"]);
+  unset($_POST["date"]);
+  unset($_POST["featured"]);
+  unset($_POST["author_id"]);
+  unset($_POST["link_text"]);
+  unset($_POST["link_url"]);
+  // insertDB($mysqli, $row, $new_img_name);
   return true;
 }
 
