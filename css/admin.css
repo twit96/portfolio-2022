@@ -132,7 +132,7 @@ input[type="reset"]:hover {
   box-shadow: 0 0 10px var(--green-shadow);
   background: var(--grey-light);
   overflow: hidden;
-  margin-bottom: calc(var(--main-spacing) / 2);
+  margin-bottom: var(--main-spacing);
 }
 
 #user-profile {
@@ -250,7 +250,7 @@ input[type="reset"]:hover {
   color: var(--grey-shadow);
   border-radius: 0.25em;
   padding: 0.25rem 1.5rem 0.25rem 0.5rem;
-  margin: 0.5em 0;
+  margin-top: 0.5em;
 }
 
 .accordion::after {
@@ -275,22 +275,33 @@ input[type="reset"]:hover {
 .accordion span { display: inline-block; }
 
 .panel {
-  padding: 0.5em;
+  padding: 0 0 0.5em 0.5em;
   display: none;
-  border-bottom: 0.25rem solid var(--grey);
+  border-left: 0.125em solid var(--grey);
 }
 .accordion.active + .panel { display: block; }
-.panel:last-of-type { border: 0; }
+
+/* "add project" panel only */
+.panel:last-of-type {
+  padding: 0.5em;
+  border: 0;
+}
 
 /* nested accordions/panels */
 .panel .accordion { font-weight: normal; }
-.panel .panel { border-width: 1px; }
+.panel .accordion.active { border-bottom-left-radius: 0; }
+/* override .panel:last-of-type selector above */
+.panel .panel {
+  border-left: 0.125em solid var(--grey);
+  padding: 0.5em 0 0.5em 0.5em;
+}
 
 .submit-toggle {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0.25rem;
+  margin-bottom: 0.25em;
   background: 0;
   color: var(--black);
   border-radius: 0.25rem;
@@ -392,4 +403,5 @@ input[type="reset"]:hover {
   .wrapper > .flex > .right {
     width: 65%;
   }
+  .card { margin-bottom: calc(var(--main-spacing) / 2); }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <title>Tyler Wittig | Admin New</title>
+    <title>Tyler Wittig | Admin</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="Tyler Wittig's Portfolio Admin Dashboard" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,7 +78,10 @@
 
               <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-10-01)</span> <span>Project Title 1</span></h3>
               <div class="panel">
-                <form>
+                <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
+                <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                  <input name="id" type="hidden" value="1" />
+                  <input name="author_id" type="hidden" value="1" />
                   <div class="label-group">
                     <label>
                       <input type="text" name="title" value="Project Title 1" />
@@ -118,218 +121,111 @@
                     </div>  <!-- ./submit-toggle -->
                   </div>  <!-- ./label-group -->
                 </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Other Link 1</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
-              </div>  <!-- ./panel -->
-
-              <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-09-01)</span> <span>Project Title 2</span></h3>
-              <div class="panel">
-                <form>
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="title" value="Project Title 2" />
-                      <span>Title</span>
-                    </label>
-                    <label>
-                      <input type="date" name="date" value="2021-09-01" />
-                      <span>Date</span>
-                    </label>
-                  </div>
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="directory" value="project-title-2" />
-                      <span>Directory</span>
-                    </label>
-                    <label>
-                      <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
-                      <span>Image</span>
-                    </label>
-                  </div>
-                  <label>
-                    <input type="text" name="blurb" value="Project 2 Blurb about the Project" />
-                    <span>Blurb</span>
-                  </label>
-                  <label>
-                    <textarea name="description">Project 2 Description about the Project describes it very well for the most part we think.</textarea>
-                    <span>Description</span>
-                  </label>
-                  <div class="label-group">
-                    <label>
-                      <input type="number" name="featured" min="0" value="0" />
-                      <span>Featured</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>  <!-- ./label-group -->
-                </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
-              </div>  <!-- ./panel -->
-
-              <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-08-01)</span> <span>Project Title 3</span></h3>
-              <div class="panel">
-                <form>
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="title" value="Project Title 3" />
-                      <span>Title</span>
-                    </label>
-                    <label>
-                      <input type="date" name="date" value="2021-08-01" />
-                      <span>Date</span>
-                    </label>
-                  </div>
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="directory" value="project-title-3" />
-                      <span>Directory</span>
-                    </label>
-                    <label>
-                      <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
-                      <span>Image</span>
-                    </label>
-                  </div>
-                  <label>
-                    <input type="text" name="blurb" value="Project 3 Blurb about the Project" />
-                    <span>Blurb</span>
-                  </label>
-                  <label>
-                    <textarea name="description">Project 3 Description about the Project describes it very well for the most part we think.</textarea>
-                    <span>Description</span>
-                  </label>
-                  <div class="label-group">
-                    <label>
-                      <input type="number" name="featured" min="0" value="1" />
-                      <span>Featured</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>  <!-- ./label-group -->
-                </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Other Link 1</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
-                <h4 class="accordion" onclick="this.classList.toggle('active');">Other Link 2</h4>
-                <form class="panel">
-                  <div class="label-group">
-                    <label>
-                      <input type="text" name="link-text" value="View Project" />
-                      <span>Text</span>
-                    </label>
-                    <label>
-                      <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
-                      <span>URL</span>
-                    </label>
-                    <div class="submit-toggle">
-                      <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
-                    </div>  <!-- ./submit-toggle -->
-                  </div>
-                </form>
+                <h4 class="accordion" onclick="this.classList.toggle('active');">Links</h4>
+                <div class="panel">
+                  <h5 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h5>
+                  <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                    <input name="id" type="hidden" value="1" />
+                    <div class="label-group">
+                      <label>
+                        <input type="text" name="link-text" value="View Project" />
+                        <span>Text</span>
+                      </label>
+                      <label>
+                        <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
+                        <span>URL</span>
+                      </label>
+                      <div class="submit-toggle">
+                        <input type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
+                      </div>  <!-- ./submit-toggle -->
+                    </div>
+                  </form>
+                  <h5 class="accordion" onclick="this.classList.toggle('active');">Other Links</h5>
+                  <div class="panel">
+                    <form method="POST" action="admin" enctype="multipart/form-data">
+                      <input name="id" type="hidden" value="2" />
+                      <div class="label-group">
+                        <label>
+                          <input type="text" name="link-text" value="View Project" />
+                          <span>Text</span>
+                        </label>
+                        <label>
+                          <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
+                          <span>URL</span>
+                        </label>
+                        <div class="submit-toggle">
+                          <input type="checkbox" name="toggle" />
+                          <input type="submit" value="Update" />
+                        </div>
+                      </div>
+                    </form>
+                    <form method="POST" action="admin" enctype="multipart/form-data">
+                      <input name="id" type="hidden" value="2" />
+                      <div class="label-group">
+                        <label>
+                          <input type="text" name="link-text" value="View Project" />
+                          <span>Text</span>
+                        </label>
+                        <label>
+                          <input type="text" name="link-url" value="https://twit96.github.io/minesweeper/" />
+                          <span>URL</span>
+                        </label>
+                        <div class="submit-toggle">
+                          <input type="checkbox" name="toggle" />
+                          <input type="submit" value="Update" />
+                        </div>
+                      </div>
+                    </form>
+                    <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Link</h5>
+                    <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                      <div class="label-group">
+                        <label>
+                          <input type="text" name="link-text" placeholder="Link Text" required />
+                          <span>Text</span>
+                        </label>
+                        <label>
+                          <input type="text" name="link-url" placeholder="https://link-url.com/" required />
+                          <span>URL</span>
+                        </label>
+                        <div class="submit-toggle">
+                          <input type="submit" value="Add" style="margin-right: 0; margin-left: auto;" />
+                        </div>
+                      </div>
+                    </form>
+                  </div>  <!-- ./panel -->
+                </div>  <!-- ./panel -->
               </div>  <!-- ./panel -->
 
               <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
-              <div class="panel">
-                <form>
-                  <input name="id" type="hidden" value="15" />
-                  <div class="label-group">
-                    <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
-                    <label><input type="date" name="date" required /><span>Date</span></label>
-                  </div>
-                  <div class="label-group">
-                    <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
-                    <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
-                  </div>
-                  <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
-                  <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
-                  <div class="label-group">
-                    <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-                    <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
-                  </div>
-                </form>
-              </div>  <!-- ./panel -->
+              <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                <input name="id" type="hidden" value="15" />
+                <input name="author_id" type="hidden" value="1" />
+                <div class="label-group">
+                  <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
+                  <label><input type="date" name="date" required /><span>Date</span></label>
+                </div>
+                <div class="label-group">
+                  <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
+                  <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
+                </div>
+                <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
+                <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
+                <div class="label-group">
+                  <input name="link_id" type="hidden" value="1" />
+                  <label>
+                    <input type="text" name="link-text" placeholder="Link Text" required />
+                    <span>Primary Link Text</span>
+                  </label>
+                  <label>
+                    <input type="text" name="link-url" placeholder="https://primary-link.com/" required />
+                    <span>Primary Link URL</span>
+                  </label>
+                </div>
+                <div class="label-group">
+                  <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
+                  <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
+                </div>
+              </form>  <!-- ./panel -->
 
               <script src="/js/admin.js"></script>
             </section>
