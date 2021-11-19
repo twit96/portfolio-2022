@@ -162,7 +162,7 @@ function buildDashboard($mysqli) {
           </label>
           <div class="submit-toggle">
             <input type="checkbox" name="toggle" />
-            <input type="submit" value="Update" />
+            <input name="update" type="submit" value="Update" />
           </div>
         </div>
       </form>
@@ -177,15 +177,15 @@ function buildDashboard($mysqli) {
           <input name="id" type="hidden" value="{$primary_link->id}" />
           <div class="label-group">
             <label>
-              <input type="text" name="link-text" value="{$primary_link->text}" />
+              <input type="text" name="link_text" value="{$primary_link->text}" />
               <span>Text</span>
             </label>
             <label>
-              <input type="text" name="link-url" value="{$primary_link->url}" />
+              <input type="text" name="link_url" value="{$primary_link->url}" />
               <span>URL</span>
             </label>
             <div class="submit-toggle">
-              <input type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
+              <input name="update" type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
             </div>  <!-- ./submit-toggle -->
           </div>
         </form>
@@ -200,16 +200,16 @@ function buildDashboard($mysqli) {
             <input name="id" type="hidden" value="{$link->id}" />
             <div class="label-group">
               <label>
-                <input type="text" name="link-text" value="{$link->text}" />
+                <input type="text" name="link_text" value="{$link->text}" />
                 <span>Text</span>
               </label>
               <label>
-                <input type="text" name="link-url" value="{$link->url}" />
+                <input type="text" name="link_url" value="{$link->url}" />
                 <span>URL</span>
               </label>
               <div class="submit-toggle">
                 <input type="checkbox" name="toggle" />
-                <input type="submit" value="Update" />
+                <input name="update" type="submit" value="Update" />
               </div>
             </div>
           </form>
@@ -222,15 +222,15 @@ function buildDashboard($mysqli) {
             <input name="project_id" type="hidden" value="{$project->id}" />
             <div class="label-group">
               <label>
-                <input type="text" name="link-text" placeholder="Link Text" required />
+                <input type="text" name="link_text" placeholder="Link Text" required />
                 <span>Text</span>
               </label>
               <label>
-                <input type="text" name="link-url" placeholder="https://link-url.com/" required />
+                <input type="text" name="link_url" placeholder="https://link-url.com/" required />
                 <span>URL</span>
               </label>
               <div class="submit-toggle">
-                <input type="submit" value="Add" style="margin-right: 0; margin-left: auto;" />
+                <input name="update" type="submit" value="Add" style="margin-right: 0; margin-left: auto;" />
               </div>
             </div>
           </form>
@@ -257,19 +257,18 @@ function buildDashboard($mysqli) {
       <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
       <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
       <div class="label-group">
-        <input name="link_id" type="hidden" value="1" />
         <label>
-          <input type="text" name="link-text" placeholder="Link Text" required />
+          <input type="text" name="link_text" placeholder="Link Text" required />
           <span>Primary Link Text</span>
         </label>
         <label>
-          <input type="text" name="link-url" placeholder="https://primary-link.com/" required />
+          <input type="text" name="link_url" placeholder="https://primary-link.com/" required />
           <span>Primary Link URL</span>
         </label>
       </div>
       <div class="label-group">
         <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-        <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
+        <div class="submit-toggle"><span></span><input name="update" type="submit" value="Add" /></div>
       </div>
     </form>
     <script src="/js/admin.js"></script>
@@ -450,43 +449,43 @@ function updateDirectory($row, $dir) {
 * Function to insert a new project into the Portfolio database's projects table
 * after addProject() function has checked the POST values. No return value.
 */
-function insertDB($mysqli, $row, $new_img_name) {
-
-  // format values to be updated in database
-  $col_vals = [
-    $mysqli->real_escape_string($_POST["id"]),
-    $mysqli->real_escape_string($_POST["title"]),
-    $mysqli->real_escape_string($_POST["directory"]),
-    $new_img_name,
-    $mysqli->real_escape_string($_POST["blurb"]),
-    $mysqli->real_escape_string($_POST["description"]),
-    $mysqli->real_escape_string($_POST["date"]),
-    $mysqli->real_escape_string($_POST["featured"]),
-    $mysqli->real_escape_string($_POST["author_id"])
-  ];
-  unset($_POST["id"]);
-  unset($_POST["title"]);
-  unset($_POST["directory"]);
-  unset($_POST["blurb"]);
-  unset($_POST["description"]);
-  unset($_POST["date"]);
-  unset($_POST["featured"]);
-  unset($_POST["author_id"]);
-
-  $col_vals_length = count($col_vals);
-
-  // build sql command
-  $command = "INSERT INTO projects VALUES ";
-  $command .= "(".$col_vals[0].", ";
-  for ($i=1; $i<=$col_vals_length-2; $i++) {
-    $command .= "'".$col_vals[$i]."', ";
-  }
-  $command .= $col_vals[$col_vals_length-1].");";
-
-  // execute command
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-}
+// function insertDB($mysqli, $row, $new_img_name) {
+//
+//   // format values to be updated in database
+//   $col_vals = [
+//     $mysqli->real_escape_string($_POST["id"]),
+//     $mysqli->real_escape_string($_POST["title"]),
+//     $mysqli->real_escape_string($_POST["directory"]),
+//     $new_img_name,
+//     $mysqli->real_escape_string($_POST["blurb"]),
+//     $mysqli->real_escape_string($_POST["description"]),
+//     $mysqli->real_escape_string($_POST["date"]),
+//     $mysqli->real_escape_string($_POST["featured"]),
+//     $mysqli->real_escape_string($_POST["author_id"])
+//   ];
+//   unset($_POST["id"]);
+//   unset($_POST["title"]);
+//   unset($_POST["directory"]);
+//   unset($_POST["blurb"]);
+//   unset($_POST["description"]);
+//   unset($_POST["date"]);
+//   unset($_POST["featured"]);
+//   unset($_POST["author_id"]);
+//
+//   $col_vals_length = count($col_vals);
+//
+//   // build sql command
+//   $command = "INSERT INTO projects VALUES ";
+//   $command .= "(".$col_vals[0].", ";
+//   for ($i=1; $i<=$col_vals_length-2; $i++) {
+//     $command .= "'".$col_vals[$i]."', ";
+//   }
+//   $command .= $col_vals[$col_vals_length-1].");";
+//
+//   // execute command
+//   $result = $mysqli->query($command);
+//   if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+// }
 
 
 /**

@@ -117,7 +117,7 @@
                     </label>
                     <div class="submit-toggle">
                       <input type="checkbox" name="toggle" />
-                      <input type="submit" value="Update" />
+                      <input name="update" type="submit" value="Update" />
                     </div>  <!-- ./submit-toggle -->
                   </div>  <!-- ./label-group -->
                 </form>
@@ -136,7 +136,7 @@
                         <span>URL</span>
                       </label>
                       <div class="submit-toggle">
-                        <input type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
+                        <input name="update" type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
                       </div>  <!-- ./submit-toggle -->
                     </div>
                   </form>
@@ -155,7 +155,7 @@
                         </label>
                         <div class="submit-toggle">
                           <input type="checkbox" name="toggle" />
-                          <input type="submit" value="Update" />
+                          <input name="update" type="submit" value="Update" />
                         </div>
                       </div>
                     </form>
@@ -172,7 +172,7 @@
                         </label>
                         <div class="submit-toggle">
                           <input type="checkbox" name="toggle" />
-                          <input type="submit" value="Update" />
+                          <input name="update" type="submit" value="Update" />
                         </div>
                       </div>
                     </form>
@@ -188,7 +188,7 @@
                           <span>URL</span>
                         </label>
                         <div class="submit-toggle">
-                          <input type="submit" value="Add" style="margin-right: 0; margin-left: auto;" />
+                          <input type="submit" name="update" value="Add" style="margin-right: 0; margin-left: auto;" />
                         </div>
                       </div>
                     </form>
@@ -211,7 +211,7 @@
                 <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
                 <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
                 <div class="label-group">
-                  <input name="link_id" type="hidden" value="1" />
+                  <input name="link-id" type="hidden" value="1" />
                   <label>
                     <input type="text" name="link-text" placeholder="Link Text" required />
                     <span>Primary Link Text</span>
@@ -223,7 +223,7 @@
                 </div>
                 <div class="label-group">
                   <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-                  <div class="submit-toggle"><span></span><input type="submit" value="Add" /></div>
+                  <div class="submit-toggle"><span></span><input name="update" type="submit" value="Add" /></div>
                 </div>
               </form>  <!-- ./panel -->
 
