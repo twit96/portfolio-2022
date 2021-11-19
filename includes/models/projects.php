@@ -1,11 +1,5 @@
 <?php
 
-/**
-* Display all errors.
-*/
-error_reporting(E_ALL);
-ini_set("display_errors", "on");
-
 include (__DIR__ .'/../helpers/db_connect.php');
 include (__DIR__ .'/../classes/Project.php');
 
