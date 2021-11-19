@@ -119,10 +119,14 @@ class Project {
       $new_featured,
       $new_author_id
     );
-    $new_text = $this->text;
-    $new_url = $this->url;
-    $new_project_id = $this->project_id;
-    $new_is_primary = $this->is_primary;
+    $new_title = $this->title;
+    $new_directory = $this->directory;
+    $new_image = $this->image;
+    $new_blurb = $this->blurb;
+    $new_description = $this->description;
+    $new_date = $this->date;
+    $new_featured = $this->featured;
+    $new_author_id = $this->author_id;
     $stmt->execute();
 
     // Insert Links into Database
