@@ -174,6 +174,7 @@ function buildDashboard($mysqli) {
       <div class="panel">
         <h5 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h5>
         <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+          <input name="link_only" type="hidden" value="1" />
           <input name="link_id" type="hidden" value="{$primary_link->id}" />
           <input name="project_id" type="hidden" value="{$primary_link->project_id}" />
           <input name="is_primary" type="hidden" value="1" />
@@ -199,6 +200,7 @@ function buildDashboard($mysqli) {
     foreach ($other_links as $link) {
       echo <<<PROJECT_MID
           <form method="POST" action="admin" enctype="multipart/form-data">
+            <input name="link_only" type="hidden" value="1" />
             <input name="link_id" type="hidden" value="{$link->id}" />
             <input name="project_id" type="hidden" value="{$link->project_id}" />
             <input name="is_primary" type="hidden" value="0" />
@@ -223,6 +225,7 @@ function buildDashboard($mysqli) {
     echo <<<PROJECT_BTM
           <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Link</h5>
           <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+            <input name="link_only" type="hidden" value="1" />
             <input name="project_id" type="hidden" value="{$project->id}" />
             <input name="is_primary" type="hidden" value="0" />
             <div class="label-group">
@@ -677,7 +680,7 @@ function updateProject($mysqli, $row) {
 function directPost($mysqli) {
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
-  $is_link = isset($_POST["project_id"]);
+  $is_link = isset($_POST["link_only"]);
 
   // Is Link
   if ($is_link) {
