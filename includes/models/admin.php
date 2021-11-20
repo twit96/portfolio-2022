@@ -509,6 +509,7 @@ function doUnsetProjectPost() {
 * No return value.
 */
 function doUnsetLinkPost() {
+  unset($_POST["link_only"]);
   unset($_POST["link_id"]);
   unset($_POST["link_text"]);
   unset($_POST["link_url"]);
