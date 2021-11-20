@@ -49,6 +49,49 @@ class Link {
     }
     $stmt->close();
   }
+
+  function updateDB($mysqli) {
+    $stmt = $mysqli->prepare("SELECT FROM project_links WHERE id = ?");
+    $stmt->bind_param("i", $this_id);
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+
+    if ($row["link_text"] !== $this->text) { updateTextDB($mysqli); }
+    if ($row["url"] !== $this->url) { updateURLDB($mysqli); }
+  }
+
+  private function updateTextDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE project_links SET link_text=? WHERE id=?");
+    $stmt->bind_param("si", $new_text, $this_id);
+    $new_text = $this->text;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+  
+  private function updateUrlDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE project_links SET url=? WHERE id=?");
+    $stmt->bind_param("si", $new_url, $this_id);
+    $new_url = $this->url;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
 }
 
 

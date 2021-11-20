@@ -174,7 +174,9 @@ function buildDashboard($mysqli) {
       <div class="panel">
         <h5 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h5>
         <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
-          <input name="id" type="hidden" value="{$primary_link->id}" />
+          <input name="link_id" type="hidden" value="{$primary_link->id}" />
+          <input name="project_id" type="hidden" value="{$primary_link->project_id}" />
+          <input name="is_primary" type="hidden" value="1" />
           <div class="label-group">
             <label>
               <input type="text" name="link_text" value="{$primary_link->text}" />
@@ -186,7 +188,7 @@ function buildDashboard($mysqli) {
             </label>
             <div class="submit-toggle">
               <input name="update" type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
-            </div>  <!-- ./submit-toggle -->
+            </div>
           </div>
         </form>
         <h5 class="accordion" onclick="this.classList.toggle('active');">Other Links</h5>
@@ -197,7 +199,9 @@ function buildDashboard($mysqli) {
     foreach ($other_links as $link) {
       echo <<<PROJECT_MID
           <form method="POST" action="admin" enctype="multipart/form-data">
-            <input name="id" type="hidden" value="{$link->id}" />
+            <input name="link_id" type="hidden" value="{$link->id}" />
+            <input name="project_id" type="hidden" value="{$link->project_id}" />
+            <input name="is_primary" type="hidden" value="0" />
             <div class="label-group">
               <label>
                 <input type="text" name="link_text" value="{$link->text}" />
@@ -220,6 +224,7 @@ function buildDashboard($mysqli) {
           <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Link</h5>
           <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
             <input name="project_id" type="hidden" value="{$project->id}" />
+            <input name="is_primary" type="hidden" value="0" />
             <div class="label-group">
               <label>
                 <input type="text" name="link_text" placeholder="Link Text" required />
@@ -257,6 +262,8 @@ function buildDashboard($mysqli) {
       <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
       <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
       <div class="label-group">
+        <input name="is_primary" type="hidden" value="1" />
+        <input name="project_id" type="hidden" value="{$max_id}" />
         <label>
           <input type="text" name="link_text" placeholder="Link Text" required />
           <span>Primary Link Text</span>
@@ -499,8 +506,11 @@ function doUnsetProjectPost() {
 * No return value.
 */
 function doUnsetLinkPost() {
+  unset($_POST["link_id"]);
   unset($_POST["link_text"]);
   unset($_POST["link_url"]);
+  unset($_POST["project_id"]);
+  unset($_POST["is_primary"]);
 }
 
 
@@ -667,47 +677,76 @@ function updateProject($mysqli, $row) {
 function directPost($mysqli) {
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
+  $is_link = isset($_POST["project_id"]);
 
-  // check if submitted project is in database
-  $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  $row = $result->fetch_assoc();
-
-
-  // User wants to add project
-  if ($usr_action == "Add") {
-    if (mysqli_num_rows($result) == 0) {
-      addProject($mysqli, $row);
+  // Is Link
+  if ($is_link) {
+    // create Link object
+    $post_link = new Link(
+      $mysqli,
+      null,
+      $_POST["link_text"],
+      $_POST["link_url"],
+      $_POST["project_id"],
+      $_POST["is_primary"]
+    );
+    // handle link action
+    if ($usr_action == "Add") {
+      $post_link->insertDB($mysqli);
+    } else if ($usr_action == "Update") {
+      $post_link->id = $_POST["link_id"];
+      $post_link->updateDB($mysqli);
+    } else if ($usr_action == "Delete") {
+      $post_link->id = $_POST["link_id"];
+      $post_link->deleteDB($mysqli);
     } else {
-      echo '<script>alert("Error: Project Already in Database!")</script>';
+      echo '<script>alert("Error: POST action not set to Add, Update, or Delete. No Change Made!")</script>';
     }
+    // unset POST
+    doUnsetLinkPost();
 
-  // User wants to update project
-  } else if ($usr_action == "Update") {
-    if (mysqli_num_rows($result) != 0) {
-      updateProject($mysqli, $row);
-    } else {
-      echo '<script>alert("Error: Project Not in Database!")</script>';
-    }
-
-  // User wants to delete project
-  } else if ($usr_action == "Delete") {
-    // configure needed data
-    $old_path = './img/projects/'.$row["directory"].'/';
-    $old_img = $old_path.$row["image"];
-    // delete from database
-    deleteProject($mysqli);
-    // delete from projects folder
-    unlink($old_img);
-    rmdir($old_path);
-
-  // Error
+  // Is Project
   } else {
-    echo '<script>alert("Error: Neither Add, Update, Nor Delete Triggered!")</script>';
-    unset($_POST["update"]);
-  }
+    // check if submitted project is in database
+    $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
+    $result = $mysqli->query($command);
+    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    $row = $result->fetch_assoc();
 
+
+    // User wants to add project
+    if ($usr_action == "Add") {
+      if (mysqli_num_rows($result) == 0) {
+        addProject($mysqli, $row);
+      } else {
+        echo '<script>alert("Error: Project Already in Database!")</script>';
+      }
+
+    // User wants to update project
+    } else if ($usr_action == "Update") {
+      if (mysqli_num_rows($result) != 0) {
+        updateProject($mysqli, $row);
+      } else {
+        echo '<script>alert("Error: Project Not in Database!")</script>';
+      }
+
+    // User wants to delete project
+    } else if ($usr_action == "Delete") {
+      // configure needed data
+      $old_path = './img/projects/'.$row["directory"].'/';
+      $old_img = $old_path.$row["image"];
+      // delete from database
+      deleteProject($mysqli);
+      // delete from projects folder
+      unlink($old_img);
+      rmdir($old_path);
+
+    // Error
+    } else {
+      echo '<script>alert("Error: Neither Add, Update, Nor Delete Triggered!")</script>';
+      unset($_POST["update"]);
+    }
+  }
 
   // display updated table data after changes are made
   buildDashboard($mysqli);
