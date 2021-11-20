@@ -51,7 +51,7 @@ class Link {
   }
 
   function updateDB($mysqli) {
-    $stmt = $mysqli->prepare("SELECT FROM project_links WHERE id = ?");
+    $stmt = $mysqli->prepare("SELECT * FROM project_links WHERE id = ?");
     $stmt->bind_param("i", $this_id);
     $this_id = $this->id;
     $stmt->execute();
@@ -79,7 +79,7 @@ class Link {
     }
     $stmt->close();
   }
-  
+
   private function updateUrlDB($mysqli) {
     $stmt = $mysqli->prepare("UPDATE project_links SET url=? WHERE id=?");
     $stmt->bind_param("si", $new_url, $this_id);
