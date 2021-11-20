@@ -221,6 +221,105 @@ class Project {
     }
     $stmt->close();
   }
+
+  function updateDB($mysqli) {
+    $stmt = $mysqli->prepare("SELECT * FROM projects WHERE ID = ?");
+    $stmt->bind_param("i", $this_id);
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+
+    if ($row["title"] !== $this->title) { $this->updateTitleDB($mysqli); }
+    if ($row["blurb"] !== $this->url) { $this->updateBlurbDB($mysqli); }
+    if ($row["description"] !== $this->title) { $this->updateDescriptionDB($mysqli); }
+    if ($row["date"] !== $this->url) { $this->updateDateDB($mysqli); }
+    if ($row["featured"] !== $this->title) { $this->updateFeaturedDB($mysqli); }
+    if ($row["author_id"] !== $this->url) { $this->updateAuthorDB($mysqli); }
+  }
+
+  private function updateTitleDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET title=? WHERE ID=?");
+    $stmt->bind_param("si", $new_title, $this_id);
+    $new_title = $this->title;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateBlurbDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET blurb=? WHERE ID=?");
+    $stmt->bind_param("si", $new_blurb, $this_id);
+    $new_blurb = $this->blurb;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateDescriptionDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET description=? WHERE ID=?");
+    $stmt->bind_param("si", $new_description, $this_id);
+    $new_description = $this->description;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateDateDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET date=? WHERE ID=?");
+    $stmt->bind_param("si", $new_date, $this_id);
+    $new_date = $this->blurb;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateFeaturedDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET featured=? WHERE ID=?");
+    $stmt->bind_param("ii", $new_featured, $this_id);
+    $new_featured = $this->featured;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateAuthorDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET author_id=? WHERE ID=?");
+    $stmt->bind_param("ii", $new_author, $this_id);
+    $new_author = $this->author_id;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
 }
 
 ?>
