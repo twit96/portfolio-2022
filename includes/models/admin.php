@@ -42,7 +42,7 @@ LOGIN;
 * Function to unset username and password POST variables.
 * No return value.
 */
-function doUnsetPost() {
+function doUnsetLoginPost() {
   unset($_POST['username']);
   unset($_POST['password']);
 }
@@ -520,6 +520,34 @@ function updateDB($mysqli, $row, $new_img_name) {
 
 
 /**
+* Function to unset project-related POST variables.
+* No return value.
+*/
+function doUnsetProjectPost() {
+  unset($_POST["id"]);
+  unset($_POST["title"]);
+  unset($_POST["directory"]);
+  unset($_POST["blurb"]);
+  unset($_POST["description"]);
+  unset($_POST["date"]);
+  unset($_POST["featured"]);
+  unset($_POST["author_id"]);
+  unset($_POST["link_text"]);
+  unset($_POST["link_url"]);
+}
+
+
+/**
+* Function to unset link-related POST variables.
+* No return value.
+*/
+function doUnsetLinkPost() {
+  unset($_POST["link_text"]);
+  unset($_POST["link_url"]);
+}
+
+
+/**
 * Function to add new project. Failure gives alert to user.
 * Returns false if failed and true if succeeded.
 */
@@ -551,7 +579,6 @@ function addProject($mysqli, $row) {
     return false;
   }
 
-  echo '<script>alert("'.var_dump($_POST).'");</script>';
   // update database if all went well
   $post_project = new Project(
     $mysqli,
@@ -565,7 +592,6 @@ function addProject($mysqli, $row) {
     $_POST["featured"],
     $_POST["author_id"]
   );
-
   $post_link = new Link(
     $mysqli,
     null,
@@ -575,20 +601,35 @@ function addProject($mysqli, $row) {
     1
   );
   $post_project->primary_link = $post_link;
+
+  doUnsetProjectPost();
+  doUnsetLinkPost();
   $post_project->insertDB($mysqli);
 
-  unset($_POST["id"]);
-  unset($_POST["title"]);
-  unset($_POST["directory"]);
-  unset($_POST["blurb"]);
-  unset($_POST["description"]);
-  unset($_POST["date"]);
-  unset($_POST["featured"]);
-  unset($_POST["author_id"]);
-  unset($_POST["link_text"]);
-  unset($_POST["link_url"]);
   // insertDB($mysqli, $row, $new_img_name);
   return true;
+}
+
+
+/**
+* Function to delete existing project.
+*/
+function deleteProject($mysqli) {
+  $post_project = new Project(
+    $mysqli,
+    $_POST["id"],
+    $_POST["title"],
+    $_POST["directory"],
+    $new_img_name,
+    $_POST["blurb"],
+    $_POST["description"],
+    $_POST["date"],
+    $_POST["featured"],
+    $_POST["author_id"]
+  );
+
+  doUnsetProjectPost();
+  $post_project->deleteDB($mysqli);
 }
 
 
@@ -700,9 +741,7 @@ function directPost($mysqli) {
     $old_path = './img/projects/'.$row["directory"].'/';
     $old_img = $old_path.$row["image"];
     // delete from database
-    $command = 'DELETE FROM projects WHERE ID='.$_POST["id"].';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    deleteProject($mysqli);
     // delete from projects folder
     unlink($old_img);
     rmdir($old_path);
@@ -742,7 +781,7 @@ function doEngine() {
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];
-    doUnsetPost();
+    doUnsetLoginPost();
     // Escape User Input to help prevent SQL Injection
     $username = $mysqli->real_escape_string($username);
     $password = $mysqli->real_escape_string($password);

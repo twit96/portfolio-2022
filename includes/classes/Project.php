@@ -31,6 +31,23 @@ class Link {
     $new_project_id = $this->project_id;
     $new_is_primary = $this->is_primary;
     $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  function deleteDB($mysqli) {
+    $stmt = $mysqli->prepare("DELETE FROM project_links WHERE id = ?");
+    $stmt->bind_param("i", $this_id);
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
   }
 }
 
@@ -130,12 +147,36 @@ class Project {
     $new_featured = $this->featured;
     $new_author_id = $this->author_id;
     $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
 
     // Insert Links into Database
     $this->primary_link->insertDB($mysqli);
     foreach ($this->other_links as $link) {
       $link->insertDB($mysqli);
     }
+  }
+
+  function deleteDB($mysqli) {
+    // Delete Links from Database
+    $this->primary_link->deleteDB($mysqli);
+    foreach ($this->other_links as $link) {
+      $link->deleteDB($mysqli);
+    }
+
+    // Delete self from Database
+    $stmt = $mysqli->prepare("DELETE FROM projects WHERE ID = ?");
+    $stmt->bind_param("i", $this_id);
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
   }
 }
 
