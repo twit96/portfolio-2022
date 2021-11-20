@@ -63,8 +63,8 @@ class Link {
     $stmt->close();
     $row = $result->fetch_assoc();
 
-    if ($row["link_text"] !== $this->text) { updateTextDB($mysqli); }
-    if ($row["url"] !== $this->url) { updateURLDB($mysqli); }
+    if ($row["link_text"] !== $this->text) { $this->updateTextDB($mysqli); }
+    if ($row["url"] !== $this->url) { $this->updateUrlDB($mysqli); }
   }
 
   private function updateTextDB($mysqli) {
