@@ -620,7 +620,7 @@ function deleteProject($mysqli) {
     $_POST["id"],
     $_POST["title"],
     $_POST["directory"],
-    $new_img_name,
+    null,
     $_POST["blurb"],
     $_POST["description"],
     $_POST["date"],
