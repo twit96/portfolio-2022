@@ -88,15 +88,19 @@ h2 {
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
-main a {
+main p {
+  cursor: pointer;
   display: inline-block;
   width: fit-content;
   margin-top: auto;
   color: white;
   line-height: 1.5em;
 }
-main a:hover { color: var(--yellow); }
-main a b { display: block; }
+main p:hover {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+main p b { display: block; }
 
 
 footer { padding-bottom: var(--main-spacing); }

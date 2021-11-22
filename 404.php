@@ -30,14 +30,18 @@
         </div>
         <h1>404 Error</h1>
         <h2>The requested URL doesn't exist on this website!</h2>
-        <a href="https://tylerwittig.com/">
+        <p id="home-link">
           Redirecting to homepage in
           <b><span id="counter">15</span> seconds.</b>
-        </a>
+        </p>
       </div>
     </main>
 
     <script>
+      var home_link = document.getElementById("home-link");
+      home_link.onclick = function() {
+        location.replace("https://tylerwittig.com/");
+      }
       // timer countdown before redirect
       var counter = document.getElementById("counter");
       var time = counter.innerHTML;
@@ -47,7 +51,7 @@
           counter.innerHTML--;
           setTimeout(function(){ checkTimer() }, 1000);
         } else {
-          location.href = "https://tylerwittig.com/";
+          location.replace("https://tylerwittig.com/");
         }
       }
       // initial call to countdown
