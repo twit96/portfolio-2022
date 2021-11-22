@@ -439,20 +439,20 @@ function directoryExists($dir) {
 * (NON-RECURSIVE - SINGLE LAYER DIRECTORIES ONLY)
 * Returns true if success and false if failure.
 */
-function updateDirectory($row, $dir) {
-  $old_path = './img/projects/'.$row["directory"].'/';
-  $new_path = './img/projects/'.$dir.'/';
-
-  // Transfer Files to New Directory
-  copy($old_path.'*.*', $new_path);
-
-  // Delete Old Directory
-  unlink($old_path.$row["image"]);
-  rmdir($old_path);
-
-  // Return if Success
-  return (is_dir($new_path) && (!is_dir($old_path)));
-}
+// function updateDirectory($row, $dir) {
+//   $old_path = './img/projects/'.$row["directory"].'/';
+//   $new_path = './img/projects/'.$dir.'/';
+//
+//   // Transfer Files to New Directory
+//   copy($old_path.'*.*', $new_path);
+//
+//   // Delete Old Directory
+//   unlink($old_path.$row["image"]);
+//   rmdir($old_path);
+//
+//   // Return if Success
+//   return (is_dir($new_path) && (!is_dir($old_path)));
+// }
 
 
 /**
@@ -460,30 +460,30 @@ function updateDirectory($row, $dir) {
 * table after the updateProject() function has checked the POST values.
 * No return value.
 */
-function updateDB($mysqli, $row, $new_img_name) {
-
-  $project_id = $_POST["id"];
-  unset($_POST["id"]);
-
-  // update image value
-  if (!is_null($new_img_name)) {
-    $command = 'UPDATE projects SET image="'.$new_img_name.'" WHERE id='.$project_id.';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  }
-
-  // update POST values
-  foreach ($_POST as $key => $value) {
-    $val = $mysqli->real_escape_string($value);
-    if (($val != $row[$key])) {
-      $command = 'UPDATE projects SET '.$key.'="'.$val.'" WHERE id='.$project_id.';';
-      $result = $mysqli->query($command);
-      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-    }
-    // unset post for each key
-    unset($_POST[$key]);
-  }
-}
+// function updateDB($mysqli, $row, $new_img_name) {
+//
+//   $project_id = $_POST["id"];
+//   unset($_POST["id"]);
+//
+//   // update image value
+//   if (!is_null($new_img_name)) {
+//     $command = 'UPDATE projects SET image="'.$new_img_name.'" WHERE id='.$project_id.';';
+//     $result = $mysqli->query($command);
+//     if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+//   }
+//
+//   // update POST values
+//   foreach ($_POST as $key => $value) {
+//     $val = $mysqli->real_escape_string($value);
+//     if (($val != $row[$key])) {
+//       $command = 'UPDATE projects SET '.$key.'="'.$val.'" WHERE id='.$project_id.';';
+//       $result = $mysqli->query($command);
+//       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+//     }
+//     // unset post for each key
+//     unset($_POST[$key]);
+//   }
+// }
 
 
 /**
@@ -634,7 +634,6 @@ function updateProject($mysqli, $row) {
 
     // if new directory name already exists
     if (directoryExists($directory)) {
-      unset($_POST["directory"]);
       echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
 
     // rename existing directory
@@ -643,10 +642,6 @@ function updateProject($mysqli, $row) {
       unlink($old_path.$row["image"]);
       rmdir($old_path);
     }
-
-  // directory name stayed the same
-  } else {
-    unset($_POST["directory"]);
   }
 
   // handle image change
@@ -669,7 +664,21 @@ function updateProject($mysqli, $row) {
   }
 
   // update database if all went well
-  updateDB($mysqli, $row, $new_img_name);
+  $post_project = new Project(
+    $mysqli,
+    $_POST["id"],
+    $_POST["title"],
+    $_POST["directory"],
+    null,
+    $_POST["blurb"],
+    $_POST["description"],
+    $_POST["date"],
+    $_POST["featured"],
+    $_POST["author_id"]
+  );
+
+  doUnsetProjectPost();
+  $post_project->updateDB($mysqli);
 }
 
 

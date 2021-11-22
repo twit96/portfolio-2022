@@ -235,12 +235,12 @@ class Project {
     $stmt->close();
     $row = $result->fetch_assoc();
 
-    if ($row["title"] !== $this->title) { $this->updateTitleDB($mysqli); }
-    if ($row["blurb"] !== $this->url) { $this->updateBlurbDB($mysqli); }
-    if ($row["description"] !== $this->title) { $this->updateDescriptionDB($mysqli); }
-    if ($row["date"] !== $this->url) { $this->updateDateDB($mysqli); }
-    if ($row["featured"] !== $this->title) { $this->updateFeaturedDB($mysqli); }
-    if ($row["author_id"] !== $this->url) { $this->updateAuthorDB($mysqli); }
+    if ($row["title"] !== $this->title) {             $this->updateTitleDB($mysqli); }
+    if ($row["blurb"] !== $this->blurb) {             $this->updateBlurbDB($mysqli); }
+    if ($row["description"] !== $this->description) { $this->updateDescriptionDB($mysqli); }
+    if ($row["date"] !== $this->date) {               $this->updateDateDB($mysqli); }
+    if ($row["featured"] !== $this->featured) {       $this->updateFeaturedDB($mysqli); }
+    if ($row["author_id"] !== $this->author_id) {     $this->updateAuthorDB($mysqli); }
   }
 
   private function updateTitleDB($mysqli) {
@@ -285,7 +285,7 @@ class Project {
   private function updateDateDB($mysqli) {
     $stmt = $mysqli->prepare("UPDATE projects SET date=? WHERE ID=?");
     $stmt->bind_param("si", $new_date, $this_id);
-    $new_date = $this->blurb;
+    $new_date = $this->date;
     $this_id = $this->id;
     $stmt->execute();
     if ($stmt === false) {
