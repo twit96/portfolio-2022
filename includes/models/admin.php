@@ -647,11 +647,17 @@ function directPost($mysqli) {
   // Is Project
   } else {
     // check if submitted project is in database
-    $command = 'SELECT * FROM projects WHERE ID='.$_POST["id"].';';
-    $result = $mysqli->query($command);
-    if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+    $stmt = $mysqli->prepare("SELECT * FROM projects WHERE ID=?");
+    $stmt->bind_param("i", $post_id);
+    $post_id = $_POST["id"];
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $result = $stmt->get_result();
+    $stmt->close();
     $row = $result->fetch_assoc();
-
 
     // User wants to add project
     if ($usr_action == "Add") {
