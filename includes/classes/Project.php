@@ -236,6 +236,8 @@ class Project {
     $row = $result->fetch_assoc();
 
     if ($row["title"] !== $this->title) {             $this->updateTitleDB($mysqli); }
+    if ($row["directory"] !== $this->directory) {     $this->updateDirectoryDB($mysqli); }
+    if ($row["image"] !== $this->image) {             $this->updateImageDB($mysqli); }
     if ($row["blurb"] !== $this->blurb) {             $this->updateBlurbDB($mysqli); }
     if ($row["description"] !== $this->description) { $this->updateDescriptionDB($mysqli); }
     if ($row["date"] !== $this->date) {               $this->updateDateDB($mysqli); }
@@ -247,6 +249,32 @@ class Project {
     $stmt = $mysqli->prepare("UPDATE projects SET title=? WHERE ID=?");
     $stmt->bind_param("si", $new_title, $this_id);
     $new_title = $this->title;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateDirectoryDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET directory=? WHERE ID=?");
+    $stmt->bind_param("si", $new_directory, $this_id);
+    $new_directory = $this->directory;
+    $this_id = $this->id;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $stmt->close();
+  }
+
+  private function updateImageDB($mysqli) {
+    $stmt = $mysqli->prepare("UPDATE projects SET image=? WHERE ID=?");
+    $stmt->bind_param("si", $new_image, $this_id);
+    $new_image = $this->image;
     $this_id = $this->id;
     $stmt->execute();
     if ($stmt === false) {
