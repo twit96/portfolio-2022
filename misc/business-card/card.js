@@ -79,10 +79,10 @@ function createFlipCardLink() {
   var link = document.createElement("a");
   link.id = "flip-card";
   if (card.id == "front") {
-    link.href = "back.php";
+    link.href = "back.html";
     link.innerHTML = "Go to Back";
   } else {
-    link.href = "front.php";
+    link.href = "front.html";
     link.innerHTML = "Go to Front";
   }
   return link;
