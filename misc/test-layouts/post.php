@@ -1,16 +1,25 @@
-<?php
-
-DEFINE("FILENAME", 'post');
-include('../../includes/templates/head.php');
-echo '<meta name="robots" content="noindex">';
-echo <<<HEAD_END
-\n  </head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Post</title>
+    <meta name="description" content="Post" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/img/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/css/articles.css" />
+  </head>
   <body>
-HEAD_END;
 
-include('../../includes/templates/header.php');
-
-?>
+    <?php
+      DEFINE("FILENAME", 'post');
+      include('../../includes/templates/header.php');
+    ?>
 
     <main id="post">
       <div class="wrapper">
@@ -211,7 +220,7 @@ include('../../includes/templates/header.php');
           </div>
           <div id="toc-bg"></div>
           <script src="/js/toc.js" defer></script>
-          <div class="card">
+          <!-- <div class="card">
             <p>
               We’re all familiar with the concept of autocompletion, right?
               You type something into a search box and it tries to guess what
@@ -224,7 +233,7 @@ include('../../includes/templates/header.php');
               usage is when used as a secondary search pattern to augment the
               typing experience.
             </p>
-          </div>
+          </div> -->
         </div>  <!-- #/sidebar -->
 
       </div>  <!-- ./wrapper -->
