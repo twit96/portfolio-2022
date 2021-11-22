@@ -134,9 +134,16 @@ class Project {
     $primary_link_object = null;
     $other_links_array = array();
     if (!empty($in_id)) {
-      $command = 'SELECT * FROM project_links WHERE project_id='.$in_id.';';
-      $result = $mysqli->query($command);
-      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+      $stmt = $mysqli->prepare("SELECT * FROM project_links WHERE project_id=?");
+      $stmt->bind_param("i", $this_id);
+      $this_id = $in_id;
+      $stmt->execute();
+      if ($stmt === false) {
+        error_log('mysqli execute() failed: ');
+        error_log( print_r( htmlspecialchars($stmt->error), true ) );
+      }
+      $result = $stmt->get_result();
+      $stmt->close();
 
       while ($row = $result->fetch_assoc()) {
         $this_link = new Link(

@@ -40,9 +40,16 @@ class BlogPost {
     }
 
     if (!empty($in_author_id)) {
-      $command = 'SELECT first_name, last_name, profile_img_name FROM people WHERE id='.$in_author_id.';';
-      $result = $mysqli->query($command);
-      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+      $stmt = $mysqli->prepare("SELECT first_name, last_name, profile_img_name FROM people WHERE id=?");
+      $stmt->bind_param("i", $this_id);
+      $this_id = $in_author_id;
+      $stmt->execute();
+      if ($stmt === false) {
+        error_log('mysqli execute() failed: ');
+        error_log( print_r( htmlspecialchars($stmt->error), true ) );
+      }
+      $result = $stmt->get_result();
+      $stmt->close();
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
 
