@@ -49,55 +49,35 @@ function doUnsetLoginPost() {
 
 
 /**
-* Function to check if a username
-* is in the admin database.
-* Returns 1 if username exists and 0 otherwise.
-*/
-function checkUser($mysqli, $username) {
-  $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '";';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  // $user_in_db will be 1 if in database and 0 if not in database
-  $user_in_db = $result->fetch_row()[0];
-  return $user_in_db;
-}
-
-
-/**
-* Function to check if a username/password entry
-* is in the iq_passwords database.
-* Returns 1 if username/password entry exists and 0 otherwise.
-*/
-function checkPass($mysqli, $username, $password) {
-  $command = 'SELECT COUNT(1) FROM admin WHERE username = "' . $username . '" AND password = "' . $password . '";';
-  $result = $mysqli->query($command);
-  if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-  // $pass_in_db will be 1 if in database and 0 if not in database
-  $pass_in_db = $result->fetch_row()[0];
-  return $pass_in_db;
-}
-
-
-/**
-* Function to handle the login functionality
-* based off of the given username and password.
+* Function to handle the login functionality from the given username/password.
 * No return value.
 */
 function checkLogin($mysqli, $username, $password) {
 
   if (!$username == '' && !$password == '') {
-    // username and password have values
-    if (
-      (checkUser($mysqli, $username) == 1) &&
-      (checkPass($mysqli, $username, $password) == 1)
-    ) {
-      // username and password in database
+
+    // check db for valid login
+    $stmt = $mysqli->prepare("SELECT COUNT(1) FROM people WHERE username=? AND password=? AND (role='admin' OR role='author')");
+    $stmt->bind_param("ss", $usr, $pwd);
+    $usr = $username;
+    $pwd = $password;
+    $stmt->execute();
+    if ($stmt === false) {
+      error_log('mysqli execute() failed: ');
+      error_log( print_r( htmlspecialchars($stmt->error), true ) );
+    }
+    $result = $stmt->get_result();
+    $stmt->close();
+    $valid_login = ($result->fetch_row()[0] === 1);
+
+    // actions
+    if ($valid_login) {
       buildDashboard($mysqli);
     } else {
-      // username or pass not in database
       echo '<script>alert("Login Failed. Please Try Again.");</script>';
       doLogin();
     }
+
   } else {
     // username or password is empty
     echo '<script>alert("Username and password cannot be empty!");</script>';
@@ -433,60 +413,6 @@ function directoryExists($dir) {
 
 
 /**
-* Function to update a project directory name. Copies the contents of the
-* existing directory into the new directory, deletes the contents of the old
-* directory, and then deletes the old directory.
-* (NON-RECURSIVE - SINGLE LAYER DIRECTORIES ONLY)
-* Returns true if success and false if failure.
-*/
-// function updateDirectory($row, $dir) {
-//   $old_path = './img/projects/'.$row["directory"].'/';
-//   $new_path = './img/projects/'.$dir.'/';
-//
-//   // Transfer Files to New Directory
-//   copy($old_path.'*.*', $new_path);
-//
-//   // Delete Old Directory
-//   unlink($old_path.$row["image"]);
-//   rmdir($old_path);
-//
-//   // Return if Success
-//   return (is_dir($new_path) && (!is_dir($old_path)));
-// }
-
-
-/**
-* Function to update an existing project in the Portfolio database's projects
-* table after the updateProject() function has checked the POST values.
-* No return value.
-*/
-// function updateDB($mysqli, $row, $new_img_name) {
-//
-//   $project_id = $_POST["id"];
-//   unset($_POST["id"]);
-//
-//   // update image value
-//   if (!is_null($new_img_name)) {
-//     $command = 'UPDATE projects SET image="'.$new_img_name.'" WHERE id='.$project_id.';';
-//     $result = $mysqli->query($command);
-//     if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-//   }
-//
-//   // update POST values
-//   foreach ($_POST as $key => $value) {
-//     $val = $mysqli->real_escape_string($value);
-//     if (($val != $row[$key])) {
-//       $command = 'UPDATE projects SET '.$key.'="'.$val.'" WHERE id='.$project_id.';';
-//       $result = $mysqli->query($command);
-//       if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
-//     }
-//     // unset post for each key
-//     unset($_POST[$key]);
-//   }
-// }
-
-
-/**
 * Function to unset project-related POST variables.
 * No return value.
 */
@@ -790,9 +716,6 @@ function doEngine() {
     $username = $_POST['username'];
     $password = $_POST['password'];
     doUnsetLoginPost();
-    // Escape User Input to help prevent SQL Injection
-    $username = $mysqli->real_escape_string($username);
-    $password = $mysqli->real_escape_string($password);
     // Check Login
     checkLogin($mysqli, $username, $password);
 
