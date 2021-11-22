@@ -140,8 +140,8 @@ include('./includes/templates/header.php');
               <span class="bubble-text">Aseprite</span>
               <span class="bubble-text">FL Studio</span>
               <span class="bubble-text">Finale</span>
-              <span class="bubble-text">Windows Video Editor</span>
               <span class="bubble-text">Paint 3D</span>
+              <span class="bubble-text">Windows Video Editor</span>
             </section>
           </div>  <!-- ./flex -->
         </article>  <!-- #/skills -->
