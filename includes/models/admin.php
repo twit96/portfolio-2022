@@ -669,7 +669,7 @@ function updateProject($mysqli, $row) {
     $_POST["id"],
     $_POST["title"],
     $_POST["directory"],
-    null,
+    $new_img_name,
     $_POST["blurb"],
     $_POST["description"],
     $_POST["date"],
