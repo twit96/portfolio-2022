@@ -1,0 +1,102 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+#scroll-down-indicator,
+#scroll-top-btn { display: none; }
+
+main { height: 100%; }
+
+main .wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  border-radius: 10px;
+  padding: var(--main-spacing);
+  box-shadow: 0 0 10px var(--green-shadow);
+  overflow: hidden;
+  z-index: 1;
+  color: white;
+}
+main .wrapper::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--green-shadow);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+main .wrapper > *:not(#logo-container) {
+  position: relative;
+  z-index: 2;  /* ensure text appears above img */
+}
+
+#logo-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+#main-logo-wrap {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(67%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: max(1.75vmax, 20px) solid var(--green-shadow);
+  background: var(--green-shadow);
+}
+#main-logo {
+  width: min(75vmax, 1960px);
+  height: min(75vmax, 1960px);
+}
+.main-logo-overlay {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: min(75vmax, 1960px);
+  height: min(75vmax, 1960px);
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 3vmax 1vmax var(--green-shadow) inset;
+  opacity: 0.65;
+}
+
+h1 {
+  font-size: calc(var(--main-font-size) * 3.5);
+  line-height: calc(var(--main-font-size) * 4);
+  font-weight: normal;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 2px var(--grey-shadow);
+}
+h2 {
+  font-size: calc(var(--main-font-size) * 1.5);
+  line-height: calc(var(--main-font-size) * 2);
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+main a {
+  display: inline-block;
+  width: fit-content;
+  margin-top: auto;
+  color: white;
+  line-height: 1.5em;
+}
+main a:hover { color: var(--yellow); }
+main a b { display: block; }
+
+
+footer { padding-bottom: var(--main-spacing); }
