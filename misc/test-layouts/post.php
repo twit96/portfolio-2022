@@ -220,7 +220,7 @@
           </div>
           <div id="toc-bg"></div>
           <script src="/js/toc.js" defer></script>
-          <!-- <div class="card">
+          <div class="card">
             <p>
               We’re all familiar with the concept of autocompletion, right?
               You type something into a search box and it tries to guess what
@@ -233,7 +233,7 @@
               usage is when used as a secondary search pattern to augment the
               typing experience.
             </p>
-          </div> -->
+          </div>
         </div>  <!-- #/sidebar -->
 
       </div>  <!-- ./wrapper -->
