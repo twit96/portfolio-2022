@@ -66,6 +66,20 @@ body {
   background: var(--green);
   overflow-x: hidden;  /* bugfix - horizontal scrollbar from overflowing orbs */
 }
+body::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--green-shadow);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+body::-webkit-scrollbar-track {
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green-shadow) inset;
+}
 body > * { padding: var(--main-spacing); }
 
 .wrapper {
