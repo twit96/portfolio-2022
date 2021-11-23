@@ -232,7 +232,10 @@ scroll_top_btn.addEventListener('click', click_scroll_top_handler, false);
 
 // Throttle Scroll Event Listeners --------------------------------------------
 function getScrollPos() {
-  return (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
+  return (
+    (document.documentElement && document.documentElement.scrollTop) || 
+    document.body.scrollTop
+  );
 }
 var scroll_pos = getScrollPos();
 var ticking = false;
