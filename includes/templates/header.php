@@ -30,7 +30,7 @@ echo <<<HEADER
             <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
               Résumé
             </a>
-            <div id="dark-toggle-wrap" for="dark-toggle">
+            <div id="dark-toggle-wrap">
               <span class="slider"></span>
             </div>
           </nav>
