@@ -927,6 +927,7 @@ footer nav a {
   width: fit-content;
   margin-bottom: 0.5em;
 }
+footer nav a:hover { color: var(--yellow); }
 footer nav a:last-of-type { margin: 0; }
 @media (min-aspect-ratio: 1/1) {
   footer nav a {
@@ -960,6 +961,7 @@ footer a.resume {
   display: block;
   font-weight: bold;
 }
+footer a.resume:hover { color: var(--yellow); }
 
 /* copyright */
 footer .wrapper > span {
