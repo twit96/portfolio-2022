@@ -57,17 +57,12 @@ function checkLogin($mysqli, $username, $password) {
   if (!$username == '' && !$password == '') {
 
     // check db for valid login
-    $stmt = $mysqli->prepare("SELECT COUNT(1) FROM people WHERE username=? AND password=? AND (role='admin' OR role='author')");
-    $stmt->bind_param("ss", $usr, $pwd);
-    $usr = $username;
-    $pwd = $password;
-    $stmt->execute();
-    if ($stmt === false) {
-      error_log('mysqli execute() failed: ');
-      error_log( print_r( htmlspecialchars($stmt->error), true ) );
-    }
-    $result = $stmt->get_result();
-    $stmt->close();
+    $result = getResults(
+      $mysqli,
+      "SELECT COUNT(1) FROM people WHERE username=? AND password=? AND (role='admin' OR role='author')",
+      "ss",
+      array($username, $password)
+    );
     $valid_login = ($result->fetch_row()[0] === 1);
 
     // actions
@@ -647,16 +642,12 @@ function directPost($mysqli) {
   // Is Project
   } else {
     // check if submitted project is in database
-    $stmt = $mysqli->prepare("SELECT * FROM projects WHERE ID=?");
-    $stmt->bind_param("i", $post_id);
-    $post_id = $_POST["id"];
-    $stmt->execute();
-    if ($stmt === false) {
-      error_log('mysqli execute() failed: ');
-      error_log( print_r( htmlspecialchars($stmt->error), true ) );
-    }
-    $result = $stmt->get_result();
-    $stmt->close();
+    $result = getResults(
+      $mysqli,
+      "SELECT * FROM projects WHERE ID=?",
+      "i",
+      array($_POST["id"])
+    );
     $row = $result->fetch_assoc();
 
     // User wants to add project
