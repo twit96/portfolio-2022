@@ -44,13 +44,7 @@ class BlogPost {
       $stmt = $mysqli->prepare("SELECT first_name, last_name, profile_img_name FROM people WHERE id=?");
       $stmt->bind_param("i", $this_id);
       $this_id = $in_author_id;
-      $stmt->execute();
-      if ($stmt === false) {
-        error_log('mysqli execute() failed: ');
-        error_log( print_r( htmlspecialchars($stmt->error), true ) );
-      }
-      $result = $stmt->get_result();
-      $stmt->close();
+      $result = executeStatement($mysqli, $stmt);
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
 
@@ -67,13 +61,7 @@ class BlogPost {
       $stmt = $mysqli->prepare("SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=?");
       $stmt->bind_param("i", $this_id);
       $this_id = $in_id;
-      $stmt->execute();
-      if ($stmt === false) {
-        error_log('mysqli execute() failed: ');
-        error_log( print_r( htmlspecialchars($stmt->error), true ) );
-      }
-      $result = $stmt->get_result();
-      $stmt->close();
+      $result = executeStatement($mysqli, $stmt);
 
       while ($row = $result->fetch_assoc()) {
         array_push($tag_array, $row["name"]);
