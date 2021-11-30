@@ -214,7 +214,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET title=? WHERE ID=?",
       "si",
-      array($this->title, $this->id);
+      array($this->title, $this->id)
     );
   }
 
@@ -223,7 +223,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET directory=? WHERE ID=?",
       "si",
-      array($this->directory, $this->id);
+      array($this->directory, $this->id)
     );
   }
 
@@ -232,7 +232,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET image=? WHERE ID=?",
       "si",
-      array($this->image, $this->id);
+      array($this->image, $this->id)
     );
   }
 
@@ -241,7 +241,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET blurb=? WHERE ID=?",
       "si",
-      array($this->blurb, $this->id);
+      array($this->blurb, $this->id)
     );
   }
 
@@ -250,7 +250,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET description=? WHERE ID=?",
       "si",
-      array($this->description, $this->id);
+      array($this->description, $this->id)
     );
   }
 
@@ -259,7 +259,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET date=? WHERE ID=?",
       "si",
-      array($this->date, $this->id);
+      array($this->date, $this->id)
     );
   }
 
@@ -268,7 +268,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET featured=? WHERE ID=?",
       "ii",
-      array($this->featured, $this->id);
+      array($this->featured, $this->id)
     );
   }
 
@@ -277,7 +277,7 @@ class Project {
       $mysqli,
       "UPDATE projects SET author_id=? WHERE ID=?",
       "ii",
-      array($this->author_id, $this->id);
+      array($this->author_id, $this->id)
     );
   }
 }
