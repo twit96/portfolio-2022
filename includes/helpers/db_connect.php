@@ -19,7 +19,7 @@ $mysqli->select_db($dbName) or die($mysqli->error);
 * $mysqli is a database object, $query is a string, $types is a string, and
 * $params is an array.
 */
-function getResults($mysqli, $query, $types, $params) {
+function getResults($mysqli, $query, $types=null, $params=null) {
   $stmt = $mysqli->prepare($query);
   if ($types) { $stmt->bind_param($types, ...$params); }
   $stmt->execute();
