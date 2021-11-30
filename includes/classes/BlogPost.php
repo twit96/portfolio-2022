@@ -1,5 +1,6 @@
 <?php
 
+
 class BlogPost {
   public $id;
   public $directory;
@@ -74,5 +75,6 @@ class BlogPost {
     $this->tags = $tag_array;
   }
 }
+
 
 ?>
