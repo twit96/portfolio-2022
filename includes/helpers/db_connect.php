@@ -15,17 +15,14 @@ $mysqli->select_db($dbName) or die($mysqli->error);
 
 
 /**
-* Reused code in all prepared statements. Executes a prepared statement, logs
-* any errors, closes the statement, and returns the result.
-* $stmt should be a mysqli prepared statement with the parameters already bound
-* and set equal to the desired values.
+* Reused code in all prepared statements.
+* $mysqli is a database object, $query is a string, $types is a string, and
+* $params is an array.
 */
-function executeStatement($stmt) {
+function getResults($mysqli, $query, $types, $params) {
+  $stmt = $mysqli->prepare($query);
+  $stmt->bind_param($types, ...$params);
   $stmt->execute();
-  if ($stmt === false) {
-    error_log('mysqli execute() failed: ');
-    error_log( print_r( htmlspecialchars($stmt->error), true ) );
-  }
   $result = $stmt->get_result();
   $stmt->close();
   return $result;
