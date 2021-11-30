@@ -20,7 +20,7 @@ $mysqli->select_db($dbName) or die($mysqli->error);
 * $stmt should be a mysqli prepared statement with the parameters already bound
 * and set equal to the desired values.
 */
-function executeStatement($mysqli, $stmt) {
+function executeStatement($stmt) {
   $stmt->execute();
   if ($stmt === false) {
     error_log('mysqli execute() failed: ');
