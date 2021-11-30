@@ -64,9 +64,17 @@ class BlogPost {
     $tag_array = array();
     $tag_id_array = array();
     if (!empty($in_id)) {
-      $command = 'SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id='.$in_id.';';
-      $result = $mysqli->query($command);
-      if (!$result) { die('Query failed: '.$mysqli->error.'<br>'); }
+      $stmt = $mysqli->prepare("SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=?");
+      $stmt->bind_param("i", $this_id);
+      $this_id = $in_id;
+      $stmt->execute();
+      if ($stmt === false) {
+        error_log('mysqli execute() failed: ');
+        error_log( print_r( htmlspecialchars($stmt->error), true ) );
+      }
+      $result = $stmt->get_result();
+      $stmt->close();
+
       while ($row = $result->fetch_assoc()) {
         array_push($tag_array, $row["name"]);
         array_push($tag_id_array, $row["id"]);
