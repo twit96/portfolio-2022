@@ -45,7 +45,7 @@ class BlogPost {
         $mysqli,
         "SELECT first_name, last_name, profile_img_name FROM people WHERE id=?",
         "i",
-        $in_author_id
+        array($in_author_id)
       );
       $row = $result->fetch_assoc();
       $this->author = $row["first_name"]." ".$row["last_name"];
@@ -64,7 +64,7 @@ class BlogPost {
         $mysqli,
         "SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=?",
         "i",
-        $in_id
+        array($in_id)
       );
 
       while ($row = $result->fetch_assoc()) {
