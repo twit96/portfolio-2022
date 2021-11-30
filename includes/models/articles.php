@@ -25,9 +25,7 @@ function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
   } else {
     $result = getResults(
       $mysqli,
-      "SELECT * FROM blog_posts ORDER BY date_posted DESC",
-      "",
-      array("")
+      "SELECT * FROM blog_posts ORDER BY date_posted DESC"
     );
   }
 

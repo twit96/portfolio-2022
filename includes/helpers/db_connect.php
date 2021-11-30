@@ -21,7 +21,7 @@ $mysqli->select_db($dbName) or die($mysqli->error);
 */
 function getResults($mysqli, $query, $types, $params) {
   $stmt = $mysqli->prepare($query);
-  $stmt->bind_param($types, ...$params);
+  if ($types) { $stmt->bind_param($types, ...$params); }
   $stmt->execute();
   $result = $stmt->get_result();
   $stmt->close();
