@@ -969,7 +969,8 @@ footer .wrapper > span {
   font-size: 80%;
 }
 
-/* ------------------------------------------------ Medium Screen Breakpoint */
+
+/* ------------------------------------------------ Large Screen Breakpoint */
 @media (min-width: 750px) and (min-height: 850px) {
   * {
     --header-height: 135px;
@@ -984,51 +985,6 @@ footer .wrapper > span {
   }
 
   header span { font-size: 24px; }
-}
-
-
-/* ------------------------------------------------- Large Screen Breakpoint */
-@media (min-width: 1600px) and (min-height: 1050px) {
-  * {
-    --header-height: 187.5px;
-    --main-font-size: 30px;
-    --main-spacing: 75px;
-    --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
-  }
-
-  header span { font-size: 32px; }
-
-  .nav-toggle {
-    width: 45px;
-    height: 37.5px;
-  }
-  .nav-toggle span {
-    border-radius: 3px;
-    height: 6px;
-  }
-  .nav-toggle span:nth-child(2) { margin: 7.5px 0; }
-  /* to hamburger */
-  @keyframes out-top {
-    0% { transform: translateY(13.5px) rotate(-135deg); }
-    50% { transform: translateY(13.5px) rotate(0); }
-    100% { transform: translateY(0) rotate(0); }
-  }
-  @keyframes out-btm {
-    0% { transform: translateY(-13.5px) rotate(-135deg); }
-    50% { transform: translateY(-13.5px) rotate(0); }
-    100% { transform: translateY(0) rotate(0); }
-  }
-  /* to x btn */
-  @keyframes in-top {
-    0% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(13.5px) rotate(0); }
-    100% { transform: translateY(13.5px) rotate(-135deg); }
-  }
-  @keyframes in-btm {
-    0% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-13.5px) rotate(0); }
-    100% { transform: translateY(-13.5px) rotate(-135deg); }
-  }
 }
 
 
