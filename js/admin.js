@@ -1,3 +1,5 @@
+// called by PHP when table loads
+
 
 var this_cell;
 var this_submit;
@@ -12,14 +14,14 @@ function handleCheck(e) {
   }
 }
 
-// called by PHP when table loads
-function addCheckboxListeners() {
-  var edit_projects = document.getElementById("edit-projects");
-  var checkboxes = edit_projects.querySelectorAll("input[type='checkbox']");
 
+function addCheckboxListeners(parent) {
+  var checkboxes = parent.querySelectorAll("input[type='checkbox']");
   for (var i=0; i<checkboxes.length; i++) {
     checkboxes[i].addEventListener("click", handleCheck);
   }
 }
 
-addCheckboxListeners();
+
+addCheckboxListeners(document.getElementById("edit-projects"));
+// addCheckboxListeners(document.getElementById("edit-posts"));
