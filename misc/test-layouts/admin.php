@@ -227,6 +227,127 @@
                 </div>
               </form>  <!-- ./panel -->
 
+            </section>
+
+            <section id="edit-posts" class="card">
+              <h2>Edit Posts</h2>
+
+              <h3 class="accordion" onclick="this.classList.toggle('active');"><span>(2021-08-01)</span> <span>Post Title 1</span></h3>
+              <div class="panel">
+                <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
+                <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                  <input name="id" type="hidden" value="1" />
+                  <input name="author_id" type="hidden" value="1" />
+
+                  <label>
+                    <input type="text" name="title" value="Post Title 1" />
+                    <span>Title</span>
+                  </label>
+                  <div class="label-group">
+                    <label>
+                      <input type="date" value="2021-08-01" style="color:var(--grey);" disabled />
+                      <span>Date Posted</span>
+                    </label>
+                    <label>
+                      <input type="date" value="2021-09-01" style="color:var(--grey);" disabled />
+                      <span>Last Updated</span>
+                    </label>
+                  </div>  <!-- ./label-group -->
+                  <div class="label-group">
+                    <label>
+                      <input type="text" name="directory" value="post-title-1" />
+                      <span>Directory</span>
+                    </label>
+                    <label>
+                      <input type="file" name="image" accept="image/png, image/jpg, image/jpeg" />
+                      <span>Title Image</span>
+                    </label>
+                  </div>
+                  <label>
+                    <textarea name="post">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <span>Post Content</span>
+                  </label>
+
+                  <div class="submit-toggle">
+                    <input type="checkbox" name="toggle" />
+                    <input name="update" type="submit" value="Update" />
+                  </div>  <!-- ./submit-toggle -->
+                </form>
+
+                <h4 class="accordion" onclick="this.classList.toggle('active');">Tags</h4>
+                <div class="panel">
+                  <form method="POST" action="admin" enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="2" />
+                    <div class="label-group">
+                      <label>
+                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <span>Tag</span>
+                      </label>
+                      <div class="submit-toggle">
+                        <input type="checkbox" name="toggle" />
+                        <input name="update" type="submit" value="Update" />
+                      </div>
+                    </div>
+                  </form>
+                  <form method="POST" action="admin" enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="2" />
+                    <div class="label-group">
+                      <label>
+                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <span>Tag</span>
+                      </label>
+                      <div class="submit-toggle">
+                        <input type="checkbox" name="toggle" />
+                        <input name="update" type="submit" value="Update" />
+                      </div>
+                    </div>
+                  </form>
+                  <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Tag</h5>
+                  <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                    <div class="label-group">
+                      <label>
+                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <span>Tag</span>
+                      </label>
+                      <div class="submit-toggle">
+                        <input type="submit" name="update" value="Add" style="margin-right: 0; margin-left: auto;" />
+                      </div>
+                    </div>
+                  </form>
+                </div>  <!-- ./panel -->
+              </div>  <!-- ./panel -->
+
+              <h3 class="accordion" onclick="this.classList.toggle('active');">Create New Post</h3>
+              <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                <input name="id" type="hidden" value="15" />
+                <input name="author_id" type="hidden" value="1" />
+                <div class="label-group">
+                  <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
+                  <label><input type="date" name="date" required /><span>Date</span></label>
+                </div>
+                <div class="label-group">
+                  <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
+                  <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
+                </div>
+                <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
+                <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
+                <div class="label-group">
+                  <input name="link-id" type="hidden" value="1" />
+                  <label>
+                    <input type="text" name="link-text" placeholder="Link Text" required />
+                    <span>Primary Link Text</span>
+                  </label>
+                  <label>
+                    <input type="text" name="link-url" placeholder="https://primary-link.com/" required />
+                    <span>Primary Link URL</span>
+                  </label>
+                </div>
+                <div class="label-group">
+                  <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
+                  <div class="submit-toggle"><span></span><input name="update" type="submit" value="Add" /></div>
+                </div>
+              </form>  <!-- ./panel -->
+
               <script src="/js/admin.js"></script>
             </section>
           </div>  <!-- ./left -->
