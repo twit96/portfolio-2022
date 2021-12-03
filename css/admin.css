@@ -49,6 +49,7 @@ label textarea {
 label textarea {
   resize: vertical;
   font-family: 'Helvetica', 'Arial', sans-serif;
+  min-height: 6rem;
 }
 label input:focus,
 label textarea:focus {
@@ -57,11 +58,14 @@ label textarea:focus {
 }
 label span {
   position: absolute;
-  top: 0; left: 0;
+  top: -0.25rem; left: -0.25rem;
   color: var(--grey);
+  background: var(--white);
   font-size: 0.75rem;
   line-height: 1em;
   margin: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 0.125rem;
 }
 label input:focus ~ span {
   color: var(--blue-shadow);
