@@ -1,9 +1,9 @@
 <?php
 
 
+require_once (__DIR__ .'/Image.php');
 require_once (__DIR__ .'/Link.php');
 require_once (__DIR__ .'/ServerDirectory.php');
-require_once (__DIR__ .'/Image.php');
 
 
 class Project {
