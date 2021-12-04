@@ -66,10 +66,8 @@ class ServerDirectory {
   }
 
   function rename($new_name) {
-    $old_path = $this->path.$this->name;
-    $new_path = $this->path.$new_name;
-    $this->rcopy($old_path, $new_path);
-    $this->rrmdir($old_path);
+    $this->rcopy($this->path.$this->name, $this->path.$new_name);
+    $this->rrmdir($this->path.$this->name);
     $this->name = $new_name;
   }
 
