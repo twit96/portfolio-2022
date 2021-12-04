@@ -42,11 +42,6 @@ class Project {
     if (isset($in_featured)) {     $this->featured = $in_featured; }
     if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
-    // directory
-    if (!empty($in_directory)) {
-      $this->directory = new ServerDirectory($this->path, $in_directory);
-    }
-
     // image
     $img_name = null;
     if (!empty($in_image)) {
@@ -63,10 +58,12 @@ class Project {
         $img_name = $row["image"];
       }
     }
-    $this->image = new Image($this->path.$this->directory->name.'/', $img_name);
 
-
-
+    // directory
+    if (!empty($in_directory)) {
+      $this->directory = new ServerDirectory($this->path, $in_directory);
+      $this->image = new Image($this->path.$this->directory->name.'/', $img_name);
+    }
 
     // links
     $primary_link_object = null;
