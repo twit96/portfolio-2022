@@ -14,8 +14,8 @@ class Directory {
   public $exists;  // if the directory exists in the server files
 
   function __construct(
-    $in_path=null;
-    $in_name=null;
+    $in_path=null,
+    $in_name=null
   ) {
     if (!empty($in_path)) { $this->path = $in_path; }
     if (!empty($in_name)) { $this->name = $in_name; }
