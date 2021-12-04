@@ -58,8 +58,9 @@ function displayOneArticle($mysqli) {
   echo '<h1>'.$post->title.'</h1>';
   if (is_array($post->tags) && sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
-    foreach ($post->tags as $tag) {
-      echo '<li><a href="../tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
+    for ($i=0; $i<count($post->tags); $i++) {
+      $this_tag = $post->tags[$i];
+      echo '<li><a href="../tag/'.str_replace(" ", "-", $this_tag->name).'">'.$this_tag->name.'</a></li>';
     }
     echo '</ul>';
   }
