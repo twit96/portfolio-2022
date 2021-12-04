@@ -13,7 +13,7 @@ class Tag {
     $in_post_id=null
   ) {
     if (!empty($in_id)) {      $this->id = $in_id; }
-    if (!empty($in_name)) {    $this->text = $in_name; }
+    if (!empty($in_name)) {    $this->name = $in_name; }
     if (!empty($in_post_id)) { $this->post_id = $in_post_id; }
   }
 
