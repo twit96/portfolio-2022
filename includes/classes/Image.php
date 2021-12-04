@@ -85,7 +85,7 @@ class Image {
 
     } else {
       // $new_file is a form submission $_FILE["image"] object.
-      if (validate($new_file)) {
+      if ($this->validate($new_file)) {
         $file_name = basename($new_file["name"]);
         ($this->exists) ? $old_img = $this->path.$this->name : $old_img = null;
         $file_name = formatFilename($file_name);
