@@ -309,105 +309,6 @@ function buildDashboard($mysqli) {
 
 
 /**
-* Function to check if a file has the same name as an existing filename.
-* Appends a number to the beginning of the filename if it does, and increments
-* the number up by 1 if it already has a number.
-* Returns formatted file name and leaves existing file name alone.
-*/
-function formatDuplicateFilenames($file_name, $existing_file_name) {
-  if ($file_name == $existing_file_name) {
-    // split string by hyphens
-    $splitted_string = explode("-", $file_name);
-    // update num
-    $num = $splitted_string[0];
-    (is_numeric($num)) ? $num++ : $num = 0;
-    // combine string part of filename
-    if ($num != 0) { $str = implode("-", array_slice($splitted_string, 1)); }
-    else { $str = implode("-", $splitted_string); }
-    // combine num and string parts with hyphen
-    $file_name = $num.'-'.$str;
-  }
-  return $file_name;
-}
-
-
-/**
-* Function to check if uploaded image is valid. Returns false if image is not
-* valid and returns formatted image name if image is valid.
-*/
-function checkImage($img, $directory) {
-
-  $new_img_name = false;
-
-  // Ensure image is set in $_POST
-  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
-
-    // update new image file name if same as old name
-    $new_img_name = basename($_FILES["image"]["name"]);
-    $new_img_name = formatDuplicateFilenames($new_img_name, $img);
-
-    // begin check
-    $target_file = './img/projects/'.$directory.'/'.$new_img_name;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    // check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check === false) { $new_img_name = false; }
-
-    // check if file already exists
-    // (should never trigger since we format the image name above)
-    // if (file_exists($target_file)) $new_img_name = false;
-
-    // check file size (<500kB)
-    if ($_FILES["image"]["size"] > 500000) { $new_img_name = false; }
-
-    // only allow certain file formats
-    if (
-      ($imageFileType != "jpg") &&
-      ($imageFileType != "png") &&
-      ($imageFileType != "jpeg") &&
-      ($imageFileType != "gif") &&
-      ($imageFileType != "webp")
-    ) {
-      $new_img_name = false;
-    }
-
-  }
-  return $new_img_name;
-}
-
-
-/**
-* Function to upload an image (which was previously checked to be valid).
-* Returns true if successful upload and false otherwise.
-*/
-function uploadImage($row, $directory, $new_img_name) {
-  $upload_success = false;
-
-  // Upload New Image
-  $target_file = './img/projects/'.$directory.'/'.$new_img_name;
-  if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-    $upload_success = true;
-  }
-  // Delete Old Image (if it exists - not adding a project)
-  if (($upload_success == true) && (!is_null($row["image"]))) {
-    unlink('./img/projects/'.$directory.'/'.$row["image"]);
-  }
-
-  return $upload_success;
-}
-
-
-/**
-* Function to check if posted directory name already exists in projects
-* directory. Returns true if so and false if not.
-*/
-function directoryExists($dir) {
-  return is_dir('./img/projects/'.$dir);
-}
-
-
-/**
 * Function to unset project-related POST variables.
 * No return value.
 */
@@ -440,182 +341,19 @@ function doUnsetLinkPost() {
 
 
 /**
-* Function to add new project. Failure gives alert to user.
-* Returns false if failed and true if succeeded.
-*/
-function addProject($mysqli, $row) {
-
-  // check for valid image (null parameter since no existing img to compare to)
-  $new_img_name = checkImage(null, $_POST["directory"]);
-  if (is_null($new_img_name)) {
-    echo '<script>alert("Image did not pass checks - project not added.");</script>';
-    return false;
-  }
-
-  // check directory doesn't already exist
-  if (directoryExists($_POST["directory"])) {
-    echo '<script>alert("Directory ('.$row["directory"].') already exists - project not added");</script>';
-    return false;
-  }
-
-  // create new directory
-  $new_path = './img/projects/'.$_POST["directory"];
-  mkdir($new_path, 0777, true);
-
-  // try to upload image
-  $uploaded_img = uploadImage($row, $_POST["directory"], $new_img_name);
-  if ($uploaded_img == false) {
-    // upload failed
-    rmdir($new_path);  // delete new directory
-    echo '<script>alert("Image upload failed - project not added.");</script>';
-    return false;
-  }
-
-  // update database if all went well
-  $post_project = new Project(
-    $mysqli,
-    $_POST["id"],
-    $_POST["title"],
-    $_POST["directory"],
-    $new_img_name,
-    $_POST["blurb"],
-    $_POST["description"],
-    $_POST["date"],
-    $_POST["featured"],
-    $_POST["author_id"]
-  );
-  $post_link = new Link(
-    $mysqli,
-    null,
-    $_POST["link_text"],
-    $_POST["link_url"],
-    $_POST["id"],
-    1
-  );
-  $post_project->primary_link = $post_link;
-
-  doUnsetProjectPost();
-  doUnsetLinkPost();
-  $post_project->insertDB($mysqli);
-
-  return true;
-}
-
-
-/**
-* Function to delete existing project.
-*/
-function deleteProject($mysqli) {
-  $post_project = new Project(
-    $mysqli,
-    $_POST["id"],
-    $_POST["title"],
-    $_POST["directory"],
-    null,
-    $_POST["blurb"],
-    $_POST["description"],
-    $_POST["date"],
-    $_POST["featured"],
-    $_POST["author_id"]
-  );
-
-  doUnsetProjectPost();
-  $post_project->deleteDB($mysqli);
-}
-
-
-/**
-* Function to recursively copy files and non-empty directories.
-* Used by updateProject() function if user changes directory name.
-* No return value.
-*/
-function rcopy($src, $dst) {
-  if (!file_exists($dst)) {
-    if (is_dir($src)) {
-      mkdir($dst);
-      $files = scandir($src);
-      foreach ($files as $file)
-      if ($file != "." && $file != "..") rcopy("$src/$file", "$dst/$file");
-    }
-    else if (file_exists($src)) copy($src, $dst);
-  }
-}
-
-
-/**
-* Function to update existing project. No return value.
-*/
-function updateProject($mysqli, $row) {
-
-  // handle directory name change
-  $directory = $_POST["directory"];  // used for img later on
-  $old_path = './img/projects/'.$row["directory"].'/';
-  $new_path = './img/projects/'.$directory.'/';
-  if ($old_path != $new_path) {
-
-    // if new directory name already exists
-    if (directoryExists($directory)) {
-      echo '<script>alert("Directory ('.$row["directory"].') already exists - current directory not renamed");</script>';
-
-    // rename existing directory
-    } else {
-      rcopy($old_path, $new_path);
-      unlink($old_path.$row["image"]);
-      rmdir($old_path);
-    }
-  }
-
-  // handle image change
-  $new_img_name = null;
-  if (isset($_FILES["image"]) && ($_FILES["image"]["size"] != 0)) {
-    $new_img_name = checkImage($row["image"], $directory);
-
-    // if uploaded image didn't pass checks
-    if (is_null($new_img_name)) {
-      echo '<script>alert("Image did not pass checks - image not updated.");</script>';
-
-    // uploaded image passed check - try to upload image
-    } else {
-      $uploaded_img = uploadImage($row, $directory, $new_img_name);
-      if ($uploaded_img == false) {
-        // if upload failed
-        echo '<script>alert("Image upload failed - image not updated.");</script>';
-      }
-    }
-  }
-
-  // update database if all went well
-  $post_project = new Project(
-    $mysqli,
-    $_POST["id"],
-    $_POST["title"],
-    $_POST["directory"],
-    $new_img_name,
-    $_POST["blurb"],
-    $_POST["description"],
-    $_POST["date"],
-    $_POST["featured"],
-    $_POST["author_id"]
-  );
-
-  doUnsetProjectPost();
-  $post_project->updateDB($mysqli);
-}
-
-
-/**
 * Function called when user clicks update or add button in controls column of
 * table. If posted project data is not in database, calls addProject(). Else,
 * calls updateProject();
 */
 function directPost($mysqli) {
+
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
   $is_link = isset($_POST["link_only"]);
 
   // Is Link
   if ($is_link) {
-    // create Link object
+    // Create Link Object
     $post_link = new Link(
       $mysqli,
       null,
@@ -624,7 +362,7 @@ function directPost($mysqli) {
       $_POST["project_id"],
       $_POST["is_primary"]
     );
-    // handle link action
+    // Handle Link Actions
     if ($usr_action == "Add") {
       $post_link->insertDB($mysqli);
     } else if ($usr_action == "Update") {
@@ -636,52 +374,53 @@ function directPost($mysqli) {
     } else {
       echo '<script>alert("Error: POST action not set to Add, Update, or Delete. No Change Made!")</script>';
     }
-    // unset POST
+    // Unset POST Variables
     doUnsetLinkPost();
 
   // Is Project
   } else {
-    // check if submitted project is in database
-    $result = getResults(
+
+    // Create Project Object
+    $post_project = new Project(
       $mysqli,
-      "SELECT * FROM projects WHERE ID=?",
-      "i",
-      array($_POST["id"])
+      $_POST["id"],
+      $_POST["title"],
+      $_POST["directory"],
+      null,
+      $_POST["blurb"],
+      $_POST["description"],
+      $_POST["date"],
+      $_POST["featured"],
+      $_POST["author_id"]
     );
-    $row = $result->fetch_assoc();
 
-    // User wants to add project
+    // Handle Project Actions
     if ($usr_action == "Add") {
-      if (mysqli_num_rows($result) == 0) {
-        addProject($mysqli, $row);
-      } else {
-        echo '<script>alert("Error: Project Already in Database!")</script>';
-      }
+      // add link object to project object
+      $post_link = new Link(
+        $mysqli,
+        null,
+        $_POST["link_text"],
+        $_POST["link_url"],
+        $_POST["id"],
+        1
+      );
+      $post_project->primary_link = $post_link;
+      // add project
+      $post_project->create($mysqli, $_FILES["image"]);
 
-    // User wants to update project
+    // Update Project
     } else if ($usr_action == "Update") {
-      if (mysqli_num_rows($result) != 0) {
-        updateProject($mysqli, $row);
-      } else {
-        echo '<script>alert("Error: Project Not in Database!")</script>';
-      }
+      $post_project->update($mysqli, $_FILES["image"]);
 
-    // User wants to delete project
+    // Delete Project
     } else if ($usr_action == "Delete") {
-      // configure needed data
-      $old_path = './img/projects/'.$row["directory"].'/';
-      $old_img = $old_path.$row["image"];
-      // delete from database
-      deleteProject($mysqli);
-      // delete from projects folder
-      unlink($old_img);
-      rmdir($old_path);
-
-    // Error
-    } else {
-      echo '<script>alert("Error: Neither Add, Update, Nor Delete Triggered!")</script>';
-      unset($_POST["update"]);
+      $post_project->delete($mysqli);
     }
+
+    // Unset POST Variables
+    doUnsetProjectPost();
+    doUnsetLinkPost();
   }
 
   // display updated table data after changes are made

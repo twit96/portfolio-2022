@@ -30,7 +30,7 @@ foreach ($featured_projects as $project) {
   echo '<div class="featured-badge">';
   echo '<span>#'.$project->featured.'</span>';
   echo '</div>';
-  echo '<img src="/img/projects/'.$project->directory.'/'.$project->image.'" loading="lazy" alt="'.$project->title.' Title Card" />';
+  echo '<img src="'$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
   echo '<em>'.$project->blurb.'</em>';
   echo '<div class="info">';
   echo '<div class="btn-text date">';

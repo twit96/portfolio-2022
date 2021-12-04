@@ -1,7 +1,7 @@
 <?php
 
-include (__DIR__ .'/../helpers/db_connect.php');
-include (__DIR__ .'/../classes/Project.php');
+require_once (__DIR__ .'/../helpers/db_connect.php');
+require_once (__DIR__ .'/../classes/Project.php');
 
 
 function getProjects($mysqli, $featured_only=FALSE) {
