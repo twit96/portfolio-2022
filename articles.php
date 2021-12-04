@@ -49,7 +49,9 @@ function displayOneArticle($mysqli) {
 
   echo '<article>';
   if (!empty($post->image)) {
-    echo '<div class="card details" style="background-image: url('.$post->image->path.$post->image->name.')">';
+    // remove leading period from image path for use as CSS background image
+    $img_path = substr($post->image->path.$post->image->name.'/', 1)
+    echo '<div class="card details" style="background-image: url('.$img_path.')">';
   } else {
     echo '<div class="card details">';
   }
