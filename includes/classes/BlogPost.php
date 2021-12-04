@@ -100,7 +100,7 @@ class BlogPost {
         $this_tag = new Tag(
           $row["id"],
           $row["name"],
-          $in_id;
+          $in_id
         );
         array_push($tag_array, $this_tag);
       }
