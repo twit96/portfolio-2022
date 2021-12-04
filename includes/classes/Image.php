@@ -31,7 +31,12 @@ class Image {
   * Returns true if so and false otherwise.
   */
   private function exists($file_name) {
-    (file_exists($this->path.$file_name)) ? return true : return false;
+    $path_name = $this->path.$file_name;
+    if (file_exists($path_name)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
