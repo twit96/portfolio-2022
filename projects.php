@@ -51,10 +51,10 @@ foreach ($projects as $project) {
   // Figure
   if ($primary_link_url != null) {
     echo '<a href="'.$primary_link_url.'">';
-    echo '<img src="'.$project->path.$project->directory.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
+    echo '<img src="'.$project->path.$project->directory->name.'/'.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
     echo '</a>';
   } else {
-    echo '<img src="'.$project->path.$project->directory.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
+    echo '<img src="'.$project->path.$project->directory->name.'/'.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
   }
   echo '<figcaption>'.$project->blurb.'</figcaption>';
   echo '</figure>';
