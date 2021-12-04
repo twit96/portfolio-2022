@@ -86,7 +86,7 @@ class ServerDirectory {
   }
 
   function rename($new_name) {
-    mvdir($this->path.$this->name, $this->path.$new_name);
+    $this->mvdir($this->path.$this->name, $this->path.$new_name);
     $this->name = $new_name;
   }
 
@@ -94,7 +94,7 @@ class ServerDirectory {
     if ($new_path != null || $new_name != null) {
       if ($new_path === null) $new_path = $this->path;
       if ($new_name === null) $new_name = $this->name;
-      rcopy($this->path.$this->name, $new_path.$new_name);
+      $this->rcopy($this->path.$this->name, $new_path.$new_name);
       $this->path = $new_path;
       $this->name = $new_name;
     }
@@ -105,7 +105,7 @@ class ServerDirectory {
       echo '<script>alert("Directory not deleted because it does not exist!")</script>';
       return false;
     } else {
-      rrmdir($this->path.$this->name);
+      $this->rrmdir($this->path.$this->name);
       $this->exists = false;
       return true;
     }
