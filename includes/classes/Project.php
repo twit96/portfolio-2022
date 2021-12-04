@@ -157,7 +157,7 @@ class Project {
     $row = $result->fetch_assoc();
 
     // compare self to database
-    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($mysqli); }
+    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($mysqli, $row["directory"]); }
     if (!empty($new_img_file)) {                        $this->updateImage($mysqli, $new_img_file); }
 
     if ($row["title"] !== $this->title) {               $this->updateTitleDB($mysqli); }
@@ -168,9 +168,9 @@ class Project {
     if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($mysqli); }
   }
 
-  private function updateDirectory($mysqli) {
+  private function updateDirectory($mysqli, $old_name) {
     // update server
-    $this->directory->rename($this->directory->name);
+    $this->directory->rename($old_name, $this->directory->name);
     // update database
     getResults(
       $mysqli,

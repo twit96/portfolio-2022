@@ -85,8 +85,8 @@ class ServerDirectory {
     }
   }
 
-  function rename($new_name) {
-    $this->mvdir($this->path.$this->name, $this->path.$new_name);
+  function rename($old_name, $new_name) {
+    $this->mvdir($this->path.$old_name, $this->path.$new_name);
     $this->name = $new_name;
   }
 
