@@ -7,7 +7,7 @@ require_once (__DIR__ .'/Image.php');
 
 
 class Project {
-  public $path = "./img/projects/";
+  public $path = "/img/projects/";
 
   public $id;
   public $title;
