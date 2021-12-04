@@ -1,10 +1,15 @@
 <?php
 
 
+require_once (__DIR__ .'/ServerDirectory.php');
+require_once (__DIR__ .'/Tag.php');
+
+
 class BlogPost {
+  public $path = "./img/articles/";  // yyyy/mm/dd/ added in constructor
+
   public $id;
   public $directory;
-  public $path;
   public $image;
   public $title;
   public $post;
@@ -34,12 +39,36 @@ class BlogPost {
     if (!empty($in_date_posted)) {  $this->date_posted = $in_date_posted; }
     if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
 
-    if (!empty($in_directory) && !empty($in_date_posted)) {
-
-      $formatted_path = '/img/articles/'.str_replace("-", "/", $in_date_posted).'/'.$in_directory.'/';
-      $this->path = $formatted_path;
+    // path (add date to existing path)
+    if (!empty($in_date_posted)) {
+      $more_path = str_replace("-", "/", $in_date_posted).'/';
+      $this->path .= $more_path;
     }
 
+    // image config
+    $img_name = null;
+    if (!empty($in_image)) {
+      $img_name = $in_image;
+    } else if (!empty($in_id)) {
+      $result = getResults(
+        $mysqli,
+        "SELECT image FROM blog_posts WHERE id=?",
+        "i",
+        array($in_id)
+      );
+      if (mysqli_num_rows($result) != 0) {
+        $row = $result->fetch_assoc();
+        $img_name = $row["image"];
+      }
+    }
+
+    // directory and image
+    if (!empty($in_directory)) {
+      $this->directory = new ServerDirectory($this->path, $in_directory);
+      $this->image = new Image($this->path.$this->directory->name.'/', $img_name);
+    }
+
+    // author
     if (!empty($in_author_id)) {
       $result = getResults(
         $mysqli,
@@ -57,8 +86,8 @@ class BlogPost {
       }
     }
 
+    // tags
     $tag_array = array();
-    $tag_id_array = array();
     if (!empty($in_id)) {
       $result = getResults(
         $mysqli,
@@ -68,8 +97,12 @@ class BlogPost {
       );
 
       while ($row = $result->fetch_assoc()) {
-        array_push($tag_array, $row["name"]);
-        array_push($tag_id_array, $row["id"]);
+        $this_tag = new Tag(
+          $row["id"],
+          $row["name"],
+          $in_id;
+        );
+        array_push($tag_array, $this_tag);
       }
     }
     $this->tags = $tag_array;

@@ -48,8 +48,8 @@ function displayOneArticle($mysqli) {
   TOP;
 
   echo '<article>';
-  if (!empty($post->path) && !empty($post->image)) {
-    echo '<div class="card details" style="background-image: url('.$post->path.$post->image.')">';
+  if (!empty($post->image)) {
+    echo '<div class="card details" style="background-image: url('.$post->image->path.$post->image->name.')">';
   } else {
     echo '<div class="card details">';
   }
@@ -57,7 +57,7 @@ function displayOneArticle($mysqli) {
   if (is_array($post->tags) && sizeof($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($post->tags as $tag) {
-      echo '<li><a href="../tag/'.str_replace(" ", "-", $tag).'">'.$tag.'</a></li>';
+      echo '<li><a href="../tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
     }
     echo '</ul>';
   }
