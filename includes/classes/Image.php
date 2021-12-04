@@ -47,7 +47,7 @@ class Image {
   * or increments that number up by one if it does exist.
   */
   private function formatFilename($file_name) {
-    while (exists($file_name)) {
+    while ($this->exists($file_name)) {
       $split = explode(".", $file_name);
       $ext = array_pop($split);
       $split = implode(".", $split);
