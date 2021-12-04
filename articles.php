@@ -125,7 +125,7 @@ function displayTaggedArticles($mysqli) {
     if (!empty($post->image)) {
       echo <<<IMG_LINK
       <a class="img-link" href="{$this_link}">
-        <img src="{$post->image->path.$post->image->name}" loading="lazy" alt="{$post->title} Title Card" />
+        <img src="{$post->image->path}{$post->image->name}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
     }
