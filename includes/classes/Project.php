@@ -53,7 +53,7 @@ class Project {
       $this->directory = new ServerDirectory($this->path, $in_directory);
     }
 
-    $this->image = new Image($this->path.$this->directory.'/', $in_image);
+    $this->image = new Image($this->path.$this->directory->name.'/', $in_image);
 
     $primary_link_object = null;
     $other_links_array = array();
