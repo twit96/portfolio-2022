@@ -8,9 +8,9 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-require_once (__DIR__ .'./Link.php');
-require_once (__DIR__ .'./Directory.php');
-require_once (__DIR__ .'./Image.php');
+require_once (__DIR__ .'/Link.php');
+require_once (__DIR__ .'/Directory.php');
+require_once (__DIR__ .'/Image.php');
 
 
 class Project {
