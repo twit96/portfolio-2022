@@ -212,10 +212,11 @@ function displayAllArticles($mysqli) {
 
     echo '<article>';
 
-    if (!empty($post->directory) && (!empty($post->image))) {
+    if (!empty($post->image)) {
+      $img_path = substr($post->image->path.$post->image->name, 1);
       echo <<<IMG_LINK
       <a class="img-link" href="{$this_link}">
-        <img src="{$post->path}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
+        <img src="{$img_path}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
     }
@@ -226,7 +227,7 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href="./articles/tag/'.str_replace(" ", "-", $tag).'">'.$tag.'</a></li>';
+        echo '<li><a href="./articles/tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
       }
       echo '</ul>';
     }
