@@ -99,13 +99,12 @@ class BlogPost {
 
       while ($row = $result->fetch_assoc()) {
         $this_tag = new Tag(
+          $mysqli,
           $row["id"],
           $row["name"],
           $in_id
         );
         array_push($tag_array, $this_tag);
-
-        echo '<script>alert("$row[id]: '.$row["id"].', $row[name]: '.$row["name"].', in_id: '.$in_id.', tag->id: '.$this_tag->id.', tag->name: '.$this_tag->name.', tag->post_id: '.$this_tag->post_id.'")</script>';
       }
     }
     $this->tags = $tag_array;
