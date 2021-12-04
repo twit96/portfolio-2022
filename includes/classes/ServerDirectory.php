@@ -86,14 +86,8 @@ class ServerDirectory {
   }
 
   function rename($new_name) {
-    if ($new_name != $this->name) {
-      mvdir($this->path.$this->name, $this->path.$new_name);
-      $this->name = $new_name;
-      return true;
-    } else {
-      echo '<script>alert("Directory not renamed - new name same as current name!")</script>';
-      return false;
-    }
+    mvdir($this->path.$this->name, $this->path.$new_name);
+    $this->name = $new_name;
   }
 
   function copy($new_path=null, $new_name=null) {
