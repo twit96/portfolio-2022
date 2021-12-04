@@ -170,8 +170,7 @@ class Project {
 
   private function updateDirectory($mysqli) {
     // update server
-    $ok = $this->directory->rename($this->directory->name);
-    if (!$ok) return false;
+    $this->directory->rename($this->directory->name);
     // update database
     getResults(
       $mysqli,
