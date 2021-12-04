@@ -24,26 +24,6 @@ class ServerDirectory {
     }
   }
 
-
-  /**
-  * Function to recursively move files and non-empty directories
-  * from a source directory to a destination directory.
-  * No return value.
-  */
-  private function mvdir($src, $dst) {
-    if (!file_exists($dst)) {
-      // recursively traverse directories
-      if (is_dir($src)) {
-        mkdir($dst);
-        $files = scandir($src);
-        foreach ($files as $file)
-        if ($file != "." && $file != "..") $this->mvdir("$src/$file", "$dst/$file");
-        rmdir($src);
-      // files (recursive endpoints - rename copies then deletes)
-      } else if (file_exists($src)) rename($src, $dst);
-    }
-  }
-
   /**
   * Function to recursively remove files and non-empty directories.
   * No return value.
@@ -86,7 +66,8 @@ class ServerDirectory {
   }
 
   function rename($old_name, $new_name) {
-    $this->mvdir($this->path.$old_name, $this->path.$new_name);
+    $this->rcopy($this->path.$old_name, $this->path.$new_name);
+    $this->rrmdir($this->path.$old_name);
     $this->name = $new_name;
   }
 
