@@ -49,12 +49,33 @@ class Project {
     if (isset($in_featured)) {     $this->featured = $in_featured; }
     if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
+    // directory
     if (!empty($in_directory)) {
       $this->directory = new ServerDirectory($this->path, $in_directory);
     }
 
-    $this->image = new Image($this->path.$this->directory->name.'/', $in_image);
+    // image
+    $img_name = null;
+    if (!empty($in_image)) {
+      $img_name = $in_image;
+    } else if (!empty($in_id)) {
+      $result = getResults(
+        $mysqli,
+        "SELECT image FROM projects WHERE project_id=?",
+        "i",
+        array($in_id)
+      );
+      if (mysqli_num_rows($result) != 0) {
+        $row = $result->fetch_assoc();
+        $img_name = $row["image"];
+      }
+    }
+    $this->image = new Image($this->path.$this->directory->name.'/', $img_name);
 
+
+
+
+    // links
     $primary_link_object = null;
     $other_links_array = array();
     if (!empty($in_id)) {
