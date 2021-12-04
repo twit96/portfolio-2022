@@ -14,6 +14,7 @@ class BlogPost {
   public $image;
   public $title;
   public $post;
+  public $author_id;
   public $author;
   public $author_img_path;
   public $tags;
@@ -71,6 +72,7 @@ class BlogPost {
 
     // author
     if (!empty($in_author_id)) {
+      $this->author_id = $in_author_id;
       $result = getResults(
         $mysqli,
         "SELECT first_name, last_name, profile_img_name FROM people WHERE id=?",
@@ -109,6 +111,233 @@ class BlogPost {
     }
     $this->tags = $tag_array;
   }
+
+
+  function create($mysqli, $img_file) {
+
+    // Configure Server Directory
+    $ok = $this->directory->create();   // create directory
+    if (!$ok) return false;
+    $ok = $this->image->upload($img_file);  // upload image
+    if (!$ok) return false;
+
+    // Insert Self into Database
+    getResults(
+      $mysqli,
+      "INSERT INTO projects VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "issssiss",
+      array(
+        $this->id,
+        $this->directory->name,
+        $this->image->name,
+        $this->title,
+        $this->post,
+        $this->author_id,
+        $this->date_posted,
+        $this->date_updated
+      )
+    );
+
+    // Link Tags to Post in Database
+    foreach ($this->tags as $tag) {
+      $tag->link($mysqli);
+    }
+
+  }
+
+
+  /**
+  * Formats the pathname of a nested directory then deletes it.
+  */
+  private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
+
+    // Format Nested Directory Path
+    $nested_path = "./img/articles/";
+    if (!empty($yyyy)) {
+      $nested_path.=$yyyy."/";
+
+      if (!empty($mm)) {
+        $nested_path.=$mm."/";
+
+        if (!empty($dd)) {
+          $nested_path.=$dd."/";
+        }
+
+      } else if (!empty($dd)) { return false; }  // mm required for dd
+    } else { return false; }                     // yyyy always required
+
+    // Success
+    unlink($nested_path);
+    return true;
+  }
+
+  /**
+  * Checks if any other blog posts exist in the dd, mm, or yyyy directories.
+  * If none do, removes those empty directories, else, leaves them in place.
+  */
+  private function checkNestedDirectories($mysqli) {
+    // check if directories are in use
+    $date_split = explode("-", $this->date_posted);
+    $yyyy = $date_split[0]."/";
+    $mm = $date_split[1]."/";
+    $dd = $date_split[2]."/";
+
+    // day directory
+    $result = getResults(
+      $mysqli,
+      "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=? AND MONTH(date_posted)=? AND DAYOFMONTH(date_posted)=?",
+      "sss",
+      array($yyyy, $mm, $dd)
+    );
+    if ($result->fetch_row()[0] === 0) {
+      if (deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
+    }
+
+    // month directory
+    $result = getResults(
+      $mysqli,
+      "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=? AND MONTH(date_posted)=?",
+      "ss",
+      array($yyyy, $mm)
+    );
+    if ($result->fetch_row()[0] === 0) {
+      if (deleteNestedDirectory($yyyy, $mm) === false) return false;
+    }
+
+    // year directory
+    $result = getResults(
+      $mysqli,
+      "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=?",
+      "s",
+      array($yyyy)
+    );
+    if ($result->fetch_row()[0] === 0) {
+      if (deleteNestedDirectory($yyyy) === false) return false;
+    }
+
+    // Success
+    return true;
+  }
+
+  function delete($mysqli) {
+    // Delete image, directory, and nested directories from server (directory will remove image)
+    $ok = $this->directory->delete();
+    if (!$ok) return false;
+    $ok = checkNestedDirectories($mysqli);
+    if (!$ok) return false;
+
+    // Unlink Tags from Post in Database
+    $this->primary_link->deleteDB($mysqli);
+    foreach ($this->tags as $tag) {
+      $tag->unlink($mysqli);
+    }
+
+    // Delete self from database
+    getResults(
+      $mysqli,
+      "DELETE FROM blog_posts WHERE id = ?",
+      "i",
+      array($this->id)
+    );
+  }
+
+
+  function update($mysqli, $new_img_file=null) {
+    // grab current details database
+    $result = getResults(
+      $mysqli,
+      "SELECT * FROM blog_posts WHERE id=?",
+      "i",
+      array($this->id)
+    );
+    $row = $result->fetch_assoc();
+
+    // compare self to database
+    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($mysqli, $row["directory"]); }
+    if (!empty($new_img_file)) {                        $this->updateImage($mysqli, $new_img_file); }
+
+    if ($row["title"] !== $this->title) {               $this->updateTitleDB($mysqli); }
+    if ($row["post"] !== $this->post) {                 $this->updatePostDB($mysqli); }
+    if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($mysqli); }
+    if ($row["date_posted"] !== $this->date_posted) {   $this->updateDatePostedDB($mysqli); }
+
+    if ($row["date_updated"] !== $this->date_updated) { $this->updateDateUpdatedDB($mysqli); }
+  }
+
+  private function updateDirectory($mysqli, $old_name) {
+    // update server
+    $this->directory->rename($old_name, $this->directory->name);
+    // update database
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET directory=? WHERE id=?",
+      "si",
+      array($this->directory->name, $this->id)
+    );
+  }
+
+  private function updateImage($mysqli, $new_img_file) {
+    // update server
+    $ok = $this->image->upload($new_img_file);
+    if (!$ok) return false;
+    // update database
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET image=? WHERE id=?",
+      "si",
+      array($this->image->name, $this->id)
+    );
+    $this->date_updated = date("Y-m-d");
+  }
+
+  private function updateTitleDB($mysqli) {
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET title=? WHERE id=?",
+      "si",
+      array($this->title, $this->id)
+    );
+    $this->date_updated = date("Y-m-d");
+  }
+
+  private function updatePostDB($mysqli) {
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET post=? WHERE id=?",
+      "si",
+      array($this->post, $this->id)
+    );
+    $this->date_updated = date("Y-m-d");
+  }
+
+  private function updateAuthorDB($mysqli) {
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET author_id=? WHERE id=?",
+      "ii",
+      array($this->author_id, $this->id)
+    );
+  }
+
+  private function updateDatePostedDB($mysqli) {
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET date_posted=? WHERE id=?",
+      "si",
+      array($this->date_posted, $this->id)
+    );
+  }
+
+  private function updateDateUpdatedDB($mysqli) {
+    getResults(
+      $mysqli,
+      "UPDATE blog_posts SET date_updated=? WHERE id=?",
+      "si",
+      array($this->date_updated, $this->id)
+    );
+  }
+
+
 }
 
 
