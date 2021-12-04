@@ -88,7 +88,7 @@ class Image {
       if ($this->validate($new_file)) {
         $file_name = basename($new_file["name"]);
         ($this->exists) ? $old_img = $this->path.$this->name : $old_img = null;
-        $file_name = formatFilename($file_name);
+        $file_name = $this->formatFilename($file_name);
 
         if (move_uploaded_file($new_file["tmp_name"], $this->path.$file_name)) {
           // upload succeeded
