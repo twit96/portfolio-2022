@@ -114,7 +114,7 @@ function buildDashboard($mysqli) {
         </div>
         <div class="label-group">
           <label>
-            <input type="text" name="directory" value="{$project->directory}" />
+            <input type="text" name="directory" value="{$project->directory->name}" />
             <span>Directory</span>
           </label>
           <label>
