@@ -1,8 +1,6 @@
 <?php
 
-/**
-* Child of Project class.
-*/
+
 class Link {
   public $id;
   public $text;
