@@ -62,7 +62,7 @@ class Project {
       $result = getResults(
         $mysqli,
         "SELECT image FROM projects WHERE project_id=?",
-        "s",
+        "i",
         array($in_id)
       );
       if (mysqli_num_rows($result) != 0) {
