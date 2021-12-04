@@ -9,7 +9,7 @@ ini_set("display_errors", "on");
 
 
 require_once (__DIR__ .'/Link.php');
-require_once (__DIR__ .'/Directory.php');
+require_once (__DIR__ .'/ServerDirectory.php');
 require_once (__DIR__ .'/Image.php');
 
 
@@ -50,7 +50,7 @@ class Project {
     if (!empty($in_author_id)) {   $this->author_id = $in_author_id; }
 
     if (!empty($in_directory)) {
-      $this->directory = new Directory($this->path, $in_directory);
+      $this->directory = new ServerDirectory($this->path, $in_directory);
     }
 
     $this->image = new Image($this->path, $in_image);
