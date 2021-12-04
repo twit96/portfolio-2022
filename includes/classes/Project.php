@@ -61,7 +61,7 @@ class Project {
     } else if (!empty($in_id)) {
       $result = getResults(
         $mysqli,
-        "SELECT image FROM projects WHERE project_id=?",
+        "SELECT image FROM projects WHERE ID=?",
         "i",
         array($in_id)
       );
