@@ -1,6 +1,13 @@
 <?php
 
 
+/**
+* Display all errors.
+*/
+error_reporting(E_ALL);
+ini_set("display_errors", "on");
+
+
 class Directory {
   public $path;  // ./img/projects/ OR ./img/articles/yyyy/mm/dd/
   public $name;   // name of the directory folder
