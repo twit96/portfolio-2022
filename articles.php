@@ -106,26 +106,26 @@ function displayTaggedArticles($mysqli) {
   include('./includes/templates/header.php');
 
   // Opening HTML
-  $tag = str_replace("-", " ", $_GET['tag']);
+  $url_tag = str_replace("-", " ", $_GET['tag']);
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
-          <h1><a href="../../articles">Articles</a> / <span>{$tag}</span></h1>
+          <h1><a href="../../articles">Articles</a> / <span>{$url_tag}</span></h1>
         </div>
         <div class="wrapper grid">
   TOP;
 
-  $tag = str_replace(" ", "-", $tag);
-  $blog_posts = getBlogPosts($mysqli, null, $tag);
+  $url_tag = str_replace(" ", "-", $url_tag);
+  $blog_posts = getBlogPosts($mysqli, null, $url_tag);
   foreach ($blog_posts as $post) {
     $this_link = '../post/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
-    if (!empty($post->directory) && (!empty($post->image))) {
+    if (!empty($post->image)) {
       echo <<<IMG_LINK
       <a class="img-link" href="{$this_link}">
-        <img src="{$post->path}/{$post->image}" loading="lazy" alt="{$post->title} Title Card" />
+        <img src="{$post->image->path.$post->image->name}" loading="lazy" alt="{$post->title} Title Card" />
       </a>
       IMG_LINK;
     }
@@ -136,7 +136,7 @@ function displayTaggedArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=./'.str_replace(" ", "-", $tag).'>'.$tag.'</a></li>';
+        echo '<li><a href=./'.str_replace(" ", "-", $tag->name).'>'.$tag->name.'</a></li>';
       }
       echo '</ul>';
     }
