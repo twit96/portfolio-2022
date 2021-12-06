@@ -159,7 +159,7 @@ article:not(:last-of-type) {
 }
 #featured .flex::after {
   position: absolute;
-  top: 0; right: 0;
+  top: 0; right: 0.25vmin;
   width: 1vmin;
   height: 100%;
   border-radius: 1vmin;
