@@ -231,7 +231,7 @@ function buildDashboard($mysqli) {
       <input name="author_id" type="hidden" value="1" />
       <div class="label-group">
         <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
-        <label><input type="date" name="date" required /><span>Date</span></label>
+        <label><input type="date" name="date" class="date-today" required /><span>Date</span></label>
       </div>
       <div class="label-group">
         <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>

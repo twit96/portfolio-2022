@@ -1,6 +1,20 @@
 // called by PHP when table loads
 
 
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
+var todays_date = new Date().toDateInputValue();
+
+var today_date_inputs = document.querySelectorAll(".date-today");
+for (var i=0; i<today_date_inputs.length; i++) {
+  today_date_inputs[i].value = todays_date;
+}
+
+
 var this_cell;
 var this_submit;
 function handleCheck(e) {
