@@ -119,7 +119,7 @@ class BlogPost {
 
 
   function create($mysqli, $img_file) {
-    
+
     // Configure Server Directory
     $ok = $this->directory->create();   // create directory
     if (!$ok) return false;
@@ -232,7 +232,6 @@ class BlogPost {
     if (!$ok) return false;
 
     // Unlink Tags from Post in Database
-    $this->primary_link->deleteDB($mysqli);
     foreach ($this->tags as $tag) {
       $tag->unlink($mysqli);
     }
