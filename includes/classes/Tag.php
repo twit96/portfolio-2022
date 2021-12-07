@@ -93,7 +93,7 @@ class Tag {
     getResults(
       $mysqli,
       "INSERT INTO tags (name) VALUES (?)",
-      "is",
+      "s",
       array($this->name)
     );
     // update self id
