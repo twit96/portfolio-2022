@@ -287,11 +287,11 @@ function buildEditPostsSection($mysqli) {
         </label>
         <div class="label-group">
           <label>
-            <input type="date" name="date_posted" value="{$article->date_posted}" style="color:var(--grey);" disabled />
+            <input type="date" name="date_posted" value="{$article->date_posted}" />
             <span>Date Posted</span>
           </label>
           <label>
-            <input type="date" name="date_updated" value="{$article->date_updated}" style="color:var(--grey);" disabled />
+            <input type="date" name="date_updated" value="{$article->date_updated}" />
             <span>Last Updated</span>
           </label>
         </div>
