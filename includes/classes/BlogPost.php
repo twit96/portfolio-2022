@@ -195,7 +195,7 @@ class BlogPost {
       array($yyyy, $mm, $dd)
     );
     if ($result->fetch_row()[0] === 1) {
-      if (!deleteNestedDirectory($yyyy, $mm, $dd)) return false;
+      if ($this->deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
     }
 
     // month directory
@@ -206,7 +206,7 @@ class BlogPost {
       array($yyyy, $mm)
     );
     if ($result->fetch_row()[0] === 1) {
-      if (!deleteNestedDirectory($yyyy, $mm)) return false;
+      if ($this->deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
     }
 
     // year directory
@@ -217,7 +217,7 @@ class BlogPost {
       array($yyyy)
     );
     if ($result->fetch_row()[0] === 1) {
-      if (!deleteNestedDirectory($yyyy)) return false;
+      if ($this->deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
     }
 
     // Success
