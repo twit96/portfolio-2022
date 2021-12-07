@@ -157,7 +157,7 @@ class BlogPost {
   private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
 
     // Format Nested Directory Path
-    $nested_path = "/img/articles";
+    $nested_path = __DIR__ ."/../../img/articles";
     if (!empty($yyyy)) {
       $nested_path.="/".$yyyy;
 
@@ -172,7 +172,6 @@ class BlogPost {
     } else { return false; }                     // yyyy always required
 
     // Success
-    echo '<script>alert("$nested_path: '.$nested_path.'");</script>';
     rmdir($nested_path);
     return true;
   }
