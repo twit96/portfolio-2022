@@ -172,6 +172,7 @@ class BlogPost {
     } else { return false; }                     // yyyy always required
 
     // Success
+    echo '<script>alert("$nested_path: '.$nested_path.'");</script>';
     rmdir($nested_path);
     return true;
   }
