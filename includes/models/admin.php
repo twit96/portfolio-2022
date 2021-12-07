@@ -647,8 +647,8 @@ function directPost() {
     return false;
   }
 
-  // update page after changes are made
-  doEngine();
+  // display updated table data after changes are made
+  buildDashboard($mysqli);
 }
 
 
