@@ -523,7 +523,7 @@ function directPost($mysqli) {
 
   // Is Project
   if ($data_type == "project") {
-    include (__DIR__ .'/projects.php');
+    require_once (__DIR__ .'/projects.php');
     // Create Project Object
     $post_project = new Project(
       $mysqli,
@@ -563,7 +563,7 @@ function directPost($mysqli) {
 
   // Is Project Link
   } else if ($data_type == "link") {
-    include (__DIR__ .'/projects.php');
+    require_once (__DIR__ .'/projects.php');
     // Create Link Object
     $post_link = new Link(
       $mysqli,
@@ -591,7 +591,7 @@ function directPost($mysqli) {
 
   // Is Article
   } else if ($data_type == "article") {
-    include (__DIR__ .'/articles.php');
+    require_once (__DIR__ .'/articles.php');
     // Create Project Object
     $post_article = new BlogPost(
       $mysqli,
@@ -618,7 +618,7 @@ function directPost($mysqli) {
 
   // Is Article Tag
   } else if ($data_type == "tag") {
-    include (__DIR__ .'/articles.php');
+    require_once (__DIR__ .'/articles.php');
     (!empty($_POST["id"])) ? $tag_id = $_POST["id"] : $tag_id = null;
     // Create Tag Object
     $post_tag = new Tag(
@@ -669,8 +669,8 @@ function doEngine() {
 
   // if user logged in
   } else if (isset($_POST["login"])) {
-    include (__DIR__ .'/projects.php');
-    include (__DIR__ .'/articles.php');
+    require_once (__DIR__ .'/projects.php');
+    require_once (__DIR__ .'/articles.php');
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];

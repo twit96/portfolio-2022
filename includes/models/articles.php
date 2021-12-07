@@ -1,7 +1,7 @@
 <?php
 
-include (__DIR__ .'/../helpers/db_connect.php');
-include (__DIR__ .'/../classes/BlogPost.php');
+require_once (__DIR__ .'/../helpers/db_connect.php');
+require_once (__DIR__ .'/../classes/BlogPost.php');
 
 
 function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
