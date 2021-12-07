@@ -261,7 +261,10 @@ class BlogPost {
     if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($mysqli); }
     if ($row["date_posted"] !== $this->date_posted) {   $this->updateDatePostedDB($mysqli); }
 
-    if ($row["date_updated"] !== $this->date_updated) { $this->updateDateUpdatedDB($mysqli); }
+    if (
+      (!empty($this->date_updated)) &&
+      ($row["date_updated"] !== $this->date_updated)
+      ) { $this->updateDateUpdatedDB($mysqli); }
   }
 
   private function updateDirectory($mysqli, $old_name) {

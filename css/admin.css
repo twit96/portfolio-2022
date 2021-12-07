@@ -73,6 +73,7 @@ label input:focus ~ span {
 
 input[type="submit"],
 input[type="reset"] {
+  cursor: pointer;
   padding: 0.5em 1em;
   border-radius: 3em;
   background: var(--blue);
@@ -84,6 +85,7 @@ input[type="reset"]:hover {
   background: var(--blue-shadow);
 }
 
+input[type="checkbox"] { cursor: pointer; }
 
 #login {
   padding: var(--main-spacing);
@@ -367,14 +369,12 @@ input[type="reset"]:hover {
     flex-direction: row;
     align-items: stretch;
   }
-  .submit-toggle input[type="submit"] {
-    margin-right: 0.5rem;
-  }
   #user-profile .right > div:first-of-type { margin-top: 2.5rem; }
   .submit-toggle {
     flex-direction: row-reverse;
     justify-content: flex-start;
   }
+  .submit-toggle input[type="checkbox"] { margin-left: 0.5rem; }
 }
 
 @media (min-width: 750px) and (min-height: 850px) {

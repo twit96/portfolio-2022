@@ -38,4 +38,4 @@ function addCheckboxListeners(parent) {
 
 
 addCheckboxListeners(document.getElementById("edit-projects"));
-// addCheckboxListeners(document.getElementById("edit-posts"));
+addCheckboxListeners(document.getElementById("edit-posts"));

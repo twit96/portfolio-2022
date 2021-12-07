@@ -80,6 +80,7 @@
               <div class="panel">
                 <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
                 <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                  <input name="submitted_data" type="hidden" value="project" />
                   <input name="id" type="hidden" value="1" />
                   <input name="author_id" type="hidden" value="1" />
                   <div class="label-group">
@@ -125,6 +126,7 @@
                 <div class="panel">
                   <h5 class="accordion" onclick="this.classList.toggle('active');">Primary Link</h5>
                   <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                    <input name="submitted_data" type="hidden" value="link" />
                     <input name="id" type="hidden" value="1" />
                     <div class="label-group">
                       <label>
@@ -136,13 +138,14 @@
                         <span>URL</span>
                       </label>
                       <div class="submit-toggle">
-                        <input name="update" type="submit" value="Update" style="margin-right: 0; margin-left: auto;" />
+                        <input name="update" type="submit" value="Update" style="margin-left: auto;" />
                       </div>  <!-- ./submit-toggle -->
                     </div>
                   </form>
                   <h5 class="accordion" onclick="this.classList.toggle('active');">Other Links</h5>
                   <div class="panel">
                     <form method="POST" action="admin" enctype="multipart/form-data">
+                      <input name="submitted_data" type="hidden" value="link" />
                       <input name="id" type="hidden" value="2" />
                       <div class="label-group">
                         <label>
@@ -160,6 +163,7 @@
                       </div>
                     </form>
                     <form method="POST" action="admin" enctype="multipart/form-data">
+                      <input name="submitted_data" type="hidden" value="link" />
                       <input name="id" type="hidden" value="2" />
                       <div class="label-group">
                         <label>
@@ -178,6 +182,7 @@
                     </form>
                     <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Link</h5>
                     <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                      <input name="submitted_data" type="hidden" value="link" />
                       <div class="label-group">
                         <label>
                           <input type="text" name="link-text" placeholder="Link Text" required />
@@ -188,7 +193,7 @@
                           <span>URL</span>
                         </label>
                         <div class="submit-toggle">
-                          <input type="submit" name="update" value="Add" style="margin-right: 0; margin-left: auto;" />
+                          <input type="submit" name="update" value="Add" style="margin-left: auto;" />
                         </div>
                       </div>
                     </form>
@@ -198,6 +203,7 @@
 
               <h3 class="accordion" onclick="this.classList.toggle('active');">Add New Project</h3>
               <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                <input name="submitted_data" type="hidden" value="project" />
                 <input name="id" type="hidden" value="15" />
                 <input name="author_id" type="hidden" value="1" />
                 <div class="label-group">
@@ -236,6 +242,7 @@
               <div class="panel">
                 <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
                 <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                  <input name="submitted_data" type="hidden" value="article" />
                   <input name="id" type="hidden" value="1" />
                   <input name="author_id" type="hidden" value="1" />
 
@@ -245,11 +252,11 @@
                   </label>
                   <div class="label-group">
                     <label>
-                      <input type="date" value="2021-08-01" style="color:var(--grey);" disabled />
+                      <input type="date" name="date_posted" value="2021-08-01" style="color:var(--grey);" disabled />
                       <span>Date Posted</span>
                     </label>
                     <label>
-                      <input type="date" value="2021-09-01" style="color:var(--grey);" disabled />
+                      <input type="date" name="date_updated" value="2021-09-01" style="color:var(--grey);" disabled />
                       <span>Last Updated</span>
                     </label>
                   </div>  <!-- ./label-group -->
@@ -277,40 +284,42 @@
                 <h4 class="accordion" onclick="this.classList.toggle('active');">Tags</h4>
                 <div class="panel">
                   <form method="POST" action="admin" enctype="multipart/form-data">
+                    <input name="submitted_data" type="hidden" value="tag" />
                     <input name="id" type="hidden" value="2" />
+                    <input name="post_id" type="hidden" value="2" />
                     <div class="label-group">
                       <label>
-                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <input type="text" name="name" value="Tag 1" />
                         <span>Tag</span>
                       </label>
                       <div class="submit-toggle">
-                        <input type="checkbox" name="toggle" />
-                        <input name="update" type="submit" value="Update" />
+                        <input name="update" type="submit" value="Delete" class="active" style="margin-left: auto;" />
                       </div>
                     </div>
                   </form>
                   <form method="POST" action="admin" enctype="multipart/form-data">
+                    <input name="submitted_data" type="hidden" value="tag" />
                     <input name="id" type="hidden" value="2" />
                     <div class="label-group">
                       <label>
-                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <input type="text" name="tag" value="Tag 1" />
                         <span>Tag</span>
                       </label>
                       <div class="submit-toggle">
-                        <input type="checkbox" name="toggle" />
-                        <input name="update" type="submit" value="Update" />
+                        <input name="update" type="submit" value="Delete" class="active" style="margin-left: auto;" />
                       </div>
                     </div>
                   </form>
                   <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Tag</h5>
                   <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                    <input name="submitted_data" type="hidden" value="tag" />
                     <div class="label-group">
                       <label>
-                        <input type="text" name="link-text" placeholder="Tag Text" required />
+                        <input type="text" name="link-text" placeholder="Tag Name" required />
                         <span>Tag</span>
                       </label>
                       <div class="submit-toggle">
-                        <input type="submit" name="update" value="Add" style="margin-right: 0; margin-left: auto;" />
+                        <input type="submit" name="update" value="Add" style="margin-left: auto;" />
                       </div>
                     </div>
                   </form>
@@ -319,33 +328,19 @@
 
               <h3 class="accordion" onclick="this.classList.toggle('active');">Create New Post</h3>
               <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
+                <input name="submitted_data" type="hidden" value="article" />
                 <input name="id" type="hidden" value="15" />
                 <input name="author_id" type="hidden" value="1" />
                 <div class="label-group">
                   <label><input type="text" name="title" placeholder="New Title" required /><span>Title</span></label>
-                  <label><input class="date-today" type="date" name="date" required /><span>Date</span></label>
+                  <label><input class="date-today" type="date" name="date_posted" /><span>Date Posted</span></label>
                 </div>
                 <div class="label-group">
                   <label><input type="text" name="directory" placeholder="new-directory" required /><span>Directory</span></label>
                   <label><input type="file" name="image" accept="image/png, image/jpg, image/jpeg" required /><span>Image</span></label>
                 </div>
-                <label><input type="text" name="blurb" placeholder="New Blurb" required /><span>Blurb</span></label>
-                <label><textarea name="description" placeholder="New Description" required></textarea><span>Description</span></label>
-                <div class="label-group">
-                  <input name="link-id" type="hidden" value="1" />
-                  <label>
-                    <input type="text" name="link-text" placeholder="Link Text" required />
-                    <span>Primary Link Text</span>
-                  </label>
-                  <label>
-                    <input type="text" name="link-url" placeholder="https://primary-link.com/" required />
-                    <span>Primary Link URL</span>
-                  </label>
-                </div>
-                <div class="label-group">
-                  <label><input type="number" name="featured" min="0" value="0" required /><span>Featured</span></label>
-                  <div class="submit-toggle"><span></span><input name="update" type="submit" value="Add" /></div>
-                </div>
+                <label><textarea name="post" placeholder="New Post" required></textarea><span>Post</span></label>
+                <div class="submit-toggle"><span></span><input name="update" type="submit" value="Add" /></div>
               </form>  <!-- ./panel -->
 
               <script src="/js/admin.js"></script>
