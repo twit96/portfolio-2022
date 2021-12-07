@@ -410,6 +410,8 @@
   position: relative;
   display: block;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 0.5em 1rem;
   line-height: 1.25em;
   border-radius: 0 10px 10px 0;
