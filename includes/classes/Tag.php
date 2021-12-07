@@ -92,10 +92,19 @@ class Tag {
     // insert self into tags table
     getResults(
       $mysqli,
-      "INSERT INTO tags VALUES(?,?)",
+      "INSERT INTO tags (name) VALUES (?)",
       "is",
-      array($this->id, $this->name)
+      array($this->name)
     );
+    // update self id
+    $result = getResults(
+      $mysqli,
+      "SELECT id FROM tags WHERE name=?",
+      "s",
+      array($this->name)
+    );
+    $row = $result->fetch_assoc();
+    $this->id = $row["id"];
   }
 
 
