@@ -172,7 +172,7 @@ class BlogPost {
     } else { return false; }                     // yyyy always required
 
     // Success
-    unlink($nested_path);
+    rmdir($nested_path);
     return true;
   }
 
