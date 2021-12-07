@@ -109,7 +109,7 @@ function displayTaggedArticles($mysqli) {
   include('./includes/templates/header.php');
 
   // Opening HTML
-  echo '<script>alert("'.$url_tag.'");</script>';
+  $url_tag = str_replace("-", " ", $_GET['tag']);
   echo <<<TOP
   \n    <main id="articles">
         <div class="wrapper">
