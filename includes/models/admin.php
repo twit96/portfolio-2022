@@ -619,7 +619,7 @@ function directPost($mysqli) {
   // Is Article Tag
   } else if ($data_type == "tag") {
     include (__DIR__ .'/articles.php');
-    if (!empty($_POST["id"])) $tag_id = $_POST["id"] : $tag_id = null;
+    (!empty($_POST["id"])) ? $tag_id = $_POST["id"] : $tag_id = null;
     // Create Tag Object
     $post_tag = new Tag(
       $mysqli,
