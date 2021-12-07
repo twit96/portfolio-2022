@@ -513,7 +513,9 @@ function doUnsetAllPost() {
 * calls updateProject();
 */
 function directPost() {
-
+  require_once (__DIR__ .'/projects.php');
+  require_once (__DIR__ .'/articles.php');
+  
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
   $data_type = null;
@@ -523,7 +525,6 @@ function directPost() {
 
   // Is Project
   if ($data_type == "project") {
-    require_once (__DIR__ .'/projects.php');
     // Create Project Object
     $post_project = new Project(
       $mysqli,
@@ -563,7 +564,6 @@ function directPost() {
 
   // Is Project Link
   } else if ($data_type == "link") {
-    require_once (__DIR__ .'/projects.php');
     // Create Link Object
     $post_link = new Link(
       $mysqli,
@@ -591,7 +591,6 @@ function directPost() {
 
   // Is Article
   } else if ($data_type == "article") {
-    require_once (__DIR__ .'/articles.php');
     // Create Project Object
     $post_article = new BlogPost(
       $mysqli,
@@ -618,7 +617,6 @@ function directPost() {
 
   // Is Article Tag
   } else if ($data_type == "tag") {
-    require_once (__DIR__ .'/articles.php');
     (!empty($_POST["id"])) ? $tag_id = $_POST["id"] : $tag_id = null;
     // Create Tag Object
     $post_tag = new Tag(
