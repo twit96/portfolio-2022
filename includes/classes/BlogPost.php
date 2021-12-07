@@ -183,9 +183,9 @@ class BlogPost {
   private function checkNestedDirectories($mysqli) {
     // check if directories are in use
     $date_split = explode("-", $this->date_posted);
-    $yyyy = $date_split[0]."/";
-    $mm = $date_split[1]."/";
-    $dd = $date_split[2]."/";
+    $yyyy = $date_split[0];
+    $mm = $date_split[1];
+    $dd = $date_split[2];
 
     // day directory
     $result = getResults(
@@ -195,7 +195,7 @@ class BlogPost {
       array($yyyy, $mm, $dd)
     );
     if ($result->fetch_row()[0] === 0) {
-      if (deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
+      if (!deleteNestedDirectory($yyyy, $mm, $dd)) return false;
     }
 
     // month directory
@@ -206,7 +206,7 @@ class BlogPost {
       array($yyyy, $mm)
     );
     if ($result->fetch_row()[0] === 0) {
-      if (deleteNestedDirectory($yyyy, $mm) === false) return false;
+      if (!deleteNestedDirectory($yyyy, $mm)) return false;
     }
 
     // year directory
@@ -217,7 +217,7 @@ class BlogPost {
       array($yyyy)
     );
     if ($result->fetch_row()[0] === 0) {
-      if (deleteNestedDirectory($yyyy) === false) return false;
+      if (!deleteNestedDirectory($yyyy)) return false;
     }
 
     // Success
