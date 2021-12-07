@@ -223,7 +223,7 @@ class BlogPost {
     // Delete image, directory, and nested directories from server (directory will remove image)
     $ok = $this->directory->delete();
     if (!$ok) return false;
-    $ok = checkNestedDirectories($mysqli);
+    $ok = $this->checkNestedDirectories($mysqli);
     if (!$ok) return false;
 
     // Unlink Tags from Post in Database
