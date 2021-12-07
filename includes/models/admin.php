@@ -512,7 +512,7 @@ function doUnsetAllPost() {
 * table. If posted project data is not in database, calls addProject(). Else,
 * calls updateProject();
 */
-function directPost($mysqli) {
+function directPost() {
 
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
@@ -644,6 +644,7 @@ function directPost($mysqli) {
     echo '<script>alert("Error: submitted data type not set! No Changes made.")</script>';
     // Unset POST Variables
     doUnsetAllPost();
+    return false;
   }
 
   // display updated table data after changes are made
@@ -665,7 +666,7 @@ function doEngine() {
 
   // if user updated table
   } else if (isset($_POST["update"])) {
-    directPost($mysqli);
+    directPost();
 
   // if user logged in
   } else if (isset($_POST["login"])) {
