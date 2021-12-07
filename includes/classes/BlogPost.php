@@ -39,7 +39,12 @@ class BlogPost {
     if (!empty($in_title)) {        $this->title = $in_title; }
     if (!empty($in_post)) {         $this->post = $in_post; }
     if (!empty($in_date_posted)) {  $this->date_posted = $in_date_posted; }
-    if (!empty($in_date_updated)) { $this->date_updated = $in_date_updated; }
+
+    if (!empty($in_date_updated)) {
+      $this->date_updated = $in_date_updated;
+    } else if (!empty($in_date_posted)) {
+      $this->date_updated = $in_date_posted;
+    }
 
     // path (add date to existing path)
     if (!empty($in_date_posted)) {
@@ -114,7 +119,7 @@ class BlogPost {
 
 
   function create($mysqli, $img_file) {
-
+    
     // Configure Server Directory
     $ok = $this->directory->create();   // create directory
     if (!$ok) return false;
