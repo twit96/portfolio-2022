@@ -194,7 +194,7 @@ class BlogPost {
       "sss",
       array($yyyy, $mm, $dd)
     );
-    if ($result->fetch_row()[0] === 0) {
+    if ($result->fetch_row()[0] === 1) {
       if (!deleteNestedDirectory($yyyy, $mm, $dd)) return false;
     }
 
@@ -205,7 +205,7 @@ class BlogPost {
       "ss",
       array($yyyy, $mm)
     );
-    if ($result->fetch_row()[0] === 0) {
+    if ($result->fetch_row()[0] === 1) {
       if (!deleteNestedDirectory($yyyy, $mm)) return false;
     }
 
@@ -216,7 +216,7 @@ class BlogPost {
       "s",
       array($yyyy)
     );
-    if ($result->fetch_row()[0] === 0) {
+    if ($result->fetch_row()[0] === 1) {
       if (!deleteNestedDirectory($yyyy)) return false;
     }
 
