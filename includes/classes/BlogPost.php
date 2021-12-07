@@ -124,7 +124,7 @@ class BlogPost {
     // Insert Self into Database
     getResults(
       $mysqli,
-      "INSERT INTO projects VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO blog_posts VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       "issssiss",
       array(
         $this->id,
