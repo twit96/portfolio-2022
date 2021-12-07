@@ -157,15 +157,15 @@ class BlogPost {
   private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
 
     // Format Nested Directory Path
-    $nested_path = "/img/articles/";
+    $nested_path = "../../img/articles";
     if (!empty($yyyy)) {
-      $nested_path.=$yyyy."/";
+      $nested_path.="/".$yyyy;
 
       if (!empty($mm)) {
-        $nested_path.=$mm."/";
+        $nested_path.="/".$mm;
 
         if (!empty($dd)) {
-          $nested_path.=$dd."/";
+          $nested_path.="/".$dd;
         }
 
       } else if (!empty($dd)) { return false; }  // mm required for dd
