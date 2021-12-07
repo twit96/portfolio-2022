@@ -157,7 +157,7 @@ class BlogPost {
   private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
 
     // Format Nested Directory Path
-    $nested_path = __DIR__ ."/../../img/articles";
+    $nested_path = "/img/articles";
     if (!empty($yyyy)) {
       $nested_path.="/".$yyyy;
 
@@ -207,7 +207,7 @@ class BlogPost {
       array($yyyy, $mm)
     );
     if ($result->fetch_row()[0] === 1) {
-      if ($this->deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
+      if ($this->deleteNestedDirectory($yyyy, $mm) === false) return false;
     }
 
     // year directory
@@ -218,7 +218,7 @@ class BlogPost {
       array($yyyy)
     );
     if ($result->fetch_row()[0] === 1) {
-      if ($this->deleteNestedDirectory($yyyy, $mm, $dd) === false) return false;
+      if ($this->deleteNestedDirectory($yyyy) === false) return false;
     }
 
     // Success
