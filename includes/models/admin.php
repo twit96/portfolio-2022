@@ -515,7 +515,7 @@ function doUnsetAllPost() {
 function directPost() {
   require_once (__DIR__ .'/projects.php');
   require_once (__DIR__ .'/articles.php');
-  
+
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
   $data_type = null;
@@ -591,6 +591,7 @@ function directPost() {
 
   // Is Article
   } else if ($data_type == "article") {
+    (!empty($_POST["date_updated"])) ? $date_updated = $_POST["date_updated"] : $date_updated = null;
     // Create Project Object
     $post_article = new BlogPost(
       $mysqli,
