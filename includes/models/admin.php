@@ -602,7 +602,7 @@ function directPost() {
       $_POST["post"],
       $_POST["author_id"],
       $_POST["date_posted"],
-      $_POST["date_updated"]
+      $date_updated
     );
     // Handle Article Actions
     if ($usr_action == "Add") {
