@@ -66,7 +66,10 @@ function displayOneArticle($mysqli) {
   echo '<div class="author">';
   echo '<img src="'.$post->author_img_path.'" alt="'.$post->author.' Image" />';
   echo '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span> ';
-  if ($post->date_posted != $post->date_updated) {
+  if (
+    (!empty($post->date_updated) &&
+    ($post->date_posted != $post->date_updated)
+  ) {
     echo '(Updated on <span>'.$post->date_updated.')</span>';
   }
   echo '</p>';
@@ -161,7 +164,10 @@ function displayTaggedArticles($mysqli) {
     echo '<div class="author">';
     echo '<img src="'.$post->author_img_path.'" alt="'.$post->author.' Image" />';
     $date_text = '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span>';
-    if ($post->date_posted != $post->date_updated) {
+    if (
+      (!empty($post->date_updated) &&
+      ($post->date_posted != $post->date_updated)
+    ) {
       $date_text.=' <span>(Updated on <span>'.$post->date_updated.')</span></span>';
     }
     $date_text.='</p>';
@@ -251,8 +257,11 @@ function displayAllArticles($mysqli) {
     echo '<div class="author">';
     echo '<img src="'.$post->author_img_path.'" alt="'.$post->author.' Image" />';
     $date_text = '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span>';
-    if ($post->date_posted != $post->date_updated) {
-      $date_text.=' <span>(Updated on <span>'.$post->date_updated.')</span></span';
+    if (
+      (!empty($post->date_updated) &&
+      ($post->date_posted != $post->date_updated)
+    ) {
+      $date_text.=' <span>(Updated on <span>'.$post->date_updated.')</span></span>';
     }
     $date_text.='</p>';
     echo $date_text;
