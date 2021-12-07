@@ -88,6 +88,18 @@ class Tag {
 
   }
 
+
+  private function existsInDB($mysqli) {
+    // check how many posts use the tag
+    $result = getResults(
+      $mysqli,
+      "SELECT COUNT(*) FROM tags WHERE name=?",
+      "s",
+      array($this->name)
+    );
+    return ($result->fetch_row()[0] !== 0);
+  }
+
   private function createTag($mysqli) {
     // insert self into tags table
     getResults(
@@ -96,7 +108,9 @@ class Tag {
       "s",
       array($this->name)
     );
-    // update self id
+  }
+
+  private function getId($mysqli) {
     $result = getResults(
       $mysqli,
       "SELECT id FROM tags WHERE name=?",
@@ -117,8 +131,9 @@ class Tag {
 
     // Link
     } else {
-      // create tag if no posts currently use tag
-      if ($this->numPostsUseTag($mysqli) === 0) $this->createTag($mysqli);
+      // create tag if not already in database
+      if (!($this->existsInDB($mysqli))) $this->createTag($mysqli);
+      $this->getId($mysqli);
       // link to $this->post_id Blog Post
       getResults(
         $mysqli,
