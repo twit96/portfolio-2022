@@ -109,7 +109,6 @@ function displayTaggedArticles($mysqli) {
   include('./includes/templates/header.php');
 
   // Opening HTML
-  $url_tag = str_replace("-", " ", $_GET['tag']);
   echo '<script>alert("'.$url_tag.'");</script>';
   echo <<<TOP
   \n    <main id="articles">
@@ -119,8 +118,6 @@ function displayTaggedArticles($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $url_tag = str_replace(" ", "-", $url_tag);
-  echo '<script>alert("'.$url_tag.'");</script>';
   $blog_posts = getBlogPosts($mysqli, null, $url_tag);
   foreach ($blog_posts as $post) {
     $this_link = '../post/'.str_replace(" ", "-", strtolower($post->title));
