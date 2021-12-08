@@ -12,6 +12,25 @@ var dark_toggle = document.getElementById("dark-toggle-wrap");
 var rand_span;  // placed in body
 var clone;      // placed in #loader and #header-bg
 
+
+function shuffle(array) {
+  let curr_idx = array.length;
+  let rand_idx;
+  // while there are elements left to shuffle
+  while (curr_idx != 0) {
+    // swap random remaining element with current element
+    rand_idx = Math.floor(Math.random() * curr_idx);
+    curr_idx--;
+    [array[curr_idx], array[rand_idx]] = [array[rand_idx], array[curr_idx]];
+  }
+  return array;
+}
+// leaves use shuffled arrays of predefined values (prevents harsh overlaps)
+var rand_x = shuffle([0,10,20,30,40,50,60,70,80,90]);
+var rand_y = shuffle([0,10,20,30,40,50,60,70,80,90]);
+// (orbs x and y are completely random though)
+
+
 // random properties
 var rand_x;
 var rand_y;
@@ -25,13 +44,11 @@ for (i=0; i<10; i++) {
   rand_span = document.createElement("span");
   rand_span.classList.add("leaf");
   // generate random attributes
-  rand_x = Math.floor(Math.random() * 60);          // 0 to 60 vw
-  rand_y = Math.floor(Math.random() * 100);         // 0 to 100 vh
   rand_size = Math.floor(Math.random() * 15) + 10;  // 10 to 25 vmin
   rand_rotation = Math.floor(Math.random() * 360);  // 0 to 360 deg
   // set CSS styles
-  rand_span.style.left = rand_x + "vw";
-  rand_span.style.top = rand_y + "vh";
+  rand_span.style.left = rand_x[i] + "vw";
+  rand_span.style.top = rand_y[i] + "vh";
   rand_span.style.width = rand_size + "vmin";
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
