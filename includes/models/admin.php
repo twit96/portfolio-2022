@@ -7,6 +7,10 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
+require_once (__DIR__ .'/projects.php');
+require_once (__DIR__ .'/articles.php');
+
+
 /**
 * Admin Page Login Area
 */
@@ -698,8 +702,6 @@ function directPost() {
 * Checks database connection and pulls and handles username and password inputs.
 */
 function doEngine() {
-  require_once (__DIR__ .'/projects.php');
-  require_once (__DIR__ .'/articles.php');
 
   // No Active Session
   if (session_status() == PHP_SESSION_NONE) {
