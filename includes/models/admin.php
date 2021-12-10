@@ -7,10 +7,6 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-require_once (__DIR__ .'/projects.php');
-require_once (__DIR__ .'/articles.php');
-
-
 /**
 * Admin Page Login Area
 */
@@ -49,7 +45,6 @@ LOGIN;
 function doUnsetLoginPost() {
   unset($_POST['username']);
   unset($_POST['password']);
-  unset($_POST['login']);
 }
 
 
@@ -72,8 +67,6 @@ function checkLogin($mysqli, $username, $password) {
 
     // actions
     if ($valid_login) {
-      setLogin();
-      checkLoginTimer();
       buildDashboard($mysqli);
     } else {
       echo '<script>alert("Login Failed. Please Try Again.");</script>';
@@ -84,47 +77,6 @@ function checkLogin($mysqli, $username, $password) {
     // username or password is empty
     echo '<script>alert("Username and password cannot be empty!");</script>';
     doLogin();
-  }
-}
-
-
-/**
-* Create user logged in session.
-*/
-function setLogin() {
-  if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-  }
-}
-
-/**
-* Unset $POST["logout"], destroy login session, and refresh page.
-*/
-function setLogout() {
-  unset($_POST["logout"]);
-  if (!(session_status() == PHP_SESSION_NONE)) {
-    session_unset();
-    session_destroy();
-  }
-  header("Location: ./admin");
-}
-
-
-function checkLoginTimer() {
-
-  // Check Existing Timer
-  if (isset($_SESSION["TIME"])) {
-    if (time() - $_SESSION["TIME"] > 1800) {
-      // session timed out (30 minutes) - end session and refresh page
-      setLogout();
-    } else {
-      // session still active - reset timer
-      $_SESSION["time"] = time();
-    }
-
-  // Set Initial Timer
-  } else {
-    $_SESSION["time"] = time();
   }
 }
 
@@ -694,8 +646,8 @@ function directPost() {
     return false;
   }
 
-  // update page
-  doEngine();
+  // display updated table data after changes are made
+  buildDashboard($mysqli);
 }
 
 
@@ -705,37 +657,31 @@ function directPost() {
 */
 function doEngine() {
 
-  // No Active Session
-  if (session_status() == PHP_SESSION_NONE) {
+  // if user logged out
+  if (isset($_POST["logout"])) {
+    unset($_POST["login"]);
+    unset($_POST["logout"]);
+    doLogin();
 
-    // User Attempted Login
-    if (isset($_POST["login"])) {
-      // Retrieve data from POST
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      doUnsetLoginPost();
-      // Check Login
-      checkLogin($mysqli, $username, $password);
+  // if user updated table
+  } else if (isset($_POST["update"])) {
+    directPost();
 
-    // User Not Logged In
-    } else {
-      doLogin();
-    }
+  // if user logged in
+  } else if (isset($_POST["login"])) {
+    require_once (__DIR__ .'/projects.php');
+    require_once (__DIR__ .'/articles.php');
+    // Retrieve data from POST
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    doUnsetLoginPost();
+    // Check Login
+    checkLogin($mysqli, $username, $password);
 
-  // Active Session
+  // user has not logged in yet
   } else {
-    // User Logged Out
-    if (isset($_POST["logout"])) {
-      setLogout();
-    // User Updated Table
-    } else if (isset($_POST["update"])) {
-      directPost();
-    } else {
-      checkLoginTimer();
-      buildDashboard($mysqli);
-    }
+    doLogin();
   }
-
 }
 
 
