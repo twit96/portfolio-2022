@@ -561,8 +561,6 @@ function doUnsetAllPost() {
 * calls updateProject();
 */
 function directPost() {
-  require_once (__DIR__ .'/projects.php');
-  require_once (__DIR__ .'/articles.php');
 
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
@@ -724,18 +722,20 @@ function doEngine() {
 
   // Active Session
   } else {
+
     // User Logged Out
     if (isset($_POST["logout"])) {
       setLogout();
     // User Updated Table
     } else if (isset($_POST["update"])) {
       directPost();
+    // User Visited Page
     } else {
       checkLoginTimer();
       buildDashboard($mysqli);
     }
-  }
 
+  }
 }
 
 
