@@ -262,7 +262,7 @@ function scrollEvents() {
   // Manage Header State
   if (
     ((scroll_pos > 0) && (!header.classList.contains("filled"))) ||
-    ((scroll_pos == 0) && (header.classList.contains("filled")))
+    ((scroll_pos <= 0) && (header.classList.contains("filled")))
   ) { toggleHeaderState(); }
 
   // Manage Scroll Down Indicator State
