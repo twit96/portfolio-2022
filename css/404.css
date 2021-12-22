@@ -18,7 +18,7 @@ main .wrapper {
   height: 100%;
   border-radius: 10px;
   padding: var(--main-spacing);
-  box-shadow: 0 0 10px var(--green-shadow);
+  box-shadow: 0 0 10px var(--green-600);
   overflow: hidden;
   z-index: 1;
   color: white;
@@ -30,7 +30,7 @@ main .wrapper::before {
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--green-shadow);
+  background: var(--green-600);
   opacity: 0.5;
   z-index: -1;
 }
@@ -56,8 +56,8 @@ main .wrapper > *:not(#logo-container) {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: max(1.75vmax, 20px) solid var(--green-shadow);
-  background: var(--green-shadow);
+  border: max(1.75vmax, 20px) solid var(--green-600);
+  background: var(--green-600);
 }
 #main-logo {
   width: min(75vmax, 1960px);
@@ -70,8 +70,8 @@ main .wrapper > *:not(#logo-container) {
   width: min(75vmax, 1960px);
   height: min(75vmax, 1960px);
   border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 3vmax 1vmax var(--green-shadow) inset;
+  background: var(--blue-500);
+  box-shadow: 0 0 3vmax 1vmax var(--green-600) inset;
   opacity: 0.65;
 }
 
@@ -80,7 +80,7 @@ h1 {
   line-height: calc(var(--main-font-size) * 4);
   font-weight: normal;
   font-family: 'Pacifico', cursive;
-  text-shadow: 2px 2px 2px var(--grey-shadow);
+  text-shadow: 2px 2px 2px var(--grey-600);
 }
 h2 {
   font-size: calc(var(--main-font-size) * 1.5);
@@ -97,7 +97,7 @@ main p {
   line-height: 1.5em;
 }
 main p:hover {
-  color: var(--yellow);
+  color: var(--yellow-500);
   text-decoration: underline;
 }
 main p b { display: block; }

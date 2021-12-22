@@ -24,8 +24,8 @@
 }
 
 #articles article {
-  background: var(--grey-light);
-  box-shadow: 0 0 10px var(--green-shadow);
+  background: var(--grey-400);
+  box-shadow: 0 0 10px var(--green-600);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -52,13 +52,13 @@
   display: inline-block;
   margin-right: 0.5rem;
 }
-#articles ul.tags a { color: var(--grey); }
+#articles ul.tags a { color: var(--grey-500); }
 #articles ul.tags a::before { content: '# '; }
 
 #articles article .details > *:not(:last-child) { margin-bottom: 1rem; }
-#articles article h3 a:not(:hover) { color: var(--green); }
+#articles article h3 a:not(:hover) { color: var(--green-500); }
 #articles article .details p {
-  color: var(--grey-shadow);
+  color: var(--grey-600);
   font-size: 90%;
   line-height: 175%
 }
@@ -80,7 +80,7 @@
 }
  #articles article .author p {
   font-size: 90%;
-  color: var(--grey);
+  color: var(--grey-500);
 }
 #articles article .author p span { display: inline-block; }
 
@@ -93,8 +93,8 @@
   margin: var(--main-spacing) auto;
   padding: 0.5em 1em;
   text-align: center;
-  background: var(--green-shadow);
-  box-shadow: 0 0 10px var(--green-shadow);
+  background: var(--green-600);
+  box-shadow: 0 0 10px var(--green-600);
   border-radius: 3em;
 }
 #articles .page-links a {
@@ -107,7 +107,7 @@
   font-weight: normal;
   font-size: 125%;
 }
-/* .page-links a.end-link:not(:hover) { color: var(--yellow); } */
+/* .page-links a.end-link:not(:hover) { color: var(--yellow-500); } */
 #articles .end-link:first-of-type { margin-right: 1em; }
 #articles .end-link:last-of-type { margin-left: 1em; }
 
@@ -116,7 +116,7 @@
   font-weight: bold;
   cursor: default;
 }
-#articles .page-links span.active { color: var(--yellow); }
+#articles .page-links span.active { color: var(--yellow-500); }
 
 
 @media (min-width: 750px) {
@@ -155,8 +155,8 @@
   position: relative;
   border-radius: 10px;
   padding: var(--main-spacing);
-  background: var(--grey-light);
-  box-shadow: 0 0 10px var(--green-shadow);
+  background: var(--grey-400);
+  box-shadow: 0 0 10px var(--green-600);
   overflow: hidden;
   font-size: 90%;
   line-height: 175%;
@@ -171,8 +171,8 @@
 #post .card figure {
   border-radius: 5px;
   overflow: hidden;
-  border: 3px solid var(--grey);
-  background: var(--grey);
+  border: 3px solid var(--grey-500);
+  background: var(--grey-500);
   line-height: normal;
 }
 #post .card img {
@@ -189,7 +189,7 @@
   border-radius: 5px;
   padding: 1em;
   overflow-x: auto;
-  border: 3px solid var(--grey);
+  border: 3px solid var(--grey-500);
   background: white;
   font-size: 90%;
   line-height: 100%;
@@ -200,13 +200,13 @@
 }
 #post pre::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: var(--grey-shadow);
+  background: var(--grey-600);
 }
 #post pre::-webkit-scrollbar-thumb:hover {
-  background: var(--blue-shadow);
+  background: var(--blue-600);
 }
 #post pre::-webkit-scrollbar-track {
-  background: var(--grey);
+  background: var(--grey-500);
 }
 
 
@@ -226,7 +226,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--grey-shadow);
+  background: var(--grey-600);
   opacity: 0.9;
   border-radius: 10px 10px 0 0;
 }
@@ -261,7 +261,7 @@
   display: inline-block;
   margin-right: 0.5em;
 }
-#post ul.tags a { color: var(--blue-light); }
+#post ul.tags a { color: var(--blue-400); }
 #post ul.tags a::before { content: '# '; }
 
 #post .author {
@@ -288,7 +288,7 @@
   font-size: 90%;
   color: white;
   padding: 0.25em var(--main-spacing);
-  background: var(--blue-shadow);
+  background: var(--blue-600);
   border-radius: 10px 10px 0 0;
 }
 #post .details .btm-border::after {
@@ -299,7 +299,7 @@
   width: 100%;
   height: 15px;
   transform: translateY(100%);
-  background: var(--blue-shadow);
+  background: var(--blue-600);
 }
 
 
@@ -320,9 +320,9 @@
   border-radius: 10px 0 0 10px;
   transition: 0.25s ease-out transform;
   z-index: 10;
-  box-shadow: 0 0 5px var(--grey-shadow);
+  box-shadow: 0 0 5px var(--grey-600);
   background-image: linear-gradient(
-    30deg, var(--indigo), var(--blue), var(--indigo)
+    30deg, var(--indigo-500), var(--blue-500), var(--indigo-500)
   );
   background-size: 300% 300%;
   background-position: center;
@@ -338,14 +338,14 @@
   width: 75px; height: 75px;
   border-radius: 10px 5px 100% 5px;
   background-image: linear-gradient(
-    75deg, var(--indigo), var(--blue), var(--indigo)
+    75deg, var(--indigo-500), var(--blue-500), var(--indigo-500)
   );
   background-size: 300% 300%;
   background-position: center;
-  box-shadow: 0 0 5px var(--grey-shadow);
+  box-shadow: 0 0 5px var(--grey-600);
   clip-path: polygon(-5px -5px, calc(100% + 5px) -5px, -5px calc(100% + 5px));
 }
-#post #toc.active #toc-toggle { background: var(--red); }
+#post #toc.active #toc-toggle { background: var(--red-500); }
 
 #post #toc-toggle span {
   /* undo parent transform */
@@ -397,13 +397,13 @@
 }
 #post #toc nav::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: var(--grey-shadow);
+  background: var(--grey-600);
 }
 #post #toc nav::-webkit-scrollbar-thumb:hover {
 }
 #post #toc nav::-webkit-scrollbar-track {
   border-radius: 10px;
-  background: var(--grey-light);
+  background: var(--grey-400);
 }
 
 #post #toc nav a {
@@ -418,7 +418,7 @@
   border-left: 0.25rem solid white;
   color: white;
 }
-#post #toc nav a:hover { background: var(--blue-light); }
+#post #toc nav a:hover { background: var(--blue-400); }
 #post #toc nav a::before {
   content: '';
   position: absolute;
@@ -486,7 +486,7 @@
     transform: none;
     border-radius: 10px;
     max-width: none;
-    box-shadow: 0 0 5px var(--green-shadow);
+    box-shadow: 0 0 5px var(--green-600);
     transition: none;
   }
   #post #toc.active { transform: none; }

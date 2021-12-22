@@ -22,11 +22,11 @@ h2 { margin-bottom: 0.5em; }
 label {
   position: relative;
   display: inline-block;
-  background: var(--white);
+  background: var(--white-invertible);
   line-height: 1em;
   z-index: 1;
   border-radius: 0.25rem;
-  border: 0.125rem solid var(--grey);
+  border: 0.125rem solid var(--grey-500);
   width: 100%;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -41,7 +41,7 @@ label textarea {
   z-index: 1;
   background: 0;
   border: 0;
-  color: var(--black);
+  color: var(--black-invertible);
   border-radius: 0.25rem;
   width: 100%;
   height: 100%;
@@ -54,13 +54,13 @@ label textarea {
 label input:focus,
 label textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 0.25rem var(--blue-shadow);
+  box-shadow: 0 0 0 0.25rem var(--blue-600);
 }
 label span {
   position: absolute;
   top: -0.25rem; left: -0.25rem;
-  color: var(--grey);
-  background: var(--white);
+  color: var(--grey-500);
+  background: var(--white-invertible);
   font-size: 0.75rem;
   line-height: 1em;
   margin: 0.5rem;
@@ -68,7 +68,7 @@ label span {
   border-radius: 0.125rem;
 }
 label input:focus ~ span {
-  color: var(--blue-shadow);
+  color: var(--blue-600);
 }
 
 input[type="submit"],
@@ -76,13 +76,13 @@ input[type="reset"] {
   cursor: pointer;
   padding: 0.5em 1em;
   border-radius: 3em;
-  background: var(--blue);
+  background: var(--blue-500);
   color: white;
   border: 0;
 }
 input[type="submit"]:hover,
 input[type="reset"]:hover {
-  background: var(--blue-shadow);
+  background: var(--blue-600);
 }
 
 input[type="checkbox"] { cursor: pointer; }
@@ -90,8 +90,8 @@ input[type="checkbox"] { cursor: pointer; }
 #login {
   padding: var(--main-spacing);
   margin-bottom: var(--main-spacing);
-  background: var(--grey-light);
-  box-shadow: 0 0 10px var(--green-shadow);
+  background: var(--grey-400);
+  box-shadow: 0 0 10px var(--green-600);
   border-radius: 10px;
   z-index: 1;
 }
@@ -106,7 +106,7 @@ input[type="checkbox"] { cursor: pointer; }
 }
 #login .flex > p {
   padding: calc(var(--main-spacing) / 2) 0;
-  border-top: 1px solid var(--grey);
+  border-top: 1px solid var(--grey-500);
 }
 @media (min-aspect-ratio: 1/1) and (min-width: 700px) {
   #login .flex { flex-direction: row; }
@@ -117,7 +117,7 @@ input[type="checkbox"] { cursor: pointer; }
     border: 0;
   }
   #login form {
-    border-right: 1px solid var(--grey);
+    border-right: 1px solid var(--grey-500);
     padding-right: var(--main-spacing);
   }
   #login .flex > p {
@@ -135,8 +135,8 @@ input[type="checkbox"] { cursor: pointer; }
 .card {
   border-radius: 10px;
   padding: var(--main-spacing);
-  box-shadow: 0 0 10px var(--green-shadow);
-  background: var(--grey-light);
+  box-shadow: 0 0 10px var(--green-600);
+  background: var(--grey-400);
   overflow: hidden;
   margin-bottom: var(--main-spacing);
 }
@@ -146,7 +146,7 @@ input[type="checkbox"] { cursor: pointer; }
   max-width: 750px;
 }
 
-#user-profile .btn-text { --main-color: var(--grey-shadow); }
+#user-profile .btn-text { --main-color: var(--grey-600); }
 #user-profile .btn-text:hover { --main-color: var(--hover-color); }
 
 #user-profile .btn-container {
@@ -168,18 +168,18 @@ input[type="checkbox"] { cursor: pointer; }
 #user-profile .btn-text.edit { font-weight: bold; }
 
 #user-profile button:not(.btn-text, .x-btn) {
-  background: var(--blue);
+  background: var(--blue-500);
   color: white;
   font-weight: bold;
 }
-#user-profile button:not(.btn-text, .x-btn):hover { background: var(--blue-shadow); }
+#user-profile button:not(.btn-text, .x-btn):hover { background: var(--blue-600); }
 
 #user-profile .x-btn {
-  background-color: var(--grey);
+  background-color: var(--grey-500);
   color: white;
   font-weight: bold;
 }
-#user-profile .x-btn:hover { background-color: var(--grey-shadow); }
+#user-profile .x-btn:hover { background-color: var(--grey-600); }
 
 #user-profile .flex {
   display: flex;
@@ -211,10 +211,10 @@ input[type="checkbox"] { cursor: pointer; }
   top: 50%; left: 50%;
   width: 100%; height: 100%;
   transform: translate(-50%, -50%) scale(0.5);
-  background: var(--white);
+  background: var(--white-invertible);
   opacity: 0.5;
   border-radius: 50%;
-  color: var(--black);
+  color: var(--black-invertible);
   border: 0;
   padding: 0.5rem 1rem;
   font-size: min(2.5rem, 7.5vw);
@@ -253,7 +253,7 @@ input[type="checkbox"] { cursor: pointer; }
 .accordion {
   position: relative;
   cursor: pointer;
-  color: var(--grey-shadow);
+  color: var(--grey-600);
   border-radius: 0.25em;
   padding: 0.25rem 1.5rem 0.25rem 0.5rem;
   margin-top: 0.5em;
@@ -264,13 +264,13 @@ input[type="checkbox"] { cursor: pointer; }
   position: absolute;
   right: 0.5em; top: 50%; transform: translateY(-50%);
   font-size: 1rem;
-  color: var(--grey-shadow);
+  color: var(--grey-600);
   font-weight: bold;
   margin-left: 0.5em;
 }
 
 .accordion.active {
-  background-color: var(--grey);
+  background-color: var(--grey-500);
   color: white;
 }
 .accordion.active::after {
@@ -283,7 +283,7 @@ input[type="checkbox"] { cursor: pointer; }
 .panel {
   padding: 0 0 0.5em 0.5em;
   display: none;
-  border-left: 0.125em solid var(--grey);
+  border-left: 0.125em solid var(--grey-500);
 }
 .accordion.active + .panel { display: block; }
 
@@ -298,7 +298,7 @@ input[type="checkbox"] { cursor: pointer; }
 .panel .accordion.active { border-bottom-left-radius: 0; }
 /* override .panel:last-of-type selector above */
 .panel .panel {
-  border-left: 0.125em solid var(--grey);
+  border-left: 0.125em solid var(--grey-500);
   padding: 0.5em 0 0.5em 0.5em;
 }
 
@@ -309,7 +309,7 @@ input[type="checkbox"] { cursor: pointer; }
   padding: 0.25rem;
   margin-bottom: 0.25em;
   background: 0;
-  color: var(--black);
+  color: var(--black-invertible);
   border-radius: 0.25rem;
   width: 100%;
   height: 100%;
@@ -322,21 +322,21 @@ input[type="checkbox"] { cursor: pointer; }
   -webkit-appearance: initial;
   position: relative;
   max-height: min(2.5rem, 7.5vw); max-width: min(2.5rem, 7.5vw);
-  background: var(--blue);
+  background: var(--blue-500);
   outline: none;
   border-radius: 0.5rem;
 }
-.submit-toggle input[type="checkbox"]:hover { background: var(--blue-shadow); }
-.submit-toggle input[type="checkbox"]:checked { background: var(--yellow); }
+.submit-toggle input[type="checkbox"]:hover { background: var(--blue-600); }
+.submit-toggle input[type="checkbox"]:checked { background: var(--yellow-500); }
 .submit-toggle input[type="checkbox"]:checked:hover {
-  background: var(--yellow-shadow);
+  background: var(--yellow-600);
 }
 .submit-toggle input[type="checkbox"]:after {
   content: '';
   position: absolute;
   top: 10%; left: 10%;
   width: 30%; height: 80%;
-  background: var(--white);
+  background: var(--white-invertible);
   border-radius: 5px;
   transition: left 0.25s ease-in-out;
 }
@@ -345,13 +345,13 @@ input[type="checkbox"] { cursor: pointer; }
 }
 
 .submit-toggle input[type="submit"] {
-  background: var(--blue);
+  background: var(--blue-500);
   color: white;
   border: 0;
 }
-.submit-toggle input[type="submit"]:hover { background: var(--blue-shadow); }
-.submit-toggle input[type="submit"].active { background: var(--red); }
-.submit-toggle input[type="submit"].active:hover { background: var(--red-shadow); }
+.submit-toggle input[type="submit"]:hover { background: var(--blue-600); }
+.submit-toggle input[type="submit"].active { background: var(--red-500); }
+.submit-toggle input[type="submit"].active:hover { background: var(--red-600); }
 
 
 @media (min-width: 30rem) {
@@ -390,7 +390,7 @@ input[type="checkbox"] { cursor: pointer; }
 
   /* add hover effects to accordion */
   .accordion:hover {
-    background-color: var(--grey);
+    background-color: var(--grey-500);
     color: white;
   }
   .accordion:hover::after { color: white; }
