@@ -17,7 +17,7 @@ function getBlogPosts(
       $mysqli,
       "SELECT * FROM blog_posts WHERE title=? AND date_posted=? LIMIT 1",
       "ss",
-      array($in_title)
+      array($in_title, $in_date_posted)
     );
 
   // Search By Tag (order by newest first)
