@@ -146,15 +146,18 @@ function displayTaggedArticles($mysqli) {
     echo '<h3><a href="'.$this_link.'">'.$post->title.'</a></h3>';
     // blurb
     echo '<p>';
-    if (strlen($post->post) > 150) {
-      $blurb = substr($post->post,0,150);
-      // replace any headings in blurb
-      for ($i=1; $i<7; $i++) {
-        $blurb = str_replace('h'.$i, 'b style="display:block;"', $blurb);
-      }
+    // remove tags from blurb (not headings)
+    $blurb = strip_tags($post->post, ["<h1>","<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<h7>"])
+    // replace any headings in blurb with bold tags
+    for ($i=1; $i<7; $i++) {
+      $blurb = str_replace('h'.$i, 'b style="display:block;"', $blurb);
+    }
+    // shorten blurb if too long
+    if (strlen($blurb) > 150) {
+      $blurb = substr($blurb,0,150);
       echo $blurb.'...';
     } else {
-      echo $post->post;
+      echo $blurb;
     }
     echo '</p>';
     echo '</div>';
