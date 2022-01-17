@@ -10,7 +10,7 @@ ini_set("display_errors", "on");
 include ('./includes/models/articles.php');
 
 
-if (isset($_GET['post'])) {
+if (isset($_GET['id'])) {
   displayOneArticle($mysqli);
 } else if (isset($_GET['tag'])) {
   displayTaggedArticles($mysqli);
