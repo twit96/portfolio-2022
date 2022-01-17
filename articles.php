@@ -147,7 +147,7 @@ function displayTaggedArticles($mysqli) {
     // blurb
     echo '<p>';
     // remove tags from blurb (not headings)
-    $blurb = strip_tags($post->post, ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<h7>"]);
+    $blurb = strip_tags($post->post, "<h1><h2><h3><h4><h5><h6><h7>");
     // replace any headings in blurb with bold tags
     for ($i=1; $i<7; $i++) {
       $blurb = str_replace('h'.$i, 'b style="display:block;"', $blurb);
