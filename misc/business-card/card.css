@@ -5,12 +5,12 @@ body {
   /* Background Grid */
   /* background-image:
     linear-gradient(
-      var(--green-shadow) 1px,
+      var(--green-600) 1px,
       transparent 1px
     ),
     linear-gradient(
       to right,
-      var(--green-shadow) 1px,
+      var(--green-600) 1px,
       transparent 1px
     );
     background-size: 0.25in 0.25in; */
@@ -107,7 +107,7 @@ h1 {
   font-weight: normal;
   font-family: 'Pacifico', cursive;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 2px var(--green-shadow);
+  text-shadow: 2px 2px 2px var(--green-600);
 }
 h2 {
   font-size: 0.2125in;
@@ -123,8 +123,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.125in solid var(--green-shadow);
-  background: var(--green-shadow);
+  border: 0.125in solid var(--green-600);
+  background: var(--green-600);
 }
 #main-logo {
   width: 3.25in;
@@ -137,17 +137,17 @@ h2 {
   width: 3.25in;
   height: 3.25in;
   border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 0.15in 0.05in var(--green-shadow) inset;
+  background: var(--blue-500);
+  box-shadow: 0 0 0.15in 0.05in var(--green-600) inset;
   opacity: 0.55;
 }
 
 
 /* Back Stuff -------------------------------------------------------------- */
-body.no-bg { background: var(--grey-light); }
+body.no-bg { background: var(--grey-400); }
 body.no-bg .icon-text {
-  --main-color: var(--green-shadow);
-  --bg-color: var(--grey-light);
+  --main-color: var(--green-600);
+  --bg-color: var(--grey-400);
 }
 
 #back { overflow: hidden; }
@@ -160,7 +160,7 @@ body.no-bg .icon-text {
 /* text with custom icons */
 .icon-text {
   --main-color: white;
-  --bg-color: var(--green);
+  --bg-color: var(--green-500);
   color: var(--main-color);
   display: flex;
   align-items: center;
@@ -306,8 +306,8 @@ body.no-bg .icon-text {
 /* ------------------------------------------------------------------ Autumn */
 /* front */
 html.autumn body { background: #e69722; }
-html.autumn .leaf:nth-of-type(1n) { background: var(--red); }
-html.autumn .leaf:nth-of-type(1n)::after { background: var(--red); }
+html.autumn .leaf:nth-of-type(1n) { background: var(--red-500)); }
+html.autumn .leaf:nth-of-type(1n)::after { background: var(--red-500)); }
 html.autumn .leaf:nth-of-type(2n) { background: #8c580b; }
 html.autumn .leaf:nth-of-type(2n)::after { background: #8c580b; }
 html.autumn #main-logo-wrap {
@@ -320,35 +320,35 @@ html.autumn .icon-text {
   --main-color: #8c580b;
   --bg-color: #e69722;
 }
-html.autumn body.no-bg { background: var(--grey-light); }
+html.autumn body.no-bg { background: var(--grey-400); }
 html.autumn body.no-bg .icon-text {
   --main-color: #8c580b;
-  --bg-color: var(--grey-light);
+  --bg-color: var(--grey-400);
 }
 
 /* ------------------------------------------------------------------ Winter */
 /* front */
 html.winter body { background: white; }
 html.winter h1 {
-  color: var(--grey);
-  text-shadow: 2px 2px 2px var(--grey-shadow);
+  color: var(--grey-500);
+  text-shadow: 2px 2px 2px var(--grey-600);
 }
-html.winter h2 { color: var(--grey); }
-html.winter .leaf { background: var(--blue-light); }
-html.winter .leaf::after { background: var(--blue-light); }
-html.winter .orb { background: var(--blue-shadow); }
+html.winter h2 { color: var(--grey-500); }
+html.winter .leaf { background: var(--blue-400); }
+html.winter .leaf::after { background: var(--blue-400); }
+html.winter .orb { background: var(--blue-600); }
 html.winter #main-logo-wrap {
-  border-color: var(--grey-shadow);
-  background: var(--grey-shadow);
+  border-color: var(--grey-600);
+  background: var(--grey-600);
 }
-html.winter .main-logo-overlay { box-shadow: 0 0 0.15in 0.05in var(--grey-shadow) inset; }
+html.winter .main-logo-overlay { box-shadow: 0 0 0.15in 0.05in var(--grey-600) inset; }
 /* back */
 html.winter .icon-text {
-  --main-color: var(--grey-shadow);
+  --main-color: var(--grey-600);
   --bg-color: white;
 }
-html.winter body.no-bg { background: var(--grey-light); }
+html.winter body.no-bg { background: var(--grey-400); }
 html.winter body.no-bg .icon-text {
-  --main-color: var(--grey-shadow);
-  --bg-color: var(--grey-light);
+  --main-color: var(--grey-600);
+  --bg-color: var(--grey-400);
 }
