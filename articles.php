@@ -147,7 +147,13 @@ function displayTaggedArticles($mysqli) {
     // blurb
     echo '<p>';
     if (strlen($post->post) > 150) {
-      $blurb = strip_tags(substr($post->post,0,150));
+      $blurb = substr($post->post,0,150);
+      // replace any headings in blurb
+      for ($i=1; $i<7; $i++) {
+        $blurb = str_replace('h'.$i, 'b style="display:block;"', $blurb);
+      }
+      // remove all html chars except bold tags
+      $blurb = strip_tags($blurb, "<b>");
       echo $blurb.'...';
     } else {
       echo $post->post;
