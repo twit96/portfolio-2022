@@ -20,8 +20,8 @@ if (isset($_GET['id'])) {
 
 
 function displayOneArticle($mysqli) {
-  // configure title
-  $title = ucfirst(str_replace("-", " ", $_GET["post"]));
+
+  // Grab Info from URL
   $id = $_GET["id"];
   $post = getBlogPosts($mysqli, $id, null);
   if (sizeof($post) > 0) {
@@ -30,6 +30,13 @@ function displayOneArticle($mysqli) {
     // no blog post of the given name - redirect to articles page
     header('Location: /articles');
     die();
+  }
+
+  // Configure Title
+  if isset($_GET["post"]) {
+    $title = ucfirst(str_replace("-", " ", $_GET["post"]));
+  } else {
+    $title = 'Tyler Wittig | Articles';
   }
 
   DEFINE("FILENAME", 'articles');
