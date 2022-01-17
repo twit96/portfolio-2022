@@ -12,7 +12,7 @@ function getBlogPosts(
 ) {
 
   // Search By Title and Date (grab first match only)
-  if (!empty($in_title) and !empty($in_date_posted)) {
+  if (!empty($in_title) && !empty($in_date_posted)) {
     $result = getResults(
       $mysqli,
       "SELECT * FROM blog_posts WHERE title=? AND date_posted=? LIMIT 1",
