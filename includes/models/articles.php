@@ -4,16 +4,23 @@ require_once (__DIR__ .'/../helpers/db_connect.php');
 require_once (__DIR__ .'/../classes/BlogPost.php');
 
 
-function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
+function getBlogPosts(
+  $mysqli,
+  $in_title=null,
+  $in_date_posted=null,
+  $in_tag_name=null
+) {
 
-  if (!empty($in_title)) {
+  // Search By Title and Date (grab first match only)
+  if (!empty($in_title) and !empty($in_date_posted)) {
     $result = getResults(
       $mysqli,
-      "SELECT * FROM blog_posts WHERE title=? ORDER BY date_posted DESC",
-      "s",
+      "SELECT * FROM blog_posts WHERE title=? AND date_posted=? LIMIT 1",
+      "ss",
       array($in_title)
     );
 
+  // Search By Tag (order by newest first)
   } else if (!empty($in_tag_name)) {
     $result = getResults(
       $mysqli,
@@ -22,6 +29,7 @@ function getBlogPosts($mysqli, $in_title=null, $in_tag_name=null) {
       array($in_tag_name)
     );
 
+  // Select All
   } else {
     $result = getResults(
       $mysqli,
