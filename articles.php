@@ -28,7 +28,7 @@ function displayOneArticle($mysqli) {
     $post = $post[0];
   } else {
     // no blog post of the given name - redirect to articles page
-    header('Location: ./articles');
+    header('Location: /articles');
     die();
   }
 
