@@ -22,8 +22,8 @@ if (isset($_GET['post'])) {
 function displayOneArticle($mysqli) {
   // configure title
   $title = ucfirst(str_replace("-", " ", $_GET["post"]));
-  $date = str_replace("/", "-", $_GET["date_posted"]);
-  $post = getBlogPosts($mysqli, $title, $date, null);
+  $id = $_GET["id"];
+  $post = getBlogPosts($mysqli, $id, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
   } else {
@@ -119,9 +119,9 @@ function displayTaggedArticles($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts($mysqli, null, null, $url_tag);
+  $blog_posts = getBlogPosts($mysqli, null, $url_tag);
   foreach ($blog_posts as $post) {
-    $this_link = '../post/'.str_replace("-", "/", $post->date_posted).'/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = '../post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
@@ -212,9 +212,9 @@ function displayAllArticles($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts($mysqli, null, null, null);
+  $blog_posts = getBlogPosts($mysqli, null, null);
   foreach ($blog_posts as $post) {
-    $this_link = './articles/post/'.str_replace("-", "/", $post->date_posted).'/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = './articles/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 

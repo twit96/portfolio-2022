@@ -6,18 +6,17 @@ require_once (__DIR__ .'/../classes/BlogPost.php');
 
 function getBlogPosts(
   $mysqli,
-  $in_title=null,
-  $in_date_posted=null,
+  $in_id=null,
   $in_tag_name=null
 ) {
 
-  // Search By Title and Date (grab first match only)
-  if (!empty($in_title) && !empty($in_date_posted)) {
+  // Search By id
+  if (!empty($in_id)) {
     $result = getResults(
       $mysqli,
-      "SELECT * FROM blog_posts WHERE title=? AND date_posted=? LIMIT 1",
-      "ss",
-      array($in_title, $in_date_posted)
+      "SELECT * FROM blog_posts WHERE id=?",
+      "i",
+      array($in_id)
     );
 
   // Search By Tag (order by newest first)
