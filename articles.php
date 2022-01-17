@@ -20,8 +20,6 @@ if (isset($_GET['id'])) {
 
 
 function displayOneArticle($mysqli) {
-
-  // Grab Info from URL
   $id = $_GET["id"];
   $post = getBlogPosts($mysqli, $id, null);
   if (sizeof($post) > 0) {
@@ -32,15 +30,8 @@ function displayOneArticle($mysqli) {
     die();
   }
 
-  // Configure Title
-  if (isset($_GET["post"])) {
-    $title = ucfirst(str_replace("-", " ", $_GET["post"]));
-  } else {
-    $title = 'Tyler Wittig | Articles';
-  }
-
   DEFINE("FILENAME", 'articles');
-  DEFINE("ARTICLENAME", $title);
+  DEFINE("ARTICLENAME", $post->title);
   include('./includes/templates/head.php');
   echo <<<HEAD_END
   \n  </head>
