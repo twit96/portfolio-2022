@@ -33,7 +33,7 @@ function displayOneArticle($mysqli) {
   }
 
   // Configure Title
-  if isset($_GET["post"]) {
+  if (isset($_GET["post"])) {
     $title = ucfirst(str_replace("-", " ", $_GET["post"]));
   } else {
     $title = 'Tyler Wittig | Articles';
