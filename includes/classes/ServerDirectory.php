@@ -64,16 +64,6 @@ class ServerDirectory {
     $this->name = $new_name;
   }
 
-  function copy($new_path=null, $new_name=null) {
-    if ($new_path != null || $new_name != null) {
-      if ($new_path === null) $new_path = $this->path;
-      if ($new_name === null) $new_name = $this->name;
-      $this->rcopy($this->path.$this->name, $new_path.$new_name);
-      $this->path = $new_path;
-      $this->name = $new_name;
-    }
-  }
-
   function delete() {
     if (!$this->exists) {
       echo '<script>alert("Directory not deleted because it does not exist!")</script>';
