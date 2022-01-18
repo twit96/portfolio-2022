@@ -514,7 +514,7 @@ function doUnsetAllPost() {
 */
 function directPost() {
   require_once (__DIR__ .'/projects.php');
-  require_once (__DIR__ .'/blogs.php');
+  require_once (__DIR__ .'/blog.php');
 
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
@@ -670,7 +670,7 @@ function doEngine() {
   // if user logged in
   } else if (isset($_POST["login"])) {
     require_once (__DIR__ .'/projects.php');
-    require_once (__DIR__ .'/blogs.php');
+    require_once (__DIR__ .'/blog.php');
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];
