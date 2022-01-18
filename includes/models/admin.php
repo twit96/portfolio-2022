@@ -269,35 +269,35 @@ function buildEditPostsSection($mysqli) {
 
   $max_id = 0;  // to set new project's input ID
 
-  $articles = getBlogPosts($mysqli, null, null);
-  foreach ($articles as $article) {
-    if ($article->id > $max_id) { $max_id = $article->id; }   // update max_id
+  $blog_posts = getBlogPosts($mysqli, null, null);
+  foreach ($blog_posts as $blog_post) {
+    if ($blog_post->id > $max_id) { $max_id = $blog_post->id; }   // update max_id
     echo <<<POSTS_TOP
-    <h3 class="accordion" onclick="this.classList.toggle('active');"><span>({$article->date_posted})</span> <span>{$article->title}</span></h3>
+    <h3 class="accordion" onclick="this.classList.toggle('active');"><span>({$blog_post->date_posted})</span> <span>{$article->title}</span></h3>
     <div class="panel">
       <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
       <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
-        <input name="submitted_data" type="hidden" value="article" />
-        <input name="id" type="hidden" value="{$article->id}" />
-        <input name="author_id" type="hidden" value="{$article->author_id}" />
+        <input name="submitted_data" type="hidden" value="blog_post" />
+        <input name="id" type="hidden" value="{$blog_post->id}" />
+        <input name="author_id" type="hidden" value="{$blog_post->author_id}" />
 
         <label>
-          <input type="text" name="title" value="{$article->title}" />
+          <input type="text" name="title" value="{$blog_post->title}" />
           <span>Title</span>
         </label>
         <div class="label-group">
           <label>
-            <input type="date" name="date_posted" value="{$article->date_posted}" style="color:var(--grey);" readonly />
+            <input type="date" name="date_posted" value="{$blog_post->date_posted}" style="color:var(--grey);" readonly />
             <span>Date Posted</span>
           </label>
           <label>
-            <input type="date" name="date_updated" value="{$article->date_updated}" style="color:var(--grey);" readonly />
+            <input type="date" name="date_updated" value="{$blog_post->date_updated}" style="color:var(--grey);" readonly />
             <span>Last Updated</span>
           </label>
         </div>
         <div class="label-group">
           <label>
-            <input type="text" name="directory" value="{$article->directory->name}" />
+            <input type="text" name="directory" value="{$blog_post->directory->name}" />
             <span>Directory</span>
           </label>
           <label>
@@ -306,7 +306,7 @@ function buildEditPostsSection($mysqli) {
           </label>
         </div>
         <label>
-          <textarea name="post">{$article->post}</textarea>
+          <textarea name="post">{$blog_post->post}</textarea>
           <span>Post Content</span>
         </label>
         <div class="submit-toggle">
@@ -318,13 +318,13 @@ function buildEditPostsSection($mysqli) {
       <div class="panel">
     POSTS_TOP;
 
-    $tags = $article->tags;
+    $tags = $blog_post->tags;
     foreach ($tags as $tag) {
       echo <<<POSTS_MID
           <form method="POST" action="admin" enctype="multipart/form-data">
             <input name="submitted_data" type="hidden" value="tag" />
             <input name="id" type="hidden" value="{$tag->id}" />
-            <input name="article_id" type="hidden" value="{$tag->post_id}" />
+            <input name="blog_post_id" type="hidden" value="{$tag->post_id}" />
             <div class="label-group">
               <label>
                 <input type="text" name="name" value="{$tag->name}" />
@@ -342,7 +342,7 @@ function buildEditPostsSection($mysqli) {
           <h5 class="accordion" onclick="this.classList.toggle('active');">Add New Tag</h5>
           <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
             <input name="submitted_data" type="hidden" value="tag" />
-            <input name="article_id" type="hidden" value="{$article->id}" />
+            <input name="blog_post_id" type="hidden" value="{$blog_post->id}" />
             <div class="label-group">
               <label>
                 <input type="text" name="name" placeholder="Tag Name" required />
@@ -360,7 +360,7 @@ function buildEditPostsSection($mysqli) {
   echo <<<EMPTYROW
     <h3 class="accordion" onclick="this.classList.toggle('active');">Create New Post</h3>
     <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
-      <input name="submitted_data" type="hidden" value="article" />
+      <input name="submitted_data" type="hidden" value="blog_post" />
       <input name="id" type="hidden" value="{$max_id}" />
       <input name="author_id" type="hidden" value="1" />
       <div class="label-group">
@@ -470,7 +470,7 @@ function doUnsetLinkPost() {
 
 
 /**
-* Function to unset article-related POST variables.
+* Function to unset blog post related POST variables.
 * No return value.
 */
 function doUnsetArticlePost() {
@@ -491,7 +491,7 @@ function doUnsetArticlePost() {
 function doUnsetTagPost() {
   unset($_POST["id"]);
   unset($_POST["name"]);
-  unset($_POST["article_id"]);
+  unset($_POST["blog_post_id"]);
 }
 
 
@@ -514,7 +514,7 @@ function doUnsetAllPost() {
 */
 function directPost() {
   require_once (__DIR__ .'/projects.php');
-  require_once (__DIR__ .'/articles.php');
+  require_once (__DIR__ .'/blogs.php');
 
   $usr_action = $_POST["update"];
   unset($_POST["update"]);
@@ -590,10 +590,10 @@ function directPost() {
 
 
   // Is Article
-  } else if ($data_type == "article") {
+  } else if ($data_type == "blog_post") {
     (!empty($_POST["date_updated"])) ? $date_updated = $_POST["date_updated"] : $date_updated = null;
     // Create Project Object
-    $post_article = new BlogPost(
+    $blog_post = new BlogPost(
       $mysqli,
       $_POST["id"],
       $_POST["directory"],
@@ -606,11 +606,11 @@ function directPost() {
     );
     // Handle Article Actions
     if ($usr_action == "Add") {
-      $post_article->create($mysqli, $_FILES["image"]);
+      $blog_post->create($mysqli, $_FILES["image"]);
     } else if ($usr_action == "Update") {
-      $post_article->update($mysqli, $_FILES["image"]);
+      $blog_post->update($mysqli, $_FILES["image"]);
     } else if ($usr_action == "Delete") {
-      $post_article->delete($mysqli);
+      $blog_post->delete($mysqli);
     }
     // Unset POST Variables
     doUnsetArticlePost();
@@ -624,7 +624,7 @@ function directPost() {
       $mysqli,
       $tag_id,
       $_POST["name"],
-      $_POST["article_id"]
+      $_POST["blog_post_id"]
     );
     // Handle Tag Actions
     if ($usr_action == "Add") {
@@ -670,7 +670,7 @@ function doEngine() {
   // if user logged in
   } else if (isset($_POST["login"])) {
     require_once (__DIR__ .'/projects.php');
-    require_once (__DIR__ .'/articles.php');
+    require_once (__DIR__ .'/blogs.php');
     // Retrieve data from POST
     $username = $_POST['username'];
     $password = $_POST['password'];

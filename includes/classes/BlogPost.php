@@ -7,7 +7,7 @@ require_once (__DIR__ .'/Tag.php');
 
 
 class BlogPost {
-  public $path = "./img/articles/";  // yyyy/mm/dd/ added in constructor
+  public $path = "./img/blog/posts/";  // yyyy/mm/dd/ added in constructor
 
   public $id;
   public $directory;
@@ -157,7 +157,7 @@ class BlogPost {
   private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
 
     // Format Nested Directory Path
-    $nested_path = __DIR__ ."/../../img/articles";
+    $nested_path = __DIR__ ."/../../img/blog/posts";
     if (!empty($yyyy)) {
       $nested_path.="/".$yyyy;
 

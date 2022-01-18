@@ -1,6 +1,6 @@
 <?php
 
-DEFINE("FILENAME", 'articles');
+DEFINE("FILENAME", 'blogs');
 include('../../includes/templates/head.php');
 echo '<meta name="robots" content="noindex">';
 echo <<<HEAD_END
@@ -13,7 +13,7 @@ include('../../includes/templates/header.php');
 ?>
 
 
-    <main id="articles">
+    <main id="blogs">
       <div class="wrapper">
         <h1>Articles</h1>
       </div>
