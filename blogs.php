@@ -31,7 +31,7 @@ function displayOneArticle($mysqli) {
   }
 
   DEFINE("FILENAME", 'blogs');
-  DEFINE("ARTICLENAME", $post->title);
+  DEFINE("BLOGPOSTNAME", $post->title);
   include('./includes/templates/head.php');
   echo <<<HEAD_END
   \n  </head>

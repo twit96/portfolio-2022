@@ -20,11 +20,11 @@
 
   // Handle Article Posts
   $title = $page_name;
-  if (defined('ARTICLENAME')) {
-    $title = ARTICLENAME;
+  if (defined('BLOGPOSTNAME')) {
+    $title = BLOGPOSTNAME;
     $description = "Tyler Wittig's Article - " . $title;
     $og_url_extension = FILENAME."?post=".join("-", explode(" ", strtolower($title)));
-    $og_description_extension = ' - '.ARTICLENAME;
+    $og_description_extension = ' - '.BLOGPOSTNAME;
   }
 
   // Cache Busting Function - append last modified date to filenames
