@@ -23,7 +23,7 @@ function getBlogPosts(
   } else if (!empty($in_tag_name)) {
     $result = getResults(
       $mysqli,
-      "SELECT p.* FROM blog_posts WHERE published=1 AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? ORDER BY date_posted DESC",
+      "SELECT p.* FROM blog_posts AS p WHERE published=1 JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? ORDER BY date_posted DESC",
       "s",
       array($in_tag_name)
     );
