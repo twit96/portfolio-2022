@@ -273,7 +273,7 @@ function buildEditPostsSection($mysqli) {
   foreach ($blog_posts as $blog_post) {
     if ($blog_post->id > $max_id) { $max_id = $blog_post->id; }   // update max_id
     echo <<<POSTS_TOP
-    <h3 class="accordion" onclick="this.classList.toggle('active');"><span>({$blog_post->date_posted})</span> <span>{$article->title}</span></h3>
+    <h3 class="accordion" onclick="this.classList.toggle('active');"><span>({$blog_post->date_posted})</span> <span>{$blog_post->title}</span></h3>
     <div class="panel">
       <h4 class="accordion" onclick="this.classList.toggle('active');">Details</h4>
       <form method="POST" action="admin" enctype="multipart/form-data" class="panel">
