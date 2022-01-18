@@ -11,15 +11,15 @@ include ('./includes/models/blog.php');
 
 
 if (isset($_GET['id'])) {
-  displayOneArticle($mysqli);
+  displayOnePost($mysqli);
 } else if (isset($_GET['tag'])) {
-  displayTaggedArticles($mysqli);
+  displayTaggedPosts($mysqli);
 } else {
-  displayAllArticles($mysqli);
+  displayAllPosts($mysqli);
 }
 
 
-function displayOneArticle($mysqli) {
+function displayOnePost($mysqli) {
   $id = $_GET["id"];
   $post = getBlogPosts($mysqli, $id, null);
   if (sizeof($post) > 0) {
@@ -97,7 +97,7 @@ function displayOneArticle($mysqli) {
 }
 
 
-function displayTaggedArticles($mysqli) {
+function displayTaggedPosts($mysqli) {
   DEFINE("FILENAME", 'blog');
   include('./includes/templates/head.php');
   echo <<<HEAD_END
@@ -112,7 +112,7 @@ function displayTaggedArticles($mysqli) {
   echo <<<TOP
   \n    <main id="blog">
         <div class="wrapper">
-          <h1><a href="../../blog">Articles</a> / <span>{$url_tag}</span></h1>
+          <h1><a href="../../blog">Blog</a> / <span>{$url_tag}</span></h1>
         </div>
         <div class="wrapper grid">
   TOP;
@@ -194,7 +194,7 @@ function displayTaggedArticles($mysqli) {
 }
 
 
-function displayAllArticles($mysqli) {
+function displayAllPosts($mysqli) {
 
   DEFINE("FILENAME", 'blog');
   include('./includes/templates/head.php');
