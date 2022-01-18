@@ -2,7 +2,7 @@
 
 
 class ServerDirectory {
-  public $path;  // ./img/projects/ OR ./img/articles/yyyy/mm/dd/
+  public $path;  // ./img/projects/ OR ./img/blog/posts/yyyy/mm/dd/
   public $name;   // name of the directory folder
   public $exists;  // if the directory exists in the server files
 
