@@ -45,7 +45,8 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <span>(Updated on 2022-01-17)</span>
             </p>
           </div>
         </article>
@@ -76,7 +77,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -107,7 +108,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -138,7 +139,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -169,7 +170,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -200,7 +201,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -231,7 +232,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -262,7 +263,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -293,7 +294,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -324,7 +325,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -355,7 +356,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
@@ -386,7 +387,7 @@ include('../../includes/templates/header.php');
           <div class="author">
             <img src="/img/profile.jpg"/>
             <p>
-              Posted by <b>Tyler Wittig</b> on <span>2020-09-01</span>
+              <b>Tyler Wittig</b> on <span>2020-09-01</span>
             </p>
           </div>
         </article>
