@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-include ('./includes/models/blogs.php');
+include ('./includes/models/blog.php');
 
 
 if (isset($_GET['id'])) {
@@ -25,12 +25,12 @@ function displayOneArticle($mysqli) {
   if (sizeof($post) > 0) {
     $post = $post[0];
   } else {
-    // no blog post of the given name - redirect to blogs page
-    header('Location: /blogs');
+    // no blog post of the given name - redirect to blog page
+    header('Location: /blog');
     die();
   }
 
-  DEFINE("FILENAME", 'blogs');
+  DEFINE("FILENAME", 'blog');
   DEFINE("BLOGPOSTNAME", $post->title);
   include('./includes/templates/head.php');
   echo <<<HEAD_END
@@ -98,7 +98,7 @@ function displayOneArticle($mysqli) {
 
 
 function displayTaggedArticles($mysqli) {
-  DEFINE("FILENAME", 'blogs');
+  DEFINE("FILENAME", 'blog');
   include('./includes/templates/head.php');
   echo <<<HEAD_END
   \n  </head>
@@ -110,9 +110,9 @@ function displayTaggedArticles($mysqli) {
   // Opening HTML
   $url_tag = str_replace("-", " ", $_GET['tag']);
   echo <<<TOP
-  \n    <main id="articles">
+  \n    <main id="blog">
         <div class="wrapper">
-          <h1><a href="../../blogs">Articles</a> / <span>{$url_tag}</span></h1>
+          <h1><a href="../../blog">Articles</a> / <span>{$url_tag}</span></h1>
         </div>
         <div class="wrapper grid">
   TOP;
@@ -196,7 +196,7 @@ function displayTaggedArticles($mysqli) {
 
 function displayAllArticles($mysqli) {
 
-  DEFINE("FILENAME", 'blogs');
+  DEFINE("FILENAME", 'blog');
   include('./includes/templates/head.php');
   echo <<<HEAD_END
   \n  </head>
@@ -207,16 +207,16 @@ function displayAllArticles($mysqli) {
 
   // Opening HTML
   echo <<<TOP
-  \n    <main id="articles">
+  \n    <main id="blog">
         <div class="wrapper">
-          <h1>Articles</h1>
+          <h1>Blog</h1>
         </div>
         <div class="wrapper grid">
   TOP;
 
   $blog_posts = getBlogPosts($mysqli, null, null);
   foreach ($blog_posts as $post) {
-    $this_link = './blogs/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
 
     echo '<article>';
 
@@ -235,7 +235,7 @@ function displayAllArticles($mysqli) {
     if (is_array($post->tags) && sizeof($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href="./blogs/tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
+        echo '<li><a href="./blog/tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
       }
       echo '</ul>';
     }
