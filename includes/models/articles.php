@@ -14,7 +14,7 @@ function getBlogPosts(
   if (!empty($in_id)) {
     $result = getResults(
       $mysqli,
-      "SELECT * FROM blog_posts WHERE id=? AND published=1",
+      "SELECT * FROM blog_posts WHERE id=?",
       "i",
       array($in_id)
     );
