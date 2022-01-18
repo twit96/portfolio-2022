@@ -7,14 +7,15 @@ require_once (__DIR__ .'/../classes/BlogPost.php');
 function getBlogPosts(
   $mysqli,
   $in_id=null,
-  $in_tag_name=null
+  $in_tag_name=null,
+  $in_include_unpublished=null
 ) {
 
   // Search By id
   if (!empty($in_id)) {
     $result = getResults(
       $mysqli,
-      "SELECT * FROM blog_posts WHERE id=?",
+      "SELECT * FROM blog_posts WHERE id=? AND published=1",
       "i",
       array($in_id)
     );
@@ -23,16 +24,23 @@ function getBlogPosts(
   } else if (!empty($in_tag_name)) {
     $result = getResults(
       $mysqli,
-      "SELECT p.* FROM blog_posts AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? ORDER BY date_posted DESC",
+      "SELECT p.* FROM blog_posts AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? AND p.published=1 ORDER BY date_posted DESC",
       "s",
       array($in_tag_name)
     );
 
   // Select All
-  } else {
+  } else if (!empty($in_include_unpublished)) {
     $result = getResults(
       $mysqli,
       "SELECT * FROM blog_posts ORDER BY date_posted DESC"
+    );
+
+  // Select All (Published Only)
+  } else {
+    $result = getResults(
+      $mysqli,
+      "SELECT * FROM blog_posts WHERE published=1 ORDER BY date_posted DESC"
     );
   }
 

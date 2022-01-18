@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
 function displayOnePost($mysqli) {
   $id = $_GET["id"];
-  $post = getBlogPosts($mysqli, $id, null);
+  $post = getBlogPosts($mysqli, $id, null, null);
   if (sizeof($post) > 0) {
     $post = $post[0];
   } else {
@@ -117,7 +117,7 @@ function displayTaggedPosts($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts($mysqli, null, $url_tag);
+  $blog_posts = getBlogPosts($mysqli, null, $url_tag, null);
   foreach ($blog_posts as $post) {
     $this_link = '../post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
 
@@ -214,7 +214,7 @@ function displayAllPosts($mysqli) {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts($mysqli, null, null);
+  $blog_posts = getBlogPosts($mysqli, null, null, null);
   foreach ($blog_posts as $post) {
     $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
 

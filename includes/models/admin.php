@@ -269,7 +269,7 @@ function buildEditPostsSection($mysqli) {
 
   $max_id = 0;  // to set new project's input ID
 
-  $blog_posts = getBlogPosts($mysqli, null, null);
+  $blog_posts = getBlogPosts($mysqli, null, null, true);
   foreach ($blog_posts as $blog_post) {
     if ($blog_post->id > $max_id) { $max_id = $blog_post->id; }   // update max_id
     echo <<<POSTS_TOP
