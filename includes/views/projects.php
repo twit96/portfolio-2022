@@ -52,7 +52,7 @@ foreach ($projects as $project) {
     echo '<span class="icon"></span>'.$primary_link_text;
     echo '</a>';
     // other links
-    if (is_array($project->other_links) && sizeof($project->other_links) > 0) {
+    if (is_array($project->other_links) && count($project->other_links) > 0) {
       foreach ($project->other_links as $link) {
         echo '<a class="btn-text link" href="'.$link->url.'">';
         echo '<span class="icon"></span>'.$link->text;

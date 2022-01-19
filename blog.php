@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
 function displayOnePost($mysqli) {
   $id = $_GET["id"];
   $post = getBlogPosts($mysqli, $id, null, null);
-  if (sizeof($post) > 0) {
+  if (count($post) > 0) {
     $post = $post[0];
   } else {
     // no blog post of the given name - redirect to blog page
@@ -55,7 +55,7 @@ function displayOnePost($mysqli) {
     echo '<div class="card details">';
   }
   echo '<h1>'.$post->title.'</h1>';
-  if (is_array($post->tags) && sizeof($post->tags) > 0) {
+  if (is_array($post->tags) && count($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($post->tags as $tag) {
       echo '<li><a href="../../tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
@@ -135,7 +135,7 @@ function displayTaggedPosts($mysqli) {
     // Details
     echo '<div class="details">';
     // tags
-    if (is_array($post->tags) && sizeof($post->tags) > 0) {
+    if (is_array($post->tags) && count($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
         echo '<li><a href=./'.str_replace(" ", "-", $tag->name).'>'.$tag->name.'</a></li>';
@@ -232,7 +232,7 @@ function displayAllPosts($mysqli) {
     // Details
     echo '<div class="details">';
     // tags
-    if (is_array($post->tags) && sizeof($post->tags) > 0) {
+    if (is_array($post->tags) && count($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
         echo '<li><a href="./blog/tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';

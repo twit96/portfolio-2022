@@ -95,7 +95,7 @@ class Project {
 
       if (
         ($primary_link_object == null) &&
-        (sizeof($other_links_array) > 0)
+        (count($other_links_array) > 0)
       ) {
         $primary_link_object = array_shift($other_links_array);
       }
