@@ -85,41 +85,41 @@ function getPage() {
 
 
 function buildIndicator($total_pages) {
-  // only do things if $num_pages variable is set
-  if (isset($total_pages)) {
-    $curr_page = getPage();
+  $curr_page = getPage();
 
-    // Indicator Opening HTML
-    echo <<<ELEM_TOP
-    <div class=" wrapper page-links-wrap">
-      <nav class="page-links">
-    ELEM_TOP;
+  // Indicator Opening HTML
+  echo <<<ELEM_TOP
+  <div class=" wrapper page-links-wrap">
+    <nav class="page-links">
+  ELEM_TOP;
 
-    // Previous Link
-    if ($curr_page > 1) {
-      $prev_page = $curr_page - 1;
-      echo '<a class="end-link prev-link" href="./'.$prev_page.'">Previous</a>';
-    }
-
-    // Numerical Links
-    generateNumLinks($curr_page, $total_pages);
-
-    // Next Link
-    if ($curr_page < $total_pages) {
-      $next_page = $curr_page + 1;
-      echo '<a class="end-link next-link" href="./'.$next_page.'">Next</a>';
-    }
-
-    // Indicator Closing HTML
-    echo <<<ELEM_BTM
-      </nav>
-    </div>
-    ELEM_BTM;
+  // Previous Link
+  if ($curr_page > 1) {
+    $prev_page = $curr_page - 1;
+    echo '<a class="end-link prev-link" href="./'.$prev_page.'">Previous</a>';
   }
+
+  // Numerical Links
+  generateNumLinks($curr_page, $total_pages);
+
+  // Next Link
+  if ($curr_page < $total_pages) {
+    $next_page = $curr_page + 1;
+    echo '<a class="end-link next-link" href="./'.$next_page.'">Next</a>';
+  }
+
+  // Indicator Closing HTML
+  echo <<<ELEM_BTM
+    </nav>
+  </div>
+  ELEM_BTM;
 }
 
 
-buildIndicator($total_pages);
+// only do things if $num_pages variable is set
+if (isset($total_pages)) {
+  buildIndicator($total_pages);
+}
 
 
 ?>
