@@ -10,9 +10,9 @@ ini_set("display_errors", "on");
 include ('./includes/models/blog.php');
 
 
-if (isset($_GET['id'])) {
+if (isset($_GET["id"])) {
   displayOnePost($mysqli);
-} else if (isset($_GET['tag'])) {
+} else if (isset($_GET["tag"])) {
   displayTaggedPosts($mysqli);
 } else {
   displayAllPosts($mysqli);
@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
 
 
 function displayOnePost($mysqli) {
-  $id = $_GET["id"];
+  $id = htmlspecialchars($_GET["id"]);
   $post = getBlogPosts($mysqli, $id, null, null);
   if (count($post) > 0) {
     $post = $post[0];
@@ -108,7 +108,7 @@ function displayTaggedPosts($mysqli) {
   include('./includes/templates/header.php');
 
   // Opening HTML
-  $url_tag = str_replace("-", " ", $_GET['tag']);
+  $url_tag = str_replace("-", " ", htmlspecialchars($_GET["tag"]));
   echo <<<TOP
   \n    <main id="blog">
         <div class="wrapper">
@@ -177,12 +177,17 @@ function displayTaggedPosts($mysqli) {
     echo '</div>';
     echo '</article>';
   }
+  // Close BlogPost Grid Section
+  echo '</div>  <!-- ./wrapper grid -->';
+
+
+  // Page Indicator Section
+  $total_pages = ceil( getNumBlogPosts($mysqli) / 12);
+  include_once ('./includes/templates/PageIndicator.php');
+
 
   // Closing HTML
-  echo <<<BTM
-  \n    </div>  <!-- ./wrapper grid -->
-      </main>
-  BTM;
+  echo '</main>';
 
   include('./includes/templates/footer.php');
 

@@ -63,4 +63,14 @@ function getBlogPosts(
   return $post_array;
 }
 
+
+function getNumBlogPosts($mysqli) {
+  $result = getResults(
+    $mysqli,
+    "SELECT COUNT(*) FROM blog_posts WHERE published=1"
+  );
+  return ($result->fetch_row()[0]);
+}
+
+
 ?>
