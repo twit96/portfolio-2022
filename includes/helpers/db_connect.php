@@ -1,13 +1,6 @@
 <?php
 
 
-/**
-* Display all errors.
-*/
-error_reporting(E_ALL);
-ini_set("display_errors", "on");
-
-
 // Connect to MySQL Server
 $server = "localhost";
 $user   = "portfolio_user";
