@@ -396,13 +396,17 @@ include('../../includes/templates/header.php');
 
       <div class=" wrapper page-links-wrap">
         <nav class="page-links">
-          <a class="end-link" href="#">Previous</a>
-          <span class="active">1</span>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <span>...</span>
-          <a href="#">10</a>
-          <a class="end-link" href="#">Next</a>
+          <a class="end-link prev-link" href="#">Previous</a>
+          <div>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <span class="active">4</span>
+            <a href="#">5</a>
+            <span>...</span>
+            <a href="#">10</a>
+          </div>
+          <a class="end-link next-link" href="#">Next</a>
         </nav>
       </div>
 
