@@ -183,7 +183,7 @@ function displayTaggedPosts($mysqli) {
 
   // Page Indicator Section
   $total_pages = ceil( getNumBlogPosts($mysqli) / 12);
-  include_once ('./includes/templates/PageIndicator.php');
+  include ('./includes/templates/PageIndicator.php');
 
 
   // Closing HTML
