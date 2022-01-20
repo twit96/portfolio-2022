@@ -112,7 +112,7 @@ function displayTaggedPosts($mysqli) {
   echo <<<TOP
   \n    <main id="blog">
         <div class="wrapper">
-          <h1><a href="../../blog">Blog</a> / <span>{$url_tag}</span></h1>
+          <h1><a href="/blog">Blog</a> / <span>{$url_tag}</span></h1>
         </div>
         <div class="wrapper grid">
   TOP;
