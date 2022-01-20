@@ -117,7 +117,6 @@ function buildIndicator($total_pages) {
 
 
 // only do things if $num_pages variable is set
-echo '<script>alert("Here.");</script>';
 if (isset($total_pages)) {
   buildIndicator($total_pages);
 }
