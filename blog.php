@@ -58,7 +58,7 @@ function displayOnePost($mysqli) {
   if (is_array($post->tags) && count($post->tags) > 0) {
     echo '<ul class="tags">';
     foreach ($post->tags as $tag) {
-      echo '<li><a href="../../tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
+      echo '<li><a href="../../tag/'.str_replace(" ", "-", $tag->name).'/">'.$tag->name.'</a></li>';
     }
     echo '</ul>';
   }
@@ -119,7 +119,7 @@ function displayTaggedPosts($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli, null, $url_tag, null);
   foreach ($blog_posts as $post) {
-    $this_link = '../post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = '../post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
     echo '<article>';
 
@@ -138,7 +138,7 @@ function displayTaggedPosts($mysqli) {
     if (is_array($post->tags) && count($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href=./'.str_replace(" ", "-", $tag->name).'>'.$tag->name.'</a></li>';
+        echo '<li><a href="./'.str_replace(" ", "-", $tag->name).'>'.$tag->name.'/"</a></li>';
       }
       echo '</ul>';
     }
@@ -185,7 +185,7 @@ function displayTaggedPosts($mysqli) {
   $total_posts = getNumBlogPosts($mysqli);
   $total_pages = ceil($total_posts/12);
   $total_pages = $total_posts;
-  echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
+  // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
   include ('./includes/templates/PageIndicator.php');
 
 
@@ -224,7 +224,7 @@ function displayAllPosts($mysqli) {
 
   $blog_posts = getBlogPosts($mysqli, null, null, null);
   foreach ($blog_posts as $post) {
-    $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title));
+    $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
     echo '<article>';
 
@@ -243,7 +243,7 @@ function displayAllPosts($mysqli) {
     if (is_array($post->tags) && count($post->tags) > 0) {
       echo '<ul class="tags">';
       foreach ($post->tags as $tag) {
-        echo '<li><a href="./blog/tag/'.str_replace(" ", "-", $tag->name).'">'.$tag->name.'</a></li>';
+        echo '<li><a href="./blog/tag/'.str_replace(" ", "-", $tag->name).'/">'.$tag->name.'</a></li>';
       }
       echo '</ul>';
     }
