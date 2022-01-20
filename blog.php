@@ -185,7 +185,7 @@ function displayTaggedPosts($mysqli) {
   $total_posts = getNumBlogPosts($mysqli);
   $total_pages = ceil($total_posts/12);
   $total_pages = $total_posts;
-  // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
+  echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
   include ('./includes/templates/PageIndicator.php');
 
 
