@@ -62,7 +62,7 @@ function generateNumLinks($curr_page, $total_pages) {
 }
 
 
-function getPage() {
+function getPage($total_pages) {
   $curr_page = 1;
 
   // Check URL "page" Paramater
@@ -85,7 +85,7 @@ function getPage() {
 
 
 function buildIndicator($total_pages) {
-  $curr_page = getPage();
+  $curr_page = getPage($total_pages);
 
   // Indicator Opening HTML
   echo <<<ELEM_TOP
