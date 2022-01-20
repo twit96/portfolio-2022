@@ -25,7 +25,7 @@ function generateNumLinks($curr_page, $total_pages) {
 
     // Slot 2
     if ($curr_page <= 4) {
-      echo '<a href="./2">2</a>';
+      echo '<a href="../2">2</a>';
     } else {
       echo '<span>...</span>';
     }
@@ -51,7 +51,7 @@ function generateNumLinks($curr_page, $total_pages) {
     // Slot 6
     if ($total_pages - $curr_page < 4) {
       $p = $total_pages - 1;
-      echo '<a href="./'.$p.'">'.$p.'</a>';
+      echo '<a href="../'.$p.'">'.$p.'</a>';
     } else {
       echo '<span>...</span>';
     }
@@ -96,7 +96,7 @@ function buildIndicator($total_pages) {
   // Previous Link
   if ($curr_page > 1) {
     $prev_page = $curr_page - 1;
-    echo '<a class="end-link prev-link" href="./'.$prev_page.'">Previous</a>';
+    echo '<a class="end-link prev-link" href="../'.$prev_page.'">Previous</a>';
   }
 
   // Numerical Links
@@ -105,7 +105,7 @@ function buildIndicator($total_pages) {
   // Next Link
   if ($curr_page < $total_pages) {
     $next_page = $curr_page + 1;
-    echo '<a class="end-link next-link" href="./'.$next_page.'">Next</a>';
+    echo '<a class="end-link next-link" href="../'.$next_page.'">Next</a>';
   }
 
   // Indicator Closing HTML
