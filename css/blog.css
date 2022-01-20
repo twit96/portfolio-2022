@@ -141,6 +141,11 @@
     border-radius: 3em;
     padding: 0.5em 1em;
   }
+  .page-links > div a,
+  .page-links > div span.active {
+    margin: 0 0.35em;
+  }
+
   .page-links .end-link {
     width: min(7em, 100%);
     display: block;
@@ -155,9 +160,6 @@
   }
   .page-links .end-link.next-link {
     margin: 0.5em 0 0 0;
-  }
-  .page-links span.active {
-    margin: 0 0.5em;
   }
 }
 
