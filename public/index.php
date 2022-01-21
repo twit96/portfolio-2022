@@ -17,7 +17,7 @@ TOP;
 
 include('../src/View/home/intro.html');
 include('../src/View/home/skills.html');
-include('../src/View/home/projects_featured.php');
+include('../src/View/home/featured_projects.php');
 include('../src/View/home/demo.html');
 
 // Closing HTML
