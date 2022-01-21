@@ -14,7 +14,7 @@ echo <<<SECTION_TOP
     <h1>Admin</h1>
 SECTION_TOP;
 
-include('../src/controller/admin.php');
+include('../src/Controller/admin.php');
 
 echo <<<SECTION_BTM
   </div>
