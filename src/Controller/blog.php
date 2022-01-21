@@ -1,7 +1,7 @@
 <?php
 
-require_once (__DIR__ .'/../helpers/db_connect.php');
-require_once (__DIR__ .'/../classes/BlogPost.php');
+require_once (__DIR__ .'/../config/db_connect.php');
+require_once (__DIR__ .'/../Model/BlogPost.php');
 
 
 function getBlogPosts(

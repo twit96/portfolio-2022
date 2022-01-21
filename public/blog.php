@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", "on");
 
 
-include ('./includes/models/blog.php');
+include ('../src/Controller/blog.php');
 
 
 if (isset($_GET["id"])) {
@@ -32,13 +32,13 @@ function displayOnePost($mysqli) {
 
   DEFINE("FILENAME", 'blog');
   DEFINE("BLOGPOSTNAME", $post->title);
-  include('./includes/templates/head.php');
+  include('../src/View/common/head.php');
   echo <<<HEAD_END
   \n  </head>
     <body>
   HEAD_END;
 
-  include('./includes/templates/header.php');
+  include('../src/View/common/header.php');
 
   // Opening HTML
   echo <<<TOP
@@ -79,7 +79,7 @@ function displayOnePost($mysqli) {
   echo '</article>';
 
   echo '<div id="sidebar">';
-  include ('./includes/templates/toc.html');
+  include ('../src/View/blog/toc.html');
   echo '</div>';
 
   // Closing HTML
@@ -88,7 +88,7 @@ function displayOnePost($mysqli) {
       </main>
   BTM;
 
-  include('./includes/templates/footer.php');
+  include('../src/View/common/footer.php');
 
   echo <<<PAGE_END
     </body>
@@ -99,13 +99,13 @@ function displayOnePost($mysqli) {
 
 function displayTaggedPosts($mysqli) {
   DEFINE("FILENAME", 'blog');
-  include('./includes/templates/head.php');
+  include('../src/View/common/head.php');
   echo <<<HEAD_END
   \n  </head>
     <body>
   HEAD_END;
 
-  include('./includes/templates/header.php');
+  include('../src/View/common/header.php');
 
   // Opening HTML
   $url_tag = str_replace("-", " ", htmlspecialchars($_GET["tag"]));
@@ -186,13 +186,13 @@ function displayTaggedPosts($mysqli) {
   // $total_pages = ceil($total_posts/12);
   // $total_pages = $total_posts;
   // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
-  // include ('./includes/templates/PageIndicator.php');
+  // include ('./src/templates/PageIndicator.php');
 
 
   // Closing HTML
   echo '</main>';
 
-  include('./includes/templates/footer.php');
+  include('../src/View/common/footer.php');
 
   echo <<<PAGE_END
     </body>
@@ -205,13 +205,13 @@ function displayTaggedPosts($mysqli) {
 function displayAllPosts($mysqli) {
 
   DEFINE("FILENAME", 'blog');
-  include('./includes/templates/head.php');
+  include('../src/View/common/head.php');
   echo <<<HEAD_END
   \n  </head>
     <body>
   HEAD_END;
 
-  include('./includes/templates/header.php');
+  include('../src/View/common/header.php');
 
   // Opening HTML
   echo <<<TOP
@@ -292,13 +292,13 @@ function displayAllPosts($mysqli) {
   // $total_pages = ceil($total_posts/12);
   // $total_pages = $total_posts;
   // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
-  // include ('./includes/templates/PageIndicator.php');
+  // include ('./src/templates/PageIndicator.php');
 
 
   // Closing HTML
   echo '</main>';
 
-  include('./includes/templates/footer.php');
+  include('../src/View/common/footer.php');
 
   echo <<<PAGE_END
     </body>

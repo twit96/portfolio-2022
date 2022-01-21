@@ -1,8 +1,8 @@
 <?php
 
 
-require_once (__DIR__ .'/../helpers/db_connect.php');
-require_once (__DIR__ .'/../classes/Project.php');
+require_once (__DIR__ .'/../config/db_connect.php');
+require_once (__DIR__ .'/../Model/Project.php');
 
 
 function getProjects($mysqli, $featured_only=FALSE) {

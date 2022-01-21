@@ -1,7 +1,7 @@
 <?php
 
 
-include(__DIR__ .'/../models/projects.php');
+include(__DIR__ .'/../../Controller/projects.php');
 
 
 $projects = getProjects($mysqli, FALSE);

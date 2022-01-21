@@ -17,7 +17,7 @@
   <body>
     <?php
       DEFINE("FILENAME", 'post');
-      include('./includes/templates/header.php');
+      include('../src/View/common/header.php');
     ?>
 
     <main>
@@ -59,7 +59,7 @@
     </script>
 
     <?php
-      include('./includes/templates/footer.php');
+      include('../src/View/common/footer.php');
     ?>
   </body>
 </html>

@@ -1,14 +1,14 @@
 <?php
 
 DEFINE("FILENAME", 'blog');
-include('../../includes/templates/head.php');
+include('../../../src/View/common/head.php');
 echo '<meta name="robots" content="noindex">';
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('../../includes/templates/header.php');
+include('../../../src/View/common/header.php');
 
 ?>
 
@@ -413,7 +413,7 @@ include('../../includes/templates/header.php');
     </main>
 
     <?php
-			include('../../includes/templates/footer.php');
+			include('../../../src/View/common/footer.php');
 		?>
   </body>
 </html>

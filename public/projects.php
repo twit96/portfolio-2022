@@ -2,13 +2,13 @@
 
 
 DEFINE("FILENAME", 'projects');
-include('./includes/templates/head.php');
+include('../src/View/common/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('./includes/templates/header.php');
+include('../src/View/common/header.php');
 
 
 // Opening HTML
@@ -18,13 +18,13 @@ echo <<<TOP
         <h1>Projects</h1>
 TOP;
 
-include('./includes/views/projects.php');
+include('../src/View/projects/projects.php');
 
 // Closing HTML
 echo "\n".'      </div>';
 echo "\n".'    </main>'."\n\n";
 
-include('./includes/templates/footer.php');
+include('../src/View/common/footer.php');
 
 echo <<<PAGE_END
   </body>
