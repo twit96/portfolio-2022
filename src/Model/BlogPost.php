@@ -157,7 +157,7 @@ class BlogPost {
   private function deleteNestedDirectory($yyyy=null, $mm=null, $dd=null) {
 
     // Format Nested Directory Path
-    $nested_path = __DIR__ ."/../../img/blog/posts";
+    $nested_path = $this->path;
     if (!empty($yyyy)) {
       $nested_path.="/".$yyyy;
 
