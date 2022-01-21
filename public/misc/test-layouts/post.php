@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <script src="/js/main.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/css/articles.css" />
+    <link rel="stylesheet" type="text/css" href="/css/blog.css" />
   </head>
   <body>
 
