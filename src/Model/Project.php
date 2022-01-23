@@ -22,7 +22,7 @@ class Project {
   public $author_id;
 
   function __construct(
-    $mysqli,
+    $db,
     $in_id=null,
     $in_title=null,
     $in_directory=null,
@@ -76,7 +76,7 @@ class Project {
 
       while ($row = $result->fetch_assoc()) {
         $this_link = new Link(
-          $mysqli,
+          $db,
           $row["id"],
           $row["link_text"],
           $row["url"],
@@ -102,7 +102,7 @@ class Project {
     $this->other_links = $other_links_array;
   }
 
-  function create($mysqli, $img_file) {
+  function create($db, $img_file) {
 
     // Configure Server Directory
     $ok = $this->directory->create();   // create directory
@@ -128,21 +128,21 @@ class Project {
     );
 
     // Insert Links into Database
-    $this->primary_link->insertDB($mysqli);
+    $this->primary_link->insertDB($db);
     foreach ($this->other_links as $link) {
-      $link->insertDB($mysqli);
+      $link->insertDB($db);
     }
   }
 
-  function delete($mysqli) {
+  function delete($db) {
     // Delete image and directory from server (directory will remove image)
     $ok = $this->directory->delete();
     if (!$ok) return false;
 
     // Delete links from database
-    $this->primary_link->deleteDB($mysqli);
+    $this->primary_link->deleteDB($db);
     foreach ($this->other_links as $link) {
-      $link->deleteDB($mysqli);
+      $link->deleteDB($db);
     }
 
     // Delete self from database
@@ -153,7 +153,7 @@ class Project {
     );
   }
 
-  function update($mysqli, $new_img_file=null) {
+  function update($db, $new_img_file=null) {
     // grab current details database
     $result = $db->getResults(
       "SELECT * FROM projects WHERE ID = ?",
@@ -163,18 +163,18 @@ class Project {
     $row = $result->fetch_assoc();
 
     // compare self to database
-    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($mysqli, $row["directory"]); }
-    if (!empty($new_img_file)) {                        $this->updateImage($mysqli, $new_img_file); }
+    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($db, $row["directory"]); }
+    if (!empty($new_img_file)) {                        $this->updateImage($db, $new_img_file); }
 
-    if ($row["title"] !== $this->title) {               $this->updateTitleDB($mysqli); }
-    if ($row["blurb"] !== $this->blurb) {               $this->updateBlurbDB($mysqli); }
-    if ($row["description"] !== $this->description) {   $this->updateDescriptionDB($mysqli); }
-    if ($row["date"] !== $this->date) {                 $this->updateDateDB($mysqli); }
-    if ($row["featured"] !== $this->featured) {         $this->updateFeaturedDB($mysqli); }
-    if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($mysqli); }
+    if ($row["title"] !== $this->title) {               $this->updateTitleDB($db); }
+    if ($row["blurb"] !== $this->blurb) {               $this->updateBlurbDB($db); }
+    if ($row["description"] !== $this->description) {   $this->updateDescriptionDB($db); }
+    if ($row["date"] !== $this->date) {                 $this->updateDateDB($db); }
+    if ($row["featured"] !== $this->featured) {         $this->updateFeaturedDB($db); }
+    if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($db); }
   }
 
-  private function updateDirectory($mysqli, $old_name) {
+  private function updateDirectory($db, $old_name) {
     // update server
     $this->directory->rename($old_name, $this->directory->name);
     // update database
@@ -185,7 +185,7 @@ class Project {
     );
   }
 
-  private function updateImage($mysqli, $new_img_file) {
+  private function updateImage($db, $new_img_file) {
     // update server
     $ok = $this->image->upload($new_img_file);
     if (!$ok) return false;
@@ -197,7 +197,7 @@ class Project {
     );
   }
 
-  private function updateTitleDB($mysqli) {
+  private function updateTitleDB($db) {
     $db->getResults(
       "UPDATE projects SET title=? WHERE ID=?",
       "si",
@@ -205,7 +205,7 @@ class Project {
     );
   }
 
-  private function updateBlurbDB($mysqli) {
+  private function updateBlurbDB($db) {
     $db->getResults(
       "UPDATE projects SET blurb=? WHERE ID=?",
       "si",
@@ -213,7 +213,7 @@ class Project {
     );
   }
 
-  private function updateDescriptionDB($mysqli) {
+  private function updateDescriptionDB($db) {
     $db->getResults(
       "UPDATE projects SET description=? WHERE ID=?",
       "si",
@@ -221,7 +221,7 @@ class Project {
     );
   }
 
-  private function updateDateDB($mysqli) {
+  private function updateDateDB($db) {
     $db->getResults(
       "UPDATE projects SET date=? WHERE ID=?",
       "si",
@@ -229,7 +229,7 @@ class Project {
     );
   }
 
-  private function updateFeaturedDB($mysqli) {
+  private function updateFeaturedDB($db) {
     $db->getResults(
       "UPDATE projects SET featured=? WHERE ID=?",
       "ii",
@@ -237,7 +237,7 @@ class Project {
     );
   }
 
-  private function updateAuthorDB($mysqli) {
+  private function updateAuthorDB($db) {
     $db->getResults(
       "UPDATE projects SET author_id=? WHERE ID=?",
       "ii",

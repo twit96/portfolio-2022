@@ -5,7 +5,7 @@ require_once (__DIR__ .'/../../config/db_connect.php');
 require_once (__DIR__ .'/../Model/Project.php');
 
 
-function getProjects($mysqli, $featured_only=FALSE) {
+function getProjects($db, $featured_only=FALSE) {
   if ($featured_only == TRUE) {
     $result = $db->getResults(
       "SELECT * FROM projects WHERE featured>0 ORDER BY featured, date DESC"
@@ -19,7 +19,7 @@ function getProjects($mysqli, $featured_only=FALSE) {
   $project_array = array();
   while ($row = $result->fetch_assoc()) {
     $this_project = new Project(
-      $mysqli,
+      $db,
       $row["ID"],
       $row["title"],
       $row["directory"],

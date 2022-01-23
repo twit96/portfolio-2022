@@ -52,7 +52,7 @@ function doUnsetLoginPost() {
 * Function to handle the login functionality from the given username/password.
 * No return value.
 */
-function checkLogin($mysqli, $username, $password) {
+function checkLogin($db, $username, $password) {
 
   if (!$username == '' && !$password == '') {
 
@@ -66,7 +66,7 @@ function checkLogin($mysqli, $username, $password) {
 
     // actions
     if ($valid_login) {
-      buildDashboard($mysqli);
+      buildDashboard($db);
     } else {
       echo '<script>alert("Login Failed. Please Try Again.");</script>';
       doLogin();
@@ -80,7 +80,7 @@ function checkLogin($mysqli, $username, $password) {
 }
 
 
-function buildEditProjectsSection($mysqli) {
+function buildEditProjectsSection($db) {
   echo <<<EDIT_PROJECTS_TOP
     <section id="edit-projects" class="card">
       <h2>Edit Projects</h2>
@@ -88,7 +88,7 @@ function buildEditProjectsSection($mysqli) {
 
   $max_id = 0;  // to set new project's input ID
 
-  $projects = getProjects($mysqli, FALSE, null);
+  $projects = getProjects($db, FALSE, null);
   foreach ($projects as $project) {
     if ($project->id > $max_id) { $max_id = $project->id; }   // update max_id
     echo <<<PROJECT_TOP
@@ -260,7 +260,7 @@ function buildEditProjectsSection($mysqli) {
 }
 
 
-function buildEditPostsSection($mysqli) {
+function buildEditPostsSection($db) {
   echo <<<EDIT_POSTS_TOP
     <section id="edit-posts" class="card">
       <h2>Edit Posts</h2>
@@ -268,7 +268,7 @@ function buildEditPostsSection($mysqli) {
 
   $max_id = 0;  // to set new project's input ID
 
-  $blog_posts = getBlogPosts($mysqli, null, null, true);
+  $blog_posts = getBlogPosts($db, null, null, true);
   foreach ($blog_posts as $blog_post) {
     if ($blog_post->id > $max_id) { $max_id = $blog_post->id; }   // update max_id
     echo <<<POSTS_TOP
@@ -379,15 +379,15 @@ function buildEditPostsSection($mysqli) {
 }
 
 
-function buildDashboard($mysqli) {
+function buildDashboard($db) {
 
   echo <<<LEFTTOP
   <div class="flex">
     <div class="left">
   LEFTTOP;
 
-  buildEditProjectsSection($mysqli);
-  buildEditPostsSection($mysqli);
+  buildEditProjectsSection($db);
+  buildEditPostsSection($db);
   echo '<script src="/js/admin.js"></script>';
 
   echo <<<LOGOUT
@@ -526,7 +526,7 @@ function directPost() {
   if ($data_type == "project") {
     // Create Project Object
     $post_project = new Project(
-      $mysqli,
+      $db,
       $_POST["id"],
       $_POST["title"],
       $_POST["directory"],
@@ -541,7 +541,7 @@ function directPost() {
     if ($usr_action == "Add") {
       // add link object to project object
       $post_link = new Link(
-        $mysqli,
+        $db,
         null,
         $_POST["link_text"],
         $_POST["link_url"],
@@ -550,11 +550,11 @@ function directPost() {
       );
       $post_project->primary_link = $post_link;
       // add project
-      $post_project->create($mysqli, $_FILES["image"]);
+      $post_project->create($db, $_FILES["image"]);
     } else if ($usr_action == "Update") {
-      $post_project->update($mysqli, $_FILES["image"]);
+      $post_project->update($db, $_FILES["image"]);
     } else if ($usr_action == "Delete") {
-      $post_project->delete($mysqli);
+      $post_project->delete($db);
     }
     // Unset POST Variables
     doUnsetProjectPost();
@@ -565,7 +565,7 @@ function directPost() {
   } else if ($data_type == "link") {
     // Create Link Object
     $post_link = new Link(
-      $mysqli,
+      $db,
       null,
       $_POST["link_text"],
       $_POST["link_url"],
@@ -574,13 +574,13 @@ function directPost() {
     );
     // Handle Link Actions
     if ($usr_action == "Add") {
-      $post_link->insertDB($mysqli);
+      $post_link->insertDB($db);
     } else if ($usr_action == "Update") {
       $post_link->id = $_POST["link_id"];
-      $post_link->updateDB($mysqli);
+      $post_link->updateDB($db);
     } else if ($usr_action == "Delete") {
       $post_link->id = $_POST["link_id"];
-      $post_link->deleteDB($mysqli);
+      $post_link->deleteDB($db);
     } else {
       echo '<script>alert("Error: POST action not set to Add, Update, or Delete. No Change Made!")</script>';
     }
@@ -593,7 +593,7 @@ function directPost() {
     (!empty($_POST["date_updated"])) ? $date_updated = $_POST["date_updated"] : $date_updated = null;
     // Create Project Object
     $blog_post = new BlogPost(
-      $mysqli,
+      $db,
       $_POST["id"],
       $_POST["directory"],
       null,
@@ -605,11 +605,11 @@ function directPost() {
     );
     // Handle Article Actions
     if ($usr_action == "Add") {
-      $blog_post->create($mysqli, $_FILES["image"]);
+      $blog_post->create($db, $_FILES["image"]);
     } else if ($usr_action == "Update") {
-      $blog_post->update($mysqli, $_FILES["image"]);
+      $blog_post->update($db, $_FILES["image"]);
     } else if ($usr_action == "Delete") {
-      $blog_post->delete($mysqli);
+      $blog_post->delete($db);
     }
     // Unset POST Variables
     doUnsetArticlePost();
@@ -620,16 +620,16 @@ function directPost() {
     (!empty($_POST["id"])) ? $tag_id = $_POST["id"] : $tag_id = null;
     // Create Tag Object
     $post_tag = new Tag(
-      $mysqli,
+      $db,
       $tag_id,
       $_POST["name"],
       $_POST["blog_post_id"]
     );
     // Handle Tag Actions
     if ($usr_action == "Add") {
-      $post_tag->link($mysqli);
+      $post_tag->link($db);
     } else if ($usr_action == "Delete") {
-      $post_tag->unlink($mysqli);
+      $post_tag->unlink($db);
     } else {
       echo '<script>alert("Error: POST action not set to Add, Update, or Delete. No Change Made!")</script>';
     }
@@ -646,7 +646,7 @@ function directPost() {
   }
 
   // display updated table data after changes are made
-  buildDashboard($mysqli);
+  buildDashboard($db);
 }
 
 
@@ -675,7 +675,7 @@ function doEngine() {
     $password = $_POST['password'];
     doUnsetLoginPost();
     // Check Login
-    checkLogin($mysqli, $username, $password);
+    checkLogin($db, $username, $password);
 
   // user has not logged in yet
   } else {

@@ -9,7 +9,7 @@ class Link {
   public $is_primary;
 
   function __construct(
-    $mysqli,
+    $db,
     $in_id=null,
     $in_text=null,
     $in_url=null,
@@ -23,7 +23,7 @@ class Link {
     if (isset($in_is_primary)) {  $this->is_primary = $in_is_primary; }
   }
 
-  function insertDB($mysqli) {
+  function insertDB($db) {
     $db->getResults(
       "INSERT INTO project_links (link_text, url, project_id, is_primary_link) VALUES (?, ?, ?, ?)",
       "ssii",
@@ -31,7 +31,7 @@ class Link {
     );
   }
 
-  function deleteDB($mysqli) {
+  function deleteDB($db) {
     $db->getResults(
       "DELETE FROM project_links WHERE id = ?",
       "i",
@@ -39,7 +39,7 @@ class Link {
     );
   }
 
-  function updateDB($mysqli) {
+  function updateDB($db) {
     $result = $db->getResults(
       "SELECT * FROM project_links WHERE id = ?",
       "i",
@@ -47,11 +47,11 @@ class Link {
     );
     $row = $result->fetch_assoc();
 
-    if ($row["link_text"] !== $this->text) { $this->updateTextDB($mysqli); }
-    if ($row["url"] !== $this->url) { $this->updateUrlDB($mysqli); }
+    if ($row["link_text"] !== $this->text) { $this->updateTextDB($db); }
+    if ($row["url"] !== $this->url) { $this->updateUrlDB($db); }
   }
 
-  private function updateTextDB($mysqli) {
+  private function updateTextDB($db) {
     $db->getResults(
       "UPDATE project_links SET link_text=? WHERE id=?",
       "si",
@@ -59,7 +59,7 @@ class Link {
     );
   }
 
-  private function updateUrlDB($mysqli) {
+  private function updateUrlDB($db) {
     $db->getResults(
       "UPDATE project_links SET url=? WHERE id=?",
       "si",

@@ -10,7 +10,7 @@ ini_set("display_errors", "on");
 include(__DIR__ .'/../../Controller/projects.php');
 
 
-$projects = getProjects($mysqli, FALSE);
+$projects = getProjects($db, FALSE);
 foreach ($projects as $project) {
 
   // config primary link
