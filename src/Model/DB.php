@@ -28,7 +28,7 @@ class DB {
         die($err_msg);
       }
       // Select Database
-      $this->mysqli->select_db($db_name) or die($this->mysqli->error);
+      $this->mysqli->select_db($in_db_name) or die($this->mysqli->error);
 
     }
   }
