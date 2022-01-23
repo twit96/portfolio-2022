@@ -30,8 +30,6 @@ class DB {
       // Select Database
       $this->mysqli->select_db($db_name) or die($this->mysqli->error);
 
-    } else {
-      echo 'Parameter Empty';
     }
   }
 
