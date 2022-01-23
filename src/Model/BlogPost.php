@@ -56,7 +56,7 @@ class BlogPost {
     if (!empty($in_image)) {
       $img_name = $in_image;
     } else if (!empty($in_id)) {
-      $result = $db->getResults(
+      $result = global $db->getResults(
         "SELECT image FROM blog_posts WHERE id=?",
         "i",
         array($in_id)
@@ -76,7 +76,7 @@ class BlogPost {
     // author
     if (!empty($in_author_id)) {
       $this->author_id = $in_author_id;
-      $result = $db->getResults(
+      $result = global $db->getResults(
         "SELECT first_name, last_name, profile_img_name FROM people WHERE id=?",
         "i",
         array($in_author_id)
@@ -94,7 +94,7 @@ class BlogPost {
     // tags
     $tag_array = array();
     if (!empty($in_id)) {
-      $result = $db->getResults(
+      $result = global $db->getResults(
         "SELECT tags.* FROM blog_post_tags LEFT JOIN (tags) ON (blog_post_tags.tag_id = tags.id) WHERE blog_post_tags.blog_post_id=?",
         "i",
         array($in_id)
@@ -122,7 +122,7 @@ class BlogPost {
     if (!$ok) return false;
 
     // Insert Self into Database
-    $db->getResults(
+    global $db->getResults(
       "INSERT INTO blog_posts VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)",
       "issssiss",
       array(
@@ -182,7 +182,7 @@ class BlogPost {
     $dd = $date_split[2];
 
     // day directory
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=? AND MONTH(date_posted)=? AND DAYOFMONTH(date_posted)=?",
       "sss",
       array($yyyy, $mm, $dd)
@@ -192,7 +192,7 @@ class BlogPost {
     }
 
     // month directory
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=? AND MONTH(date_posted)=?",
       "ss",
       array($yyyy, $mm)
@@ -202,7 +202,7 @@ class BlogPost {
     }
 
     // year directory
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT COUNT(*) FROM blog_posts WHERE YEAR(date_posted)=?",
       "s",
       array($yyyy)
@@ -228,7 +228,7 @@ class BlogPost {
     }
 
     // Delete self from database
-    $db->getResults(
+    global $db->getResults(
       "DELETE FROM blog_posts WHERE id = ?",
       "i",
       array($this->id)
@@ -238,7 +238,7 @@ class BlogPost {
 
   function update($new_img_file=null) {
     // grab current details database
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT * FROM blog_posts WHERE id=?",
       "i",
       array($this->id)
@@ -264,7 +264,7 @@ class BlogPost {
     // update server
     $this->directory->rename($old_name, $this->directory->name);
     // update database
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET directory=? WHERE id=?",
       "si",
       array($this->directory->name, $this->id)
@@ -276,7 +276,7 @@ class BlogPost {
     $ok = $this->image->upload($new_img_file);
     if (!$ok) return false;
     // update database
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET image=? WHERE id=?",
       "si",
       array($this->image->name, $this->id)
@@ -285,7 +285,7 @@ class BlogPost {
   }
 
   private function updateTitleDB() {
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET title=? WHERE id=?",
       "si",
       array($this->title, $this->id)
@@ -294,7 +294,7 @@ class BlogPost {
   }
 
   private function updatePostDB() {
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET post=? WHERE id=?",
       "si",
       array($this->post, $this->id)
@@ -303,7 +303,7 @@ class BlogPost {
   }
 
   private function updateAuthorDB() {
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET author_id=? WHERE id=?",
       "ii",
       array($this->author_id, $this->id)
@@ -311,7 +311,7 @@ class BlogPost {
   }
 
   private function updateDatePostedDB() {
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET date_posted=? WHERE id=?",
       "si",
       array($this->date_posted, $this->id)
@@ -319,7 +319,7 @@ class BlogPost {
   }
 
   private function updateDateUpdatedDB() {
-    $db->getResults(
+    global $db->getResults(
       "UPDATE blog_posts SET date_updated=? WHERE id=?",
       "si",
       array($this->date_updated, $this->id)

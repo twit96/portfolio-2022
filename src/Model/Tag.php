@@ -18,7 +18,7 @@ class Tag {
 
     if (!empty($in_post_id) && !empty($in_id)) {
       // check $in_post_id and $in_id are linked in blog_post_tags table
-      $result = $db->getResults(
+      $result = global $db->getResults(
         "SELECT COUNT(*) FROM blog_post_tags WHERE blog_post_id=? AND tag_id=?",
         "ii",
         array($in_post_id, $in_id)
@@ -30,7 +30,7 @@ class Tag {
 
   private function unlinkAllPosts() {
     // unlink from ALL posts in the database
-    $db->getResults(
+    global $db->getResults(
       "DELETE FROM blog_post_tags WHERE tag_id=?",
       "i",
       array($this->id)
@@ -41,7 +41,7 @@ class Tag {
     // unlink self from all posts
     $this->unlinkAllPosts();
     // delete self from tags table
-    $db->getResults(
+    global $db->getResults(
       "DELETE FROM tags WHERE id=?",
       "i",
       array($this->id)
@@ -51,7 +51,7 @@ class Tag {
 
   private function numPostsUseTag() {
     // check how many posts use the tag
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT COUNT(*) FROM blog_post_tags WHERE tag_id=?",
       "i",
       array($this->id)
@@ -69,7 +69,7 @@ class Tag {
     // Unlink
     } else {
       // unlink from $this->post_id Blog Post
-      $db->getResults(
+      global $db->getResults(
         "DELETE FROM blog_post_tags WHERE blog_post_id=? AND tag_id=?",
         "ii",
         array($this->post_id, $this->id)
@@ -85,7 +85,7 @@ class Tag {
 
   private function existsInDB() {
     // check how many posts use the tag
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT COUNT(*) FROM tags WHERE name=?",
       "s",
       array($this->name)
@@ -95,7 +95,7 @@ class Tag {
 
   private function createTag() {
     // insert self into tags table
-    $db->getResults(
+    global $db->getResults(
       "INSERT INTO tags (name) VALUES (?)",
       "s",
       array($this->name)
@@ -103,7 +103,7 @@ class Tag {
   }
 
   private function getId() {
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT id FROM tags WHERE name=?",
       "s",
       array($this->name)
@@ -126,7 +126,7 @@ class Tag {
       if (!($this->existsInDB())) $this->createTag();
       $this->getId();
       // link to $this->post_id Blog Post
-      $db->getResults(
+      global $db->getResults(
         "INSERT INTO blog_post_tags VALUES(?,?)",
         "ii",
         array($this->post_id, $this->id)

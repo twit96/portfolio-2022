@@ -12,7 +12,7 @@ function getBlogPosts(
 
   // Search By id
   if (!empty($in_id)) {
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT * FROM blog_posts WHERE id=? AND published=1",
       "i",
       array($in_id)
@@ -20,7 +20,7 @@ function getBlogPosts(
 
   // Search By Tag (order by newest first)
   } else if (!empty($in_tag_name)) {
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT p.* FROM blog_posts AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? AND p.published=1 ORDER BY date_posted DESC",
       "s",
       array($in_tag_name)
@@ -28,13 +28,13 @@ function getBlogPosts(
 
   // Select All
   } else if (!empty($in_include_unpublished)) {
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT * FROM blog_posts ORDER BY date_posted DESC"
     );
 
   // Select All (Published Only)
   } else {
-    $result = $db->getResults(
+    $result = global $db->getResults(
       "SELECT * FROM blog_posts WHERE published=1 ORDER BY date_posted DESC"
     );
   }
@@ -59,7 +59,7 @@ function getBlogPosts(
 
 
 function getNumBlogPosts() {
-  $result = $db->getResults(
+  $result = global $db->getResults(
     "SELECT COUNT(*) FROM blog_posts WHERE published=1",
     null,
     null
