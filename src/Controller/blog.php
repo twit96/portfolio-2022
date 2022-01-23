@@ -5,7 +5,6 @@ require_once (__DIR__ .'/../Model/BlogPost.php');
 
 
 function getBlogPosts(
-  $db,
   $in_id=null,
   $in_tag_name=null,
   $in_include_unpublished=null
@@ -43,7 +42,6 @@ function getBlogPosts(
   $post_array = array();
   while ($row = $result->fetch_assoc()) {
     $this_post = new BlogPost(
-      $db,
       $row["id"],
       $row["directory"],
       $row["image"],
@@ -60,7 +58,7 @@ function getBlogPosts(
 }
 
 
-function getNumBlogPosts($db) {
+function getNumBlogPosts() {
   $result = $db->getResults(
     "SELECT COUNT(*) FROM blog_posts WHERE published=1",
     null,

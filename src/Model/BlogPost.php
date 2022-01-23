@@ -22,7 +22,6 @@ class BlogPost {
   public $date_updated;
 
   function __construct(
-    $db,
     $in_id=null,
     $in_directory=null,
     $in_image=null,
@@ -103,7 +102,6 @@ class BlogPost {
 
       while ($row = $result->fetch_assoc()) {
         $this_tag = new Tag(
-          $db,
           $row["id"],
           $row["name"],
           $in_id
@@ -115,7 +113,7 @@ class BlogPost {
   }
 
 
-  function create($db, $img_file) {
+  function create($img_file) {
 
     // Configure Server Directory
     $ok = $this->directory->create();   // create directory
@@ -141,7 +139,7 @@ class BlogPost {
 
     // Link Tags to Post in Database
     foreach ($this->tags as $tag) {
-      $tag->link($db);
+      $tag->link();
     }
 
   }
@@ -176,7 +174,7 @@ class BlogPost {
   * Checks if any other blog posts exist in the dd, mm, or yyyy directories.
   * If none do, removes those empty directories, else, leaves them in place.
   */
-  private function checkNestedDirectories($db) {
+  private function checkNestedDirectories() {
     // check if directories are in use
     $date_split = explode("-", $this->date_posted);
     $yyyy = $date_split[0];
@@ -217,16 +215,16 @@ class BlogPost {
     return true;
   }
 
-  function delete($db) {
+  function delete() {
     // Delete image, directory, and nested directories from server (directory will remove image)
     $ok = $this->directory->delete();
     if (!$ok) return false;
-    $ok = $this->checkNestedDirectories($db);
+    $ok = $this->checkNestedDirectories();
     if (!$ok) return false;
 
     // Unlink Tags from Post in Database
     foreach ($this->tags as $tag) {
-      $tag->unlink($db);
+      $tag->unlink();
     }
 
     // Delete self from database
@@ -238,7 +236,7 @@ class BlogPost {
   }
 
 
-  function update($db, $new_img_file=null) {
+  function update($new_img_file=null) {
     // grab current details database
     $result = $db->getResults(
       "SELECT * FROM blog_posts WHERE id=?",
@@ -248,21 +246,21 @@ class BlogPost {
     $row = $result->fetch_assoc();
 
     // compare self to database
-    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($db, $row["directory"]); }
-    if (!empty($new_img_file)) {                        $this->updateImage($db, $new_img_file); }
+    if ($row["directory"] !== $this->directory->name) { $this->updateDirectory($row["directory"]); }
+    if (!empty($new_img_file)) {                        $this->updateImage($new_img_file); }
 
-    if ($row["title"] !== $this->title) {               $this->updateTitleDB($db); }
-    if ($row["post"] !== $this->post) {                 $this->updatePostDB($db); }
-    if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB($db); }
-    if ($row["date_posted"] !== $this->date_posted) {   $this->updateDatePostedDB($db); }
+    if ($row["title"] !== $this->title) {               $this->updateTitleDB(); }
+    if ($row["post"] !== $this->post) {                 $this->updatePostDB(); }
+    if ($row["author_id"] !== $this->author_id) {       $this->updateAuthorDB(); }
+    if ($row["date_posted"] !== $this->date_posted) {   $this->updateDatePostedDB(); }
 
     if (
       (!empty($this->date_updated)) &&
       ($row["date_updated"] !== $this->date_updated)
-      ) { $this->updateDateUpdatedDB($db); }
+      ) { $this->updateDateUpdatedDB(); }
   }
 
-  private function updateDirectory($db, $old_name) {
+  private function updateDirectory($old_name) {
     // update server
     $this->directory->rename($old_name, $this->directory->name);
     // update database
@@ -273,7 +271,7 @@ class BlogPost {
     );
   }
 
-  private function updateImage($db, $new_img_file) {
+  private function updateImage($new_img_file) {
     // update server
     $ok = $this->image->upload($new_img_file);
     if (!$ok) return false;
@@ -286,7 +284,7 @@ class BlogPost {
     $this->date_updated = date("Y-m-d");
   }
 
-  private function updateTitleDB($db) {
+  private function updateTitleDB() {
     $db->getResults(
       "UPDATE blog_posts SET title=? WHERE id=?",
       "si",
@@ -295,7 +293,7 @@ class BlogPost {
     $this->date_updated = date("Y-m-d");
   }
 
-  private function updatePostDB($db) {
+  private function updatePostDB() {
     $db->getResults(
       "UPDATE blog_posts SET post=? WHERE id=?",
       "si",
@@ -304,7 +302,7 @@ class BlogPost {
     $this->date_updated = date("Y-m-d");
   }
 
-  private function updateAuthorDB($db) {
+  private function updateAuthorDB() {
     $db->getResults(
       "UPDATE blog_posts SET author_id=? WHERE id=?",
       "ii",
@@ -312,7 +310,7 @@ class BlogPost {
     );
   }
 
-  private function updateDatePostedDB($db) {
+  private function updateDatePostedDB() {
     $db->getResults(
       "UPDATE blog_posts SET date_posted=? WHERE id=?",
       "si",
@@ -320,7 +318,7 @@ class BlogPost {
     );
   }
 
-  private function updateDateUpdatedDB($db) {
+  private function updateDateUpdatedDB() {
     $db->getResults(
       "UPDATE blog_posts SET date_updated=? WHERE id=?",
       "si",
