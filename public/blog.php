@@ -11,17 +11,17 @@ include ('../src/Controller/blog.php');
 
 
 if (isset($_GET["id"])) {
-  displayOnePost();
+  displayOnePost($db);
 } else if (isset($_GET["tag"])) {
-  displayTaggedPosts();
+  displayTaggedPosts($db);
 } else {
-  displayAllPosts();
+  displayAllPosts($db);
 }
 
 
-function displayOnePost() {
+function displayOnePost($db) {
   $id = htmlspecialchars($_GET["id"]);
-  $post = getBlogPosts($id, null, null);
+  $post = getBlogPosts($db, $id, null, null);
   if (count($post) > 0) {
     $post = $post[0];
   } else {
@@ -97,7 +97,7 @@ function displayOnePost() {
 }
 
 
-function displayTaggedPosts() {
+function displayTaggedPosts($db) {
   DEFINE("FILENAME", 'blog');
   include('../src/View/common/head.php');
   echo <<<HEAD_END
@@ -117,7 +117,7 @@ function displayTaggedPosts() {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts(null, $url_tag, null);
+  $blog_posts = getBlogPosts($db, null, $url_tag, null);
   foreach ($blog_posts as $post) {
     $this_link = '/blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
@@ -182,7 +182,7 @@ function displayTaggedPosts() {
 
 
   // Page Indicator Section
-  // $total_posts = getNumBlogPosts();
+  // $total_posts = getNumBlogPosts($db);
   // $total_pages = ceil($total_posts/12);
   // $total_pages = $total_posts;
   // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
@@ -202,7 +202,7 @@ function displayTaggedPosts() {
 }
 
 
-function displayAllPosts() {
+function displayAllPosts($db) {
 
   DEFINE("FILENAME", 'blog');
   include('../src/View/common/head.php');
@@ -222,7 +222,7 @@ function displayAllPosts() {
         <div class="wrapper grid">
   TOP;
 
-  $blog_posts = getBlogPosts(null, null, null);
+  $blog_posts = getBlogPosts($db, null, null, null);
   foreach ($blog_posts as $post) {
     $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
@@ -288,7 +288,7 @@ function displayAllPosts() {
 
 
   // Page Indicator Section
-  // $total_posts = getNumBlogPosts();
+  // $total_posts = getNumBlogPosts($db);
   // $total_pages = ceil($total_posts/12);
   // $total_pages = $total_posts;
   // echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
