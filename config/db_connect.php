@@ -1,33 +1,15 @@
 <?php
 
 
-$server = "localhost";
-$user   = "portfolio_user";
-$pwd    = "portfolio_user_pass";
-$dbName = "Portfolio";
+$server   = "localhost";
+$user     = "portfolio_user";
+$password = "portfolio_user_pass";
+$db_name  = "Portfolio";
 
-// Connect to MySQLi Server
-$mysqli = new mysqli ($server, $user, $pwd, $dbName);
-if ($mysqli->connect_errno) {
-  die('Connect Error: ' . $mysqli->connect_errno . ": " . $mysqli->connect_error);
-}
-// Select Database
-$mysqli->select_db($dbName) or die($mysqli->error);
-
-
-/**
-* Reused code in all prepared statements.
-* $mysqli is a database object, $query is a string, $types is a string, and
-* $params is an array.
-*/
-function getResults($mysqli, $query, $types=null, $params=null) {
-  $stmt = $mysqli->prepare($query);
-  if ($types) { $stmt->bind_param($types, ...$params); }
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $stmt->close();
-  return $result;
-}
+// Build Database Connection Object
+require_once('../src/Model/DB.php');
+$db = new DB($server, $user, $password, $db_name);
+unset($server, $user, $password, $db_name);
 
 
 ?>

@@ -57,8 +57,7 @@ function checkLogin($mysqli, $username, $password) {
   if (!$username == '' && !$password == '') {
 
     // check db for valid login
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT COUNT(1) FROM people WHERE username=? AND password=? AND (role='admin' OR role='author')",
       "ss",
       array($username, $password)

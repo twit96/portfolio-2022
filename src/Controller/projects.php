@@ -7,13 +7,11 @@ require_once (__DIR__ .'/../Model/Project.php');
 
 function getProjects($mysqli, $featured_only=FALSE) {
   if ($featured_only == TRUE) {
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT * FROM projects WHERE featured>0 ORDER BY featured, date DESC"
     );
   } else {
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT * FROM projects ORDER BY date DESC"
     );
   }

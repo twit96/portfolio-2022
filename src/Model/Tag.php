@@ -19,8 +19,7 @@ class Tag {
 
     if (!empty($in_post_id) && !empty($in_id)) {
       // check $in_post_id and $in_id are linked in blog_post_tags table
-      $result = getResults(
-        $mysqli,
+      $result = $db->getResults(
         "SELECT COUNT(*) FROM blog_post_tags WHERE blog_post_id=? AND tag_id=?",
         "ii",
         array($in_post_id, $in_id)
@@ -32,8 +31,7 @@ class Tag {
 
   private function unlinkAllPosts($mysqli) {
     // unlink from ALL posts in the database
-    getResults(
-      $mysqli,
+    $db->getResults(
       "DELETE FROM blog_post_tags WHERE tag_id=?",
       "i",
       array($this->id)
@@ -44,8 +42,7 @@ class Tag {
     // unlink self from all posts
     $this->unlinkAllPosts($mysqli);
     // delete self from tags table
-    getResults(
-      $mysqli,
+    $db->getResults(
       "DELETE FROM tags WHERE id=?",
       "i",
       array($this->id)
@@ -55,8 +52,7 @@ class Tag {
 
   private function numPostsUseTag($mysqli) {
     // check how many posts use the tag
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT COUNT(*) FROM blog_post_tags WHERE tag_id=?",
       "i",
       array($this->id)
@@ -74,8 +70,7 @@ class Tag {
     // Unlink
     } else {
       // unlink from $this->post_id Blog Post
-      getResults(
-        $mysqli,
+      $db->getResults(
         "DELETE FROM blog_post_tags WHERE blog_post_id=? AND tag_id=?",
         "ii",
         array($this->post_id, $this->id)
@@ -91,8 +86,7 @@ class Tag {
 
   private function existsInDB($mysqli) {
     // check how many posts use the tag
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT COUNT(*) FROM tags WHERE name=?",
       "s",
       array($this->name)
@@ -102,8 +96,7 @@ class Tag {
 
   private function createTag($mysqli) {
     // insert self into tags table
-    getResults(
-      $mysqli,
+    $db->getResults(
       "INSERT INTO tags (name) VALUES (?)",
       "s",
       array($this->name)
@@ -111,8 +104,7 @@ class Tag {
   }
 
   private function getId($mysqli) {
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT id FROM tags WHERE name=?",
       "s",
       array($this->name)
@@ -135,8 +127,7 @@ class Tag {
       if (!($this->existsInDB($mysqli))) $this->createTag($mysqli);
       $this->getId($mysqli);
       // link to $this->post_id Blog Post
-      getResults(
-        $mysqli,
+      $db->getResults(
         "INSERT INTO blog_post_tags VALUES(?,?)",
         "ii",
         array($this->post_id, $this->id)

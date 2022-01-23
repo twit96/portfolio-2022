@@ -24,8 +24,7 @@ class Link {
   }
 
   function insertDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "INSERT INTO project_links (link_text, url, project_id, is_primary_link) VALUES (?, ?, ?, ?)",
       "ssii",
       array($this->text, $this->url, $this->project_id, $this->is_primary)
@@ -33,8 +32,7 @@ class Link {
   }
 
   function deleteDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "DELETE FROM project_links WHERE id = ?",
       "i",
       array($this->id)
@@ -42,8 +40,7 @@ class Link {
   }
 
   function updateDB($mysqli) {
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT * FROM project_links WHERE id = ?",
       "i",
       array($this->id)
@@ -55,8 +52,7 @@ class Link {
   }
 
   private function updateTextDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE project_links SET link_text=? WHERE id=?",
       "si",
       array($this->text, $this->id)
@@ -64,8 +60,7 @@ class Link {
   }
 
   private function updateUrlDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE project_links SET url=? WHERE id=?",
       "si",
       array($this->url, $this->id)

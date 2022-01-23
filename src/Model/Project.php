@@ -47,8 +47,7 @@ class Project {
     if (!empty($in_image)) {
       $img_name = $in_image;
     } else if (!empty($in_id)) {
-      $result = getResults(
-        $mysqli,
+      $result = $db->getResults(
         "SELECT image FROM projects WHERE ID=?",
         "i",
         array($in_id)
@@ -69,8 +68,7 @@ class Project {
     $primary_link_object = null;
     $other_links_array = array();
     if (!empty($in_id)) {
-      $result = getResults(
-        $mysqli,
+      $result = $db->getResults(
         "SELECT * FROM project_links WHERE project_id=?",
         "i",
         array($in_id)
@@ -113,8 +111,7 @@ class Project {
     if (!$ok) return false;
 
     // Insert Self into Database
-    getResults(
-      $mysqli,
+    $db->getResults(
       "INSERT INTO projects VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       "issssssii",
       array(
@@ -149,8 +146,7 @@ class Project {
     }
 
     // Delete self from database
-    getResults(
-      $mysqli,
+    $db->getResults(
       "DELETE FROM projects WHERE ID = ?",
       "i",
       array($this->id)
@@ -159,8 +155,7 @@ class Project {
 
   function update($mysqli, $new_img_file=null) {
     // grab current details database
-    $result = getResults(
-      $mysqli,
+    $result = $db->getResults(
       "SELECT * FROM projects WHERE ID = ?",
       "i",
       array($this->id)
@@ -183,8 +178,7 @@ class Project {
     // update server
     $this->directory->rename($old_name, $this->directory->name);
     // update database
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET directory=? WHERE ID=?",
       "si",
       array($this->directory->name, $this->id)
@@ -196,8 +190,7 @@ class Project {
     $ok = $this->image->upload($new_img_file);
     if (!$ok) return false;
     // update database
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET image=? WHERE ID=?",
       "si",
       array($this->image->name, $this->id)
@@ -205,8 +198,7 @@ class Project {
   }
 
   private function updateTitleDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET title=? WHERE ID=?",
       "si",
       array($this->title, $this->id)
@@ -214,8 +206,7 @@ class Project {
   }
 
   private function updateBlurbDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET blurb=? WHERE ID=?",
       "si",
       array($this->blurb, $this->id)
@@ -223,8 +214,7 @@ class Project {
   }
 
   private function updateDescriptionDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET description=? WHERE ID=?",
       "si",
       array($this->description, $this->id)
@@ -232,8 +222,7 @@ class Project {
   }
 
   private function updateDateDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET date=? WHERE ID=?",
       "si",
       array($this->date, $this->id)
@@ -241,8 +230,7 @@ class Project {
   }
 
   private function updateFeaturedDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET featured=? WHERE ID=?",
       "ii",
       array($this->featured, $this->id)
@@ -250,8 +238,7 @@ class Project {
   }
 
   private function updateAuthorDB($mysqli) {
-    getResults(
-      $mysqli,
+    $db->getResults(
       "UPDATE projects SET author_id=? WHERE ID=?",
       "ii",
       array($this->author_id, $this->id)
