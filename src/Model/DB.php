@@ -5,22 +5,22 @@ class DB {
   protected $mysqli;
 
   function __construct(
-    $in_server=null,
-    $in_user=null,
+    $in_host=null,
+    $in_username=null,
     $in_password=null,
     $in_db_name=null
   ) {
 
     if (
-      !empty($in_server) &&
-      !empty($in_user) &&
+      !empty($in_host) &&
+      !empty($in_username) &&
       !empty($in_password) &&
       !empty($in_db_name)
     ) {
 
       // Connect to MySQLi Server
       $this->mysqli = new mysqli(
-        $in_server, $in_user, $in_password, $in_db_name
+        $in_host, $in_username, $in_password, $in_db_name
       );
       if ($this->mysqli->connect_errno) {
         $err_msg = 'Connect Error: '.$this->mysqli->connect_errno .": ";
