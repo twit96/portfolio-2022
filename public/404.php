@@ -17,7 +17,7 @@
   <body>
     <?php
       DEFINE("FILENAME", 'post');
-      include('../src/View/common/header.php');
+      require_once (__DIR__ .'/../src/View/common/header.php');
     ?>
 
     <main>
@@ -59,7 +59,7 @@
     </script>
 
     <?php
-      include('../src/View/common/footer.php');
+      require_once (__DIR__ .'/../src/View/common/footer.php');
     ?>
   </body>
 </html>
