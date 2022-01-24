@@ -45,6 +45,10 @@ class DB {
     $stmt->close();
     return $result;
   }
+
+  function close() {
+    return $this->connection->close();
+  }
 }
 
 
