@@ -12,6 +12,11 @@ var dark_toggle = document.getElementById("dark-toggle-wrap");
 var rand_span;  // placed in body
 var clone;      // placed in #loader and #header-bg
 
+// random properties
+var rand_size;
+var rand_rotation;
+var rand_anim_duration;
+var rand_anim_delay;
 
 function shuffle(array) {
   let curr_idx = array.length;
@@ -25,19 +30,10 @@ function shuffle(array) {
   }
   return array;
 }
-// leaves use shuffled arrays of predefined values (prevents harsh overlaps)
+// leaves x and y use shuffled arrays of predefined values (prevents harsh overlaps)
 var rand_x = shuffle([0,10,20,30,40,50,60,70,80,90]);
 var rand_y = shuffle([0,10,20,30,40,50,60,70,80,90]);
 // (orbs x and y are completely random though)
-
-
-// random properties
-var rand_x;
-var rand_y;
-var rand_size;
-var rand_rotation;
-var rand_anim_duration;
-var rand_anim_delay;
 
 // random leaves
 for (i=0; i<10; i++) {
