@@ -5,6 +5,8 @@ include(__DIR__ .'/../../Controller/projects.php');
 
 
 $projects = getProjects($db, FALSE);
+$db->close();
+
 foreach ($projects as $project) {
 
   // config primary link
