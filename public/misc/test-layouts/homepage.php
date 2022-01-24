@@ -7,13 +7,13 @@
 		<meta name="description" content="Full-Stack Web Developer in South Texas, specializing in custom websites, website redesigns, and game development." />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/img/icon.png" />
-		<link rel="stylesheet" type="text/css" href="/public/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="/public/css/home.css" />
+		<link rel="stylesheet" type="text/css" href="/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="/css/home.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-		<script src="/public/js/main.js" defer></script>
-		<script src="/public/js/home.js" defer></script>
+		<script src="/js/main.js" defer></script>
+		<script src="/js/home.js" defer></script>
 		<meta name="robots" content="noindex">
 	</head>
 
@@ -29,7 +29,7 @@
 				<article id="intro">
 					<div id="logo-container">
 						<div id="main-logo-wrap">
-							<img id="main-logo" src="/public/img/icon.png" alt="site logo" />
+							<img id="main-logo" src="/img/icon.png" alt="site logo" />
 							<span class="main-logo-overlay"></span>
 						</div>
 					</div>
@@ -51,13 +51,13 @@
 		        <h2>Web Developer</h2>
 						<div class="links">
 							<a href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
-								<img src="/public/img/logo_email.png" alt="twitter logo" />
+								<img src="/img/logo_email.png" alt="twitter logo" />
 							</a>
 							<a href="https://github.com/twit96" target="_blank" rel="noreferrer">
-								<img src="/public/img/logo_github.png" alt="github logo" />
+								<img src="/img/logo_github.png" alt="github logo" />
 							</a>
 							<a href="https://www.linkedin.com/in/tylerwittig/" target="_blank" rel="noreferrer">
-								<img src="/public/img/logo_linkedin.png" alt="linkedin logo" />
+								<img src="/img/logo_linkedin.png" alt="linkedin logo" />
 							</a>
 						</div>  <!-- ./links -->
 		      </div>  <!-- ./details -->
@@ -170,7 +170,7 @@
 								<div class="featured-badge">
 			            <span>#1</span>
 			          </div>
-								<img src="/public/img/projects/minesweeper/title-card.png" />
+								<img src="/img/projects/minesweeper/title-card.png" />
 								<em>this is a blurb about it</em>
 								<div class="info">
 									<div class="btn-text date">
@@ -187,7 +187,7 @@
 								<div class="featured-badge">
 			            <span>#2</span>
 			          </div>
-								<img src="/public/img/projects/bulko-redesign/title-card.png" />
+								<img src="/img/projects/bulko-redesign/title-card.png" />
 								<em>this is a blurb about it</em>
 								<div class="info">
 									<div class="btn-text date">
@@ -204,7 +204,7 @@
 								<div class="featured-badge">
 			            <span>#3</span>
 			          </div>
-								<img src="/public/img/projects/wittiggrass/title-card.png" />
+								<img src="/img/projects/wittiggrass/title-card.png" />
 								<em>this is a blurb about it</em>
 								<div class="info">
 									<div class="btn-text date">
@@ -221,7 +221,7 @@
 								<div class="featured-badge">
 			            <span>#4</span>
 			          </div>
-								<img src="/public/img/projects/indie-quest/title-card.png" />
+								<img src="/img/projects/indie-quest/title-card.png" />
 								<em>this is a blurb about it</em>
 								<div class="info">
 									<div class="btn-text date">
@@ -238,7 +238,7 @@
 								<div class="featured-badge">
 			            <span>#5</span>
 			          </div>
-								<img src="/public/img/projects/connect-four/title-card.png" />
+								<img src="/img/projects/connect-four/title-card.png" />
 								<em>this is a blurb about it</em>
 								<div class="info">
 									<div class="btn-text date">
@@ -252,7 +252,7 @@
 								</div>
 							</div>
 
-							<a class="card link" href="/public/img/projects/">
+							<a class="card link" href="/img/projects/">
 				        <span>View All <br />Projects</span>
 				      </a>
 						</div>  <!-- ./card-container -->
@@ -316,7 +316,7 @@
 		<footer>
 			<div class="wrapper">
         <div class="info">
-          <img class="logo" src="/public/img/profile.jpg" alt="Profile Image"/>
+          <img class="logo" src="/img/profile.jpg" alt="Profile Image"/>
           <span><em>Tyler Wittig</em> | Web Developer</span>
         </div>
         <div class="links">
@@ -328,13 +328,13 @@
           <div class="socials">
             <div>
               <a class="social-icon" href="mailto:tylerwittig@utexas.edu?subject=Web%20Developer%20Information" target="_blank" rel="noreferrer">
-                <img src="/public/img/logo_email.png" alt="twitter logo" />
+                <img src="/img/logo_email.png" alt="twitter logo" />
               </a>
               <a class="social-icon" href="https://github.com/twit96" target="_blank" rel="noreferrer">
-                <img src="/public/img/logo_github.png" alt="github logo" />
+                <img src="/img/logo_github.png" alt="github logo" />
               </a>
               <a class="social-icon" href="https://www.linkedin.com/in/tylerwittig/" target="_blank" rel="noreferrer">
-                <img src="/public/img/logo_linkedin.png" alt="linkedin logo" />
+                <img src="/img/logo_linkedin.png" alt="linkedin logo" />
               </a>
             </div>
             <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
