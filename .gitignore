@@ -1,6 +1,6 @@
 
-IndieQuest/
-web-programming/
-img/projects/*
-img/people/*
-img/blog/posts/*
+public/IndieQuest/
+public/web-programming/
+public/img/projects/*
+public/img/people/*
+public/img/blog/posts/*
