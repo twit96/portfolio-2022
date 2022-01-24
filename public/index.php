@@ -1,13 +1,13 @@
 <?php
 
 DEFINE("FILENAME", 'home');
-include('../src/View/common/head.php');
+require_once (__DIR__ .'/../src/View/common/head.php');
 echo <<<HEAD_END
 \n  </head>
   <body>
 HEAD_END;
 
-include('../src/View/common/header.php');
+require_once (__DIR__ .'/../src/View/common/header.php');
 
 // Opening HTML
 echo <<<TOP
@@ -15,16 +15,16 @@ echo <<<TOP
       <div class="wrapper">
 TOP;
 
-include('../src/View/home/intro.html');
-include('../src/View/home/skills.html');
-include('../src/View/home/featured_projects.php');
-include('../src/View/home/demo.html');
+include (__DIR__ .'/../src/View/home/intro.html');
+include (__DIR__ .'/../src/View/home/skills.html');
+include (__DIR__ .'/../src/View/home/featured_projects.php');
+include (__DIR__ .'/../src/View/home/demo.html');
 
 // Closing HTML
 echo "\n".'      </div>';
 echo "\n".'    </main>'."\n\n";
 
-include('../src/View/common/footer.php');
+require_once (__DIR__ .'/../src/View/common/footer.php');
 
 echo <<<PAGE_END
   </body>
