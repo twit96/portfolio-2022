@@ -2,7 +2,7 @@
 
 
 class DB {
-  protected $mysqli;
+  protected $connection;  // mysqli object
 
   function __construct(
     $in_host=null,
@@ -19,16 +19,16 @@ class DB {
     ) {
 
       // Connect to MySQLi Server
-      $this->mysqli = new mysqli(
+      $this->connection = new mysqli(
         $in_host, $in_username, $in_password, $in_db_name
       );
-      if ($this->mysqli->connect_errno) {
-        $err_msg = 'Connect Error: '.$this->mysqli->connect_errno .": ";
-        $err_msg .= $this->mysqli->connect_error;
+      if ($this->connection->connect_errno) {
+        $err_msg = 'Connect Error: '.$this->connection->connect_errno .": ";
+        $err_msg .= $this->connection->connect_error;
         die($err_msg);
       }
       // Select Database
-      $this->mysqli->select_db($in_db_name) or die($this->mysqli->error);
+      $this->connection->select_db($in_db_name) or die($this->connection->error);
 
     }
   }
@@ -38,7 +38,7 @@ class DB {
   * $query is a string, $types is a string, and $params is an array.
   */
   function getResults($query, $types=null, $params=null) {
-    $stmt = $this->mysqli->prepare($query);
+    $stmt = $this->connection->prepare($query);
     if ($types) { $stmt->bind_param($types, ...$params); }
     $stmt->execute();
     $result = $stmt->get_result();
