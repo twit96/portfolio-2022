@@ -1,7 +1,7 @@
 <?php
 
 
-include(__DIR__ .'/../../Controller/projects.php');
+require_once (__DIR__ .'/../../Controller/projects.php');
 
 
 $projects = getProjects($db, FALSE);
