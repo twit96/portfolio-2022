@@ -22,6 +22,8 @@ if (isset($_GET["id"])) {
 function displayOnePost($db) {
   $id = htmlspecialchars($_GET["id"]);
   $post = getBlogPosts($db, $id, null, null);
+  $db->close();
+
   if (count($post) > 0) {
     $post = $post[0];
   } else {
@@ -118,6 +120,8 @@ function displayTaggedPosts($db) {
   TOP;
 
   $blog_posts = getBlogPosts($db, null, $url_tag, null);
+  $db->close();
+
   foreach ($blog_posts as $post) {
     $this_link = '/blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
@@ -223,6 +227,8 @@ function displayAllPosts($db) {
   TOP;
 
   $blog_posts = getBlogPosts($db, null, null, null);
+  $db->close();
+  
   foreach ($blog_posts as $post) {
     $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
