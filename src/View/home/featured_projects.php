@@ -15,6 +15,8 @@ include (__DIR__ .'/../../Controller/projects.php');
 
 
 $featured_projects = getProjects($db, TRUE);
+$db->close();
+
 foreach ($featured_projects as $project) {
 
   // config primary link
