@@ -4,7 +4,7 @@
 class PageIndicator {
   protected $total_pages;
   protected $curr_page;
-  protected $posts_per_page = 12;
+  protected $posts_per_page = 1;
   protected $link_prefix;
   protected $html;
   protected $built = false;
@@ -45,12 +45,10 @@ class PageIndicator {
 
   private function generateLinkPrefix() {
     $url = $_SERVER['REQUEST_URI'];
-    echo $url.'<br />';
     $pieces = explode("/", $url);
 
     // remove empty values
     $pieces = array_diff($pieces, [""]);
-    echo var_dump($pieces).'<br />';
 
     // get last value
     $last = end($pieces);
@@ -59,10 +57,8 @@ class PageIndicator {
     if (is_numeric($last)) {
       $last = (int) $last;
       $this->link_prefix = '../';
-      echo 'Is Numeric'.'<br />';
     } else {
       $this->link_prefix = $last.'/';
-      echo 'Not Numeric'.'<br />';
     }
   }
 
