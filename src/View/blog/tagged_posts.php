@@ -85,8 +85,8 @@ echo '</div>  <!-- ./wrapper grid -->';
 
 
 // Page Indicator Section
-require_once (__DIR__ .'/../common/PageIndicator.php');
-new PageIndicator($db);
+// require_once (__DIR__ .'/../common/PageIndicator.php');
+// new PageIndicator($db);
 $db->close();
 
 // Closing HTML
