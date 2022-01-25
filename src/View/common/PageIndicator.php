@@ -16,31 +16,11 @@ class PageIndicator {
     );
     // Display Indicator if Multiple Pages
     if ($this->total_pages > 1) {
-      // Get Current Page
-      $this->curr_page = $this->getPage();
-      // Generate Link Prefix
+      // Get Current Page and Set Link Prefix
       $this->generateLinkPrefix();
       // Build and Display Indicator
       $this->display();
     }
-  }
-
-  protected function getPage() {
-    $p = 1;  // page initialized as 1
-
-    // Check URL "page" Paramater
-    if (isset($_GET["page"])) {                    // is set
-      $url_num = htmlspecialchars($_GET["page"]);  // initial sanitize
-      if (
-        (is_numeric($url_num)) &&                  // is number
-        ($url_num >= 1) &&                         // is at least 1
-        ($url_num <= $this->total_pages)           // is not beyond last page
-      ) {
-        $p = (int) $url_num;                       // SUCCESS - cast num to int
-      } else { $p = 1; }                           // FAILURE - set page to 1
-    }
-
-    return $p;
   }
 
   private function generateLinkPrefix() {
@@ -53,11 +33,17 @@ class PageIndicator {
     // get last value
     $last = end($pieces);
 
-    // set link prefix
+    // set page number and link prefix
     if (is_numeric($last)) {
       $last = (int) $last;
+      if (($last >= 1) && ($last <= $this->total_pages)) {
+        $this->curr_page = $last;
+      } else {
+        $this->curr_page = $total_pages;
+      }
       $this->link_prefix = '../';
     } else {
+      $this->curr_page = 1;
       $this->link_prefix = '';
     }
   }
