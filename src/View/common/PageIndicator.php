@@ -36,10 +36,12 @@ class PageIndicator {
     // set page number and link prefix
     if (is_numeric($last)) {
       $last = (int) $last;
-      if (($last >= 1) && ($last <= $this->total_pages)) {
-        $this->curr_page = $last;
-      } else {
+      if ($last < 1) {
+        $this->curr_page = 1;
+      } else if ($last > $this->total_pages) {
         $this->curr_page = $this->total_pages;
+      } else {
+        $this->curr_page = $last;
       }
       $this->link_prefix = '../';
     } else {
