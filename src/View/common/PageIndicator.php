@@ -14,7 +14,6 @@ class PageIndicator {
     $this->total_pages = ceil(
       getNumBlogPosts($db) / $this->posts_per_page
     );
-    $this->total_pages = 15;
     // Get Current Page
     $this->curr_page = $this->getPage();
     // Generate Link Prefix
