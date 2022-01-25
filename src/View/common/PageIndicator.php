@@ -39,7 +39,7 @@ class PageIndicator {
       if (($last >= 1) && ($last <= $this->total_pages)) {
         $this->curr_page = $last;
       } else {
-        $this->curr_page = $total_pages;
+        $this->curr_page = $this->total_pages;
       }
       $this->link_prefix = '../';
     } else {
