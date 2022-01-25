@@ -21,8 +21,6 @@ echo <<<TOP
 TOP;
 
 $blog_posts = getBlogPosts($db, null, $url_tag, null);
-$db->close();
-
 foreach ($blog_posts as $post) {
   $this_link = '/blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
@@ -87,12 +85,9 @@ echo '</div>  <!-- ./wrapper grid -->';
 
 
 // Page Indicator Section
-// $total_posts = getNumBlogPosts($db);
-// $total_pages = ceil($total_posts/12);
-// $total_pages = $total_posts;
-// echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
-// require_once (__DIR__ .'/common/PageIndicator.php');
-
+require_once (__DIR__ .'/../common/PageIndicator.php');
+new PageIndicator($db);
+$db->close();
 
 // Closing HTML
 echo '</main>';
