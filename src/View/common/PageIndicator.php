@@ -12,7 +12,7 @@ class PageIndicator {
   function __construct($db) {
     // Get Total Pages
     $this->total_pages = ceil(
-      getNumBlogPosts($db) / $posts_per_page
+      getNumBlogPosts($db) / $this->posts_per_page
     );
     $this->total_pages = 15;
     // Get Current Page
