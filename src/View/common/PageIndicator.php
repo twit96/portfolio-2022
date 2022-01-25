@@ -14,12 +14,15 @@ class PageIndicator {
     $this->total_pages = ceil(
       getNumBlogPosts($db) / $this->posts_per_page
     );
-    // Get Current Page
-    $this->curr_page = $this->getPage();
-    // Generate Link Prefix
-    $this->generateLinkPrefix();
-    // Build and Display Indicator
-    $this->display();
+    // Display Indicator if Multiple Pages
+    if ($this->total_pages > 1) {
+      // Get Current Page
+      $this->curr_page = $this->getPage();
+      // Generate Link Prefix
+      $this->generateLinkPrefix();
+      // Build and Display Indicator
+      $this->display();
+    }
   }
 
   protected function getPage() {
