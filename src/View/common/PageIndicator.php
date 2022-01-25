@@ -58,7 +58,7 @@ class PageIndicator {
       $last = (int) $last;
       $this->link_prefix = '../';
     } else {
-      $this->link_prefix = $last.'/';
+      $this->link_prefix = '';
     }
   }
 
