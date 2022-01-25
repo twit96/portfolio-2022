@@ -4,7 +4,7 @@
 class PageIndicator {
   protected $total_pages;
   protected $curr_page;
-  protected $posts_per_page = 12;
+  protected $posts_per_page = 1;
   protected $link_prefix;
   protected $html;
   protected $built = false;
