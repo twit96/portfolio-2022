@@ -9,7 +9,6 @@ ini_set("display_errors", "on");
 
 require_once (__DIR__ .'/../src/Controller/blog.php');
 
-echo $_GET['page'];
 
 if (isset($_GET["id"])) {
   require_once (__DIR__ .'/../src/View/blog/single_post.php');
