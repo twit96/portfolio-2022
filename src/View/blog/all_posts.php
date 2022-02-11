@@ -19,7 +19,7 @@ echo <<<TOP
       <div class="wrapper grid">
 TOP;
 
-$url = configURL();
+$url = configURL($db);
 $blog_posts = getBlogPosts($db, null, null, null, $url->page_num);
 $db->close();
 
