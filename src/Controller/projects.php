@@ -30,7 +30,7 @@ function getProjects(
     // }
 
     $result = $db->getResults(
-      "SELECT * FROM projects ORDER BY date DESC".$limit
+      "SELECT * FROM projects ORDER BY date DESC"
     );
   }
 
