@@ -24,10 +24,10 @@ require_once (__DIR__ .'/../src/View/projects/projects.php');
 echo "\n".'      </div>';
 
 // Page Indicator
-// new PageIndicator(
-//   $url->page_num,
-//   $url->total_pages
-// );
+new PageIndicator(
+  $url->page_num,
+  $url->total_pages
+);
 
 // Closing HTML
 echo "\n".'    </main>'."\n\n";
