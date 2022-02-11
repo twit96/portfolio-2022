@@ -33,7 +33,7 @@ echo <<<FOOTER
             </a>
           </div>  <!-- ./socials -->
         </div>  <!-- ./links -->
-        <span>&copy; 2021 Tyler Wittig</span>
+        <span>&copy; 2022 Tyler Wittig</span>
       </div>
     </footer>\n\n
 FOOTER;
