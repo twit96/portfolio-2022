@@ -17,6 +17,7 @@ article {
   border-radius: 10px;
   z-index: 1;
 }
+article:last-of-type { margin-bottom: 0; }
 article > div {
   padding: var(--main-spacing);
 }
