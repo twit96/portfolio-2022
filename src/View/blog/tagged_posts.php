@@ -20,7 +20,9 @@ echo <<<TOP
       <div class="wrapper grid">
 TOP;
 
-$blog_posts = getBlogPosts($db, null, $url_tag, null);
+$blog_posts = getBlogPosts($db, null, $url_tag, null, $url->page_num);
+$db->close();
+
 foreach ($blog_posts as $post) {
   $this_link = '/blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
@@ -84,10 +86,12 @@ foreach ($blog_posts as $post) {
 echo '</div>  <!-- ./wrapper grid -->';
 
 
-// Page Indicator Section
-// require_once (__DIR__ .'/../common/PageIndicator.php');
-// new PageIndicator($db);
-$db->close();
+// Page Indicator
+new PageIndicator(
+  "blog",
+  $url->page_num,
+  $url->total_pages
+);
 
 // Closing HTML
 echo '</main>';
