@@ -24,6 +24,7 @@ require_once (__DIR__ .'/../src/View/projects/projects.php');
 echo "\n".'      </div>';
 
 // Page Indicator
+echo '<script>console.log("URL PAGE NUM: '.$url->page_num.'URL TOTAL PAGES: '.$url->total_pages.'");</script>';
 new PageIndicator(
   $url->page_num,
   $url->total_pages
