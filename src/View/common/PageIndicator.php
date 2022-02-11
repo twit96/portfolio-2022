@@ -10,9 +10,11 @@ class PageIndicator {
   function __construct(
     $in_curr_page=1,
     $in_total_pages=1
+    $in_link_prefix=null
   ) {
     $this->curr_page = $in_curr_page;
     $this->total_pages = $in_total_pages;
+    $this->link_prefix = $in_link_prefix;
 
     // Display Indicator if Multiple Pages
     if ($this->total_pages > 1) {
@@ -25,7 +27,7 @@ class PageIndicator {
     if ($page == $this->curr_page) {
       $this->html .= '<span class="active">'.$page.'</span>';
     } else {
-      $this->html .= '<a href="../'.$page.'/">'.$page.'</a>';
+      $this->html .= '<a href="'.$this->link_prefix.$page.'/">'.$page.'</a>';
     }
   }
 
@@ -109,7 +111,7 @@ class PageIndicator {
     if ($this->curr_page < $this->total_pages) {
       $next_page = $this->curr_page + 1;
       $this->html .= <<<NEXT_LINK
-        <a class="end-link next-link" href="../{$next_page}/">Next</a>
+        <a class="end-link next-link" href="{$this->link_prefix}{$next_page}/">Next</a>
       NEXT_LINK;
     }
 

@@ -87,7 +87,11 @@ echo '</div>  <!-- ./wrapper grid -->';
 
 
 // Page Indicator
-new PageIndicator($url->curr_page, $url->total_pages);
+new PageIndicator(
+  $url->curr_page,
+  $url->total_pages,
+  $url->curr_page_link_prefix
+);
 
 
 // Closing HTML
