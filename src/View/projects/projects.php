@@ -5,7 +5,7 @@ require_once (__DIR__ .'/../../Controller/projects.php');
 $url = configURL($db);
 
 
-$projects = getProjects($db, FALSE);
+$projects = getProjects($db, FALSE, $url->page_num);
 $db->close();
 
 foreach ($projects as $project) {
