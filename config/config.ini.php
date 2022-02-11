@@ -10,4 +10,4 @@ db_password = portfolio_user_pass
 db_name     = Portfolio
 
 [blog_config]
-posts_per_page = 12
+posts_per_page = 1
