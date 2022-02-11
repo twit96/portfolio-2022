@@ -9,7 +9,7 @@ class PageIndicator {
 
   function __construct(
     $in_curr_page=1,
-    $in_total_pages=1
+    $in_total_pages=1,
     $in_link_prefix=null
   ) {
     $this->curr_page = $in_curr_page;
