@@ -30,6 +30,8 @@ class PageIndicator {
   }
 
   private function generateNumLinks() {
+    $this->html .= "<div>";
+
     if ($this->total_pages <= 7) {
       // all page links will fit on indicator
       for ($p=1; $p<=$this->total_pages; $p++) {
@@ -78,6 +80,8 @@ class PageIndicator {
       // Slot 7
       $this->generateNumLink($this->total_pages);
     }
+
+    $this->html .= "</div>";
   }
 
   protected function build() {
