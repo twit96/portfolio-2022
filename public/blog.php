@@ -14,10 +14,10 @@ $url = configURL($db);
 if (isset($_GET["id"])) {
   require_once (__DIR__ .'/../src/View/blog/single_post.php');
 } else if (isset($_GET["tag"])) {
-  require_once (__DIR__ .'/common/PageIndicator.php');
+  require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
   require_once (__DIR__ .'/../src/View/blog/tagged_posts.php');
 } else {
-  require_once (__DIR__ .'/common/PageIndicator.php');
+  require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
   require_once (__DIR__ .'/../src/View/blog/all_posts.php');
 }
 
