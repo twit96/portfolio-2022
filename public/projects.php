@@ -18,6 +18,7 @@ echo <<<TOP
         <h1>Projects</h1>
 TOP;
 
+require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
 require_once (__DIR__ .'/../src/View/projects/projects.php');
 
 // Close Projects Section Wrapper
