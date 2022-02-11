@@ -19,7 +19,6 @@ echo <<<TOP
       <div class="wrapper grid">
 TOP;
 
-$url = configURL($db);
 $blog_posts = getBlogPosts($db, null, null, null, $url->page_num);
 $db->close();
 
@@ -87,12 +86,8 @@ foreach ($blog_posts as $post) {
 echo '</div>  <!-- ./wrapper grid -->';
 
 
-// Page Indicator Section
-// $total_posts = getNumBlogPosts($db);
-// $total_pages = ceil($total_posts/12);
-// $total_pages = $total_posts;
-// echo '<script>alert("$total_pages: '.$total_pages.'");</script>';
-// require_once (__DIR__ .'/common/PageIndicator.php');
+// Page Indicator
+new PageIndicator($url->curr_page, $url->total_pages);
 
 
 // Closing HTML
