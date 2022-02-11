@@ -2,7 +2,7 @@
 
   // Configure Head Tag Info
 
-  // $file declared above include for this file on each page
+  // FILENAME declared above include for this file on each page
   // homepage
   if (FILENAME == 'home') {
     $page_name = 'Tyler Wittig | Web Developer';
