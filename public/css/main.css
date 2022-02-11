@@ -438,7 +438,7 @@ a.active { text-decoration: underline; }
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  margin: var(--main-spacing) auto;
+  margin: var(--main-spacing) auto 0 auto;
   padding: 0.5em 1em;
   text-align: center;
   background: var(--green-600);
