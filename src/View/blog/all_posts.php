@@ -90,8 +90,7 @@ echo '</div>  <!-- ./wrapper grid -->';
 new PageIndicator(
   "blog",
   $url->page_num,
-  $url->total_pages,
-  $url->page_link_prefix
+  $url->total_pages
 );
 
 

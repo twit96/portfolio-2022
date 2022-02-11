@@ -11,13 +11,11 @@ class PageIndicator {
   function __construct(
     $in_page_name=null,
     $in_page_num=1,
-    $in_total_pages=1,
-    $in_link_prefix=null
+    $in_total_pages=1
   ) {
     $this->page_name = $in_page_name;
     $this->page_num = $in_page_num;
     $this->total_pages = $in_total_pages;
-    $this->link_prefix = $in_link_prefix;
 
     // Display Indicator if Multiple Pages
     if ($this->total_pages > 1) {
@@ -30,7 +28,7 @@ class PageIndicator {
     if ($page == $this->page_num) {
       $this->html .= '<span class="active">'.$page.'</span>';
     } else {
-      $this->html .= '<a href="'.$this->page_name.$this->link_prefix.$page.'/">'.$page.'</a>';
+      $this->html .= '<a href="?page='.$page.'">'.$page.'</a>';
     }
   }
 
