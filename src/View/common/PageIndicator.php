@@ -101,7 +101,7 @@ class PageIndicator {
     if ($this->page_num > 1) {
       $prev_page = $this->page_num - 1;
       $this->html .= <<<PREV_LINK
-        <a class="end-link prev-link" href="../{$prev_page}/">Previous</a>
+        <a class="end-link prev-link" href="?page={$prev_page}">Previous</a>
       PREV_LINK;
     }
 
@@ -112,7 +112,7 @@ class PageIndicator {
     if ($this->page_num < $this->total_pages) {
       $next_page = $this->page_num + 1;
       $this->html .= <<<NEXT_LINK
-        <a class="end-link next-link" href="{$this->link_prefix}{$next_page}/">Next</a>
+        <a class="end-link next-link" href="?page={$next_page}">Next</a>
       NEXT_LINK;
     }
 
