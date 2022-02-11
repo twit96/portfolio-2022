@@ -99,7 +99,7 @@ function configURL($db) {
 
   $url = new URL(
     $posts_per_page,
-    $total_pages,
+    $total_pages
   );
   return $url;
 }

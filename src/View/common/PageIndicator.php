@@ -3,16 +3,18 @@
 
 class PageIndicator {
   protected $total_pages;
-  protected $curr_page;
+  protected $page_name;
+  protected $page_num;
   protected $html;
   protected $built = false;
 
   function __construct(
-    $in_curr_page=1,
+    $in_page_name=null,
+    $in_page_num=1,
     $in_total_pages=1,
     $in_link_prefix=null
   ) {
-    $this->curr_page = $in_curr_page;
+    $this->page_num = $in_page_num;
     $this->total_pages = $in_total_pages;
     $this->link_prefix = $in_link_prefix;
 
@@ -24,7 +26,7 @@ class PageIndicator {
 
 
   private function generateNumLink($page) {
-    if ($page == $this->curr_page) {
+    if ($page == $this->page_num) {
       $this->html .= '<span class="active">'.$page.'</span>';
     } else {
       $this->html .= '<a href="'.$this->link_prefix.$page.'/">'.$page.'</a>';
@@ -47,32 +49,32 @@ class PageIndicator {
       $this->generateNumLink(1);
 
       // Slot 2
-      if ($this->curr_page <= 4) {
+      if ($this->page_num <= 4) {
         $this->generateNumLink(2);
       } else {
         $this->html .= '<span>...</span>';
       }
 
       // Slots 3, 4, and 5
-      if ($this->curr_page <= 4) {
-        // curr_page at beginning
+      if ($this->page_num <= 4) {
+        // page_num at beginning
         for ($p=3; $p<=5; $p++) {
           $this->generateNumLink($p);
         }
-      } else if ($this->total_pages - $this->curr_page < 4) {
-        // curr_page at end
+      } else if ($this->total_pages - $this->page_num < 4) {
+        // page_num at end
         for ($p=$this->total_pages-4; $p<=$this->total_pages-2; $p++) {
           $this->generateNumLink($p);
         }
       } else {
-        // curr_page in middle
-        for ($p=$this->curr_page-1; $p<=$this->curr_page+1; $p++) {
+        // page_num in middle
+        for ($p=$this->page_num-1; $p<=$this->page_num+1; $p++) {
           $this->generateNumLink($p);
         }
       }
 
       // Slot 6
-      if ($this->total_pages - $this->curr_page < 4) {
+      if ($this->total_pages - $this->page_num < 4) {
         $p = $this->total_pages - 1;
         $this->generateNumLink($p);
       } else {
@@ -97,8 +99,8 @@ class PageIndicator {
     ELEM_TOP;
 
     // Previous Link
-    if ($this->curr_page > 1) {
-      $prev_page = $this->curr_page - 1;
+    if ($this->page_num > 1) {
+      $prev_page = $this->page_num - 1;
       $this->html .= <<<PREV_LINK
         <a class="end-link prev-link" href="../{$prev_page}/">Previous</a>
       PREV_LINK;
@@ -108,8 +110,8 @@ class PageIndicator {
     $this->generateNumLinks();
 
     // Next Link
-    if ($this->curr_page < $this->total_pages) {
-      $next_page = $this->curr_page + 1;
+    if ($this->page_num < $this->total_pages) {
+      $next_page = $this->page_num + 1;
       $this->html .= <<<NEXT_LINK
         <a class="end-link next-link" href="{$this->link_prefix}{$next_page}/">Next</a>
       NEXT_LINK;

@@ -19,7 +19,7 @@ echo <<<TOP
       <div class="wrapper grid">
 TOP;
 
-$blog_posts = getBlogPosts($db, null, null, null, $url->curr_page);
+$blog_posts = getBlogPosts($db, null, null, null, $url->page_num);
 $db->close();
 
 foreach ($blog_posts as $post) {
@@ -88,9 +88,10 @@ echo '</div>  <!-- ./wrapper grid -->';
 
 // Page Indicator
 new PageIndicator(
-  $url->curr_page,
+  "blog",
+  $url->page_num,
   $url->total_pages,
-  $url->curr_page_link_prefix
+  $url->page_link_prefix
 );
 
 

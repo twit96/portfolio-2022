@@ -5,8 +5,8 @@ class URL {
   public $url_string;
   public $posts_per_page;
   public $total_pages;
-  public $curr_page;
-  public $curr_page_link_prefix;  // used on relative links from current page
+  public $page_num;
+  public $page_link_prefix;  // used on relative links from current page
 
   function __construct(
     $in_posts_per_page=1,
@@ -25,16 +25,16 @@ class URL {
     if (is_numeric($last)) {
       $last = (int) $last;
       if ($last < 1) {
-        $this->curr_page = 1;
+        $this->page_num = 1;
       } else if ($last > $this->total_pages) {
-        $this->curr_page = $this->total_pages;
+        $this->page_num = $this->total_pages;
       } else {
-        $this->curr_page = $last;
+        $this->page_num = $last;
       }
-      $this->curr_page_link_prefix = '../';
+      $this->page_link_prefix = '../';
     } else {
-      $this->curr_page = 1;
-      $this->curr_page_link_prefix = './';
+      $this->page_num = 1;
+      $this->page_link_prefix = '/';
     }
 
   }
