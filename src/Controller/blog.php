@@ -21,7 +21,7 @@ function getBlogPosts(
     (is_int($in_page_num)) &&
     ($in_page_num > 0)
   ) {
-    $ini = parse_ini_file(__DIR__ .'/../../config.ini.php', true)['blog_config'];
+    $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['blog_config'];
     $posts_per_page = $ini["posts_per_page"];
     $ini = null; unset($ini);
     $num_skipped = ($in_page_num - 1) * $posts_per_page;
