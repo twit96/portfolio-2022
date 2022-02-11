@@ -34,7 +34,7 @@ class URL {
       $this->curr_page_link_prefix = '../';
     } else {
       $this->curr_page = 1;
-      $this->curr_page_link_prefix = '';
+      $this->curr_page_link_prefix = './';
     }
 
   }
