@@ -20,8 +20,16 @@ TOP;
 
 require_once (__DIR__ .'/../src/View/projects/projects.php');
 
-// Closing HTML
+// Close Projects Section Wrapper
 echo "\n".'      </div>';
+
+// Page Indicator
+new PageIndicator(
+  $url->page_num,
+  $url->total_pages
+);
+
+// Closing HTML
 echo "\n".'    </main>'."\n\n";
 
 require_once (__DIR__ .'/../src/View/common/footer.php');

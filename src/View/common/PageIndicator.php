@@ -3,17 +3,14 @@
 
 class PageIndicator {
   protected $total_pages;
-  protected $page_name;
   protected $page_num;
   protected $html;
   protected $built = false;
 
   function __construct(
-    $in_page_name=null,
     $in_page_num=1,
     $in_total_pages=1
   ) {
-    $this->page_name = $in_page_name;
     $this->page_num = $in_page_num;
     $this->total_pages = $in_total_pages;
 

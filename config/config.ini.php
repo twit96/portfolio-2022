@@ -11,3 +11,6 @@ db_name     = Portfolio
 
 [blog_config]
 posts_per_page = 1
+
+[projects_config]
+posts_per_page = 10

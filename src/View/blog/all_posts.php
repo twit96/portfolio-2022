@@ -88,7 +88,6 @@ echo '</div>  <!-- ./wrapper grid -->';
 
 // Page Indicator
 new PageIndicator(
-  "blog",
   $url->page_num,
   $url->total_pages
 );
