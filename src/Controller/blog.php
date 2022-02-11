@@ -91,7 +91,6 @@ function getNumBlogPosts($db) {
 function configURL($db) {
   $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['blog_config'];
   $posts_per_page = $ini["posts_per_page"]
-  $ini = null; unset($ini);
 
   $total_pages = ceil(
     getNumBlogPosts($db) / $posts_per_page
