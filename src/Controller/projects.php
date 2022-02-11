@@ -66,15 +66,15 @@ function getNumProjects($db) {
 
 function configURL($db) {
   $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['projects_config'];
-  $posts_per_page = $ini["posts_per_page"];
+  $projects_per_page = $ini["projects_per_page"];
   $ini = null; unset($ini);
 
   $total_pages = ceil(
-    getNumProjects($db) / $posts_per_page
+    getNumProjects($db) / $projects_per_page
   );
 
   $url = new URL(
-    $posts_per_page,
+    $projects_per_page,
     $total_pages
   );
   return $url;
