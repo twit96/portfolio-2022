@@ -19,7 +19,8 @@ echo <<<TOP
       <div class="wrapper grid">
 TOP;
 
-$blog_posts = getBlogPosts($db, null, null, null);
+$url = configURL();
+$blog_posts = getBlogPosts($db, null, null, null, $url->page_num);
 $db->close();
 
 foreach ($blog_posts as $post) {

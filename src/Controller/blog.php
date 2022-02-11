@@ -1,6 +1,7 @@
 <?php
 
 require_once (__DIR__ .'/../../config/db_connect.php');
+require_once (__DIR__ .'/../Controller/URL.php');
 require_once (__DIR__ .'/../Model/BlogPost.php');
 
 
@@ -8,8 +9,25 @@ function getBlogPosts(
   $db,
   $in_id=null,
   $in_tag_name=null,
-  $in_include_unpublished=null
+  $in_include_unpublished=null,
+  $in_page_num=null
 ) {
+
+
+  // Configure Pagination - SQL LIMIT Clause
+  $limit = "";
+  if (
+    (!empty($in_page_num)) &&
+    (is_int($in_page_num)) &&
+    ($in_page_num > 0)
+  ) {
+    $ini = parse_ini_file(__DIR__ .'/../../config.ini.php', true)['blog_config'];
+    $posts_per_page = $ini["posts_per_page"];
+    $ini = null; unset($ini);
+    $num_skipped = ($in_page_num - 1) * $posts_per_page;
+    $limit .= " LIMIT ".$num_skipped.",".$posts_per_page;
+  }
+
 
   // Search By id
   if (!empty($in_id)) {
@@ -22,7 +40,7 @@ function getBlogPosts(
   // Search By Tag (order by newest first)
   } else if (!empty($in_tag_name)) {
     $result = $db->getResults(
-      "SELECT p.* FROM blog_posts AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? AND p.published=1 ORDER BY date_posted DESC",
+      "SELECT p.* FROM blog_posts AS p JOIN blog_post_tags AS bpt ON p.id = bpt.blog_post_id JOIN tags AS t ON t.id = bpt.tag_id WHERE t.name=? AND p.published=1 ORDER BY date_posted DESC".$limit,
       "s",
       array($in_tag_name)
     );
@@ -30,13 +48,13 @@ function getBlogPosts(
   // Select All
   } else if (!empty($in_include_unpublished)) {
     $result = $db->getResults(
-      "SELECT * FROM blog_posts ORDER BY date_posted DESC"
+      "SELECT * FROM blog_posts ORDER BY date_posted DESC".$limit
     );
 
   // Select All (Published Only)
   } else {
     $result = $db->getResults(
-      "SELECT * FROM blog_posts WHERE published=1 ORDER BY date_posted DESC"
+      "SELECT * FROM blog_posts WHERE published=1 ORDER BY date_posted DESC".$limit
     );
   }
 
@@ -67,6 +85,17 @@ function getNumBlogPosts($db) {
     null
   );
   return ($result->fetch_row()[0]);
+}
+
+
+function configURL() {
+  $ini = parse_ini_file(__DIR__ .'/../../config.ini.php', true)['blog_config'];
+  $total_pages = ceil(
+    getNumBlogPosts($db) / $ini["posts_per_page"]
+  );
+  $ini = null; unset($ini);
+
+  return new URL($total_pages);
 }
 
 
