@@ -16,18 +16,18 @@ function getProjects(
     );
   } else {
     // configure pagination - SQL LIMIT clause
-    // $limit = "";
-    // if (
-    //   (!empty($in_page_num)) &&
-    //   (is_int($in_page_num)) &&
-    //   ($in_page_num > 0)
-    // ) {
-    //   $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['projects_config'];
-    //   $posts_per_page = $ini["posts_per_page"];
-    //   $ini = null; unset($ini);
-    //   $num_skipped = ($in_page_num - 1) * $posts_per_page;
-    //   $limit .= " LIMIT ".$num_skipped.",".$posts_per_page;
-    // }
+    $limit = "";
+    if (
+      (!empty($in_page_num)) &&
+      (is_int($in_page_num)) &&
+      ($in_page_num > 0)
+    ) {
+      $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['projects_config'];
+      $posts_per_page = $ini["posts_per_page"];
+      $ini = null; unset($ini);
+      $num_skipped = ($in_page_num - 1) * $posts_per_page;
+      $limit .= " LIMIT ".$num_skipped.",".$posts_per_page;
+    }
 
     $result = $db->getResults(
       "SELECT * FROM projects ORDER BY date DESC".$limit
