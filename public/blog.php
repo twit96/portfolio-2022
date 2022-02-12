@@ -8,7 +8,7 @@ ini_set("display_errors", "on");
 
 
 require_once (__DIR__ .'/../src/Controller/blog.php');
-$url = configURL($db);
+$url = configBlogURL($db);
 
 
 if (isset($_GET["id"])) {

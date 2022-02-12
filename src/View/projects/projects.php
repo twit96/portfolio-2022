@@ -2,7 +2,7 @@
 
 
 require_once (__DIR__ .'/../../Controller/projects.php');
-$url = configURL($db);
+$url = configProjectsURL($db);
 
 
 $projects = getProjects($db, FALSE, $url->page_num);

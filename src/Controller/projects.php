@@ -65,7 +65,7 @@ function getNumProjects($db) {
 }
 
 
-function configURL($db) {
+function configProjectsURL($db) {
   $ini = parse_ini_file(__DIR__ .'/../../config/config.ini.php', true)['projects_config'];
   $posts_per_page = $ini["posts_per_page"];
   $ini = null; unset($ini);
