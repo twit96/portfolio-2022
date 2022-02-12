@@ -19,18 +19,15 @@ class URL {
     $p = 1;  // page initialized as 1
 
     // Check URL "page" Paramater
-    if (
-      (isset($_GET["page"])) &&
-      is_int($_GET["page"])
-    ) {
-      $url_num = $_GET["page"];                   // if is integer, check value
-      if ($url_num < 1) {
-        $p = 1;                                   // below 1, set equal to 1
-      } else if ($url_num > $this->total_pages) {
-        $p = $this->total_pages;                  // above max, set equal to max
-      } else {
-        $p = $url_num;                            // within 1 and max, all good
-      }
+    if (isset($_GET["page"])) {                    // is set
+      $url_num = htmlspecialchars($_GET["page"]);  // initial sanitize
+      if (
+        (is_numeric($url_num)) &&                  // is number
+        ($url_num >= 1) &&                         // is at least 1
+        ($url_num <= $this->total_pages)           // is not beyond last page
+      ) {
+        $p = (int) $url_num;                       // SUCCESS - cast num to int
+      } else { $p = 1; }                           // FAILURE - set page to 1
     }
 
     return $p;
