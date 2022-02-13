@@ -21,13 +21,18 @@ class URL {
     // Check URL "page" Paramater
     if (isset($_GET["page"])) {                    // is set
       $url_num = htmlspecialchars($_GET["page"]);  // initial sanitize
-      if (
-        (is_numeric($url_num)) &&                  // is number
-        ($url_num >= 1) &&                         // is at least 1
-        ($url_num <= $this->total_pages)           // is not beyond last page
-      ) {
-        $p = (int) $url_num;                       // SUCCESS - cast num to int
-      } else { $p = 1; }                           // FAILURE - set page to 1
+
+      if (is_numeric($url_num)) {                  // is numeric
+        $url_num = (int) $url_num;                 // cast to int
+
+        // if < 1, set page to 1
+        if ($url_num < 1) { $p = 1; }
+        // if > max, set page to max
+        else if ($url_num > $this->total_pages) { $p = $this->total_pages; }
+        // SUCCESS - within 1 and max
+        else { $p = $url_num; }
+
+      } else { $p = 1; }                           // not numeric? set page to 1
     }
 
     return $p;
