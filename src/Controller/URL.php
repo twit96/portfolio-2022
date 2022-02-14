@@ -10,8 +10,8 @@ class URL {
     $in_posts_per_page=1,
     $in_total_pages=1
   ) {
-    $this->posts_per_page = $in_posts_per_page;
-    $this->total_pages = $in_total_pages;
+    $this->posts_per_page = (int) $in_posts_per_page;
+    $this->total_pages = (int) $in_total_pages;
     $this->page_num = $this->getPage();
   }
 
@@ -39,7 +39,7 @@ class URL {
       }
     }
 
-    return $p;
+    return (int) $p;
   }
 
 }
