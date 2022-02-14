@@ -4,6 +4,7 @@
 require_once (__DIR__ .'/../../Controller/projects.php');
 $url = configProjectsURL($db);
 
+echo '<script>console.log("'.var_dump($url).'");</script>';
 
 $projects = getProjects($db, FALSE, $url->page_num);
 $db->close();
