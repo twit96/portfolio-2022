@@ -13,8 +13,7 @@ class URL {
     $this->posts_per_page = $in_posts_per_page;
     $this->total_pages = $in_total_pages;
     $this->page_num = $this->getPage();
-
-    echo '<script>console.log("$URL Object: $posts_per_page:'.$this->posts_per_page.' $total_pages: '.$this->total_pages.' $page_num: '.$this->page_num.'");</script>';
+    echo '<script>console.log("$URL Object: $in_posts_per_page:'.$in_posts_per_page.' $in_total_pages: '.$in_total_pages.'");</script>';
   }
 
   protected function getPage() {
