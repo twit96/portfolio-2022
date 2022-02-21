@@ -20,7 +20,7 @@ echo <<<HEADER
       <header>
         <div class="wrapper">
           <span>
-            <a href="/">webfolio</a>
+            <a href="/">TW</a>
           </span>
           <nav>
             <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>
