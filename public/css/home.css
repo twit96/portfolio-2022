@@ -630,6 +630,10 @@ article:not(:last-of-type) {
   align-items: center;
   z-index: 1;
 }
+@keyframes bg-shift {
+  0%, 100% { background-position: left; }
+  50% { background-position: right; }
+}
 #demo figure .pipeline .pipe {
   width: 20vmin;
   height: 2vmin;

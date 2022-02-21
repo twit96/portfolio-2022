@@ -7,9 +7,7 @@ $if = function($condition, $true, $false) { return $condition ? $true : $false; 
 if (isset($_SERVER['HTTP_USER_AGENT'])) {
   $agent = $_SERVER['HTTP_USER_AGENT'];
 }
-if (strlen(strstr($agent, 'Firefox')) > 0) { $browser = 'firefox'; }
-else { $browser = ''; }
-if ($browser == 'firefox') {
+if (strlen(strstr($agent, 'Firefox')) > 0) {
   echo "\n".'      <style>html.dark-mode{filter:none;}</style>';
 }
 
@@ -22,7 +20,7 @@ echo <<<HEADER
       <header>
         <div class="wrapper">
           <span>
-            <a href="/">TW</a>
+            <a href="/">webfolio</a>
           </span>
           <nav>
             <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>

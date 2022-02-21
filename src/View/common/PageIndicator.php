@@ -90,7 +90,7 @@ class PageIndicator {
 
     // Opening HTML
     $this->html .= <<<ELEM_TOP
-      <div class=" wrapper page-links-wrap">
+      <div class="wrapper page-links-wrap">
         <nav class="page-links">
     ELEM_TOP;
 
