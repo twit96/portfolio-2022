@@ -1,5 +1,5 @@
 var html = document.documentElement;
-// var meta_theme_color = document.querySelector('meta[name="theme-color"]');
+var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var main = document.querySelector("main");
 var loader = document.getElementById("loader");
 var header = document.querySelector("header");
