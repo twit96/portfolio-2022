@@ -139,22 +139,16 @@ configColorScheme();
 
 
 function configMetaThemeColor() {
-  // var theme_color = '#06632c';  // default
-  // var header_active = header_nav.classList.contains("active");
+  var theme_color = '#06632c';  // default
+  var header_active = header_nav.classList.contains("active");
 
+  // dark mode
   if (html.classList.contains('dark-mode')) {
-    theme_color='#011c0c';
+    (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
+  // light mode
   } else {
-    theme_color='#06632c';
+    (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
   }
-
-  // // dark mode
-  // if (html.classList.contains('dark-mode')) {
-  //   (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
-  // // light mode
-  // } else {
-  //   (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
-  // }
 
   if (meta_theme_color.content != theme_color) {
     meta_theme_color.setAttribute('content', theme_color);
@@ -172,7 +166,7 @@ function toggleNav(e) {
   nav_toggle.classList.toggle("active");
   header_nav.classList.toggle("active");
   header_bg.classList.toggle("active");
-  // configMetaThemeColor();
+  configMetaThemeColor();
 }
 
 nav_toggle.onclick = toggleNav;
