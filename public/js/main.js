@@ -144,7 +144,7 @@ function configMetaThemeColor() {
 
   // dark mode
   if (html.classList.contains('dark-mode')) {
-    (header_active) ? theme_color='#1067a1' : theme_color='#011c0c';
+    (header_active) ? theme_color='#1067a1' : theme_color='#022e13';
   // light mode
   } else {
     (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
