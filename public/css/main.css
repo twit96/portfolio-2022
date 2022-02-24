@@ -923,6 +923,11 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   header nav.active { transform: translateY(0); }
   header nav > * { margin-top: calc(var(--main-spacing) / 2); }
   header nav a:last-of-type { margin-bottom: 0; }
+
+  /* adjust for header.filled translateY animation*/
+  header.filled nav {
+    transform: translateY(calc(-100% - var(--main-spacing) * 2 / 5));
+  }
 }
 
 /* Medium/Large Header Breakpoint */
