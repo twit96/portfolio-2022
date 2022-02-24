@@ -144,10 +144,10 @@ function configMetaThemeColor() {
 
   // dark mode
   if (html.classList.contains('dark-mode')) {
-    (header_active) ? theme_color='#1067a1' : theme_color='#022e13';
+    (header_active) ? theme_color='#0c4d79' : theme_color='#022e13';
   // light mode
   } else {
-    (header_active) ? theme_color='#48acf0' : theme_color='#06632c';
+    (header_active) ? theme_color='#148bdb' : theme_color='#06632c';
   }
 
   if (meta_theme_color.content != theme_color) {

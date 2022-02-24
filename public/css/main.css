@@ -718,29 +718,30 @@ header span a:hover {
 header nav {
   position: fixed;
   top: 0; right: 0;
-  border-radius: 0 0 0 50px;
+  border-radius: 0 0 0 var(--main-spacing);
   display: flex;
   flex-direction: column;
   text-align: right;
   padding-top: 78px;  /* height of header */
   z-index: 102;
-  transform: translateX(calc(100% + 50px));
+  transform: translateX(calc(100% + var(--main-spacing)));
   transition: 0.25s transform ease-out;
   background-image: linear-gradient(
-    30deg, var(--indigo-500), var(--blue-500), var(--blue-500)
+    30deg, var(--indigo-500), var(--blue-600), var(--blue-600)
   );
   background-size: 300% 300%;
   background-position: center;
   padding-bottom: calc(var(--main-spacing) / 2);
 }
-header nav::after {
+header nav::before {
   content: '';
   position: absolute;
   left: 0; top: 0;
   transform: translateX(-100%);
-  width: 100px; height: 100px;
+  width: calc(var(--main-spacing) * 2);
+  height: calc(var(--main-spacing) * 2);
   border-radius: 50%;
-  box-shadow: 50px -50px 0 var(--blue-500);
+  box-shadow: var(--main-spacing) calc(var(--main-spacing) * -1) 0 var(--blue-600);
   z-index: -1;
 }
 header nav.active { transform: translateX(0); }
@@ -754,7 +755,7 @@ header nav a {
   font-size: calc(var(--main-font-size) * 1.25);
   margin-left: var(--main-spacing);
 }
-header nav a:last-of-type { margin-bottom: 50px; }
+header nav a:last-of-type { margin-bottom: var(--main-spacing); }
 header nav a:hover { color: var(--yellow-500); }
 
 /* Dark Mode Toggle */
@@ -889,7 +890,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   left: 0; top: 0;
   width: 100%;
   height: 100vh;
-  background: var(--indigo-600);
+  background: #000000;
   z-index: 101;
   transform: translateY(-100%);
   opacity: 0;
@@ -897,7 +898,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
               0.25s transform ease-out 0.25s;
 }
 #header-bg.active {
-  opacity: 1;
+  opacity: 0.9;
   transform: translateY(0);
   transition: 0.25s opacity ease-out 0.25s,
               0.25s transform ease-out;
@@ -908,14 +909,30 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   transform: scale(0.5);
 }
 
-/* Header Breakpoint */
+/* Tiny Header Breakpoint (small mobile landscape) */
+@media (max-height: 22rem) and (max-width: 999px) {
+  header nav {
+    width: 100vw;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 0 0 var(--main-spacing) var(--main-spacing);
+    background-image: linear-gradient(
+      -30deg, var(--indigo-500), var(--blue-600), var(--blue-600)
+    );
+  }
+  header nav > * { margin-top: calc(var(--main-spacing) / 2); }
+  header nav a:last-of-type { margin-bottom: 0; }
+}
+
+/* Medium/Large Header Breakpoint */
 @media (min-width: 1000px) {
   /* hide header-bg on large screens */
   #header-bg { display: none; }
   /* display header-bg when hovering header elements */
   /* header span:hover ~ #header-bg,
   header nav:hover ~ #header-bg {
-    opacity: 1;
+    opacity: 0.85;
     transform: translateY(0);
     transition: 0.25s opacity ease-out 0.25s,
                 0.25s transform ease-out;
@@ -937,7 +954,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
     background: 0;
   }
   header.filled nav { transform: none; }
-  header nav::after { content: none; }
+  header nav::before { content: none; }
   header nav a {
     margin: 0 calc(var(--main-spacing) / 2);
     padding: 0;
