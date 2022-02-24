@@ -919,12 +919,11 @@ html.dark-mode #dark-toggle-wrap .slider::before {
     flex-wrap: wrap;
     border-radius: 0 0 var(--main-spacing) var(--main-spacing);
     background-image: linear-gradient(
-      5deg, var(--indigo-500), var(--blue-600), var(--blue-600)
+      0deg, var(--indigo-500), var(--blue-600), var(--blue-600)
     );
-    /* background-size: 400% 400%;
-    background-position: center; */
+    background-size: 300% 300%;
+    background-position: center;
   }
-  header nav::before { content: none; }
   header nav.active { transform: translateY(0); }
   header nav > * { margin-top: calc(var(--main-spacing) / 2); }
   header nav a:last-of-type { margin-bottom: 0; }
