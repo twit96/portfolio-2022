@@ -912,6 +912,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
 /* Tiny Header Breakpoint (small mobile landscape) */
 @media (max-height: 22rem) and (max-width: 999px) {
   header nav {
+    transform: translateY(calc(-100% - var(--main-spacing)));
     width: 100vw;
     height: auto;
     flex-direction: row;
@@ -919,6 +920,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
     border-radius: 0 0 var(--main-spacing) var(--main-spacing);
     background: var(--blue-600);
   }
+  header nav.active { transform: translateY(0); }
   header nav > * { margin-top: calc(var(--main-spacing) / 2); }
   header nav a:last-of-type { margin-bottom: 0; }
 }
