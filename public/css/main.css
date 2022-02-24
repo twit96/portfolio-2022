@@ -891,6 +891,8 @@ html.dark-mode #dark-toggle-wrap .slider::before {
   width: 100%;
   height: 100vh;
   background: #000000;
+  background-image: linear-gradient(#140037 0.25vmin, transparent 0.25vmin), linear-gradient(to right, #140037 0.25vmin, #000000 0.25vmin);
+  background-size: 9.98vmin 9.98vmin;
   z-index: 101;
   transform: translateY(-100%);
   opacity: 0;
@@ -898,7 +900,7 @@ html.dark-mode #dark-toggle-wrap .slider::before {
               0.25s transform ease-out 0.25s;
 }
 #header-bg.active {
-  opacity: 0.9;
+  opacity: 0.95;
   transform: translateY(0);
   transition: 0.25s opacity ease-out 0.25s,
               0.25s transform ease-out;
