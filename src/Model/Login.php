@@ -13,7 +13,7 @@ class Login {
       (isset($_POST["password"]))
     ) {
       $this->getLoginPost();
-      if (!$this->hasErrors()) checkLogin($db);
+      if ($this->error == '') checkLogin($db);
       if ($this->valid_login) doLogin();
     }
   }
@@ -24,9 +24,6 @@ class Login {
     unset($_POST["username"]);
     unset($_POST["password"]);
     $_POST = array();
-  }
-
-  private function hasErrors() {
     // ensure all fields are not empty
     if (empty(trim($this->username))) {
       $this->error .= "Please enter username. ";
@@ -34,7 +31,6 @@ class Login {
     if (empty(trim($this->password))) {
       $this->error .= "Please enter your password. ";
     }
-    ($this->error == '') ? return false : return true;
   }
 
   private function checkLogin($db) {
