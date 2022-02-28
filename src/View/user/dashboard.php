@@ -41,7 +41,7 @@ function doEngine() {
     $_POST = array();
     doLogout();
   }
-  doLoginForm();
+  doDashboard();
 }
 doEngine();
 
