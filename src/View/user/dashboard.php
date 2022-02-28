@@ -23,7 +23,7 @@ function doDashboard() {
     <section id="dashboard">
       <h2>Dashboard</h2>
       <div class="flex">
-        <form method="POST" action="admin">
+        <form method="POST" action="user">
           <input type="submit" value="Logout" />
         </form>
         <p>

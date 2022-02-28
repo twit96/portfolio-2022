@@ -19,7 +19,7 @@ function doLoginForm() {
   <section id="login">
     <h2>Login</h2>
     <div class="flex">
-      <form method="POST" action="admin">
+      <form method="POST" action="user">
         <label>
           <input name="username" type="text" required />
           <span>Username</span>
