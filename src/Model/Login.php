@@ -38,7 +38,7 @@ class Login {
     $result = $db->getResults(
       "SELECT COUNT(1) FROM people WHERE username=? AND password=? AND (role='admin' OR role='author')",
       "ss",
-      array($username, $password)
+      array($this->username, $this->password)
     );
     $this->valid_login = ($result->fetch_row()[0] === 1);
     if (!$this->valid_login) {
