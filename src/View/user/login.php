@@ -42,7 +42,7 @@ LOGIN;
 }
 
 
-function doEngine() {
+function doEngine($db) {
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = new Login($db);
     if ($login->valid_login) {
@@ -52,7 +52,7 @@ function doEngine() {
   }
   doLoginForm();
 }
-doEngine();
+doEngine($db);
 
 
 ?>
