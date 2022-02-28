@@ -13,8 +13,8 @@ class Login {
       (isset($_POST["password"]))
     ) {
       $this->getLoginPost();
-      if ($this->error == '') checkLogin($db);
-      if ($this->valid_login) doLogin();
+      if ($this->error == '') $this->checkLogin($db);
+      if ($this->valid_login) $this->doLogin();
     }
   }
 
