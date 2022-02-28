@@ -44,7 +44,7 @@ LOGIN;
 
 function doEngine() {
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = new Login;
+    $login = new Login($db);
     if ($login->valid_login) {
       header('Location: '.$_SERVER['PHP_SELF']);
       die;
