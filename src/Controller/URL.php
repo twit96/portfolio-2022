@@ -25,9 +25,7 @@ class URL {
       if (is_numeric($url_num)) {                    // is number
         $url_num = (int) $url_num;                   // cast to int
 
-        if ($url_num < 1) {
-          $p = 1;                                    // if < 1, set = 1
-        } else if ($url_num > $this->total_pages) {
+        if ($url_num > $this->total_pages) {
           $p = $this->total_pages;                   // if > max, set = max
         } else if (
           ($url_num >= 1) &&
