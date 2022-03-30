@@ -4,9 +4,9 @@
 ; These lines will be ignored when read as a .ini file, since they are comments.
 
 [database]
-db_host     = localhost
-db_username = portfolio_user
-db_password = portfolio_user_pass
+db_host     = 157.245.91.128
+db_username = pfolio_user
+db_password = pfpass_olioword_2
 db_name     = Portfolio
 
 [blog_config]
