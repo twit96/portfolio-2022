@@ -443,6 +443,7 @@
   transition: 0.25s opacity ease-out;
 }
 
+/* two column layout - wide screens */
 @media (min-aspect-ratio: 1/1) and (min-width: 750px) {
   #post #toc {
     position: relative;
@@ -461,4 +462,18 @@
     max-height: none;
   }
   #post #toc-toggle, #toc-bg { display: none; }
+}
+
+/* mobile-only blog post only layout */
+@media (orientation: portrait) and (max-width: 749px), (orientation: portrait) and (max-height: 849px) {
+  /* expand page layout */
+  #post { padding: 0; }
+  #sidebar { margin-bottom: var(--main-spacing); }
+  /* tweak post title card area appearance */
+  #post .card.details,
+  #post .details::before {
+    border-radius: 0;
+  }
+  #post .card.details { padding-top: var(--header-height); }
+  #post .details::before { background: var(--green-600); }
 }
