@@ -116,8 +116,10 @@ function getCookie() {
 }
 function updateCookie() {
   var dark_mode = getCookie();
+  // not set yet
+  if (dark_mode == "") { setCookie("on"); }
   // toggled to dark
-  if (dark_mode == "dark_mode=off") { setCookie("on"); }
+  else if (dark_mode == "dark_mode=off") { setCookie("on"); }
   // toggled to light
   else { setCookie("off"); }
   configColorScheme();
