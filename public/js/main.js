@@ -8,6 +8,22 @@ var nav_toggle = document.querySelector(".nav-toggle");
 var header_bg = document.getElementById("header-bg");
 var dark_toggle = document.getElementById("dark-toggle-wrap");
 
+
+const throttle = (func, delay) => {
+  let inProgress = false;
+  return (...args) => {
+    if (inProgress) {
+      return;
+    }
+    inProgress = true;
+    setTimeout(() => {
+      func(...args);
+      inProgress = false;
+    }, delay);
+  }
+};
+
+
 // Add Randomly Generated Elements to Background ------------------------------
 var rand_span;  // placed in body
 var clone;      // placed in #loader and #header-bg
@@ -189,12 +205,13 @@ function toggleHeaderState() {
 * Ensure that nav maintains proper state if user resizes while nav is active.
 * Note: 1000px is large screen header breakpoint.
 */
-window.addEventListener('resize', function() {
+const resizeHandler = throttle(() => {
   if (
     (window.innerWidth > 1000) &&
     (header_bg.classList.contains("active"))
   ) { toggleNav(); }
-}, false);
+}, 200);
+window.addEventListener('resize', resizeHandler, false);
 
 
 
@@ -232,6 +249,7 @@ function toggleScrollTopBtn() {
   scroll_top_btn.classList.toggle('displayed');
 }
 
+
 // click functionality
 var click_scroll_top_handler = function() {
   if (scroll_top_btn.classList.contains('displayed')) {
@@ -250,13 +268,10 @@ function getScrollPos() {
   return (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop);
 }
 var scroll_pos = getScrollPos();
-var ticking = false;
 
 
-/**
-* Animation Callback.
-*/
-function scrollEvents() {
+const scrollHandler = throttle(() => {
+  scroll_pos = getScrollPos();
   // Manage Header State
   if (
     ((scroll_pos > 0) && (!header.classList.contains("filled"))) ||
@@ -275,29 +290,6 @@ function scrollEvents() {
   ) {
     toggleScrollTopBtn();
   }
+}, 200);
 
-  // reset ticking
-  ticking = false;
-}
-
-
-/**
-* Calls rAF if it hasn't been done already.
-*/
-function requestTick() {
-  if (!ticking) {
-    requestAnimationFrame(scrollEvents);
-    ticking = true;
-  }
-}
-
-
-/**
-* Scroll event callback - tracks scroll position and requests animation tick.
-*/
-function onScroll() {
-  scroll_pos = getScrollPos();
-  requestTick();
-}
-
-window.addEventListener('scroll', onScroll);
+window.addEventListener('scroll', scrollHandler, false);
