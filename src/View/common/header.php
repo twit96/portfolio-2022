@@ -25,7 +25,7 @@ echo <<<HEADER
           <nav>
             <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>
             <a href="/projects"{$if(FILENAME=='projects',' class="active"','')}>Projects</a>
-            <a class="resume" href="/20211003-résumé-tylerwittig.pdf">
+            <a class="resume" href="/20220718-résumé-tylerwittig.pdf">
               Résumé
             </a>
             <div id="dark-toggle-wrap">
