@@ -57,8 +57,6 @@
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="/css/main.css?v={$timestamp('/css/main.css')}" />
       <script src="/js/main.js?v={$timestamp('/js/main.js')}" defer></script>
-      <!-- Google Ads -->
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9642318266138319" crossorigin="anonymous"></script>
   TOP;
 
 
