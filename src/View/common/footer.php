@@ -28,7 +28,7 @@ echo <<<FOOTER
                 <img src="/img/logo_twitter.png" alt="twitter logo" />
               </a> -->
             </div>
-            <a class="resume" href="/20220718-résumé-tylerwittig.pdf">
+            <a class="resume" href="/20221009-résumé-tylerwittig.pdf">
               Download my Résumé
             </a>
           </div>  <!-- ./socials -->
