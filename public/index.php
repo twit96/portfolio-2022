@@ -16,9 +16,8 @@ echo <<<TOP
 TOP;
 
 include (__DIR__ .'/../src/View/home/intro.html');
-include (__DIR__ .'/../src/View/home/skills.html');
 include (__DIR__ .'/../src/View/home/featured_projects.php');
-include (__DIR__ .'/../src/View/home/demo.html');
+include (__DIR__ .'/../src/View/home/skills.html');
 
 // Closing HTML
 echo "\n".'      </div>';

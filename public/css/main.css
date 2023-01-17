@@ -153,12 +153,6 @@ a.active { text-decoration: underline; }
   }
 }
 
-.square {
-  position: absolute;
-  border-radius: 2vmin;
-  background: var(--indigo-500);
-  opacity: 0.025;
-}
 
 /* Custom Buttons with Icons */
 
