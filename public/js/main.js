@@ -290,6 +290,6 @@ const scrollHandler = throttle(() => {
   ) {
     toggleScrollTopBtn();
   }
-}, 200);
+}, 100);
 
 window.addEventListener('scroll', scrollHandler, false);
