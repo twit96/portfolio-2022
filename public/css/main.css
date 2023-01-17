@@ -112,13 +112,6 @@ a.active { text-decoration: underline; }
 }
 
 /* background decoration elements */
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--blue-500);
-  opacity: 0.1;
-}
-
 .leaf {
   position: fixed;
   background: var(--green-600);

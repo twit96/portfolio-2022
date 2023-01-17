@@ -11,25 +11,6 @@ logo_lg.onload = function() {
   main_logo.classList.remove("blurred");
 }
 
-// // animate logo on scroll
-// var main_logo_wrap = document.getElementById("main-logo-wrap");
-// window.addEventListener('scroll', handleScrollLogoAnim);
-// function handleScrollLogoAnim() {
-//   if (scroll_pos < document.documentElement.clientHeight) {
-//     requestAnimationFrame(updateScrollLogoAnim);
-//   } else if (!main_logo_wrap.classList.contains("hidden")) {
-//     main_logo_wrap.classList.add("hidden");
-//   }
-// }
-// function updateScrollLogoAnim() {
-//   if (main_logo_wrap.classList.contains("hidden")) {
-//     main_logo_wrap.classList.remove("hidden");
-//   }
-//   main_logo_wrap.style.transform =
-//     "translate(calc(67% + " + scroll_pos + "px), calc(-50% - " + scroll_pos + "px))" +
-//     "rotate(" + (scroll_pos * 90 / document.documentElement.clientHeight) + "deg)";
-// }
-
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
 var active_idx = 0;
@@ -44,38 +25,6 @@ function updateTag() {
   setTimeout(function() {
     updateTag();
   }, 3000);
-}
-
-
-// Featured Projects Section --------------------------------------------------
-var skills = document.getElementById("skills");
-
-// add randomly generated elements to background
-
-// random properties
-var rand_x;
-var rand_y;
-var rand_size;
-var rand_rotation;
-var rand_opacity;
-
-// random circles
-for (i=0; i<15; i++) {
-  rand_span = document.createElement("span");
-  rand_span.classList.add("circle");
-  // generate random attributes
-  rand_x = Math.floor(Math.random() * 100) - 7.5;     // -7.5 to 92.5 vw
-  rand_y = Math.floor(Math.random() * 85) + 7.5;      // 7.5 to 92.5 vh
-  rand_size = Math.floor(Math.random() * 15) + 15;  	// 15 to 30 vmin
-  rand_rotation = Math.floor(Math.random() * 360);  	// 0 to 360 deg
-  // set CSS styles
-  rand_span.style.left = rand_x + "%";
-  rand_span.style.top = rand_y + "%";
-  rand_span.style.width = rand_size + "vmin";
-  rand_span.style.height = rand_size + "vmin";
-  rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
-  // place on page
-  skills.insertAdjacentElement("afterbegin", rand_span);
 }
 
 
