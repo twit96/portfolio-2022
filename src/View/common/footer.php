@@ -1,5 +1,7 @@
 <?php
 
+$footer_year = date("Y");
+
 echo <<<FOOTER
     <footer>
       <div class="wrapper">
@@ -33,7 +35,7 @@ echo <<<FOOTER
             </a>
           </div>  <!-- ./socials -->
         </div>  <!-- ./links -->
-        <span>&copy; 2022 Tyler Wittig</span>
+        <span>&copy; {$footer_year} Tyler Wittig</span>
       </div>
     </footer>\n\n
 FOOTER;
