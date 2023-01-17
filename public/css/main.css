@@ -14,10 +14,11 @@ html { box-sizing: border-box; }
 html {
   /* Root Variables */
   /* other */
+  --page-width: 1250px;
   --header-height: 78px;
   --main-font-size: 16px;
   --main-spacing: 25px;
-  --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
+  --fixed-to-side: max(var(--main-spacing), calc((100vw - var(--page-width)) / 2));
   /* colors */
   --indigo-500: #6201ff;
   --indigo-600: #140037;
@@ -83,7 +84,7 @@ body::-webkit-scrollbar-track {
 body > * { padding: var(--main-spacing); }
 
 .wrapper {
-  max-width: 1500px;
+  max-width: var(--page-width);
   margin: 0 auto;
 }
 .nested-wrapper { padding: 0 var(--main-spacing); }
@@ -1077,7 +1078,6 @@ footer .wrapper > span {
     --header-height: 135px;
     --main-font-size: 20px;
     --main-spacing: 50px;
-    --fixed-to-side: max(var(--main-spacing), calc((100vw - 1500px) / 2));
   }
 
   h2 {
