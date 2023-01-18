@@ -101,7 +101,10 @@ article:not(:last-of-type) {
   #intro-right::after { top: 0; }
   #intro-right::before { bottom: 0; }
 
-  #intro-right .socials { margin-top: auto; }
+  #intro-right .socials {
+    margin-top: auto;
+    margin-left: auto;
+  }
 }
 
 
