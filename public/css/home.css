@@ -62,41 +62,32 @@ article:not(:last-of-type) {
 
 @media (min-width: 850px) {
   #intro {
+    align-items: center;
     display: grid;
     grid-template-columns: auto 1fr;
   }
   #intro-left {
-    border-radius: 16px;
-    box-shadow: 0 0 10px var(--green-600);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 5px var(--green-600);
     overflow: hidden;
     padding: calc(var(--main-spacing) / 2);
     position: relative;
     z-index: 1;
   }
   #intro-left::before {
-    content: '';
-    position: absolute;
-    inset: 0;
     background: var(--green-600);
+    content: '';
+    inset: 0;
     opacity: 0.5;
+    position: absolute;
     z-index: -1;
   }
   #intro-right {
-    margin: var(--main-spacing) 0;
     align-items: flex-start;
-    position: relative;
+    padding: calc(var(--main-spacing) / 2);
     text-align: left;
-    padding: 16px;
-  }
-  #intro-right::after,
-  #intro-right::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    background: var(--green-600);
-    border-radius: 8px;
-    height: 6px;
+    border-top: 1px solid var(--grey-400);
+    border-bottom: 1px solid var(--grey-400);
   }
   #intro-right::after { top: 0; }
   #intro-right::before { bottom: 0; }
@@ -114,27 +105,27 @@ article:not(:last-of-type) {
   margin-bottom: calc(var(--main-spacing) / 2);
 }
 #featured .flex::after {
-  position: absolute;
-  top: 0; right: 0.25vmin;
-  width: 1vmin;
-  height: 100%;
-  border-radius: 1vmin;
-  transform: translateX(50%);
+  --width: 10px;
   background: var(--green-600);
+  border-radius: var(--width);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: var(--width);
   z-index: 1;
 }
 
 #featured .heading-card {
   background: var(--green-600);
   color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 0.5vmin var(--green-600);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 5px var(--green-600);
   padding: 0.75em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#featured h2 { margin-bottom: 0; }
 
 .card-container {
   display: flex;
@@ -169,7 +160,7 @@ article:not(:last-of-type) {
   flex-direction: column;
   scroll-snap-align: center;
   margin-right: 1em;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   transition: 0.25s transform;
 }
 @media (min-aspect-ratio: 1/1) and (max-width: 1000px) {
@@ -207,12 +198,8 @@ article:not(:last-of-type) {
   /* override .card class */
   min-width: inherit;
   border: 0;
-  border-radius: 15px;
-  background-image: linear-gradient(
-    30deg, var(--indigo-500), var(--blue-500), var(--indigo-500)
-    );
-  background-size: 300% 300%;
-  background-position: center;
+  border-radius: var(--border-radius);
+  background: var(--blue-600);
   transform: scale(0.95);
 }
 #featured a.card:hover {
@@ -222,7 +209,8 @@ article:not(:last-of-type) {
 
 #featured .card img {
   width: 100%;
-  border-radius: 10px 10px 0 0;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 }
 #featured .card em {
   display: block;
@@ -288,7 +276,6 @@ article:not(:last-of-type) {
     margin-bottom: 0.25em;
   }
   .card-container::-webkit-scrollbar-track {
-    border-radius: 15px;
     margin: 0 var(--main-spacing);
   }
   #featured .card:last-child {
@@ -313,19 +300,20 @@ article#skills {
   text-align: center;
 }
 #skills::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
+  --height: 10px;
   background: var(--green-600);
-  border-radius: 30px;
+  border-radius: var(--height);
+  bottom: 0;
+  content: '';
+  height: var(--height);
+  left: 0;
+  position: absolute;
+  right: 0;
 }
 
 #skills h2 {
   background: var(--green-600);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   box-shadow: 0 0 0.5vmin var(--green-600);
   padding: 0.5em 1em;
   position: relative;
@@ -345,19 +333,19 @@ article#skills {
   z-index: 1;
 }
 #skills h3::before {
+  background: var(--green-600);
   content: '';
+  height: 3px;
+  left: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 0;
-  height: 3px;
-  background: var(--green-600);
   width: 100%;
   z-index: -1;
 }
 #skills h3 span {
   background: var(--green-600);
-  border-radius: 1000px;
+  border-radius: var(--border-radius);
   padding: 0.25em 0.75em;
 }
 

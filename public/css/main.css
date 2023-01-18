@@ -18,7 +18,7 @@ html {
   --header-height: 78px;
   --main-font-size: 16px;
   --main-spacing: 25px;
-  --border-radius: 16px;
+  --border-radius: 8px;
   --fixed-to-side: max(var(--main-spacing), calc((100vw - var(--page-width)) / 2));
   /* colors */
   --indigo-500: #6201ff;
@@ -101,17 +101,6 @@ a:hover { text-decoration: underline; }
 
 /* active links */
 a.active { text-decoration: underline; }
-
-/* text with rounded background area */
-.bubble-text {
-  white-space: nowrap;
-  border-radius: 30px;
-  padding: 0.125em 0.5em;
-  font-size: 0.65em;
-  font-weight: bold;
-  background: var(--grey-500);
-  color: white;
-}
 
 /* Decorative Background Elements */
 .leaf {
