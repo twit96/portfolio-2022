@@ -15,10 +15,10 @@ article:not(:last-of-type) {
 
 
 #intro-left img {
-  border: 8px solid var(--green-600);
+  border: 10px solid var(--green-600);
   border-radius: 50%;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 #intro-left h1 {
