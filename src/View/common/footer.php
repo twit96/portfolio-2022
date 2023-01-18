@@ -6,7 +6,7 @@ echo <<<FOOTER
     <footer>
       <div class="wrapper">
         <div class="info">
-          <img class="logo" src="/img/profile.jpg" alt="Profile Image"/>
+          <img class="logo" src="/img/portrait.png" alt="Portrait"/>
           <span><em>Tyler Wittig</em> | Web Developer</span>
         </div>
         <div class="links">

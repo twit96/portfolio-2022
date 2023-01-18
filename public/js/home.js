@@ -1,16 +1,6 @@
 // Intro Functionality --------------------------------------------------------
 var intro = document.getElementById("intro");
 
-// swap main logo image with full resolution image once it loads
-var main_logo = document.getElementById("main-logo");
-main_logo.classList.add("blurred");
-var logo_lg = document.createElement("img");
-logo_lg.src = "/img/icon_lg.png";
-logo_lg.onload = function() {
-  main_logo.src = "/img/icon_lg.png";
-  main_logo.classList.remove("blurred");
-}
-
 // cycle through taglines
 var taglines = intro.getElementsByClassName("tagline");
 var active_idx = 0;
