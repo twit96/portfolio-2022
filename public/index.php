@@ -15,7 +15,7 @@ echo <<<TOP
       <div class="wrapper">
 TOP;
 
-include (__DIR__ .'/../src/View/home/intro.html');
+include (__DIR__ .'/../src/View/home/intro.php');
 include (__DIR__ .'/../src/View/home/featured_projects.php');
 include (__DIR__ .'/../src/View/home/skills.html');
 
