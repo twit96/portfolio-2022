@@ -610,7 +610,7 @@ a.active { text-decoration: underline; }
 /* ------------------------------------------------------------------ Header */
 header {
   transform: translateY(0);
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -648,6 +648,8 @@ header.filled nav.active {
 header.filled #header-bg.active {
   transform: translateY(calc(var(--main-spacing) * 2 / 5));
 }
+
+header + * { padding-top: var(--header-height); }
 
 
 /* Header Logo */
