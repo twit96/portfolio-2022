@@ -13,6 +13,6 @@
       <span class="tagline">Website Redesigns</span>
       <span class="tagline">Game Development</span>
     </p>
-    <?php include('../common/socials.html'); ?>
+    <?php include(__DIR__ .'/../common/socials.html'); ?>
   </section>
 </article>

@@ -17,7 +17,7 @@ echo <<<FOOTERTOP
           </nav>
 FOOTERTOP;
 
-include('./socials.html');
+include(__DIR__ .'/socials.html');
 
 echo <<<FOOTERBTM
         </div>  <!-- ./links -->
