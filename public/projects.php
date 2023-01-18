@@ -21,17 +21,17 @@ TOP;
 require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
 require_once (__DIR__ .'/../src/View/projects/projects.php');
 
-// Close Projects Section Wrapper
-echo "\n".'      </div>';
-
 // Page Indicator
 new PageIndicator(
   $url->page_num,
   $url->total_pages
 );
 
-// Closing HTML
-echo "\n".'    </main>'."\n\n";
+// Close Projects Section
+echo <<<BTM
+      </div>
+    </main>
+BTM;
 
 require_once (__DIR__ .'/../src/View/common/footer.php');
 

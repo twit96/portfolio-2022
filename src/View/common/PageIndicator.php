@@ -90,7 +90,6 @@ class PageIndicator {
 
     // Opening HTML
     $this->html .= <<<ELEM_TOP
-      <div class="wrapper page-links-wrap">
         <nav class="page-links">
     ELEM_TOP;
 
@@ -116,7 +115,6 @@ class PageIndicator {
     // Closing HTML
     $this->html .= <<<ELEM_BTM
       </nav>
-    </div>
     ELEM_BTM;
 
     // mark self as built

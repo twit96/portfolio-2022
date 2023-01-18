@@ -8,7 +8,6 @@ article:not(:last-of-type) {
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--main-spacing) * 2);
   gap: var(--main-spacing);
   text-align: center;
 }
