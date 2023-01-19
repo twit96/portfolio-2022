@@ -16,14 +16,12 @@ echo <<<TOP
 \n    <main id="projects">
       <div class="wrapper">
         <h1>Projects</h1>
-        <div class="article-list">
-
 TOP;
 
+require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
 require_once (__DIR__ .'/../src/View/projects/projects.php');
 
 // Page Indicator
-require_once (__DIR__ .'/../src/View/common/PageIndicator.php');
 new PageIndicator(
   $url->page_num,
   $url->total_pages
@@ -31,7 +29,6 @@ new PageIndicator(
 
 // Close Projects Section
 echo <<<BTM
-        </div>
       </div>
     </main>
 BTM;

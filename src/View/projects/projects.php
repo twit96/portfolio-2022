@@ -20,7 +20,7 @@ foreach ($projects as $project) {
   }
 
   // display project info
-  echo '<article class="article-card">';
+  echo '<article>';
   echo '<figure>';
   if ($project->featured > 0) {
     echo '<div class="featured-badge">';
