@@ -284,7 +284,20 @@ article:not(:last-of-type) {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  padding-bottom: 16px;
+  position: relative;
   text-align: center;
+}
+#skills::after {
+  --height: 5px;
+  background: var(--green-600);
+  border-radius: var(--height);
+  bottom: 0;
+  content: '';
+  height: var(--height);
+  left: 0;
+  position: absolute;
+  right: 0;
 }
 
 #skills h2 {
@@ -343,10 +356,7 @@ article:not(:last-of-type) {
   #skills section:nth-of-type(2) { grid-area: backend; }
   #skills section:nth-of-type(3) { grid-area: tools; }
 
-  #skills section {
-    padding: 16px;
-    margin-top: 16px;
-  }
+  #skills section { margin-top: 16px; }
   #skills section:not(:last-of-type) { position: relative; }
   #skills section:not(:last-of-type)::after {
     --width: 5px;
@@ -361,5 +371,5 @@ article:not(:last-of-type) {
     transform: translateX(50%);
   }
 
-  #skills h3 { margin-bottom: 24px; }
+  #skills h3 { margin: 16px; }
 }
