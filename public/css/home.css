@@ -300,7 +300,6 @@ article:not(:last-of-type) {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 0 16px;
 }
 
 #skills section {
@@ -348,6 +347,9 @@ article:not(:last-of-type) {
 
 
 @media (min-width: 70rem) {
-  #skills > div { flex-direction: row; }
+  #skills > div {
+    flex-direction: row; 
+    padding: 0 16px;
+  }
   #skills section { flex: 1; }
 }
