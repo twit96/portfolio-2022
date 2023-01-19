@@ -51,7 +51,7 @@
       <!-- make the og:image larger -->
       <meta name="twitter:card" content="summary_large_image">
       <!-- end of social media card -->
-      <link rel="icon" href="/img/icon.png" />
+      <link rel="icon" href="/img/logo.png" />
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">

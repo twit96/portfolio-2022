@@ -732,7 +732,7 @@ header nav a:hover { color: #ffffff; }
   width: 1.5rem; height: 1.5rem;
   top: 0.25rem; left: 0.25rem;
   background: var(--grey-500);
-  background-image: url('../img/sun.png');
+  background-image: url('../img/icon_sun.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -742,7 +742,7 @@ header nav a:hover { color: #ffffff; }
 }
 html.dark-mode #dark-toggle-wrap .slider::after {
   transform: translateX(2rem) rotate(360deg);
-  background-image: url('../img/moon.png');
+  background-image: url('../img/icon_moon.png');
 }
 
 #dark-toggle-wrap .slider::before {
