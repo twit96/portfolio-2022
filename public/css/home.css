@@ -66,20 +66,12 @@ article:not(:last-of-type) {
     grid-template-columns: auto 1fr;
   }
   #intro-left {
+    background: var(--green-600);
     border-radius: var(--border-radius);
     box-shadow: 0 0 5px var(--green-600);
     overflow: hidden;
     padding: calc(var(--main-spacing) / 2);
-    position: relative;
     z-index: 1;
-  }
-  #intro-left::before {
-    background: var(--green-600);
-    content: '';
-    inset: 0;
-    opacity: 0.5;
-    position: absolute;
-    z-index: -1;
   }
   #intro-right {
     align-items: flex-start;
@@ -198,7 +190,7 @@ article:not(:last-of-type) {
   min-width: inherit;
   border: 0;
   border-radius: var(--border-radius);
-  background: var(--blue-600);
+  background: var(--color);
   transform: scale(0.95);
 }
 #featured a.card:hover {
@@ -285,9 +277,7 @@ article:not(:last-of-type) {
 
 
 /* ---------------------------------------------------------- Skills Section */
-article#skills {
-  background: transparent;
-  box-shadow: none;
+#skills {
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -348,26 +338,4 @@ article#skills {
   padding: 0.25em 0.75em;
 }
 
-
-#skills .flex > * { --color: #ffffff; }
-#skills a:hover { --color: var(--blue-500); }
-#skills .skill-box {
-  line-height: normal;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.125em;
-  color: var(--color);
-  white-space: wrap;
-  white-space: pre-wrap;
-}
-#skills .skill-box svg {
-  --size: 40px;
-  width: var(--size);
-  height: var(--size);
-  fill: var(--color);
-}
-#skills .bubble-text {
-  font-size: 100%;
-  background: var(--color);
-}
+#skills .image-text { --icon-size: 45px; }
