@@ -330,7 +330,7 @@ article:not(:last-of-type) {
   z-index: 1;
 }
 #skills h3::before {
-  --size: 3px;
+  --size: 2px;
   background: var(--green-600);
   border-radius: var(--size);
   content: '';
