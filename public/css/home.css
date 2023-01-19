@@ -8,8 +8,11 @@ article:not(:last-of-type) {
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: var(--main-spacing);
   text-align: center;
+  /* mobile only layout */
+  gap: calc(var(--main-spacing) * 2);
+  justify-content: space-between;
+  padding-bottom: calc(var(--main-spacing) * 2);
 }
 
 
@@ -64,6 +67,9 @@ article:not(:last-of-type) {
     align-items: center;
     display: grid;
     grid-template-columns: auto 1fr;
+    /* unset mobile-only styles */
+    gap: var(--main-spacing);
+    padding-bottom: 0;
   }
   #intro-left {
     background: var(--green-600);
@@ -348,7 +354,7 @@ article:not(:last-of-type) {
 
 @media (min-width: 70rem) {
   #skills > div {
-    flex-direction: row; 
+    flex-direction: row;
     padding: 0 16px;
   }
   #skills section { flex: 1; }
