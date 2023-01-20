@@ -3,12 +3,12 @@
 
 // Opening HTML
 echo <<<TOP
-<article id="featured">
+<section id="featured">
       <div class="flex">
         <div class="heading-card">
           <h2>Featured</h2>
         </div>
-        <div class="card-container">
+        <div class="article-carousel">
 TOP;
 
 require_once (__DIR__ .'/../../Controller/projects.php');
@@ -28,25 +28,39 @@ foreach ($featured_projects as $project) {
     $primary_link_text = $primary_link->text;
   }
 
-  echo '<div class="card">';
+  echo '<article class="article-card">';
+
+  // Info
+  echo '<div class="info">';
+  // featured badge
   echo '<div class="featured-badge">';
   echo '<span>#'.$project->featured.'</span>';
   echo '</div>';
-  echo '<img src="'.$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
-  echo '<em>'.$project->blurb.'</em>';
-  echo '<div class="info">';
-  echo '<div class="btn-text date">';
-  echo '<span class="icon"></span>';
-  echo '<span>'.$project->date.'</span>';
-  echo '</div>';
+  // image
   if ($primary_link_url != null) {
-    echo '<a class="btn-text link" href="'.$primary_link_url.'">';
-    echo '<span class="icon"></span>'.$primary_link_text;
+    echo '<a class="img-link" href="'.$primary_link_url.'">';
+    echo '<img src="'.$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
     echo '</a>';
+  } else {
+    echo '<img src="'.$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
   }
+  echo '<em>'.$project->blurb.'</em>';
   echo '</div>';  // ./info
-  echo '</div>';  // ./card
 
+  // Details
+  echo '<div class="details">';
+  // title
+  echo '<div class="title">';
+  if ($primary_link_url != null) {
+    echo '<h3><a href="'.$primary_link_url.'">'.$project->title.'</a></h3>';
+  } else {
+    echo '<h3>'.$project->title.'</h3>';
+  }
+  echo '<em>'.$project->date.'</em>';
+  echo '</div>';  // ./title
+  echo '</div>';  // ./details
+
+  echo '</article>';
 }
 
 
@@ -61,7 +75,7 @@ echo <<<BOTTOM
         To view all of my work, please visit my
         <a href="/projects">projects page</a>.
       </p>
-    </article>\n
+    </section>\n
 BOTTOM;
 
 

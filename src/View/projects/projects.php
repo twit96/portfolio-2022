@@ -19,37 +19,43 @@ foreach ($projects as $project) {
     $primary_link_text = $primary_link->text;
   }
 
-  // display project info
+  // Project Info
   echo '<article class="article-card">';
-  echo '<figure>';
+  echo '<div class="info">';
+  // featured badge
   if ($project->featured > 0) {
     echo '<div class="featured-badge">';
     echo '<span>#'.$project->featured.'</span>';
     echo '</div>';
   }
-  // Figure
+  // image
   if ($primary_link_url != null) {
-    echo '<a href="'.$primary_link_url.'">';
+    echo '<a class="img-link" href="'.$primary_link_url.'">';
     echo '<img src="'.$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
     echo '</a>';
   } else {
     echo '<img src="'.$project->image->path.$project->image->name.'" loading="lazy" alt="'.$project->title.' Title Card" />';
   }
-  echo '<figcaption>'.$project->blurb.'</figcaption>';
-  echo '</figure>';
-  // Details
+  echo '<em>'.$project->blurb.'</em>';
+  echo '</div>';
+
+  // Project Details
   echo '<div class="details">';
+  echo '<div class="title">';
   // heading
   if ($primary_link_url != null) {
-    echo '<h3><a href="'.$primary_link_url.'">'.$project->title.'</a></h3>';
+    echo '<h2><a href="'.$primary_link_url.'">'.$project->title.'</a></h2>';
   } else {
-    echo '<h3>'.$project->title.'</h3>';
+    echo '<h2>'.$project->title.'</h2>';
   }
-  // date/description
+  // date
   echo '<em>'.$project->date.'</em>';
+  echo '</div>';
+  // description
   echo '<p>'.$project->description.'</p>';
   // links
   if ($primary_link_url != null) {
+    echo '<div class="links">';
     // primary link
     echo '<a class="btn-text link" href="'.$primary_link_url.'">';
     echo '<span class="icon"></span>'.$primary_link_text;
@@ -62,6 +68,7 @@ foreach ($projects as $project) {
         echo '</a>';
       }
     }
+    echo '</div>';
   }
   echo '</div>';
   echo '</article>';
