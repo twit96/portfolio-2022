@@ -1,4 +1,4 @@
-article:not(:last-of-type) {
+main .wrapper > :not(:last-child) {
   margin-bottom: var(--main-spacing);
 }
 
@@ -100,17 +100,6 @@ article:not(:last-of-type) {
 #featured .flex {
   position: relative;
   margin-bottom: calc(var(--main-spacing) / 2);
-}
-#featured .flex::after {
-  --width: 10px;
-  background: var(--green-600);
-  border-radius: var(--width);
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: var(--width);
-  z-index: 1;
 }
 
 #featured .heading-card {
@@ -262,7 +251,18 @@ article:not(:last-of-type) {
     display: flex;
     align-items: center;
   }
-  #featured .flex::after { content: ''; }
+  #featured .flex::after {
+    --width: 10px;
+    background: var(--green-600);
+    border-radius: var(--width);
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--width);
+    z-index: 1;
+  }
   #featured .heading-card {
     padding: 0;
     align-self: stretch;
