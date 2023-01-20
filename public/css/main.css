@@ -654,6 +654,8 @@ a.active { text-decoration: underline; }
   max-width: var(--page-width);
   padding: var(--main-spacing);
 }
+main .wrapper { padding-top: calc(var(--main-spacing) * 2); }
+
 .nested-wrapper { padding: 0 var(--main-spacing); }
 
 
