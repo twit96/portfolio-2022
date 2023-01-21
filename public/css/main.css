@@ -362,49 +362,6 @@ main .wrapper > :not(:last-child) {
 }
 
 
-/* Decorative Background Elements */
-.leaf {
-  position: fixed;
-  background: var(--green-600);
-  border-radius: 75% 10% 75% 0;
-  opacity: 0.25;
-  z-index: -1;
-}
-/* leaf stem */
-.leaf::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: 0;
-  height: 150%;
-  width: 5%;
-  background: var(--green-600);
-  filter: brightness(0.7);
-  transform-origin: bottom left;
-  transform: translateX(-75%) rotate(45deg) translateY(-15%);
-  border-radius: 30% 30% 50% 50%;
-}
-/* fireflies */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  background: var(--yellow-500);
-  z-index: -1;
-  animation-name: twinkle;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes twinkle {
-  0%, 50%, 100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  25% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-}
-
-
 /* Custom Buttons with Icons */
 
 /* presets */
@@ -659,6 +616,57 @@ main .wrapper > :not(:last-child) {
 main .wrapper { padding-top: calc(var(--main-spacing) * 2); }
 
 .nested-wrapper { padding: 0 var(--main-spacing); }
+
+
+/* ------------------------------------------- Randomly Generated Background */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.leaf {
+  position: fixed;
+  background: var(--green-600);
+  border-radius: 75% 10% 75% 0;
+  opacity: 0.25;
+  z-index: -1;
+}
+/* leaf stem */
+.leaf::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 150%;
+  width: 5%;
+  background: var(--green-600);
+  filter: brightness(0.7);
+  transform-origin: bottom left;
+  transform: translateX(-75%) rotate(45deg) translateY(-15%);
+  border-radius: 30% 30% 50% 50%;
+}
+/* fireflies */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  background: var(--yellow-500);
+  z-index: -1;
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes twinkle {
+  0%, 50%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
 
 
 /* ------------------------------------------------------------------ Loader */

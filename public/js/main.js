@@ -24,9 +24,16 @@ const throttle = (func, delay) => {
 };
 
 
-// Add Randomly Generated Elements to Background ------------------------------
-var rand_span;  // placed in body
-var clone;      // placed in #loader and #header-bg
+// Randomly Generated Background ----------------------------------------------
+
+// inject background element onto page
+let bg = document.createElement("div");
+bg.id = "bg";
+document.body.insertAdjacentElement("afterbegin", bg);
+
+// add elements to background
+var rand_span;  // placed in #bg
+var clone;      // placed in #loader or #header-bg
 
 // random properties
 var rand_size;
@@ -65,7 +72,7 @@ for (i=0; i<10; i++) {
   rand_span.style.height = rand_size + "vmin";
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
-  main.insertAdjacentElement("beforeend", rand_span);
+  bg.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   loader.insertAdjacentElement("beforeend", clone);
 }
