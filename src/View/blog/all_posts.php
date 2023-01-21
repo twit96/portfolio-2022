@@ -16,7 +16,7 @@ echo <<<TOP
       <div class="wrapper">
         <h1>Blog</h1>
       </div>
-      <div class="wrapper grid">
+      <div class="article-grid">
 TOP;
 
 $blog_posts = getBlogPosts($db, null, null, null, $url->page_num);
