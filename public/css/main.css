@@ -16,7 +16,6 @@ html {
   /* other */
   --page-width: 1250px;
   --header-height: 68px;
-  --main-font-size: 16px;
   --main-spacing: 25px;
   --border-radius: 8px;
   --fixed-to-side: max(var(--main-spacing), calc((100vw - var(--page-width)) / 2));
@@ -62,7 +61,6 @@ html.dark-mode {
 }
 
 body {
-  font-size: var(--main-font-size);
   font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 175%;
   background: var(--green-500);
@@ -815,14 +813,15 @@ main .wrapper { padding-top: calc(var(--main-spacing) * 2); }
 
 /* ------------------------------------------------------------------ Header */
 header {
-  transform: translateY(0);
-  position: fixed;
+  color: #ffffff;
+  font-size: max(1rem, 24px);
   left: 0;
-  top: 0;
+  position: fixed;
   right: 0;
-  z-index: 100;
-  color: white;
+  top: 0;
+  transform: translateY(0);
   transition: 0.25s transform ease-out;
+  z-index: 100;
 }
 header .wrapper {
   align-items: center;
@@ -863,7 +862,6 @@ header a { color: #ffffff; }
 
 /* Header Logo */
 header span {
-  font-size: 24px;
   font-family: 'Pacifico', cursive;
   z-index: 103;
 }
@@ -904,7 +902,6 @@ header nav > * {
 
 header nav a {
   border-radius: 0 3em 3em 0;
-  font-size: calc(var(--main-font-size) * 1.25);
   margin-left: var(--main-spacing);
 }
 header nav a:last-of-type { margin-bottom: var(--main-spacing); }
@@ -1118,7 +1115,7 @@ footer .wrapper {
 }
 
 /* Name Area */
-footer .info { font-size: min(4.75vw, calc(var(--main-font-size) * 1.5)); }
+footer .info { font-size: min(4.75vw, 1.75rem); }
 footer .info em {
   font-family: 'Pacifico', cursive;
   font-style: normal;
@@ -1159,10 +1156,8 @@ footer .copyright { font-size: 80%; }
 
 /* ------------------------------------------------ Large Screen Breakpoint */
 @media (min-aspect-ratio: 1 / 1) {
-  * {
-    --header-height: 75px;
-    --main-font-size: 20px;
-  }
+  * { --header-height: 75px; }
+  body { font-size: max(1rem, 20px); }
 }
 
 

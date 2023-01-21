@@ -76,15 +76,15 @@ main .wrapper > *:not(#logo-container) {
 }
 
 h1 {
-  font-size: calc(var(--main-font-size) * 3.5);
-  line-height: calc(var(--main-font-size) * 4);
+  font-size: 3.5rem;
+  line-height: 4rem;
   font-weight: normal;
   font-family: 'Pacifico', cursive;
   text-shadow: 2px 2px 2px var(--grey-600);
 }
 h2 {
-  font-size: calc(var(--main-font-size) * 1.5);
-  line-height: calc(var(--main-font-size) * 2);
+  font-size: 1.5rem;
+  line-height: 2rem;
   margin-top: 0.5em;
   margin-bottom: 1em;
 }

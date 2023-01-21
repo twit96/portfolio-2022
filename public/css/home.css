@@ -38,7 +38,7 @@
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  font-size: calc(var(--main-font-size) * 1.5);
+  font-size: 1.5rem;
   font-family: 'Pacifico', cursive;
   opacity: 0;
   width: 100%;

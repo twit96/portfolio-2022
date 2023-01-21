@@ -132,7 +132,7 @@
   color: white;
   font-family: 'Pacifico', cursive;
   font-weight: normal;
-  font-size: calc(2.5 * var(--main-font-size));
+  font-size: 2.5rem;
   line-height: 125%;
 }
 
@@ -141,7 +141,7 @@
   line-height: 150%;
   font-size: 90%;
   font-weight: bold;
-  padding-bottom: var(--main-font-size);
+  padding-bottom: 1rem;
 }
 #post ul.tags li {
   display: inline-block;
@@ -264,9 +264,9 @@
 }
 
 #post #toc h3 {
-  font-size: calc(var(--main-font-size) * 1.75);
+  font-size: 1.75rem;
   text-align: center;
-  line-height: calc(var(--main-font-size) * 2.25);
+  line-height: 2.25rem;
   font-family: 'Pacifico', cursive;
   font-weight: normal;
 }
@@ -319,28 +319,28 @@
 #post #toc nav a.h2-link {
   border: 0.25rem solid white;
   border-radius: 0 10px 10px 0;
-  font-size: calc(var(--main-font-size) * 1.5);
+  font-size: 1.5rem;
 }
 #post #toc nav a.h2-link:first-child { border-radius: 10px 10px 10px 0; }
 #post #toc nav a.h2-link:last-child { border-radius: 0 10px 10px 10px; }
 #post #toc nav a.h2-link::before { width: 0; }
 #post #toc nav a.h3-link {
-  font-size: calc(var(--main-font-size) * 1.25);
+  font-size: 1.25rem;
   padding-left: 1rem;
 }
 #post #toc nav a.h3-link::before { width: 0.25rem; }
 #post #toc nav a.h4-link {
-  font-size: calc(var(--main-font-size) * 1);
+  font-size: 1rem;
   padding-left: 2rem;
 }
 #post #toc nav a.h4-link::before { width: 1.25rem; }
 #post #toc nav a.h5-link {
-  font-size: calc(var(--main-font-size) * 0.75);
+  font-size: 0.75rem;
   padding-left: 3rem;
 }
 #post #toc nav a.h5-link::before { width: 2.25rem; }
 #post #toc nav a.h6-link {
-  font-size: calc(var(--main-font-size) * 0.5);
+  font-size: 0.5rem;
   padding-left: 4rem;
 }
 #post #toc nav a.h6-link::before { width: 3.25rem; }
