@@ -1,6 +1,7 @@
 var html = document.documentElement;
 var meta_theme_color = document.querySelector('meta[name="theme-color"]');
 var main = document.querySelector("main");
+var loader = document.getElementById("loader");
 var header = document.querySelector("header");
 var header_nav = header.querySelector("nav");
 var nav_toggle = document.querySelector(".nav-toggle");
@@ -65,6 +66,8 @@ for (i=0; i<10; i++) {
   rand_span.style.transform = "rotate(" + rand_rotation + "deg)";
   // place on page
   main.insertAdjacentElement("beforeend", rand_span);
+  clone = rand_span.cloneNode(true);
+  loader.insertAdjacentElement("beforeend", clone);
 }
 
 // random orbs
@@ -89,6 +92,15 @@ for (i=0; i<30; i++) {
   clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }
+
+
+// Loader Functionality -------------------------------------------------------
+setTimeout(function() {
+  loader.style.opacity = '0';
+}, 100);
+setTimeout(function() {
+  loader.style.display = 'none';
+}, 1100);
 
 
 // Dark Mode Toggle Functionality ---------------------------------------------
