@@ -112,7 +112,7 @@ body {
   display: flex;
   flex-direction: column;
   /* body fills entire view height */
-  min-height: 100vh; 
+  min-height: 100vh;
 }
 /* main fills all available space */
 main { flex: 1; }
@@ -667,24 +667,6 @@ a.active { text-decoration: underline; }
 main .wrapper { padding-top: calc(var(--main-spacing) * 2); }
 
 .nested-wrapper { padding: 0 var(--main-spacing); }
-
-
-/* ------------------------------------------------------------------ Loader */
-#loader {
-  position: fixed;
-  left: 0; top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--green-500);
-  color: white;
-  letter-spacing: 1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: 1s opacity ease-in;
-}
-#loader .leaf { z-index: -1; }
 
 
 /* --------------------------------------------------- Scroll Down Indicator */

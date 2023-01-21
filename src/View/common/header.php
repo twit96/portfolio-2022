@@ -12,9 +12,7 @@ if (strlen(strstr($agent, 'Firefox')) > 0) {
 }
 
 echo <<<HEADER
-\n      <div id="loader"></div>
-
-      <span id="scroll-down-indicator"></span>
+\n      <span id="scroll-down-indicator"></span>
       <span id="scroll-top-btn"></span>
 
       <header>
