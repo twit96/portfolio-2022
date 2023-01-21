@@ -91,6 +91,7 @@ a:hover {
   color: var(--blue-500);
   text-decoration: underline;
 }
+a.active { text-decoration: underline; }
 
 h1, h2, h3, h4, h5, h6 { line-height: normal; }
 
@@ -122,10 +123,6 @@ main .wrapper > :not(:last-child) {
 
 
 /* ---------------------------------------------------------- Custom Classes */
-
-/* active links */
-a.active { text-decoration: underline; }
-
 
 /* Article Cards */
 .article-card {
@@ -193,7 +190,7 @@ a.active { text-decoration: underline; }
 .article-card .details .links > :not(:last-child) { padding-right: 0.5em; }
 
 
-/* Badge for Featured Projects */
+/* Badge for Featured Articles */
 .article-card .featured-badge {
   --badge-size: calc(var(--main-spacing) * 3);
   position: absolute;
@@ -285,7 +282,6 @@ a.active { text-decoration: underline; }
 .article-carousel .article-card {
   min-width: min(90%, 400px);
 }
-
 /* mobile-only overrides */
 @media (max-aspect-ratio: 1 / 1) {
   /* carousel card featured badges */
@@ -317,6 +313,15 @@ a.active { text-decoration: underline; }
   .article-carousel .article-card:nth-child(2n) .featured-badge {
     transform: translate(15%, -15%) rotate(5deg);
   }
+}
+
+
+/* Grid of Article Cards */
+.article-grid {
+  display: grid;
+  gap: var(--main-spacing);
+  grid-template-columns: repeat( auto-fill, minmax( min(18em, 100%), 1fr) );
+  margin-bottom: var(--main-spacing);
 }
 
 
@@ -424,23 +429,6 @@ a.active { text-decoration: underline; }
   margin-right: 0.5em;
   width: 25px;
   height: 25px;
-}
-
-/* calendar */
-.btn-text.date {
-  font-weight: normal;
-  font-size: 85%;
-}
-.btn-text.date .icon {
-  width: 20px;
-  height: 20px;
-}
-.btn-text.date .icon::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -1px; right: -1px;
-  height: 5px;
-  border-bottom: 3px solid var(--main-color);
 }
 
 /* edit */
@@ -660,6 +648,7 @@ a.active { text-decoration: underline; }
   gap: 24px;
   justify-content: center;
 }
+
 
 /* Page Wrapper */
 .wrapper {

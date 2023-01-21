@@ -25,8 +25,11 @@ $db->close();
 foreach ($blog_posts as $post) {
   $this_link = './blog/post/'.$post->id.'/'.str_replace(" ", "-", strtolower($post->title)).'/';
 
-  echo '<article>';
+  echo '<article class="article-card">';
 
+
+  // Info
+  echo '<div class="info">';
   if (!empty($post->image)) {
     $img_path = substr($post->image->path.$post->image->name, 1);
     echo <<<IMG_LINK
@@ -35,9 +38,12 @@ foreach ($blog_posts as $post) {
     </a>
     IMG_LINK;
   }
+  echo '</div>';
+
 
   // Details
   echo '<div class="details">';
+
   // tags
   if (is_array($post->tags) && count($post->tags) > 0) {
     echo '<ul class="tags">';
@@ -46,18 +52,29 @@ foreach ($blog_posts as $post) {
     }
     echo '</ul>';
   }
+
   // title
-  echo '<h3><a href="'.$this_link.'">'.$post->title.'</a></h3>';
-  // blurb
+  echo '<div class="title">';
+  echo '<h2><a href="'.$this_link.'">'.$post->title.'</a></h2>';
+  echo '<em>'.$post->date_posted.'</em>';
+  // if (
+  //   (!empty($post->date_updated)) &&
+  //   ($post->date_posted != $post->date_updated)
+  // ) {
+  //   echo '<em>(Updated on '.$post->date_updated.'</em>';
+  // }
+  echo '</div>';
+
+  // description
   echo '<p>';
-  // remove tags from blurb (not headings)
+  // remove HTML tags (not headings)
   $blurb = strip_tags($post->post, "<h1><h2><h3><h4><h5><h6><h7>");
-  // replace any headings in blurb with bold tags
+  // replace any headings with bold tags
   for ($i=1; $i<7; $i++) {
     $blurb = str_replace('<h'.$i.'>', '<b style="display:block;">', $blurb);
     $blurb = str_replace('</h'.$i.'>', '</b>', $blurb);
   }
-  // shorten blurb if too long
+  // shorten if too long
   if (strlen($blurb) > 150) {
     $blurb = substr($blurb,0,150);
     echo $blurb.'...';
@@ -65,25 +82,12 @@ foreach ($blog_posts as $post) {
     echo $blurb;
   }
   echo '</p>';
-  echo '</div>';
-  // Author
-  echo '<div class="author">';
-  echo '<img src="'.$post->author_img_path.'" alt="'.$post->author.' Image" />';
-  $date_text = '<p><b>'.$post->author.'</b> on <span>'.$post->date_posted.'</span>';
-  if (
-    (!empty($post->date_updated)) &&
-    ($post->date_posted != $post->date_updated)
-  ) {
-    $date_text.=' <span>(Updated on <span>'.$post->date_updated.')</span></span>';
-  }
-  $date_text.='</p>';
-  echo $date_text;
-  echo'</p>';
-  echo '</div>';
-  echo '</article>';
+
+  echo '</div>';  // ./details
 }
-// Close BlogPost Grid Section
-echo '</div>  <!-- ./wrapper grid -->';
+
+// Close Grid Section
+echo '</div>';  // ./article-grid
 
 
 // Page Indicator
@@ -94,7 +98,9 @@ new PageIndicator(
 
 
 // Closing HTML
+echo '</div>';  // ./wrapper
 echo '</main>';
+
 
 require_once (__DIR__ .'/../common/footer.php');
 
