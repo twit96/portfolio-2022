@@ -83,6 +83,8 @@ foreach ($blog_posts as $post) {
   echo '</p>';
 
   echo '</div>';  // ./details
+
+  echo '</article>';
 }
 
 // Close Grid Section
