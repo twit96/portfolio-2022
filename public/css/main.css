@@ -108,6 +108,14 @@ h1 {
 }
 
 /* page layout */
+body {
+  display: flex;
+  flex-direction: column;
+  /* body fills entire view height */
+  min-height: 100vh; 
+}
+/* main fills all available space */
+main { flex: 1; }
 main .wrapper > :not(:last-child) {
   margin-bottom: calc(var(--main-spacing) * 2);
 }
