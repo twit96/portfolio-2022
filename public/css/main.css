@@ -112,7 +112,7 @@ body {
   display: flex;
   flex-direction: column;
   /* body fills entire view height */
-  min-height: 100vh; 
+  min-height: 100vh;
 }
 /* main fills all available space */
 main { flex: 1; }
@@ -298,7 +298,10 @@ a.active { text-decoration: underline; }
 }
 /* desktop layout */
 @media (min-aspect-ratio: 1 / 1) {
-  .article-carousel { gap: calc(var(--main-spacing) * 0.25); }
+  .article-carousel {
+    gap: calc(var(--main-spacing) * 0.25);
+    scroll-snap-type: none;
+  }
   .article-carousel::-webkit-scrollbar-track {
     margin: 0 var(--main-spacing);
   }
