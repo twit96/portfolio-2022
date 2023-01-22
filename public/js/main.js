@@ -95,7 +95,7 @@ for (i=0; i<30; i++) {
   rand_span.style.animationDuration = rand_anim_duration + "s";
   rand_span.style.animationDelay = rand_anim_delay + "s";
   // place on page
-  main.insertAdjacentElement("beforeend", rand_span);
+  bg.insertAdjacentElement("beforeend", rand_span);
   clone = rand_span.cloneNode(true);
   header_bg.insertAdjacentElement("beforeend", clone);
 }
