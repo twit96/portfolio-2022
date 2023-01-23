@@ -2,15 +2,6 @@
 
 $if = function($condition, $true, $false) { return $condition ? $true : $false; };
 
-// Firefox-Only Bugfix - CSS filter on parent breaks fixed-positioning on children
-// add style tag to top of HTML that removes CSS filter from html.dark-mode
-if (isset($_SERVER['HTTP_USER_AGENT'])) {
-  $agent = $_SERVER['HTTP_USER_AGENT'];
-}
-if (strlen(strstr($agent, 'Firefox')) > 0) {
-  echo "\n".'      <style>html.dark-mode{filter:none;}</style>';
-}
-
 echo <<<HEADER
 \n      <div id="loader"></div>
 
