@@ -1,24 +1,6 @@
-/* #blog article .author {
-  padding-top: 0;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  font-size: 95%;
-  line-height: 125%;
+#post .wrapper > :not(:last-child) {
+  margin-bottom: 0;
 }
-#blog article .author img {
-  width: 3em;
-  height: 3em;
-  border-radius: var(--border-radius);
-  margin-right: 1em;
-}
- #blog article .author p {
-  font-size: 90%;
-  color: var(--grey-500);
-}
-#blog article .author p span { display: inline-block; } */
-
-
 
 #post .wrapper #sidebar { margin-top: var(--main-spacing); }
 @media (min-aspect-ratio: 1/1) and (min-width: 750px) {
@@ -388,7 +370,8 @@
 /* mobile-only blog post only layout */
 @media (orientation: portrait) and (max-width: 749px), (orientation: portrait) and (max-height: 849px) {
   /* expand page layout */
-  #post { padding: 0; }
+  header + #post { padding-top: 0; }
+  #post .wrapper { padding: 0; }
   #sidebar { margin-bottom: var(--main-spacing); }
   /* tweak post title card area appearance */
   #post .card.details,
