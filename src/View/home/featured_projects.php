@@ -5,9 +5,7 @@
 echo <<<TOP
 <section id="featured">
       <div class="flex">
-        <div class="heading-card">
-          <h2>Featured</h2>
-        </div>
+        <h2 class="card-heading"><span>Featured</span></h2>
         <div class="article-carousel">
 TOP;
 
