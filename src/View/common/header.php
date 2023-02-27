@@ -16,7 +16,7 @@ echo <<<HEADER
           <nav>
             <a href="/"{$if(FILENAME=='home',' class="active"','')}>Home</a>
             <a href="/projects"{$if(FILENAME=='projects',' class="active"','')}>Projects</a>
-            <a href="/20221009-résumé-tylerwittig.pdf">Résumé</a>
+            <a href="/résumé-tylerwittig-20230214-1.pdf">Résumé</a>
             <div id="dark-toggle-wrap">
               <span class="slider"></span>
             </div>
