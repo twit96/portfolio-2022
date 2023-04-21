@@ -1,4 +1,4 @@
-NOTE: This codebase should probably not be used for any further websites. It was a means for me to tinker and learn, and I have since migrated my portfolio website to a different codebase.
+**IMPORTANT: This codebase should probably not be used for any further websites. It was a means for me to tinker and learn, and I have since migrated my portfolio website to a different codebase.**
 
 # My Second Portfolio Website (2021-2022)
 This repository contains the code for my 2021 through 2022 portfolio website. The website was built without any frameworks, allowing me to tinker with a vanilla full-stack codebase.
