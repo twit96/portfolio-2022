@@ -1,6 +1,6 @@
 NOTE: This codebase should probably not be used for any further websites. It was a means for me to tinker and learn, and I have since migrated my portfolio website to a different codebase.
 
-# portfolio-2022
+# My Second Portfolio Website (2021-2022)
 This repository contains the code for my 2021 through 2022 portfolio website. The website was built without any frameworks, allowing me to tinker with a vanilla full-stack codebase.
 This tinkering led to numerous code refactors, most notably when I swapped the architecture from grouping files by file type to a Model-View-Controller architecture.
 Since the codebase is vanilla and full of a learner's mistakes, adding new features began to become tedious. Furthermore, I didn't make updates frequently enought to justify the cost of the server with a database. 
