@@ -8,4 +8,4 @@ Most importantly of all, the configuration file, which contains the website's se
 Thus (as of 2023-04-21) I have since migrated the content of my portfolio website to a static site created with the [Astro](https://astro.build/) framework.
 
 I hosted this project using DigitalOcean, with NGINX as my web server, MySQL as my database, and Google Domains as my domain name registrar.
-The website is built with vanilla PHP, JavaScript, CSS, and HTML.
+The website is built with vanilla PHP, JavaScript, CSS, and HTML. You can read more information and watch a demo video of the website [here](https://tylerwittig.com/projects/portfolio-2022/).
